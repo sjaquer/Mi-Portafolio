@@ -94,6 +94,7 @@ const Portfolio: React.FC = () => {
                 {/* Project Image */}
                 <div className="relative h-48 overflow-hidden">
                   <img
+                    loading="lazy"
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
