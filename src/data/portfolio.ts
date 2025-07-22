@@ -292,11 +292,12 @@ export const projects: Project[] = [
 ];
 
 export const skills: Skill[] = [
-  // Programming Languages 
 //≥ 85 → tarjeta grande: col-span-2 row-span-2 aspect-[4/3]
 //70–84 → tarjeta mediana: aspect-square
 //< 70 → tarjeta pequeña: w-[80px] h-[80px]
-{ name: 'Excel Avanzado', category: 'Administración', proficiency: 90, icon: 'FileText' },
+
+//Administración
+{ name: 'Excel', category: 'Administración', proficiency: 90, icon: 'FileText' },
 { name: 'Gestión Documental', category: 'Administración', proficiency: 80, icon: 'ClipboardList' },
 { name: 'Planificación', category: 'Administración', proficiency: 75, icon: 'CalendarCheck' },
 { name: 'AWS', category: 'Administración', proficiency: 85, icon: 'Cloud' },
