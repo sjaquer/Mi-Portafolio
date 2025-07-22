@@ -46,7 +46,7 @@ const Portfolio: React.FC = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-red-400 to-purple-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#F2A900] to-[#0072C6] bg-clip-text text-transparent">
               Portafolio Destacado
             </span>
           </h2>
@@ -68,7 +68,7 @@ const Portfolio: React.FC = () => {
               onClick={() => setFilter(category.id)}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
                 filter === category.id
-                  ? 'bg-gradient-to-r from-red-500 to-purple-500 text-white'
+                  ? 'bg-gradient-to-r from-[#F2A900] to-[#0072C6] text-white'
                   : 'bg-gray-800/50 text-gray-400 hover:text-white hover:bg-gray-700/50'
               }`}
             >
@@ -103,13 +103,13 @@ const Portfolio: React.FC = () => {
                   
                   {/* Category Badge */}
                   <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1 bg-black/70 backdrop-blur-sm rounded-full">
-                    <CategoryIcon size={14} className="text-red-400" />
+                    <CategoryIcon size={14} className="text-[#F2A900]" />
                     <span className="text-xs text-white font-medium capitalize">{project.category}</span>
                   </div>
 
                   {/* Featured Badge */}
                   {project.featured && (
-                    <div className="absolute top-4 right-4 px-3 py-1 bg-gradient-to-r from-red-500 to-purple-500 text-white text-xs font-medium rounded-full">
+                    <div className="absolute top-4 right-4 px-3 py-1 bg-gradient-to-r from-[#F2A900] to-[#0072C6] text-white text-xs font-medium rounded-full">
                       Destacado
                     </div>
                   )}
@@ -124,7 +124,7 @@ const Portfolio: React.FC = () => {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-3 py-2 bg-red-600 text-white rounded-lg text-sm font-medium hover:bg-red-700 transition-colors"
+                        className="flex items-center gap-2 px-3 py-2 bg-[#F2A900] text-gray-900 rounded-lg text-sm font-medium hover:bg-[#d99900] transition-colors"
                       >
                         <ExternalLink size={14} />
                         Ver Demo
@@ -146,7 +146,7 @@ const Portfolio: React.FC = () => {
 
                 {/* Project Info */}
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-red-400 transition-colors">
+                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#F2A900] transition-colors">
                     {project.title}
                   </h3>
                   <p className="text-gray-400 text-sm mb-4 line-clamp-2">
@@ -158,7 +158,7 @@ const Portfolio: React.FC = () => {
                     {project.techStack.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="px-2 py-1 text-xs font-medium bg-red-500/10 text-red-400 border border-red-500/20 rounded-md"
+                        className="px-2 py-1 text-xs font-medium bg-[#0072C6]/10 text-[#0072C6] border border-[#0072C6]/20 rounded-md"
                       >
                         {tech}
                       </span>
@@ -167,7 +167,7 @@ const Portfolio: React.FC = () => {
                 </div>
 
                 {/* Hover Effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-red-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#F2A900]/5 to-[#0072C6]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
               </motion.div>
             );
           })}

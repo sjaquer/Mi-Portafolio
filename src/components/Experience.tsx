@@ -2,13 +2,25 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { MapPin, Calendar, ExternalLink } from 'lucide-react';
-import { experiences } from '../data/portfolio';
+import * as Icons from 'lucide-react';
+import { experiences, skills } from '../data/portfolio';
 
 const Experience: React.FC = () => {
   const [ref, inView] = useInView({
     threshold: 0.1,
     triggerOnce: true
   });
+
+  const categories = [...new Set(skills.map(skill => skill.category))];
+
+  const getSkillsByCategory = (category: string) => {
+    return skills.filter(skill => skill.category === category);
+  };
+
+  const getIconComponent = (iconName: string) => {
+    const IconComponent = (Icons as any)[iconName];
+    return IconComponent || Icons.Code;
+  };
 
   return (
     <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8">
@@ -21,8 +33,8 @@ const Experience: React.FC = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              Experiencia Profesional
+            <span className="bg-gradient-to-r from-[#F2A900] to-[#0072C6] bg-clip-text text-transparent">
+              Experiencia y Habilidades
             </span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
@@ -40,7 +52,7 @@ const Experience: React.FC = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className={`group relative bg-gradient-to-br from-gray-900/50 to-gray-800/50 border border-gray-700/50 rounded-2xl p-6 ${
                 exp.current ? 'pt-10' : ''
-              } backdrop-blur-sm hover:border-blue-500/30 transition-all duration-300 ${
+              } backdrop-blur-sm hover:border-[#0072C6]/30 transition-all duration-300 ${
                 index === 0 ? 'lg:col-span-2' : ''
               }`}
             >
@@ -56,10 +68,10 @@ const Experience: React.FC = () => {
 
               {/* Company & Position */}
               <div className="mb-4">
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
+                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#F2A900] transition-colors">
                   {exp.title}
                 </h3>
-                <p className="text-purple-400 font-medium mb-3">{exp.company}</p>
+                <p className="text-[#0072C6] font-medium mb-3">{exp.company}</p>
                 
                 <div className="flex flex-wrap gap-4 text-sm text-gray-400">
                   <div className="flex items-center gap-1">
@@ -79,7 +91,7 @@ const Experience: React.FC = () => {
                   {exp.techStack.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="px-3 py-1 text-xs font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-full"
+                      className="px-3 py-1 text-xs font-medium bg-[#0072C6]/10 text-[#0072C6] border border-[#0072C6]/20 rounded-full"
                     >
                       {tech}
                     </span>
@@ -91,14 +103,14 @@ const Experience: React.FC = () => {
               <div className="space-y-3">
                 {exp.responsibilities.map((responsibility, respIndex) => (
                   <div key={respIndex} className="flex items-start gap-3">
-                    <div className="w-1.5 h-1.5 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="w-1.5 h-1.5 bg-gradient-to-r from-[#F2A900] to-[#0072C6] rounded-full mt-2 flex-shrink-0"></div>
                     <p className="text-gray-300 text-sm leading-relaxed">{responsibility}</p>
                   </div>
                 ))}
               </div>
 
               {/* Hover Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#F2A900]/5 to-[#0072C6]/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </motion.div>
           ))}
         </div>
@@ -117,12 +129,97 @@ const Experience: React.FC = () => {
             { number: '15+', label: 'Tecnologías Dominadas' }
           ].map((stat, index) => (
             <div key={index} className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-2">
+              <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-[#F2A900] to-[#0072C6] bg-clip-text text-transparent mb-2">
                 {stat.number}
               </div>
               <div className="text-gray-400 text-sm">{stat.label}</div>
             </div>
           ))}
+        </motion.div>
+
+        {/* Skills */}
+        <div className="mt-20 space-y-8">
+          {categories.map((category, categoryIndex) => {
+            const categorySkills = getSkillsByCategory(category);
+
+            return (
+              <motion.div
+                key={category}
+                initial={{ opacity: 0, y: 30 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
+                className="relative"
+              >
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold text-white mb-2">{category}</h3>
+                  <div className="w-20 h-1 bg-gradient-to-r from-[#F2A900] to-[#0072C6] rounded-full"></div>
+                </div>
+
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 place-items-center">
+                  {categorySkills.map((skill, skillIndex) => {
+                    const IconComponent = getIconComponent(skill.icon);
+
+                    return (
+                      <motion.div
+                        key={skill.name}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={inView ? { opacity: 1, scale: 1 } : {}}
+                        transition={{
+                          duration: 0.4,
+                          delay: categoryIndex * 0.1 + skillIndex * 0.05
+                        }}
+                        className="skill-card group relative flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-gray-900/50 to-gray-800/50 border border-gray-700/50 rounded-xl p-6 h-32 backdrop-blur-sm hover:border-[#0072C6]/30 transition-all duration-300"
+                      >
+                        <div className="p-3 bg-gradient-to-r from-[#F2A900]/20 to-[#0072C6]/20 rounded-lg">
+                          <IconComponent className="text-[#0072C6] group-hover:text-white transition-colors" size={28} />
+                        </div>
+
+                        <h4 className="text-white font-semibold text-sm text-center group-hover:text-[#F2A900] transition-colors">
+                          {skill.name}
+                        </h4>
+
+                        <div className="shine-effect absolute inset-0 rounded-xl pointer-events-none"></div>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="mt-16 text-center"
+        >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="text-3xl font-bold bg-gradient-to-r from-[#F2A900] to-[#0072C6] bg-clip-text text-transparent mb-2">
+                20+
+              </div>
+              <div className="text-gray-400 text-sm">Tecnologías</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold bg-gradient-to-r from-[#0072C6] to-[#F2A900] bg-clip-text text-transparent mb-2">
+                5+
+              </div>
+              <div className="text-gray-400 text-sm">Años de Experiencia</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold bg-gradient-to-r from-[#F2A900] to-[#0072C6] bg-clip-text text-transparent mb-2">
+                6
+              </div>
+              <div className="text-gray-400 text-sm">Categorías de Habilidades</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold bg-gradient-to-r from-[#0072C6] to-[#F2A900] bg-clip-text text-transparent mb-2">
+                90%
+              </div>
+              <div className="text-gray-400 text-sm">Promedio de Dominio</div>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

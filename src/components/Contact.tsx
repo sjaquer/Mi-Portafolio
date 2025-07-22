@@ -118,7 +118,7 @@ const Contact: React.FC = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#F2A900] to-[#0072C6] bg-clip-text text-transparent">
               Trabajemos Juntos
             </span>
           </h2>
@@ -154,14 +154,14 @@ const Contact: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                  className="group flex items-center gap-4 p-4 bg-gradient-to-br from-gray-900/50 to-gray-800/50 border border-gray-700/50 rounded-xl backdrop-blur-sm hover:border-purple-500/30 transition-all duration-300"
+                  className="group flex items-center gap-4 p-4 bg-gradient-to-br from-gray-900/50 to-gray-800/50 border border-gray-700/50 rounded-xl backdrop-blur-sm hover:border-[#0072C6]/30 transition-all duration-300"
                 >
-                  <div className="p-3 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-lg group-hover:from-purple-500/30 group-hover:to-blue-500/30 transition-colors">
-                    <contact.icon className="text-purple-400 group-hover:text-white transition-colors" size={24} />
+                  <div className="p-3 bg-gradient-to-r from-[#F2A900]/20 to-[#0072C6]/20 rounded-lg group-hover:from-[#F2A900]/30 group-hover:to-[#0072C6]/30 transition-colors">
+                    <contact.icon className="text-[#F2A900] group-hover:text-white transition-colors" size={24} />
                   </div>
                   <div>
                     <div className="text-gray-400 text-sm">{contact.label}</div>
-                    <div className="text-white font-medium group-hover:text-purple-400 transition-colors">
+                    <div className="text-white font-medium group-hover:text-[#F2A900] transition-colors">
                       {contact.value}
                     </div>
                   </div>

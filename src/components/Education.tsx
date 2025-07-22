@@ -25,7 +25,7 @@ const Education: React.FC = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-purple-400 to-red-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#F2A900] to-[#0072C6] bg-clip-text text-transparent">
               Educación y Certificaciones
             </span>
           </h2>
@@ -37,7 +37,7 @@ const Education: React.FC = () => {
         {/* Timeline Layout */}
         <div className="relative">
           {/* Timeline Line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 to-red-500 transform md:-translate-x-0.5"></div>
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#F2A900] to-[#0072C6] transform md:-translate-x-0.5"></div>
 
           {/* Items de educacion*/}
           <div className="space-y-12">
@@ -52,7 +52,7 @@ const Education: React.FC = () => {
                 } flex-col md:flex-row`}
               >
                 {/* Nodo Timeline  */}
-                <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-gradient-to-r from-purple-500 to-red-500 rounded-full transform md:-translate-x-2 z-10 shadow-lg">
+                <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-gradient-to-r from-[#F2A900] to-[#0072C6] rounded-full transform md:-translate-x-2 z-10 shadow-lg">
                   <div className="absolute inset-1 bg-gray-900 rounded-full"></div>
                 </div>
 
@@ -66,20 +66,20 @@ const Education: React.FC = () => {
                         window.open(edu.certificateUrl, '_blank');
                       }
                     }}
-                    className="group bg-gradient-to-br from-gray-900/50 to-gray-800/50 border border-gray-700/50 rounded-2xl p-6 backdrop-blur-sm hover:border-purple-500/30 transition-all duration-300"
+                    className="group bg-gradient-to-br from-gray-900/50 to-gray-800/50 border border-gray-700/50 rounded-2xl p-6 backdrop-blur-sm hover:border-[#0072C6]/30 transition-all duration-300"
                     style={{ cursor: edu.certificateUrl ? 'pointer' : 'default' }}
                   >
                     {/* Status Badge */}
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center gap-2">
                         {edu.status === 'Current Student' ? (
-                          <GraduationCap className="text-purple-400" size={20} />
+                          <GraduationCap className="text-[#0072C6]" size={20} />
                         ) : (
                           <Award className="text-green-400" size={20} />
                         )}
                         <span className={`text-xs font-medium px-2 py-1 rounded-full ${
                           edu.status === 'Current Student' 
-                            ? 'bg-purple-500/20 text-purple-400 border border-purple-500/30'
+                            ? 'bg-[#0072C6]/20 text-[#0072C6] border border-[#0072C6]/30'
                             : 'bg-green-500/20 text-green-400 border border-green-500/30'
                         }`}>
                           {edu.status}
@@ -92,10 +92,10 @@ const Education: React.FC = () => {
                     </div>
 
                     {/* Degree & Institution */}
-                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">
+                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#F2A900] transition-colors">
                       {edu.degree}
                     </h3>
-                    <p className="text-purple-400 font-medium mb-4">{edu.institution}</p>
+                    <p className="text-[#0072C6] font-medium mb-4">{edu.institution}</p>
 
                     {/* GPA */}
                     {edu.gpa && (
@@ -123,7 +123,7 @@ const Education: React.FC = () => {
                     )}
 
                     {/* Hover Effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-red-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#F2A900]/5 to-[#0072C6]/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 </div>
               </motion.div>
@@ -135,7 +135,7 @@ const Education: React.FC = () => {
           <div className="text-center mt-8">
             <button
               onClick={() => setShowAll(!showAll)}
-              className="px-6 py-2 bg-gradient-to-r from-purple-600 to-red-600 text-white rounded-lg font-medium hover:from-purple-700 hover:to-red-700 transition-all duration-300"
+              className="px-6 py-2 bg-gradient-to-r from-[#F2A900] to-[#0072C6] text-white rounded-lg font-medium hover:from-[#d99900] hover:to-[#0060a3] transition-all duration-300"
             >
               {showAll ? 'Mostrar menos' : 'Mostrar línea de tiempo completa'}
             </button>
@@ -164,9 +164,9 @@ const Education: React.FC = () => {
             ].map((cert, index) => (
               <div
                 key={index}
-                className="flex items-center gap-3 p-4 bg-gray-800/50 rounded-lg border border-gray-700/50 hover:border-purple-500/30 transition-colors"
+                className="flex items-center gap-3 p-4 bg-gray-800/50 rounded-lg border border-gray-700/50 hover:border-[#0072C6]/30 transition-colors"
               >
-                <Award className="text-purple-400 flex-shrink-0" size={16} />
+                <Award className="text-[#0072C6] flex-shrink-0" size={16} />
                 <span className="text-gray-300 text-sm">{cert}</span>
               </div>
             ))}

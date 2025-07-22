@@ -16,7 +16,6 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
     { id: 'education', label: 'Educación' },
     { id: 'portfolio', label: 'Portafolio' },
     { id: 'gallery', label: 'Galería' },
-    { id: 'skills', label: 'Habilidades' },
     { id: 'contact', label: 'Contacto' }
   ];
 
@@ -38,9 +37,9 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <motion.div 
+          <motion.div
             whileHover={{ scale: 1.05 }}
-            className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+            className="text-xl font-bold bg-gradient-to-r from-[#F2A900] to-[#0072C6] bg-clip-text text-transparent"
           >
             SJ
           </motion.div>
@@ -52,8 +51,8 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
                 key={section.id}
                 onClick={() => scrollToSection(section.id)}
                 className={`text-sm font-medium transition-colors duration-200 ${
-                  activeSection === section.id 
-                    ? 'text-blue-400' 
+                  activeSection === section.id
+                    ? 'text-[#F2A900]'
                     : 'text-gray-300 hover:text-white'
                 }`}
               >
@@ -88,8 +87,8 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
                 key={section.id}
                 onClick={() => scrollToSection(section.id)}
                 className={`block w-full text-left py-2 px-4 text-sm font-medium transition-colors duration-200 ${
-                  activeSection === section.id 
-                    ? 'text-blue-400 bg-gray-800/50' 
+                  activeSection === section.id
+                    ? 'text-[#F2A900] bg-gray-800/50'
                     : 'text-gray-300 hover:text-white hover:bg-gray-800/30'
                 }`}
               >
