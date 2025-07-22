@@ -55,22 +55,14 @@ body::before {
   width: 100%;
   height: 100%;
   z-index: -2;
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(26, 27, 46, 0.5) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(74, 27, 127, 0.3) 0%, transparent 50%),
-    radial-gradient(circle at 40% 80%, rgba(163, 21, 69, 0.2) 0%, transparent 50%),
-    linear-gradient(135deg, #0a0a0a 0%, #1a1b2e 100%);
-  animation: backgroundShift 20s ease-in-out infinite;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(95, 118, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 126, 95, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(255, 183, 95, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, #111827 0%, #1f2937 100%);
+  filter: hue-rotate(var(--gradient-hue));
 }
 
-@keyframes backgroundShift {
-  0%, 100% {
-    filter: hue-rotate(0deg);
-  }
-  50% {
-    filter: hue-rotate(90deg);
-  }
-}
 
 /* Utility classes */
 .line-clamp-2 {
@@ -241,11 +233,17 @@ textarea:focus-visible {
   --color-primary: #F2A900;
   --color-secondary: #0072C6;
   --color-dark: #262626;
+  --gradient-hue: 0deg;
 }
 
 body {
-  background: var(--color-dark);
+  background: linear-gradient(
+    to bottom,
+    hsl(calc(260deg + var(--gradient-hue)), 40%, 15%),
+    hsl(calc(320deg + var(--gradient-hue)), 40%, 15%)
+  );
   color: #ffffff;
+  transition: background 0.2s linear;
 }
 
 /* Actualizar scrollbar */
@@ -255,11 +253,12 @@ body {
 
 /* Actualizar fondo animado */
 body::before {
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(242, 169, 0, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(0, 114, 198, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 40% 80%, rgba(242, 169, 0, 0.1) 0%, transparent 50%),
-    linear-gradient(135deg, #262626 0%, #1a1a1a 100%);
+  background:
+    radial-gradient(circle at 20% 50%, rgba(95, 118, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 126, 95, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(255, 183, 95, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, #111827 0%, #1f2937 100%);
+  filter: hue-rotate(var(--gradient-hue));
 }
 
 /* Selección de texto */
