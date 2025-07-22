@@ -30,13 +30,13 @@ const colorMap: Record<string, string> = {
 };
 
 const borderColorMap: Record<string, string> = {
-  'Administración': 'border-primary-500',
-  'Desarrollo': 'border-secondary-500',
+  'Administración': 'border-[#F2A900]',
+  'Desarrollo': 'border-[#0072C6]',
   'Diseño': 'border-accent-500',
-  'Grabación y Edición': 'border-dark-400'
+  'Habilidades Blandas': 'border-dark-400'
 };
 
-const categoryOrder = ['Administración', 'Desarrollo', 'Diseño', 'Grabación y Edición'];
+const categoryOrder = ['Administración', 'Desarrollo', 'Diseño', 'Habilidades Blandas'];
 
 const getIconComponent = (iconName: string) => {
   const Icon = (Icons as any)[iconName];
@@ -50,35 +50,44 @@ const groupedSkills = skillsData.reduce<Record<string, Skill[]>>((acc, skill) =>
 }, {});
 
 const Skills: React.FC = () => (
-  <section id="skills" className="grid grid-cols-1 md:grid-cols-2 gap-6 px-6 py-16">
-    {categoryOrder.map((categoria) => {
-      const grupo = groupedSkills[categoria] || [];
-      const borderColor = borderColorMap[categoria] || 'border-primary-500';
-      return (
-        <div key={categoria} className="space-y-4">
-          <h3 className="text-xl font-bold bg-gradient-to-r from-primary-400 to-secondary-500 bg-clip-text text-transparent mb-4">
-            {categoria}
-          </h3>
-          <div className="grid grid-cols-3 auto-rows-[90px] gap-4">
-            {grupo.map((skill) => {
-              const Icon = getIconComponent(skill.icon);
-              const highlight = skill.proficiency >= 85 ? 'col-span-2' : '';
-              const faded = skill.proficiency < 70 ? 'opacity-80 scale-95' : '';
-              const color = colorMap[skill.name] || '#fff';
-              return (
-                <div
-                  key={skill.name}
-                  className={`w-[80px] h-[80px] ${highlight} rounded-xl p-3 backdrop-blur-md bg-dark-800/50 flex flex-col items-center justify-center text-center transition-all duration-300 hover:scale-[1.03] shadow-md border ${borderColor} ${faded}`}
-                >
-                  <Icon size={28} style={{ color }} className="mb-1 text-white/90" />
-                  <span className="text-sm text-white font-medium">{skill.name}</span>
-                </div>
-              );
-            })}
+  <section id="skills" className="min-h-screen flex items-center justify-center py-20 px-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 gap-8 w-full max-w-6xl">
+      {categoryOrder.map((categoria) => {
+        const grupo = groupedSkills[categoria] || [];
+        const borderColor = borderColorMap[categoria] || 'border-[#F2A900]';
+        const maxProficiency = Math.max(...grupo.map((s) => s.proficiency));
+        return (
+          <div
+            key={categoria}
+            className="rounded-2xl bg-dark-900/40 backdrop-blur-md p-4 shadow-md flex flex-col"
+          >
+            <h3 className="text-center text-xl font-bold mb-4 bg-gradient-to-r from-[#F2A900] to-[#0072C6] bg-clip-text text-transparent">
+              {categoria}
+            </h3>
+            <div className="grid [grid-template-columns:repeat(auto-fit,minmax(60px,1fr))] gap-4 place-items-center overflow-auto max-h-[300px]">
+              {grupo.map((skill) => {
+                const Icon = getIconComponent(skill.icon);
+                const size = 70 + (skill.proficiency / maxProficiency) * 30;
+                const color = colorMap[skill.name] || '#fff';
+                return (
+                  <div
+                    key={skill.name}
+                    style={{ width: size, height: size }}
+                    className={`skill-card rounded-xl bg-dark-800/50 backdrop-blur-md flex flex-col items-center justify-center border ${borderColor} shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-lg`}
+                  >
+                    <div className="shine-effect" />
+                    <Icon size={28} style={{ color }} className="mb-1 text-white/90" />
+                    <span className="text-sm text-white font-semibold text-center">
+                      {skill.name}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      );
-    })}
+        );
+      })}
+    </div>
   </section>
 );
 
