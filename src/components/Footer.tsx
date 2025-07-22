@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
               transition={{ duration: 0.6 }}
               className="mb-6"
             >
-              <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-3">
+              <h3 className="text-2xl font-bold bg-gradient-to-r from-[#F2A900] to-[#0072C6] bg-clip-text text-transparent mb-3">
                 Sebastian Jaque
               </h3>
               <p className="text-gray-400 max-w-md">
