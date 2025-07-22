@@ -13,6 +13,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
   const sections = [
     { id: 'home', label: 'Inicio' },
     { id: 'experience', label: 'Experiencia' },
+    { id: 'skills', label: 'Skills' },
     { id: 'education', label: 'Educación' },
     { id: 'portfolio', label: 'Portafolio' },
     { id: 'gallery', label: 'Galería' },
