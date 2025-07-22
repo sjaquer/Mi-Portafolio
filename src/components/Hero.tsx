@@ -14,7 +14,7 @@ import {
   Camera,
   Palette
 } from 'lucide-react';
-import profileImg from '../../images/iconperso.jpg';
+import profileImg from '../../images/iconperso.webp';
 
 const Hero: React.FC = () => {
   const socialLinks = [
@@ -25,10 +25,10 @@ const Hero: React.FC = () => {
   ];
 
   const specialties = [
-    { icon: Briefcase, label: 'Administración de Negocios', color: 'from-blue-400 to-cyan-400' },
-    { icon: Code, label: 'Desarrollo de Software', color: 'from-purple-400 to-pink-400' },
-    { icon: Camera, label: 'Fotografía Profesional', color: 'from-green-400 to-emerald-400' },
-    { icon: Palette, label: 'Diseño 3D', color: 'from-red-400 to-orange-400' }
+    { icon: Briefcase, label: 'Administración de Negocios', color: 'bg-[#0072C6]', iconColor: '#F2A900' },
+    { icon: Code, label: 'Desarrollo de Software', color: 'bg-[#F2A900]', iconColor: '#0072C6' },
+    { icon: Camera, label: 'Fotografía Profesional', color: 'bg-[#262626]', iconColor: '#F2A900' },
+    { icon: Palette, label: 'Diseño 3D', color: 'bg-[#0072C6]', iconColor: '#F2A900' }
   ];
 
   const handleWhatsApp = () => {
@@ -108,12 +108,12 @@ const Hero: React.FC = () => {
               {specialties.map((specialty, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-2 p-3 bg-gray-800/50 rounded-lg border border-gray-700/50 hover:border-[#0072C6]/30 transition-all duration-300"
+                  className="flex items-center gap-2 p-3 bg-[#262626] rounded-lg border border-[#0072C6]/30 hover:border-[#F2A900] transition-all duration-300"
                 >
-                  <div className={`p-2 bg-gradient-to-r ${specialty.color} bg-opacity-20 rounded-lg`}>
-                    <specialty.icon size={16} className={`bg-gradient-to-r ${specialty.color} bg-clip-text text-transparent`} />
+                  <div className={`p-2 ${specialty.color} rounded-lg flex items-center justify-center`}>
+                    <specialty.icon size={18} color={specialty.iconColor} />
                   </div>
-                  <span className="text-xs text-gray-300 font-medium">{specialty.label}</span>
+                  <span className="text-xs text-gray-200 font-medium">{specialty.label}</span>
                 </div>
               ))}
             </motion.div>
