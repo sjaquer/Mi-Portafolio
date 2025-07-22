@@ -297,7 +297,7 @@ export const skills: Skill[] = [
 //< 70 → tarjeta pequeña: w-[80px] h-[80px]
 
 //Administración
-{ name: 'Excel', category: 'Administración', proficiency: 90, icon: 'FileText' },
+{ name: 'Excel', category: 'Administración', proficiency: 85, icon: 'FileText' },
 { name: 'Gestión Documental', category: 'Administración', proficiency: 80, icon: 'ClipboardList' },
 { name: 'Planificación', category: 'Administración', proficiency: 75, icon: 'CalendarCheck' },
 { name: 'AWS', category: 'Administración', proficiency: 85, icon: 'Cloud' },
