@@ -11,10 +11,10 @@ const Skills: React.FC = () => {
   });
 
   const categories = [...new Set(skills.map(skill => skill.category))];
+  const averageProficiency = Math.round(
+    skills.reduce((sum, s) => sum + s.proficiency, 0) / skills.length
+  );
 
-  const getSkillsByCategory = (category: string) => {
-    return skills.filter(skill => skill.category === category);
-  };
 
   const getIconComponent = (iconName: string) => {
     const IconComponent = (Icons as any)[iconName];
@@ -33,7 +33,7 @@ const Skills: React.FC = () => {
         >
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
             <span className="bg-gradient-to-r from-[#F2A900] to-[#0072C6] bg-clip-text text-transparent">
-              Habilidades y Experiencia
+              Lenguajes y Programas
             </span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
@@ -41,54 +41,26 @@ const Skills: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Skills by Category */}
-        <div className="space-y-8">
-          {categories.map((category, categoryIndex) => {
-            const categorySkills = getSkillsByCategory(category);
-            
+        {/* Bento Grid Skills */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          {skills.map((skill, index) => {
+            const IconComponent = getIconComponent(skill.icon);
+
             return (
               <motion.div
-                key={category}
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-                className="relative"
+                key={skill.name}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={inView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="relative flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-2xl p-6 h-32 backdrop-blur-md"
               >
-                {/* Category Title */}
-                <div className="mb-8">
-                  <h3 className="text-2xl font-bold text-white mb-2">{category}</h3>
-                  <div className="w-20 h-1 bg-gradient-to-r from-[#F2A900] to-[#0072C6] rounded-full"></div>
+                <div className="p-3 bg-gradient-to-r from-[#F2A900]/30 to-[#0072C6]/30 rounded-lg">
+                  <IconComponent className="text-[#0072C6]" size={28} />
                 </div>
 
-                {/* Skills Grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 place-items-center">
-                  {categorySkills.map((skill, skillIndex) => {
-                    const IconComponent = getIconComponent(skill.icon);
-
-                    return (
-                      <motion.div
-                        key={skill.name}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={inView ? { opacity: 1, scale: 1 } : {}}
-                        transition={{
-                          duration: 0.4,
-                          delay: categoryIndex * 0.1 + skillIndex * 0.05
-                        }}
-                        className="skill-card group relative flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-gray-900/50 to-gray-800/50 border border-gray-700/50 rounded-xl p-6 h-32 backdrop-blur-sm hover:border-[#0072C6]/30 transition-all duration-300"
-                      >
-                        <div className="p-3 bg-gradient-to-r from-[#F2A900]/20 to-[#0072C6]/20 rounded-lg">
-                          <IconComponent className="text-[#0072C6] group-hover:text-white transition-colors" size={28} />
-                        </div>
-
-                        <h4 className="text-white font-semibold text-sm text-center group-hover:text-[#F2A900] transition-colors">
-                          {skill.name}
-                        </h4>
-
-                        <div className="shine-effect absolute inset-0 rounded-xl pointer-events-none"></div>
-                      </motion.div>
-                    );
-                  })}
-                </div>
+                <h4 className="text-white font-semibold text-sm text-center">
+                  {skill.name}
+                </h4>
               </motion.div>
             );
           })}
@@ -104,7 +76,7 @@ const Skills: React.FC = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="text-3xl font-bold bg-gradient-to-r from-[#F2A900] to-[#0072C6] bg-clip-text text-transparent mb-2">
-                20+
+                {skills.length}
               </div>
               <div className="text-gray-400 text-sm">Tecnologías</div>
             </div>
@@ -116,13 +88,13 @@ const Skills: React.FC = () => {
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold bg-gradient-to-r from-[#F2A900] to-[#0072C6] bg-clip-text text-transparent mb-2">
-                6
+                {categories.length}
               </div>
               <div className="text-gray-400 text-sm">Categorías de Habilidades</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold bg-gradient-to-r from-[#0072C6] to-[#F2A900] bg-clip-text text-transparent mb-2">
-                90%
+                {averageProficiency}%
               </div>
               <div className="text-gray-400 text-sm">Promedio de Dominio</div>
             </div>
