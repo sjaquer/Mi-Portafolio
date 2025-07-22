@@ -345,12 +345,14 @@ export const gallery: GalleryItem[] = [
     id: '3',
     type: 'video',
     src: 'https://videos.pexels.com/video-files/856205/856205-hd_1280_720_25fps.mp4',
-    alt: 'Video promocional'
+    alt: 'Video promocional',
+    poster: 'https://images.pexels.com/photos/856205/pexels-photo-856205.jpeg?auto=compress&cs=tinysrgb&w=600'
   },
   {
     id: '4',
     type: 'video',
     src: 'https://videos.pexels.com/video-files/854109/854109-hd_1280_720_30fps.mp4',
-    alt: 'Animación 3D'
+    alt: 'Animación 3D',
+    poster: 'https://images.pexels.com/photos/854109/pexels-photo-854109.jpeg?auto=compress&cs=tinysrgb&w=600'
   }
 ];

@@ -9,6 +9,7 @@ import Portfolio from './components/Portfolio';
 import Gallery from './components/Gallery';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import { throttle } from './utils/throttle';
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -32,8 +33,9 @@ function App() {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const throttledHandleScroll = throttle(handleScroll);
+    window.addEventListener('scroll', throttledHandleScroll);
+    return () => window.removeEventListener('scroll', throttledHandleScroll);
   }, []);
 
   useEffect(() => {
@@ -44,9 +46,10 @@ function App() {
       document.documentElement.style.setProperty('--gradient-hue', `${hue}deg`);
     };
 
+    const throttledUpdateHue = throttle(updateHue);
     updateHue();
-    window.addEventListener('scroll', updateHue);
-    return () => window.removeEventListener('scroll', updateHue);
+    window.addEventListener('scroll', throttledUpdateHue);
+    return () => window.removeEventListener('scroll', throttledUpdateHue);
   }, []);
 
 

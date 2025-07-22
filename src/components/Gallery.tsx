@@ -38,7 +38,16 @@ const Gallery: React.FC = () => {
               {item.type === 'image' ? (
                 <img loading="lazy" src={item.src} alt={item.alt} className="w-full h-full object-cover" />
               ) : (
-                <video src={item.src} className="w-full h-full object-cover" autoPlay loop muted />
+                <video
+                  src={item.src}
+                  className="w-full h-full object-cover"
+                  autoPlay
+                  loop
+                  muted
+                  preload="metadata"
+                  loading="lazy"
+                  poster={item.poster}
+                />
               )}
             </motion.div>
           ))}

@@ -51,4 +51,5 @@ export interface GalleryItem {
   type: 'image' | 'video';
   src: string;
   alt: string;
+  poster?: string;
 }
