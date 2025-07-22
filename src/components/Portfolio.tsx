@@ -16,7 +16,6 @@ const Portfolio: React.FC = () => {
   const categories = [
     { id: 'all', label: 'Todos los Proyectos', icon: Code },
     { id: 'web', label: 'Desarrollo Web', icon: Code },
-    { id: 'mobile', label: 'Aplicaciones Móviles', icon: Palette },
     { id: '3d', label: 'Unreal Engine', icon: Box },
     { id: 'video', label: 'Video y Animación', icon: Film }
   ];
@@ -28,7 +27,6 @@ const Portfolio: React.FC = () => {
   const getCategoryIcon = (category: string) => {
     switch (category) {
       case 'web': return Code;
-      case 'mobile': return Palette;
       case '3d': return Box;
       case 'video': return Film;
       default: return Code;
@@ -51,7 +49,7 @@ const Portfolio: React.FC = () => {
             </span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Una muestra de proyectos innovadores que abarcan desarrollo web, aplicaciones móviles, visualización 3D y medios creativos
+            Una muestra de proyectos innovadores que abarcan desarrollo web, visualización 3D y medios creativos
           </p>
         </motion.div>
 

@@ -45,6 +45,19 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const updateHue = () => {
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const ratio = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+      const hue = 0 + ratio * 120;
+      document.documentElement.style.setProperty('--gradient-hue', `${hue}deg`);
+    };
+
+    updateHue();
+    window.addEventListener('scroll', updateHue);
+    return () => window.removeEventListener('scroll', updateHue);
+  }, []);
+
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
