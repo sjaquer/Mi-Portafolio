@@ -297,38 +297,39 @@ export const skills: Skill[] = [
 //< 70 → tarjeta pequeña: w-[80px] h-[80px]
 
 //Administración
-{ name: 'Excel', category: 'Administración', proficiency: 85, icon: 'FileText' },
-{ name: 'Gestión Documental', category: 'Administración', proficiency: 80, icon: 'ClipboardList' },
-{ name: 'Planificación', category: 'Administración', proficiency: 75, icon: 'CalendarCheck' },
-{ name: 'AWS', category: 'Administración', proficiency: 85, icon: 'Cloud' },
-{ name: 'Docker', category: 'Administración', proficiency: 80, icon: 'Package' },
-{ name: 'Git', category: 'Administración', proficiency: 95, icon: 'GitBranch' },
-{ name: 'MongoDB', category: 'Administración', proficiency: 85, icon: 'Database' },
+{ name: 'Excel', category: 'Administración', proficiency: 100, icon: 'FileText' },
+{ name: 'Gestión Documental', category: 'Administración', proficiency: 99, icon: 'ClipboardList' },
+{ name: 'Planificación', category: 'Administración', proficiency: 90, icon: 'CalendarCheck' },
+{ name: 'AWS', category: 'Administración', proficiency: 90, icon: 'Cloud' },
+{ name: 'Docker', category: 'Administración', proficiency: 40, icon: 'Package' },
+{ name: 'Git', category: 'Administración', proficiency: 65, icon: 'GitBranch' },
+{ name: 'MongoDB', category: 'Administración', proficiency: 65, icon: 'Database' },
+{ name: 'MySQL', category: 'Administración', proficiency: 60, icon: 'Database' },
+{ name: 'SQL Server', category: 'Desarrollo', proficiency: 90, icon: 'Database' },
+{ name: 'PostgreSQL', category: 'Administración', proficiency: 75, icon: 'Database' },
+{ name: 'Power BI', category: 'Administración', proficiency: 85, icon: 'BarChart' },
+
 // Programming Languages
 { name: 'JavaScript', category: 'Desarrollo', proficiency: 85, icon: 'Code' },
 { name: 'TypeScript', category: 'Desarrollo', proficiency: 80, icon: 'Code' },
-{ name: 'Python', category: 'Desarrollo', proficiency: 85, icon: 'Code' },
-{ name: 'Java', category: 'Desarrollo', proficiency: 30, icon: 'Code' },
+{ name: 'Python', category: 'Desarrollo', proficiency: 95, icon: 'Code' },
 { name: 'React', category: 'Desarrollo', proficiency: 75, icon: 'Globe' },
 { name: 'Vue.js', category: 'Desarrollo', proficiency: 85, icon: 'Globe' },
 { name: 'Next.js', category: 'Desarrollo', proficiency: 80, icon: 'Globe' },
 { name: 'Tailwind CSS', category: 'Desarrollo', proficiency: 95, icon: 'Palette' },
 { name: 'Node.js', category: 'Desarrollo', proficiency: 80, icon: 'Server' },
-{ name: 'Express.js', category: 'Desarrollo', proficiency: 75, icon: 'Server' },
-{ name: 'Django', category: 'Desarrollo', proficiency: 60, icon: 'Server' },
-{ name: 'GraphQL', category: 'Desarrollo', proficiency: 45, icon: 'Database' },
 
 // Design and Multimedia
 { name: 'Photoshop', category: 'Diseño', proficiency: 90, icon: 'Image' },
-{ name: 'AutoDesk Maya', category: 'Diseño', proficiency: 60, icon: 'Box' },
-{ name: 'Unreal Engine', category: 'Diseño', proficiency: 90, icon: 'Gamepad2' },
-{ name: 'Danvinci Resolve', category: 'Diseño', proficiency: 55, icon: 'Film' },
+{ name: 'AutoDesk Maya', category: 'Diseño', proficiency: 90, icon: 'Box' },
+{ name: 'Unreal Engine', category: 'Diseño', proficiency: 100, icon: 'Gamepad2' },
+{ name: 'Danvinci Resolve', category: 'Diseño', proficiency: 70, icon: 'Film' },
 
 // Soft Skills
-{ name: 'Comunicación Efectiva', category: 'Habilidades Blandas', proficiency: 95, icon: 'MessageCircle' },
+{ name: 'Comunicación Efectiva', category: 'Habilidades Blandas', proficiency: 80, icon: 'MessageCircle' },
 { name: 'Trabajo en Equipo', category: 'Habilidades Blandas', proficiency: 90, icon: 'Users' },
-{ name: 'Resolución de Problemas', category: 'Habilidades Blandas', proficiency: 85, icon: 'Tool' },
-{ name: 'Adaptabilidad', category: 'Habilidades Blandas', proficiency: 80, icon: 'RefreshCcw' }
+{ name: 'Resolución de Problemas', category: 'Habilidades Blandas', proficiency: 100, icon: 'Tool' },
+{ name: 'Adaptabilidad', category: 'Habilidades Blandas', proficiency: 90, icon: 'RefreshCcw' }
 ];
 export const gallery: GalleryItem[] = [
   {
