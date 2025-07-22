@@ -292,40 +292,36 @@ export const projects: Project[] = [
 ];
 
 export const skills: Skill[] = [
-  // Programming Languages
-  { name: 'JavaScript', category: 'Programación', proficiency: 85, icon: 'Code' },
-  { name: 'TypeScript', category: 'Programación', proficiency: 80, icon: 'Code' },
-  { name: 'Python', category: 'Programación', proficiency: 85, icon: 'Code' },
-  { name: 'Java', category: 'Programación', proficiency: 30, icon: 'Code' },
-  
-  // Frontend
-  { name: 'React', category: 'Frontend', proficiency: 75, icon: 'Globe' },
-  { name: 'Vue.js', category: 'Frontend', proficiency: 85, icon: 'Globe' },
-  { name: 'Next.js', category: 'Frontend', proficiency: 80, icon: 'Globe' },
-  { name: 'Tailwind CSS', category: 'Frontend', proficiency: 95, icon: 'Palette' },
-  
-  // Backend
-  { name: 'Node.js', category: 'Backend', proficiency: 80, icon: 'Server' },
-  { name: 'Express.js', category: 'Backend', proficiency: 75, icon: 'Server' },
-  { name: 'Django', category: 'Backend', proficiency: 60, icon: 'Server' },
-  { name: 'GraphQL', category: 'Backend', proficiency: 45, icon: 'Database' },
-  
-  // Design & 3D
-  { name: 'Unreal Engine', category: 'Creativo', proficiency: 90, icon: 'Gamepad2' },
-  { name: 'AutoDesk Maya', category: 'Creativo', proficiency: 60, icon: 'Box' },
-  { name: 'Danvinci Resolve', category: 'Creativo', proficiency: 55, icon: 'Film' },
-  { name: 'Photoshop', category: 'Creativo', proficiency: 90, icon: 'Image' },
-  
-  // Tools & Cloud
-  { name: 'AWS', category: 'DevOps', proficiency: 85, icon: 'Cloud' },
-  { name: 'Docker', category: 'DevOps', proficiency: 80, icon: 'Package' },
-  { name: 'Git', category: 'DevOps', proficiency: 95, icon: 'GitBranch' },
-  { name: 'MongoDB', category: 'Base de Datos', proficiency: 85, icon: 'Database' },
+  // Desarrollo
+  { name: 'JavaScript', category: 'Desarrollo', proficiency: 85, icon: 'Code' },
+  { name: 'TypeScript', category: 'Desarrollo', proficiency: 80, icon: 'Code' },
+  { name: 'Python', category: 'Desarrollo', proficiency: 85, icon: 'Code' },
+  { name: 'Java', category: 'Desarrollo', proficiency: 30, icon: 'Code' },
+  { name: 'React', category: 'Desarrollo', proficiency: 75, icon: 'Globe' },
+  { name: 'Vue.js', category: 'Desarrollo', proficiency: 85, icon: 'Globe' },
+  { name: 'Next.js', category: 'Desarrollo', proficiency: 80, icon: 'Globe' },
+  { name: 'Tailwind CSS', category: 'Desarrollo', proficiency: 95, icon: 'Palette' },
+  { name: 'Node.js', category: 'Desarrollo', proficiency: 80, icon: 'Server' },
+  { name: 'Express.js', category: 'Desarrollo', proficiency: 75, icon: 'Server' },
+  { name: 'Django', category: 'Desarrollo', proficiency: 60, icon: 'Server' },
+  { name: 'GraphQL', category: 'Desarrollo', proficiency: 45, icon: 'Database' },
+  { name: 'AWS', category: 'Desarrollo', proficiency: 85, icon: 'Cloud' },
+  { name: 'Docker', category: 'Desarrollo', proficiency: 80, icon: 'Package' },
+  { name: 'Git', category: 'Desarrollo', proficiency: 95, icon: 'GitBranch' },
+  { name: 'MongoDB', category: 'Desarrollo', proficiency: 85, icon: 'Database' },
 
-  // Administrative
-  { name: 'Excel Avanzado', category: 'Administrativas', proficiency: 90, icon: 'FileText' },
-  { name: 'Gestión Documental', category: 'Administrativas', proficiency: 80, icon: 'ClipboardList' },
-  { name: 'Planificación', category: 'Administrativas', proficiency: 75, icon: 'CalendarCheck' }
+  // Diseño
+  { name: 'Unreal Engine', category: 'Diseño', proficiency: 90, icon: 'Gamepad2' },
+  { name: 'AutoDesk Maya', category: 'Diseño', proficiency: 60, icon: 'Box' },
+  { name: 'Photoshop', category: 'Diseño', proficiency: 90, icon: 'Image' },
+
+  // Grabación y Edición
+  { name: 'Danvinci Resolve', category: 'Grabación y Edición', proficiency: 55, icon: 'Film' },
+
+  // Administración
+  { name: 'Excel Avanzado', category: 'Administración', proficiency: 90, icon: 'FileText' },
+  { name: 'Gestión Documental', category: 'Administración', proficiency: 80, icon: 'ClipboardList' },
+  { name: 'Planificación', category: 'Administración', proficiency: 75, icon: 'CalendarCheck' }
 ];
 
 export const gallery: GalleryItem[] = [
