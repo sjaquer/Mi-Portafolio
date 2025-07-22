@@ -226,6 +226,7 @@ export const projects: Project[] = [
     description: 'Sistema inteligente que optimiza rutas de vuelo considerando múltiples variables como clima, tráfico aéreo y consumo de combustible. Implementa algoritmos de optimización para encontrar las rutas más eficientes.',
     techStack: ['Python', 'Django', 'React', 'MongoDB', 'APIs de Clima', 'Algoritmos de Optimización'],
     image: 'https://images.pexels.com/photos/358319/pexels-photo-358319.jpeg?auto=compress&cs=tinysrgb&w=600',
+    liveUrl: 'https://optimizador-vuelos-cp-sat.vercel.app/',
     githubUrl: 'https://github.com/sjaquer/ORDEV-Optimizador-De-Vuelos',
     category: 'web',
     featured: true
@@ -257,6 +258,7 @@ export const projects: Project[] = [
     description: 'Herramienta web para crear y diseñar volantes digitales de manera intuitiva. Incluye plantillas personalizables y exportación en múltiples formatos.',
     techStack: ['Vue.js', 'Canvas API', 'Node.js', 'Express'],
     image: 'https://images.pexels.com/photos/5417837/pexels-photo-5417837.jpeg?auto=compress&cs=tinysrgb&w=600',
+    liveUrl: 'https://sjaquer.github.io/Simple-Flyer-Digital/',
     githubUrl: 'https://github.com/sjaquer/Simple-Flyer-Digital',
     category: 'web'
   },
@@ -266,6 +268,7 @@ export const projects: Project[] = [
     description: 'Plantilla moderna y responsive para landing pages, optimizada para SEO y rendimiento. Incluye animaciones suaves y formulario de contacto.',
     techStack: ['HTML5', 'CSS3', 'JavaScript', 'GSAP'],
     image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600',
+    liveUrl: 'https://sjaquer.github.io/Basic-Landing-Page/',
     githubUrl: 'https://github.com/sjaquer/Basic-Landing-Page',
     category: 'web'
   },
