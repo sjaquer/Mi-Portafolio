@@ -199,6 +199,7 @@ const Hero: React.FC = () => {
                 <div className="w-full h-full rounded-full bg-gradient-to-br from-[#F2A900] via-[#0072C6] to-[#F2A900] p-1">
                   <div className="w-full h-full rounded-full bg-gray-900 flex items-center justify-center overflow-hidden">
                     <img
+                      loading="lazy"
                       src={profileImg}
                       alt="Sebastián Jaque"
                       className="w-full h-full object-cover"

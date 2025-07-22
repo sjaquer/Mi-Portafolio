@@ -36,7 +36,7 @@ const Gallery: React.FC = () => {
               className={`overflow-hidden rounded-xl relative ${index === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
             >
               {item.type === 'image' ? (
-                <img src={item.src} alt={item.alt} className="w-full h-full object-cover" />
+                <img loading="lazy" src={item.src} alt={item.alt} className="w-full h-full object-cover" />
               ) : (
                 <video src={item.src} className="w-full h-full object-cover" autoPlay loop muted />
               )}
