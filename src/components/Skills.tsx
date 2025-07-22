@@ -30,13 +30,13 @@ const colorMap: Record<string, string> = {
 };
 
 const borderColorMap: Record<string, string> = {
-  'Administración': 'border-primary-500',
-  'Desarrollo': 'border-secondary-500',
-  'Diseño': 'border-accent-500',
-  'Grabación y Edición': 'border-dark-400'
+  Administración: 'border-primary-500',
+  Desarrollo: 'border-secondary-500',
+  Diseño: 'border-accent-500',
+  'Habilidades Blandas': 'border-dark-400'
 };
 
-const categoryOrder = ['Administración', 'Desarrollo', 'Diseño', 'Grabación y Edición'];
+const categoryOrder = ['Administración', 'Desarrollo', 'Diseño', 'Habilidades Blandas'];
 
 const getIconComponent = (iconName: string) => {
   const Icon = (Icons as any)[iconName];
@@ -49,29 +49,51 @@ const groupedSkills = skillsData.reduce<Record<string, Skill[]>>((acc, skill) =>
   return acc;
 }, {});
 
+const getSizeClass = (proficiency: number) => {
+  if (proficiency >= 85) return 'w-24 h-24 text-md';
+  if (proficiency >= 60) return 'w-20 h-20 text-sm';
+  return 'w-16 h-16 text-sm';
+};
+
+const getGroupScale = (count: number) => {
+  if (count > 10) return 'scale-[0.8]';
+  if (count > 6) return 'scale-95';
+  return '';
+};
+
 const Skills: React.FC = () => (
-  <section id="skills" className="grid grid-cols-1 md:grid-cols-2 gap-6 px-6 py-16">
+  <section
+    id="skills"
+    className="grid grid-cols-1 md:grid-cols-2 gap-8 px-6 py-16"
+  >
     {categoryOrder.map((categoria) => {
       const grupo = groupedSkills[categoria] || [];
       const borderColor = borderColorMap[categoria] || 'border-primary-500';
+      const scale = getGroupScale(grupo.length);
       return (
-        <div key={categoria} className="space-y-4">
-          <h3 className="text-xl font-bold bg-gradient-to-r from-primary-400 to-secondary-500 bg-clip-text text-transparent mb-4">
+        <div
+          key={categoria}
+          className={`rounded-2xl border ${borderColor} p-6 bg-dark-900/40 backdrop-blur-md shadow-lg flex flex-col gap-4`}
+        >
+          <h3 className="text-center text-xl font-bold bg-gradient-to-r from-primary-400 to-secondary-500 bg-clip-text text-transparent">
             {categoria}
           </h3>
-          <div className="grid grid-cols-3 auto-rows-[90px] gap-4">
+          <div
+            className="grid auto-rows-fr grid-cols-[repeat(auto-fill,minmax(70px,1fr))] gap-4 place-items-center"
+          >
             {grupo.map((skill) => {
               const Icon = getIconComponent(skill.icon);
-              const highlight = skill.proficiency >= 85 ? 'col-span-2' : '';
-              const faded = skill.proficiency < 70 ? 'opacity-80 scale-95' : '';
+              const sizeClass = getSizeClass(skill.proficiency);
               const color = colorMap[skill.name] || '#fff';
               return (
                 <div
                   key={skill.name}
-                  className={`w-[80px] h-[80px] ${highlight} rounded-xl p-3 backdrop-blur-md bg-dark-800/50 flex flex-col items-center justify-center text-center transition-all duration-300 hover:scale-[1.03] shadow-md border ${borderColor} ${faded}`}
+                  className={`${sizeClass} ${scale} rounded-2xl flex flex-col items-center justify-center text-center bg-dark-800/50 backdrop-blur-sm hover:scale-105 hover:shadow-xl transition-all duration-300 shadow-md border ${borderColor}`}
                 >
-                  <Icon size={28} style={{ color }} className="mb-1 text-white/90" />
-                  <span className="text-sm text-white font-medium">{skill.name}</span>
+                  <Icon size={24} style={{ color }} className="mb-1 text-white/90" />
+                  <span className="font-semibold text-white text-xs md:text-sm">
+                    {skill.name}
+                  </span>
                 </div>
               );
             })}
