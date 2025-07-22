@@ -88,16 +88,15 @@ export const experiences: Experience[] = [
 export const education: Education[] = [
   {
     id: '1',
-    degree: 'Bachiller en Administración y Negocios Internacionales',
-    institution: 'Universidad Norbert Wiener',
-    duration: '2022 - 2026',
-    status: 'Estudiante Actual (7º ciclo)',
-    certificateUrl: 'pdf/cert1.pdf',
+    degree: 'Curso: SQL y Bases de Datos Relacionales',
+    institution: 'Microsoft',
+    duration: '2025',
+    status: 'Completado',
+    certificateUrl: 'pdf/sql-microsoft.pdf',
     relevant: [
-      'Transformación Digital',
-      'Estrategia Empresarial',
-      'Comercio Internacional',
-      'Investigación Académica'
+      'SQL Server',
+      'Bases de Datos Relacionales',
+      'Optimización de Queries'
     ]
   },
   {
@@ -116,104 +115,11 @@ export const education: Education[] = [
   },
   {
     id: '3',
-    degree: 'Curso de SQL y Bases de Datos Relacionales',
-    institution: 'IDAT',
-    duration: '2024 - 2025',
-    status: 'Finalizado',
-    certificateUrl: 'pdf/cert1.pdf',
-    relevant: [
-      'Consultas Avanzadas',
-      'Modelado Relacional',
-      'Optimización de Queries',
-      'Análisis de Datos'
-    ]
-  },
-  {
-    id: '4',
-    degree: 'Certificación de Inglés Avanzado',
-    institution: 'Instituto SISE',
-    duration: '2022',
-    status: 'Completado',
-    certificateUrl: 'pdf/cert1.pdf',
-    relevant: [
-      'Lectura Técnica',
-      'Redacción Formal',
-      'Comunicación Oral',
-      'Entorno Profesional'
-    ]
-      },
-  {
-    id: '5',
-    degree: 'Curso: Inteligencia Artificial Generativa para Ejecutivos (Francés)',
-    institution: 'AWS Training & Certification',
-    duration: '2025',
-    status: 'Completado',
-    certificateUrl: 'pdf/aws-ia-ejecutivos.pdf',
-    relevant: [
-      'Inteligencia Artificial Generativa',
-      'Aplicaciones Ejecutivas',
-      'Lengua Francesa'
-    ]
-  },
-  {
-    id: '6',
-    degree: 'Curso: Fundamentos de la Sostenibilidad Organizacional',
-    institution: 'Arizona State University / Universidad Norbert Wiener',
-    duration: '2024',
-    status: 'Completado',
-    certificateUrl: 'pdf/sostenibilidad-organizacional.pdf',
-    relevant: [
-      'Sostenibilidad Empresarial',
-      'Gestión Organizacional',
-      'Responsabilidad Corporativa'
-    ]
-  },
-  {
-    id: '7',
-    degree: 'Curso: Fundamentos de Prompt Engineering (Chino Simplificado)',
-    institution: 'AWS Training & Certification',
-    duration: '2025',
-    status: 'Completado',
-    certificateUrl: 'pdf/prompt-aws-chino.pdf',
-    relevant: [
-      'Prompt Engineering',
-      'Modelos Generativos',
-      'Lengua China'
-    ]
-  },
-  {
-    id: '8',
-    degree: 'Curso: Edición de Fotos con Adobe Photoshop',
-    institution: 'Udemy',
-    duration: '2024',
-    status: 'Completado',
-    certificateUrl: 'pdf/photoshop.pdf',
-    relevant: [
-      'Edición de Imágenes',
-      'Photoshop',
-      'Diseño Visual'
-    ]
-  },
-  {
-    id: '9',
-    degree: 'Curso: HTML5 y CSS3 desde Cero',
-    institution: 'Udemy',
-    duration: '2025',
-    status: 'Completado',
-    certificateUrl: 'pdf/html-css.pdf',
-    relevant: [
-      'Diseño Web',
-      'Desarrollo Frontend',
-      'HTML y CSS'
-    ]
-  },
-  {
-    id: '10',
     degree: 'Master Class: Técnicas de Visualización de Datos en Power BI',
     institution: 'IDAT',
     duration: '2025',
     status: 'Asistencia Registrada',
-    certificateUrl: 'pdf/powerbi.pdf',
+    certificateUrl: 'pdf/powerbi-zegel.pdf',
     relevant: [
       'Visualización de Datos',
       'Power BI',
@@ -221,59 +127,33 @@ export const education: Education[] = [
     ]
   },
   {
-    id: '11',
-    degree: 'Asistencia: International Talks - Transporte Internacional 5.0',
-    institution: 'Universidad Norbert Wiener',
-    duration: '2024',
-    status: 'Asistencia Registrada',
-    certificateUrl: 'pdf/international-talks.pdf',
-    relevant: [
-      'Transporte Internacional',
-      'Innovación 5.0',
-      'Gestión Global'
-    ]
-  },
-  {
-    id: '12',
-    degree: 'Curso: Prompt Engineering en IA Generativa',
-    institution: 'LinkedIn Learning',
+    id: '4',
+    degree: 'Curso: Fundamentos de Prompt Engineering (Chino Simplificado)',
+    institution: 'AWS Training & Certification',
     duration: '2025',
     status: 'Completado',
     certificateUrl: 'pdf/prompt-linkedin.pdf',
     relevant: [
       'Prompt Engineering',
-      'IA Generativa',
-      'Interacción con IA'
+      'Modelos Generativos',
+      'Lengua China'
     ]
   },
   {
-    id: '13',
-    degree: 'Curso: Excel Completo - Desde Principiante hasta Avanzado',
-    institution: 'Udemy',
-    duration: '2024',
-    status: 'Completado',
-    certificateUrl: 'pdf/excel.pdf',
+    id: '5',
+    degree: 'Bachiller en Administración y Negocios Internacionales',
+    institution: 'Universidad Norbert Wiener',
+    duration: '2022 - 2026',
+    status: 'Estudiante Actual (7º ciclo)',
     relevant: [
-      'Microsoft Excel',
-      'Automatización con Hojas de Cálculo',
-      'Análisis de Datos'
+      'Transformación Digital',
+      'Estrategia Empresarial',
+      'Comercio Internacional',
+      'Investigación Académica'
     ]
   },
   {
-    id: '14',
-    degree: 'Curso: Experto en Creación de Imágenes 3D: Arquitectura e Interior',
-    institution: 'Udemy',
-    duration: '2022',
-    status: 'Completado',
-    certificateUrl: 'pdf/3d-imagenes.pdf',
-    relevant: [
-      'Diseño 3D',
-      'Visualización Arquitectónica',
-      'Renderizado Interior'
-    ]
-  },
-  {
-    id: '15',
+    id: '6',
     degree: 'Curso: Python Practicando - Desde 0 hasta Desarrollador',
     institution: 'Udemy',
     duration: '2024',
@@ -286,8 +166,47 @@ export const education: Education[] = [
     ]
   },
   {
-    id: '16',
-    degree: 'Curso: Desarrollo de Juegos con Unreal Engine 4 - De 0 a Profesional',
+    id: '7',
+    degree: 'Asistencia: International Talks - Transporte Internacional 5.0',
+    institution: 'Universidad Norbert Wiener',
+    duration: '2024',
+    status: 'Asistencia Registrada',
+    certificateUrl: 'pdf/international-talks.pdf',
+    relevant: [
+      'Transporte Internacional',
+      'Innovación 5.0',
+      'Gestión Global'
+    ]
+  },
+  {
+    id: '8',
+    degree: 'Curso: Excel Completo - Desde Principiante hasta Avanzado',
+    institution: 'Udemy',
+    duration: '2024',
+    status: 'Completado',
+    certificateUrl: 'pdf/excel.pdf',
+    relevant: [
+      'Microsoft Excel',
+      'Automatización con Hojas de Cálculo',
+      'Análisis de Datos'
+    ]
+  },
+  {
+    id: '9',
+    degree: 'Curso: Experto en Creación de Imágenes 3D: Arquitectura e Interior',
+    institution: 'Udemy',
+    duration: '2022',
+    status: 'Completado',
+    certificateUrl: 'pdf/3d-imagenes.pdf',
+    relevant: [
+      'Diseño 3D',
+      'Visualización Arquitectónica',
+      'Renderizado Interior'
+    ]
+  },
+  {
+    id: '10',
+    degree: 'Curso: Desarrollo de Juegos con Unreal Engine 4',
     institution: 'Udemy',
     duration: '2020',
     status: 'Completado',
@@ -297,47 +216,61 @@ export const education: Education[] = [
       'Unreal Engine 4',
       'Diseño Interactivo'
     ]
-  },
-  {
-    id: '17',
-    degree: 'Curso: SQL y Bases de Datos Relacionales',
-    institution: 'IDAT',
-    duration: '2024 - 2025',
-    status: 'Finalizado',
-    certificateUrl: 'pdf/sql-idat.pdf',
-    relevant: [
-      'Bases de Datos',
-      'SQL',
-      'Modelado Relacional'
-    ]
   }
 ];
 
 export const projects: Project[] = [
   {
     id: '1',
-    title: 'Digital Bakery',
-    description: 'Aplicación web para pedidos online de panadería en Lima, con sistema de gestión integrado. Diseñada para facilitar la compra a clientes y la administración para el negocio.',
-    techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Zustand', 'Node.js', 'Express', 'PostgreSQL'],
-    image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=600',
-    liveUrl: 'https://digitalbakery.vercel.app/',
-    githubUrl: 'https://github.com/sjaquer/Proyect_Bakery',
+    title: 'ORDEV - Optimizador de Rutas de Vuelo',
+    description: 'Sistema inteligente que optimiza rutas de vuelo considerando múltiples variables como clima, tráfico aéreo y consumo de combustible. Implementa algoritmos de optimización para encontrar las rutas más eficientes.',
+    techStack: ['Python', 'Django', 'React', 'MongoDB', 'APIs de Clima', 'Algoritmos de Optimización'],
+    image: 'https://images.pexels.com/photos/358319/pexels-photo-358319.jpeg?auto=compress&cs=tinysrgb&w=600',
+    githubUrl: 'https://github.com/sjaquer/ORDEV-Optimizador-De-Vuelos',
     category: 'web',
     featured: true
   },
   {
     id: '2',
-    title: 'Aplicación de Gestión de Tareas',
-    description: 'Herramienta colaborativa para gestión de proyectos, tareas en tiempo real, archivos y analítica de equipo.',
-    techStack: ['React Native', 'Firebase', 'Redux', 'TypeScript'],
-    image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600',
-    liveUrl: 'https://taskmanager-demo.com',
-    githubUrl: 'https://github.com/username/task-manager',
-    category: 'mobile',
+    title: 'Digital Bakery eCommerce',
+    description: 'Plataforma completa de comercio electrónico para panaderías, con sistema de pedidos, gestión de inventario y panel de administración. Integra pagos en línea y seguimiento de pedidos en tiempo real.',
+    techStack: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Stripe', 'AWS'],
+    image: 'https://images.pexels.com/photos/1855214/pexels-photo-1855214.jpeg?auto=compress&cs=tinysrgb&w=600',
+    liveUrl: 'https://digitalbakery.vercel.app/',
+    githubUrl: 'https://github.com/sjaquer/eCommerce-Panaderia',
+    category: 'web',
     featured: true
   },
   {
     id: '3',
+    title: 'IA MenuCreator',
+    description: 'Aplicación que utiliza inteligencia artificial para generar menús personalizados basados en preferencias dietéticas, alergias y objetivos nutricionales del usuario.',
+    techStack: ['Python', 'TensorFlow', 'FastAPI', 'React', 'OpenAI API'],
+    image: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=600',
+    githubUrl: 'https://github.com/sjaquer/IA-MenuCreator',
+    category: 'web',
+    featured: true
+  },
+  {
+    id: '4',
+    title: 'Simple Flyer Digital',
+    description: 'Herramienta web para crear y diseñar volantes digitales de manera intuitiva. Incluye plantillas personalizables y exportación en múltiples formatos.',
+    techStack: ['Vue.js', 'Canvas API', 'Node.js', 'Express'],
+    image: 'https://images.pexels.com/photos/5417837/pexels-photo-5417837.jpeg?auto=compress&cs=tinysrgb&w=600',
+    githubUrl: 'https://github.com/sjaquer/Simple-Flyer-Digital',
+    category: 'web'
+  },
+  {
+    id: '5',
+    title: 'Basic Landing Page',
+    description: 'Plantilla moderna y responsive para landing pages, optimizada para SEO y rendimiento. Incluye animaciones suaves y formulario de contacto.',
+    techStack: ['HTML5', 'CSS3', 'JavaScript', 'GSAP'],
+    image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600',
+    githubUrl: 'https://github.com/sjaquer/Basic-Landing-Page',
+    category: 'web'
+  },
+  {
+    id: '6',
     title: 'Visualización Arquitectónica 3D',
     description: 'Renderizados realistas e inmersivos de proyectos residenciales usando Unreal Engine y Blender.',
     techStack: ['Unreal Engine 5', 'AutoDesk Maya', 'Photoshop'],
@@ -346,7 +279,7 @@ export const projects: Project[] = [
     featured: true
   },
   {
-    id: '4',
+    id: '7',
     title: 'Video de Identidad de Marca',
     description: 'Producción audiovisual para campaña de lanzamiento de una startup: motion graphics y edición profesional.',
     techStack: ['After Effects', 'Premiere Pro', 'Cinema 4D'],

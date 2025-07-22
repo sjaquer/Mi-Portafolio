@@ -55,23 +55,17 @@ const Hero: React.FC = () => {
           >
             {/* Professional Title */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full border border-blue-500/20 mb-6"
+              className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-[#F2A900]/10 to-[#0072C6]/10 rounded-full border border-[#F2A900]/20 mb-6"
             >
-              <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+              <div className="w-2 h-2 bg-[#F2A900] rounded-full mr-2 animate-pulse"></div>
               <span className="text-sm text-gray-300">Disponible para trabajar</span>
             </motion.div>
 
             {/* Name */}
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
               className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-4"
             >
-              <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#F2A900] via-[#0072C6] to-white bg-clip-text text-transparent">
                Sebastián Jaque
               </span>
             </motion.h1>

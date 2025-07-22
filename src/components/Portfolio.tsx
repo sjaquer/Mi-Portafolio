@@ -89,7 +89,7 @@ const Portfolio: React.FC = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`group relative bg-gradient-to-br from-gray-900/50 to-gray-800/50 border border-gray-700/50 rounded-2xl overflow-hidden backdrop-blur-sm hover:border-red-500/30 transition-all duration-300 ${
+                className={`group relative bg-gradient-to-br from-[#262626]/50 to-[#1a1a1a]/50 border border-[#F2A900]/20 rounded-2xl overflow-hidden hover:border-[#0072C6]/30 ${
                   project.featured ? 'md:col-span-2 lg:col-span-1' : ''
                 }`}
               >
@@ -187,7 +187,7 @@ const Portfolio: React.FC = () => {
             href="https://github.com/sjaquer"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-600 to-purple-600 text-white rounded-lg font-medium hover:from-red-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+            className="group flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#F2A900] to-[#0072C6] text-white rounded-lg font-medium hover:from-[#d99900] hover:to-[#0060a3] transition-all duration-300 transform hover:scale-105"
           >
             <Github size={18} />
             Ver todos los proyectos en GitHub

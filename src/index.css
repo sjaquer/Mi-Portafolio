@@ -235,3 +235,35 @@ textarea:focus-visible {
     transform: translateX(100%);
   }
 }
+
+/* Actualización de colores base */
+:root {
+  --color-primary: #F2A900;
+  --color-secondary: #0072C6;
+  --color-dark: #262626;
+}
+
+body {
+  background: var(--color-dark);
+  color: #ffffff;
+}
+
+/* Actualizar scrollbar */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--color-secondary), var(--color-primary));
+}
+
+/* Actualizar fondo animado */
+body::before {
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(242, 169, 0, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0, 114, 198, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(242, 169, 0, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, #262626 0%, #1a1a1a 100%);
+}
+
+/* Selección de texto */
+::selection {
+  background: rgba(242, 169, 0, 0.3);
+  color: #ffffff;
+}

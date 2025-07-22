@@ -205,9 +205,7 @@ const Contact: React.FC = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 bg-gray-800/50 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-colors ${
-                    errors.name ? 'border-red-500' : 'border-gray-600'
-                  }`}
+                  className="w-full px-4 py-3 bg-[#262626]/50 border border-[#F2A900]/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0072C6]/50"
                   placeholder="Ingresa tu nombre completo"
                 />
                 {errors.name && (
@@ -229,9 +227,7 @@ const Contact: React.FC = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 bg-gray-800/50 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-colors ${
-                    errors.email ? 'border-red-500' : 'border-gray-600'
-                  }`}
+                  className="w-full px-4 py-3 bg-[#262626]/50 border border-[#F2A900]/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0072C6]/50"
                   placeholder="Ingresa tu correo electrónico"
                 />
                 {errors.email && (
@@ -253,9 +249,7 @@ const Contact: React.FC = () => {
                   name="subject"
                   value={formData.subject}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 bg-gray-800/50 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-colors ${
-                    errors.subject ? 'border-red-500' : 'border-gray-600'
-                  }`}
+                  className="w-full px-4 py-3 bg-[#262626]/50 border border-[#F2A900]/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0072C6]/50"
                   placeholder="¿De qué se trata?"
                 />
                 {errors.subject && (
@@ -277,9 +271,7 @@ const Contact: React.FC = () => {
                   rows={6}
                   value={formData.message}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 bg-gray-800/50 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-colors resize-none ${
-                    errors.message ? 'border-red-500' : 'border-gray-600'
-                  }`}
+                  className="w-full px-4 py-3 bg-[#262626]/50 border border-[#F2A900]/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0072C6]/50 resize-none"
                   placeholder="Cuéntame sobre tu proyecto o consulta..."
                 />
                 {errors.message && (
@@ -293,20 +285,10 @@ const Contact: React.FC = () => {
               {/* Boton enviar */}
               <button
                 type="submit"
-                disabled={isSubmitting}
-                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg font-medium hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-[#F2A900] to-[#0072C6] text-white rounded-lg font-medium hover:from-[#d99900] hover:to-[#0060a3] transition-all duration-300"
               >
-                {isSubmitting ? (
-                  <>
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                    Enviando...
-                  </>
-                ) : (
-                  <>
-                    <Send size={18} />
-                    Enviar Mensaje
-                  </>
-                )}
+                <Send size={18} />
+                Enviar Mensaje
               </button>
 
               {/* Status Messages */}
