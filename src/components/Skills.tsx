@@ -106,7 +106,9 @@ const Skills: React.FC = () => {
               <h3 className="text-center text-xl font-bold bg-gradient-to-r from-primary-400 to-secondary-500 bg-clip-text text-transparent">
                 {categoria}
               </h3>
-              <div className="grid auto-rows-fr grid-cols-[repeat(auto-fill,minmax(70px,1fr))] gap-4 place-items-center">
+              <div
+                className="grid grid-flow-dense grid-cols-[repeat(auto-fit,minmax(70px,1fr))] auto-rows-auto gap-[5px] place-items-center"
+              >
                 {grupo.map((skill) => {
                   const Icon = getIconComponent(skill.icon);
                   const sizeClass = getSizeClass(skill.proficiency);
