@@ -88,63 +88,10 @@ export const experiences: Experience[] = [
 export const education: Education[] = [
   {
     id: '1',
-    degree: 'Curso: SQL y Bases de Datos Relacionales',
-    institution: 'Microsoft',
-    duration: '2025',
-    status: 'Completado',
-    certificateUrl: 'pdf/sql-microsoft.pdf',
-    relevant: [
-      'SQL Server',
-      'Bases de Datos Relacionales',
-      'Optimización de Queries'
-    ]
-  },
-  {
-    id: '2',
-    degree: 'Diplomado en Inteligencia Artificial para los Negocios',
-    institution: 'IDAT',
-    duration: '2025',
-    status: 'En curso',
-    certificateUrl: 'pdf/cert1.pdf',
-    relevant: [
-      'Machine Learning',
-      'Chatbots',
-      'Automatización con IA',
-      'Análisis Predictivo'
-    ]
-  },
-  {
-    id: '3',
-    degree: 'Master Class: Técnicas de Visualización de Datos en Power BI',
-    institution: 'IDAT',
-    duration: '2025',
-    status: 'Asistencia Registrada',
-    certificateUrl: 'pdf/powerbi-zegel.pdf',
-    relevant: [
-      'Visualización de Datos',
-      'Power BI',
-      'Análisis de Datos'
-    ]
-  },
-  {
-    id: '4',
-    degree: 'Curso: Fundamentos de Prompt Engineering (Chino Simplificado)',
-    institution: 'AWS Training & Certification',
-    duration: '2025',
-    status: 'Completado',
-    certificateUrl: 'pdf/prompt-linkedin.pdf',
-    relevant: [
-      'Prompt Engineering',
-      'Modelos Generativos',
-      'Lengua China'
-    ]
-  },
-  {
-    id: '5',
     degree: 'Bachiller en Administración y Negocios Internacionales',
     institution: 'Universidad Norbert Wiener',
-    duration: '2022 - 2026',
-    status: 'Estudiante Actual (7º ciclo)',
+    duration: 'Mar 2022 - Dic 2026',
+    status: 'Estudiante (7º ciclo)',
     relevant: [
       'Transformación Digital',
       'Estrategia Empresarial',
@@ -153,69 +100,127 @@ export const education: Education[] = [
     ]
   },
   {
-    id: '6',
-    degree: 'Curso: Python Practicando - Desde 0 hasta Desarrollador',
-    institution: 'Udemy',
-    duration: '2024',
+    id: '2',
+    degree: 'Inglés Avanzado (C1)',
+    institution: 'Instituto SISE',
+    duration: 'Ago 2022 - Oct 2022',
+    status: 'Completado'
+  },
+  {
+    id: '3',
+    degree: 'Diplomado "Inteligencia Artificial para los Negocios"',
+    institution: 'IDAT',
+    duration: 'Mar 2025 - Jul 2025',
+    status: 'En curso',
+    certificateUrl: 'pdf/cert1.pdf',
+    relevant: ['Machine Learning', 'Automatización con IA', 'Análisis Predictivo']
+  },
+  {
+    id: '4',
+    degree: 'SQL & Bases de Datos Relacionales',
+    institution: 'IDAT + Microsoft',
+    duration: 'Dic 2024 - Feb 2025',
     status: 'Completado',
-    certificateUrl: 'pdf/python-practicando.pdf',
-    relevant: [
-      'Desarrollo en Python',
-      'Automatización',
-      'Programación desde cero'
-    ]
+    certificateUrl: 'pdf/sql-idat.pdf',
+    relevant: ['SQL Server', 'Optimización de Queries']
+  },
+  {
+    id: '5',
+    degree: 'Generative AI for Executives',
+    institution: 'AWS Training',
+    duration: 'Jun 2025',
+    status: 'Completado'
+  },
+  {
+    id: '6',
+    degree: 'Essentials of Prompt Engineering',
+    institution: 'AWS Training',
+    duration: 'Jun 2025',
+    status: 'Completado'
   },
   {
     id: '7',
+    degree: 'Prompt Engineering',
+    institution: 'LinkedIn Learning',
+    duration: 'Mar 2025',
+    status: 'Completado',
+    certificateUrl: 'pdf/prompt-linkedin.pdf'
+  },
+  {
+    id: '8',
+    degree: 'Visualización de Datos con Power BI',
+    institution: 'IDAT',
+    duration: 'Feb 2025',
+    status: 'Completado'
+  },
+  {
+    id: '9',
+    degree: 'Curso Power BI',
+    institution: 'Zegel Virtual',
+    duration: 'Feb - Mar 2025',
+    status: 'Completado',
+    certificateUrl: 'pdf/powerbi-zegel.pdf'
+  },
+  {
+    id: '10',
+    degree: 'Excel Completo (Básico a Avanzado)',
+    institution: 'Udemy',
+    duration: 'Sep 2024',
+    status: 'Completado',
+    certificateUrl: 'pdf/excel.pdf'
+  },
+  {
+    id: '11',
+    degree: 'Python Practicando 0 → Dev',
+    institution: 'Udemy',
+    duration: 'Sep 2024',
+    status: 'Completado',
+    certificateUrl: 'pdf/python-practicando.pdf'
+  },
+  {
+    id: '12',
+    degree: 'Adobe Photoshop Photo Editing',
+    institution: 'Udemy',
+    duration: 'Sep 2024',
+    status: 'Completado'
+  },
+  {
+    id: '13',
+    degree: 'Fotografía Arquitectónica & HDR',
+    institution: 'Udemy',
+    duration: 'Sep 2024',
+    status: 'Completado'
+  },
+  {
+    id: '14',
     degree: 'Asistencia: International Talks - Transporte Internacional 5.0',
     institution: 'Universidad Norbert Wiener',
     duration: '2024',
     status: 'Asistencia Registrada',
-    certificateUrl: 'pdf/international-talks.pdf',
-    relevant: [
-      'Transporte Internacional',
-      'Innovación 5.0',
-      'Gestión Global'
-    ]
+    certificateUrl: 'pdf/international-talks.pdf'
   },
   {
-    id: '8',
-    degree: 'Curso: Excel Completo - Desde Principiante hasta Avanzado',
+    id: '15',
+    degree: 'Creación de Imágenes 3D: Arquitectura e Interior',
     institution: 'Udemy',
-    duration: '2024',
+    duration: 'Sep 2022',
     status: 'Completado',
-    certificateUrl: 'pdf/excel.pdf',
-    relevant: [
-      'Microsoft Excel',
-      'Automatización con Hojas de Cálculo',
-      'Análisis de Datos'
-    ]
+    certificateUrl: 'pdf/3d-imagenes.pdf'
   },
   {
-    id: '9',
-    degree: 'Curso: Experto en Creación de Imágenes 3D: Arquitectura e Interior',
+    id: '16',
+    degree: 'Desarrollo de Juegos Unreal Engine 4 0→Pro',
     institution: 'Udemy',
-    duration: '2022',
+    duration: 'Jul 2020',
     status: 'Completado',
-    certificateUrl: 'pdf/3d-imagenes.pdf',
-    relevant: [
-      'Diseño 3D',
-      'Visualización Arquitectónica',
-      'Renderizado Interior'
-    ]
+    certificateUrl: 'pdf/unreal-engine.pdf'
   },
   {
-    id: '10',
-    degree: 'Curso: Desarrollo de Juegos con Unreal Engine 4',
+    id: '17',
+    degree: 'Modelado de Personaje 3ds Max',
     institution: 'Udemy',
-    duration: '2020',
-    status: 'Completado',
-    certificateUrl: 'pdf/unreal-engine.pdf',
-    relevant: [
-      'Desarrollo de Videojuegos',
-      'Unreal Engine 4',
-      'Diseño Interactivo'
-    ]
+    duration: 'Jul 2020',
+    status: 'Completado'
   }
 ];
 
@@ -300,11 +305,15 @@ export const skills: Skill[] = [
 { name: 'Excel', category: 'Administración', proficiency: 100, icon: 'FileText' },
 { name: 'Gestión Documental', category: 'Administración', proficiency: 99, icon: 'ClipboardList' },
 { name: 'Planificación', category: 'Administración', proficiency: 90, icon: 'CalendarCheck' },
-{ name: 'AWS', category: 'Administración', proficiency: 90, icon: 'Cloud' },
-{ name: 'Docker', category: 'Administración', proficiency: 40, icon: 'Package' },
-{ name: 'Git', category: 'Administración', proficiency: 65, icon: 'GitBranch' },
-{ name: 'MongoDB', category: 'Administración', proficiency: 65, icon: 'Database' },
-{ name: 'MySQL', category: 'Administración', proficiency: 60, icon: 'Database' },
+  { name: 'AWS', category: 'Administración', proficiency: 90, icon: 'Cloud' },
+  { name: 'Docker', category: 'Administración', proficiency: 40, icon: 'Package' },
+  { name: 'Git', category: 'Administración', proficiency: 65, icon: 'GitBranch' },
+  { name: 'Google Analytics', category: 'Administración', proficiency: 80, icon: 'BarChart2' },
+  { name: 'Search Console', category: 'Administración', proficiency: 75, icon: 'Search' },
+  { name: 'SEO/ASO', category: 'Administración', proficiency: 80, icon: 'TrendingUp' },
+  { name: 'YouTube', category: 'Administración', proficiency: 85, icon: 'Youtube' },
+  { name: 'MongoDB', category: 'Administración', proficiency: 65, icon: 'Database' },
+  { name: 'MySQL', category: 'Administración', proficiency: 60, icon: 'Database' },
 { name: 'SQL Server', category: 'Desarrollo', proficiency: 90, icon: 'Database' },
 { name: 'PostgreSQL', category: 'Administración', proficiency: 75, icon: 'Database' },
 { name: 'Power BI', category: 'Administración', proficiency: 85, icon: 'BarChart' },
@@ -312,18 +321,25 @@ export const skills: Skill[] = [
 // Programming Languages
 { name: 'JavaScript', category: 'Desarrollo', proficiency: 85, icon: 'Code' },
 { name: 'TypeScript', category: 'Desarrollo', proficiency: 80, icon: 'Code' },
-{ name: 'Python', category: 'Desarrollo', proficiency: 95, icon: 'Code' },
-{ name: 'React', category: 'Desarrollo', proficiency: 75, icon: 'Globe' },
-{ name: 'Vue.js', category: 'Desarrollo', proficiency: 85, icon: 'Globe' },
-{ name: 'Next.js', category: 'Desarrollo', proficiency: 80, icon: 'Globe' },
-{ name: 'Tailwind CSS', category: 'Desarrollo', proficiency: 95, icon: 'Palette' },
-{ name: 'Node.js', category: 'Desarrollo', proficiency: 80, icon: 'Server' },
+  { name: 'Python', category: 'Desarrollo', proficiency: 95, icon: 'Code' },
+  { name: 'SQL', category: 'Desarrollo', proficiency: 85, icon: 'Database' },
+  { name: 'React', category: 'Desarrollo', proficiency: 75, icon: 'Globe' },
+  { name: 'Vue.js', category: 'Desarrollo', proficiency: 85, icon: 'Globe' },
+  { name: 'Next.js', category: 'Desarrollo', proficiency: 80, icon: 'Globe' },
+  { name: 'Tailwind CSS', category: 'Desarrollo', proficiency: 95, icon: 'Palette' },
+  { name: 'Node.js', category: 'Desarrollo', proficiency: 80, icon: 'Server' },
+  { name: 'HTML5', category: 'Desarrollo', proficiency: 90, icon: 'FileCode' },
+  { name: 'CSS3', category: 'Desarrollo', proficiency: 90, icon: 'FileCode2' },
 
 // Design and Multimedia
 { name: 'Photoshop', category: 'Diseño', proficiency: 90, icon: 'Image' },
 { name: 'AutoDesk Maya', category: 'Diseño', proficiency: 90, icon: 'Box' },
-{ name: 'Unreal Engine', category: 'Diseño', proficiency: 100, icon: 'Gamepad2' },
-{ name: 'Danvinci Resolve', category: 'Diseño', proficiency: 70, icon: 'Film' },
+  { name: 'Unreal Engine', category: 'Diseño', proficiency: 100, icon: 'Gamepad2' },
+  { name: 'Danvinci Resolve', category: 'Diseño', proficiency: 70, icon: 'Film' },
+  { name: 'Lightroom', category: 'Diseño', proficiency: 80, icon: 'Camera' },
+  { name: '3ds Max', category: 'Diseño', proficiency: 75, icon: 'Cube' },
+  { name: 'Figma', category: 'Diseño', proficiency: 85, icon: 'PenTool' },
+  { name: 'Canva', category: 'Diseño', proficiency: 80, icon: 'Brush' },
 
 // Soft Skills
 { name: 'Comunicación Efectiva', category: 'Habilidades Blandas', proficiency: 80, icon: 'MessageCircle' },

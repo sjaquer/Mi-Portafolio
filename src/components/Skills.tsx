@@ -25,7 +25,18 @@ const colorMap: Record<string, string> = {
   AWS: '#FF9900',
   Docker: '#0db7ed',
   Git: '#f1502f',
+  'Google Analytics': '#F2A900',
+  'Search Console': '#F2A900',
+  'SEO/ASO': '#F2A900',
+  YouTube: '#FF0000',
   MongoDB: '#47A248',
+  HTML5: "#E34F26",
+  CSS3: "#1572B6",
+  SQL: "#e38c00",
+  Figma: "#FF7262",
+  Canva: "#00C4CC",
+  Lightroom: "#0E76A8",
+  "3ds Max": "#003A59",
   'Excel Avanzado': '#217346',
   'Gestión Documental': '#6C757D',
   Planificación: '#3F51B5'
@@ -99,11 +110,11 @@ const Skills: React.FC = () => {
                 {grupo.map((skill) => {
                   const Icon = getIconComponent(skill.icon);
                   const sizeClass = getSizeClass(skill.proficiency);
-                  const color = colorMap[skill.name] || '#fff';
+                  const color = colorMap[skill.name] || '#F2A900';
                   return (
                     <div
                       key={skill.name}
-                      className={`${sizeClass} ${scale} rounded-2xl flex flex-col items-center justify-center text-center bg-dark-800/50 backdrop-blur-sm hover:scale-105 hover:shadow-lg transition-all duration-300 shadow-md border ${borderColor} skill-card`}
+                      className={`${sizeClass} ${scale} rounded-2xl flex flex-col items-center justify-center text-center bg-gradient-to-br from-[#F2A900]/10 via-[#0072C6]/10 to-dark-800/50 backdrop-blur-sm hover:scale-105 hover:shadow-lg transition-all duration-300 shadow-md border ${borderColor} skill-card`}
                     >
                       <Icon size={24} style={{ color }} className="mb-1 text-white/90" />
                       <span className="font-semibold text-white text-xs md:text-sm">{skill.name}</span>
