@@ -42,13 +42,6 @@ const colorMap: Record<string, string> = {
   Planificación: '#3F51B5'
 };
 
-const borderColorMap: Record<string, string> = {
-  Administración: 'border-primary-500',
-  Desarrollo: 'border-secondary-500',
-  Diseño: 'border-accent-500',
-  'Habilidades Blandas': 'border-dark-400'
-};
-
 const categoryOrder = ['Administración', 'Desarrollo', 'Diseño', 'Habilidades Blandas'];
 
 const getIconComponent = (iconName: string) => {
@@ -66,17 +59,13 @@ Object.keys(groupedSkills).forEach((key) => {
   groupedSkills[key].sort((a, b) => b.proficiency - a.proficiency);
 });
 
-const getSizeClass = (proficiency: number) => {
-  if (proficiency >= 85) return 'w-24 h-24 text-md';
-  if (proficiency >= 60) return 'w-20 h-20 text-sm';
-  return 'w-16 h-16 text-sm';
+const getGridConfig = (proficiency: number) => {
+  if (proficiency >= 95) return { classes: 'col-span-2 row-span-2 p-4', iconSize: 40, textSize: 'text-sm', marginClass: 'mb-3' };
+  if (proficiency >= 85) return { classes: 'col-span-2 row-span-1 p-3', iconSize: 32, textSize: 'text-sm', marginClass: 'mb-2' };
+  if (proficiency >= 70) return { classes: 'col-span-1 row-span-2 p-3', iconSize: 32, textSize: 'text-sm', marginClass: 'mb-2' };
+  return { classes: 'col-span-1 row-span-1 p-2', iconSize: 28, textSize: 'text-xs', marginClass: 'mb-1' };
 };
 
-const getGroupScale = (count: number) => {
-  if (count > 10) return 'scale-[0.8]';
-  if (count > 6) return 'scale-95';
-  return '';
-};
 
 const Skills: React.FC = () => {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
@@ -93,32 +82,41 @@ const Skills: React.FC = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
         {categoryOrder.map((categoria) => {
           const grupo = groupedSkills[categoria] || [];
-          const borderColor = borderColorMap[categoria] || 'border-primary-500';
-          const scale = getGroupScale(grupo.length);
           return (
             <motion.div
               key={categoria}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6 }}
-              className={`relative rounded-2xl border ${borderColor} p-6 bg-dark-900/40 backdrop-blur-md shadow-md flex flex-col gap-4`}
+              className="relative flex flex-col gap-4"
             >
-              <h3 className="text-center text-xl font-bold bg-gradient-to-r from-primary-400 to-secondary-500 bg-clip-text text-transparent">
-                {categoria}
+              <h3 className="text-center text-xl font-bold">
+                <span className="bg-gradient-to-r from-[#F2A900] to-[#0072C6] bg-clip-text text-transparent">
+                  {categoria}
+                </span>
               </h3>
-              <div className="grid auto-rows-fr grid-cols-[repeat(auto-fill,minmax(70px,1fr))] gap-4 place-items-center">
+              <div className="grid grid-cols-4 grid-auto-rows-[6rem] gap-2 w-full">
                 {grupo.map((skill) => {
                   const Icon = getIconComponent(skill.icon);
-                  const sizeClass = getSizeClass(skill.proficiency);
                   const color = colorMap[skill.name] || '#F2A900';
+                  const { classes, iconSize, textSize, marginClass } = getGridConfig(skill.proficiency);
                   return (
                     <div
                       key={skill.name}
-                      className={`${sizeClass} ${scale} rounded-2xl flex flex-col items-center justify-center text-center bg-gradient-to-br from-[#F2A900]/10 via-[#0072C6]/10 to-dark-800/50 backdrop-blur-sm hover:scale-105 hover:shadow-lg transition-all duration-300 shadow-md border ${borderColor} skill-card`}
+                      className={`
+                        flex flex-col items-center justify-center text-center rounded-xl
+                        bg-gradient-to-br from-[#262626]/60 to-[#0072C6]/30
+                        shadow-lg backdrop-blur-md
+                        transition-all duration-300
+                        group relative
+                        hover:bg-gradient-to-br hover:from-[#F2A900]/10 hover:to-[#0072C6]/20
+                        ${classes}
+                      `}
                     >
-                      <Icon size={24} style={{ color }} className="mb-1 text-white/90" />
-                      <span className="font-semibold text-white text-xs md:text-sm">{skill.name}</span>
-                      <div className="shine-effect rounded-2xl" />
+                      {/* Hover effect similar a Experience */}
+                      <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-[#F2A900]/10 to-[#0072C6]/10 pointer-events-none"></div>
+                      <Icon size={iconSize} style={{ color }} className={`${marginClass} z-10 transition-transform duration-300 group-hover:scale-110`} />
+                      <span className={`font-semibold text-white ${textSize} px-1 z-10 leading-tight`}>{skill.name}</span>
                     </div>
                   );
                 })}

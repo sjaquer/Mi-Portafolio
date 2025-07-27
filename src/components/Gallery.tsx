@@ -26,21 +26,21 @@ const Gallery: React.FC = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[150px] md:auto-rows-[200px]">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[280px]">
           {gallery.map((item, index) => (
             <motion.div
               key={item.id}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`overflow-hidden rounded-xl relative ${index === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
+              className={`group overflow-hidden rounded-xl relative ${index === 0 ? 'md:col-span-2' : ''}`}
             >
               {item.type === 'image' ? (
-                <img loading="lazy" src={item.src} alt={item.alt} className="w-full h-full object-cover" />
+                <img loading="lazy" src={item.src} alt={item.alt} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
               ) : (
                 <video
                   src={item.src}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   autoPlay
                   loop
                   muted
@@ -52,22 +52,6 @@ const Gallery: React.FC = () => {
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center mt-12"
-        >
-          <a
-            href="https://github.com/sjaquer"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#F2A900] to-[#0072C6] text-white rounded-lg font-medium hover:from-[#d99900] hover:to-[#0060a3] transition-all duration-300"
-          >
-            Ver portafolio completo
-          </a>
-        </motion.div>
       </div>
     </section>
   );

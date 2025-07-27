@@ -302,75 +302,88 @@ export const skills: Skill[] = [
 //< 70 → tarjeta pequeña: w-[80px] h-[80px]
 
 //Administración
-{ name: 'Excel', category: 'Administración', proficiency: 100, icon: 'FileText' },
-{ name: 'Gestión Documental', category: 'Administración', proficiency: 99, icon: 'ClipboardList' },
-{ name: 'Planificación', category: 'Administración', proficiency: 90, icon: 'CalendarCheck' },
+  { name: 'Excel', category: 'Administración', proficiency: 100, icon: 'FileText' },
   { name: 'AWS', category: 'Administración', proficiency: 90, icon: 'Cloud' },
-  { name: 'Docker', category: 'Administración', proficiency: 40, icon: 'Package' },
-  { name: 'Git', category: 'Administración', proficiency: 65, icon: 'GitBranch' },
-  { name: 'Google Analytics', category: 'Administración', proficiency: 80, icon: 'BarChart2' },
-  { name: 'Search Console', category: 'Administración', proficiency: 75, icon: 'Search' },
-  { name: 'SEO/ASO', category: 'Administración', proficiency: 80, icon: 'TrendingUp' },
-  { name: 'YouTube', category: 'Administración', proficiency: 85, icon: 'Youtube' },
-  { name: 'MongoDB', category: 'Administración', proficiency: 65, icon: 'Database' },
-  { name: 'MySQL', category: 'Administración', proficiency: 60, icon: 'Database' },
-{ name: 'SQL Server', category: 'Desarrollo', proficiency: 90, icon: 'Database' },
-{ name: 'PostgreSQL', category: 'Administración', proficiency: 75, icon: 'Database' },
-{ name: 'Power BI', category: 'Administración', proficiency: 85, icon: 'BarChart' },
+  { name: 'Docker', category: 'Administración', proficiency: 30, icon: 'Package' },
+  { name: 'Git', category: 'Administración', proficiency: 30, icon: 'GitBranch' },
+  { name: 'Google Analytics', category: 'Administración', proficiency: 10, icon: 'BarChart2' },
+  { name: 'Search Console', category: 'Administración', proficiency: 35, icon: 'Search' },
+  { name: 'SEO/ASO', category: 'Administración', proficiency: 50, icon: 'TrendingUp' },
+  { name: 'YouTube', category: 'Administración', proficiency: 70, icon: 'Youtube' },
+  { name: 'MongoDB', category: 'Administración', proficiency: 10, icon: 'Database' },
+  { name: 'MySQL', category: 'Administración', proficiency: 10, icon: 'Database' },
+  { name: 'PostgreSQL', category: 'Administración', proficiency: 55, icon: 'Database' },
+  { name: 'Power BI', category: 'Administración', proficiency: 100, icon: 'BarChart' },
 
 // Programming Languages
-{ name: 'JavaScript', category: 'Desarrollo', proficiency: 85, icon: 'Code' },
-{ name: 'TypeScript', category: 'Desarrollo', proficiency: 80, icon: 'Code' },
-  { name: 'Python', category: 'Desarrollo', proficiency: 95, icon: 'Code' },
-  { name: 'SQL', category: 'Desarrollo', proficiency: 85, icon: 'Database' },
-  { name: 'React', category: 'Desarrollo', proficiency: 75, icon: 'Globe' },
-  { name: 'Vue.js', category: 'Desarrollo', proficiency: 85, icon: 'Globe' },
-  { name: 'Next.js', category: 'Desarrollo', proficiency: 80, icon: 'Globe' },
-  { name: 'Tailwind CSS', category: 'Desarrollo', proficiency: 95, icon: 'Palette' },
-  { name: 'Node.js', category: 'Desarrollo', proficiency: 80, icon: 'Server' },
-  { name: 'HTML5', category: 'Desarrollo', proficiency: 90, icon: 'FileCode' },
+  { name: 'JavaScript', category: 'Desarrollo', proficiency: 10, icon: 'Code' },
+  { name: 'TypeScript', category: 'Desarrollo', proficiency: 100, icon: 'Code' },
+  { name: 'Python', category: 'Desarrollo', proficiency: 100, icon: 'Code' },
+  { name: 'SQL Server', category: 'Desarrollo', proficiency: 80, icon: 'Database' },
+  { name: 'React', category: 'Desarrollo', proficiency: 30, icon: 'Globe' },
+  { name: 'Vue.js', category: 'Desarrollo', proficiency: 10, icon: 'Globe' },
+  { name: 'Next.js', category: 'Desarrollo', proficiency: 30, icon: 'Globe' },
+  { name: 'Tailwind CSS', category: 'Desarrollo', proficiency: 80, icon: 'Palette' },
+  { name: 'Node.js', category: 'Desarrollo', proficiency: 50, icon: 'Server' },
+  { name: 'HTML5', category: 'Desarrollo', proficiency: 10, icon: 'FileCode' },
   { name: 'CSS3', category: 'Desarrollo', proficiency: 90, icon: 'FileCode2' },
 
 // Design and Multimedia
-{ name: 'Photoshop', category: 'Diseño', proficiency: 90, icon: 'Image' },
-{ name: 'AutoDesk Maya', category: 'Diseño', proficiency: 90, icon: 'Box' },
+  { name: 'Photoshop', category: 'Diseño', proficiency: 90, icon: 'Image' },
+  { name: 'AutoDesk Maya', category: 'Diseño', proficiency: 90, icon: 'Box' },
   { name: 'Unreal Engine', category: 'Diseño', proficiency: 100, icon: 'Gamepad2' },
-  { name: 'Danvinci Resolve', category: 'Diseño', proficiency: 70, icon: 'Film' },
+  { name: 'Danvinci Resolve', category: 'Diseño', proficiency: 60, icon: 'Film' },
   { name: 'Lightroom', category: 'Diseño', proficiency: 80, icon: 'Camera' },
   { name: '3ds Max', category: 'Diseño', proficiency: 75, icon: 'Cube' },
-  { name: 'Figma', category: 'Diseño', proficiency: 85, icon: 'PenTool' },
+  { name: 'Figma', category: 'Diseño', proficiency: 35, icon: 'PenTool' },
   { name: 'Canva', category: 'Diseño', proficiency: 80, icon: 'Brush' },
 
 // Soft Skills
+{ name: 'Gestión Documental', category: 'Habilidades Blandas', proficiency: 80, icon: 'ClipboardList' },
+{ name: 'Planificación', category: 'Habilidades Blandas', proficiency: 90, icon: 'CalendarCheck' },
 { name: 'Comunicación Efectiva', category: 'Habilidades Blandas', proficiency: 80, icon: 'MessageCircle' },
-{ name: 'Trabajo en Equipo', category: 'Habilidades Blandas', proficiency: 90, icon: 'Users' },
+{ name: 'Trabajo en Equipo', category: 'Habilidades Blandas', proficiency: 30, icon: 'Users' },
 { name: 'Resolución de Problemas', category: 'Habilidades Blandas', proficiency: 100, icon: 'Tool' },
-{ name: 'Adaptabilidad', category: 'Habilidades Blandas', proficiency: 90, icon: 'RefreshCcw' }
+{ name: 'Adaptabilidad', category: 'Habilidades Blandas', proficiency: 30, icon: 'RefreshCcw' },
+{ name: 'Creatividad', category: 'Habilidades Blandas', proficiency: 100, icon: 'Feather' },
+{ name: 'Pensamiento Crítico', category: 'Habilidades Blandas', proficiency: 100, icon: 'Eye' },
+{ name: 'Liderazgo', category: 'Habilidades Blandas', proficiency: 100, icon: 'Star' }
 ];
 export const gallery: GalleryItem[] = [
   {
     id: '1',
     type: 'image',
-    src: 'https://images.pexels.com/photos/3225517/pexels-photo-3225517.jpeg?auto=compress&cs=tinysrgb&w=600',
+    src: 'https://i.ibb.co/VpLxj1Dh/Highres-Screenshot00049.jpg?auto=compress&cs=tinysrgb&w=600',
     alt: 'Proyecto de diseño 3D'
   },
   {
     id: '2',
     type: 'image',
-    src: 'https://images.pexels.com/photos/977241/pexels-photo-977241.jpeg?auto=compress&cs=tinysrgb&w=600',
+    src: 'https://i.ibb.co/212Htmd1/DSC-0039.jpg',
     alt: 'Fotografía de producto'
   },
   {
     id: '3',
-    type: 'video',
-    src: 'https://videos.pexels.com/video-files/856205/856205-hd_1280_720_25fps.mp4',
-    alt: 'Video promocional',
-    poster: 'https://images.pexels.com/photos/856205/pexels-photo-856205.jpeg?auto=compress&cs=tinysrgb&w=600'
+    type: 'image',
+    src: 'https://i.ibb.co/TDn5mS6z/DSC-0081.jpg?auto=compress&cs=tinysrgb&w=600',
+    alt: 'Fotografía de producto'
   },
   {
     id: '4',
+    type: 'image',
+    src: 'https://i.ibb.co/3YjSNfr8/Highres-Screenshot00023.jpg?auto=compress&cs=tinysrgb&w=600',
+    alt: 'Fotografía de producto'
+  },
+  {
+    id: '5',
+    type: 'image',
+    src: 'https://i.ibb.co/4ZNW1Wqw/IMG-2183.jpg?auto=compress&cs=tinysrgb&w=600',
+    alt: 'Fotografía de producto'
+  },
+  {
+    id: '6',
     type: 'video',
-    src: 'https://videos.pexels.com/video-files/854109/854109-hd_1280_720_30fps.mp4',
+    src: 'https://files.catbox.moe/rc3u56.mp4',
     alt: 'Animación 3D',
     poster: 'https://images.pexels.com/photos/854109/pexels-photo-854109.jpeg?auto=compress&cs=tinysrgb&w=600'
   }
