@@ -56,11 +56,16 @@ Mi-Portafolio/
 ├── vite.config.ts
 ├── favicon.ico
 ├── images/
-│   ├── iconperso.jpg
-│   └── icontitle.png
+│   └── iconperso.webp
 ├── pdf/
-│   ├── proyecto1.pdf
-│   └── certificaciones.pdf
+│   ├── cv-sj-2025.pdf
+│   ├── excel.pdf
+│   ├── international-talks.pdf
+│   ├── powerbi-zegel.pdf
+│   ├── prompt-linkedin.pdf
+│   ├── python-practicando.pdf
+│   ├── sql-idat.pdf
+│   └── unreal-engine.pdf
 └── src/
     ├── main.tsx
     ├── App.tsx
