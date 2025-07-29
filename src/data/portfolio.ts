@@ -104,7 +104,12 @@ export const education: Education[] = [
     degree: 'Inglés Avanzado (C1)',
     institution: 'Instituto SISE',
     duration: 'Ago 2022 - Oct 2022',
-    status: 'Completado'
+    status: 'Completado',
+    certificateUrl: 'pdf/ingles-sise.pdf',
+    relevant: [
+      'Comunicación Fluida',
+      'Comprensión Auditiva y Lectora'
+    ]
   },
   {
     id: '3',
@@ -129,14 +134,18 @@ export const education: Education[] = [
     degree: 'Generative AI for Executives',
     institution: 'AWS Training',
     duration: 'Jun 2025',
-    status: 'Completado'
+    status: 'Completado',
+    certificateUrl: 'pdf/aws-gen-ai-exec.pdf',
+    relevant: ['Estrategia de IA', 'Casos de Uso Empresariales']
   },
   {
     id: '6',
     degree: 'Essentials of Prompt Engineering',
     institution: 'AWS Training',
     duration: 'Jun 2025',
-    status: 'Completado'
+    status: 'Completado',
+    certificateUrl: 'pdf/aws-prompt-essentials.pdf',
+    relevant: ['Diseño de Prompts', 'Optimización de Modelos']
   },
   {
     id: '7',
@@ -144,14 +153,17 @@ export const education: Education[] = [
     institution: 'LinkedIn Learning',
     duration: 'Mar 2025',
     status: 'Completado',
-    certificateUrl: 'pdf/prompt-linkedin.pdf'
+    certificateUrl: 'pdf/prompt-linkedin.pdf',
+    relevant: ['Ingeniería de Prompts', 'Interacción con LLMs']
   },
   {
     id: '8',
     degree: 'Visualización de Datos con Power BI',
     institution: 'IDAT',
     duration: 'Feb 2025',
-    status: 'Completado'
+    status: 'Completado',
+    certificateUrl: 'pdf/powerbi-idat.pdf',
+    relevant: ['Creación de Dashboards', 'Análisis de Datos']
   },
   {
     id: '9',
@@ -159,7 +171,8 @@ export const education: Education[] = [
     institution: 'Zegel Virtual',
     duration: 'Feb - Mar 2025',
     status: 'Completado',
-    certificateUrl: 'pdf/powerbi-zegel.pdf'
+    certificateUrl: 'pdf/powerbi-zegel.pdf',
+    relevant: ['Modelado de Datos', 'Informes Interactivos']
   },
   {
     id: '10',
@@ -167,7 +180,8 @@ export const education: Education[] = [
     institution: 'Udemy',
     duration: 'Sep 2024',
     status: 'Completado',
-    certificateUrl: 'pdf/excel.pdf'
+    certificateUrl: 'pdf/excel.pdf',
+    relevant: ['Tablas Dinámicas', 'Macros y VBA']
   },
   {
     id: '11',
@@ -175,21 +189,26 @@ export const education: Education[] = [
     institution: 'Udemy',
     duration: 'Sep 2024',
     status: 'Completado',
-    certificateUrl: 'pdf/python-practicando.pdf'
+    certificateUrl: 'pdf/python-practicando.pdf',
+    relevant: ['Sintaxis de Python', 'Resolución de Algoritmos']
   },
   {
     id: '12',
     degree: 'Adobe Photoshop Photo Editing',
     institution: 'Udemy',
     duration: 'Sep 2024',
-    status: 'Completado'
+    status: 'Completado',
+    certificateUrl: 'pdf/photoshop-udemy.pdf',
+    relevant: ['Retoque Fotográfico', 'Composición Digital']
   },
   {
     id: '13',
     degree: 'Fotografía Arquitectónica & HDR',
     institution: 'Udemy',
     duration: 'Sep 2024',
-    status: 'Completado'
+    status: 'Completado',
+    certificateUrl: 'pdf/fotografia-hdr-udemy.pdf',
+    relevant: ['Técnicas de Composición', 'Procesado HDR']
   },
   {
     id: '14',
@@ -197,7 +216,8 @@ export const education: Education[] = [
     institution: 'Universidad Norbert Wiener',
     duration: '2024',
     status: 'Asistencia Registrada',
-    certificateUrl: 'pdf/international-talks.pdf'
+    certificateUrl: 'pdf/international-talks.pdf',
+    relevant: ['Logística Global', 'Innovación en Transporte']
   },
   {
     id: '15',
@@ -205,7 +225,8 @@ export const education: Education[] = [
     institution: 'Udemy',
     duration: 'Sep 2022',
     status: 'Completado',
-    certificateUrl: 'pdf/3d-imagenes.pdf'
+    certificateUrl: 'pdf/3d-imagenes.pdf',
+    relevant: ['Modelado 3D', 'Renderizado Fotorrealista']
   },
   {
     id: '16',
@@ -213,14 +234,17 @@ export const education: Education[] = [
     institution: 'Udemy',
     duration: 'Jul 2020',
     status: 'Completado',
-    certificateUrl: 'pdf/unreal-engine.pdf'
+    certificateUrl: 'pdf/unreal-engine.pdf',
+    relevant: ['Blueprints', 'Diseño de Niveles']
   },
   {
     id: '17',
     degree: 'Modelado de Personaje 3ds Max',
     institution: 'Udemy',
     duration: 'Jul 2020',
-    status: 'Completado'
+    status: 'Completado',
+    certificateUrl: 'pdf/3dsmax-personaje-udemy.pdf',
+    relevant: ['Escultura Digital', 'Topología de Personajes']
   }
 ];
 
@@ -230,7 +254,7 @@ export const projects: Project[] = [
     title: 'ORDEV - Optimizador de Rutas de Vuelo',
     description: 'Sistema inteligente que optimiza rutas de vuelo considerando múltiples variables como clima, tráfico aéreo y consumo de combustible. Implementa algoritmos de optimización para encontrar las rutas más eficientes.',
     techStack: ['Python', 'Django', 'React', 'MongoDB', 'APIs de Clima', 'Algoritmos de Optimización'],
-    image: 'https://images.pexels.com/photos/358319/pexels-photo-358319.jpeg?auto=compress&cs=tinysrgb&w=600',
+    image: 'https://www.portalambiental.com.mx/sites/default/files/styles/full_content/public/media/image/2021/11/helicoptero.jpeg?auto=compress&cs=tinysrgb&w=600',
     liveUrl: 'https://optimizador-vuelos-cp-sat.vercel.app/',
     githubUrl: 'https://github.com/sjaquer/ORDEV-Optimizador-De-Vuelos',
     category: 'web',
@@ -241,7 +265,7 @@ export const projects: Project[] = [
     title: 'Digital Bakery eCommerce',
     description: 'Plataforma completa de comercio electrónico para panaderías, con sistema de pedidos, gestión de inventario y panel de administración. Integra pagos en línea y seguimiento de pedidos en tiempo real.',
     techStack: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Stripe', 'AWS'],
-    image: 'https://images.pexels.com/photos/1855214/pexels-photo-1855214.jpeg?auto=compress&cs=tinysrgb&w=600',
+    image: 'https://i.ibb.co/PskYQh65/web.jpg?auto=compress&cs=tinysrgb&w=600',
     liveUrl: 'https://digitalbakery.vercel.app/',
     githubUrl: 'https://github.com/sjaquer/eCommerce-Panaderia',
     category: 'web',
@@ -252,7 +276,7 @@ export const projects: Project[] = [
     title: 'IA MenuCreator',
     description: 'Aplicación que utiliza inteligencia artificial para generar menús personalizados basados en preferencias dietéticas, alergias y objetivos nutricionales del usuario.',
     techStack: ['Python', 'TensorFlow', 'FastAPI', 'React', 'OpenAI API'],
-    image: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=600',
+    image: 'https://i.ibb.co/tMq5v9T3/web-1.jpg?auto=compress&cs=tinysrgb&w=600',
     githubUrl: 'https://github.com/sjaquer/IA-MenuCreator',
     category: 'web',
     featured: true
@@ -262,7 +286,7 @@ export const projects: Project[] = [
     title: 'Simple Flyer Digital',
     description: 'Herramienta web para crear y diseñar volantes digitales de manera intuitiva. Incluye plantillas personalizables y exportación en múltiples formatos.',
     techStack: ['Vue.js', 'Canvas API', 'Node.js', 'Express'],
-    image: 'https://images.pexels.com/photos/5417837/pexels-photo-5417837.jpeg?auto=compress&cs=tinysrgb&w=600',
+    image: 'https://i.ibb.co/q30yYKRr/web-4.jpg?auto=compress&cs=tinysrgb&w=600',
     liveUrl: 'https://sjaquer.github.io/Simple-Flyer-Digital/',
     githubUrl: 'https://github.com/sjaquer/Simple-Flyer-Digital',
     category: 'web'
@@ -272,8 +296,7 @@ export const projects: Project[] = [
     title: 'Basic Landing Page',
     description: 'Plantilla moderna y responsive para landing pages, optimizada para SEO y rendimiento. Incluye animaciones suaves y formulario de contacto.',
     techStack: ['HTML5', 'CSS3', 'JavaScript', 'GSAP'],
-    image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600',
-    liveUrl: 'https://sjaquer.github.io/Basic-Landing-Page/',
+    image: 'https://i.ibb.co/rR7B1vWx/web-5.jpg?auto=compress&cs=tinysrgb&w=600',
     githubUrl: 'https://github.com/sjaquer/Basic-Landing-Page',
     category: 'web'
   },
@@ -281,17 +304,26 @@ export const projects: Project[] = [
     id: '6',
     title: 'Visualización Arquitectónica 3D',
     description: 'Renderizados realistas e inmersivos de proyectos residenciales usando Unreal Engine y Blender.',
-    techStack: ['Unreal Engine 5', 'AutoDesk Maya', 'Photoshop'],
-    image: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=600',
+    techStack: ['Unreal Engine 5', 'AutoDesk Maya', 'Photoshop', 'Sketchup', 'Blender'],
+    image: 'https://i.ibb.co/TMWvzvFs/web-3.jpg?auto=compress&cs=tinysrgb&w=600',
     category: '3d',
     featured: true
   },
   {
     id: '7',
+    title: 'Diseño de entornos 3D para Videojuegos',
+    description: 'Mapas completos siguiendo linea de diseño del videojuego usando Unreal Engine. Incluye modelado, texturización y optimización de assets.',
+    techStack: ['Unreal Engine 4', 'AutoDesk Maya', 'Photoshop', 'Blender', 'Substance Painter', 'Quixel Megascans'],
+    image: 'https://i.ibb.co/RTDp3T8Y/renders-5.png?auto=compress&cs=tinysrgb&w=600',
+    category: '3d',
+    featured: true
+  },
+  {
+    id: '8',
     title: 'Video de Identidad de Marca',
     description: 'Producción audiovisual para campaña de lanzamiento de una startup: motion graphics y edición profesional.',
-    techStack: ['After Effects', 'Premiere Pro', 'Cinema 4D'],
-    image: 'https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=600',
+    techStack: ['Davinci Resolve', 'Photoshop', 'Unreal Engine'],
+    image: 'https://i.ibb.co/C5xJ4D8h/video.png?auto=compress&cs=tinysrgb&w=600',
     category: 'video'
   }
 ];
@@ -359,32 +391,40 @@ export const gallery: GalleryItem[] = [
   {
     id: '2',
     type: 'image',
-    src: 'https://i.ibb.co/212Htmd1/DSC-0039.jpg',
+    src: 'https://i.ibb.co/212Htmd1/DSC-0039.jpg?auto=compress&cs=tinysrgb&w=600',
     alt: 'Fotografía de producto'
   },
   {
     id: '3',
     type: 'image',
-    src: 'https://i.ibb.co/TDn5mS6z/DSC-0081.jpg?auto=compress&cs=tinysrgb&w=600',
-    alt: 'Fotografía de producto'
+    src: 'https://i.ibb.co/3YjSNfr8/Highres-Screenshot00023.jpg?auto=compress&cs=tinysrgb&w=600',
+    alt: 'Renderizado de videojuego de horror'
   },
   {
     id: '4',
     type: 'image',
-    src: 'https://i.ibb.co/3YjSNfr8/Highres-Screenshot00023.jpg?auto=compress&cs=tinysrgb&w=600',
-    alt: 'Fotografía de producto'
+    src: 'https://i.ibb.co/KpSsh3kj/renders-6.png?auto=compress&cs=tinysrgb&w=600',
+    alt: 'Renderizado videojuego de terror'
   },
   {
     id: '5',
-    type: 'image',
-    src: 'https://i.ibb.co/4ZNW1Wqw/IMG-2183.jpg?auto=compress&cs=tinysrgb&w=600',
-    alt: 'Fotografía de producto'
-  },
-  {
-    id: '6',
     type: 'video',
     src: 'https://files.catbox.moe/rc3u56.mp4',
     alt: 'Animación 3D',
+    poster: 'https://images.pexels.com/photos/854109/pexels-photo-854109.jpeg?auto=compress&cs=tinysrgb&w=600',
+  },
+  {
+    id: '6',
+    type: 'image',
+    src: 'https://i.ibb.co/YFh6XPrQ/Highres-Screenshot00001.png?auto=compress&cs=tinysrgb&w=600',
+    alt: 'Animación 3D',
     poster: 'https://images.pexels.com/photos/854109/pexels-photo-854109.jpeg?auto=compress&cs=tinysrgb&w=600'
-  }
-];
+  },
+  {
+    id: '7',
+    type: 'image',
+    src: 'https://i.ibb.co/5W4sPDPj/renders-4.png?auto=compress&cs=tinysrgb&w=600',
+    alt: 'Renderizado de ambiente aquitectónico',
+    poster: 'https://images.pexels.com/photos/854109/pexels-photo-854109.jpeg?auto=compress&cs=tinysrgb&w=600'
+  },
+ ];
