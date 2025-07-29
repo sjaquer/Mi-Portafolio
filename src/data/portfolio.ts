@@ -116,7 +116,7 @@ export const education: Education[] = [
     institution: 'IDAT',
     duration: 'Mar 2025 - Jul 2025',
     status: 'En curso',
-    certificateUrl: 'pdf/diplomadoia.pdf',
+    certificateUrl: '/pdf/diplomadoia.pdf',
     relevant: ['Machine Learning', 'Automatización con IA', 'Análisis Predictivo']
   },
   {
@@ -125,7 +125,7 @@ export const education: Education[] = [
     institution: 'IDAT + Microsoft',
     duration: 'Dic 2024 - Feb 2025',
     status: 'Completado',
-    certificateUrl: 'pdf/sql.pdf',
+    certificateUrl: '/pdf/sql.pdf',
     relevant: ['SQL Server', 'Optimización de Queries']
   },
   {
@@ -134,7 +134,7 @@ export const education: Education[] = [
     institution: 'AWS Training',
     duration: 'Jun 2025',
     status: 'Completado',
-    certificateUrl: 'pdf/awsiabs.pdf',
+    certificateUrl: '/pdf/awsiabs.pdf',
     relevant: ['Estrategia de IA', 'Casos de Uso Empresariales']
   },
   {
@@ -143,7 +143,7 @@ export const education: Education[] = [
     institution: 'AWS Training',
     duration: 'Jun 2025',
     status: 'Completado',
-    certificateUrl: 'pdf/awsiaprompt.pdf',
+    certificateUrl: '/pdf/awsiaprompt.pdf',
     relevant: ['Diseño de Prompts', 'Optimización de Modelos']
   },
   {
@@ -152,7 +152,7 @@ export const education: Education[] = [
     institution: 'LinkedIn Learning',
     duration: 'Mar 2025',
     status: 'Completado',
-    certificateUrl: 'pdf/promptlinkedin.pdf',
+    certificateUrl: '/pdf/promptlinkedin.pdf',
     relevant: ['Ingeniería de Prompts', 'Interacción con LLMs']
   },
   {
@@ -161,7 +161,7 @@ export const education: Education[] = [
     institution: 'IDAT',
     duration: 'Feb 2025',
     status: 'Completado',
-    certificateUrl: 'pdf/powerbiidat.pdf',
+    certificateUrl: '/pdf/powerbiidat.pdf',
     relevant: ['Creación de Dashboards', 'Análisis de Datos']
   },
   {
@@ -170,7 +170,7 @@ export const education: Education[] = [
     institution: 'Zegel Virtual',
     duration: 'Feb - Mar 2025',
     status: 'Completado',
-    certificateUrl: 'pdf/powerbizegel.pdf',
+    certificateUrl: '/pdf/powerbizegel.pdf',
     relevant: ['Modelado de Datos', 'Informes Interactivos']
   },
   {
@@ -179,7 +179,7 @@ export const education: Education[] = [
     institution: 'Udemy',
     duration: 'Sep 2024',
     status: 'Completado',
-    certificateUrl: 'pdf/excel.pdf',
+    certificateUrl: '/pdf/excel.pdf',
     relevant: ['Tablas Dinámicas', 'Macros y VBA']
   },
   {
@@ -188,7 +188,7 @@ export const education: Education[] = [
     institution: 'Udemy',
     duration: 'Sep 2024',
     status: 'Completado',
-    certificateUrl: 'pdf/python.pdf',
+    certificateUrl: '/pdf/python.pdf',
     relevant: ['Sintaxis de Python', 'Resolución de Algoritmos']
   },
   {
@@ -197,7 +197,7 @@ export const education: Education[] = [
     institution: 'Udemy',
     duration: 'Sep 2024',
     status: 'Completado',
-    certificateUrl: 'pdf/photoshop.pdf',
+    certificateUrl: '/pdf/photoshop.pdf',
     relevant: ['Retoque Fotográfico', 'Composición Digital']
   },
   {
@@ -206,7 +206,7 @@ export const education: Education[] = [
     institution: 'Udemy',
     duration: 'Sep 2024',
     status: 'Completado',
-    certificateUrl: 'pdf/fotografiahdr.pdf',
+    certificateUrl: '/pdf/fotografiahdr.pdf',
     relevant: ['Técnicas de Composición', 'Procesado HDR']
   },
   {
@@ -215,7 +215,7 @@ export const education: Education[] = [
     institution: 'Universidad Norbert Wiener',
     duration: '2024',
     status: 'Asistencia Registrada',
-    certificateUrl: 'pdf/internationaltalks.pdf',
+    certificateUrl: '/pdf/internationaltalks.pdf',
     relevant: ['Logística Global', 'Innovación en Transporte']
   },
   {
@@ -224,7 +224,7 @@ export const education: Education[] = [
     institution: 'Udemy',
     duration: 'Sep 2022',
     status: 'Completado',
-    certificateUrl: 'pdf/3dimagenes.pdf',
+    certificateUrl: '/pdf/3dimagenes.pdf',
     relevant: ['Modelado 3D', 'Renderizado Fotorrealista']
   },
   {
@@ -233,7 +233,7 @@ export const education: Education[] = [
     institution: 'Udemy',
     duration: 'Jul 2020',
     status: 'Completado',
-    certificateUrl: 'pdf/unrealengine.pdf',
+    certificateUrl: '/pdf/unrealengine.pdf',
     relevant: ['Blueprints', 'Diseño de Niveles']
   },
   {
@@ -242,7 +242,7 @@ export const education: Education[] = [
     institution: 'Udemy',
     duration: 'Jul 2020',
     status: 'Completado',
-    certificateUrl: 'pdf/3dsmax.pdf',
+    certificateUrl: '/pdf/3dsmax.pdf',
     relevant: ['Escultura Digital', 'Topología de Personajes']
   }
 ];
