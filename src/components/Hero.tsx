@@ -14,7 +14,7 @@ import {
   Camera,
   Palette
 } from 'lucide-react';
-import profileImg from '../../images/iconperso.webp';
+import profileImg from '/images/iconperso.webp';
 
 const Hero: React.FC = () => {
   const socialLinks = [
@@ -37,7 +37,7 @@ const Hero: React.FC = () => {
 
   const handleDownloadCV = () => {
     const link = document.createElement('a');
-    link.href = 'pdf/cv-sj-2025.pdf';
+    link.href = 'pdf/sebastian-jaque-cv2025.pdf';
     link.download = 'Sebastián Jaque-CV.pdf';
     link.click();
   };
@@ -93,9 +93,7 @@ const Hero: React.FC = () => {
               transition={{ delay: 0.5 }}
               className="text-lg text-gray-400 mb-8 max-w-2xl"
             >
-              Impulsando la mejora empresarial mediante programación, 
-              soluciones creativas y tecnología aplicada; optimizando 
-              procesos y mejorando la experiencia del cliente y la empresa.
+              Impulso la eficiencia empresarial con tecnología creativa y soluciones a medida.
             </motion.p>
 
             {/* Especialidades */}
