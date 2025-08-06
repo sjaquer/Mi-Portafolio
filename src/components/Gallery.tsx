@@ -26,31 +26,70 @@ const Gallery: React.FC = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[280px]">
-          {gallery.map((item, index) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`group overflow-hidden rounded-xl relative ${index === 0 ? 'md:col-span-2' : ''}`}
-            >
-              {item.type === 'image' ? (
-                <img loading="lazy" src={item.src} alt={item.alt} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
-              ) : (
-                <video
-                  src={item.src}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  autoPlay
-                  loop
-                  muted
-                  preload="metadata"
-                  loading="lazy"
-                  poster={item.poster}
-                />
-              )}
-            </motion.div>
-          ))}
+        <div
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"
+          style={{ gridAutoFlow: 'dense' }}
+        >
+          {gallery.map((item, index) => {
+            const colSpan = item.colSpan || (item.aspectRatio && item.aspectRatio > 1.2 ? 2 : 1);
+            const rowSpan = item.rowSpan || (item.aspectRatio && item.aspectRatio < 0.8 ? 2 : 1);
+            const aspect = item.aspectRatio || '16/9';
+
+            // Centrado si colSpan o rowSpan es impar
+            const centerClass =
+              (colSpan % 2 !== 0 || rowSpan % 2 !== 0)
+                ? 'mx-auto justify-self-center'
+                : '';
+
+            return (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 30 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className={`
+          group overflow-hidden rounded-xl relative
+          col-span-${colSpan} row-span-${rowSpan}
+          flex items-center justify-center bg-[#262626]/60 backdrop-blur-md shadow-lg
+          ${centerClass}
+        `}
+                style={{
+                  aspectRatio: aspect,
+                  width: '100%',
+                  display: 'flex'
+                }}
+              >
+                {item.type === 'image' ? (
+                  <img
+                    loading="lazy"
+                    src={item.src}
+                    alt={item.alt}
+                    className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                    style={{
+                      aspectRatio: aspect,
+                      maxWidth: '100%',
+                      maxHeight: '100%'
+                    }}
+                  />
+                ) : (
+                  <video
+                    src={item.src}
+                    className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                    autoPlay
+                    loop
+                    muted
+                    preload="metadata"
+                    poster={item.poster}
+                    style={{
+                      aspectRatio: aspect,
+                      maxWidth: '100%',
+                      maxHeight: '100%'
+                    }}
+                  />
+                )}
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

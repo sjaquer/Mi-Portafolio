@@ -17,18 +17,22 @@ const Portfolio: React.FC = () => {
     { id: 'all', label: 'Todos los Proyectos', icon: Code },
     { id: 'web', label: 'Desarrollo Web', icon: Code },
     { id: '3d', label: 'Unreal Engine', icon: Box },
-    { id: 'video', label: 'Video y Animación', icon: Film }
+    { id: 'creative', label: 'Diseño y Multimedia', icon: Palette }
   ];
 
-  const filteredProjects = filter === 'all' 
-    ? projects 
-    : projects.filter(project => project.category === filter);
+  const filteredProjects = filter === 'all'
+    ? projects
+    : filter === 'creative'
+      ? projects.filter(project =>
+          ['video', 'diseño', 'fotografia'].includes(project.category)
+        )
+      : projects.filter(project => project.category === filter);
 
   const getCategoryIcon = (category: string) => {
     switch (category) {
       case 'web': return Code;
       case '3d': return Box;
-      case 'video': return Film;
+      case 'creative': return Palette;
       default: return Code;
     }
   };
@@ -126,7 +130,7 @@ const Portfolio: React.FC = () => {
                         className="flex items-center gap-2 px-3 py-2 bg-[#F2A900] text-gray-900 rounded-lg text-sm font-medium hover:bg-[#d99900] transition-colors"
                       >
                         <ExternalLink size={14} />
-                        Ver Demo
+                        Ver Proyecto
                       </a>
                     )}
                     {project.githubUrl && (

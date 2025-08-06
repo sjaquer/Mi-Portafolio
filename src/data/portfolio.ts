@@ -190,7 +190,7 @@ export const education: Education[] = [
     institution: 'Udemy',
     duration: 'Sep 2024',
     status: 'Completado',
-    certificateUrl: '/pdf/python-udemy.pdf',
+    certificateUrl: '/pdf/python.pdf',
     relevant: ['Sintaxis de Python', 'Resolución de Algoritmos']
   },
   {
@@ -326,6 +326,16 @@ export const projects: Project[] = [
     techStack: ['Davinci Resolve', 'Photoshop', 'Unreal Engine'],
     image: 'https://i.ibb.co/C5xJ4D8h/video.png?auto=compress&cs=tinysrgb&w=600',
     category: 'video'
+  },
+  {
+    id: '9',
+    title: 'Manual de Marca Digital',
+    description: 'Elaboración de un manual de marca digital interactivo, incluyendo logotipos, paletas de colores y tipografías.',
+    techStack: ['Figma', 'Adobe Illustrator', 'Adobe Photoshop', 'Canva'],
+    image: 'https://gtechdesign.net/images/arti-old-webp/manuales-marca-1.webp?auto=compress&cs=tinysrgb&w=600',
+    category: 'diseño',
+    featured: true,
+    liveUrl: 'public/pdf/manualidentidad_nhl.pdf',
   }
 ];
 
@@ -387,25 +397,37 @@ export const gallery: GalleryItem[] = [
     id: '1',
     type: 'image',
     src: 'https://i.ibb.co/VpLxj1Dh/Highres-Screenshot00049.jpg?auto=compress&cs=tinysrgb&w=600',
-    alt: 'Proyecto de diseño 3D'
+    alt: 'Proyecto de diseño 3D',
+    aspectRatio: 11 / 8,
+    colSpan: 1,
+    rowSpan: 3
   },
   {
     id: '2',
     type: 'image',
-    src: 'https://i.ibb.co/212Htmd1/DSC-0039.jpg?auto=compress&cs=tinysrgb&w=600',
-    alt: 'Fotografía de producto'
+    src: 'https://i.ibb.co/8L1s0xgv/02-08-25-2.jpg?auto=compress&cs=tinysrgb&w=600',
+    alt: 'Fotografía de producto',
+    aspectRatio: 1 / 1,
+    colSpan: 2,
+    rowSpan: 2
   },
   {
     id: '3',
     type: 'image',
     src: 'https://i.ibb.co/3YjSNfr8/Highres-Screenshot00023.jpg?auto=compress&cs=tinysrgb&w=600',
-    alt: 'Renderizado de videojuego de horror'
+    alt: 'Renderizado de videojuego de horror',
+    aspectRatio: 27.5 / 18.5,
+    colSpan: 2,
+    rowSpan: 2
   },
   {
     id: '4',
     type: 'image',
     src: 'https://i.ibb.co/KpSsh3kj/renders-6.png?auto=compress&cs=tinysrgb&w=600',
-    alt: 'Renderizado videojuego de terror'
+    alt: 'Renderizado videojuego de terror',
+    aspectRatio: 25.5 / 19,
+    colSpan: 1,
+    rowSpan: 3
   },
   {
     id: '5',
@@ -413,19 +435,62 @@ export const gallery: GalleryItem[] = [
     src: 'https://files.catbox.moe/rc3u56.mp4',
     alt: 'Animación 3D',
     poster: 'https://images.pexels.com/photos/854109/pexels-photo-854109.jpeg?auto=compress&cs=tinysrgb&w=600',
+    aspectRatio: 16 / 9,
+    colSpan: 2,
+    rowSpan: 2
   },
   {
     id: '6',
     type: 'image',
     src: 'https://i.ibb.co/YFh6XPrQ/Highres-Screenshot00001.png?auto=compress&cs=tinysrgb&w=600',
     alt: 'Animación 3D',
-    poster: 'https://images.pexels.com/photos/854109/pexels-photo-854109.jpeg?auto=compress&cs=tinysrgb&w=600'
+    aspectRatio: 12.5 / 8,
+    colSpan: 1,
+    rowSpan: 1
   },
   {
     id: '7',
     type: 'image',
     src: 'https://i.ibb.co/5W4sPDPj/renders-4.png?auto=compress&cs=tinysrgb&w=600',
     alt: 'Renderizado de ambiente aquitectónico',
-    poster: 'https://images.pexels.com/photos/854109/pexels-photo-854109.jpeg?auto=compress&cs=tinysrgb&w=600'
+    aspectRatio: 23 / 17,
+    colSpan: 1,
+    rowSpan: 1
   },
- ];
+  {
+    id: '8',
+    type: 'image',
+    src: 'https://i.ibb.co/Mz6dRfH/MG-3819.jpg?auto=compress&cs=tinysrgb&w=600',
+    alt: 'Fotografia retrato',
+    aspectRatio: 4 / 5,
+    colSpan: 1,
+    rowSpan: 1
+  },
+  {
+    id: '9',
+    type: 'image',
+    src: 'https://i.ibb.co/Q7xrRPqY/03-08-25-2.jpg?auto=compress&cs=tinysrgb&w=600',
+    alt: 'Publicaciones de redes sociales',
+    aspectRatio: 1 / 1,
+    colSpan: 2,
+    rowSpan: 2
+  },
+  {
+    id: '10',
+    type: 'image',
+    src: 'https://i.ibb.co/bMn4cJmN/03-08-25-1.jpg?auto=compress&cs=tinysrgb&w=600',
+    alt: 'Diseño de publicaciones para redes sociales',
+    aspectRatio: 1 / 1,
+    colSpan: 1,
+    rowSpan: 3
+  },
+  {
+    id: '11',
+    type: 'image',
+    src: 'https://i.ibb.co/GGf1qGH/post-2-11.jpg?auto=compress&cs=tinysrgb&w=600',
+    alt: 'Publicaciones de redes sociales',
+    aspectRatio: 1 / 1,
+    colSpan: 1,
+    rowSpan: 3
+  },
+];
