@@ -199,7 +199,7 @@ export const education: Education[] = [
     institution: 'Udemy',
     duration: 'Sep 2024',
     status: 'Completado',
-    certificateUrl: '/pdf/photoshop-udemy.pdf',
+    certificateUrl: '/pdf/photoshop.pdf',
     relevant: ['Retoque Fotográfico', 'Composición Digital']
   },
   {
@@ -208,7 +208,7 @@ export const education: Education[] = [
     institution: 'Udemy',
     duration: 'Sep 2024',
     status: 'Completado',
-    certificateUrl: '/pdf/fotografia-hdr-udemy.pdf',
+    certificateUrl: '/pdf/fotografiahdr.pdf',
     relevant: ['Técnicas de Composición', 'Procesado HDR']
   },
   {
@@ -217,7 +217,7 @@ export const education: Education[] = [
     institution: 'Universidad Norbert Wiener',
     duration: '2024',
     status: 'Asistencia Registrada',
-    certificateUrl: '/pdf/international-talks.pdf',
+    certificateUrl: '/pdf/internationaltalks.pdf',
     relevant: ['Logística Global', 'Innovación en Transporte']
   },
   {
@@ -226,7 +226,7 @@ export const education: Education[] = [
     institution: 'Udemy',
     duration: 'Sep 2022',
     status: 'Completado',
-    certificateUrl: '/pdf/3d-imagenes-udemy.pdf',
+    certificateUrl: '/pdf/3dimagenes.pdf',
     relevant: ['Modelado 3D', 'Renderizado Fotorrealista']
   },
   {
@@ -235,7 +235,7 @@ export const education: Education[] = [
     institution: 'Udemy',
     duration: 'Jul 2020',
     status: 'Completado',
-    certificateUrl: '/pdf/unreal-engine-udemy.pdf',
+    certificateUrl: '/pdf/unrealengine.pdf',
     relevant: ['Blueprints', 'Diseño de Niveles']
   },
   {
@@ -244,7 +244,7 @@ export const education: Education[] = [
     institution: 'Udemy',
     duration: 'Jul 2020',
     status: 'Completado',
-    certificateUrl: '/pdf/3dsmax-udemy.pdf',
+    certificateUrl: '/pdf/3dsmax.pdf',
     relevant: ['Escultura Digital', 'Topología de Personajes']
   }
 ];
