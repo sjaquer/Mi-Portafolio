@@ -3,85 +3,61 @@ import { Experience, Education, Project, Skill, GalleryItem } from '../types';
 export const experiences: Experience[] = [
 {
   id: '1',
-  title: 'Asistente de Marketing Digital | Estrategia de Contenido y Optimización Web',
+  title: 'Estratega de Contenido y Optimización SEO',
   company: 'NHL Publicidad',
   duration: 'Mayo 2025 - Actualidad',
   location: 'Lima, Perú',
   current: true,
-  techStack: ['YouTube', 'SEO', 'Segmentación', 'Marketing de Contenidos', 'Gestión de Proyectos'],
-  responsibilities: [
-  'Diseñé pautas estratégicas de contenido para videos en YouTube, coordinando con el equipo de producción audiovisual.',
-  'Analicé audiencias y realicé segmentación de mercado para optimizar campañas y decisiones de marca en plataformas digitales.',
-  'Colaboré en la mejora de procesos internos y el posicionamiento SEO del sitio web para aumentar la eficiencia y visibilidad online.'
-]
-
+  techStack: ['YouTube', 'SEO', 'Segmentación de Audiencias', 'Marketing de Contenidos', 'Gestión de Proyectos'],
+  responsibilities: ['Diseñé pautas de contenido para YouTube y optimicé el SEO del sitio web, analizando audiencias para mejorar el posicionamiento de la marca en plataformas digitales.']
 },
+
 
  {
     id: '2',
-    title: 'Especialista Técnico en Soporte Informático | Diagnóstico y Mantenimiento',
+    title: 'Especialista en Soporte Técnico y Mantenimiento de Sistemas',
     company: 'Freelance / Independiente',
     duration: 'Junio 2022 - Actualidad',
     location: 'Lima, Perú',
-    techStack: ['Diagnóstico HW/SW', 'Optimización', 'Mantenimiento', 'Windows/Linux'],
-    responsibilities: [
-      'Diagnóstico y resolución de problemas de hardware y software para clientes corporativos y particulares.',
-      'Implementación de soluciones de mejora en el rendimiento de sistemas, reduciendo tiempos de inactividad.',
-      'Mantenimiento preventivo y correctivo para asegurar la operatividad de infraestructuras tecnológicas.'
-    ]
+    techStack: ['Diagnóstico HW/SW', 'Optimización de Sistemas', 'Mantenimiento Preventivo', 'Windows/Linux'],
+    responsibilities: ['Proporcioné soporte técnico integral, diagnosticando y resolviendo incidencias de hardware y software. Optimicé sistemas para mejorar el rendimiento y realicé mantenimiento preventivo y correctivo.']
   },
  
   {
     id: '3',
-    title: 'Asistente de Logística y Abastecimiento | Prácticas Profesionales',
+    title: 'Asistente de Logística y Abastecimiento (Prácticas)',
     company: 'Zeus Maritime',
     duration: 'Abril 2025 - Mayo 2025',
     location: 'Callao, Perú',
-    techStack: ['Gestión de Órdenes', 'Facturación', 'Compras', 'Documentación Comercial'],
-    responsibilities: [
-      'Digitación y seguimiento de órdenes de compra en sistema interno de la compañía.',
-      'Emisión de facturas y guías simplificadas para distribución y exportación.',
-      'Elaboración de documentos institucionales para bancos y clientes internacionales.'
-    ]
+    techStack: ['Gestión de Órdenes', 'Facturación', 'Procesos de Compra', 'Documentación Comercial'],
+    responsibilities: ['Gestioné el ciclo de órdenes de compra, emití facturas y guías, y elaboré documentación comercial para operaciones de logística y abastecimiento, incluyendo clientes internacionales.']
   },
   {
     id: '4',
-    title: 'Desarrollador de Entornos 3D en Tiempo Real | Visualización Interactiva',
+    title: 'Desarrollador 3D y Artista de Entornos en Tiempo Real',
     company: 'Freelance / Independiente',
     duration: 'Febrero 2018 - Abril 2025',
     location: 'Lima, Perú',
-    techStack: ['Unreal Engine', 'Autodesk Maya', 'Diseño 3D', 'Renderizado'],
-    responsibilities: [
-      'Diseño y desarrollo de escenarios interactivos 3D para videojuegos, arquitectura y simulaciones empresariales.',
-      'Optimización de modelos y texturas 3D para mejorar rendimiento en entornos en tiempo real.',
-      'Entrega de soluciones personalizadas para clientes en sectores como entretenimiento y bienes raíces.'
-    ]
+    techStack: ['Unreal Engine', 'Autodesk Maya', 'Diseño 3D', 'Renderizado en Tiempo Real'],
+    responsibilities: ['Creé y optimicé escenarios 3D interactivos para videojuegos y visualización arquitectónica, entregando soluciones personalizadas que mejoraron el rendimiento y la inmersión en tiempo real.']
   },
   {
     id: '5',
-    title: 'Técnico en Atención al Cliente y Soporte de Sistemas',
+    title: 'Técnico de Soporte en Entornos de Gaming',
     company: 'Gomaju Internet Gaming',
     duration: 'Enero 2023 - Julio 2023',
     location: 'Lima, Perú',
-    techStack: ['Soporte Técnico', 'Gestión de Inventario', 'Actualizaciones de Software'],
-    responsibilities: [
-      'Atención personalizada a usuarios y resolución de incidencias técnicas en tiempo real.',
-      'Mantenimiento y actualización de equipos de juego para garantizar una experiencia óptima.',
-      'Control de inventario de suministros y monitoreo del correcto funcionamiento del local.'
-    ]
+    techStack: ['Soporte Técnico', 'Gestión de Inventario', 'Mantenimiento de Hardware', 'Software de Gaming'],
+    responsibilities: ['Ofrecí soporte técnico a usuarios en un entorno de gaming, realizando mantenimiento de equipos y gestionando el inventario para asegurar una experiencia de cliente de alta calidad.']
   },
   {
     id: '6',
-    title: 'Asistente Administrativo y Analista de Procesos',
+    title: 'Analista de Procesos y Asistente Administrativo',
     company: 'Romaseda',
     duration: 'Setiembre 2018 - Febrero 2020',
     location: 'Lima, Perú',
-    techStack: ['Excel Avanzado', 'Automatización', 'Reportes Financieros'],
-    responsibilities: [
-      'Gestión documental, control de inventarios y automatización de flujos administrativos.',
-      'Diseño de reportes financieros para decisiones estratégicas.',
-      'Implementación de soluciones digitales que redujeron los tiempos de gestión en un 30%.'
-    ]
+    techStack: ['Excel Avanzado', 'Automatización de Procesos', 'Análisis Financiero', 'Gestión Documental'],
+    responsibilities: ['Automaticé flujos de trabajo y gestioné procesos administrativos, diseñando reportes financieros en Excel que optimizaron la toma de decisiones y redujeron los tiempos de gestión en un 30%.']
   }
 ];
 
