@@ -308,10 +308,19 @@ export const projects: Project[] = [
     title: 'Manual de Marca Digital',
     description: 'Elaboración de un manual de marca digital interactivo, incluyendo logotipos, paletas de colores y tipografías.',
     techStack: ['Figma', 'Adobe Illustrator', 'Adobe Photoshop', 'Canva'],
-    image: 'https://gtechdesign.net/images/arti-old-webp/manuales-marca-1.webp?auto=compress&cs=tinysrgb&w=600',
+    image: 'https://i.ibb.co/mCbMn7Bv/portadamanual.jpg?auto=compress&cs=tinysrgb&w=600',
     category: 'diseño',
     featured: true,
     liveUrl: 'public/pdf/manualidentidad_nhl.pdf',
+  },
+  {
+    id: '10',
+    title: 'Task Zenith - Gestor de Tareas',
+    description: 'Elaboración de un manual de marca digital interactivo, incluyendo logotipos, paletas de colores y tipografías.',
+    techStack: ['React', 'TypeScript', 'AWS', 'IA', 'Tailwind CSS', 'Node.js', 'Firebase'],
+    image: 'https://i.ibb.co/cXX3NqCs/portadaweb.jpg?auto=compress&cs=tinysrgb&w=600',
+    githubUrl: 'https://github.com/sjaquer/TaskZenith',
+    category: 'web'
   }
 ];
 
@@ -466,6 +475,15 @@ export const gallery: GalleryItem[] = [
     src: 'https://i.ibb.co/GGf1qGH/post-2-11.jpg?auto=compress&cs=tinysrgb&w=600',
     alt: 'Publicaciones de redes sociales',
     aspectRatio: 1 / 1,
+    colSpan: 1,
+    rowSpan: 3
+  },
+  {
+    id: '11',
+    type: 'image',
+    src: 'https://i.ibb.co/9mxQ80xh/minuatura-yt.jpg?auto=compress&cs=tinysrgb&w=600',
+    alt: 'Publicaciones de redes sociales',
+    aspectRatio: 16 / 9,
     colSpan: 1,
     rowSpan: 3
   },
