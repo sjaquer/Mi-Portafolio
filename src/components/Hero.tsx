@@ -25,10 +25,10 @@ const Hero: React.FC = () => {
   ];
 
   const specialties = [
-    { icon: Briefcase, label: 'Administración de Negocios', color: 'bg-[#0072C6]', iconColor: '#F2A900' },
-    { icon: Code, label: 'Desarrollo de Software', color: 'bg-[#F2A900]', iconColor: '#0072C6' },
-    { icon: Camera, label: 'Fotografía Profesional', color: 'bg-[#262626]', iconColor: '#F2A900' },
-    { icon: Palette, label: 'Diseño 3D', color: 'bg-[#0072C6]', iconColor: '#F2A900' }
+    { icon: Briefcase, label: 'Estrategia y Consultoría de Negocios', color: 'bg-[#0072C6]', iconColor: '#F2A900' },
+    { icon: Code, label: 'Desarrollo Web', color: 'bg-[#F2A900]', iconColor: '#0072C6' },
+    { icon: Camera, label: 'Producción Multimedia', color: 'bg-[#262626]', iconColor: '#F2A900' },
+    { icon: Palette, label: 'Diseño y Visualización 3D', color: 'bg-[#0072C6]', iconColor: '#F2A900' }
   ];
 
   const handleWhatsApp = () => {
@@ -197,10 +197,12 @@ const Hero: React.FC = () => {
                 <div className="w-full h-full rounded-full bg-gradient-to-br from-[#F2A900] via-[#0072C6] to-[#F2A900] p-1">
                   <div className="w-full h-full rounded-full bg-gray-900 flex items-center justify-center overflow-hidden">
                     <img
-                      loading="lazy"
                       src={profileImg}
                       alt="Sebastián Jaque"
                       className="w-full h-full object-cover"
+                        width="384"
+                        height="384"
+                        fetchPriority="high"
                     />
                   </div>
                 </div>
