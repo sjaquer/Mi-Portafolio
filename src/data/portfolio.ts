@@ -1,19 +1,17 @@
 import { Experience, Education, Project, Skill, GalleryItem } from '../types';
 
 export const experiences: Experience[] = [
-{
-  id: '1',
-  title: 'Estratega de Contenido y Optimización SEO',
-  company: 'NHL Publicidad',
-  duration: 'Mayo 2025 - Actualidad',
-  location: 'Lima, Perú',
-  current: true,
-  techStack: ['YouTube', 'SEO', 'Segmentación de Audiencias', 'Marketing de Contenidos', 'Gestión de Proyectos'],
-  responsibilities: ['Diseñé pautas de contenido para YouTube y optimicé el SEO del sitio web, analizando audiencias para mejorar el posicionamiento de la marca en plataformas digitales.']
-},
-
-
- {
+  {
+    id: '1',
+    title: 'Estratega de Contenido y Optimización SEO',
+    company: 'NHL Publicidad',
+    duration: 'Mayo 2025 - Actualidad',
+    location: 'Lima, Perú',
+    current: true,
+    techStack: ['YouTube', 'SEO', 'Segmentación de Audiencias', 'Marketing de Contenidos', 'Gestión de Proyectos'],
+    responsibilities: ['Diseñé pautas de contenido para YouTube y optimicé el SEO del sitio web, analizando audiencias para mejorar el posicionamiento de la marca en plataformas digitales.']
+  },
+  {
     id: '2',
     title: 'Especialista en Soporte Técnico y Mantenimiento de Sistemas',
     company: 'Freelance / Independiente',
@@ -22,7 +20,6 @@ export const experiences: Experience[] = [
     techStack: ['Diagnóstico HW/SW', 'Optimización de Sistemas', 'Mantenimiento Preventivo', 'Windows/Linux'],
     responsibilities: ['Proporcioné soporte técnico integral, diagnosticando y resolviendo incidencias de hardware y software. Optimicé sistemas para mejorar el rendimiento y realicé mantenimiento preventivo y correctivo.']
   },
- 
   {
     id: '3',
     title: 'Asistente de Logística y Abastecimiento (Prácticas)',
@@ -311,13 +308,13 @@ export const projects: Project[] = [
     image: 'https://i.ibb.co/mCbMn7Bv/portadamanual.jpg?auto=compress&cs=tinysrgb&w=600',
     category: 'diseño',
     featured: true,
-    liveUrl: 'public/pdf/manualidentidad_nhl.pdf',
+    liveUrl: '/pdf/manualidentidad_nhl.pdf'
   },
   {
     id: '10',
     title: 'Task Zenith - Gestor de Tareas',
-    description: 'Elaboración de un manual de marca digital interactivo, incluyendo logotipos, paletas de colores y tipografías.',
-    techStack: ['React', 'TypeScript', 'AWS', 'IA', 'Tailwind CSS', 'Node.js', 'Firebase'],
+    description: 'Aplicación web para la gestión eficiente de tareas y proyectos, con funcionalidades de IA y colaboración en tiempo real.',
+    techStack: ['TypeScript', 'AWS', 'IA', 'Tailwind CSS', 'Node.js', 'Firebase'],
     image: 'https://i.ibb.co/cXX3NqCs/portadaweb.jpg?auto=compress&cs=tinysrgb&w=600',
     githubUrl: 'https://github.com/sjaquer/TaskZenith',
     category: 'web'
@@ -330,74 +327,43 @@ export const skills: Skill[] = [
 //< 70 → tarjeta pequeña: w-[80px] h-[80px]
 
 //Administración
-  { name: 'Excel', category: 'Administración', proficiency: 100, icon: 'FileText' },
-  { name: 'AWS', category: 'Administración', proficiency: 90, icon: 'Cloud' },
-  { name: 'Docker', category: 'Administración', proficiency: 30, icon: 'Package' },
-  { name: 'Git', category: 'Administración', proficiency: 30, icon: 'GitBranch' },
-  { name: 'Google Analytics', category: 'Administración', proficiency: 10, icon: 'BarChart2' },
-  { name: 'Search Console', category: 'Administración', proficiency: 35, icon: 'Search' },
-  { name: 'SEO/ASO', category: 'Administración', proficiency: 50, icon: 'TrendingUp' },
-  { name: 'YouTube', category: 'Administración', proficiency: 70, icon: 'Youtube' },
-  { name: 'MongoDB', category: 'Administración', proficiency: 10, icon: 'Database' },
-  { name: 'MySQL', category: 'Administración', proficiency: 10, icon: 'Database' },
-  { name: 'PostgreSQL', category: 'Administración', proficiency: 55, icon: 'Database' },
-  { name: 'Power BI', category: 'Administración', proficiency: 100, icon: 'BarChart' },
+  { name: 'Excel', category: 'Administración', icon: 'FileText' },
+  { name: 'AWS', category: 'Administración', icon: 'Cloud' },
+  { name: 'Firebase', category: 'Administración', icon: 'Package' },
+  { name: 'Git', category: 'Administración', icon: 'GitBranch' },
+  { name: 'Google Analytics', category: 'Administración',  icon: 'BarChart2' },
+  { name: 'SEO/ASO', category: 'Administración', icon: 'TrendingUp' },
+  { name: 'Power BI', category: 'Administración',  icon: 'BarChart' },
 
 // Programming Languages
-  { name: 'JavaScript', category: 'Desarrollo', proficiency: 10, icon: 'Code' },
-  { name: 'TypeScript', category: 'Desarrollo', proficiency: 100, icon: 'Code' },
-  { name: 'Python', category: 'Desarrollo', proficiency: 100, icon: 'Code' },
-  { name: 'SQL Server', category: 'Desarrollo', proficiency: 80, icon: 'Database' },
-  { name: 'React', category: 'Desarrollo', proficiency: 30, icon: 'Globe' },
-  { name: 'Vue.js', category: 'Desarrollo', proficiency: 10, icon: 'Globe' },
-  { name: 'Next.js', category: 'Desarrollo', proficiency: 30, icon: 'Globe' },
-  { name: 'Tailwind CSS', category: 'Desarrollo', proficiency: 80, icon: 'Palette' },
-  { name: 'Node.js', category: 'Desarrollo', proficiency: 50, icon: 'Server' },
-  { name: 'HTML5', category: 'Desarrollo', proficiency: 10, icon: 'FileCode' },
-  { name: 'CSS3', category: 'Desarrollo', proficiency: 90, icon: 'FileCode2' },
+  { name: 'TypeScript', category: 'Desarrollo', icon: 'Code' },
+  { name: 'Python', category: 'Desarrollo', icon: 'Code' },
+  { name: 'SQL Server', category: 'Desarrollo', icon: 'Database' },
+  { name: 'React', category: 'Desarrollo', icon: 'Globe' },
+  { name: 'Next.js', category: 'Desarrollo', icon: 'Globe' },
+  { name: 'Tailwind CSS', category: 'Desarrollo', icon: 'Palette' },
+  { name: 'Node.js', category: 'Desarrollo', icon: 'Server' },
+  { name: 'HTML5', category: 'Desarrollo', icon: 'FileCode' },
+  { name: 'CSS3', category: 'Desarrollo', icon: 'FileCode2' },
 
 // Design and Multimedia
-  { name: 'Photoshop', category: 'Diseño', proficiency: 90, icon: 'Image' },
-  { name: 'AutoDesk Maya', category: 'Diseño', proficiency: 90, icon: 'Box' },
-  { name: 'Unreal Engine', category: 'Diseño', proficiency: 100, icon: 'Gamepad2' },
-  { name: 'Danvinci Resolve', category: 'Diseño', proficiency: 60, icon: 'Film' },
-  { name: 'Lightroom', category: 'Diseño', proficiency: 80, icon: 'Camera' },
-  { name: '3ds Max', category: 'Diseño', proficiency: 75, icon: 'Cube' },
-  { name: 'Figma', category: 'Diseño', proficiency: 35, icon: 'PenTool' },
-  { name: 'Canva', category: 'Diseño', proficiency: 80, icon: 'Brush' },
+  { name: 'Photoshop', category: 'Diseño', icon: 'Image' },
+  { name: 'Unreal Engine', category: 'Diseño',  icon: 'Gamepad2' },
+  { name: 'Danvinci Resolve', category: 'Diseño', icon: 'Film' },
+  { name: 'Lightroom', category: 'Diseño', icon: 'Camera' },
+  { name: 'Figma', category: 'Diseño',  icon: 'PenTool' },
+  { name: 'Canva', category: 'Diseño', icon: 'Brush' },
 
 // Soft Skills
-{ name: 'Gestión Documental', category: 'Habilidades Blandas', proficiency: 80, icon: 'ClipboardList' },
-{ name: 'Planificación', category: 'Habilidades Blandas', proficiency: 90, icon: 'CalendarCheck' },
-{ name: 'Comunicación Efectiva', category: 'Habilidades Blandas', proficiency: 80, icon: 'MessageCircle' },
-{ name: 'Trabajo en Equipo', category: 'Habilidades Blandas', proficiency: 30, icon: 'Users' },
-{ name: 'Resolución de Problemas', category: 'Habilidades Blandas', proficiency: 100, icon: 'Tool' },
-{ name: 'Adaptabilidad', category: 'Habilidades Blandas', proficiency: 30, icon: 'RefreshCcw' },
-{ name: 'Creatividad', category: 'Habilidades Blandas', proficiency: 100, icon: 'Feather' },
-{ name: 'Pensamiento Crítico', category: 'Habilidades Blandas', proficiency: 100, icon: 'Eye' },
-{ name: 'Liderazgo', category: 'Habilidades Blandas', proficiency: 100, icon: 'Star' }
+{ name: 'Trabajo en Equipo', category: 'Habilidades Blandas', icon: 'Users' },
+{ name: 'Resolución de Problemas', category: 'Habilidades Blandas', icon: 'Tool' },
+{ name: 'Creatividad', category: 'Habilidades Blandas', icon: 'Feather' },
+{ name: 'Pensamiento Crítico', category: 'Habilidades Blandas', icon: 'Eye' },
+{ name: 'Liderazgo', category: 'Habilidades Blandas',  icon: 'Star' }
 ];
 export const gallery: GalleryItem[] = [
   {
-    id: '1',
-    type: 'image',
-    src: 'https://i.ibb.co/VpLxj1Dh/Highres-Screenshot00049.jpg?auto=compress&cs=tinysrgb&w=600',
-    alt: 'Proyecto de diseño 3D',
-    aspectRatio: 11 / 8,
-    colSpan: 1,
-    rowSpan: 3
-  },
-  {
     id: '2',
-    type: 'image',
-    src: 'https://i.ibb.co/8L1s0xgv/02-08-25-2.jpg?auto=compress&cs=tinysrgb&w=600',
-    alt: 'Fotografía de producto',
-    aspectRatio: 1 / 1,
-    colSpan: 2,
-    rowSpan: 2
-  },
-  {
-    id: '3',
     type: 'image',
     src: 'https://i.ibb.co/3YjSNfr8/Highres-Screenshot00023.jpg?auto=compress&cs=tinysrgb&w=600',
     alt: 'Renderizado de videojuego de horror',
@@ -427,27 +393,9 @@ export const gallery: GalleryItem[] = [
   {
     id: '6',
     type: 'image',
-    src: 'https://i.ibb.co/YFh6XPrQ/Highres-Screenshot00001.png?auto=compress&cs=tinysrgb&w=600',
-    alt: 'Animación 3D',
-    aspectRatio: 12.5 / 8,
-    colSpan: 1,
-    rowSpan: 1
-  },
-  {
-    id: '7',
-    type: 'image',
     src: 'https://i.ibb.co/5W4sPDPj/renders-4.png?auto=compress&cs=tinysrgb&w=600',
     alt: 'Renderizado de ambiente aquitectónico',
     aspectRatio: 23 / 17,
-    colSpan: 1,
-    rowSpan: 1
-  },
-  {
-    id: '8',
-    type: 'image',
-    src: 'https://i.ibb.co/Mz6dRfH/MG-3819.jpg?auto=compress&cs=tinysrgb&w=600',
-    alt: 'Fotografia retrato',
-    aspectRatio: 4 / 5,
     colSpan: 1,
     rowSpan: 1
   },
@@ -461,15 +409,6 @@ export const gallery: GalleryItem[] = [
     rowSpan: 2
   },
   {
-    id: '10',
-    type: 'image',
-    src: 'https://i.ibb.co/bMn4cJmN/03-08-25-1.jpg?auto=compress&cs=tinysrgb&w=600',
-    alt: 'Diseño de publicaciones para redes sociales',
-    aspectRatio: 1 / 1,
-    colSpan: 1,
-    rowSpan: 3
-  },
-  {
     id: '11',
     type: 'image',
     src: 'https://i.ibb.co/GGf1qGH/post-2-11.jpg?auto=compress&cs=tinysrgb&w=600',
@@ -479,7 +418,7 @@ export const gallery: GalleryItem[] = [
     rowSpan: 3
   },
   {
-    id: '11',
+    id: '12',
     type: 'image',
     src: 'https://i.ibb.co/9mxQ80xh/minuatura-yt.jpg?auto=compress&cs=tinysrgb&w=600',
     alt: 'Publicaciones de redes sociales',

@@ -28,14 +28,13 @@ export interface Project {
   image: string;
   liveUrl?: string;
   githubUrl?: string;
-  category: 'web' | 'mobile' | '3d' | 'video';
+  category: 'web' | 'mobile' | '3d' | 'video' | 'diseño';
   featured?: boolean;
 }
 
 export interface Skill {
   name: string;
   category: string;
-  proficiency: number;
   icon: string;
 }
 
@@ -52,4 +51,7 @@ export interface GalleryItem {
   src: string;
   alt: string;
   poster?: string;
+  aspectRatio: number;
+  colSpan: number;
+  rowSpan: number;
 }
