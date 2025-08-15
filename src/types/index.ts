@@ -55,3 +55,19 @@ export interface GalleryItem {
   colSpan: number;
   rowSpan: number;
 }
+
+// Types for SVGL API
+export type ThemeOptions = {
+  dark: string;
+  light: string;
+};
+
+export interface iSVG {
+  id?: number;
+  title: string;
+  category: string | string[];
+  route: string | ThemeOptions;
+  wordmark?: string | ThemeOptions;
+  brandUrl?: string;
+  url: string;
+}

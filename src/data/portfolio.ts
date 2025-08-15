@@ -296,7 +296,7 @@ export const projects: Project[] = [
     id: '8',
     title: 'Video de Identidad de Marca',
     description: 'Producción audiovisual para campaña de lanzamiento de una startup: motion graphics y edición profesional.',
-    techStack: ['Davinci Resolve', 'Photoshop', 'Unreal Engine'],
+    techStack: ['DaVinci Resolve', 'Photoshop', 'Unreal Engine'],
     image: 'https://i.ibb.co/C5xJ4D8h/video.png?auto=compress&cs=tinysrgb&w=600',
     category: 'video'
   },
@@ -328,7 +328,7 @@ export const skills: Skill[] = [
 
 //Administración
   { name: 'Excel', category: 'Administración', icon: 'FileText' },
-  { name: 'AWS', category: 'Administración', icon: 'Cloud' },
+  { name: 'Amazon Web Services', category: 'Administración', icon: 'Cloud' },
   { name: 'Firebase', category: 'Administración', icon: 'Package' },
   { name: 'Git', category: 'Administración', icon: 'GitBranch' },
   { name: 'Google Analytics', category: 'Administración',  icon: 'BarChart2' },
@@ -338,18 +338,18 @@ export const skills: Skill[] = [
 // Programming Languages
   { name: 'TypeScript', category: 'Desarrollo', icon: 'Code' },
   { name: 'Python', category: 'Desarrollo', icon: 'Code' },
-  { name: 'SQL Server', category: 'Desarrollo', icon: 'Database' },
+  { name: 'Microsoft SQL Server', category: 'Desarrollo', icon: 'Database' },
   { name: 'React', category: 'Desarrollo', icon: 'Globe' },
   { name: 'Next.js', category: 'Desarrollo', icon: 'Globe' },
   { name: 'Tailwind CSS', category: 'Desarrollo', icon: 'Palette' },
   { name: 'Node.js', category: 'Desarrollo', icon: 'Server' },
   { name: 'HTML5', category: 'Desarrollo', icon: 'FileCode' },
-  { name: 'CSS3', category: 'Desarrollo', icon: 'FileCode2' },
+  { name: 'CSS', category: 'Desarrollo', icon: 'FileCode2' },
 
 // Design and Multimedia
   { name: 'Photoshop', category: 'Diseño', icon: 'Image' },
   { name: 'Unreal Engine', category: 'Diseño',  icon: 'Gamepad2' },
-  { name: 'Danvinci Resolve', category: 'Diseño', icon: 'Film' },
+  { name: 'DaVinci Resolve', category: 'Diseño', icon: 'Film' },
   { name: 'Lightroom', category: 'Diseño', icon: 'Camera' },
   { name: 'Figma', category: 'Diseño',  icon: 'PenTool' },
   { name: 'Canva', category: 'Diseño', icon: 'Brush' },
@@ -363,67 +363,67 @@ export const skills: Skill[] = [
 ];
 export const gallery: GalleryItem[] = [
   {
-    id: '2',
+    id: '1',
     type: 'image',
     src: 'https://i.ibb.co/3YjSNfr8/Highres-Screenshot00023.jpg?auto=compress&cs=tinysrgb&w=600',
-    alt: 'Renderizado de videojuego de horror',
+    alt: 'Mapa 3D para videojuego de horror',
     aspectRatio: 27.5 / 18.5,
     colSpan: 2,
     rowSpan: 2
   },
   {
-    id: '4',
+    id: '2',
     type: 'image',
     src: 'https://i.ibb.co/KpSsh3kj/renders-6.png?auto=compress&cs=tinysrgb&w=600',
-    alt: 'Renderizado videojuego de terror',
+    alt: 'Render arquitectónico de ambiente interior',
     aspectRatio: 25.5 / 19,
     colSpan: 1,
     rowSpan: 3
   },
   {
-    id: '5',
+    id: '3',
     type: 'video',
     src: 'https://files.catbox.moe/rc3u56.mp4',
-    alt: 'Animación 3D',
+    alt: 'Video profesional para panadería: grabación y edición',
     poster: 'https://images.pexels.com/photos/854109/pexels-photo-854109.jpeg?auto=compress&cs=tinysrgb&w=600',
     aspectRatio: 16 / 9,
     colSpan: 2,
     rowSpan: 2
   },
   {
-    id: '6',
+    id: '4',
     type: 'image',
     src: 'https://i.ibb.co/5W4sPDPj/renders-4.png?auto=compress&cs=tinysrgb&w=600',
-    alt: 'Renderizado de ambiente aquitectónico',
+    alt: 'Render de ambiente arquitectónico moderno',
     aspectRatio: 23 / 17,
     colSpan: 1,
     rowSpan: 1
   },
   {
-    id: '9',
+    id: '5',
     type: 'image',
     src: 'https://i.ibb.co/Q7xrRPqY/03-08-25-2.jpg?auto=compress&cs=tinysrgb&w=600',
-    alt: 'Publicaciones de redes sociales',
+    alt: 'Diseño gráfico para marca de moda urbana',
     aspectRatio: 1 / 1,
     colSpan: 2,
     rowSpan: 2
   },
   {
-    id: '11',
+    id: '6',
     type: 'image',
     src: 'https://i.ibb.co/GGf1qGH/post-2-11.jpg?auto=compress&cs=tinysrgb&w=600',
-    alt: 'Publicaciones de redes sociales',
+    alt: 'Publicación para empresa de luminaria: diseño y marketing',
     aspectRatio: 1 / 1,
     colSpan: 1,
     rowSpan: 3
   },
   {
-    id: '12',
+    id: '7',
     type: 'image',
     src: 'https://i.ibb.co/9mxQ80xh/minuatura-yt.jpg?auto=compress&cs=tinysrgb&w=600',
-    alt: 'Publicaciones de redes sociales',
+    alt: 'Miniatura de video para empresa de publicidad LED',
     aspectRatio: 16 / 9,
     colSpan: 1,
     rowSpan: 3
-  },
+  }
 ];
