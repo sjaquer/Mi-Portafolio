@@ -20,7 +20,7 @@ const Hero: React.FC = () => {
   const socialLinks = [
     { icon: Github, url: 'https://github.com/sjaquer', label: 'GitHub' },
     { icon: Linkedin, url: 'https://linkedin.com/in/sjaquer', label: 'LinkedIn' },
-    { icon: Instagram, url: 'https://instagram.com/sjaquer_', label: 'Instagram' },
+    { icon: Instagram, url: 'https://instagram.com/sjaquer.dev', label: 'Instagram' },
     { icon: Youtube, url: 'https://youtube.com/@sjaquer', label: 'YouTube' }
   ];
 
