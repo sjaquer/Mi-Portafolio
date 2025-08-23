@@ -13,7 +13,6 @@ const Education: React.FC = () => {
 
   const visibleEducation = showAll ? education : education.slice(0, 6);
 
-
   return (
     <section id="education" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/30">
       <div className="max-w-7xl mx-auto">
@@ -39,7 +38,7 @@ const Education: React.FC = () => {
           {/* Timeline Line */}
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#F2A900] to-[#0072C6] transform md:-translate-x-0.5"></div>
 
-          {/* Items de educacion*/}
+          {/* Items de educacion */}
           <div className="space-y-12">
             {visibleEducation.map((edu, index) => (
               <motion.div
@@ -131,7 +130,7 @@ const Education: React.FC = () => {
           </div>
         </div>
         
-{education.length > 6 && (
+        {education.length > 6 && (
           <div className="text-center mt-8">
             <button
               onClick={() => setShowAll(!showAll)}
@@ -141,37 +140,6 @@ const Education: React.FC = () => {
             </button>
           </div>
         )}
-
-
-        {/* Certificacione Adicionales */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-16"
-        >
-          <h3 className="text-2xl font-bold text-center mb-8 text-white">
-            Aprendizaje y Desarrollo Adicional
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              'Core Principles of Sustainable Business Strategy',
-              'Applications of Artificial Intelligence in Business',
-              'Data Analysis and Visualization with Excel and Power BI',
-              'Applied Python Programming for Artificial Intelligence',
-              'Fundamentals of Machine Learning and Predictive Modeling',
-              'Modern Web Application Development and Deployment',
-            ].map((cert, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-3 p-4 bg-gray-800/50 rounded-lg border border-gray-700/50 hover:border-[#0072C6]/30 transition-colors"
-              >
-                <Award className="text-[#0072C6] flex-shrink-0" size={16} />
-                <span className="text-gray-300 text-sm">{cert}</span>
-              </div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );

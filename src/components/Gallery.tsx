@@ -64,61 +64,77 @@ const Gallery: React.FC = () => {
   }, [selectedIndex, gallery]);
 
   return (
-    <section id="gallery" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/30">
+    <section id="gallery" className="py-20 px-4 sm:px-6 lg:px-8 bg-transparent">
       <div className="max-w-7xl mx-auto">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-[#F2A900] to-[#0072C6] bg-clip-text text-transparent">
-              Galería Multimedia
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+              Galería
             </span>
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Una selección de mis trabajos visuales. Haz clic en cualquier elemento para verlo en detalle.
-          </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[200px]">
-          {gallery.map((item, index) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`group overflow-hidden rounded-xl relative shadow-lg cursor-pointer`}
-              onClick={() => openModal(item, index)}
-              style={{
-                gridColumn: `span ${item.colSpan || 1}`,
-                gridRow: `span ${item.rowSpan || 1}`,
-              }}
-            >
-              {item.type === 'image' ? (
-                <img
-                  loading="lazy"
-                  src={item.src}
-                  alt={item.alt}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-              ) : (
-                <video
-                  src={item.src}
-                  className="w-full h-full object-cover"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  poster={item.poster}
-                />
-              )}
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors" />
-              
-            </motion.div>
-          ))}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" style={{ gridAutoFlow: 'dense' }}>
+          {gallery.map((item, index) => {
+            const col = item.colSpan || 1;
+            const row = item.rowSpan || 1;
+            // centrar si ocupa un número impar de columnas/filas
+            const centerClass = (col % 2 !== 0 || row % 2 !== 0) ? 'justify-self-center' : '';
+
+            return (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={inView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.45, delay: index * 0.06 }}
+                className={`group overflow-hidden rounded-xl relative shadow-lg cursor-pointer bg-dark-800/60 backdrop-blur-xs ${centerClass}`}
+                style={{
+                  gridColumn: `span ${col}`,
+                  gridRow: `span ${row}`,
+                  minHeight: 140,
+                  maxHeight: 420,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+                onClick={() => openModal(item, index)}
+              >
+                {item.type === 'image' ? (
+                  <img
+                    loading="lazy"
+                    src={item.src}
+                    alt={item.alt}
+                    className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                    style={{ maxWidth: '100%', maxHeight: '100%' }}
+                  />
+                ) : (
+                  <video
+                    src={item.src}
+                    poster={item.poster}
+                    className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  />
+                )}
+
+                {/* subtle hover overlay using page palette */}
+                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="w-full h-full bg-gradient-to-r from-secondary/10 to-primary/10 rounded-xl" />
+                </div>
+
+                {/* NOTA: removí la leyenda visible del alt para que no aparezca sobre la imagen.
+                   El atributo alt se mantiene para accesibilidad pero no se muestra. */}
+              </motion.div>
+            );
+          })}
         </div>
       </div>
 
