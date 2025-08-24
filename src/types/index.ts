@@ -7,29 +7,34 @@ export interface Experience {
   techStack: string[];
   responsibilities: string[];
   current?: boolean;
+  role?: string;
+  summary?: string;
 }
 
 export interface Education {
   id: string;
   degree: string;
   institution: string;
-  duration: string;
-  status: string;
-  gpa?: string;
+  duration?: string;
+  status?: string;
   relevant?: string[];
   certificateUrl?: string;
+  description?: string;
 }
 
 export interface Project {
   id: string;
   title: string;
-  description: string;
-  techStack: string[];
-  image: string;
+  description?: string;
+  image?: string;
   liveUrl?: string;
   githubUrl?: string;
-  category: 'web' | 'mobile' | '3d' | 'video' | 'diseño';
+  category?: string;
   featured?: boolean;
+  techStack?: string[];
+  details?: string[];
+  subtitle?: string;
+  year?: string;
 }
 
 export interface Skill {

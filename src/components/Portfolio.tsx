@@ -1,199 +1,170 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { ExternalLink, Github, Play, Code, Palette, Film, Box } from 'lucide-react';
+import { ExternalLink, Github, Code, Palette, Box } from 'lucide-react';
 import { projects } from '../data/portfolio';
 
 const Portfolio: React.FC = () => {
-  const [ref, inView] = useInView({
-    threshold: 0.1,
-    triggerOnce: true
-  });
+  const [ref, inView] = useInView({ threshold: 0.08, triggerOnce: true });
+  const [filter, setFilter] = useState<'all' | string>('all');
+  const [active, setActive] = useState<string | null>(null);
 
-  const [filter, setFilter] = useState('all');
-  const [selectedProject, setSelectedProject] = useState<string | null>(null);
+  // categorías dinámicas según proyectos (usa getIcon para iconos)
+  const categories = useMemo(() => {
+    const setCats = new Set<string>();
+    projects.forEach(p => setCats.add(p.category || 'other'));
+    const list = Array.from(setCats).map(c => ({ id: c, label: c.charAt(0).toUpperCase() + c.slice(1) }));
+    return [{ id: 'all', label: 'Todos' }, ...list];
+  }, []);
 
-  const categories = [
-    { id: 'all', label: 'Todos los Proyectos', icon: Code },
-    { id: 'web', label: 'Desarrollo Web', icon: Code },
-    { id: '3d', label: 'Unreal Engine', icon: Box },
-    { id: 'creative', label: 'Diseño y Multimedia', icon: Palette }
-  ];
-
-  const filteredProjects = filter === 'all'
-    ? projects
-    : filter === 'creative'
-      ? projects.filter(project =>
-          ['video', 'diseño', 'fotografia'].includes(project.category)
-        )
-      : projects.filter(project => project.category === filter);
-
-  const getCategoryIcon = (category: string) => {
-    switch (category) {
-      case 'web': return Code;
-      case '3d': return Box;
-      case 'creative': return Palette;
-      default: return Code;
+  const filtered = useMemo(() => {
+    if (filter === 'all') return projects;
+    const creativeCats = ['video', 'diseño', 'fotografia', 'creative'];
+    if (filter === 'creative') {
+      return projects.filter(p => creativeCats.includes(p.category ?? ''));
     }
+    return projects.filter(p => (p.category ?? '') === filter);
+  }, [filter]);
+
+  // mostrar destacados primero
+  const display = useMemo(() => [...filtered].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0)), [filtered]);
+
+  const getIcon = (category?: string) => {
+    if (!category) return Code;
+    if (category.includes('web')) return Code;
+    if (category.includes('3d')) return Box;
+    return Palette;
   };
 
   return (
-    <section id="portfolio" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-[#F2A900] to-[#0072C6] bg-clip-text text-transparent">
-              Portafolio Destacado
-            </span>
+    <section id="portfolio" ref={ref} className="relative py-24 px-6 lg:px-16 bg-gradient-to-br from-primary/6 to-dark/86 overflow-hidden">
+      <div className="pointer-events-none absolute -top-40 -left-36 w-96 h-96 rounded-full bg-primary/10 blur-[120px]" aria-hidden />
+
+      <div className="relative max-w-7xl mx-auto">
+        <motion.header initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }} className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-3 text-white">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/700">Portafolio</span>
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Una muestra de proyectos innovadores que abarcan desarrollo web, visualización 3D y medios creativos
-          </p>
-        </motion.div>
+          <p className="text-sm text-gray-300 max-w-2xl mx-auto">Proyectos seleccionados — claro, visual y accionable.</p>
+        </motion.header>
 
-        {/* Category Filter */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-4 mb-12"
-        >
-          {categories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => setFilter(category.id)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                filter === category.id
-                  ? 'bg-gradient-to-r from-[#F2A900] to-[#0072C6] text-white'
-                  : 'bg-gray-800/50 text-gray-400 hover:text-white hover:bg-gray-700/50'
-              }`}
-            >
-              <category.icon size={16} />
-              <span className="text-sm">{category.label}</span>
-            </button>
-          ))}
-        </motion.div>
-
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project, index) => {
-            const CategoryIcon = getCategoryIcon(project.category);
-            
+        <motion.div initial={{ opacity: 0, y: 12 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.45 }} className="flex flex-wrap justify-center gap-3 mb-10">
+          {categories.map((c: any) => {
+            const Icon = getIcon(c.id);
+            const activeCls = filter === c.id ? 'bg-gradient-to-r from-primary to-primary/700 text-white shadow' : 'bg-[rgba(255,255,255,0.02)] text-gray-300 border border-dark-200/30 hover:bg-[rgba(255,255,255,0.03)]';
             return (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`group relative bg-gradient-to-br from-[#262626]/50 to-[#1a1a1a]/50 border border-[#F2A900]/20 rounded-2xl overflow-hidden hover:border-[#0072C6]/30 ${
-                  project.featured ? 'md:col-span-2 lg:col-span-1' : ''
-                }`}
+              <button
+                key={c.id}
+                type="button"
+                onClick={() => setFilter(c.id)}
+                className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${activeCls}`}
+                aria-pressed={filter === c.id}
+                aria-label={c.label}
               >
-                {/* Project Image */}
-                <div className="relative h-48 overflow-hidden">
+                <Icon size={14} />
+                {c.label}
+              </button>
+            );
+          })}
+        </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr">
+          {display.map((project, i) => {
+            const CategoryIcon = getIcon(project.category || '');
+            // evitar error por subtitle en tiempo de compilación -> leer con any
+            const subtitle = (project as any).subtitle;
+            return (
+              <motion.article
+                key={project.id}
+                initial={{ opacity: 0, y: 18 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.45, delay: i * 0.04 }}
+                className={`group relative rounded-2xl overflow-hidden ${project.featured ? 'lg:col-span-2' : ''} bg-[rgba(6,12,25,0.78)] border border-dark-200/50 shadow-lg flex flex-col`}
+              >
+                <div className="relative w-full aspect-[16/9] overflow-hidden bg-dark-100">
                   <img
-                    loading="lazy"
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  
-                  {/* Category Badge */}
-                  <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1 bg-black/70 backdrop-blur-sm rounded-full">
-                    <CategoryIcon size={14} className="text-[#F2A900]" />
-                    <span className="text-xs text-white font-medium capitalize">{project.category}</span>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1 rounded-full bg-dark-100/60 border border-dark-200/30 text-xs">
+                    <CategoryIcon size={14} className="text-primary" />
+                    <span className="text-white/90 capitalize">{project.category}</span>
                   </div>
 
-                  {/* Featured Badge */}
                   {project.featured && (
-                    <div className="absolute top-4 right-4 px-3 py-1 bg-gradient-to-r from-[#F2A900] to-[#0072C6] text-white text-xs font-medium rounded-full">
+                    <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-primary/90 text-white text-xs font-medium">
                       Destacado
                     </div>
                   )}
 
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  
-                  {/* Action Buttons */}
-                  <div className="absolute bottom-4 left-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-4 left-4 right-4 flex items-center gap-3 justify-start opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-3 py-2 bg-[#F2A900] text-gray-900 rounded-lg text-sm font-medium hover:bg-[#d99900] transition-colors"
-                      >
-                        <ExternalLink size={14} />
-                        Ver Proyecto
+                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-primary text-white text-sm font-medium hover:brightness-95 transition-colors" aria-label={`Ver ${project.title}`}>
+                        <ExternalLink size={14} /> Ver
                       </a>
                     )}
                     {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-3 py-2 bg-gray-800 text-white rounded-lg text-sm font-medium hover:bg-gray-700 transition-colors"
-                      >
-                        <Github size={14} />
-                        Código
+                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-[rgba(255,255,255,0.03)] text-gray-200 text-sm font-medium hover:bg-[rgba(255,255,255,0.05)] transition-colors" aria-label={`Código ${project.title}`}>
+                        <Github size={14} /> Código
                       </a>
                     )}
                   </div>
                 </div>
 
-                {/* Project Info */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#F2A900] transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-400 text-sm mb-4 line-clamp-2">
-                    {project.description}
-                  </p>
-
-                  {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-2">
-                    {project.techStack.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="px-2 py-1 text-xs font-medium bg-[#0072C6]/10 text-[#0072C6] border border-[#0072C6]/20 rounded-md"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                <div className="p-5 flex-1 flex flex-col">
+                  <div className="flex items-start justify-between gap-4 mb-3">
+                    <div className="min-w-0">
+                      <h3 className="text-lg lg:text-xl font-semibold text-white leading-snug truncate">{project.title}</h3>
+                      {subtitle ? <p className="text-xs text-gray-400 mt-1 truncate">{subtitle}</p> : null}
+                    </div>
+                    {/* año eliminado intencionalmente para mantener layout limpio */}
                   </div>
+
+                  <p className="text-sm text-gray-300 mb-4 line-clamp-3">{project.description}</p>
+
+                  <div className="mt-auto flex items-center justify-between gap-3">
+                    <div className="flex flex-wrap gap-2">
+                      {project.techStack?.slice(0, 6).map((t, idx) => (
+                        <span key={idx} className="px-2 py-1 text-xs rounded-md bg-[rgba(4,118,217,0.06)] text-primary border border-primary/10">
+                          {t}
+                        </span>
+                      ))}
+                      {project.techStack && project.techStack.length > 6 && <span className="px-2 py-1 text-xs rounded-md bg-dark-100/40 text-gray-400">+{project.techStack.length - 6}</span>}
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => setActive(active === project.id ? null : project.id)}
+                      className="text-sm text-primary/90 hover:text-primary font-medium"
+                      aria-expanded={active === project.id}
+                      aria-controls={`project-detail-${project.id}`}
+                    >
+                      {active === project.id ? 'Cerrar' : 'Detalle'}
+                    </button>
+                  </div>
+
+                  {active === project.id && (
+                    <motion.div id={`project-detail-${project.id}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.25 }} className="mt-4 text-sm text-gray-300">
+                      <ul className="list-disc pl-5 space-y-1">
+                        {(project.details || []).slice(0, 8).map((d, k) => <li key={k}>{d}</li>)}
+                      </ul>
+                    </motion.div>
+                  )}
                 </div>
 
-                {/* Hover Effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-[#F2A900]/5 to-[#0072C6]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-              </motion.div>
+                <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-primary/6 to-transparent opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+              </motion.article>
             );
           })}
         </div>
 
-        {/* More Projects CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center mt-12"
-        >
-          <p className="text-gray-400 mb-6">
-            ¿Interesado en ver más de mi trabajo?
-          </p>
-          <a
-            href="https://github.com/sjaquer"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#F2A900] to-[#0072C6] text-white rounded-lg font-medium hover:from-[#d99900] hover:to-[#0060a3] transition-all duration-300 transform hover:scale-105"
-          >
-            <Github size={18} />
-            Ver todos los proyectos en GitHub
+        <motion.div initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.4 }} className="text-center mt-12">
+          <p className="text-sm text-gray-400 mb-4">¿Quieres ver más? Puedo compartir case studies o un paquete de proyectos relevantes.</p>
+          <a href="https://github.com/sjaquer" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-gradient-to-r from-primary to-primary/700 text-white text-sm font-semibold hover:brightness-95 transition-all">
+            <Github size={16} /> Ver más en GitHub
           </a>
         </motion.div>
       </div>

@@ -36,6 +36,18 @@ body {
   line-height: 1.5;
 }
 
+/* Evitar scroll horizontal accidental y mejorar render móvil */
+html, body, #root {
+  width: 100%;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Asegurar box sizing consistente */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 /* Headings */
 h1,h2,h3,h4 {
   color: #FFFFFF;
@@ -148,4 +160,9 @@ a:hover { color: var(--color-secondary); }
 :focus {
   outline: 3px solid rgba(11,91,255,0.12);
   outline-offset: 2px;
+}
+
+/* Small helper to clip las glows que usan posiciones negativas */
+.section-clip {
+  overflow: hidden;
 }

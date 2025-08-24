@@ -1,142 +1,168 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useMemo, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { GraduationCap, Award, Calendar } from 'lucide-react';
+import { Calendar, ExternalLink, ChevronDown, ChevronUp } from 'lucide-react';
 import { education } from '../data/portfolio';
 
+const INITIAL_COUNT = 4;
+const TRUNCATE = 120;
+const truncate = (s?: string, n = TRUNCATE) => (!s ? '' : s.length > n ? s.slice(0, n).trim() + '…' : s);
+
 const Education: React.FC = () => {
-  const [ref, inView] = useInView({
-    threshold: 0.1,
-    triggerOnce: true
-  });
+  const { ref, inView } = useInView({ threshold: 0.12, triggerOnce: true });
+  const [open, setOpen] = useState<string | null>(null);
   const [showAll, setShowAll] = useState(false);
 
-  const visibleEducation = showAll ? education : education.slice(0, 6);
+  const sorted = useMemo(() => {
+    const parseYear = (d?: string) => {
+      if (!d) return 0;
+      const m = d.match(/20\d{2}/g);
+      return m ? Math.max(...m.map(Number)) : 0;
+    };
+    return [...education].sort((a, b) => parseYear(b.duration) - parseYear(a.duration));
+  }, []);
+
+  const visibleCount = showAll ? sorted.length : Math.min(INITIAL_COUNT, sorted.length);
+  const visible = sorted.slice(0, visibleCount);
 
   return (
-    <section id="education" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/30">
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
+    <section
+      id="education"
+      ref={ref}
+      className="relative py-24 px-6 lg:px-16 bg-gradient-to-br from-primary/6 to-dark/86 overflow-hidden"
+    >
+      {/* fondos coherentes con Hero/Experience */}
+      <div className="pointer-events-none absolute -top-40 -left-36 w-96 h-96 rounded-full bg-primary/10 blur-[120px]" aria-hidden />
+      <div className="pointer-events-none absolute bottom-[-18%] right-[-12%] w-[34rem] h-[34rem] rounded-full bg-secondary/6 blur-[160px]" aria-hidden />
+
+      <div className="relative max-w-7xl mx-auto">
+        <motion.header
+          initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-12 text-center"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-[#F2A900] to-[#0072C6] bg-clip-text text-transparent">
-              Educación y Certificaciones
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-2 text-white">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/700">
+              Formación & Certificados
             </span>
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Aprendizaje continuo y desarrollo profesional mediante educación formal y certificaciones de la industria
-          </p>
-        </motion.div>
+          <p className="text-sm text-gray-400 max-w-2xl mx-auto">Selección clave — breve, visual y accionable.</p>
+        </motion.header>
 
-        {/* Timeline Layout */}
-        <div className="relative">
-          {/* Timeline Line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#F2A900] to-[#0072C6] transform md:-translate-x-0.5"></div>
-
-          {/* Items de educacion */}
-          <div className="space-y-12">
-            {visibleEducation.map((edu, index) => (
-              <motion.div
-                key={edu.id}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className={`relative flex items-center ${
-                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                } flex-col md:flex-row`}
-              >
-                {/* Nodo Timeline  */}
-                <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-gradient-to-r from-[#F2A900] to-[#0072C6] rounded-full transform md:-translate-x-2 z-10 shadow-lg">
-                  <div className="absolute inset-1 bg-gray-900 rounded-full"></div>
-                </div>
-
-                {/* Content Card */}
-                <div className={`w-full md:w-5/12 ml-12 md:ml-0 ${
-                  index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'
-                }`}>
-                  <div
-                    onClick={() => {
-                      if (edu.certificateUrl) {
-                        window.open(edu.certificateUrl, '_blank');
-                      }
-                    }}
-                    className="group bg-gradient-to-br from-gray-900/50 to-gray-800/50 border border-gray-700/50 rounded-2xl p-6 backdrop-blur-sm hover:border-[#0072C6]/30 transition-all duration-300"
-                    style={{ cursor: edu.certificateUrl ? 'pointer' : 'default' }}
-                  >
-                    {/* Status Badge */}
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center gap-2">
-                        {edu.status === 'Current Student' ? (
-                          <GraduationCap className="text-[#0072C6]" size={20} />
-                        ) : (
-                          <Award className="text-green-400" size={20} />
-                        )}
-                        <span className={`text-xs font-medium px-2 py-1 rounded-full ${
-                          edu.status === 'Current Student' 
-                            ? 'bg-[#0072C6]/20 text-[#0072C6] border border-[#0072C6]/30'
-                            : 'bg-green-500/20 text-green-400 border border-green-500/30'
-                        }`}>
-                          {edu.status}
-                        </span>
+        <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+          <AnimatePresence initial={false}>
+            {visible.map((item, i) => {
+              const expanded = open === item.id;
+              return (
+                <motion.article
+                  key={item.id}
+                  initial={{ opacity: 0, y: 28 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  exit={{ opacity: 0, y: 16 }}
+                  transition={{ duration: 0.5, delay: i * 0.04 }}
+                  whileHover={{ translateY: -6 }}
+                  className="relative rounded-2xl p-px"
+                >
+                  <div className="relative rounded-xl bg-[rgba(6,12,25,0.78)] border border-dark-200/50 backdrop-blur-xs p-6 flex flex-col h-full shadow-lg">
+                    <div className="flex items-start justify-between gap-4 mb-3">
+                      <div>
+                        <h3 className="text-lg font-semibold text-white leading-snug mb-1">{item.degree}</h3>
+                        <p className="text-primary text-sm font-medium">{item.institution}</p>
                       </div>
-                      <div className="flex items-center gap-1 text-gray-400 text-sm">
-                        <Calendar size={14} />
-                        <span>{edu.duration}</span>
+
+                      {/* CORRECCIÓN: usar columna con gap para evitar solapamiento */}
+                      <div className="flex flex-col items-end gap-2 text-xs text-gray-400">
+                        {item.duration && (
+                          <div className="inline-flex items-center gap-2">
+                            <Calendar size={14} className="text-primary/70" />
+                            <span className="whitespace-nowrap">{item.duration}</span>
+                          </div>
+                        )}
+                        {item.status && (
+                          <div
+                            className={`inline-block px-2 py-0.5 rounded-full text-[11px] font-medium ${
+                              /en curso|estudiant/i.test(item.status)
+                                ? 'bg-secondary/10 text-secondary border border-secondary/20'
+                                : 'bg-success/10 text-success border border-success/20'
+                            }`}
+                          >
+                            {item.status}
+                          </div>
+                        )}
                       </div>
                     </div>
 
-                    {/* Degree & Institution */}
-                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#F2A900] transition-colors">
-                      {edu.degree}
-                    </h3>
-                    <p className="text-[#0072C6] font-medium mb-4">{edu.institution}</p>
+                    {/* descripción compacta */}
+                    {item.description && (
+                      <p className="text-sm text-gray-300 mb-4 leading-relaxed">
+                        {expanded ? item.description : truncate(item.description, TRUNCATE)}
+                      </p>
+                    )}
 
-                    {/* GPA */}
-                    {edu.gpa && (
-                      <div className="mb-4">
-                        <span className="text-sm text-gray-400">GPA: </span>
-                        <span className="text-white font-medium">{edu.gpa}</span>
+                    {/* tags visuales */}
+                    {item.relevant && item.relevant.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {(expanded ? item.relevant : item.relevant.slice(0, 4)).map((t, idx) => (
+                          <span
+                            key={idx}
+                            className="px-2.5 py-1 rounded-md bg-[rgba(4,118,217,0.06)] text-primary text-[11px] font-medium border border-primary/10"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                        {!expanded && item.relevant.length > 4 && (
+                          <span className="px-2.5 py-1 rounded-md bg-dark-100/40 text-[11px] text-gray-400">
+                            +{item.relevant.length - 4}
+                          </span>
+                        )}
                       </div>
                     )}
 
-                    {/* Relevant Courses */}
-                    {edu.relevant && (
-                      <div className="space-y-2">
-                        <p className="text-sm text-gray-400 font-medium">Cursos Relevantes:</p>
-                        <div className="flex flex-wrap gap-2">
-                          {edu.relevant.map((course, courseIndex) => (
-                            <span
-                              key={courseIndex}
-                              className="px-2 py-1 text-xs bg-gray-700/50 text-gray-300 rounded-md"
-                            >
-                              {course}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    )}
+                    <div className="mt-auto flex items-center justify-between">
+                      {item.certificateUrl ? (
+                        <button
+                          onClick={() => window.open(item.certificateUrl, '_blank')}
+                          className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80"
+                        >
+                          Ver certificado <ExternalLink size={14} />
+                        </button>
+                      ) : (
+                        <span className="text-sm text-gray-500">Sin certificado</span>
+                      )}
 
-                    {/* Hover Effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#F2A900]/5 to-[#0072C6]/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      {(item.description && item.description.length > TRUNCATE) ||
+                      (item.relevant && item.relevant.length > 4) ? (
+                        <button
+                          onClick={() => setOpen(expanded ? null : item.id)}
+                          className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80"
+                          aria-expanded={expanded}
+                        >
+                          {expanded ? (
+                            <>Ocultar <ChevronUp size={14} /></>
+                          ) : (
+                            <>Ver más <ChevronDown size={14} /></>
+                          )}
+                        </button>
+                      ) : null}
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                </motion.article>
+              );
+            })}
+          </AnimatePresence>
         </div>
-        
-        {education.length > 6 && (
-          <div className="text-center mt-8">
+
+        {/* Ver todos / colapsar */}
+        {sorted.length > INITIAL_COUNT && (
+          <div className="text-center mt-10">
             <button
-              onClick={() => setShowAll(!showAll)}
-              className="px-6 py-2 bg-gradient-to-r from-[#F2A900] to-[#0072C6] text-white rounded-lg font-medium hover:from-[#d99900] hover:to-[#0060a3] transition-all duration-300"
+              onClick={() => setShowAll(s => !s)}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-[rgba(255,255,255,0.03)] border border-dark-200/40 text-sm text-primary hover:bg-[rgba(255,255,255,0.045)] hover:text-primary/80 transition-colors"
+              aria-expanded={showAll}
             >
-              {showAll ? 'Mostrar menos' : 'Mostrar línea de tiempo completa'}
+              {showAll ? 'Mostrar menos' : `Ver todos (${sorted.length})`}
+              <span aria-hidden>{showAll ? <ChevronUp size={14} /> : <ChevronDown size={14} />}</span>
             </button>
           </div>
         )}

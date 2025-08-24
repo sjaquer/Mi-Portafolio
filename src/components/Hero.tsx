@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
-import { motion, useAnimation } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import React, { useEffect, useRef, useState } from 'react';
+import { motion, AnimatePresence, useAnimation } from 'framer-motion';
 import {
   Download,
   MessageCircle,
@@ -11,254 +10,238 @@ import {
   MapPin,
   Mail,
   Briefcase,
-  Code,
-  Camera,
-  Palette
+  Code2,
+  Sparkles
 } from 'lucide-react';
 import profileImg from '/images/iconperso.webp';
 
+const ROLES = [
+  'Marketing Digital',
+  'Fotografía & Edición',
+  'Contenido que convierte',
+  'Desarrollo Web (soporte)'
+];
+
+const STATS = [
+  { label: 'Proyectos', value: '18+' },
+  { label: 'Campañas', value: '30+' },
+  { label: 'Tecnologías', value: '25+' }
+];
+
+const PILL_POINTS = [
+  { icon: Sparkles, text: 'Creatividad aplicada a objetivos' },
+  { icon: Briefcase, text: 'Estrategia comercial y ejecución' },
+  { icon: Code2, text: 'Soporte técnico: web & automatización' }
+];
+
+const socialLinks = [
+  { icon: Github, url: 'https://github.com/sjaquer', label: 'GitHub' },
+  { icon: Linkedin, url: 'https://linkedin.com/in/sjaquer', label: 'LinkedIn' },
+  { icon: Instagram, url: 'https://instagram.com/sjaquer.dev', label: 'Instagram' },
+  { icon: Youtube, url: 'https://youtube.com/@sjaquer', label: 'YouTube' }
+];
+
 const Hero: React.FC = () => {
-  const socialLinks = [
-    { icon: Github, url: 'https://github.com/sjaquer', label: 'GitHub' },
-    { icon: Linkedin, url: 'https://linkedin.com/in/sjaquer', label: 'LinkedIn' },
-    { icon: Instagram, url: 'https://instagram.com/sjaquer.dev', label: 'Instagram' },
-    { icon: Youtube, url: 'https://youtube.com/@sjaquer', label: 'YouTube' }
-  ];
-
-  const specialties = [
-    { icon: Briefcase, label: 'Estrategia y Consultoría' },
-    { icon: Code, label: 'Desarrollo Web' },
-    { icon: Camera, label: 'Producción Multimedia' },
-    { icon: Palette, label: 'Diseño & 3D' }
-  ];
-
-  // solo pulsación del contenedor del perfil (sin iconos orbitando)
-  const pulseControls = useAnimation();
-  const { ref: heroRef, inView } = useInView({
-    threshold: 0.4,
-    triggerOnce: false
-  });
+  const rootRef = useRef<HTMLElement | null>(null);
+  const controls = useAnimation();
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [inView, setInView] = useState(false);
+  const [parallax, setParallax] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    if (inView) {
-      pulseControls.start({
-        scale: [1, 1.03, 1],
-        transition: { duration: 6, repeat: Infinity, ease: 'easeInOut' }
-      });
-    } else {
-      pulseControls.stop();
-    }
-  }, [inView, pulseControls]);
+    const id = setInterval(() => setRoleIndex(i => (i + 1) % ROLES.length), 2600);
+    return () => clearInterval(id);
+  }, []);
 
-  const handleWhatsApp = () => {
-    window.open('https://wa.me/946978919?text=Hola, te eh contactado a través de tu pagina', '_blank');
-  };
+  useEffect(() => {
+    if (!rootRef.current) return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        const e = entries[0];
+        setInView(e.isIntersecting);
+        if (e.isIntersecting) controls.start('visible');
+      },
+      { threshold: 0.28 }
+    );
+    obs.observe(rootRef.current);
+    return () => obs.disconnect();
+  }, [controls]);
 
   const handleDownloadCV = () => {
-    const link = document.createElement('a');
-    link.href = 'pdf/sebastian-jaque-cv2025.pdf';
-    link.download = 'Sebastián Jaque-CV.pdf';
-    link.click();
+    const a = document.createElement('a');
+    a.href = 'pdf/sebastian-jaque-cv2025.pdf';
+    a.download = 'Sebastian-Jaque-CV.pdf';
+    a.click();
+  };
+
+  const handleWhatsApp = () =>
+    window.open('https://wa.me/946978919?text=Hola,%20quiero%20conocer%20tus%20servicios', '_blank');
+
+  const onPointerMove = (e: React.PointerEvent) => {
+    const rect = (e.currentTarget as HTMLDivElement).getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 8;
+    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 8;
+    setParallax({ x, y });
   };
 
   return (
     <section
       id="home"
-      ref={heroRef}
-      className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16 bg-gradient-to-br from-primary/8 via-primary/5 to-dark/80 relative overflow-hidden"
+      ref={rootRef}
+      onPointerMove={onPointerMove}
+      className="relative min-h-[80vh] md:min-h-[86vh] lg:min-h-[92vh] flex items-center pt-24 pb-20 px-6 sm:px-8 lg:px-16 bg-gradient-to-br from-primary/6 to-dark/86 overflow-hidden"
     >
-      {/* Fondo dinámico ligero (se eliminó la luz amarilla para un estilo uniforme) */}
-      <motion.div
-        aria-hidden="true"
-        initial={{ opacity: 0 }}
-        animate={inView ? { opacity: 1 } : { opacity: 0 }}
-        className="pointer-events-none absolute inset-0"
-      >
-        <div className="absolute -top-40 -left-40 w-80 h-80 rounded-full bg-primary/10 blur-[120px]" />
-        {/* luz amarilla removida */}
-      </motion.div>
+      {/* glows sutiles (primary + secondary acento muy discreto) */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden>
+        <div className="absolute -top-44 -left-40 w-96 h-96 rounded-full bg-primary/10 blur-[120px]" />
+        <div className="absolute bottom-[-20%] right-[-14%] w-[40rem] h-[40rem] rounded-full bg-secondary/6 blur-[160px]" />
+      </div>
 
-      <div className="max-w-7xl mx-auto w-full relative">
-        <div className="grid lg:grid-cols-2 gap-10 items-center">
-          {/* Columna izquierda */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-            transition={{ duration: 0.7 }}
-            className="text-center lg:text-left"
-          >
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 mb-4">
-              <div className="w-2 h-2 bg-secondary rounded-full mr-2 animate-pulse" />
-              <span className="text-sm text-gray-300">Disponible para trabajar</span>
-            </div>
+      <div className="relative w-full max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+        {/* Texto compacto y directo */}
+        <div className="z-10">
+          <div className="mb-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[rgba(255,255,255,0.02)] border border-dark-200/40 text-xs text-gray-300">
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            Disponible · Remoto / Freelance
+          </div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 15 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.15, duration: 0.7 }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 leading-tight"
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight mb-3 text-white">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/700">
+              Sebastián Jaque
+            </span>
+          </h1>
+
+          <div className="h-9 mb-4">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={roleIndex}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.45 }}
+                className="inline-flex items-center gap-3 text-lg sm:text-xl font-medium text-gray-100"
+              >
+                <span className="w-2 h-2 rounded-full bg-primary" />
+                <span>{ROLES[roleIndex]}</span>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          <p className="text-sm sm:text-base text-gray-300 max-w-lg mb-6">
+            Marketing y producción visual que aumentan conversión. Desarrollo y automatización como soporte técnico.
+          </p>
+
+          {/* puntos compactos (breves, clave) */}
+          <div className="flex flex-col sm:flex-row gap-3 mb-6">
+            {PILL_POINTS.map((p, i) => {
+              const Icon = p.icon;
+              return (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.06 * i }}
+                  className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-[rgba(255,255,255,0.02)] border border-dark-200/30 text-xs text-gray-300"
+                >
+                  <span className="p-1 rounded-sm bg-primary/10 text-primary"><Icon size={14} /></span>
+                  {p.text}
+                </motion.span>
+              );
+            })}
+          </div>
+
+          {/* CTA claros: CV (primary) + Contactar (success) */}
+          <div className="flex flex-wrap gap-3 items-center mb-6">
+            <motion.button
+              onClick={handleDownloadCV}
+              whileHover={{ scale: 1.02 }}
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-gradient-to-r from-primary to-primary/700 text-white text-sm font-semibold shadow-sm"
             >
-              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
-                Sebastián Jaque
-              </span>
-            </motion.h1>
+              <Download size={14} /> CV
+            </motion.button>
 
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.25, duration: 0.6 }}
-              className="text-xl sm:text-2xl font-medium text-gray-300 mb-6"
+            <motion.button
+              onClick={handleWhatsApp}
+              whileHover={{ scale: 1.02 }}
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-success text-white text-sm font-medium"
             >
-              <span className="text-secondary">Creative Business Designer</span>
-              <span className="mx-2 text-gray-500">&</span>
-              <span className="text-primary">Solutions Developer</span>
-            </motion.div>
+              <MessageCircle size={14} /> Contactar
+            </motion.button>
 
-            <motion.p
-              initial={{ opacity: 0, y: 15 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.35, duration: 0.6 }}
-              className="text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0"
-            >
-              Impulso la eficiencia empresarial con tecnología creativa y soluciones a medida.
-            </motion.p>
-
-            <motion.div
-              initial="hidden"
-              animate={inView ? 'visible' : 'hidden'}
-              variants={{
-                hidden: { opacity: 0 },
-                visible: { opacity: 1, transition: { staggerChildren: 0.07 } }
-              }}
-              className="grid grid-cols-2 gap-3 mb-8"
-            >
-              {specialties.map((s, i) => {
+            <div className="ml-2 flex gap-2">
+              {socialLinks.map((s, i) => {
                 const Icon = s.icon;
                 return (
-                  <motion.div
-                    key={i}
-                    variants={{
-                      hidden: { opacity: 0, y: 12 },
-                      visible: { opacity: 1, y: 0 }
-                    }}
-                    className="flex items-center gap-3 p-3 rounded-lg bg-dark-100 border border-dark-200/40 hover:border-primary/40 transition-colors"
-                  >
-                    <div className="p-2 rounded-md bg-primary text-white shadow-sm">
-                      <Icon size={16} />
-                    </div>
-                    <span className="text-sm text-white/90">{s.label}</span>
-                  </motion.div>
-                );
-              })}
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.45, duration: 0.55 }}
-              className="flex flex-wrap items-center justify-center lg:justify-start gap-6 mb-8 text-gray-400"
-            >
-              <div className="flex items-center gap-2">
-                <MapPin size={16} className="text-primary" />
-                <span>Perú, Lima</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail size={16} className="text-primary" />
-                <span>sjaquer@outlook.es</span>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.55, duration: 0.55 }}
-              className="flex flex-wrap gap-3 justify-center lg:justify-start mb-6"
-            >
-              <button onClick={handleDownloadCV} className="btn-primary flex items-center gap-2">
-                <Download size={16} />
-                Descargar CV
-              </button>
-              <button onClick={handleWhatsApp} className="btn-ghost flex items-center gap-2">
-                <MessageCircle size={16} />
-                WhatsApp
-              </button>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.65, duration: 0.55 }}
-              className="flex gap-3 justify-center lg:justify-start"
-            >
-              {socialLinks.map((social, idx) => {
-                const Icon = social.icon;
-                return (
                   <a
-                    key={idx}
-                    href={social.url}
+                    key={i}
+                    href={s.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 bg-dark-100 rounded-lg text-gray-300 hover:text-white hover:bg-dark-200 transition-colors"
-                    aria-label={social.label}
+                    className="p-2 rounded-md bg-[rgba(255,255,255,0.02)] border border-dark-200/30 text-gray-300 hover:text-white"
+                    aria-label={s.label}
                   >
-                    <Icon size={18} className="text-primary" />
+                    <Icon size={14} />
                   </a>
                 );
               })}
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
-          {/* Columna derecha */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="flex justify-center lg:justify-end"
-          >
-            <div className="relative">
-              {/* Contenedor planeta con pulso, sin iconos en la foto */}
+          {/* stats compactos, con primary resaltando valores */}
+          <div className="flex gap-3">
+            {STATS.map((st, i) => (
               <motion.div
-                animate={pulseControls}
-                className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[420px] lg:h-[420px] flex items-center justify-center"
+                key={i}
+                initial={{ opacity: 0, y: 8 }}
+                animate={inView ? { opacity: 1, y: 0 } : { opacity: 0 }}
+                transition={{ delay: 0.05 * i }}
+                className="px-3 py-2 rounded-md bg-[rgba(255,255,255,0.02)] border border-dark-200/30 text-xs"
               >
-                {/* Halo */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={inView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ duration: 1.2, ease: 'easeOut' }}
-                  className="absolute inset-0 rounded-full"
-                  style={{
-                    background: 'radial-gradient(circle at 50% 50%, rgba(11,95,255,0.18), rgba(11,95,255,0.05), transparent 70%)'
-                  }}
-                />
-                {/* Imagen */}
-                <div className="w-56 h-56 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full ring-2 ring-secondary/25 overflow-hidden bg-dark-100 shadow-[0_0_40px_-8px_rgba(11,95,255,0.4)]">
-                  <img
-                    src={profileImg}
-                    alt="Sebastián Jaque"
-                    className="w-full h-full object-cover"
-                    width={384}
-                    height={384}
-                    fetchPriority="high"
-                  />
-                </div>
+                <div className="text-sm font-semibold text-primary">{st.value}</div>
+                <div className="text-[11px] text-gray-400">{st.label}</div>
               </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Imagen con parallax sutil y mayor tamaño en PC */}
+        <div className="relative flex justify-center lg:justify-end">
+          <motion.div
+            animate={{ x: parallax.x, y: parallax.y, scale: inView ? 1 : 0.99 }}
+            transition={{ type: 'spring', stiffness: 80, damping: 14 }}
+            className="relative w-[260px] h-[260px] sm:w-[360px] sm:h-[360px] lg:w-[520px] lg:h-[520px]"
+          >
+            <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_50%_40%,rgba(4,118,217,0.06),transparent_60%)]" />
+            <div className="absolute inset-0 rounded-full ring-1 ring-primary/10" />
+            <div className="absolute inset-6 sm:inset-8 rounded-full overflow-hidden bg-dark-100 shadow-2xl">
+              <img src={profileImg} alt="Foto Sebastián" className="w-full h-full object-cover" />
+            </div>
+
+            {/* pequeño acento secondary en rim del anillo (uso puntual) */}
+            <div className="absolute -right-6 -top-6 hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 text-[12px] text-secondary border border-secondary/20">
+              <span className="text-xs">Portfolio</span>
             </div>
           </motion.div>
         </div>
       </div>
 
-      {/* Botón flotante WhatsApp */}
+      {/* WhatsApp flotante (success) */}
       <motion.button
         onClick={handleWhatsApp}
-        className="fixed bottom-6 right-6 z-40 p-3 rounded-full shadow-lg bg-green-600 text-white hover:bg-green-700 transition-colors"
         initial={{ scale: 0 }}
         animate={inView ? { scale: 1 } : { scale: 0 }}
-        transition={{ delay: 0.9, type: 'spring' }}
+        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+        className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-success text-white shadow-lg"
         aria-label="WhatsApp"
       >
-        <MessageCircle size={20} />
+        <MessageCircle size={18} />
       </motion.button>
+
+      {/* Info ligera inferior */}
+      <div className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 text-[11px] text-gray-500 flex gap-6">
+        <div className="flex items-center gap-1"><MapPin size={12} className="text-primary/80" /> Lima, Perú</div>
+        <div className="flex items-center gap-1"><Mail size={12} className="text-primary/80" /> sjaquer@outlook.es</div>
+      </div>
     </section>
   );
 };

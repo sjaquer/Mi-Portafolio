@@ -1,137 +1,122 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { gallery as galleryData } from '../data/portfolio';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { gallery as galleryData } from '../data/portfolio';
+
+/*
+  Gallery: adaptado al estilo visual de Hero/Experience/Skills/Education
+  - Paleta primary/secondary, glows coherentes
+  - Grid responsivo y ordenado (auto-rows-fr)
+  - Aspect-ratio consistente, items destacados se ven mejor
+  - Modal accesible con navegación por teclado
+*/
 
 const getGridProps = (width: number, height: number) => {
-  const aspectRatio = width / height;
-  let colSpan = 1, rowSpan = 1;
-  if (aspectRatio > 1.3) { // Horizontal
-    colSpan = 2;
-    rowSpan = 1;
-  } else if (aspectRatio < 0.8) { // Vertical
-    colSpan = 1;
-    rowSpan = 2;
-  } else { // Cuadrada o casi
-    colSpan = 1;
-    rowSpan = 1;
-  }
-  return { aspectRatio, colSpan, rowSpan };
+  const aspect = width / height || 1;
+  if (aspect > 1.4) return { colSpan: 2, rowSpan: 1, aspectRatio: aspect };
+  if (aspect < 0.8) return { colSpan: 1, rowSpan: 2, aspectRatio: aspect };
+  return { colSpan: 1, rowSpan: 1, aspectRatio: aspect };
 };
 
 const Gallery: React.FC = () => {
-  const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
-  const [selectedItem, setSelectedItem] = useState<typeof galleryData[0] | null>(null);
+  const [ref, inView] = useInView({ threshold: 0.08, triggerOnce: true });
+  const [items, setItems] = useState(galleryData);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const [gallery, setGallery] = useState(galleryData);
 
   useEffect(() => {
-    // Solo para imágenes, detecta dimensiones y ajusta grid
+    // Detecta dimensiones de imágenes y ajusta col/row/ratio
     Promise.all(
-      galleryData.map((item) => {
-        if (item.type !== 'image') return Promise.resolve(item);
+      galleryData.map((it) => {
+        if (it.type !== 'image') return Promise.resolve(it);
         return new Promise(resolve => {
           const img = new window.Image();
-          img.src = item.src;
+          img.src = it.src;
           img.onload = () => {
-            const { aspectRatio, colSpan, rowSpan } = getGridProps(img.naturalWidth, img.naturalHeight);
-            resolve({ ...item, aspectRatio, colSpan, rowSpan });
+            const props = getGridProps(img.naturalWidth, img.naturalHeight);
+            resolve({ ...it, aspectRatio: props.aspectRatio, colSpan: props.colSpan, rowSpan: props.rowSpan });
           };
-          img.onerror = () => resolve(item);
+          img.onerror = () => resolve(it);
         });
       })
-    ).then((newGallery) => setGallery(newGallery));
+    ).then((newItems) => setItems(newItems as typeof galleryData));
   }, []);
 
-  const openModal = (item: typeof gallery[0], index: number) => {
-    setSelectedItem(item);
-    setSelectedIndex(index);
-  };
+  const openModal = (index: number) => setSelectedIndex(index);
+  const closeModal = () => setSelectedIndex(null);
 
-  const closeModal = () => {
-    setSelectedItem(null);
-    setSelectedIndex(null);
-  };
-
-  const navigate = useCallback((direction: 'next' | 'prev') => {
+  const navigate = useCallback((dir: 'next' | 'prev') => {
     if (selectedIndex === null) return;
-    const newIndex = direction === 'next'
-      ? (selectedIndex + 1) % gallery.length
-      : (selectedIndex - 1 + gallery.length) % gallery.length;
-    setSelectedItem(gallery[newIndex]);
-    setSelectedIndex(newIndex);
-  }, [selectedIndex, gallery]);
+    const next = dir === 'next' ? (selectedIndex + 1) % items.length : (selectedIndex - 1 + items.length) % items.length;
+    setSelectedIndex(next);
+  }, [selectedIndex, items]);
+
+  // teclado en modal
+  useEffect(() => {
+    if (selectedIndex === null) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'ArrowRight') navigate('next');
+      if (e.key === 'ArrowLeft') navigate('prev');
+    };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, [selectedIndex, navigate]);
 
   return (
-    <section id="gallery" className="py-20 px-4 sm:px-6 lg:px-8 bg-transparent">
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
-              Galería
-            </span>
-          </h2>
-        </motion.div>
+    <section id="gallery" ref={ref} className="relative py-20 px-6 lg:px-16 bg-gradient-to-br from-primary/6 to-dark/86 overflow-hidden">
+      {/* glows coherentes con resto de secciones */}
+      <div className="pointer-events-none absolute -top-28 -left-24 w-72 h-72 rounded-full bg-primary/10 blur-[110px]" aria-hidden />
+      <div className="pointer-events-none absolute -bottom-36 -right-28 w-[30rem] h-[30rem] rounded-full bg-secondary/6 blur-[160px]" aria-hidden />
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" style={{ gridAutoFlow: 'dense' }}>
-          {gallery.map((item, index) => {
+      <div className="relative max-w-7xl mx-auto">
+        <motion.header initial={{ opacity: 0, y: 18 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.55 }} className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-2 text-white">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/700">Galería</span>
+          </h2>
+          <p className="text-sm text-gray-300 max-w-2xl mx-auto">Selección visual de proyectos y assets — minimal y clara.</p>
+        </motion.header>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-fr" style={{ gridAutoFlow: 'dense' }}>
+          {items.map((item, idx) => {
             const col = item.colSpan || 1;
             const row = item.rowSpan || 1;
-            // centrar si ocupa un número impar de columnas/filas
-            const centerClass = (col % 2 !== 0 || row % 2 !== 0) ? 'justify-self-center' : '';
-
             return (
               <motion.div
                 key={item.id}
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={inView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.45, delay: index * 0.06 }}
-                className={`group overflow-hidden rounded-xl relative shadow-lg cursor-pointer bg-dark-800/60 backdrop-blur-xs ${centerClass}`}
-                style={{
-                  gridColumn: `span ${col}`,
-                  gridRow: `span ${row}`,
-                  minHeight: 140,
-                  maxHeight: 420,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-                onClick={() => openModal(item, index)}
+                transition={{ duration: 0.45, delay: idx * 0.04 }}
+                className="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer bg-[rgba(6,12,25,0.78)] border border-dark-200/40"
+                style={{ gridColumn: `span ${col}`, gridRow: `span ${row}`, minHeight: 140 }}
+                onClick={() => openModal(idx)}
+                role="button"
+                aria-label={item.alt || 'Abrir elemento de galería'}
               >
-                {item.type === 'image' ? (
-                  <img
-                    loading="lazy"
-                    src={item.src}
-                    alt={item.alt}
-                    className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
-                    style={{ maxWidth: '100%', maxHeight: '100%' }}
-                  />
-                ) : (
-                  <video
-                    src={item.src}
-                    poster={item.poster}
-                    className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                  />
-                )}
-
-                {/* subtle hover overlay using page palette */}
-                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="w-full h-full bg-gradient-to-r from-secondary/10 to-primary/10 rounded-xl" />
+                <div className="w-full h-full flex items-center justify-center bg-dark-100">
+                  {item.type === 'image' ? (
+                    <img loading="lazy" src={item.src} alt={item.alt} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  ) : (
+                    /* Mostrar previsualización de video en la grilla:
+                       autoplay muted loop playsInline + poster para apreciar horizontalidad */
+                    <video
+                      src={item.src}
+                      poster={item.poster}
+                      muted
+                      loop
+                      playsInline
+                      autoPlay
+                      preload="metadata"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      aria-label={item.alt}
+                    />
+                  )}
                 </div>
 
-                {/* NOTA: removí la leyenda visible del alt para que no aparezca sobre la imagen.
-                   El atributo alt se mantiene para accesibilidad pero no se muestra. */}
+                {/* overlay sutil con paleta */}
+                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="w-full h-full bg-gradient-to-t from-black/40 via-primary/6 to-transparent rounded-2xl" />
+                </div>
               </motion.div>
             );
           })}
@@ -139,45 +124,54 @@ const Gallery: React.FC = () => {
       </div>
 
       <AnimatePresence>
-        {selectedItem && (
+        {selectedIndex !== null && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-6"
             onClick={closeModal}
+            aria-modal="true"
+            role="dialog"
           >
             <motion.div
-              initial={{ scale: 0.8, y: 50 }}
+              initial={{ scale: 0.95, y: 20 }}
               animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.8, y: 50 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-              className="relative w-[90vw] h-[80vh] max-w-4xl"
+              exit={{ scale: 0.95, y: 20 }}
+              transition={{ type: 'spring', stiffness: 260, damping: 28 }}
+              className="relative w-full max-w-5xl h-[82vh] bg-transparent"
               onClick={(e) => e.stopPropagation()}
             >
-              {selectedItem.type === 'image' ? (
-                <img src={selectedItem.src} alt={selectedItem.alt} className="w-full h-full object-contain" />
+              {items[selectedIndex] && items[selectedIndex].type === 'image' ? (
+                <img src={items[selectedIndex].src} alt={items[selectedIndex].alt} className="w-full h-full object-contain rounded-lg" />
               ) : (
-                <video src={selectedItem.src} className="w-full h-full object-contain" controls autoPlay loop poster={selectedItem.poster} />
+                /* Modal con controles para reproducir el video a detalle */
+                <video
+                  src={items[selectedIndex]?.src}
+                  poster={items[selectedIndex]?.poster}
+                  controls
+                  autoPlay
+                  className="w-full h-full object-contain rounded-lg"
+                />
               )}
-            </motion.div>
-            
-            <button onClick={closeModal} className="absolute top-4 right-4 text-white/80 hover:text-white transition-colors z-50">
-              <X size={32} />
-            </button>
 
-            <button 
-              onClick={(e) => { e.stopPropagation(); navigate('prev'); }}
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-white/80 hover:text-white transition-colors bg-black/30 rounded-full p-2 z-50"
-            >
-              <ChevronLeft size={32} />
-            </button>
-            <button 
-              onClick={(e) => { e.stopPropagation(); navigate('next'); }}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-white/80 hover:text-white transition-colors bg-black/30 rounded-full p-2 z-50"
-            >
-              <ChevronRight size={32} />
-            </button>
+              <button onClick={closeModal} className="absolute top-4 right-4 text-white/90 bg-black/30 hover:bg-black/40 p-2 rounded-full">
+                <X size={22} />
+              </button>
+
+              <button onClick={(e) => { e.stopPropagation(); navigate('prev'); }} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/90 bg-black/30 hover:bg-black/40 p-2 rounded-full">
+                <ChevronLeft size={26} />
+              </button>
+
+              <button onClick={(e) => { e.stopPropagation(); navigate('next'); }} className="absolute right-4 top-1/2 -translate-y-1/2 text-white/90 bg-black/30 hover:bg-black/40 p-2 rounded-full">
+                <ChevronRight size={26} />
+              </button>
+
+              {/* caption ligera */}
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center text-sm text-gray-200 bg-[rgba(0,0,0,0.36)] px-4 py-2 rounded-md">
+                {items[selectedIndex]?.alt}
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
