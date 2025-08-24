@@ -494,7 +494,7 @@ export const projects: Project[] = [
     ],
     techStack: ['Figma', 'Adobe Illustrator', 'Photoshop'],
     image: 'https://i.ibb.co/mCbMn7Bv/portadamanual.jpg?auto=compress&cs=tinysrgb&w=1200',
-    liveUrl: '/pdf/manualidentidad_nhl.pdf',
+    liveUrl: 'public/pdf/Manual de Identidad NLP.pdf',
     category: 'diseño',
     featured: true,
     year: '2025'
