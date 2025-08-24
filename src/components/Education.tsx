@@ -47,7 +47,9 @@ const Education: React.FC = () => {
               Formación & Certificados
             </span>
           </h2>
-          <p className="text-sm text-gray-400 max-w-2xl mx-auto">Selección clave — breve, visual y accionable.</p>
+          <p className="text-sm text-gray-400 max-w-2xl mx-auto">
+            Formación y certificaciones relevantes que respaldan mi enfoque práctico: cursos y acreditaciones aplicadas a proyectos reales.
+          </p>
         </motion.header>
 
         <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-2">

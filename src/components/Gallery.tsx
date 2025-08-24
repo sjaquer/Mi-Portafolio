@@ -74,7 +74,9 @@ const Gallery: React.FC = () => {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-2 text-white">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/700">Galería</span>
           </h2>
-          <p className="text-sm text-gray-300 max-w-2xl mx-auto">Selección visual de proyectos y assets — minimal y clara.</p>
+          <p className="text-sm text-gray-300 max-w-2xl mx-auto">
+            Muestras visuales representativas: renders, videos y capturas que muestran la calidad técnica y estética de cada proyecto.
+          </p>
         </motion.header>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-fr" style={{ gridAutoFlow: 'dense' }}>

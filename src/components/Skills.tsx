@@ -41,7 +41,9 @@ const Skills: React.FC = () => {
           <h2 className="text-3xl sm:text-4xl font-semibold mb-2">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/700">Habilidades</span>
           </h2>
-          <p className="text-sm text-gray-400 max-w-2xl mx-auto">Seleccionadas para lectura rápida — visual, minimal y accionable.</p>
+          <p className="text-sm text-gray-400 max-w-2xl mx-auto">
+            Habilidades escogidas por impacto: herramientas y técnicas que utilizo para diseñar, automatizar y entregar resultados reales.
+          </p>
         </header>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

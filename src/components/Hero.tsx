@@ -128,7 +128,7 @@ const Hero: React.FC = () => {
           </div>
 
           <p className="text-sm sm:text-base text-gray-300 max-w-lg mb-6">
-            Marketing y producción visual que aumentan conversión. Desarrollo y automatización como soporte técnico.
+            Combino estrategia, producción visual y desarrollo para crear experiencias que convierten. Trabajo en soluciones prácticas: campañas, automatizaciones y soporte técnico que generan resultados.
           </p>
 
           {/* puntos compactos (breves, clave) */}

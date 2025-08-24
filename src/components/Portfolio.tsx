@@ -45,7 +45,9 @@ const Portfolio: React.FC = () => {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-3 text-white">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/700">Portafolio</span>
           </h2>
-          <p className="text-sm text-gray-300 max-w-2xl mx-auto">Proyectos seleccionados — claro, visual y accionable.</p>
+          <p className="text-sm text-gray-300 max-w-2xl mx-auto">
+            Casos destacados con enfoque en impacto: explora retos, procesos y soluciones implementadas con métricas cuando están disponibles.
+          </p>
         </motion.header>
 
         <motion.div initial={{ opacity: 0, y: 12 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.45 }} className="flex flex-wrap justify-center gap-3 mb-10">

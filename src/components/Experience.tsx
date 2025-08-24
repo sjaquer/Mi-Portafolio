@@ -33,7 +33,9 @@ const Experience: React.FC = () => {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-3 text-white">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/700">Experiencia</span>
           </h2>
-          <p className="text-sm text-gray-300 max-w-2xl mx-auto">Proyectos y roles que combinan marketing visual y soporte tecnológico.</p>
+          <p className="text-sm text-gray-300 max-w-2xl mx-auto">
+            Trayectoria en proyectos multidisciplinares: lideré iniciativas que integraron estrategia, creatividad y tecnología para obtener resultados medibles.
+          </p>
         </motion.header>
 
         <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
