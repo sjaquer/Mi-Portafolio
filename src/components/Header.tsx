@@ -45,7 +45,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
             className="flex items-center gap-3"
           >
             <img
-              src="public/images/iconweb.png"
+              src={`${import.meta.env.BASE_URL}images/iconweb.png`}
               alt="Logo del sitio"
               className="w-10 h-10 rounded-md object-contain"
             />
