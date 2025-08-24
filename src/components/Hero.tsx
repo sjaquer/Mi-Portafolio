@@ -89,13 +89,9 @@ const Hero: React.FC = () => {
       id="home"
       ref={rootRef}
       onPointerMove={onPointerMove}
-      className="relative min-h-[80vh] md:min-h-[86vh] lg:min-h-[92vh] flex items-center pt-24 pb-20 px-6 sm:px-8 lg:px-16 bg-gradient-to-br from-primary/6 to-dark/86 overflow-hidden"
+      className="relative min-h-[80vh] md:min-h-[86vh] lg:min-h-[92vh] flex items-center pt-24 pb-20 px-6 sm:px-8 lg:px-16 overflow-hidden"
     >
-      {/* glows sutiles (primary + secondary acento muy discreto) */}
-      <div className="pointer-events-none absolute inset-0" aria-hidden>
-        <div className="absolute -top-44 -left-40 w-96 h-96 rounded-full bg-primary/10 blur-[120px]" />
-        <div className="absolute bottom-[-20%] right-[-14%] w-[40rem] h-[40rem] rounded-full bg-secondary/6 blur-[160px]" />
-      </div>
+      {/* Background global maneja el fondo; se eliminaron glows locales */}
 
       <div className="relative w-full max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         {/* Texto compacto y directo */}
@@ -105,11 +101,10 @@ const Hero: React.FC = () => {
             Disponible · Remoto / Freelance
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight mb-3 text-white">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/700">
-              Sebastián Jaque
-            </span>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight mb-2 text-white">
+            Sebastián Jaque
           </h1>
+          <div className="w-14 h-1 rounded-full bg-secondary mt-2 mb-4" />
 
           <div className="h-9 mb-4">
             <AnimatePresence mode="wait">
@@ -155,18 +150,18 @@ const Hero: React.FC = () => {
             <motion.button
               onClick={handleDownloadCV}
               whileHover={{ scale: 1.02 }}
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-gradient-to-r from-primary to-primary/700 text-white text-sm font-semibold shadow-sm"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-primary text-white text-sm font-semibold shadow-sm"
             >
-              <Download size={14} /> CV
-            </motion.button>
+               <Download size={14} /> CV
+             </motion.button>
 
             <motion.button
               onClick={handleWhatsApp}
               whileHover={{ scale: 1.02 }}
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-success text-white text-sm font-medium"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-secondary text-dark font-medium"
             >
-              <MessageCircle size={14} /> Contactar
-            </motion.button>
+               <MessageCircle size={14} /> Contactar
+             </motion.button>
 
             <div className="ml-2 flex gap-2">
               {socialLinks.map((s, i) => {

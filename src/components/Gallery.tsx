@@ -64,16 +64,13 @@ const Gallery: React.FC = () => {
   }, [selectedIndex, navigate]);
 
   return (
-    <section id="gallery" ref={ref} className="relative py-20 px-6 lg:px-16 bg-gradient-to-br from-primary/6 to-dark/86 overflow-hidden">
-      {/* glows coherentes con resto de secciones */}
-      <div className="pointer-events-none absolute -top-28 -left-24 w-72 h-72 rounded-full bg-primary/10 blur-[110px]" aria-hidden />
-      <div className="pointer-events-none absolute -bottom-36 -right-28 w-[30rem] h-[30rem] rounded-full bg-secondary/6 blur-[160px]" aria-hidden />
+    <section id="gallery" ref={ref} className="relative py-20 px-6 lg:px-16 overflow-hidden">
+      {/* Fondo y efectos ahora manejados por Background global */}
 
       <div className="relative max-w-7xl mx-auto">
         <motion.header initial={{ opacity: 0, y: 18 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.55 }} className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-2 text-white">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/700">Galería</span>
-          </h2>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-2 text-white">Galería</h2>
+          <div className="w-12 h-1 rounded-full bg-secondary mt-2 mb-4" />
           <p className="text-sm text-gray-300 max-w-2xl mx-auto">
             Muestras visuales representativas: renders, videos y capturas que muestran la calidad técnica y estética de cada proyecto.
           </p>

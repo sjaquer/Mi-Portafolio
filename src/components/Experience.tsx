@@ -20,19 +20,13 @@ const Experience: React.FC = () => {
   }, []);
 
   return (
-    <section
-      id="experience"
-      ref={ref}
-      className="relative py-24 px-6 lg:px-16 bg-gradient-to-br from-primary/6 to-dark/86 overflow-hidden"
-    >
-      <motion.div style={{ y: glowY }} className="pointer-events-none absolute -top-40 -left-36 w-96 h-96 rounded-full bg-primary/10 blur-[120px]" aria-hidden />
-      <motion.div style={{ y: glowY }} className="pointer-events-none absolute bottom-[-18%] right-[-10%] w-[34rem] h-[34rem] rounded-full bg-secondary/6 blur-[160px]" aria-hidden />
+    <section id="experience" ref={ref} className="relative py-24 px-6 lg:px-16 overflow-hidden">
+      {/* fondo y efectos gestionados por Background global */}
 
       <div className="relative max-w-7xl mx-auto">
         <motion.header initial={{ opacity: 0, y: 28 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }} className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-3 text-white">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/700">Experiencia</span>
-          </h2>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-2 text-white">Experiencia</h2>
+          <div className="w-12 h-1 rounded-full bg-secondary mt-2 mb-4" />
           <p className="text-sm text-gray-300 max-w-2xl mx-auto">
             Trayectoria en proyectos multidisciplinares: lideré iniciativas que integraron estrategia, creatividad y tecnología para obtener resultados medibles.
           </p>

@@ -37,14 +37,13 @@ const Portfolio: React.FC = () => {
   };
 
   return (
-    <section id="portfolio" ref={ref} className="relative py-24 px-6 lg:px-16 bg-gradient-to-br from-primary/6 to-dark/86 overflow-hidden">
-      <div className="pointer-events-none absolute -top-40 -left-36 w-96 h-96 rounded-full bg-primary/10 blur-[120px]" aria-hidden />
+    <section id="portfolio" ref={ref} className="relative py-24 px-6 lg:px-16 overflow-hidden">
+      {/* fondo y acentos eliminados localmente para dejar ver Background global */}
 
       <div className="relative max-w-7xl mx-auto">
         <motion.header initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }} className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-3 text-white">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/700">Portafolio</span>
-          </h2>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-2 text-white">Portafolio</h2>
+          <div className="w-12 h-1 rounded-full bg-secondary mt-2 mb-4" />
           <p className="text-sm text-gray-300 max-w-2xl mx-auto">
             Casos destacados con enfoque en impacto: explora retos, procesos y soluciones implementadas con métricas cuando están disponibles.
           </p>
@@ -97,7 +96,7 @@ const Portfolio: React.FC = () => {
                   </div>
 
                   {project.featured && (
-                    <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-primary/90 text-white text-xs font-medium">
+                    <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-secondary text-dark text-xs font-medium">
                       Destacado
                     </div>
                   )}

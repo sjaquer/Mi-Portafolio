@@ -31,16 +31,14 @@ const Skills: React.FC = () => {
       initial={{ opacity: 0, y: 28 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6 }}
-      className="relative py-20 px-6 lg:px-16 bg-gradient-to-br from-primary/8 to-dark/86 overflow-hidden"
+      className="relative py-20 px-6 lg:px-16 overflow-hidden"
     >
-      <motion.div style={{ y: glowY }} className="pointer-events-none absolute -top-28 -left-24 w-72 h-72 rounded-full bg-primary/10 blur-[120px]" />
-      <motion.div style={{ y: glowY }} className="pointer-events-none absolute -bottom-36 -right-28 w-[30rem] h-[30rem] rounded-full bg-secondary/6 blur-[160px]" />
+      {/* Background global se encarga del fondo; se quitaron glows locales */}
 
       <div className="relative max-w-7xl mx-auto">
         <header className="mb-10 text-center">
-          <h2 className="text-3xl sm:text-4xl font-semibold mb-2">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/700">Habilidades</span>
-          </h2>
+          <h2 className="text-3xl sm:text-4xl font-semibold mb-2 text-white">Habilidades</h2>
+          <div className="w-12 h-1 rounded-full bg-secondary mt-2 mb-4" />
           <p className="text-sm text-gray-400 max-w-2xl mx-auto">
             Habilidades escogidas por impacto: herramientas y técnicas que utilizo para diseñar, automatizar y entregar resultados reales.
           </p>
@@ -68,7 +66,7 @@ const Skills: React.FC = () => {
                   <div className="flex items-center justify-between mb-4">
                     <div>
                       <h3 className="text-lg font-semibold text-white">{cat}</h3>
-                      <div className="mt-2 w-14 h-1 rounded-full bg-primary/60" />
+                      <div className="mt-2 w-14 h-1 rounded-full bg-secondary" />
                     </div>
                     <div className="text-xs text-gray-400">{skills.length}</div>
                   </div>

@@ -10,13 +10,17 @@ export default {
           DEFAULT: '#0476D9', // tono base más sobrio
           600: '#2563EB',
           700: '#015DDF',
-          800: '#0460D9'
+          800: '#0460D9',
+          // token para uso en textos/hover
+          light: '#58A9F6'
         },
         // Amarillo/secondary: acento, usar con moderación
         secondary: {
           DEFAULT: '#F2B705',
           600: '#F28705',
-          700: '#F25C05'
+          700: '#F25C05',
+          // token menos saturado para fondos/accents
+          soft: '#F6D98A'
         },
         // Verde para CTAs / confirmaciones (uso puntual)
         success: {

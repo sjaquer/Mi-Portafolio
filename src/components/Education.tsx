@@ -26,14 +26,8 @@ const Education: React.FC = () => {
   const visible = sorted.slice(0, visibleCount);
 
   return (
-    <section
-      id="education"
-      ref={ref}
-      className="relative py-24 px-6 lg:px-16 bg-gradient-to-br from-primary/6 to-dark/86 overflow-hidden"
-    >
-      {/* fondos coherentes con Hero/Experience */}
-      <div className="pointer-events-none absolute -top-40 -left-36 w-96 h-96 rounded-full bg-primary/10 blur-[120px]" aria-hidden />
-      <div className="pointer-events-none absolute bottom-[-18%] right-[-12%] w-[34rem] h-[34rem] rounded-full bg-secondary/6 blur-[160px]" aria-hidden />
+    <section id="education" ref={ref} className="relative py-24 px-6 lg:px-16 overflow-hidden">
+      {/* Background global es el responsable del fondo; se eliminaron fondos locales */}
 
       <div className="relative max-w-7xl mx-auto">
         <motion.header
@@ -42,13 +36,11 @@ const Education: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="mb-12 text-center"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-2 text-white">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/700">
-              Formación & Certificados
-            </span>
-          </h2>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-2 text-white">Formación & Certificados</h2>
+          <div className="w-12 h-1 rounded-full bg-secondary mt-2 mb-4" />
           <p className="text-sm text-gray-400 max-w-2xl mx-auto">
-            Formación y certificaciones relevantes que respaldan mi enfoque práctico: cursos y acreditaciones aplicadas a proyectos reales.
+            Formación y certificaciones relevantes que respaldan mi enfoque práctico: cursos y acreditaciones aplicadas a
+            proyectos reales.
           </p>
         </motion.header>
 

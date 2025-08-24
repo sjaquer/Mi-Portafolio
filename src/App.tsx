@@ -10,6 +10,7 @@ const Gallery = React.lazy(() => import('./components/Gallery'));
 const Contact = React.lazy(() => import('./components/Contact'));
 const Footer = React.lazy(() => import('./components/Footer'));
 import { throttle } from './utils/throttle';
+import Background from './components/Background';
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
