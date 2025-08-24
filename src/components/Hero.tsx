@@ -11,7 +11,7 @@ import {
   Mail,
   Briefcase,
   Code2,
-  Sparkles
+  Sparkles,
 } from 'lucide-react';
 import profileImg from '/images/iconperso.webp';
 
@@ -43,9 +43,9 @@ const socialLinks = [
 
 const Hero: React.FC = () => {
   const rootRef = useRef<HTMLElement | null>(null);
-  const controls = useAnimation();
   const [roleIndex, setRoleIndex] = useState(0);
   const [inView, setInView] = useState(false);
+  const controls = useAnimation(); // Define controls using useAnimation
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
 
   useEffect(() => {

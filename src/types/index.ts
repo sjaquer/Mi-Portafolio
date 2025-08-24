@@ -2,10 +2,10 @@ export interface Experience {
   id: string;
   title: string;
   company: string;
-  duration: string;
-  location: string;
-  techStack: string[];
-  responsibilities: string[];
+  duration?: string;
+  location?: string;
+  techStack?: string[];
+  responsibilities?: string[];
   current?: boolean;
   role?: string;
   summary?: string;
@@ -40,7 +40,7 @@ export interface Project {
 export interface Skill {
   name: string;
   category: string;
-  icon: string;
+  icon?: string;
 }
 
 export interface ContactForm {
@@ -56,12 +56,11 @@ export interface GalleryItem {
   src: string;
   alt: string;
   poster?: string;
-  aspectRatio: number;
-  colSpan: number;
-  rowSpan: number;
+  aspectRatio?: number;
+  colSpan?: number;
+  rowSpan?: number;
 }
 
-// Types for SVGL API
 export type ThemeOptions = {
   dark: string;
   light: string;

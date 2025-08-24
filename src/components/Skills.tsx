@@ -5,20 +5,6 @@ import { useInView } from 'react-intersection-observer';
 import { skills as skillsData } from '../data/portfolio';
 import { Skill } from '../types';
 
-/* Minimal, visual y coherente con Hero/Experience:
-   - Paleta primary / secondary / success
-   - Cards limpias, poco texto, chips con icono
-   - Animaciones sutiles y glow coherente
-   - Expand por categoría opcional (click) */
-
-const colorMap: Record<string, string> = {
-  'TypeScript': '#3178c6','Python': '#3776AB','React': '#61dafb','Next.js': '#000000',
-  'Tailwind CSS':'#38B2AC','Node.js':'#43853d','HTML5':'#E34F26','CSS':'#1572B6',
-  'Microsoft SQL Server':'#e38c00','Photoshop':'#31A8FF','Lightroom':'#0E76A8',
-  'Figma':'#FF7262','Canva':'#00C4CC','Excel':'#217346','AWS':'#FF9900',
- 'Power BI':'#F2C811','SEO/ASO':'#F2A900'
-};
-
 const getIcon = (name: string) => {
   const Icon = (Icons as any)[name] || Icons.Code;
   return Icon;
@@ -87,7 +73,7 @@ const Skills: React.FC = () => {
 
                   <div className="grid gap-3 grid-cols-3 sm:grid-cols-4 mb-3">
                     {preview.map((s) => {
-                      const Icon = getIcon(s.icon);
+                      const Icon = getIcon(s.icon || 'Code');
                       return (
                         <div key={s.name} className="flex flex-col items-center gap-2 p-2 rounded-lg bg-[rgba(255,255,255,0.02)] hover:bg-[rgba(255,255,255,0.04)] transition-colors">
                           <div className="w-10 h-10 rounded-md flex items-center justify-center bg-[rgba(255,255,255,0.03)]">

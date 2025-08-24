@@ -90,7 +90,7 @@ const Experience: React.FC = () => {
 
                     <div className="flex-1">
                       <ul className="space-y-2 text-sm text-gray-300 mb-4">
-                        {(isOpen ? exp.responsibilities : preview).map((r: string, i: number) => (
+                        {(isOpen ? exp.responsibilities || [] : preview).map((r: string, i: number) => (
                           <li key={i} className="flex items-start gap-3">
                             <span className="mt-1 w-1.5 h-1.5 rounded-full bg-primary/80" />
                             <span className="leading-snug">{r}</span>
