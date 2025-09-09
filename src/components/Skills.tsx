@@ -1,12 +1,12 @@
 import React, { useMemo, useState } from 'react';
 import * as Icons from 'lucide-react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { skills as skillsData } from '../data/portfolio';
 import { Skill } from '../types';
 
 const getIcon = (name: string) => {
-  const Icon = (Icons as any)[name] || Icons.Code;
+  const Icon = (Icons as unknown as Record<string, React.ComponentType<{ size?: number; className?: string }>>)[name] || Icons.Code;
   return Icon;
 };
 
@@ -18,11 +18,9 @@ const grouped = skillsData.reduce((acc, s) => {
 
 const Skills: React.FC = () => {
   const { ref, inView } = useInView({ threshold: 0.08, triggerOnce: true });
-  const { scrollYProgress } = useScroll();
-  const glowY = useTransform(scrollYProgress, [0, 1], [0, 220]);
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
 
-  const categories = useMemo(() => Object.entries(grouped), [grouped]);
+  const categories = useMemo(() => Object.entries(grouped), []);
 
   return (
     <motion.section

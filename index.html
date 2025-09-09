@@ -3,7 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="manifest" href="/manifest.json" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Preload recursos críticos para mejor performance -->
+    <link rel="preload" href="/images/iconperso.webp" as="image" type="image/webp" />
+    <link rel="preload" href="/images/iconweb.png" as="image" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- DNS prefetch para recursos externos -->
+    <link rel="dns-prefetch" href="//wa.me" />
+    <link rel="dns-prefetch" href="//github.com" />
+    <link rel="dns-prefetch" href="//linkedin.com" />
     
     <!-- Título optimizado: más conciso y potente -->
     <title>Sebastián Jaque | Desarrollador, Estratega & Artista 3D</title>

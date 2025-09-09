@@ -1,16 +1,19 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import ErrorBoundary from './components/ErrorBoundary';
+import { LoadingState } from './components/LoadingComponents';
+import { ScrollProgressIndicator } from './components/ScrollProgress';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Experience from './components/Experience';
-import Skills from './components/Skills';
+// Lazy loading para todos los componentes no críticos
+const Experience = React.lazy(() => import('./components/Experience'));
+const Skills = React.lazy(() => import('./components/Skills'));
 const Education = React.lazy(() => import('./components/Education'));
 const Portfolio = React.lazy(() => import('./components/Portfolio'));
 const Gallery = React.lazy(() => import('./components/Gallery'));
 const Contact = React.lazy(() => import('./components/Contact'));
 const Footer = React.lazy(() => import('./components/Footer'));
 import { throttle } from './utils/throttle';
-import Background from './components/Background';
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -55,33 +58,40 @@ const App: React.FC = () => {
 
 
   return (
-    <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
-        className="min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-white"
-      >
-        <Header activeSection={activeSection} setActiveSection={setActiveSection} />
-        
-        <main>
-          <Hero />
-          <Experience />
-          <Skills />
-          <Suspense fallback={<div className="py-20 text-center">Cargando...</div>}>
-            <Education />
-            <Portfolio />
-            <Gallery />
-            <Contact />
-          </Suspense>
-        </main>
+    <ErrorBoundary>
+      <ScrollProgressIndicator />
+      <AnimatePresence>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className="min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-white"
+        >
+          <Header activeSection={activeSection} setActiveSection={setActiveSection} />
+          
+          <main>
+            <Hero />
+            <Suspense fallback={<LoadingState title="Cargando experiencia..." description="Preparando información profesional" />}>
+              <Experience />
+            </Suspense>
+            <Suspense fallback={<LoadingState title="Cargando habilidades..." description="Organizando competencias técnicas" />}>
+              <Skills />
+            </Suspense>
+            <Suspense fallback={<LoadingState title="Cargando contenido..." description="Preparando portafolio y galería" />}>
+              <Education />
+              <Portfolio />
+              <Gallery />
+              <Contact />
+            </Suspense>
+          </main>
 
-        <Suspense fallback={null}>
-          <Footer />
-        </Suspense>
-      </motion.div>
-    </AnimatePresence>
+          <Suspense fallback={null}>
+            <Footer />
+          </Suspense>
+        </motion.div>
+      </AnimatePresence>
+    </ErrorBoundary>
   );
 }
 

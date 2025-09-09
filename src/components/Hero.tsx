@@ -145,38 +145,42 @@ const Hero: React.FC = () => {
             })}
           </div>
 
-          {/* CTA claros: CV (primary) + Contactar (success) */}
+          {/* CTA mejorados con nuevos estilos */}
           <div className="flex flex-wrap gap-3 items-center mb-6">
             <motion.button
               onClick={handleDownloadCV}
               whileHover={{ scale: 1.02 }}
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-primary text-white text-sm font-semibold shadow-sm"
+              whileTap={{ scale: 0.98 }}
+              className="btn-primary"
             >
-               <Download size={14} /> CV
+               <Download size={16} /> Descargar CV
              </motion.button>
 
             <motion.button
               onClick={handleWhatsApp}
               whileHover={{ scale: 1.02 }}
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-secondary text-dark font-medium"
+              whileTap={{ scale: 0.98 }}
+              className="btn-secondary"
             >
-               <MessageCircle size={14} /> Contactar
+               <MessageCircle size={16} /> Contactar
              </motion.button>
 
             <div className="ml-2 flex gap-2">
               {socialLinks.map((s, i) => {
                 const Icon = s.icon;
                 return (
-                  <a
+                  <motion.a
                     key={i}
                     href={s.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-md bg-[rgba(255,255,255,0.02)] border border-dark-200/30 text-gray-300 hover:text-white"
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="p-2.5 rounded-lg bg-surface border border-white/10 text-gray-300 hover:text-white hover:bg-surface-hover transition-all duration-200"
                     aria-label={s.label}
                   >
-                    <Icon size={14} />
-                  </a>
+                    <Icon size={16} />
+                  </motion.a>
                 );
               })}
             </div>

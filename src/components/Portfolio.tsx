@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { ExternalLink, Github, Code, Palette, Box } from 'lucide-react';
 import { projects } from '../data/portfolio';
+import type { Project } from '../types';
 
 const Portfolio: React.FC = () => {
   const [ref, inView] = useInView({ threshold: 0.08, triggerOnce: true });
@@ -50,7 +51,7 @@ const Portfolio: React.FC = () => {
         </motion.header>
 
         <motion.div initial={{ opacity: 0, y: 12 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.45 }} className="flex flex-wrap justify-center gap-3 mb-10">
-          {categories.map((c: any) => {
+          {categories.map((c: { id: string; label: string }) => {
             const Icon = getIcon(c.id);
             const activeCls = filter === c.id ? 'bg-gradient-to-r from-primary to-primary/700 text-white shadow' : 'bg-[rgba(255,255,255,0.02)] text-gray-300 border border-dark-200/30 hover:bg-[rgba(255,255,255,0.03)]';
             return (
@@ -72,8 +73,8 @@ const Portfolio: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr">
           {display.map((project, i) => {
             const CategoryIcon = getIcon(project.category || '');
-            // evitar error por subtitle en tiempo de compilación -> leer con any
-            const subtitle = (project as any).subtitle;
+            // Usamos type assertion más específico para subtitle
+            const subtitle = (project as Project & { subtitle?: string }).subtitle;
             return (
               <motion.article
                 key={project.id}

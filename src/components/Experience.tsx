@@ -1,13 +1,11 @@
 import React, { useState, useMemo } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { MapPin, Calendar, ChevronDown, ChevronUp, Layers } from 'lucide-react';
 import { experiences } from '../data/portfolio';
 
 const Experience: React.FC = () => {
   const { ref, inView } = useInView({ threshold: 0.12, triggerOnce: true });
-  const { scrollYProgress } = useScroll();
-  const glowY = useTransform(scrollYProgress, [0, 1], [0, 160]);
   const [expanded, setExpanded] = useState<string | null>(null);
 
   const sorted = useMemo(() => {

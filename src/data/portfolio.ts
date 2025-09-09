@@ -378,7 +378,6 @@ export const projects: Project[] = [
     liveUrl: 'https://digitalbakery.vercel.app/',
     githubUrl: 'https://github.com/sjaquer/eCommerce-Panaderia',
     category: 'web',
-    featured: true,
     year: '2024'
   },
   {
@@ -496,7 +495,6 @@ export const projects: Project[] = [
     image: 'https://i.ibb.co/mCbMn7Bv/portadamanual.jpg?auto=compress&cs=tinysrgb&w=1200',
     liveUrl: 'public/pdf/Manual de Identidad NLP.pdf',
     category: 'diseño',
-    featured: true,
     year: '2025'
   },
   {
@@ -512,6 +510,7 @@ export const projects: Project[] = [
     ],
     techStack: ['TypeScript', 'AWS', 'Firebase', 'Tailwind CSS'],
     image: 'https://i.ibb.co/cXX3NqCs/portadaweb.jpg?auto=compress&cs=tinysrgb&w=1200',
+    liveUrl: 'https://task-zenith-nu.vercel.app/',
     githubUrl: 'https://github.com/sjaquer/TaskZenith',
     category: 'web',
     featured: true,

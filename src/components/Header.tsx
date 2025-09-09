@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 interface HeaderProps {
   activeSection: string;
@@ -37,43 +38,60 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo: usar favicon como imagen */}
+          {/* Logo con micro-animación mejorada */}
           <motion.a
-            whileHover={{ scale: 1.03 }}
+            whileHover={{ scale: 1.05, rotate: 2 }}
+            whileTap={{ scale: 0.95 }}
             href="/"
             onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}
-            className="flex items-center gap-3"
+            className="flex items-center gap-3 group"
           >
-            <img
-              src={`${import.meta.env.BASE_URL}images/iconweb.png`}
-              alt="Logo del sitio"
-              className="w-10 h-10 rounded-md object-contain"
-            />
+            <div className="relative">
+              <img
+                src={`${import.meta.env.BASE_URL}images/iconweb.png`}
+                alt="Logo del sitio"
+                className="w-10 h-10 rounded-lg object-contain transition-transform duration-200 group-hover:shadow-lg"
+              />
+              <div className="absolute inset-0 rounded-lg bg-gradient-to-tr from-primary/20 to-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+            </div>
           </motion.a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-6 items-center">
+          {/* Desktop Navigation con indicadores mejorados */}
+          <nav className="hidden md:flex space-x-1 items-center">
             {sections.map((section) => (
-              <button
+              <motion.button
                 key={section.id}
                 onClick={() => scrollToSection(section.id)}
-                className={`text-sm font-medium transition-colors duration-200 ${
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={`relative px-3 py-2 text-sm font-medium transition-all duration-200 rounded-lg ${
                   activeSection === section.id
-                    ? 'text-secondary'
-                    : 'text-gray-300 hover:text-primary'
+                    ? 'text-white bg-primary/10'
+                    : 'text-gray-300 hover:text-white hover:bg-surface'
                 }`}
                 aria-current={activeSection === section.id ? 'page' : undefined}
               >
                 {section.label}
-              </button>
+                {activeSection === section.id && (
+                  <motion.div
+                    layoutId="activeSection"
+                    className="absolute bottom-0 left-1/2 w-1 h-1 bg-primary rounded-full"
+                    style={{ x: '-50%' }}
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </motion.button>
             ))}
-            <button
+            <motion.button
               onClick={() => scrollToSection('contact')}
-              className="ml-2 btn-primary"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="ml-4 btn-primary"
               aria-label="Contacto"
             >
               Contacto
-            </button>
+            </motion.button>
+            <ThemeToggle className="ml-2" />
           </nav>
 
           {/* Mobile Menu Button */}

@@ -1,4 +1,4 @@
-export function throttle<T extends (...args: any[]) => void>(fn: T): T {
+export function throttle<T extends (...args: unknown[]) => void>(fn: T): T {
   let pending = false;
   return function(this: unknown, ...args: Parameters<T>) {
     if (pending) return;
