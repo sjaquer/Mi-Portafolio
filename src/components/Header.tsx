@@ -48,7 +48,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
           >
             <div className="relative">
               <img
-                src={`${import.meta.env.BASE_URL}images/iconweb.png`}
+                src={`${import.meta.env.BASE_URL}images/iconweb.webp`}
                 alt="Logo del sitio"
                 className="w-10 h-10 rounded-lg object-contain transition-transform duration-200 group-hover:shadow-lg"
               />

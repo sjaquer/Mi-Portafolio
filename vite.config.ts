@@ -9,6 +9,14 @@ export default defineConfig({
   },
   build: {
     sourcemap: false,
+    target: 'es2015', // Mejor compatibilidad móvil
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true, // Eliminar console.logs en producción
+        drop_debugger: true,
+      },
+    },
     rollupOptions: {
       output: {
         manualChunks: {
@@ -17,9 +25,19 @@ export default defineConfig({
           'animation-vendor': ['framer-motion'],
           'ui-vendor': ['lucide-react', 'react-intersection-observer'],
         },
+        // Optimizar nombres de archivos para caché
+        entryFileNames: 'assets/[name]-[hash].js',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]',
       },
     },
     // Aumentar el límite de advertencia de chunk a 1000kb
     chunkSizeWarningLimit: 1000,
+  },
+  // Optimizaciones para móviles
+  server: {
+    fs: {
+      strict: false,
+    },
   },
 });

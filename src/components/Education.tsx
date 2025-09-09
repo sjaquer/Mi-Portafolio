@@ -55,7 +55,8 @@ const Education: React.FC = () => {
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   exit={{ opacity: 0, y: 16 }}
                   transition={{ duration: 0.5, delay: i * 0.04 }}
-                  whileHover={{ translateY: -6 }}
+                  whileHover={{ y: -6, transition: { duration: 0.2 } }}
+                  style={{ willChange: 'transform' }}
                   className="relative rounded-2xl p-px"
                 >
                   <div className="relative rounded-xl bg-[rgba(6,12,25,0.78)] border border-dark-200/50 backdrop-blur-xs p-6 flex flex-col h-full shadow-lg">

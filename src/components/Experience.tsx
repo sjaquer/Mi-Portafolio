@@ -44,7 +44,8 @@ const Experience: React.FC = () => {
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   exit={{ opacity: 0, y: 16 }}
                   transition={{ duration: 0.5, delay: idx * 0.04 }}
-                  whileHover={{ translateY: -6 }}
+                  whileHover={{ y: -6, transition: { duration: 0.2 } }}
+                  style={{ willChange: 'transform' }}
                   className="relative rounded-2xl p-px"
                 >
                   <div className="absolute inset-0 rounded-2xl bg-[linear-gradient(135deg,rgba(4,118,217,0.14),rgba(242,183,5,0.04))] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

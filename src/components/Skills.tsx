@@ -58,7 +58,8 @@ const Skills: React.FC = () => {
 
                 <motion.div
                   className="relative rounded-xl bg-[rgba(6,12,25,0.78)] border border-dark-200/50 p-5 h-full flex flex-col"
-                  whileHover={{ translateY: -6 }}
+                  whileHover={{ y: -6, transition: { duration: 0.2 } }}
+                  style={{ willChange: 'transform' }}
                   transition={{ type: 'spring', stiffness: 120, damping: 16 }}
                 >
                   <div className="flex items-center justify-between mb-4">
