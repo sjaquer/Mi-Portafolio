@@ -417,20 +417,21 @@ export const projects: Project[] = [
   },
   {
     id: '5',
-    title: 'Basic Landing Page',
+    title: 'Neon AI Landing — Landing Page',
     subtitle: 'Plantilla responsive optimizada',
     description:
-      'Plantilla responsive optimizada para rendimiento, con animaciones suaves y formulario de contacto integrado.',
+      'Landing page con IA generativa, Firebase y Gemini',
     details: [
       'Estructura HTML semántica y CSS optimizado.',
-      'Animaciones con GSAP para interacciones suaves.',
-      'Formularios con validación y envío a API sencilla.'
+      'Despliegue estático en Vercel con optimizaciones para LCP y móviles.',
+      'Formulario de cotizacion dinamico y animado con IA'
     ],
-    techStack: ['HTML5', 'CSS3', 'JavaScript', 'GSAP'],
+    techStack: ['TypeScript','React','Tailwind CSS','Firebase','Gemini','Vercel'],
     image: 'https://i.ibb.co/rR7B1vWx/web-5.jpg?auto=compress&cs=tinysrgb&w=1200',
-    githubUrl: 'https://github.com/sjaquer/Basic-Landing-Page',
+    liveUrl: 'https://demo-lading-nlp.vercel.app/',
+    githubUrl: 'https://github.com/sjaquer/neon-ai-landing',
     category: 'web',
-    year: '2024'
+    year: '2025'
   },
   {
     id: '6',
@@ -514,33 +515,6 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/sjaquer/TaskZenith',
     category: 'web',
     featured: true,
-    year: '2025'
-  },
-  {
-    id: '11',
-    title: 'Neon AI Landing — Landing para Agencia con IA',
-    subtitle: 'Landing page con IA generativa, Firebase y Gemini',
-    description:
-      'Landing page diseñada para una agencia de publicidad que utiliza IA generativa para crear contenidos dinámicos en tiempo real. Integración de Gemini para generación de copy y assets, Firebase para autenticación y almacenamiento en tiempo real, frontend en React + TypeScript y estilos con Tailwind CSS.',
-    details: [
-      'Generación dinámica de headlines y descripciones usando Gemini.',
-      'Autenticación y CMS ligero en Firebase (Auth + Firestore).',
-      'Personalización de contenido en base a comportamiento del usuario.',
-      'Despliegue estático en Vercel con optimizaciones para LCP y móviles.'
-    ],
-    techStack: [
-      'TypeScript',
-      'React',
-      'Tailwind CSS',
-      'Firebase (Auth, Firestore, Hosting)',
-      'Gemini (IA generativa)',
-      'Vercel'
-    ],
-    image: 'https://neon-led-publicidad-lading-page.vercel.app/og-image.webp',
-    liveUrl: 'https://demo-lading-nlp.vercel.app/',
-    githubUrl: 'https://github.com/sjaquer/neon-ai-landing',
-    category: 'web',
-    featured: false,
     year: '2025'
   }
 ];
