@@ -556,3 +556,21 @@ textarea::placeholder {
     animation-duration: calc(var(--d) * 0.7);
   }
 }
+
+/* Animated gradient for headings (respects prefers-reduced-motion) */
+@media (prefers-reduced-motion: no-preference) {
+  .animated-gradient-text {
+    background-image: linear-gradient(90deg, rgba(var(--primary-rgb),1), rgba(var(--secondary-rgb),1), rgba(255,255,255,0.9));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-size: 200% 100%;
+    animation: gradientShift 6s linear infinite;
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+}
