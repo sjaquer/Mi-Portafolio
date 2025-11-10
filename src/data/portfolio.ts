@@ -630,3 +630,43 @@ export const gallery: GalleryItem[] = [
     rowSpan: 3
   }
 ];
+
+/**
+ * testimonials: reseñas de clientes (usado para mostrar en UI y generar JSON-LD)
+ * Reemplaza los placeholders (teléfono, coords) por tus valores reales cuando los tengas.
+ */
+export const testimonials = [
+  {
+    id: 't1',
+    name: 'María López',
+    role: 'Directora de Marketing — Neon LED',
+    rating: 5,
+    text: 'Excelente trabajo: estrategia de IA para generación de contenido y landing optimizada; aumentamos leads un 42% en 6 semanas.',
+    date: '2025-08-12',
+    location: 'Lima, Perú',
+    projectId: '5',
+    source: 'Cliente directo'
+  },
+  {
+    id: 't2',
+    name: 'Andrés Castillo',
+    role: 'CTO — Startup Retail',
+    rating: 5,
+    text: 'Integración con Firebase y flujo de autenticación muy sólido. Código limpio y despliegue sin problemas en Vercel.',
+    date: '2025-06-05',
+    location: 'Lima, Perú',
+    projectId: '10',
+    source: 'Cliente directo'
+  },
+  {
+    id: 't3',
+    name: 'Aurora Rojas',
+    role: 'Gerente de Producto',
+    rating: 4,
+    text: 'Buen enfoque en UX y performance móvil; mejoró métricas LCP y engagement. Recomendado.',
+    date: '2025-04-21',
+    location: 'Callao, Perú',
+    projectId: '1',
+    source: 'Cliente directo'
+  }
+];

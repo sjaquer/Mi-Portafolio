@@ -20,7 +20,7 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '' }) => {
     <div
       className={`
         relative p-2.5 rounded-lg border transition-all duration-300
-        bg-surface border-white/10 text-gray-300
+  bg-surface border border-[rgba(255,255,255,0.03)] text-gray-300
         ${className}
       `}
       title="Modo Oscuro"

@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, Clock, Shield, Zap } from 'lucide-react';
 import { ContactForm } from '../types';
+import { BentoGrid, BentoCard } from './BentoGrid';
 
 const Contact: React.FC = () => {
-  const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
-
   const [formData, setFormData] = useState<ContactForm>({
     name: '',
     email: '',
@@ -72,108 +70,112 @@ const Contact: React.FC = () => {
   ];
 
   return (
-    <section id="contact" ref={ref} className="relative py-20 px-6 lg:px-16 overflow-hidden">
-      {/* fondo/efectos removidos para mostrar Background global */}
-
+    <section id="contact" className="relative py-20 px-6 lg:px-16 overflow-hidden">
       <div className="relative max-w-7xl mx-auto">
         <motion.header
-          initial={{ opacity: 0, y: 18 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-2 text-white">Trabajemos juntos</h2>
-          <div className="w-12 h-1 rounded-full bg-secondary mt-2 mb-4" />
-          <p className="text-sm text-gray-300 max-w-2xl mx-auto">
-            ¿Tienes un proyecto o una idea? Cuéntame los objetivos y verás una propuesta práctica, clara y orientada a resultados.
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-white via-white to-gray-400 bg-clip-text text-transparent">
+            Trabajemos juntos
+          </h2>
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+            ¿Tienes un proyecto o una idea? Cuéntame los objetivos y verás una propuesta práctica, clara y orientada a resultados
           </p>
         </motion.header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-          {/* Left: contacto y highlights */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="space-y-8"
-          >
-            <div className="rounded-2xl bg-dark-100 border border-dark-200/50 p-6 shadow-lg">
-              <h3 className="text-xl font-semibold text-white mb-2">Ponte en contacto</h3>
-              <p className="text-gray-400 mb-4">
-                Respondo rápido y propongo alternativas prácticas. Si prefieres, envía un breve resumen del proyecto y te devuelvo un plan.
+        <BentoGrid columns={3}>
+          {/* Info de contacto cards */}
+          {contactInfo.map((c, i) => {
+            const Icon = c.icon;
+            return (
+              <BentoCard key={i} span="small" delay={i * 0.1}>
+                <a
+                  href={c.href}
+                  target={c.label === 'Ubicación' ? '_blank' : undefined}
+                  rel={c.label === 'Ubicación' ? 'noopener noreferrer' : undefined}
+                  className="flex flex-col items-center text-center h-full justify-center gap-4 group"
+                >
+                  <div className="p-5 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 group-hover:from-primary/30 group-hover:to-primary/10 transition-all">
+                    <Icon size={32} className="text-primary" />
+                  </div>
+                  <div>
+                    <div className="text-sm text-gray-400 mb-1">{c.label}</div>
+                    <div className="text-base font-semibold text-white">{c.value}</div>
+                  </div>
+                </a>
+              </BentoCard>
+            );
+          })}
+
+          {/* Disponibilidad card */}
+          <BentoCard span="medium" delay={0.3}>
+            <div className="flex flex-col h-full justify-center">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-4 h-4 rounded-full bg-success animate-pulse" />
+                <h3 className="text-xl font-bold text-white">Disponible para proyectos</h3>
+              </div>
+              <p className="text-gray-300 mb-6">
+                Tiempo medio de respuesta: <span className="font-semibold text-white">24 horas</span>
               </p>
-
-              <div className="space-y-3">
-                {contactInfo.map((c, i) => {
-                  const Icon = c.icon;
-                  return (
-                    <a
-                      key={i}
-                      href={c.href}
-                      target={c.label === 'Ubicación' ? '_blank' : undefined}
-                      rel={c.label === 'Ubicación' ? 'noopener noreferrer' : undefined}
-                      className="flex items-center gap-4 p-3 rounded-lg bg-dark-100/60 border border-dark-200/30 hover:translate-x-1 transition-transform"
-                    >
-                      <div className="p-2 rounded-md bg-primary/10 text-primary">
-                        <Icon size={18} />
-                      </div>
-                      <div>
-                        <div className="text-xs text-gray-400">{c.label}</div>
-                        <div className="text-sm text-white font-medium">{c.value}</div>
-                      </div>
-                    </a>
-                  );
-                })}
+              <div className="grid grid-cols-3 gap-4 pt-4 border-t border-[rgba(255,255,255,0.03)]">
+                <div className="text-center">
+                  <Clock size={24} className="text-primary mx-auto mb-2" />
+                  <div className="text-xs text-gray-400">Respuesta rápida</div>
+                </div>
+                <div className="text-center">
+                  <Shield size={24} className="text-secondary mx-auto mb-2" />
+                  <div className="text-xs text-gray-400">Entrega segura</div>
+                </div>
+                <div className="text-center">
+                  <Zap size={24} className="text-success mx-auto mb-2" />
+                  <div className="text-xs text-gray-400">Soluciones ágiles</div>
+                </div>
               </div>
             </div>
+          </BentoCard>
 
-            <div className="rounded-2xl bg-dark-100 border border-dark-200/50 p-6 shadow-lg">
-              <h4 className="text-sm text-gray-300 mb-2">Disponibilidad</h4>
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-3 h-3 rounded-full bg-success animate-pulse" />
-                <div className="text-sm text-white font-medium">Disponible para proyectos freelance</div>
-              </div>
-              <p className="text-sm text-gray-400">Tiempo medio de respuesta: 24 horas. Tarifas y alcance se discuten según requerimientos.</p>
+          {/* Formulario card - wide */}
+          <BentoCard span="wide" delay={0.4}>
+            <div className="mb-6">
+              <h3 className="text-2xl font-bold text-white mb-2">Cuéntame tu proyecto</h3>
+              <p className="text-gray-400">Respondo en menos de 24 horas con una propuesta clara y orientada a resultados</p>
             </div>
-          </motion.div>
-
-          {/* Right: formulario con estilo tipo card */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="rounded-2xl bg-[linear-gradient(180deg,rgba(255,255,255,0.01),rgba(255,255,255,0.02))] border border-dark-200/50 p-8 shadow-2xl"
-          >
             <form onSubmit={handleSubmit} className="space-y-5" aria-labelledby="contact-form">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">Nombre completo *</label>
-                <input
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  aria-invalid={!!errors.name}
-                  aria-describedby={errors.name ? 'error-name' : undefined}
-                  className="w-full px-4 py-3 rounded-lg bg-dark-100 border border-dark-200/30 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30"
-                  placeholder="Tu nombre"
-                />
-                {errors.name && <div id="error-name" className="mt-2 text-sm text-red-400 flex items-center gap-2"><AlertCircle size={14} />{errors.name}</div>}
-              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">Nombre completo *</label>
+                  <input
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    aria-invalid={!!errors.name}
+                    aria-describedby={errors.name ? 'error-name' : undefined}
+                    className="w-full px-4 py-3 rounded-lg bg-dark-100 border border-dark-200/30 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30 text-base"
+                    placeholder="Tu nombre"
+                  />
+                  {errors.name && <div id="error-name" className="mt-2 text-sm text-red-400 flex items-center gap-2"><AlertCircle size={14} />{errors.name}</div>}
+                </div>
 
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">Correo electrónico *</label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  aria-invalid={!!errors.email}
-                  aria-describedby={errors.email ? 'error-email' : undefined}
-                  className="w-full px-4 py-3 rounded-lg bg-dark-100 border border-dark-200/30 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30"
-                  placeholder="correo@ejemplo.com"
-                />
-                {errors.email && <div id="error-email" className="mt-2 text-sm text-red-400 flex items-center gap-2"><AlertCircle size={14} />{errors.email}</div>}
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">Correo electrónico *</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    aria-invalid={!!errors.email}
+                    aria-describedby={errors.email ? 'error-email' : undefined}
+                    className="w-full px-4 py-3 rounded-lg bg-dark-100 border border-dark-200/30 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30 text-base"
+                    placeholder="correo@ejemplo.com"
+                  />
+                  {errors.email && <div id="error-email" className="mt-2 text-sm text-red-400 flex items-center gap-2"><AlertCircle size={14} />{errors.email}</div>}
+                </div>
               </div>
 
               <div>
@@ -185,7 +187,7 @@ const Contact: React.FC = () => {
                   onChange={handleInputChange}
                   aria-invalid={!!errors.subject}
                   aria-describedby={errors.subject ? 'error-subject' : undefined}
-                  className="w-full px-4 py-3 rounded-lg bg-dark-100 border border-dark-200/30 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  className="w-full px-4 py-3 rounded-lg bg-dark-100 border border-dark-200/30 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30 text-base"
                   placeholder="Breve descripción del proyecto"
                 />
                 {errors.subject && <div id="error-subject" className="mt-2 text-sm text-red-400 flex items-center gap-2"><AlertCircle size={14} />{errors.subject}</div>}
@@ -196,29 +198,27 @@ const Contact: React.FC = () => {
                 <textarea
                   id="message"
                   name="message"
-                  rows={6}
+                  rows={5}
                   value={formData.message}
                   onChange={handleInputChange}
                   aria-invalid={!!errors.message}
                   aria-describedby={errors.message ? 'error-message' : undefined}
-                  className="w-full px-4 py-3 rounded-lg bg-dark-100 border border-dark-200/30 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30 resize-none"
+                  className="w-full px-4 py-3 rounded-lg bg-dark-100 border border-dark-200/30 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30 resize-none text-base"
                   placeholder="Cuéntame sobre tu proyecto, objetivos y presupuesto (opcional)..."
                 />
                 {errors.message && <div id="error-message" className="mt-2 text-sm text-red-400 flex items-center gap-2"><AlertCircle size={14} />{errors.message}</div>}
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="pt-2">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-gradient-to-r from-primary to-primary/700 text-white font-semibold hover:brightness-95 transition-all"
+                  className="w-full md:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-primary to-primary/80 text-white text-lg font-semibold hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   aria-label="Enviar mensaje"
                 >
-                  <Send size={16} />
+                  <Send size={20} />
                   {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
                 </button>
-
-                <div className="text-sm text-gray-400">O también puedes escribir por WhatsApp o revisar mi perfil en GitHub.</div>
               </div>
 
               {submitStatus === 'success' && (
@@ -233,8 +233,8 @@ const Contact: React.FC = () => {
                 </motion.div>
               )}
             </form>
-          </motion.div>
-        </div>
+          </BentoCard>
+        </BentoGrid>
       </div>
     </section>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
+import { siteContent } from '../data/siteContent';
 
 interface HeaderProps {
   activeSection: string;
@@ -11,15 +12,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
-  const sections = [
-    { id: 'home', label: 'Inicio' },
-    { id: 'experience', label: 'Experiencia' },
-    { id: 'skills', label: 'Habilidades' },
-    { id: 'education', label: 'Educación' },
-    { id: 'portfolio', label: 'Portafolio' },
-    { id: 'gallery', label: 'Galería' },
-    { id: 'contact', label: 'Contacto' }
-  ];
+  const sections = siteContent.nav;
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -34,7 +27,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed top-0 left-0 right-0 z-50 w-full bg-dark/90 backdrop-blur-xs border-b border-dark-100/30"
+      className="fixed top-0 left-0 right-0 z-50 w-full bg-[rgba(255,255,255,0.03)] dark:bg-[rgba(12,14,20,0.24)] backdrop-blur-md"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -89,7 +82,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
               className="ml-4 btn-primary"
               aria-label="Contacto"
             >
-              Contacto
+              {siteContent.nav.find(n => n.id === 'contact')?.label || 'Contacto'}
             </motion.button>
             <ThemeToggle className="ml-2" />
           </nav>
@@ -112,7 +105,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden py-3 border-t border-dark-100/30"
+            className="md:hidden py-3"
           >
             <div className="flex flex-col px-2">
               {sections.map((section) => (

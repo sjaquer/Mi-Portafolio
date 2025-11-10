@@ -6,11 +6,9 @@ import { ScrollProgressIndicator } from './components/ScrollProgress';
 import Header from './components/Header';
 import Hero from './components/Hero';
 // Lazy loading para todos los componentes no críticos
-const Experience = React.lazy(() => import('./components/Experience'));
 const Skills = React.lazy(() => import('./components/Skills'));
-const Education = React.lazy(() => import('./components/Education'));
 const Portfolio = React.lazy(() => import('./components/Portfolio'));
-const Gallery = React.lazy(() => import('./components/Gallery'));
+const Reviews = React.lazy(() => import('./components/Reviews'));
 const Contact = React.lazy(() => import('./components/Contact'));
 const Footer = React.lazy(() => import('./components/Footer'));
 import { throttle } from './utils/throttle';
@@ -20,7 +18,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'experience', 'skills', 'education', 'portfolio', 'gallery', 'contact'];
+      const sections = ['home', 'skills', 'portfolio', 'reviews', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -72,16 +70,10 @@ const App: React.FC = () => {
           
           <main>
             <Hero />
-            <Suspense fallback={<LoadingState title="Cargando experiencia..." description="Preparando información profesional" />}>
-              <Experience />
-            </Suspense>
-            <Suspense fallback={<LoadingState title="Cargando habilidades..." description="Organizando competencias técnicas" />}>
+            <Suspense fallback={<LoadingState title="Cargando contenido..." description="Preparando experiencia" />}>
               <Skills />
-            </Suspense>
-            <Suspense fallback={<LoadingState title="Cargando contenido..." description="Preparando portafolio y galería" />}>
-              <Education />
               <Portfolio />
-              <Gallery />
+              <Reviews />
               <Contact />
             </Suspense>
           </main>

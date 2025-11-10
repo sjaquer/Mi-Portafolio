@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Heart, Github, Linkedin, Instagram, Youtube, Mail, Phone } from 'lucide-react';
+import { siteContent } from '../data/siteContent';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -13,10 +14,10 @@ const Footer: React.FC = () => {
   ];
 
   const quickLinks = [
-    { label: 'Experiencia', href: '#experience' },
-    { label: 'Educación', href: '#education' },
-    { label: 'Portafolio', href: '#portfolio' },
-    { label: 'Habilidades', href: '#skills' },
+    { label: 'Inicio', href: '#home' },
+    { label: 'Tecnologías', href: '#skills' },
+    { label: 'Proyectos', href: '#portfolio' },
+    { label: 'Reseñas', href: '#reviews' },
     { label: 'Contacto', href: '#contact' }
   ];
 
@@ -33,24 +34,20 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="lg:col-span-2">
             <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.45 }} className="mb-4">
-              <h3 className="text-2xl font-bold mb-2 text-white">
-                Sebastián Jaque
-              </h3>
+              <h3 className="text-2xl font-bold mb-2 text-white">{siteContent.brand.name}</h3>
               <div className="w-12 h-1 rounded-full bg-secondary mt-2 mb-2" />
-              <p className="text-gray-300 max-w-md">
-                Desarrollo de soluciones y estrategia creativa para productos digitales. Transformo retos en procesos y experiencias que escalan.
-              </p>
+              <p className="text-gray-300 max-w-md">{siteContent.footer.about}</p>
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, delay: 0.08 }} className="flex items-center gap-4 mt-4 mb-4">
-              <a href="mailto:sjaquer@outlook.es" className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors" aria-label="Enviar email a Sebastián">
-                <Mail size={16} className="text-primary" />
-                <span className="text-sm">sjaquer@outlook.es</span>
-              </a>
-              <a href="tel:+51946978919" className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors" aria-label="Llamar a Sebastián">
-                <Phone size={16} className="text-primary" />
-                <span className="text-sm">+51 946 978 919</span>
-              </a>
+            <a href={`mailto:${siteContent.footer.contactEmail}`} className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors" aria-label="Enviar email">
+              <Mail size={16} className="text-primary" />
+              <span className="text-sm">{siteContent.footer.contactEmail}</span>
+            </a>
+            <a href={`tel:${siteContent.footer.contactPhone}`} className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors" aria-label="Llamar">
+              <Phone size={16} className="text-primary" />
+              <span className="text-sm">{siteContent.footer.contactPhone}</span>
+            </a>
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, delay: 0.16 }} className="flex gap-3">
