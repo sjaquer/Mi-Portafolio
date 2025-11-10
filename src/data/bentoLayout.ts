@@ -86,7 +86,7 @@ export const heroBentoLayout: BentoItem[] = [
     content: {
       value: '',
       label: 'Contáctame',
-      icon: 'MessageCircle',
+      icon: 'WhatsApp',
       gradient: 'from-green-500/12 to-emerald-500/8',
       buttonHref: 'https://wa.me/51946978919?text=Hola,%20quiero%20conocer%20tus%20servicios',
       buttonText: 'WhatsApp'

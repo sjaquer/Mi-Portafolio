@@ -107,16 +107,26 @@ export const DynamicBentoCard: React.FC<DynamicBentoCardProps> = ({ item, index 
 
           {/* Si se provee un botón (ej. WhatsApp), renderizarlo aquí */}
           {content.buttonHref && (
-            <a
-              href={content.buttonHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-gradient-to-r from-green-500 to-emerald-500 text-white text-sm font-semibold hover:brightness-95 transition-colors"
-              aria-label={content.buttonText || 'Contactar por WhatsApp'}
-            >
-              <Icons.MessageCircle size={16} />
-              <span>{content.buttonText || 'WhatsApp'}</span>
-            </a>
+            <div className="mt-3 flex items-center justify-center w-full">
+              <a
+                href={content.buttonHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-gradient-to-r from-green-500 to-emerald-500 text-white text-sm font-semibold hover:brightness-95 transition-colors"
+                aria-label={content.buttonText || 'Contactar por WhatsApp'}
+              >
+                {/* Render WhatsApp brand icon inline to avoid depending on icon name mapping */}
+                {content.icon === 'WhatsApp' ? (
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M20.52 3.48A11.88 11.88 0 0012.02.12C6.16.12 1.48 4.8 1.48 10.66c0 1.87.49 3.7 1.42 5.33L.12 23.88l8.44-2.2a11.86 11.86 0 005.46 1.28h.02c5.86 0 10.54-4.68 10.54-10.54 0-2.82-1.1-5.47-3.06-7.34z" fill="currentColor" opacity="0.12" />
+                    <path d="M12.02 2.6c-4.86 0-8.8 3.94-8.8 8.8 0 1.62.43 3.2 1.24 4.58l-.82 2.48 2.55-.66a8.79 8.79 0 004.83 1.38c4.86 0 8.8-3.94 8.8-8.8S16.88 2.6 12.02 2.6zM17.1 15.03c-.25.7-1.44 1.34-1.99 1.42-.52.08-1.16.1-3.03-.59-2.98-1.04-4.91-4.18-5.06-4.39-.15-.21-1.22-1.69-1.22-3.23 0-1.54.85-2.29 1.16-2.59.31-.31.69-.34.93-.34.25 0 .52.01.75.02.24.02.56-.09.87.66.31.76 1.01 2.63 1.1 2.83.1.21.15.47.03.75-.12.27-.18.46-.36.72-.18.26-.38.58-.54.78-.18.22-.36.47-.16.92.2.46 1.14 1.86 2.45 3.05 1.68 1.5 3.08 1.97 3.54 2.19.46.21.75.18 1.03.11.28-.07.9-.36 1.03-.71.13-.36.13-.7.09-.77z" fill="white" />
+                  </svg>
+                ) : (
+                  <Icons.MessageCircle size={16} />
+                )}
+                <span>{content.buttonText || 'WhatsApp'}</span>
+              </a>
+            </div>
           )}
         </div>
       </BentoCard>
