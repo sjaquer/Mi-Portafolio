@@ -96,35 +96,27 @@ export const DynamicBentoCard: React.FC<DynamicBentoCardProps> = ({ item, index 
 
     // Si la tarjeta es WhatsApp y tiene un enlace, hacerla toda clicable (full-card) en lugar de un botón aparte
     if (content.icon === 'WhatsApp' && content.buttonHref) {
+      // Mostrar el icono como el único CTA (minimalista). El enlace será solo el icono, no la tarjeta completa.
       return (
         <BentoCard span={span} delay={index * 0.05} noPadding={noPadding}>
-          <a
-            href={content.buttonHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={content.buttonText || 'Contactar por WhatsApp'}
-            className="block w-full h-full"
-          >
-            <div className="h-full w-full flex flex-col items-center justify-center text-center p-3 md:p-4">
-              <div className="w-20 h-20 flex items-center justify-center p-2 rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 mb-3 mx-auto">
-                <WhatsApp width={44} height={44} aria-hidden="true" />
-              </div>
-              {content.value ? (
-                <div className="text-3xl md:text-4xl font-bold text-white mb-1">{content.value}</div>
-              ) : (
-                <div className="text-2xl md:text-3xl font-semibold text-white mb-1">&nbsp;</div>
-              )}
-              <div className="text-sm text-gray-400 mb-3">{content.label}</div>
-              <div className="mt-2 w-full px-6">
-                <div className="w-full rounded-md bg-gradient-to-r from-green-500 to-emerald-500 text-white text-sm font-semibold py-2 text-center">
-                  <span className="inline-flex items-center justify-center gap-2">
-                    <WhatsApp width={16} height={16} aria-hidden="true" />
-                    <span>{content.buttonText || 'WhatsApp'}</span>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </a>
+          <div className="h-full w-full flex flex-col items-center justify-center text-center p-3 md:p-4">
+            <a
+              href={content.buttonHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={content.buttonText || 'Contactar por WhatsApp'}
+              className="group inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 p-2 mb-4 hover:scale-105 focus:scale-105 transition-transform duration-200 ease-out focus:outline-none focus:ring-4 focus:ring-primary/20"
+            >
+              <WhatsApp width={40} height={40} aria-hidden="true" />
+            </a>
+
+            {content.value ? (
+              <div className="text-3xl md:text-4xl font-bold text-white mb-1">{content.value}</div>
+            ) : (
+              <div className="text-2xl md:text-3xl font-semibold text-white mb-1">&nbsp;</div>
+            )}
+            <div className="text-sm text-gray-400 mb-3">{content.label}</div>
+          </div>
         </BentoCard>
       );
     }
