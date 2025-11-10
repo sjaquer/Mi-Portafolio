@@ -49,8 +49,8 @@ const Hero = () => {
 
         <div className="mb-8">
           <div className="max-w-3xl mx-auto text-center mb-10 p-6 rounded-2xl bg-[linear-gradient(135deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01))] backdrop-blur-lg border border-[rgba(255,255,255,0.04)]">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4">{siteContent.hero.title}</h1>
-            <p className="text-lg text-gray-300 max-w-3xl mx-auto">{siteContent.hero.subtitle}</p>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold animated-gradient-text mb-4">{siteContent.hero.title}</h1>
+            <p className="text-lg max-w-3xl mx-auto animated-gradient-text-secondary font-semibold">{siteContent.hero.subtitle}</p>
             <div className="mt-6 flex items-center justify-center gap-4">
               <a href="#contact" className="btn-primary">{siteContent.hero.ctaPrimary}</a>
               <a href="#portfolio" className="btn-ghost">{siteContent.hero.ctaSecondary}</a>
