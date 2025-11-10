@@ -93,6 +93,42 @@ export const DynamicBentoCard: React.FC<DynamicBentoCardProps> = ({ item, index 
   // Stat card
   if (type === 'stat') {
     const Icon = getIcon(content.icon || 'TrendingUp');
+
+    // Si la tarjeta es WhatsApp y tiene un enlace, hacerla toda clicable (full-card) en lugar de un botón aparte
+    if (content.icon === 'WhatsApp' && content.buttonHref) {
+      return (
+        <BentoCard span={span} delay={index * 0.05} noPadding={noPadding}>
+          <a
+            href={content.buttonHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={content.buttonText || 'Contactar por WhatsApp'}
+            className="block w-full h-full"
+          >
+            <div className="h-full w-full flex flex-col items-center justify-center text-center p-3 md:p-4">
+              <div className="w-20 h-20 flex items-center justify-center p-2 rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 mb-3 mx-auto">
+                <WhatsApp width={44} height={44} aria-hidden="true" />
+              </div>
+              {content.value ? (
+                <div className="text-3xl md:text-4xl font-bold text-white mb-1">{content.value}</div>
+              ) : (
+                <div className="text-2xl md:text-3xl font-semibold text-white mb-1">&nbsp;</div>
+              )}
+              <div className="text-sm text-gray-400 mb-3">{content.label}</div>
+              <div className="mt-2 w-full px-6">
+                <div className="w-full rounded-md bg-gradient-to-r from-green-500 to-emerald-500 text-white text-sm font-semibold py-2 text-center">
+                  <span className="inline-flex items-center justify-center gap-2">
+                    <WhatsApp width={16} height={16} aria-hidden="true" />
+                    <span>{content.buttonText || 'WhatsApp'}</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </BentoCard>
+      );
+    }
+
     return (
       <BentoCard span={span} delay={index * 0.05} noPadding={noPadding}>
         <div className="h-full w-full flex flex-col items-center justify-center text-center p-3 md:p-4">
@@ -110,7 +146,7 @@ export const DynamicBentoCard: React.FC<DynamicBentoCardProps> = ({ item, index 
           )}
           <div className="text-sm text-gray-400 mb-3">{content.label}</div>
 
-          {/* Si se provee un botón (ej. WhatsApp), renderizarlo aquí */}
+          {/* Si se provee un botón (no-WhatsApp), renderizarlo aquí */}
           {content.buttonHref && (
             <div className="mt-3 flex items-center justify-center w-full">
               <a
@@ -118,15 +154,14 @@ export const DynamicBentoCard: React.FC<DynamicBentoCardProps> = ({ item, index 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-gradient-to-r from-green-500 to-emerald-500 text-white text-sm font-semibold hover:brightness-95 transition-colors"
-                aria-label={content.buttonText || 'Contactar por WhatsApp'}
+                aria-label={content.buttonText || 'Contactar'}
               >
-                {/* Render WhatsApp brand icon inline to avoid depending on icon name mapping */}
                 {content.icon === 'WhatsApp' ? (
                   <WhatsApp width={16} height={16} aria-hidden="true" />
                 ) : (
                   <Icons.MessageCircle size={16} />
                 )}
-                <span>{content.buttonText || 'WhatsApp'}</span>
+                <span>{content.buttonText || 'Contactar'}</span>
               </a>
             </div>
           )}
