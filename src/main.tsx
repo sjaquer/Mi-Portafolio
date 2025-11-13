@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
+import { ThemeProvider } from './utils/theme';
 
 // Optimización para móviles: deshabilitar StrictMode en producción
 const AppWrapper = import.meta.env.DEV 
@@ -10,6 +11,8 @@ const AppWrapper = import.meta.env.DEV
 
 createRoot(document.getElementById('root')!).render(
   <AppWrapper>
-    <App />
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
   </AppWrapper>
 );

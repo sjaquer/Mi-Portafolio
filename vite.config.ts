@@ -7,6 +7,10 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
+  // Evitar generación de source maps para CSS en entorno de desarrollo
+  css: {
+    devSourcemap: false,
+  },
   build: {
     sourcemap: false,
     target: 'es2015', // Mejor compatibilidad móvil

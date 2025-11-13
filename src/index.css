@@ -55,30 +55,176 @@
   --muted: #64748B;
 }
 
+/* NOTE: Light theme removed — site is dark-only. */
+/* Keep :root as the single source of truth (dark theme variables are defined above). */
+/* Force dark theme classes to ensure consistent styling and readable utilities. */
+.theme-dark, .theme-dark body, .theme-dark .site-content {
+  background-color: var(--c-bg-0);
+  color: var(--text-primary);
+}
+
+/* Ensure common Tailwind utilities render readable text on the dark background */
+.text-black, .text-white { color: var(--text-primary) !important; }
+
+/* Hero / project numbers: ensure visibility over dark background */
+.hero-number, .project-number {
+  color: var(--text-primary) !important;
+  font-weight: 800;
+}
+
+/* Scrollbar personalizado para Skills */
+.scrollbar-custom {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(242, 183, 5, 0.5) rgba(255, 255, 255, 0.05);
+}
+
+.scrollbar-custom::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background: rgba(242, 183, 5, 0.5);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background: rgba(242, 183, 5, 0.8);
+}
+
+/* Drag-to-scroll helper styles */
+.drag-scroll {
+  touch-action: pan-y; /* allow vertical page scrolling, we'll handle horizontal */
+  cursor: grab;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.drag-scroll.dragging,
+.drag-scroll:active {
+  cursor: grabbing;
+}
+
+/* Scroll snap for skills horizontal mode */
+.drag-scroll {
+  scroll-snap-type: x mandatory;
+}
+.scroll-snap-x-mandatory { scroll-snap-type: x mandatory; }
+.scroll-snap-align-start { scroll-snap-align: start; }
+.drag-scroll > * > .rounded-3xl {
+  /* BentoCard has rounded-3xl; make each card a snap stop */
+  scroll-snap-align: center;
+}
+
+/* Carousel arrows */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(6,12,25,0.6);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  opacity: 0;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  z-index: 40;
+}
+.carousel-arrow.left { left: 8px; }
+.carousel-arrow.right { right: 8px; }
+.drag-scroll:hover .carousel-arrow {
+  opacity: 1;
+}
+
+/* Dots wrapper tweaks */
+.carousel-dots { margin-top: 12px; }
+
+/* Carousel container: make skills area visually free/bleed */
+.carousel-container {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 0.75rem;
+  /* Give the carousel a sensible min-height so internal cards (which use h-full) have room */
+  min-height: 14rem; /* 224px default for mobile */
+  display: block;
+}
+.carousel-container .rounded-3xl {
+  background: rgba(6,12,25,0.6); /* keep tile background */
+}
+
+@media (min-width: 640px) {
+  .carousel-container { min-height: 16.5rem; /* ~264px */ }
+}
+
+@media (min-width: 1024px) {
+  .carousel-container { min-height: 21.5rem; /* ~344px */ padding: 0 1rem; }
+}
+
+/* Make animated gradient available globally (used on H1 / hero numbers) */
+@media (prefers-reduced-motion: no-preference) {
+  .animated-gradient-text,
+  .animated-gradient-text-light {
+    background-image: linear-gradient(90deg, rgba(var(--primary-rgb),1), rgba(var(--secondary-rgb),1), rgba(255,255,255,0.9));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-size: 200% 100%;
+    animation: gradientShift 6s linear infinite;
+    font-weight: 800;
+  }
+}
+
+/* Fallback for reduced motion */
+.animated-gradient-text, .animated-gradient-text-light {
+  background-image: linear-gradient(90deg, rgba(var(--primary-rgb),1), rgba(var(--secondary-rgb),1));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-weight: 800;
+}
+
+/* Ensure a smooth transition when switching themes */
+.theme-transition {
+  transition: background-color 260ms ease, color 260ms ease, border-color 260ms ease, box-shadow 260ms ease;
+}
+
 /* Reset básico */
 *,*::before,*::after {
   box-sizing: border-box;
 }
 
-/* Headings mejorados con mejor jerarquía y tamaños más grandes para Bento UI */
+/* Headings mejorados con mejor jerarquía y tamaños optimizados mobile-first */
 h1,h2,h3,h4 {
   color: var(--text-primary);
   font-weight: 700;
-  letter-spacing: -0.025em; /* Tracking ajustado */
+  letter-spacing: -0.025em;
 }
 
-/* Escala tipográfica más grande para Bento Bold */
-h1 { font-size: clamp(2.75rem, 6.5vw, 5.25rem); line-height: 1.03; }
-h2 { font-size: clamp(2.25rem, 5.25vw, 4rem); line-height: 1.12; }
-h3 { font-size: clamp(1.625rem, 3.75vw, 2.5rem); line-height: 1.22; }
-h4 { font-size: clamp(1.125rem, 2.5vw, 1.5rem); line-height: 1.35; }
+/* Escala tipográfica responsive optimizada para legibilidad mobile */
+h1 { font-size: clamp(2rem, 7vw, 5.25rem); line-height: 1.1; }
+h2 { font-size: clamp(1.75rem, 5.5vw, 4rem); line-height: 1.15; }
+h3 { font-size: clamp(1.5rem, 4vw, 2.5rem); line-height: 1.25; }
+h4 { font-size: clamp(1.25rem, 3vw, 1.75rem); line-height: 1.35; }
 
-/* Párrafos con mejor legibilidad */
+/* Párrafos con mejor legibilidad mobile-optimized */
 p {
   color: var(--text-secondary);
-  line-height: 1.7;
-  max-width: 65ch; /* Óptimo para lectura */
+  line-height: 1.65;
+  max-width: 65ch;
   font-weight: 400;
+  font-size: clamp(0.9375rem, 2.5vw, 1.125rem); /* 15-18px responsive */
 }
 
 /* Links */
@@ -321,6 +467,83 @@ textarea::placeholder {
   font-weight: 600;
 }
 
+/* Clases mejoradas que se adaptan automáticamente al tema */
+.text-adaptive-muted {
+  color: var(--text-muted);
+}
+
+.text-adaptive-subtle {
+  color: var(--text-subtle);
+}
+
+.text-adaptive-secondary {
+  color: var(--text-secondary);
+}
+
+/* Removed light-theme specific gray mappings and placeholders — site is dark-only */
+
+/* Clases adaptativas usando CSS puro */
+.text-adaptive {
+  color: #0f172a;
+}
+
+.theme-dark .text-adaptive {
+  color: #f1f5f9;
+}
+
+.text-adaptive-secondary {
+  color: #334155;
+}
+
+.theme-dark .text-adaptive-secondary {
+  color: #d1d5db;
+}
+
+.text-adaptive-muted {
+  color: #475569;
+}
+
+.theme-dark .text-adaptive-muted {
+  color: #9ca3af;
+}
+
+.text-adaptive-subtle {
+  color: #64748b;
+}
+
+.theme-dark .text-adaptive-subtle {
+  color: #6b7280;
+}
+
+/* Backgrounds adaptativos */
+.bg-adaptive {
+  background-color: #ffffff;
+}
+
+.theme-dark .bg-adaptive {
+  background-color: #111827;
+}
+
+.bg-adaptive-card {
+  background-color: #f8fafc;
+}
+
+.theme-dark .bg-adaptive-card {
+  background-color: #1f2937;
+}
+
+/* Bordes adaptativos */
+.border-adaptive {
+  border-color: #e2e8f0;
+}
+
+.theme-dark .border-adaptive {
+  border-color: #374151;
+}
+
+/* Mejoras específicas para elementos con problemas de contraste */
+/* Removed leftover light-theme background/border overrides (dark-only site) */
+
 /* Highlight text */
 .highlight-text {
   background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
@@ -328,6 +551,107 @@ textarea::placeholder {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-weight: 700;
+}
+
+/* Clase para asegurar que el texto rotante sea siempre sólido y legible
+   cuando la cabecera usa gradientes (evita heredar color: transparent). */
+.rotating-solid {
+  color: var(--text-primary) !important;
+  -webkit-text-fill-color: var(--text-primary) !important;
+  background: transparent !important;
+}
+
+/* Pill detrás del texto rotante: diseño moderno con mejor UX */
+.rotating-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-600) 100%);
+  color: var(--color-dark);
+  -webkit-text-fill-color: var(--color-dark);
+  /* slightly increase top padding to visually center the text */
+  padding: 1.15rem 2.5rem 0.95rem 2.5rem;
+  line-height: 1;
+  border-radius: 1rem;
+  font-weight: 800;
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  letter-spacing: -0.02em;
+  min-width: 12ch;
+  max-width: 18ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-shadow: 
+    0 8px 32px rgba(242, 183, 5, 0.35),
+    0 4px 16px rgba(242, 183, 5, 0.2),
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    inset 0 2px 0 rgba(255, 255, 255, 0.25),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+  animation: pillPulse 3s ease-in-out infinite;
+}
+
+/* Ensure the rotating text inside the pill stays centered even when words change width */
+.rotating-pill .rotating-solid,
+.rotating-pill .rotating-solid * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  height: 100%;
+}
+
+.rotating-pill::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.3) 45%, 
+    rgba(255, 255, 255, 0.5) 50%, 
+    rgba(255, 255, 255, 0.3) 55%, 
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.rotating-pill:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 
+    0 12px 48px rgba(242, 183, 5, 0.45),
+    0 8px 24px rgba(242, 183, 5, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    inset 0 2px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.15);
+  animation-play-state: paused;
+}
+
+@keyframes pillPulse {
+  0%, 100% { 
+    transform: scale(1);
+  }
+  50% { 
+    transform: scale(1.02);
+    box-shadow: 
+      0 10px 40px rgba(242, 183, 5, 0.4),
+      0 6px 20px rgba(242, 183, 5, 0.25),
+      0 3px 10px rgba(0, 0, 0, 0.1),
+      inset 0 2px 0 rgba(255, 255, 255, 0.3);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  50%, 100% {
+    transform: translateX(100%);
+  }
 }
 
 /* Small responsive tweaks */
@@ -343,8 +667,12 @@ textarea::placeholder {
 
 /* Small helper to clip las glows que usan posiciones negativas */
 .section-clip {
-  overflow: hidden;
+  /* Allow descenders (g, j, p) to render outside the element's box
+     so large headings don't get clipped by rounded/overflowed containers. */
+  overflow: visible;
 }
+
+/* desktop-specific line-height removed (was part of Plan A). */
 
 /* Clase para asegurar que el contenido principal se sitúe sobre el fondo */
 .site-content {
@@ -555,6 +883,14 @@ textarea::placeholder {
   .site-bg .particles i {
     animation-duration: calc(var(--d) * 0.7);
   }
+  /* Reduce heavy background textures on small screens to avoid visual artifacts
+     seen as repeated vertical rounded shapes behind carousel items. */
+  .site-bg .mesh,
+  .site-bg .texture,
+  .site-bg .particles {
+    display: none !important;
+    opacity: 0 !important;
+  }
 }
 
 /* Animated gradient for headings (respects prefers-reduced-motion) */
@@ -584,3 +920,5 @@ textarea::placeholder {
     100% { background-position: 0% 50%; }
   }
 }
+
+/* Removed all light-theme specific animated variants and mappings — dark-only site */

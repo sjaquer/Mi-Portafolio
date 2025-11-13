@@ -1,8 +1,8 @@
 export const siteContent = {
   brand: {
-    name: 'Sjaquer Studio',
+    name: 'sjaquer studio',
     subtitle: 'Diseño & Desarrollo',
-    logo: '/images/iconweb.png'
+    logo: '/images/iconweb.webp'
   },
   nav: [
     { id: 'home', label: 'Inicio' },
@@ -12,26 +12,26 @@ export const siteContent = {
     { id: 'contact', label: 'Contacto' }
   ],
   hero: {
-    title: 'Diseño y Desarrollo de Productos Digitales',
-    subtitle: 'Transformo ideas en productos reales: diseño, interacción y código escalable. Trabajo con equipos y empresas para llevar proyectos desde el concepto hasta producción.',
-    ctaPrimary: 'Hablemos',
+    title: 'Soluciones digitales que convierten',
+    subtitle: 'Estrategia digital · Desarrollo web · Automatización · Análisis de datos. Diseño de productos escalables orientados a conversión y crecimiento.',
+    ctaPrimary: 'Solicitar propuesta',
     ctaSecondary: 'Ver proyectos'
   },
   skills: {
     title: 'Tecnologías',
-    subtitle: 'Herramientas y frameworks con los que entrego productos de alto impacto.'
+    subtitle: 'Stack técnico probado: Web, Cloud, Data y Automatización para lanzar productos robustos y mantenibles.'
   },
   portfolio: {
     title: 'Proyectos',
-    subtitle: 'Casos reales con impacto medible. Selección curada de trabajos recientes.'
+    subtitle: 'Casos de éxito: productos lanzados, métricas mejoradas y procesos automatizados que escalaron resultados.'
   },
   reviews: {
-    title: 'Lo que dicen mis clientes',
-    subtitle: 'Testimonios reales de proyectos completados con éxito'
+    title: 'Clientes satisfechos',
+    subtitle: 'Historias de impacto: cómo ayudé a equipos a alcanzar objetivos de negocio con tecnología y diseño.'
   },
   footer: {
-    copyright: '© 2025 Sjaquer Studio',
-    about: 'Desarrollo de soluciones creativas y estrategia técnica para productos digitales.',
+    copyright: '© 2025 sjaquer studio',
+    about: 'Estrategia, desarrollo y datos: construyo productos digitales orientados a usuarios y métricas.',
     contactEmail: 'sjaquer@outlook.es',
     contactPhone: '+51 946 978 919'
   }

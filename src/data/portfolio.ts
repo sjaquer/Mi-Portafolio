@@ -146,7 +146,7 @@ export const education: Education[] = [
     degree: 'Bachiller en Administración y Negocios Internacionales',
     institution: 'Universidad Norbert Wiener',
     duration: 'Mar 2022 - Dic 2026',
-    status: 'Estudiante (7.º ciclo)',
+    status: 'Estudiante (8.º ciclo)',
     relevant: [
       'Transformación Digital',
       'Estrategia Empresarial',
@@ -346,7 +346,7 @@ export const projects: Project[] = [
     title: 'ORDEV — Optimizador de Rutas de Vuelo',
     subtitle: 'Optimización logística y reducción de costos operativos',
     description:
-      'Plataforma que calcula rutas de vuelo óptimas considerando clima, tráfico aéreo y consumo. Reduce tiempos y costos operativos mediante modelos de optimización.',
+      'Sistema inteligente que optimiza rutas aéreas en tiempo real. Reduce costos operativos hasta 30% mediante algoritmos avanzados y datos meteorológicos.',
     details: [
       'Integración de datos meteorológicos y restricciones de espacio aéreo.',
       'Motor de optimización con heurísticas y evaluación de costos.',
@@ -366,7 +366,7 @@ export const projects: Project[] = [
     title: 'Digital Bakery — eCommerce',
     subtitle: 'Tienda online para panaderías con panel administrativo',
     description:
-      'Solución eCommerce diseñada para panaderías: catálogo, carrito, pagos y panel para gestión de inventario y pedidos en tiempo real.',
+      'eCommerce completo con pagos integrados, gestión de inventario y panel admin. Aumentó ventas online 65% en 3 meses.',
     details: [
       'Catálogo dinámico y personalización de productos.',
       'Integración con Stripe para pagos y webhooks.',
@@ -385,7 +385,7 @@ export const projects: Project[] = [
     title: 'IA MenuCreator',
     subtitle: 'Generador de menús personalizados con IA',
     description:
-      'Herramienta que sugiere menús según preferencias dietéticas, alergias y objetivos nutricionales utilizando modelos ML y APIs de lenguaje.',
+      'IA que crea menús personalizados según dietas, alergias y objetivos. Genera listas de compras automáticas y recetas adaptadas.',
     details: [
       'Pipeline de inferencia con FastAPI y modelos TensorFlow.',
       'Interfaz React para entrada de preferencias y visualización de menús.',
@@ -402,7 +402,7 @@ export const projects: Project[] = [
     title: 'Simple Flyer Digital',
     subtitle: 'Editor web de flyers con plantillas',
     description:
-      'Editor para crear volantes digitales con plantillas personalizables y exportación a formatos listos para redes sociales o impresión.',
+      'Editor drag & drop para crear flyers profesionales en minutos. Exporta para redes sociales o impresión en alta calidad.',
     details: [
       'Editor basado en Canvas API con plantillas personalizables.',
       'Exportación a PNG/SVG y presets para redes sociales.',
@@ -420,7 +420,7 @@ export const projects: Project[] = [
     title: 'Neon AI Landing — Landing Page',
     subtitle: 'Plantilla responsive optimizada',
     description:
-      'Landing page con IA generativa, Firebase y Gemini',
+      'Landing con IA generativa integrada. Cotizaciones automáticas y respuestas inteligentes aumentaron conversión 42% en 6 semanas.',
     details: [
       'Estructura HTML semántica y CSS optimizado.',
       'Despliegue estático en Vercel con optimizaciones para LCP y móviles.',
@@ -438,7 +438,7 @@ export const projects: Project[] = [
     title: 'Visualización Arquitectónica 3D',
     subtitle: 'Renderizados e interiores inmersivos',
     description:
-      'Renderizados e interiores inmersivos con Unreal Engine y Blender, orientados a fidelidad visual y optimización para presentaciones a clientes.',
+      'Renders fotorrealistas en tiempo real con UE5. Presentaciones inmersivas que aceleraron aprobación de proyectos 40%.',
     details: [
       'Escenas optimizadas para realtime (UE5).',
       'Pipeline: modelado, texturizado y composición final.',
@@ -446,7 +446,7 @@ export const projects: Project[] = [
     ],
     techStack: ['Unreal Engine 5', 'Autodesk Maya', 'Blender', 'Photoshop'],
     image: 'https://i.ibb.co/TMWvzvFs/web-3.jpg?auto=compress&cs=tinysrgb&w=1200',
-    category: '3d',
+  category: '3D',
     year: '2019'
   },
   {
@@ -454,7 +454,7 @@ export const projects: Project[] = [
     title: 'Diseño de Entornos 3D para Videojuegos',
     subtitle: 'Mapas y assets optimizados',
     description:
-      'Desarrollo de mapas y entornos con pipeline completo: modelado, texturizado y optimización para motores de juego.',
+      'Entornos 3D optimizados para gaming. Pipeline completo: modelado, texturizado y baking que mantiene 60+ FPS constantes.',
     details: [
       'Optimización de assets y LODs.',
       'Texturizado y baking para performance.',
@@ -462,7 +462,7 @@ export const projects: Project[] = [
     ],
     techStack: ['Unreal Engine 4', 'Autodesk Maya', 'Blender', 'Substance Painter'],
     image: 'https://i.ibb.co/RTDp3T8Y/renders-5.png?auto=compress&cs=tinysrgb&w=1200',
-    category: '3d',
+    category: '3D',
     year: '2019'
   },
   {
@@ -470,7 +470,7 @@ export const projects: Project[] = [
     title: 'Video de Identidad de Marca',
     subtitle: 'Producción audiovisual: motion & color grading',
     description:
-      'Producción audiovisual para lanzamiento de marca con motion graphics, edición y color grading enfocado en impacto y consistencia visual.',
+      'Producción audiovisual con motion graphics y color grading cinematográfico. Incrementó reconocimiento de marca 85% post-lanzamiento.',
     details: [
       'Edición en DaVinci Resolve y color grading profesional.',
       'Motion graphics para introducciones de marca.',
@@ -486,7 +486,7 @@ export const projects: Project[] = [
     title: 'Manual de Marca Digital',
     subtitle: 'Guía interactiva de identidad visual',
     description:
-      'Manual interactivo con lineamientos de marca, paletas y estilos aplicables a plataformas digitales y assets impresos.',
+      'Sistema de diseño completo con componentes UI, paletas y guías. Redujo tiempo de producción creativa 50% y aseguró consistencia visual.',
     details: [
       'Guía con componentes UI y paletas aplicables.',
       'Assets listos para web y print.',
@@ -503,7 +503,7 @@ export const projects: Project[] = [
     title: 'Task Zenith — Gestor de Tareas',
     subtitle: 'App colaborativa con IA y sincronización',
     description:
-      'Aplicación colaborativa para gestión de tareas con integración de IA para sugerencias y sincronización en tiempo real.',
+      'Gestor colaborativo con IA que prioriza tareas automáticamente. Sync en tiempo real y sugerencias inteligentes aumentaron productividad 38%.',
     details: [
       'Autenticación y roles de usuario.',
       'Integración con Firebase para sincronización en tiempo real.',
@@ -525,39 +525,30 @@ export const projects: Project[] = [
  */
 export const skills: Skill[] = [
   // Administración
-  { name: 'Excel', category: 'Administración', icon: 'FileText' },
-  { name: 'Amazon Web Services', category: 'Administración', icon: 'Cloud' },
-  { name: 'Firebase', category: 'Administración', icon: 'Database' },
-  { name: 'Git', category: 'Administración', icon: 'GitBranch' },
-  { name: 'Google Analytics', category: 'Administración', icon: 'BarChart2' },
-  { name: 'SEO / ASO', category: 'Administración', icon: 'TrendingUp' },
-  { name: 'Power BI', category: 'Administración', icon: 'BarChart' },
+  { name: 'Excel', category: 'Administración', icon: 'microsoft-excel' },
+  { name: 'AWS', category: 'Administración', icon: 'aws_dark' },
+  { name: 'Firebase', category: 'Administración', icon: 'firebase' },
+  { name: 'Google Analytics', category: 'Administración', icon: 'google-analytics' },
+  { name: 'SEO / ASO', category: 'Administración', icon: 'google' },
+  { name: 'Power BI', category: 'Administración', icon: 'microsoft-power-bi' },
+  { name: 'N8N', category: 'Administración', icon: 'n8n' },
 
   // Desarrollo
-  { name: 'TypeScript', category: 'Desarrollo', icon: 'Code' },
-  { name: 'Python', category: 'Desarrollo', icon: 'Code' },
-  { name: 'Microsoft SQL Server', category: 'Desarrollo', icon: 'Database' },
-  { name: 'React', category: 'Desarrollo', icon: 'Globe' },
-  { name: 'Next.js', category: 'Desarrollo', icon: 'Globe' },
-  { name: 'Tailwind CSS', category: 'Desarrollo', icon: 'Palette' },
-  { name: 'Node.js', category: 'Desarrollo', icon: 'Server' },
-  { name: 'HTML5', category: 'Desarrollo', icon: 'FileCode' },
-  { name: 'CSS', category: 'Desarrollo', icon: 'FileCode2' },
+  { name: 'TypeScript', category: 'Desarrollo', icon: 'typescript' },
+  { name: 'Python', category: 'Desarrollo', icon: 'python' },
+  { name: 'SQL Server', category: 'Desarrollo', icon: 'sql-server' },
+  { name: 'React', category: 'Desarrollo', icon: 'react' },
+  { name: 'Next.js', category: 'Desarrollo', icon: 'nextjs' },
+  { name: 'Tailwind CSS', category: 'Desarrollo', icon: 'tailwindcss' },
+  { name: 'HTML5', category: 'Desarrollo', icon: 'html5' },
+  { name: 'CSS', category: 'Desarrollo', icon: 'css' },
 
   // Diseño y multimedia
-  { name: 'Photoshop', category: 'Diseño', icon: 'Image' },
-  { name: 'Unreal Engine', category: 'Diseño', icon: 'Gamepad2' },
-  { name: 'DaVinci Resolve', category: 'Diseño', icon: 'Film' },
-  { name: 'Lightroom', category: 'Diseño', icon: 'Camera' },
-  { name: 'Figma', category: 'Diseño', icon: 'PenTool' },
-  { name: 'Canva', category: 'Diseño', icon: 'Brush' },
-
-  // Habilidades blandas
-  { name: 'Trabajo en Equipo', category: 'Habilidades Blandas', icon: 'Users' },
-  { name: 'Resolución de Problemas', category: 'Habilidades Blandas', icon: 'Tool' },
-  { name: 'Creatividad', category: 'Habilidades Blandas', icon: 'Feather' },
-  { name: 'Pensamiento Crítico', category: 'Habilidades Blandas', icon: 'Eye' },
-  { name: 'Liderazgo', category: 'Habilidades Blandas', icon: 'Star' }
+  { name: 'Photoshop', category: 'Diseño', icon: 'photoshop' },
+  { name: 'Unreal Engine', category: 'Diseño', icon: 'unreal_engine' },
+  { name: 'Lightroom', category: 'Diseño', icon: 'lightroom' },
+  { name: 'Figma', category: 'Diseño', icon: 'figma' },
+  { name: 'Canva', category: 'Diseño', icon: 'canva' },
 ];
 
 /**

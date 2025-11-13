@@ -9,7 +9,6 @@ import Hero from './components/Hero';
 const Skills = React.lazy(() => import('./components/Skills'));
 const Portfolio = React.lazy(() => import('./components/Portfolio'));
 const Reviews = React.lazy(() => import('./components/Reviews'));
-const Contact = React.lazy(() => import('./components/Contact'));
 const Footer = React.lazy(() => import('./components/Footer'));
 import { throttle } from './utils/throttle';
 
@@ -18,7 +17,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'skills', 'portfolio', 'reviews', 'contact'];
+      const sections = ['home', 'skills', 'portfolio', 'reviews'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -74,7 +73,6 @@ const App: React.FC = () => {
               <Skills />
               <Portfolio />
               <Reviews />
-              <Contact />
             </Suspense>
           </main>
 

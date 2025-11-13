@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import ThemeToggle from './ThemeToggle';
 import { siteContent } from '../data/siteContent';
 
 interface HeaderProps {
@@ -51,7 +50,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
 
           {/* Desktop Navigation con indicadores mejorados */}
           <nav className="hidden md:flex space-x-1 items-center">
-            {sections.map((section) => (
+            {sections.filter(s => s.id !== 'contact').map((section) => (
               <motion.button
                 key={section.id}
                 onClick={() => scrollToSection(section.id)}
@@ -84,7 +83,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
             >
               {siteContent.nav.find(n => n.id === 'contact')?.label || 'Contacto'}
             </motion.button>
-            <ThemeToggle className="ml-2" />
+            {/* Theme toggle removed — site is dark-only */}
           </nav>
 
           {/* Mobile Menu Button */}

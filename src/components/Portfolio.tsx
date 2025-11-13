@@ -57,20 +57,21 @@ const Portfolio = () => {
 
   const getIcon = (category?: string) => {
     if (!category) return Code;
-    if (category.includes('web')) return Code;
-    if (category.includes('3d')) return Box;
+    const c = category.toLowerCase();
+    if (c.includes('web')) return Code;
+    if (c.includes('3d')) return Box;
     return Palette;
   };
 
   return (
-    <section id="portfolio" ref={ref} className="relative py-24 px-6 lg:px-16 overflow-hidden">
+    <section id="portfolio" ref={ref} className="relative py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-12 overflow-hidden">
       <div className="relative max-w-[1400px] mx-auto">
         <motion.header
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
           <motion.h2
             initial={reduce ? { opacity: 1 } : { opacity: 0, y: 8 }}
@@ -95,7 +96,7 @@ const Portfolio = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
+          className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 px-2"
         >
           {categories.map((c: { id: string; label: string }) => {
             const Icon = getIcon(c.id);
@@ -107,22 +108,25 @@ const Portfolio = () => {
                 onClick={() => setFilter(c.id)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold transition-all ${activeCls}`}
+                className={`inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-3 rounded-lg sm:rounded-xl text-xs sm:text-sm font-semibold transition-all ${activeCls}`}
                 aria-pressed={filter === c.id}
                 aria-label={c.label}
               >
-                <Icon size={16} />
+                <Icon size={14} className="sm:w-4 sm:h-4" />
                 {c.label}
               </motion.button>
             );
           })}
         </motion.div>
 
-        <BentoGrid columns={6}>
+  <BentoGrid columns={4}>
           {display.map((project, i) => {
             const CategoryIcon = getIcon(project.category || '');
             const subtitle = (project as Project & { subtitle?: string }).subtitle;
-            const span = project.featured ? 'large' : (i % 3 === 0 ? 'medium' : 'medium');
+
+            // Force uniform card size (medium) so all project cards display equal dimensions on desktop
+            const span: 'small' | 'medium' | 'large' | 'wide' | 'tall' | 'full' = 'medium';
+            const noPadding = !!project.featured; // featured: full-bleed, others: inner panel
 
             // compute tint overlay by t (use CSS rgb tokens, clamp opacity for contrast)
             const tintPrimary = `rgba(var(--primary-rgb), ${Math.min(0.6, 0.05 + 0.45 * t)})`;
@@ -133,72 +137,117 @@ const Portfolio = () => {
                 key={project.id}
                 span={span}
                 delay={i * 0.06}
-                noPadding
+                noPadding={noPadding}
                 className="group"
               >
                 <motion.div initial={reduce ? { opacity: 1 } : { opacity: 0 }} whileInView={reduce ? { opacity: 1 } : { opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="flex flex-col h-full">
-                  <div className="relative w-full aspect-[16/9] overflow-hidden bg-dark-100">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      loading="lazy"
-                      decoding="async"
-                      srcSet={`${project.image} 1x`}
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    {/* tint overlay that changes with scroll */}
-                    <div className="absolute inset-0 pointer-events-none" style={{ background: `linear-gradient(180deg, ${tintPrimary} 0%, ${tintSecondary} 70%, rgba(0,0,0,0.36) 100%)`, mixBlendMode: 'multiply', opacity: 0.92 }} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1 rounded-full bg-black/40 border border-[rgba(255,255,255,0.03)] text-xs">
-                      <CategoryIcon size={14} className="text-white" />
-                      <span className="text-white/90 capitalize">{project.category}</span>
-                    </div>
+                  {/* Featured: large hero full-bleed */}
+                  {project.featured ? (
+                    <div className="relative w-full aspect-[16/9] overflow-hidden bg-dark-100">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        loading="lazy"
+                        decoding="async"
+                        srcSet={`${project.image} 1x`}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 pointer-events-none" style={{ background: `linear-gradient(180deg, ${tintPrimary} 0%, ${tintSecondary} 70%, rgba(0,0,0,0.36) 100%)`, mixBlendMode: 'multiply', opacity: 0.92 }} />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1 rounded-full bg-black/40 border border-[rgba(255,255,255,0.03)] text-xs">
+                        <CategoryIcon size={14} className="text-white" />
+                        <span className="text-white/90 capitalize">{project.category}</span>
+                      </div>
 
-                    {project.featured && (
-                      <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-secondary text-dark text-xs font-medium">
+                      {/* Texto principal sobre la imagen para featured */}
+                      <div className="absolute left-4 right-4 bottom-16 md:bottom-12 z-30 text-left">
+                        <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight drop-shadow-md max-w-3xl line-clamp-2">
+                          {project.title}
+                        </h3>
+                        {subtitle && <p className="mt-2 text-sm sm:text-sm text-gray-200 max-w-2xl line-clamp-1">{subtitle}</p>}
+                        {project.description && (
+                          <p className="mt-2 text-sm text-gray-300 max-w-2xl line-clamp-2 hidden sm:block">{project.description}</p>
+                        )}
+
+                        {/* Tech chips - ocultas en pantallas muy pequeñas */}
+                        {project.techStack && project.techStack.length > 0 && (
+                          <div className="mt-4 flex flex-wrap gap-2">
+                            {project.techStack.slice(0, 6).map((tch, idx) => (
+                              <span key={idx} className="px-3 py-1 text-xs rounded-full bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.03)] text-gray-200">
+                                {tch}
+                              </span>
+                            ))}
+                            {project.techStack.length > 6 && <span className="px-3 py-1 text-xs rounded-full bg-white/10 text-gray-400">+{project.techStack.length - 6}</span>}
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="absolute bottom-4 left-4 right-4 flex items-center gap-3 justify-start opacity-100 transition-opacity duration-300 z-30">
+                        {project.liveUrl && (
+                          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-primary text-white text-sm font-medium hover:brightness-95 transition-colors" aria-label={`Ver ${project.title}`}>
+                            <ExternalLink size={14} /> Ver
+                          </a>
+                        )}
+                        {project.githubUrl && (
+                          <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-[rgba(255,255,255,0.03)] text-gray-200 text-sm font-medium hover:bg-[rgba(255,255,255,0.05)] transition-colors" aria-label={`Código ${project.title}`}>
+                            <Github size={14} /> Código
+                          </a>
+                        )}
+                      </div>
+
+                      <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-secondary text-dark text-xs font-medium z-30">
                         Destacado
                       </div>
-                    )}
-
-                    <div className="absolute bottom-4 left-4 right-4 flex items-center gap-3 justify-start opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      {project.liveUrl && (
-                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-primary text-white text-sm font-medium hover:brightness-95 transition-colors" aria-label={`Ver ${project.title}`}>
-                          <ExternalLink size={14} /> Ver
-                        </a>
-                      )}
-                      {project.githubUrl && (
-                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-[rgba(255,255,255,0.03)] text-gray-200 text-sm font-medium hover:bg-[rgba(255,255,255,0.05)] transition-colors" aria-label={`Código ${project.title}`}>
-                          <Github size={14} /> Código
-                        </a>
-                      )}
                     </div>
-                  </div>
+                  ) : (
+                    /* Regular card now uses same overlay style as featured but scaled */
+                    <div className="relative w-full aspect-[16/10] overflow-hidden bg-dark-100 rounded-lg">
+                      <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                      <div className="absolute inset-0 pointer-events-none" style={{ background: `linear-gradient(180deg, ${tintPrimary} 0%, ${tintSecondary} 70%, rgba(0,0,0,0.36) 100%)`, mixBlendMode: 'multiply', opacity: 0.92 }} />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                  <div className="p-5 flex-1 flex flex-col">
-                    <div className="flex items-start justify-between gap-4 mb-3">
-                      <div className="min-w-0">
-                        <motion.h3 initial={{ y: 6, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.45 }} className="text-lg lg:text-xl font-semibold text-white leading-snug truncate">{project.title}</motion.h3>
-                        {subtitle ? <motion.p initial={{ y: 6, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: 0.45, delay: 0.04 }} className="text-xs text-gray-400 mt-1 truncate">{subtitle}</motion.p> : null}
+                      <div className="absolute top-3 left-3 px-2 py-1 rounded-md bg-black/40 text-xs text-white flex items-center gap-2 z-20">
+                        <CategoryIcon size={12} />
+                        <span className="capitalize text-xs">{project.category}</span>
+                      </div>
+
+                      <div className="absolute left-3 right-3 bottom-12 z-30 text-left">
+                        <h3 className="text-lg sm:text-xl md:text-2xl font-extrabold text-white leading-tight drop-shadow-md max-w-full line-clamp-2">
+                          {project.title}
+                        </h3>
+                        {subtitle && <p className="mt-1 text-xs sm:text-xs text-gray-200 max-w-2xl line-clamp-1">{subtitle}</p>}
+                        {project.description && (
+                          <p className="mt-2 text-xs text-gray-300 max-w-2xl line-clamp-2 hidden sm:block">{project.description}</p>
+                        )}
+
+                        {/* Tech chips */}
+                        {project.techStack && project.techStack.length > 0 && (
+                          <div className="mt-3 flex flex-wrap gap-2">
+                            {project.techStack.slice(0, 6).map((tch, idx) => (
+                              <span key={idx} className="px-2 py-1 text-xs rounded-full bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.03)] text-gray-200">
+                                {tch}
+                              </span>
+                            ))}
+                            {project.techStack.length > 6 && <span className="px-3 py-1 text-xs rounded-full bg-white/10 text-gray-400">+{project.techStack.length - 6}</span>}
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="absolute bottom-3 left-3 right-3 flex items-center gap-3 justify-start opacity-100 transition-opacity duration-300 z-30">
+                        {project.liveUrl && (
+                          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-primary text-white text-sm font-medium hover:brightness-95 transition-colors" aria-label={`Ver ${project.title}`}>
+                            <ExternalLink size={14} /> Ver
+                          </a>
+                        )}
+                        {project.githubUrl && (
+                          <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-[rgba(255,255,255,0.03)] text-gray-200 text-sm font-medium hover:bg-[rgba(255,255,255,0.05)] transition-colors" aria-label={`Código ${project.title}`}>
+                            <Github size={14} /> Código
+                          </a>
+                        )}
                       </div>
                     </div>
-
-                    <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.45, delay: 0.06 }} className="text-sm text-gray-300 mb-4 line-clamp-3">{project.description}</motion.p>
-
-                    <div className="flex flex-wrap gap-2 mt-auto">
-                      {project.techStack?.slice(0, 6).map((t, idx) => (
-                        <motion.span key={idx} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.35, delay: 0.04 * idx }} className="px-3 py-1 text-xs rounded-full bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.03)] text-gray-300">
-                          {t}
-                        </motion.span>
-                      ))}
-                      {project.techStack && project.techStack.length > 6 && (
-                        <span className="px-3 py-1 text-xs rounded-full bg-white/10 text-gray-400">
-                          +{project.techStack.length - 6}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
+                  )}
                 </motion.div>
               </BentoCard>
             );

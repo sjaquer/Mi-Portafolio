@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion';
-import { ReactNode } from 'react';
+import { ReactNode, forwardRef } from 'react';
 
 interface BentoCardProps {
   children: ReactNode;
@@ -10,13 +10,17 @@ interface BentoCardProps {
 }
 
 export const BentoCard = ({ children, className = '', span = 'medium', delay = 0, noPadding = true }: BentoCardProps) => {
+  // Revised span classes for a more balanced Bento layout on wider screens.
+  // Default grid will prefer 4 columns at large breakpoints, so spans are tuned to that layout.
   const spanClasses: Record<string,string> = {
     small: 'col-span-1 row-span-1',
     medium: 'col-span-1 md:col-span-2 row-span-1',
     large: 'col-span-1 md:col-span-2 lg:col-span-3 row-span-2',
     wide: 'col-span-1 md:col-span-2 lg:col-span-4 row-span-1',
-    tall: 'col-span-1 md:col-span-1 row-span-2',
-    full: 'col-span-1 md:col-span-2 lg:col-span-6 row-span-1'
+    // tall should span more columns on md+ so it isn't a narrow vertical strip
+    tall: 'col-span-1 md:col-span-2 row-span-2',
+    // full will take the full width of the grid at lg (4 columns)
+    full: 'col-span-1 md:col-span-2 lg:col-span-4 row-span-1'
   };
 
   const reduce = useReducedMotion();
@@ -59,26 +63,28 @@ interface BentoGridProps {
   children: ReactNode;
   className?: string;
   columns?: 2 | 3 | 4 | 6;
+  horizontalOnMobile?: boolean;
 }
 
-export const BentoGrid = ({ children, className = '', columns = 6 }: BentoGridProps) => {
+export const BentoGrid = forwardRef<HTMLDivElement, BentoGridProps>(({ children, className = '', columns = 6, horizontalOnMobile = false }, ref) => {
+  // Use fewer columns by default (4) to give each card more horizontal space on desktop.
   const columnClasses: Record<number,string> = {
     2: 'grid-cols-1 md:grid-cols-2',
     3: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
     4: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4',
     6: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-6'
   };
+  const base = horizontalOnMobile
+    ? `flex flex-nowrap overflow-x-auto gap-4 md:gap-6 lg:gap-8 lg:grid ${columnClasses[columns]} ${className}`
+    : `grid ${columnClasses[columns]} gap-4 md:gap-6 lg:gap-8 auto-rows-[260px] md:auto-rows-[340px] lg:auto-rows-[380px] ${className}`;
 
   return (
-    <div className={`
-      grid ${columnClasses[columns]}
-      gap-4 md:gap-6 lg:gap-8
-      auto-rows-[minmax(200px,auto)]
-      ${className}
-    `}>
+    <div ref={ref} className={base}>
       {children}
     </div>
   );
-};
+});
+
+BentoGrid.displayName = 'BentoGrid';
 
 export default BentoGrid;
