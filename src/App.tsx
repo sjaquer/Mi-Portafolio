@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ErrorBoundary from './components/ErrorBoundary';
 import { LoadingState } from './components/LoadingComponents';
 import { ScrollProgressIndicator } from './components/ScrollProgress';
+import SEO from './components/SEO';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import BusinessImpact from './components/BusinessImpact';
@@ -61,6 +62,10 @@ const App: React.FC = () => {
 
   return (
     <ErrorBoundary>
+      <SEO 
+        title="Growth Strategist & Tech Lead"
+        description="Portafolio de sjaquer - Estrategia de Crecimiento, Analítica de Datos e Ingeniería de Software para transformar negocios."
+      />
       <ScrollProgressIndicator />
       <AnimatePresence>
         <motion.div

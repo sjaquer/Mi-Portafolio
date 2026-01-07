@@ -2,7 +2,7 @@
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { skills as skillsData } from '../data/portfolio';
-import { Code, Database, Layout, Settings, Terminal, Cpu, Globe, BarChart } from 'lucide-react';
+import { Code, Database, Layout, Settings, Terminal, Cpu, Globe, BarChart, TrendingUp } from 'lucide-react';
 
 const Skills = () => {
   // Agrupar habilidades por categoría
@@ -17,11 +17,9 @@ const Skills = () => {
 
   const getCategoryIcon = (category: string) => {
     switch (category.toLowerCase()) {
-      case 'business intelligence': return BarChart;
-      case 'desarrollo de software': return Code;
-      case 'gestión de operaciones': return Settings;
-      case 'marketing digital': return Layout;
-      case 'tecnologías emergentes': return Cpu;
+      case 'estrategia & crecimiento': return TrendingUp; // Icono para growth/marketing
+      case 'data & analytics': return BarChart;       // Icono para datos
+      case 'ingeniería de producto': return Cpu;      // Icono para tech
       default: return Terminal;
     }
   };

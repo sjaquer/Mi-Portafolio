@@ -1,37 +1,37 @@
 export const siteContent = {
   brand: {
     name: 'sjaquer',
-    subtitle: 'Business & Tech Strategist',
+    subtitle: 'BizOps & Tech Strategist',
     logo: '/images/iconweb.webp'
   },
   nav: [
     { id: 'home', label: 'Inicio' },
-    { id: 'skills', label: 'Stack' },
+    { id: 'skills', label: 'Áreas de Impacto' },
     { id: 'experience', label: 'Trayectoria' },
-    { id: 'portfolio', label: 'Proyectos' },
+    { id: 'portfolio', label: 'Casos de Éxito' },
     { id: 'contact', label: 'Contacto' }
   ],
   hero: {
-    title: 'Estrategia, Operaciones y Tecnología',
-    subtitle: 'Administrador y Negocios Internacionales. Convierto caos operativo en sistemas eficientes mediante ERPs propios, Business Intelligence y estrategias de Marketing Digital de alto impacto.',
-    ctaPrimary: 'Ver Experiencia',
-    ctaSecondary: 'Contactar'
+    title: 'Consultoría de BizOps + Estrategia Tecnológica',
+    subtitle: 'No solo propongo estrategias; construyo las herramientas para ejecutarlas. Transformo operaciones complejas en sistemas eficientes mediante Datos, Software y Procesos.',
+    ctaPrimary: 'Ver Impacto en Negocios',
+    ctaSecondary: 'Hablemos de Estrategia'
   },
   skills: {
-    title: 'Capacidades Híbridas',
-    subtitle: 'Sinergia entre gestión empresarial, análisis de datos y desarrollo de software.'
+    title: 'Capacidades de Alto Nivel',
+    subtitle: 'Fusión de visión operativa con ejecución técnica avanzada.'
   },
   portfolio: {
-    title: 'Proyectos de Impacto',
-    subtitle: 'Soluciones reales implementadas para optimizar negocios y escalar operaciones.'
+    title: 'Proyectos de Transformación',
+    subtitle: 'Soluciones medidas en reducción de costos, eficiencia y crecimiento.'
   },
   reviews: {
-    title: 'Impacto Comprobado',
-    subtitle: 'Lo que opinan quienes han confiado en mi visión estratégica.'
+    title: 'Resultados Comprobados',
+    subtitle: 'Lo que dicen los directivos y equipos con los que he trabajado.'
   },
   footer: {
     copyright: '© 2026 sjaquer',
-    about: 'Líder de Operaciones y Tecnólogo. Especialista en optimización de flujos con código y estrategia.',
+    about: 'BizOps Consultant. Uniendo el mundo operativo con la ingeniería de software para escalar negocios.',
     contactEmail: 'sjaquer@outlook.es',
     contactPhone: '+51 946 978 919'
   }
