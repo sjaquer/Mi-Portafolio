@@ -1,37 +1,37 @@
 export const siteContent = {
   brand: {
-    name: 'sjaquer studio',
-    subtitle: 'Diseño & Desarrollo',
+    name: 'sjaquer',
+    subtitle: 'Business & Tech Strategist',
     logo: '/images/iconweb.webp'
   },
   nav: [
     { id: 'home', label: 'Inicio' },
-    { id: 'skills', label: 'Tecnologías' },
+    { id: 'skills', label: 'Stack' },
+    { id: 'experience', label: 'Trayectoria' },
     { id: 'portfolio', label: 'Proyectos' },
-    { id: 'reviews', label: 'Clientes' },
     { id: 'contact', label: 'Contacto' }
   ],
   hero: {
-    title: 'Soluciones digitales que convierten',
-    subtitle: 'Estrategia digital · Desarrollo web · Automatización · Análisis de datos. Diseño de productos escalables orientados a conversión y crecimiento.',
-    ctaPrimary: 'Solicitar propuesta',
-    ctaSecondary: 'Ver proyectos'
+    title: 'Estrategia, Operaciones y Tecnología',
+    subtitle: 'Administrador y Negocios Internacionales. Convierto caos operativo en sistemas eficientes mediante ERPs propios, Business Intelligence y estrategias de Marketing Digital de alto impacto.',
+    ctaPrimary: 'Ver Experiencia',
+    ctaSecondary: 'Contactar'
   },
   skills: {
-    title: 'Tecnologías',
-    subtitle: 'Stack técnico probado: Web, Cloud, Data y Automatización para lanzar productos robustos y mantenibles.'
+    title: 'Capacidades Híbridas',
+    subtitle: 'Sinergia entre gestión empresarial, análisis de datos y desarrollo de software.'
   },
   portfolio: {
-    title: 'Proyectos',
-    subtitle: 'Casos de éxito: productos lanzados, métricas mejoradas y procesos automatizados que escalaron resultados.'
+    title: 'Proyectos de Impacto',
+    subtitle: 'Soluciones reales implementadas para optimizar negocios y escalar operaciones.'
   },
   reviews: {
-    title: 'Clientes satisfechos',
-    subtitle: 'Historias de impacto: cómo ayudé a equipos a alcanzar objetivos de negocio con tecnología y diseño.'
+    title: 'Impacto Comprobado',
+    subtitle: 'Lo que opinan quienes han confiado en mi visión estratégica.'
   },
   footer: {
-    copyright: '© 2025 sjaquer studio',
-    about: 'Estrategia, desarrollo y datos: construyo productos digitales orientados a usuarios y métricas.',
+    copyright: '© 2026 sjaquer',
+    about: 'Líder de Operaciones y Tecnólogo. Especialista en optimización de flujos con código y estrategia.',
     contactEmail: 'sjaquer@outlook.es',
     contactPhone: '+51 946 978 919'
   }

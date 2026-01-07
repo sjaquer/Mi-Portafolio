@@ -4,41 +4,44 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Outfit', 'sans-serif'],
+        display: ['Plus Jakarta Sans', 'sans-serif'],
+      },
       colors: {
-        // Azul principal actualizado (uso predominante en la UI)
+        // Business / Navy Palette
         primary: {
-          DEFAULT: '#0476D9', // tono base más sobrio
-          600: '#2563EB',
-          700: '#015DDF',
-          800: '#0460D9',
-          // token para uso en textos/hover
-          light: '#58A9F6'
+          DEFAULT: '#0F172A', // Slate 900 - Deep Business Navy
+          50: '#F8FAFC',
+          100: '#F1F5F9',
+          200: '#E2E8F0',
+          300: '#CBD5E1',
+          400: '#94A3B8',
+          500: '#64748B', // Slate 500
+          600: '#475569',
+          700: '#334155', // Slate 700
+          800: '#1E293B', // Slate 800
+          900: '#0F172A', // Slate 900
         },
-        // Amarillo/secondary: acento, usar con moderación
+        // Accent: Teal/Gold for "Value/Money" representation
         secondary: {
-          DEFAULT: '#F2B705',
-          600: '#F28705',
-          700: '#F25C05',
-          // token menos saturado para fondos/accents
-          soft: '#F6D98A'
+          DEFAULT: '#0D9488', // Teal 600 - Growth & Stability
+          50: '#F0FDFA',
+          400: '#2DD4BF',
+          600: '#0D9488',
+          700: '#0F766E',
+          growth: '#10B981', // Emerald for positive charts
         },
-        // Verde para CTAs / confirmaciones (uso puntual)
-        success: {
-          DEFAULT: '#16A34A',
-          600: '#0c9942ff'
-        },
+        // Gold for "Premium" highlights
         accent: {
-          DEFAULT: '#272626ff'
+          DEFAULT: '#F59E0B', // Amber 500
+          light: '#FCD34D',
+          dark: '#D97706',
         },
-
         dark: {
-          DEFAULT: '#1b1b1b',
-          100: '#262626',
-          200: '#222222',
-          300: '#1f1f1f',
-          500: '#171717',
-          700: '#0f0f0f',
-          900: '#0a0a0a'
+          DEFAULT: '#020617', // Slate 950 - Richer dark mode background
+          surface: '#0F172A', // Card background
+          border: '#1E293B',
         },
         
         // Colores específicos para mejor contraste en tema claro
@@ -63,9 +66,6 @@ export default {
           900: '#0f172a',
           950: '#020617'
         }
-      },
-      fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui']
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

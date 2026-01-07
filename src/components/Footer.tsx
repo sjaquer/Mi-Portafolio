@@ -1,6 +1,7 @@
+// src/components/Footer.tsx
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Github, Linkedin, Instagram, Youtube, Mail, ArrowUp } from 'lucide-react';
+import { Heart, Github, Linkedin, Instagram, Youtube, Mail, ArrowUp, MapPin } from 'lucide-react';
 import { siteContent } from '../data/siteContent';
 
 const Footer: React.FC = () => {
@@ -9,8 +10,8 @@ const Footer: React.FC = () => {
   const socialLinks = [
     { icon: Github, url: 'https://github.com/sjaquer', label: 'GitHub' },
     { icon: Linkedin, url: 'https://linkedin.com/in/sjaquer', label: 'LinkedIn' },
-    { icon: Instagram, url: 'https://instagram.com/sjaquer_', label: 'Instagram' },
-    { icon: Youtube, url: 'https://youtube.com/@sjaquer', label: 'YouTube' }
+    { icon: Instagram, url: 'https://instagram.com/sjaquer.dev', label: 'Instagram' },
+    // { icon: Youtube, url: 'https://youtube.com/@sjaquer', label: 'YouTube' }
   ];
 
   const scrollToSection = (href: string) => {
@@ -19,20 +20,47 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer id="contact" role="contentinfo" className="relative border-t border-dark-100/30 bg-gradient-to-t from-dark-100/30 to-transparent">
+    <footer id="contact" role="contentinfo" className="relative border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-dark-surface z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 items-start">
-          <div className="space-y-3">
-            <motion.h3 initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} className="text-2xl font-bold text-white">{siteContent.brand.name}</motion.h3>
-            <motion.div initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.06 }} className="text-gray-300 max-w-md">{siteContent.footer.about}</motion.div>
-            <div className="mt-4 flex items-center gap-3">
-              <a href={`mailto:${siteContent.footer.contactEmail}`} className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-[rgba(255,255,255,0.03)] text-white text-sm"><Mail size={14} />{siteContent.footer.contactEmail}</a>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-8">
+          
+          {/* Brand Column */}
+          <div className="md:col-span-2 space-y-6">
+            <a href="/" onClick={(e) => { e.preventDefault(); scrollToSection('#home'); }} className="inline-block group">
+                <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary-600 to-secondary-500 flex items-center justify-center text-white font-bold font-display text-xl shadow-lg shadow-primary-500/20 group-hover:shadow-primary-500/40 transition-shadow">
+                        S.
+                    </div>
+                    <span className="text-2xl font-bold font-display text-slate-900 dark:text-white tracking-tight">
+                        {siteContent.brand.name}
+                    </span>
+                </div>
+            </a>
+            
+            <p className="text-slate-500 dark:text-slate-400 mt-2 max-w-sm leading-relaxed">
+                Estrategia tecnológica y desarrollo de software enfocado en resultados de negocio.
+            </p>
+            
+            <div className="flex flex-col gap-3 text-sm text-slate-600 dark:text-slate-300">
+                <a href={`mailto:${siteContent.footer.contactEmail}`} className="flex items-center gap-2 hover:text-primary-600 transition-colors w-fit">
+                    <div className="w-8 h-8 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center shrink-0">
+                        <Mail size={14} />
+                    </div>
+                    {siteContent.footer.contactEmail}
+                </a>
+                <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center shrink-0">
+                        <MapPin size={14} />
+                    </div>
+                    <span>Lima, Perú</span>
+                </div>
             </div>
-            <div className="mt-4 flex gap-3">
+
+            <div className="flex gap-3 pt-2">
               {socialLinks.map((s, i) => {
                 const Icon = s.icon;
                 return (
-                  <a key={i} href={s.url} target="_blank" rel="noreferrer" className="p-2 rounded-lg bg-dark-100 text-gray-300 hover:text-white hover:bg-dark-200 transition-transform transform hover:scale-105">
+                  <a key={i} href={s.url} target="_blank" rel="noreferrer" className="p-2.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 hover:scale-110 transition-all shadow-sm">
                     <Icon size={18} />
                   </a>
                 );
@@ -40,51 +68,38 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex justify-center">
-            <div>
-              <h4 className="text-white font-semibold mb-3">Servicios</h4>
-              <ul className="text-gray-300 space-y-2">
-                <li><a href="#portfolio" onClick={() => scrollToSection('#portfolio')} className="hover:text-white">Proyectos web</a></li>
-                <li><a href="#skills" onClick={() => scrollToSection('#skills')} className="hover:text-white">Tecnologías</a></li>
-                <li><a href="#contact" onClick={() => scrollToSection('#contact')} className="hover:text-white">Contacto</a></li>
-              </ul>
-            </div>
+          {/* Links Column */}
+          <div>
+            <h4 className="text-slate-900 dark:text-white font-bold mb-6">Navegación</h4>
+            <ul className="space-y-4 text-slate-600 dark:text-slate-400 text-sm">
+              <li><a href="#portfolio" onClick={() => scrollToSection('#portfolio')} className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Portafolio & Casos</a></li>
+              <li><a href="#experience" onClick={() => scrollToSection('#experience')} className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Trayectoria</a></li>
+              <li><a href="#skills" onClick={() => scrollToSection('#skills')} className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Stack Tecnológico</a></li>
+            </ul>
           </div>
 
-          <div className="text-right">
-            <h4 className="text-white font-semibold mb-3">Libro de reclamaciones</h4>
-            <p className="text-gray-300 mb-3">Si tienes un reclamo o comentario formal, envíanos los detalles aquí y lo atenderemos en el menor tiempo posible.</p>
-            <form onSubmit={(e) => {
-              e.preventDefault();
-              const form = e.target as HTMLFormElement;
-              const name = (form.elements.namedItem('name') as HTMLInputElement)?.value || '';
-              const email = (form.elements.namedItem('email') as HTMLInputElement)?.value || '';
-              const subject = encodeURIComponent('Libro de Reclamaciones - ' + ((form.elements.namedItem('subject') as HTMLInputElement)?.value || 'Sin asunto'));
-              const message = encodeURIComponent(`Nombre: ${name}%0AEmail: ${email}%0A%0AMensaje:%0A${(form.elements.namedItem('message') as HTMLTextAreaElement)?.value || ''}`);
-              // Open user's mail client with prefilled values (simplest, reliable approach without backend)
-              window.location.href = `mailto:${siteContent.footer.contactEmail}?subject=${subject}&body=${message}`;
-            }} className="flex flex-col items-end gap-2 max-w-sm ml-auto">
-              <input name="name" aria-label="Nombre" placeholder="Nombre completo" className="w-full px-3 py-2 rounded-md bg-dark-100 border border-dark-200/30 text-white" />
-              <input name="email" aria-label="Correo" type="email" placeholder="tu@correo.com" className="w-full px-3 py-2 rounded-md bg-dark-100 border border-dark-200/30 text-white" />
-              <input name="subject" aria-label="Asunto" placeholder="Asunto" className="w-full px-3 py-2 rounded-md bg-dark-100 border border-dark-200/30 text-white" />
-              <textarea name="message" aria-label="Mensaje" placeholder="Describe tu reclamo" rows={4} className="w-full px-3 py-2 rounded-md bg-dark-100 border border-dark-200/30 text-white" />
-              <div className="flex items-center gap-2">
-                <button type="submit" className="px-4 py-2 rounded-md bg-primary text-white">Enviar reclamo</button>
-                <button type="button" onClick={() => window.location.href = `mailto:${siteContent.footer.contactEmail}`} className="px-3 py-2 rounded-md bg-[rgba(255,255,255,0.02)] text-white">Contactar</button>
-              </div>
-            </form>
+          {/* Contact / CTA Column */}
+          <div>
+            <h4 className="text-slate-900 dark:text-white font-bold mb-6">Contáctame</h4>
+            <p className="text-slate-500 dark:text-slate-400 text-sm mb-4">
+                ¿Listo para escalar tu negocio con tecnología?
+            </p>
+            <a 
+                href={`mailto:${siteContent.footer.contactEmail}`}
+                className="inline-flex items-center justify-center w-full px-4 py-2.5 rounded-lg bg-primary-900 dark:bg-white text-white dark:text-slate-900 font-semibold text-sm hover:shadow-lg hover:-translate-y-0.5 transition-all"
+            >
+                Iniciar Conversación
+            </a>
           </div>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-dark-100/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-400">
-          <div className="flex items-center gap-2">© {currentYear} {siteContent.brand.name} — Hecho con <Heart className="text-secondary" size={14} /> React & TypeScript</div>
-          <div className="flex items-center gap-4">
-            <a href="/privacy" className="hover:text-white">Política de privacidad</a>
-            <a href="/terms" className="hover:text-white">Términos</a>
-            <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-[rgba(255,255,255,0.02)] hover:bg-[rgba(255,255,255,0.04)]">
-              <ArrowUp size={14} /> Volver arriba
-            </button>
+        <div className="mt-16 pt-8 border-t border-slate-200 dark:border-slate-800/50 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-500">
+          <div className="flex items-center gap-2">
+              © {currentYear} {siteContent.brand.name} — Lima, Perú.
           </div>
+          <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+              <ArrowUp size={14} /> Volver arriba
+          </button>
         </div>
       </div>
     </footer>

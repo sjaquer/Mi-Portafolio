@@ -5,8 +5,12 @@ import { LoadingState } from './components/LoadingComponents';
 import { ScrollProgressIndicator } from './components/ScrollProgress';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import BusinessImpact from './components/BusinessImpact';
+import MobileNavigation from './components/MobileNavigation';
+
 // Lazy loading para todos los componentes no críticos
 const Skills = React.lazy(() => import('./components/Skills'));
+const Experience = React.lazy(() => import('./components/Experience'));
 const Portfolio = React.lazy(() => import('./components/Portfolio'));
 const Reviews = React.lazy(() => import('./components/Reviews'));
 const Footer = React.lazy(() => import('./components/Footer'));
@@ -17,7 +21,8 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'skills', 'portfolio', 'reviews'];
+      // Added 'impact' section to scroll spy if needed, though usually part of home flow
+      const sections = ['home', 'skills', 'experience', 'portfolio', 'reviews'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -69,12 +74,16 @@ const App: React.FC = () => {
           
           <main>
             <Hero />
+            <BusinessImpact />
             <Suspense fallback={<LoadingState title="Cargando contenido..." description="Preparando experiencia" />}>
               <Skills />
+              <Experience />
               <Portfolio />
               <Reviews />
             </Suspense>
           </main>
+          
+          <MobileNavigation activeSection={activeSection} setActiveSection={setActiveSection} />
 
           <Suspense fallback={null}>
             <Footer />

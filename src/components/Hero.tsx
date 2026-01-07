@@ -1,232 +1,232 @@
-import { motion } from 'framer-motion';
-import { Github, Linkedin, Instagram, Youtube } from 'lucide-react';
-import RotatingText from './RotatingText';
+// src/components/Hero.tsx
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Github, Linkedin, Instagram, ArrowRight, Activity, TrendingUp, Users, Server } from 'lucide-react';
 
 const socialLinks = [
-  { icon: Github, url: 'https://github.com/sjaquer', label: 'GitHub', color: 'hover:text-gray-400' },
-  { icon: Linkedin, url: 'https://linkedin.com/in/sjaquer', label: 'LinkedIn', color: 'hover:text-blue-400' },
-  { icon: Instagram, url: 'https://instagram.com/sjaquer.dev', label: 'Instagram', color: 'hover:text-pink-400' },
-  { icon: Youtube, url: 'https://youtube.com/@sjaquer', label: 'YouTube', color: 'hover:text-red-400' }
+  { icon: Github, url: 'https://github.com/sjaquer', label: 'GitHub', color: 'hover:text-slate-900 dark:hover:text-white' },
+  { icon: Linkedin, url: 'https://linkedin.com/in/sjaquer', label: 'LinkedIn', color: 'hover:text-[#0A66C2]' },
+  { icon: Instagram, url: 'https://instagram.com/sjaquer.dev', label: 'Instagram', color: 'hover:text-[#E4405F]' }
 ];
 
-/**
- * Hero principal estático - optimizado para carga rápida
- * UX/UI mejorado con grid layout y animaciones fluidas
- */
 const Hero = () => {
-  const rotatingWords = ['CONVIERTEN', 'POTENCIAN', 'ESCALAN'];
-
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center pt-24 pb-16 px-4 sm:px-6 lg:px-12 overflow-hidden"
+      className="relative min-h-[90vh] flex items-center pt-28 pb-16 px-4 sm:px-6 lg:px-12 overflow-hidden bg-slate-50 dark:bg-dark"
     >
-      <div className="relative w-full max-w-[1600px] mx-auto">
-        {/* Social links - flotantes en mobile, estáticos en desktop para evitar superposición con la imagen */}
+      <div className="relative w-full max-w-[1600px] mx-auto z-10">
+        
+        {/* Floating Socials - Desktop */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="absolute top-4 right-4 flex gap-3 z-20 lg:static lg:mb-6 lg:justify-end"
+          className="hidden lg:flex absolute top-0 right-0 gap-3"
         >
           {socialLinks.map((s, i) => {
             const Icon = s.icon;
             return (
-              <motion.a
+              <a
                 key={i}
                 href={s.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.2 + i * 0.1 }}
-                whileHover={{ scale: 1.15, y: -3 }}
-                whileTap={{ scale: 0.95 }}
-                className={`p-3 rounded-xl bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.06)] backdrop-blur-md text-gray-300 ${s.color} transition-all duration-200 hover:bg-[rgba(255,255,255,0.08)]`}
+                className={`p-3 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-400 ${s.color} transition-all duration-300 hover:scale-110 shadow-sm`}
                 aria-label={s.label}
               >
-                <Icon size={22} />
-              </motion.a>
+                <Icon size={20} />
+              </a>
             );
           })}
         </motion.div>
 
-        {/* Grid layout: contenido + imagen profesional */}
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center mt-20 lg:mt-0">
-          {/* Columna izquierda: Contenido principal */}
-          <div className="lg:col-span-7 xl:col-span-6 space-y-8">
-            {/* Badge superior */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="inline-block"
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Left Column: Copy */}
+          <div className="space-y-10 order-2 lg:order-1 relative z-20">
+            <motion.div 
+               initial={{ opacity: 0, y: 20 }}
+               animate={{ opacity: 1, y: 0 }}
+               className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 text-sm font-semibold border border-blue-100 dark:border-blue-800/50"
             >
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-semibold backdrop-blur-sm">
-                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                Disponible para proyectos
-              </span>
+                <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                Disponible para Consultorías
             </motion.div>
 
-            {/* Título principal */}
             <div className="space-y-4">
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3, type: "spring", stiffness: 100 }}
-                className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold animated-gradient-text leading-[1.1] tracking-tight"
+              <motion.h1 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                  className="text-5xl lg:text-7xl font-display font-bold text-slate-900 dark:text-white leading-[1.1] tracking-tight"
               >
-                Soluciones digitales que
-              </motion.h1>
-              
-              {/* Pill amarillo con texto rotativo */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.5, type: "spring", stiffness: 100 }}
-                className="flex justify-center lg:justify-start"
-              >
-                <span className="rotating-pill">
-                  <RotatingText
-                    texts={rotatingWords}
-                    rotationInterval={2500}
-                    mainClassName="font-extrabold rotating-solid"
-                    splitBy="words"
-                  />
+                Estrategia,<br />
+                <span className="text-slate-400 dark:text-slate-500">luego</span>{' '}
+                <span className="text-primary-900 dark:text-white relative inline-block">
+                    Código.
+                    <motion.svg 
+                        initial={{ pathLength: 0 }}
+                        animate={{ pathLength: 1 }}
+                        transition={{ duration: 1, delay: 0.5 }}
+                        className="absolute -bottom-2 left-0 w-full mb-1" 
+                        viewBox="0 0 100 10" 
+                        preserveAspectRatio="none"
+                    >
+                        <path d="M0 5 Q 50 10 100 5" fill="none" stroke="currentColor" strokeWidth="4" className="text-secondary-400 opacity-50" />
+                    </motion.svg>
                 </span>
+              </motion.h1>
+
+              <motion.div 
+                   initial={{ opacity: 0 }}
+                   animate={{ opacity: 1 }}
+                   transition={{ delay: 0.2 }}
+                   className="text-xl lg:text-2xl text-slate-500 font-light max-w-lg leading-relaxed"
+              >
+                 <span className="font-semibold text-slate-800 dark:text-slate-200">Business & Tech Strategist.</span> Ayudo a empresas peruanas y globales a convertir caos operativo en software de alto rendimiento.
               </motion.div>
             </div>
 
-            {/* Subtítulo con iconos */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.7 }}
-              className="flex flex-wrap items-center gap-3 text-xl md:text-2xl font-semibold"
+            <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="flex flex-col sm:flex-row gap-4"
             >
-              <span className="text-gray-400">Estrategia</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-              <span className="text-primary">desarrollo</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
-              <span className="text-secondary">creatividad</span>
+                <a href="#contact" className="group px-8 py-4 rounded-xl bg-primary-900 dark:bg-white text-white dark:text-primary-900 font-semibold text-lg hover:shadow-xl hover:shadow-primary-900/20 transition-all flex items-center justify-center gap-2">
+                    Hablemos de negocios
+                    <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+                </a>
+                <a href="#portfolio" className="px-8 py-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-white font-semibold text-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition-all flex items-center justify-center">
+                    Ver Portafolio
+                </a>
             </motion.div>
-
-            {/* Descripción */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.9 }}
-              className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl"
+            
+            {/* Trust Badges */}
+            <motion.div 
+               initial={{ opacity: 0 }}
+               animate={{ opacity: 1 }}
+               transition={{ delay: 0.5 }}
+               className="pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-wrap gap-6 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all"
             >
-              Diseño y desarrollo de productos digitales escalables con enfoque en{' '}
-              <span className="text-white font-semibold">resultados medibles</span>.
-            </motion.p>
-
-            {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.1 }}
-              className="flex flex-wrap gap-4 pt-4"
-            >
-              <a
-                href="#portfolio"
-                className="group px-8 py-4 rounded-xl bg-gradient-to-r from-primary to-primary-600 text-white font-semibold text-lg hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-1 transition-all duration-300 inline-flex items-center gap-2"
-              >
-                Ver proyectos
-                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
-              <a
-                href="#contact"
-                className="px-8 py-4 rounded-xl bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.1)] text-white font-semibold text-lg hover:bg-[rgba(255,255,255,0.08)] hover:border-[rgba(255,255,255,0.2)] hover:-translate-y-1 transition-all duration-300 backdrop-blur-sm"
-              >
-                Contactar
-              </a>
+               <div className="flex items-center gap-2 text-sm font-semibold text-slate-500 dark:text-slate-400">
+                    <Server size={18} /> Arquitectura Cloud
+               </div>
+               <div className="flex items-center gap-2 text-sm font-semibold text-slate-500 dark:text-slate-400">
+                    <Activity size={18} /> Automatización de Procesos
+               </div>
+               <div className="flex items-center gap-2 text-sm font-semibold text-slate-500 dark:text-slate-400">
+                    <TrendingUp size={18} /> Business Intelligence
+               </div>
             </motion.div>
           </div>
 
-          {/* Columna derecha: Imagen profesional con Bento Glass UI */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, x: 20 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="lg:col-span-5 xl:col-span-6 relative hidden lg:block"
+          {/* Right Column: Visual abstraction of "Live System" */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="order-1 lg:order-2 relative h-[500px] lg:h-[600px] w-full flex items-center justify-center lg:justify-end"
           >
-            <div className="relative max-w-[550px] mx-auto">
-              {/* Card glass principal con imagen */}
-              <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[rgba(255,255,255,0.08)] to-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.1)] backdrop-blur-xl shadow-2xl">
-                {/* Borde animado superior */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_100%] animate-[shimmer_3s_linear_infinite]" />
-                
-                {/* Imagen */}
-                <div className="relative aspect-[4/5] overflow-hidden">
-                  <img
-                    src="/images/profile.webp"
-                    alt="Sebastián Jaque - Digital Solutions Developer"
-                    className="w-full h-full object-cover object-center"
-                    loading="eager"
-                  />
-                  
-                  {/* Overlay gradiente sutil */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                  
-                  {/* Badge flotante */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1 }}
-                    className="absolute bottom-6 left-6 right-6"
-                  >
-                    <div className="bg-[rgba(0,0,0,0.6)] backdrop-blur-md rounded-2xl p-4 border border-[rgba(255,255,255,0.1)]">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <h3 className="text-white font-bold text-lg mb-1">Sebastián Jaque</h3>
-                          <p className="text-gray-300 text-sm">Digital Solutions Developer</p>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                          <span className="text-xs text-gray-300">Disponible</span>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                </div>
-              </div>
-
-              {/* Elementos decorativos flotantes */}
-              <motion.div
-                animate={{ 
-                  rotate: 360,
-                  scale: [1, 1.05, 1]
-                }}
-                transition={{ 
-                  rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-                  scale: { duration: 4, repeat: Infinity, ease: "easeInOut" }
-                }}
-                className="absolute -top-4 -right-4 w-24 h-24 rounded-full border-2 border-primary/30 blur-sm"
-              />
-              <motion.div
-                animate={{ 
-                  rotate: -360,
-                  scale: [1, 0.95, 1]
-                }}
-                transition={{ 
-                  rotate: { duration: 15, repeat: Infinity, ease: "linear" },
-                  scale: { duration: 3, repeat: Infinity, ease: "easeInOut" }
-                }}
-                className="absolute -bottom-6 -left-6 w-32 h-32 rounded-full border-2 border-secondary/20 blur-sm"
-              />
-              
-              {/* Glow effect */}
-              <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/20 via-transparent to-secondary/20 blur-3xl opacity-50" />
-            </div>
+             <LiveSystemCard />
+             
+             {/* Background shapes */}
+             <div className="absolute top-1/4 right-0 w-96 h-96 bg-secondary-500/10 rounded-full blur-[80px] -z-10" />
+             <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-primary-500/10 rounded-full blur-[80px] -z-10" />
           </motion.div>
         </div>
       </div>
     </section>
   );
+};
+
+const LiveSystemCard = () => {
+    const [metrics, setMetrics] = useState({
+        requests: 1240,
+        latency: 45,
+        uptime: 99.98
+    });
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setMetrics(prev => ({
+                requests: prev.requests + Math.floor(Math.random() * 10),
+                latency: Math.max(20, Math.min(80, prev.latency + (Math.random() - 0.5) * 10)),
+                uptime: 99.99
+            }));
+        }, 2000);
+        return () => clearInterval(interval);
+    }, []);
+
+    return (
+        <div className="relative w-full max-w-sm aspect-[4/5] bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-slate-800 p-6 transform rotate-2 hover:rotate-0 transition-transform duration-500 cursor-default group backdrop-blur-xl">
+            {/* Header */}
+            <div className="flex items-center justify-between mb-8 border-b border-slate-800 pb-4">
+                <div className="flex gap-2">
+                    <div className="w-3 h-3 rounded-full bg-red-500" />
+                    <div className="w-3 h-3 rounded-full bg-amber-500" />
+                    <div className="w-3 h-3 rounded-full bg-green-500" />
+                </div>
+                <div className="text-slate-500 text-[10px] font-mono uppercase flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                    Lima, PE (us-east-1)
+                </div>
+            </div>
+            
+            {/* Metrics */}
+            <div className="space-y-6 font-mono text-sm relative z-10">
+                <div className="space-y-4">
+                    <div className="flex justify-between items-center text-slate-400">
+                        <span>ESTADO DEL SISTEMA</span>
+                        <span className="text-green-400 bg-green-400/10 px-2 py-0.5 rounded textxs">OPTIMO</span>
+                    </div>
+                    
+                    <div className="p-4 bg-slate-800/50 rounded-xl border border-slate-700/50 space-y-3">
+                        <div className="flex justify-between">
+                            <span className="text-slate-400">Usuarios Activos</span>
+                            <span className="text-white font-bold">{metrics.requests.toLocaleString()}</span>
+                        </div>
+                        <div className="w-full bg-slate-700 h-1.5 rounded-full overflow-hidden">
+                            <motion.div 
+                                animate={{ width: "75%" }}
+                                className="h-full bg-primary-500 rounded-full"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+                         <div className="p-3 bg-slate-800/30 rounded-lg border border-slate-700/30">
+                            <div className="text-slate-500 text-xs mb-1">VENTAS (Hoy)</div>
+                            <div className="text-secondary-400 font-bold">S/. {(metrics.requests * 2.5).toFixed(2)}</div>
+                         </div>
+                         <div className="p-3 bg-slate-800/30 rounded-lg border border-slate-700/30">
+                            <div className="text-slate-500 text-xs mb-1">Latencia</div>
+                            <div className="text-green-400 font-bold">{metrics.latency.toFixed(0)}ms</div>
+                         </div>
+                    </div>
+                </div>
+                
+                <div className="pt-4 mt-4 border-t border-slate-800">
+                    <div className="text-xs text-slate-500 mb-2 uppercase tracking-wider">Tráfico en Tiempo Real</div>
+                    <div className="h-24 flex items-end justify-between gap-1">
+                            {[40, 60, 45, 80, 55, 90, 70, 85, 60, 75, 50, 95].map((h, i) => (
+                            <motion.div 
+                                key={i}
+                                initial={{ height: "20%" }}
+                                animate={{ height: [`${h}%`, `${h - 20}%`, `${h}%`] }}
+                                transition={{ duration: 2, repeat: Infinity, delay: i * 0.1, ease: "easeInOut" }}
+                                className="w-full bg-gradient-to-t from-primary-600/80 to-secondary-400/80 rounded-t-sm" 
+                            />
+                            ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* Glowing Effects */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-secondary-500/20 rounded-full blur-3xl -z-10 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-32 h-32 bg-primary-500/20 rounded-full blur-3xl -z-10 pointer-events-none" />
+        </div>
+    );
 };
 
 export default Hero;

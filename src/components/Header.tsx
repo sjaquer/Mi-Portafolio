@@ -1,6 +1,7 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+// src/components/Header.tsx
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { siteContent } from '../data/siteContent';
 
 interface HeaderProps {
@@ -10,127 +11,150 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const sections = siteContent.nav;
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      // Offset for fixed header
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
       setActiveSection(sectionId);
       setMobileMenuOpen(false);
     }
   };
 
+  const navItems = [
+      { id: 'home', label: 'Inicio' },
+      { id: 'skills', label: 'Stack' },
+      { id: 'experience', label: 'Trayectoria' },
+      { id: 'portfolio', label: 'Proyectos' },
+  ];
+
   return (
+    <>
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed top-0 left-0 right-0 z-50 w-full bg-[rgba(255,255,255,0.03)] dark:bg-[rgba(12,14,20,0.24)] backdrop-blur-md"
+      className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300
+        ${scrolled 
+            ? 'bg-white/90 dark:bg-dark/90 backdrop-blur-md shadow-sm border-b border-slate-200/50 dark:border-slate-800/50 py-3' 
+            : 'bg-transparent py-5'
+        }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo con micro-animación mejorada */}
-          <motion.a
-            whileHover={{ scale: 1.05, rotate: 2 }}
-            whileTap={{ scale: 0.95 }}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+        <div className="flex items-center justify-between">
+          
+          {/* Logo */}
+          <a
             href="/"
             onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}
-            className="flex items-center gap-3 group"
+            className="flex items-center gap-3 group relative z-50"
           >
-            <div className="relative">
-              <img
-                src={`${import.meta.env.BASE_URL}images/iconweb.webp`}
-                alt="Logo del sitio"
-                className="w-10 h-10 rounded-lg object-contain transition-transform duration-200 group-hover:shadow-lg"
-              />
-              <div className="absolute inset-0 rounded-lg bg-gradient-to-tr from-primary/20 to-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-            </div>
-          </motion.a>
+             <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary-600 to-secondary-500 flex items-center justify-center text-white font-bold font-display text-xl shadow-lg shadow-primary-500/20 group-hover:shadow-primary-500/40 transition-shadow">
+                S.
+             </div>
+             <span className={`font-display font-bold text-lg tracking-tight ${scrolled ? 'text-slate-900 dark:text-white' : 'text-slate-900 dark:text-white'}`}>
+                {siteContent.brand.name.split(' ')[0]}
+             </span>
+          </a>
 
-          {/* Desktop Navigation con indicadores mejorados */}
-          <nav className="hidden md:flex space-x-1 items-center">
-            {sections.filter(s => s.id !== 'contact').map((section) => (
-              <motion.button
-                key={section.id}
-                onClick={() => scrollToSection(section.id)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className={`relative px-3 py-2 text-sm font-medium transition-all duration-200 rounded-lg ${
-                  activeSection === section.id
-                    ? 'text-white bg-primary/10'
-                    : 'text-gray-300 hover:text-white hover:bg-surface'
-                }`}
-                aria-current={activeSection === section.id ? 'page' : undefined}
-              >
-                {section.label}
-                {activeSection === section.id && (
-                  <motion.div
-                    layoutId="activeSection"
-                    className="absolute bottom-0 left-1/2 w-1 h-1 bg-primary rounded-full"
-                    style={{ x: '-50%' }}
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                  />
-                )}
-              </motion.button>
-            ))}
-            <motion.button
-              onClick={() => scrollToSection('contact')}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="ml-4 btn-primary"
-              aria-label="Contacto"
-            >
-              {siteContent.nav.find(n => n.id === 'contact')?.label || 'Contacto'}
-            </motion.button>
-            {/* Theme toggle removed — site is dark-only */}
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-1">
+             <div className={`flex items-center gap-1 px-2 py-1.5 rounded-full border transition-all duration-300 ${scrolled ? 'bg-slate-100/50 dark:bg-slate-800/50 border-slate-200/50 dark:border-slate-700/50' : 'bg-white/50 dark:bg-black/20 border-transparent has-backdrop-filter'}`}>
+                {navItems.map((item) => {
+                    const isActive = activeSection === item.id;
+                    return (
+                        <button
+                            key={item.id}
+                            onClick={() => scrollToSection(item.id)}
+                            className={`
+                                relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-200
+                                ${isActive ? 'text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-300 hover:text-slate-700 dark:hover:text-white'}
+                            `}
+                        >
+                            {isActive && (
+                                <motion.div 
+                                    layoutId="nav-bg"
+                                    className="absolute inset-0 bg-white dark:bg-slate-700 rounded-full shadow-sm"
+                                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                />
+                            )}
+                            <span className="relative z-10">{item.label}</span>
+                        </button>
+                    )
+                })}
+             </div>
+
+             <div className="w-px h-8 bg-slate-200 dark:bg-slate-800 mx-4" />
+
+             <button 
+                onClick={() => scrollToSection('contact')}
+                className="px-5 py-2.5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-medium text-sm hover:scale-105 transition-transform shadow-lg shadow-slate-900/10 dark:shadow-white/10 flex items-center gap-2"
+             >
+                Contactar <ArrowUpRight size={16} />
+             </button>
           </nav>
 
           {/* Mobile Menu Button */}
-          <div className="flex items-center md:hidden">
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg bg-dark-100 text-gray-300 hover:text-primary transition-colors"
-              aria-label="Abrir menú"
-            >
-              {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <motion.nav
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden py-3"
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden relative z-50 p-2 text-slate-900 dark:text-white"
+            aria-label="Menu"
           >
-            <div className="flex flex-col px-2">
-              {sections.map((section) => (
-                <button
-                  key={section.id}
-                  onClick={() => scrollToSection(section.id)}
-                  className={`w-full text-left py-2 px-3 rounded-md text-sm font-medium transition-colors ${
-                    activeSection === section.id
-                      ? 'text-secondary bg-dark-100/60'
-                      : 'text-gray-300 hover:text-primary hover:bg-dark-100/30'
-                  }`}
-                >
-                  {section.label}
-                </button>
-              ))}
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="mt-2 btn-primary w-full text-center"
-              >
-                Contacto
-              </button>
-            </div>
-          </motion.nav>
-        )}
+            {mobileMenuOpen ? <X /> : <Menu />}
+          </button>
+
+        </div>
       </div>
     </motion.header>
+
+    {/* Mobile Menu Overlay */}
+    <AnimatePresence>
+        {mobileMenuOpen && (
+            <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                className="fixed inset-0 z-40 bg-white dark:bg-dark pt-24 px-6 md:hidden flex flex-col gap-6"
+            >
+                <div className="flex flex-col gap-2">
+                    {navItems.map((item) => (
+                        <button
+                            key={item.id}
+                            onClick={() => scrollToSection(item.id)}
+                            className="text-2xl font-display font-bold text-slate-900 dark:text-white py-4 border-b border-slate-100 dark:border-slate-800 text-left"
+                        >
+                            {item.label}
+                        </button>
+                    ))}
+                    <button
+                        onClick={() => scrollToSection('contact')}
+                        className="text-2xl font-display font-bold text-primary-600 dark:text-primary-400 py-4 text-left"
+                    >
+                        Contactar
+                    </button>
+                </div>
+                
+                <div className="mt-auto pb-12">
+                    <p className="text-slate-500 text-sm">© {new Date().getFullYear()} SJaquer</p>
+                </div>
+            </motion.div>
+        )}
+    </AnimatePresence>
+    </>
   );
 };
 
