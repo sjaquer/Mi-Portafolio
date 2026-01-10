@@ -229,7 +229,7 @@ export const testimonials = [
     name: 'Dirección General',
     role: 'Big Jack',
     rating: 5,
-    text: 'Sjaquer transformó nuestra forma de trabajar. Pasamos del desorden manual a tener un control digital preciso de cada insumo y venta.',
+    text: 'Sebastian transformó nuestra forma de trabajar. Pasamos del desorden manual a tener un control digital preciso de cada insumo y venta.',
     date: '2025-12-01',
     location: 'Lima, Perú',
     projectId: '1',

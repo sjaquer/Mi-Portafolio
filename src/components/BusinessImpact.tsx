@@ -62,7 +62,7 @@ const BusinessImpact: React.FC = () => {
                 </div>
                 <div className="bg-white dark:bg-slate-900 px-4 py-1.5 rounded-md text-xs text-slate-500 font-mono w-2/3 md:w-1/3 text-center border border-slate-200 dark:border-slate-800 flex items-center justify-center gap-2 transition-all hover:border-primary-500/50">
                     <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                    admin.sjaquer.dev/dashboard/analytics
+                    admin.sebastianjaque.dev/dashboard/analytics
                 </div>
                 <div className="flex gap-2">
                     <div className="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-800/50" />
@@ -126,11 +126,15 @@ const DashboardSidebar = ({ currentView, setView, isOpen, toggle }: any) => {
         `}>
            {/* Desktop Logo Header */}
            <div className="hidden md:flex p-6 items-center gap-3 overflow-hidden whitespace-nowrap border-b border-slate-100 dark:border-slate-800/50 h-20">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-600 to-primary-800 flex items-center justify-center text-white font-bold shadow-lg shadow-primary-500/30 shrink-0">
-                    S
+                <div className="w-8 h-8 rounded-lg overflow-hidden shadow-lg shadow-primary-500/30 shrink-0">
+                    <img 
+                        src="/images/iconoweb.webp" 
+                        alt="Logo" 
+                        className="w-full h-full object-cover"
+                    />
                 </div>
                 <span className={`font-display font-bold text-lg text-slate-800 dark:text-white transition-opacity duration-200 ${isOpen ? 'opacity-100' : 'opacity-0 lg:opacity-0'}`}>
-                    SJaquer Admin
+                    Admin Panel
                 </span>
             </div>
 

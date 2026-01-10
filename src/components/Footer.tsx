@@ -28,8 +28,12 @@ const Footer: React.FC = () => {
           <div className="md:col-span-2 space-y-6">
             <a href="/" onClick={(e) => { e.preventDefault(); scrollToSection('#home'); }} className="inline-block group">
                 <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary-600 to-secondary-500 flex items-center justify-center text-white font-bold font-display text-xl shadow-lg shadow-primary-500/20 group-hover:shadow-primary-500/40 transition-shadow">
-                        S.
+                    <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-primary-500/20 group-hover:shadow-primary-500/40 transition-shadow">
+                        <img 
+                            src="/images/iconoweb.webp" 
+                            alt="Logo" 
+                            className="w-full h-full object-cover"
+                        />
                     </div>
                     <span className="text-2xl font-bold font-display text-slate-900 dark:text-white tracking-tight">
                         {siteContent.brand.name}

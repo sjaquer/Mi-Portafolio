@@ -63,11 +63,15 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
             onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}
             className="flex items-center gap-3 group relative z-50"
           >
-             <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary-600 to-secondary-500 flex items-center justify-center text-white font-bold font-display text-xl shadow-lg shadow-primary-500/20 group-hover:shadow-primary-500/40 transition-shadow">
-                S.
+             <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-primary-500/20 group-hover:shadow-primary-500/40 transition-shadow">
+                <img 
+                  src="/images/iconoweb.webp" 
+                  alt="Logo" 
+                  className="w-full h-full object-cover"
+                />
              </div>
              <span className={`font-display font-bold text-lg tracking-tight ${scrolled ? 'text-slate-900 dark:text-white' : 'text-slate-900 dark:text-white'}`}>
-                {siteContent.brand.name.split(' ')[0]}
+                {siteContent.brand.name}
              </span>
           </a>
 
@@ -149,7 +153,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
                 </div>
                 
                 <div className="mt-auto pb-12">
-                    <p className="text-slate-500 text-sm">© {new Date().getFullYear()} SJaquer</p>
+                    <p className="text-slate-500 text-sm">© {new Date().getFullYear()} Sebastian Jaque</p>
                 </div>
             </motion.div>
         )}

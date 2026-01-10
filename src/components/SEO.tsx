@@ -12,7 +12,7 @@ interface SEOProps {
 const SEO: React.FC<SEOProps> = ({ 
   title, 
   description, 
-  image = '/images/iconweb.webp', 
+  image = '/images/iconoweb.webp', 
   url = 'https://sjaquer.is-a.dev' 
 }) => {
   const siteTitle = title ? `${title} | ${siteContent.brand.name}` : `${siteContent.brand.name} | ${siteContent.brand.subtitle}`;

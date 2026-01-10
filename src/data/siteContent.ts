@@ -1,8 +1,8 @@
 export const siteContent = {
   brand: {
-    name: 'sjaquer',
+    name: 'Sebastian Jaque',
     subtitle: 'BizOps & Tech Strategist',
-    logo: '/images/iconweb.webp'
+    logo: '/images/iconoweb.webp'
   },
   nav: [
     { id: 'home', label: 'Inicio' },
@@ -30,7 +30,7 @@ export const siteContent = {
     subtitle: 'Lo que dicen los directivos y equipos con los que he trabajado.'
   },
   footer: {
-    copyright: '© 2026 sjaquer',
+    copyright: '© 2026 Sebastian Jaque',
     about: 'BizOps Consultant. Uniendo el mundo operativo con la ingeniería de software para escalar negocios.',
     contactEmail: 'sjaquer@outlook.es',
     contactPhone: '+51 946 978 919'

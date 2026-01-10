@@ -64,7 +64,7 @@ const App: React.FC = () => {
     <ErrorBoundary>
       <SEO 
         title="Growth Strategist & Tech Lead"
-        description="Portafolio de sjaquer - Estrategia de Crecimiento, Analítica de Datos e Ingeniería de Software para transformar negocios."
+        description="Portafolio de Sebastian Jaque - Estrategia de Crecimiento, Analítica de Datos e Ingeniería de Software para transformar negocios."
       />
       <ScrollProgressIndicator />
       <AnimatePresence>
