@@ -8,6 +8,7 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import BusinessImpact from './components/BusinessImpact';
 import MobileNavigation from './components/MobileNavigation';
+import SocialShare from './components/SocialShare';
 
 // Lazy loading para todos los componentes no críticos
 const Skills = React.lazy(() => import('./components/Skills'));
@@ -63,8 +64,8 @@ const App: React.FC = () => {
   return (
     <ErrorBoundary>
       <SEO 
-        title="Growth Strategist & Tech Lead"
-        description="Portafolio de Sebastian Jaque - Estrategia de Crecimiento, Analítica de Datos e Ingeniería de Software para transformar negocios."
+        title="BizOps & Tech Strategist"
+        pageType="home"
       />
       <ScrollProgressIndicator />
       <AnimatePresence>
@@ -76,6 +77,9 @@ const App: React.FC = () => {
           className="min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-white"
         >
           <Header activeSection={activeSection} setActiveSection={setActiveSection} />
+          
+          {/* Botones de compartir flotantes */}
+          <SocialShare variant="floating" />
           
           <main>
             <Hero />

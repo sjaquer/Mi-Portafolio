@@ -1,7 +1,7 @@
 // src/components/Hero.tsx
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Github, Linkedin, Instagram, ArrowRight, Activity, TrendingUp, Users, Server } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Github, Linkedin, Instagram, ArrowRight, Activity, TrendingUp, Server } from 'lucide-react';
 
 const socialLinks = [
   { icon: Github, url: 'https://github.com/sjaquer', label: 'GitHub', color: 'hover:text-slate-900 dark:hover:text-white' },
@@ -60,10 +60,10 @@ const Hero = () => {
                   transition={{ delay: 0.1 }}
                   className="text-5xl lg:text-7xl font-display font-bold text-slate-900 dark:text-white leading-[1.1] tracking-tight"
               >
-                Estrategia,<br />
-                <span className="text-slate-400 dark:text-slate-500">luego</span>{' '}
+                BizOps &<br />
+                <span className="text-slate-400 dark:text-slate-500">Tech</span>{' '}
                 <span className="text-primary-900 dark:text-white relative inline-block">
-                    Código.
+                    Strategist
                     <motion.svg 
                         initial={{ pathLength: 0 }}
                         animate={{ pathLength: 1 }}
@@ -83,7 +83,7 @@ const Hero = () => {
                    transition={{ delay: 0.2 }}
                    className="text-xl lg:text-2xl text-slate-500 font-light max-w-lg leading-relaxed"
               >
-                 <span className="font-semibold text-slate-800 dark:text-slate-200">Business & Tech Strategist.</span> Ayudo a empresas peruanas y globales a convertir caos operativo en software de alto rendimiento.
+                 <span className="font-semibold text-slate-800 dark:text-slate-200">Consultor BizOps & Tecnología.</span> Transformo operaciones complejas en software de alto rendimiento para empresas peruanas y globales.
               </motion.div>
             </div>
 

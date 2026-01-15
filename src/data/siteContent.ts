@@ -4,6 +4,13 @@ export const siteContent = {
     subtitle: 'BizOps & Tech Strategist',
     logo: '/images/iconoweb.webp'
   },
+  seo: {
+    title: 'Sebastián Jaque | BizOps & Tech Strategist en Lima, Perú',
+    description: 'BizOps & Tech Strategist en Lima. Transformo operaciones en software de alto rendimiento. Consultoría en automatización, datos y desarrollo web.',
+    keywords: 'BizOps, Tech Strategist, desarrollo web, automatización, consultoría tecnológica, Lima Perú, software, analítica de datos',
+    url: 'https://sjaquer.is-a.dev/',
+    image: 'https://sjaquer.is-a.dev/images/iconoweb.webp'
+  },
   nav: [
     { id: 'home', label: 'Inicio' },
     { id: 'skills', label: 'Áreas de Impacto' },
@@ -12,8 +19,8 @@ export const siteContent = {
     { id: 'contact', label: 'Contacto' }
   ],
   hero: {
-    title: 'Consultoría de BizOps + Estrategia Tecnológica',
-    subtitle: 'No solo propongo estrategias; construyo las herramientas para ejecutarlas. Transformo operaciones complejas en sistemas eficientes mediante Datos, Software y Procesos.',
+    title: 'BizOps & Tech Strategist',
+    subtitle: 'Transformo operaciones complejas en software de alto rendimiento para empresas peruanas y globales. Consultoría en automatización, datos y desarrollo web.',
     ctaPrimary: 'Ver Impacto en Negocios',
     ctaSecondary: 'Hablemos de Estrategia'
   },
@@ -31,7 +38,7 @@ export const siteContent = {
   },
   footer: {
     copyright: '© 2026 Sebastian Jaque',
-    about: 'BizOps Consultant. Uniendo el mundo operativo con la ingeniería de software para escalar negocios.',
+    about: 'BizOps & Tech Strategist. Transformo operaciones complejas en sistemas eficientes mediante datos, software y automatización.',
     contactEmail: 'sjaquer@outlook.es',
     contactPhone: '+51 946 978 919'
   }

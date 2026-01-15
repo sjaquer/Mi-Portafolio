@@ -1,43 +1,53 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { siteContent } from '../data/siteContent';
 
+/**
+ * Componente SEO optimizado
+ * NOTA: Las meta tags principales (description, canonical, og:*, twitter:*)
+ * están definidas en index.html para evitar duplicados.
+ * Este componente solo actualiza el título dinámicamente cuando es necesario.
+ */
 interface SEOProps {
   title?: string;
-  description?: string;
-  image?: string;
-  url?: string;
+  pageType?: 'home' | 'portfolio' | 'contact' | 'about';
 }
 
 const SEO: React.FC<SEOProps> = ({ 
-  title, 
-  description, 
-  image = '/images/iconoweb.webp', 
-  url = 'https://sjaquer.is-a.dev' 
+  title,
+  pageType = 'home'
 }) => {
-  const siteTitle = title ? `${title} | ${siteContent.brand.name}` : `${siteContent.brand.name} | ${siteContent.brand.subtitle}`;
-  const metaDescription = description || siteContent.hero.subtitle;
+  // Solo actualizamos el título si es diferente al de la página principal
+  // Las demás meta tags están en index.html (canonical único, descripción única)
+  const baseTitle = 'Sebastián Jaque | BizOps & Tech Strategist';
+  const pageTitle = title ? `${title} | Sebastián Jaque` : baseTitle;
+
+  // Schema.org adicional para páginas específicas (si se necesita)
+  const getPageSchema = () => {
+    if (pageType === 'portfolio') {
+      return {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Casos de Éxito - Sebastián Jaque",
+        "description": "Proyectos de transformación digital y desarrollo de software",
+        "url": "https://sjaquer.is-a.dev/#portfolio"
+      };
+    }
+    return null;
+  };
+
+  const pageSchema = getPageSchema();
 
   return (
     <Helmet>
-      {/* Standard Metadata */}
-      <title>{siteTitle}</title>
-      <meta name="description" content={metaDescription} />
-      <link rel="canonical" href={url} />
-
-      {/* Open Graph / Facebook */}
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content={url} />
-      <meta property="og:title" content={siteTitle} />
-      <meta property="og:description" content={metaDescription} />
-      <meta property="og:image" content={image} />
-
-      {/* Twitter */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:url" content={url} />
-      <meta name="twitter:title" content={siteTitle} />
-      <meta name="twitter:description" content={metaDescription} />
-      <meta name="twitter:image" content={image} />
+      {/* Solo el título dinámico - evita duplicar canonical y meta description */}
+      <title>{pageTitle}</title>
+      
+      {/* Schema adicional solo si es necesario para la página */}
+      {pageSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(pageSchema)}
+        </script>
+      )}
     </Helmet>
   );
 };

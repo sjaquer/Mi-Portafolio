@@ -1,25 +1,29 @@
 {
-  "name": "Sebastian Jaque | Growth & Tech Strategist",
-  "short_name": "Sebastian Jaque",
-  "description": "Portafolio de Sebastian Jaque - Marketing Estratégico, Data Analytics e Ingeniería de Software.",
+  "name": "Sebastián Jaque | BizOps & Tech Strategist",
+  "short_name": "S. Jaque",
+  "description": "BizOps & Tech Strategist en Lima. Transformo operaciones en software de alto rendimiento. Consultoría en automatización, datos y desarrollo web.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a0a0a",
   "theme_color": "#2563eb",
   "icons": [
     {
-      "src": "/images/iconperso.webp",
+      "src": "/images/iconoweb.webp",
       "sizes": "192x192",
-      "type": "image/webp"
+      "type": "image/webp",
+      "purpose": "any maskable"
     },
     {
-      "src": "/images/iconperso.webp",
+      "src": "/images/iconoweb.webp",
       "sizes": "512x512",
-      "type": "image/webp"
+      "type": "image/webp",
+      "purpose": "any maskable"
     }
   ],
-  "categories": ["business", "technology", "portfolio"],
+  "categories": ["business", "technology", "portfolio", "consulting"],
   "lang": "es",
+  "dir": "ltr",
   "scope": "/",
-  "orientation": "portrait-primary"
+  "orientation": "portrait-primary",
+  "prefer_related_applications": false
 }

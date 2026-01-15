@@ -1,4 +1,20 @@
+# Robots.txt para sjaquer.is-a.dev
+# Sebastián Jaque - BizOps & Tech Strategist
+
 User-agent: *
 Allow: /
 
+# Archivos estáticos permitidos
+Allow: /images/
+Allow: /*.js$
+Allow: /*.css$
+
+# Bloquear archivos innecesarios para SEO
+Disallow: /api/
+Disallow: /*.json$
+
+# Sitemap
 Sitemap: https://sjaquer.is-a.dev/sitemap.xml
+
+# Host preferido (canonical)
+Host: https://sjaquer.is-a.dev

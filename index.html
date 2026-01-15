@@ -3,8 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/iconoweb.webp" />
     <link rel="manifest" href="/manifest.json" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#2563eb" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     
     <!-- CSS crítico inline para evitar bloqueo de renderizado -->
     <style>
@@ -30,28 +33,36 @@
     <link rel="dns-prefetch" href="//linkedin.com" />
     <link rel="dns-prefetch" href="//static.cloudflareinsights.com" />
     
-    <!-- Título optimizado: más conciso y potente -->
-    <title>Sebastián Jaque | Desarrollador, Estratega & Artista 3D</title>
+    <!-- Título optimizado para SEO -->
+    <title>Sebastián Jaque | BizOps & Tech Strategist en Lima, Perú</title>
     
-    <!-- Meta Descripción mejorada: más accionable y con keywords -->
-    <meta name="description" content="Explora el portafolio de Sebastián Jaque, desarrollador de soluciones y estratega creativo en Lima, Perú. Experto en automatización, SEO y entornos 3D con Unreal Engine." />
+    <!-- Meta Descripción optimizada (155 caracteres máx) -->
+    <meta name="description" content="BizOps & Tech Strategist en Lima. Transformo operaciones en software de alto rendimiento. Consultoría en automatización, datos y desarrollo web." />
     
     <meta name="author" content="Sebastián Jaque" />
+    <meta name="keywords" content="BizOps, Tech Strategist, desarrollo web, automatización, consultoría tecnológica, Lima Perú, software, analítica de datos" />
     <link rel="canonical" href="https://sjaquer.is-a.dev/" />
 
-    <!-- Open Graph (OG) -->
-    <meta property="og:title" content="Sebastián Jaque | Portafolio Profesional" />
-    <meta property="og:description" content="Desarrollador de soluciones, estratega de contenido y artista 3D. Explora mis proyectos en tecnología, SEO y creatividad." />
+    <!-- Open Graph (OG) optimizado -->
+    <meta property="og:title" content="Sebastián Jaque | BizOps & Tech Strategist" />
+    <meta property="og:description" content="Transformo operaciones complejas en software de alto rendimiento. Consultoría en automatización, datos y desarrollo web en Lima, Perú." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://sjaquer.is-a.dev/" />
-    <meta property="og:image" content="https://sjaquer.is-a.dev/og-image.png" /> 
+    <meta property="og:image" content="https://sjaquer.is-a.dev/images/iconoweb.webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Sebastián Jaque - BizOps & Tech Strategist" />
     <meta property="og:locale" content="es_PE" />
+    <meta property="og:site_name" content="Sebastián Jaque Portfolio" />
 
-    <!-- Twitter Cards -->
+    <!-- Twitter Cards optimizado -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Sebastián Jaque | Portafolio Profesional" />
-    <meta name="twitter:description" content="Desarrollador de soluciones, estratega de contenido y artista 3D. Explora mis proyectos en tecnología, SEO y creatividad." />
-    <meta name="twitter:image" content="https://sjaquer.is-a.dev/og-image.png" />
+    <meta name="twitter:site" content="@sjaquer" />
+    <meta name="twitter:creator" content="@sjaquer" />
+    <meta name="twitter:title" content="Sebastián Jaque | BizOps & Tech Strategist" />
+    <meta name="twitter:description" content="Transformo operaciones complejas en software de alto rendimiento. Consultoría en automatización, datos y desarrollo web." />
+    <meta name="twitter:image" content="https://sjaquer.is-a.dev/images/iconoweb.webp" />
+    <meta name="twitter:image:alt" content="Sebastián Jaque - BizOps & Tech Strategist" />
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GDPBN9G1M5"></script>
@@ -62,50 +73,88 @@
       gtag('config', 'G-GDPBN9G1M5', { 'anonymize_ip': true });
     </script>
     
-    <!-- ProfessionalService JSON-LD para SEO local y geo (reemplazar placeholders con valores reales) -->
+    <!-- ProfessionalService JSON-LD para SEO local -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
-      "name": "Sjaquer — Desarrollo & IA",
+      "name": "Sebastián Jaque - BizOps & Tech Strategist",
       "url": "https://sjaquer.is-a.dev",
-      "logo": "https://sjaquer.is-a.dev/iconweb.webp",
-      "description": "Servicios de desarrollo web, IA generativa (Gemini), Firebase y optimización de landing pages para aumentar conversión.",
-      "telephone": "+51-000-000-000",
+      "logo": "https://sjaquer.is-a.dev/images/iconoweb.webp",
+      "image": "https://sjaquer.is-a.dev/images/iconoweb.webp",
+      "description": "Consultoría en BizOps, desarrollo de software y automatización de procesos. Transformo operaciones complejas en sistemas eficientes.",
+      "telephone": "+51-946-978-919",
+      "email": "sjaquer@outlook.es",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Tu dirección aquí",
         "addressLocality": "Lima",
         "addressRegion": "Lima",
-        "postalCode": "L001",
         "addressCountry": "PE"
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": "LATITUD_AQUI",
-        "longitude": "LONGITUD_AQUI"
+        "latitude": "-12.0464",
+        "longitude": "-77.0428"
       },
-      "areaServed": "PE",
-      "service": {
-        "@type": "Service",
-        "name": "Landing pages con IA",
-        "description": "Diseño y desarrollo de landing pages con integraciones de IA (Gemini) y Firebase."
+      "areaServed": ["PE", "LATAM"],
+      "priceRange": "$$",
+      "openingHours": "Mo-Fr 09:00-18:00",
+      "sameAs": [
+        "https://github.com/sjaquer",
+        "https://linkedin.com/in/sjaquer",
+        "https://instagram.com/sjaquer.dev"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicios de Consultoría",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Consultoría BizOps",
+              "description": "Optimización de operaciones empresariales mediante tecnología"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Desarrollo de Software",
+              "description": "Desarrollo web y aplicaciones con React, TypeScript y más"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Automatización de Procesos",
+              "description": "Automatización con IA, APIs y herramientas low-code"
+            }
+          }
+        ]
       }
     }
     </script>
 
-    <!-- Schema.org (JSON-LD) -->
+    <!-- Schema.org Person (JSON-LD) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
+      "@id": "https://sjaquer.is-a.dev/#person",
       "name": "Sebastián Jaque",
+      "givenName": "Sebastián",
+      "familyName": "Jaque",
       "url": "https://sjaquer.is-a.dev/",
-      "image": "https://sjaquer.is-a.dev/og-image.png",
+      "image": "https://sjaquer.is-a.dev/images/iconoweb.webp",
       "sameAs": [
-        "https://github.com/sjaquer"
+        "https://github.com/sjaquer",
+        "https://linkedin.com/in/sjaquer",
+        "https://instagram.com/sjaquer.dev"
       ],
-      "jobTitle": "Desarrollador de Soluciones y Estratega Creativo",
+      "jobTitle": "BizOps & Tech Strategist",
+      "description": "Consultor especializado en transformar operaciones complejas en software de alto rendimiento",
       "worksFor": {
         "@type": "Organization",
         "name": "NHL Publicidad"
@@ -114,12 +163,83 @@
         "@type": "CollegeOrUniversity",
         "name": "Universidad Norbert Wiener"
       },
-      "knowsAbout": ["Desarrollo Web", "SEO", "Estrategia de Contenido", "Unreal Engine", "Visualización 3D", "Automatización de Procesos", "Power BI"],
+      "knowsAbout": [
+        "BizOps",
+        "Desarrollo Web",
+        "React",
+        "TypeScript",
+        "Automatización de Procesos",
+        "Analítica de Datos",
+        "Power BI",
+        "SEO",
+        "Firebase",
+        "Inteligencia Artificial"
+      ],
+      "knowsLanguage": ["es", "en"],
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Lima",
+        "addressRegion": "Lima",
         "addressCountry": "PE"
-      }
+      },
+      "email": "sjaquer@outlook.es",
+      "telephone": "+51-946-978-919"
+    }
+    </script>
+
+    <!-- WebSite Schema para búsquedas -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://sjaquer.is-a.dev/#website",
+      "url": "https://sjaquer.is-a.dev/",
+      "name": "Sebastián Jaque - BizOps & Tech Strategist",
+      "description": "Portafolio profesional de Sebastián Jaque",
+      "publisher": {
+        "@id": "https://sjaquer.is-a.dev/#person"
+      },
+      "inLanguage": "es"
+    }
+    </script>
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://sjaquer.is-a.dev/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Áreas de Impacto",
+          "item": "https://sjaquer.is-a.dev/#skills"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Trayectoria",
+          "item": "https://sjaquer.is-a.dev/#experience"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Casos de Éxito",
+          "item": "https://sjaquer.is-a.dev/#portfolio"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Contacto",
+          "item": "https://sjaquer.is-a.dev/#contact"
+        }
+      ]
     }
     </script>
 

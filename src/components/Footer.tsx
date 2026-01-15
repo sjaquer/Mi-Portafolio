@@ -1,8 +1,8 @@
 // src/components/Footer.tsx
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Heart, Github, Linkedin, Instagram, Youtube, Mail, ArrowUp, MapPin } from 'lucide-react';
+import { Github, Linkedin, Instagram, Mail, ArrowUp, MapPin, Briefcase, Code, FileText } from 'lucide-react';
 import { siteContent } from '../data/siteContent';
+import SocialShare from './SocialShare';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -72,14 +72,65 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Links Column */}
+          {/* Links Column - Mejorado con más enlaces internos */}
           <div>
             <h4 className="text-slate-900 dark:text-white font-bold mb-6">Navegación</h4>
             <ul className="space-y-4 text-slate-600 dark:text-slate-400 text-sm">
-              <li><a href="#portfolio" onClick={() => scrollToSection('#portfolio')} className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Portafolio & Casos</a></li>
-              <li><a href="#experience" onClick={() => scrollToSection('#experience')} className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Trayectoria</a></li>
-              <li><a href="#skills" onClick={() => scrollToSection('#skills')} className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Stack Tecnológico</a></li>
+              <li>
+                <a href="#home" onClick={(e) => { e.preventDefault(); scrollToSection('#home'); }} className="flex items-center gap-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary-500"></span>
+                  Inicio
+                </a>
+              </li>
+              <li>
+                <a href="#skills" onClick={(e) => { e.preventDefault(); scrollToSection('#skills'); }} className="flex items-center gap-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                  <span className="w-1.5 h-1.5 rounded-full bg-secondary-500"></span>
+                  Áreas de Impacto
+                </a>
+              </li>
+              <li>
+                <a href="#experience" onClick={(e) => { e.preventDefault(); scrollToSection('#experience'); }} className="flex items-center gap-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                  Trayectoria Profesional
+                </a>
+              </li>
+              <li>
+                <a href="#portfolio" onClick={(e) => { e.preventDefault(); scrollToSection('#portfolio'); }} className="flex items-center gap-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                  Casos de Éxito
+                </a>
+              </li>
+              <li>
+                <a href="#reviews" onClick={(e) => { e.preventDefault(); scrollToSection('#reviews'); }} className="flex items-center gap-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                  <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+                  Testimonios
+                </a>
+              </li>
             </ul>
+          </div>
+
+          {/* Services Column - Nuevo */}
+          <div>
+            <h4 className="text-slate-900 dark:text-white font-bold mb-6">Servicios</h4>
+            <ul className="space-y-4 text-slate-600 dark:text-slate-400 text-sm">
+              <li className="flex items-center gap-2">
+                <Briefcase size={14} className="text-primary-500" />
+                <span>Consultoría BizOps</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Code size={14} className="text-secondary-500" />
+                <span>Desarrollo de Software</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <FileText size={14} className="text-green-500" />
+                <span>Automatización de Procesos</span>
+              </li>
+            </ul>
+            
+            {/* Share buttons inline para móvil */}
+            <div className="mt-6 pt-6 border-t border-slate-200 dark:border-slate-700">
+              <SocialShare variant="inline" />
+            </div>
           </div>
 
           {/* Contact / CTA Column */}
