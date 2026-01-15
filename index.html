@@ -33,19 +33,19 @@
     <link rel="dns-prefetch" href="//linkedin.com" />
     <link rel="dns-prefetch" href="//static.cloudflareinsights.com" />
     
-    <!-- Título optimizado para SEO -->
-    <title>Sebastián Jaque | BizOps & Tech Strategist en Lima, Perú</title>
+    <!-- Título optimizado para SEO con keywords -->
+    <title>Sebastián Jaque | Consultor Transformación Digital en Lima - Software & Dashboards</title>
     
-    <!-- Meta Descripción optimizada (155 caracteres máx) -->
-    <meta name="description" content="BizOps & Tech Strategist en Lima. Transformo operaciones en software de alto rendimiento. Consultoría en automatización, datos y desarrollo web." />
+    <!-- Meta Descripción optimizada (150-220 caracteres) -->
+    <meta name="description" content="Soy Sebastián Jaque, consultor en transformación digital en Lima, Perú. Desarrollo software, dashboards Power BI y automatización de operaciones para empresas que buscan escalar sus negocios." />
     
     <meta name="author" content="Sebastián Jaque" />
-    <meta name="keywords" content="BizOps, Tech Strategist, desarrollo web, automatización, consultoría tecnológica, Lima Perú, software, analítica de datos" />
+    <meta name="keywords" content="Sebastián Jaque, transformación digital Lima, desarrollo software Perú, dashboards Power BI, automatización operaciones, consultor tecnológico" />
     <link rel="canonical" href="https://sjaquer.is-a.dev/" />
 
     <!-- Open Graph (OG) optimizado -->
-    <meta property="og:title" content="Sebastián Jaque | BizOps & Tech Strategist" />
-    <meta property="og:description" content="Transformo operaciones complejas en software de alto rendimiento. Consultoría en automatización, datos y desarrollo web en Lima, Perú." />
+    <meta property="og:title" content="Sebastián Jaque | Transformación Digital en Lima" />
+    <meta property="og:description" content="Soy Sebastián Jaque, consultor en transformación digital. Desarrollo software, dashboards Power BI y automatización de operaciones en Lima, Perú." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://sjaquer.is-a.dev/" />
     <meta property="og:image" content="https://sjaquer.is-a.dev/images/iconoweb.webp" />
@@ -59,8 +59,8 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@sjaquer" />
     <meta name="twitter:creator" content="@sjaquer" />
-    <meta name="twitter:title" content="Sebastián Jaque | BizOps & Tech Strategist" />
-    <meta name="twitter:description" content="Transformo operaciones complejas en software de alto rendimiento. Consultoría en automatización, datos y desarrollo web." />
+    <meta name="twitter:title" content="Sebastián Jaque | Transformación Digital" />
+    <meta name="twitter:description" content="Consultor en transformación digital, software y automatización de operaciones para empresas que buscan escalar." />
     <meta name="twitter:image" content="https://sjaquer.is-a.dev/images/iconoweb.webp" />
     <meta name="twitter:image:alt" content="Sebastián Jaque - BizOps & Tech Strategist" />
 
@@ -243,11 +243,19 @@
     }
     </script>
 
-    <!-- Carga diferida de fonts para mejor performance -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" onload="this.rel='stylesheet'">
+    <!-- Carga diferida de fonts para mejor performance - NO bloquea renderizado -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     </noscript>
+    
+    <!-- Fallback font-display para evitar FOIT -->
+    <style>
+      @font-face {
+        font-family: 'Inter';
+        font-display: swap;
+      }
+    </style>
   </head>
   <body>
     <div id="root">
@@ -255,7 +263,7 @@
       <div class="loading-fallback">
         <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
           <div style="width: 3rem; height: 3rem; border: 4px solid #374151; border-top: 4px solid #3B82F6; border-radius: 50%; animation: spin 1s linear infinite;"></div>
-          <p style="color: #9CA3AF; font-size: 0.875rem;">Cargando portafolio...</p>
+          <p style="color: #9CA3AF; font-size: 0.875rem;">Cargando portafolio de Sebastián Jaque...</p>
         </div>
       </div>
       <style>

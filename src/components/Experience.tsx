@@ -1,7 +1,6 @@
 // src/components/Experience.tsx
-import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase, GraduationCap, Calendar, MapPin, Building2 } from 'lucide-react';
+import { GraduationCap, Building2 } from 'lucide-react';
 import { experiences, education } from '../data/portfolio';
 
 const Experience = () => {
@@ -30,7 +29,7 @@ const Experience = () => {
                         <Building2 size={24} />
                     </div>
                     <div>
-                         <h3 className="text-2xl font-bold text-slate-900 dark:text-white">Experiencia Laboral</h3>
+                         <div className="text-2xl font-bold text-slate-900 dark:text-white" role="heading" aria-level={3}>Experiencia Laboral</div>
                          <p className="text-sm text-slate-500">Roles clave y logros de negocio</p>
                     </div>
                 </div>
@@ -51,7 +50,7 @@ const Experience = () => {
                             <div className="group bg-white dark:bg-dark-surface p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-4">
                                     <div>
-                                        <h4 className="text-lg font-bold text-slate-900 dark:text-white font-display">{exp.role}</h4>
+                                        <div className="text-lg font-bold text-slate-900 dark:text-white font-display">{exp.role}</div>
                                         <div className="text-primary-700 dark:text-primary-300 font-medium">
                                             {exp.company}
                                         </div>
@@ -97,7 +96,7 @@ const Experience = () => {
                         <GraduationCap size={24} />
                     </div>
                      <div>
-                         <h3 className="text-2xl font-bold text-slate-900 dark:text-white">Formación</h3>
+                         <div className="text-2xl font-bold text-slate-900 dark:text-white" role="heading" aria-level={3}>Formación</div>
                          <p className="text-sm text-slate-500">Base académica y certificaciones</p>
                     </div>
                 </div>
@@ -116,7 +115,7 @@ const Experience = () => {
                             
                             <div className="bg-white dark:bg-dark-surface p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
                                 <div className="flex justify-between items-start mb-2 gap-3">
-                                     <h4 className="text-lg font-bold text-slate-900 dark:text-white font-display leading-snug">{edu.degree}</h4>
+                                     <div className="text-lg font-bold text-slate-900 dark:text-white font-display leading-snug">{edu.degree}</div>
                                      <span className="text-xs font-semibold text-secondary-600 dark:text-secondary-400 whitespace-nowrap">
                                         {edu.duration}
                                     </span>

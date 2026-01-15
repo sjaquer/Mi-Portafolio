@@ -31,8 +31,11 @@ const Footer: React.FC = () => {
                     <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-primary-500/20 group-hover:shadow-primary-500/40 transition-shadow">
                         <img 
                             src="/images/iconoweb.webp" 
-                            alt="Logo" 
+                            alt="Sebastián Jaque - Consultor Transformación Digital Lima"
+                            width={40}
+                            height={40}
                             className="w-full h-full object-cover"
+                            loading="lazy"
                         />
                     </div>
                     <span className="text-2xl font-bold font-display text-slate-900 dark:text-white tracking-tight">
@@ -42,7 +45,7 @@ const Footer: React.FC = () => {
             </a>
             
             <p className="text-slate-500 dark:text-slate-400 mt-2 max-w-sm leading-relaxed">
-                Estrategia tecnológica y desarrollo de software enfocado en resultados de negocio.
+                Consultor especializado en <a href="#portfolio" onClick={(e) => { e.preventDefault(); scrollToSection('#portfolio'); }} className="text-primary-600 hover:underline">transformación digital</a>, desarrollo de <a href="#skills" onClick={(e) => { e.preventDefault(); scrollToSection('#skills'); }} className="text-primary-600 hover:underline">software</a> y <a href="#experience" onClick={(e) => { e.preventDefault(); scrollToSection('#experience'); }} className="text-primary-600 hover:underline">automatización de operaciones</a> para empresas.
             </p>
             
             <div className="flex flex-col gap-3 text-sm text-slate-600 dark:text-slate-300">

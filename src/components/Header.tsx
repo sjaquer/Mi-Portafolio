@@ -66,8 +66,11 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
              <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-primary-500/20 group-hover:shadow-primary-500/40 transition-shadow">
                 <img 
                   src="/images/iconoweb.webp" 
-                  alt="Logo" 
+                  alt="Sebastián Jaque - Consultor Transformación Digital Lima"
+                  width={40}
+                  height={40}
                   className="w-full h-full object-cover"
+                  loading="eager"
                 />
              </div>
              <span className={`font-display font-bold text-lg tracking-tight ${scrolled ? 'text-slate-900 dark:text-white' : 'text-slate-900 dark:text-white'}`}>

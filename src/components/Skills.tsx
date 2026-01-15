@@ -1,8 +1,8 @@
 // src/components/Skills.tsx
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { skills as skillsData } from '../data/portfolio';
-import { Code, Database, Layout, Settings, Terminal, Cpu, Globe, BarChart, TrendingUp } from 'lucide-react';
+import { Terminal, Cpu, BarChart, TrendingUp } from 'lucide-react';
 
 const Skills = () => {
   // Agrupar habilidades por categoría
@@ -57,9 +57,9 @@ const Skills = () => {
                             <div className="w-12 h-12 rounded-xl bg-white dark:bg-slate-800 shadow-sm flex items-center justify-center text-primary-600 dark:text-primary-400 border border-slate-100 dark:border-slate-700">
                                 <Icon size={24} />
                             </div>
-                            <h3 className="text-xl font-bold text-slate-900 dark:text-white capitalize">
+                            <div className="text-xl font-bold text-slate-900 dark:text-white capitalize" role="heading" aria-level={3}>
                                 {category}
-                            </h3>
+                            </div>
                         </div>
 
                         <div className="space-y-6">

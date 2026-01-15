@@ -1,0 +1,5 @@
+# Redirect para SPA - todas las rutas van a index.html
+/*    /index.html   200
+
+# 404 personalizado
+/*    /404.html     404

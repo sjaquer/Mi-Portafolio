@@ -64,7 +64,7 @@ const App: React.FC = () => {
   return (
     <ErrorBoundary>
       <SEO 
-        title="BizOps & Tech Strategist"
+        title="Consultor en Transformación Digital"
         pageType="home"
       />
       <ScrollProgressIndicator />

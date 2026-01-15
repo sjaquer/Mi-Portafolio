@@ -18,7 +18,7 @@ const SEO: React.FC<SEOProps> = ({
 }) => {
   // Solo actualizamos el título si es diferente al de la página principal
   // Las demás meta tags están en index.html (canonical único, descripción única)
-  const baseTitle = 'Sebastián Jaque | BizOps & Tech Strategist';
+  const baseTitle = 'Sebastián Jaque | Consultor en Transformación Digital y Software';
   const pageTitle = title ? `${title} | Sebastián Jaque` : baseTitle;
 
   // Schema.org adicional para páginas específicas (si se necesita)
@@ -27,8 +27,8 @@ const SEO: React.FC<SEOProps> = ({
       return {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
-        "name": "Casos de Éxito - Sebastián Jaque",
-        "description": "Proyectos de transformación digital y desarrollo de software",
+        "name": "Proyectos de Transformación Digital - Sebastián Jaque",
+        "description": "Software y dashboards desarrollados para resolver problemas reales de negocio",
         "url": "https://sjaquer.is-a.dev/#portfolio"
       };
     }

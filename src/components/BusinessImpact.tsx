@@ -1,15 +1,15 @@
 // src/components/BusinessImpact.tsx
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  TrendingUp, Users, Clock, Database, ArrowUpRight, 
-  Menu, Bell, Search, PieChart, Activity, ShoppingCart, 
-  Truck, Settings, MapPin, DollarSign, Calendar
+  TrendingUp, Users, ArrowUpRight, 
+  Bell, PieChart, Activity, ShoppingCart, 
+  Truck, MapPin, DollarSign
 } from 'lucide-react';
 
 const BusinessImpact: React.FC = () => {
   return (
-    <section className="py-24 bg-slate-50 dark:bg-dark relative overflow-hidden">
+    <section id="demo" className="py-24 bg-slate-50 dark:bg-dark relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.div

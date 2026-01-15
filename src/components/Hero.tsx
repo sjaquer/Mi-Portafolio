@@ -54,16 +54,25 @@ const Hero = () => {
             </motion.div>
 
             <div className="space-y-4">
+              {/* Nombre visible para SEO */}
+              <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="text-lg font-medium text-primary-600 dark:text-primary-400"
+              >
+                Sebastián Jaque
+              </motion.p>
+              
               <motion.h1 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
                   className="text-5xl lg:text-7xl font-display font-bold text-slate-900 dark:text-white leading-[1.1] tracking-tight"
               >
-                BizOps &<br />
-                <span className="text-slate-400 dark:text-slate-500">Tech</span>{' '}
+                Transformación<br />
+                <span className="text-slate-400 dark:text-slate-500">Digital en</span>{' '}
                 <span className="text-primary-900 dark:text-white relative inline-block">
-                    Strategist
+                    Lima
                     <motion.svg 
                         initial={{ pathLength: 0 }}
                         animate={{ pathLength: 1 }}
@@ -83,7 +92,7 @@ const Hero = () => {
                    transition={{ delay: 0.2 }}
                    className="text-xl lg:text-2xl text-slate-500 font-light max-w-lg leading-relaxed"
               >
-                 <span className="font-semibold text-slate-800 dark:text-slate-200">Consultor BizOps & Tecnología.</span> Transformo operaciones complejas en software de alto rendimiento para empresas peruanas y globales.
+                 <span className="font-semibold text-slate-800 dark:text-slate-200">Consultor en Transformación Digital.</span> Desarrollo software, dashboards Power BI y automatización de operaciones para empresas en Lima y Latinoamérica.
               </motion.div>
             </div>
 
@@ -94,30 +103,30 @@ const Hero = () => {
                 className="flex flex-col sm:flex-row gap-4"
             >
                 <a href="#contact" className="group px-8 py-4 rounded-xl bg-primary-900 dark:bg-white text-white dark:text-primary-900 font-semibold text-lg hover:shadow-xl hover:shadow-primary-900/20 transition-all flex items-center justify-center gap-2">
-                    Hablemos de negocios
+                    Solicitar Consultoría
                     <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
                 </a>
                 <a href="#portfolio" className="px-8 py-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-white font-semibold text-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition-all flex items-center justify-center">
-                    Ver Portafolio
+                    Ver Proyectos de Transformación
                 </a>
             </motion.div>
             
-            {/* Trust Badges */}
+            {/* Trust Badges - Enlaces internos a secciones relevantes */}
             <motion.div 
                initial={{ opacity: 0 }}
                animate={{ opacity: 1 }}
                transition={{ delay: 0.5 }}
-               className="pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-wrap gap-6 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all"
+               className="pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-wrap gap-6"
             >
-               <div className="flex items-center gap-2 text-sm font-semibold text-slate-500 dark:text-slate-400">
-                    <Server size={18} /> Arquitectura Cloud
-               </div>
-               <div className="flex items-center gap-2 text-sm font-semibold text-slate-500 dark:text-slate-400">
-                    <Activity size={18} /> Automatización de Procesos
-               </div>
-               <div className="flex items-center gap-2 text-sm font-semibold text-slate-500 dark:text-slate-400">
-                    <TrendingUp size={18} /> Business Intelligence
-               </div>
+               <a href="#skills" className="flex items-center gap-2 text-sm font-semibold text-slate-500 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                    <Server size={18} /> Desarrollo de Software
+               </a>
+               <a href="#experience" className="flex items-center gap-2 text-sm font-semibold text-slate-500 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                    <Activity size={18} /> Automatización de Operaciones
+               </a>
+               <a href="#portfolio" className="flex items-center gap-2 text-sm font-semibold text-slate-500 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                    <TrendingUp size={18} /> Dashboards y Power BI
+               </a>
             </motion.div>
           </div>
 

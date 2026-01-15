@@ -1,6 +1,6 @@
 // src/components/Reviews.tsx
 import { motion } from 'framer-motion';
-import { Star, Quote, MapPin, Briefcase, User } from 'lucide-react';
+import { Star, Quote, MapPin } from 'lucide-react';
 import { testimonials } from '../data/portfolio';
 
 const Reviews = () => {
@@ -37,7 +37,7 @@ const Reviews = () => {
                                 {t.name.charAt(0)}
                             </div>
                             <div>
-                                <h4 className="font-bold text-slate-900 dark:text-white leading-tight">{t.name}</h4>
+                                <div className="font-bold text-slate-900 dark:text-white leading-tight">{t.name}</div>
                                 <div className="text-xs text-slate-500 font-medium">{t.role}</div>
                             </div>
                          </div>

@@ -64,13 +64,18 @@ const Portfolio = () => {
                 transition={{ duration: 0.3 }}
                 className="group relative bg-slate-50 dark:bg-dark border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-primary-500/10 transition-all duration-300 flex flex-col h-full"
                 >
-                {/* Image Section */}
-                <div className="relative aspect-video overflow-hidden bg-slate-200 dark:bg-slate-800">
+                {/* Image Section - Optimizado para SEO */}
+                <div className="relative aspect-video overflow-hidden bg-slate-200 dark:bg-slate-800" style={{ aspectRatio: '16/9' }}>
                     <img
-                    src={project.image}
-                    alt={project.title}
+                    src={project.image?.replace('w=1600', 'w=800') || ''}
+                    srcSet={project.image ? `${project.image.replace('w=1600', 'w=400')} 400w, ${project.image.replace('w=1600', 'w=800')} 800w, ${project.image} 1600w` : ''}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    alt={`${project.title} - Proyecto de transformación digital por Sebastián Jaque en Lima`}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
+                    decoding="async"
+                    width={800}
+                    height={450}
                     />
                     <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/40 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
                         <div className="flex gap-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
