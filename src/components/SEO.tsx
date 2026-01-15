@@ -18,7 +18,7 @@ const SEO: React.FC<SEOProps> = ({
 }) => {
   // Solo actualizamos el título si es diferente al de la página principal
   // Las demás meta tags están en index.html (canonical único, descripción única)
-  const baseTitle = 'Sebastián Jaque | Consultor en Transformación Digital y Software';
+  const baseTitle = 'Sebastián Jaque | BizOps & Tech Strategist en Lima, Perú';
   const pageTitle = title ? `${title} | Sebastián Jaque` : baseTitle;
 
   // Schema.org adicional para páginas específicas (si se necesita)

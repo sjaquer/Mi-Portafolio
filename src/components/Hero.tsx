@@ -69,8 +69,8 @@ const Hero = () => {
                   transition={{ delay: 0.1 }}
                   className="text-5xl lg:text-7xl font-display font-bold text-slate-900 dark:text-white leading-[1.1] tracking-tight"
               >
-                Transformación<br />
-                <span className="text-slate-400 dark:text-slate-500">Digital en</span>{' '}
+                BizOps & Tech<br />
+                <span className="text-slate-400 dark:text-slate-500">Strategist en</span>{' '}
                 <span className="text-primary-900 dark:text-white relative inline-block">
                     Lima
                     <motion.svg 
@@ -92,7 +92,7 @@ const Hero = () => {
                    transition={{ delay: 0.2 }}
                    className="text-xl lg:text-2xl text-slate-500 font-light max-w-lg leading-relaxed"
               >
-                 <span className="font-semibold text-slate-800 dark:text-slate-200">Consultor en Transformación Digital.</span> Desarrollo software, dashboards Power BI y automatización de operaciones para empresas en Lima y Latinoamérica.
+                 <span className="font-semibold text-slate-800 dark:text-slate-200">Consultor en Transformación Digital en Perú.</span> Desarrollo software, dashboards Power BI y automatización de procesos para empresas en Lima y Latinoamérica.
               </motion.div>
             </div>
 
