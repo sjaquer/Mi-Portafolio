@@ -30,7 +30,7 @@ const Experience = () => {
                     </div>
                     <div>
                          <div className="text-2xl font-bold text-[#f5fcff]" role="heading" aria-level={3}>Experiencia Laboral</div>
-                         <p className="text-sm text-slate-500">Roles clave y logros de negocio</p>
+                         <p className="text-sm text-slate-400">Roles clave y logros de negocio</p>
                     </div>
                 </div>
                 
@@ -97,7 +97,7 @@ const Experience = () => {
                     </div>
                      <div>
                          <div className="text-2xl font-bold text-[#f5fcff]" role="heading" aria-level={3}>Formación</div>
-                         <p className="text-sm text-slate-500">Base académica y certificaciones</p>
+                         <p className="text-sm text-slate-400">Base académica y certificaciones</p>
                     </div>
                 </div>
 

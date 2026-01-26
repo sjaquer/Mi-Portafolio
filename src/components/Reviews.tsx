@@ -38,7 +38,7 @@ const Reviews = () => {
                             </div>
                             <div>
                                 <div className="font-bold text-[#f5fcff] leading-tight">{t.name}</div>
-                                <div className="text-xs text-slate-500 font-medium">{t.role}</div>
+                                <div className="text-xs text-slate-400 font-medium">{t.role}</div>
                             </div>
                          </div>
                          <Quote className="text-primary-200 dark:text-primary-900/30 rotate-180" size={40} />
@@ -54,11 +54,11 @@ const Reviews = () => {
                         ))}
                     </div>
 
-                    <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed italic flex-grow">
+                    <p className="text-slate-400 dark:text-slate-300 text-sm leading-relaxed italic flex-grow">
                         "{t.text}"
                     </p>
 
-                    <div className="mt-8 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500">
+                    <div className="mt-8 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400">
                         <span className="flex items-center gap-1">
                             <MapPin size={12} /> {t.location}
                         </span>
