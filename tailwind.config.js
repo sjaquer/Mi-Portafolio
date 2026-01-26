@@ -9,39 +9,55 @@ export default {
         display: ['Plus Jakarta Sans', 'sans-serif'],
       },
       colors: {
-        // Business / Navy Palette
-        primary: {
-          DEFAULT: '#0F172A', // Slate 900 - Deep Business Navy
+        // Business / Navy Palette (Renamed to 'slate-custom' or just relied on slate, 
+        // but keeping structure for safety, now 'neutral-dark')
+        'neutral-dark': {
+          DEFAULT: '#0F172A',
           50: '#F8FAFC',
           100: '#F1F5F9',
           200: '#E2E8F0',
           300: '#CBD5E1',
           400: '#94A3B8',
-          500: '#64748B', // Slate 500
+          500: '#64748B',
           600: '#475569',
-          700: '#334155', // Slate 700
-          800: '#1E293B', // Slate 800
-          900: '#0F172A', // Slate 900
+          700: '#334155',
+          800: '#1E293B',
+          900: '#0F172A',
         },
-        // Accent: Teal/Gold for "Value/Money" representation
+        // Primary: Verde Lima (#d9e512) - Color Principal
+        primary: {
+          DEFAULT: '#d9e512', 
+          50: '#fcfde7',
+          100: '#f9fccf',
+          200: '#f1f89f',
+          300: '#e9f470',
+          400: '#e1f040',
+          500: '#d9e512', // Base
+          600: '#aec70e',
+          700: '#82950a',
+          800: '#66760f',
+          900: '#546110',
+          foreground: '#1e1e1e', // Text on primary
+        },
+        // Secondary: Azul Celeste (#3861d7)
         secondary: {
-          DEFAULT: '#0D9488', // Teal 600 - Growth & Stability
-          50: '#F0FDFA',
-          400: '#2DD4BF',
-          600: '#0D9488',
-          700: '#0F766E',
-          growth: '#10B981', // Emerald for positive charts
+          DEFAULT: '#3861d7', 
+          50: '#eff4ff',
+          100: '#dfe8ff',
+          200: '#c5d7ff',
+          300: '#9dbfff',
+          400: '#709dff',
+          500: '#3861d7', // Base
+          600: '#2a4ab5',
+          700: '#233b93',
+          800: '#1e3176',
+          900: '#121c43',
         },
-        // Gold for "Premium" highlights
-        accent: {
-          DEFAULT: '#F59E0B', // Amber 500
-          light: '#FCD34D',
-          dark: '#D97706',
-        },
+        // Background: Gris Negro (#1e1e1e) - Fondo principal
         dark: {
-          DEFAULT: '#020617', // Slate 950 - Richer dark mode background
-          surface: '#0F172A', // Card background
-          border: '#1E293B',
+          DEFAULT: '#1e1e1e', 
+          surface: '#2d2d2d', 
+          border: '#3e3e3e',
         },
         
         // Colores específicos para mejor contraste en tema claro

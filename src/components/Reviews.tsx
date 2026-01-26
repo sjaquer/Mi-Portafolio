@@ -5,7 +5,7 @@ import { testimonials } from '../data/portfolio';
 
 const Reviews = () => {
   return (
-    <section id="reviews" className="py-24 bg-slate-50 dark:bg-dark relative overflow-hidden">
+    <section id="reviews" className="py-24 bg-[#1e1e1e] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
            initial={{ opacity: 0, y: 20 }}
@@ -13,10 +13,10 @@ const Reviews = () => {
            viewport={{ once: true }}
            className="text-center mb-16"
         >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-white font-display">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#f5fcff] font-display">
                 Testimonios
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-300 max-w-2xl mx-auto">
                 Lo que dicen mis clientes y colaboradores sobre el impacto de mi trabajo.
             </p>
         </motion.div>
@@ -29,7 +29,7 @@ const Reviews = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className="bg-white dark:bg-dark-surface p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
+                    className="bg-[#2d2d2d] p-8 rounded-2xl border border-slate-700 shadow-sm hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300 flex flex-col"
                 >
                     <div className="flex items-start justify-between mb-6">
                          <div className="flex items-center gap-4">
@@ -37,7 +37,7 @@ const Reviews = () => {
                                 {t.name.charAt(0)}
                             </div>
                             <div>
-                                <div className="font-bold text-slate-900 dark:text-white leading-tight">{t.name}</div>
+                                <div className="font-bold text-[#f5fcff] leading-tight">{t.name}</div>
                                 <div className="text-xs text-slate-500 font-medium">{t.role}</div>
                             </div>
                          </div>

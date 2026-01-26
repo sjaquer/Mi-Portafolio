@@ -12,7 +12,7 @@ export const ScrollProgressIndicator: React.FC = () => {
   return (
     <motion.div
       // position the progress bar right below the header (header uses h-16)
-      className="fixed top-16 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-primary origin-left z-40 pointer-events-none"
+      className="fixed top-16 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-primary origin-left z-40 pointer-events-none shadow-lg shadow-primary/30"
       style={{ scaleX }}
     />
   );

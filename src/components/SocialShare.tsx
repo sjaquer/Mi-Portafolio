@@ -35,17 +35,6 @@ const SocialShare: React.FC<SocialShareProps> = ({
       url: `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`,
       color: 'hover:bg-[#25D366] hover:text-white',
       label: 'Compartir por WhatsApp'
-    },
-    {
-      name: 'X',
-      icon: () => (
-        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-        </svg>
-      ),
-      url: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
-      color: 'hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black',
-      label: 'Compartir en X'
     }
   ];
 
@@ -71,7 +60,7 @@ const SocialShare: React.FC<SocialShareProps> = ({
         transition={{ delay: 1 }}
         className={`fixed left-4 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-2 ${className}`}
       >
-        <div className="bg-white dark:bg-slate-800 rounded-full shadow-lg border border-slate-200 dark:border-slate-700 p-2 flex flex-col gap-2">
+        <div className="bg-[#2d2d2d] rounded-full shadow-lg border border-slate-700 p-2 flex flex-col gap-2">
           {/* Native share button (if supported) */}
           {'share' in navigator && (
             <button
@@ -122,7 +111,7 @@ const SocialShare: React.FC<SocialShareProps> = ({
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 transition-all duration-300 ${link.color}`}
+              className={`p-2 rounded-full bg-[#1e1e1e] text-slate-300 transition-all duration-300 ${link.color}`}
               aria-label={link.label}
               title={link.label}
             >

@@ -74,7 +74,7 @@ const App: React.FC = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-white"
+          className="min-h-screen bg-[#1e1e1e] text-[#f5fcff]"
         >
           <Header activeSection={activeSection} setActiveSection={setActiveSection} />
           

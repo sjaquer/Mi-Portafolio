@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
 
   const socialLinks = [
     { icon: Github, url: 'https://github.com/sjaquer', label: 'GitHub' },
-    { icon: Linkedin, url: 'https://linkedin.com/in/sjaquer', label: 'LinkedIn' },
+    { icon: Linkedin, url: 'https://www.linkedin.com/in/sjaquer', label: 'LinkedIn' },
     { icon: Instagram, url: 'https://instagram.com/sjaquer.dev', label: 'Instagram' },
     // { icon: Youtube, url: 'https://youtube.com/@sjaquer', label: 'YouTube' }
   ];
@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer id="contact" role="contentinfo" className="relative border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-dark-surface z-10">
+    <footer id="contact" role="contentinfo" className="relative border-t border-slate-700 bg-[#2d2d2d] z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-8">
           
@@ -38,25 +38,25 @@ const Footer: React.FC = () => {
                             loading="lazy"
                         />
                     </div>
-                    <span className="text-2xl font-bold font-display text-slate-900 dark:text-white tracking-tight">
+                    <span className="text-2xl font-bold font-display text-[#f5fcff] tracking-tight">
                         {siteContent.brand.name}
                     </span>
                 </div>
             </a>
             
-            <p className="text-slate-500 dark:text-slate-400 mt-2 max-w-sm leading-relaxed">
-                Consultor especializado en <a href="#portfolio" onClick={(e) => { e.preventDefault(); scrollToSection('#portfolio'); }} className="text-primary-600 hover:underline">transformación digital</a>, desarrollo de <a href="#skills" onClick={(e) => { e.preventDefault(); scrollToSection('#skills'); }} className="text-primary-600 hover:underline">software</a> y <a href="#experience" onClick={(e) => { e.preventDefault(); scrollToSection('#experience'); }} className="text-primary-600 hover:underline">automatización de operaciones</a> para empresas.
+            <p className="text-slate-300 mt-2 max-w-sm leading-relaxed">
+                Consultor especializado en <a href="#portfolio" onClick={(e) => { e.preventDefault(); scrollToSection('#portfolio'); }} className="text-primary hover:underline">transformación digital</a>, desarrollo de <a href="#skills" onClick={(e) => { e.preventDefault(); scrollToSection('#skills'); }} className="text-primary hover:underline">software</a> y <a href="#experience" onClick={(e) => { e.preventDefault(); scrollToSection('#experience'); }} className="text-primary hover:underline">automatización de operaciones</a> para empresas.
             </p>
             
             <div className="flex flex-col gap-3 text-sm text-slate-600 dark:text-slate-300">
-                <a href={`mailto:${siteContent.footer.contactEmail}`} className="flex items-center gap-2 hover:text-primary-600 transition-colors w-fit">
-                    <div className="w-8 h-8 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center shrink-0">
+                <a href={`mailto:${siteContent.footer.contactEmail}`} className="flex items-center gap-2 hover:text-primary transition-colors w-fit">
+                    <div className="w-8 h-8 rounded-full bg-[#1e1e1e] border border-slate-700 flex items-center justify-center shrink-0">
                         <Mail size={14} />
                     </div>
                     {siteContent.footer.contactEmail}
                 </a>
                 <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-[#1e1e1e] border border-slate-700 flex items-center justify-center shrink-0">
                         <MapPin size={14} />
                     </div>
                     <span>Lima, Perú</span>
@@ -67,7 +67,7 @@ const Footer: React.FC = () => {
               {socialLinks.map((s, i) => {
                 const Icon = s.icon;
                 return (
-                  <a key={i} href={s.url} target="_blank" rel="noreferrer" className="p-2.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 hover:scale-110 transition-all shadow-sm">
+                  <a key={i} href={s.url} target="_blank" rel="noreferrer" className="p-2.5 rounded-full bg-[#1e1e1e] border border-slate-700 text-slate-300 hover:text-primary hover:scale-110 transition-all shadow-sm">
                     <Icon size={18} />
                   </a>
                 );
@@ -77,34 +77,34 @@ const Footer: React.FC = () => {
 
           {/* Links Column - Mejorado con más enlaces internos */}
           <div>
-            <h4 className="text-slate-900 dark:text-white font-bold mb-6">Navegación</h4>
+            <h4 className="text-[#f5fcff] font-bold mb-6">Navegación</h4>
             <ul className="space-y-4 text-slate-600 dark:text-slate-400 text-sm">
               <li>
-                <a href="#home" onClick={(e) => { e.preventDefault(); scrollToSection('#home'); }} className="flex items-center gap-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                <a href="#home" onClick={(e) => { e.preventDefault(); scrollToSection('#home'); }} className="flex items-center gap-2 hover:text-primary transition-colors">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary-500"></span>
                   Inicio
                 </a>
               </li>
               <li>
-                <a href="#skills" onClick={(e) => { e.preventDefault(); scrollToSection('#skills'); }} className="flex items-center gap-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                <a href="#skills" onClick={(e) => { e.preventDefault(); scrollToSection('#skills'); }} className="flex items-center gap-2 hover:text-primary transition-colors">
                   <span className="w-1.5 h-1.5 rounded-full bg-secondary-500"></span>
                   Áreas de Impacto
                 </a>
               </li>
               <li>
-                <a href="#experience" onClick={(e) => { e.preventDefault(); scrollToSection('#experience'); }} className="flex items-center gap-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                <a href="#experience" onClick={(e) => { e.preventDefault(); scrollToSection('#experience'); }} className="flex items-center gap-2 hover:text-primary transition-colors">
                   <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
                   Trayectoria Profesional
                 </a>
               </li>
               <li>
-                <a href="#portfolio" onClick={(e) => { e.preventDefault(); scrollToSection('#portfolio'); }} className="flex items-center gap-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                <a href="#portfolio" onClick={(e) => { e.preventDefault(); scrollToSection('#portfolio'); }} className="flex items-center gap-2 hover:text-primary transition-colors">
                   <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
                   Casos de Éxito
                 </a>
               </li>
               <li>
-                <a href="#reviews" onClick={(e) => { e.preventDefault(); scrollToSection('#reviews'); }} className="flex items-center gap-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                <a href="#reviews" onClick={(e) => { e.preventDefault(); scrollToSection('#reviews'); }} className="flex items-center gap-2 hover:text-primary transition-colors">
                   <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
                   Testimonios
                 </a>
@@ -114,7 +114,7 @@ const Footer: React.FC = () => {
 
           {/* Services Column - Nuevo */}
           <div>
-            <h4 className="text-slate-900 dark:text-white font-bold mb-6">Servicios</h4>
+            <h4 className="text-[#f5fcff] font-bold mb-6">Servicios</h4>
             <ul className="space-y-4 text-slate-600 dark:text-slate-400 text-sm">
               <li className="flex items-center gap-2">
                 <Briefcase size={14} className="text-primary-500" />
@@ -138,13 +138,13 @@ const Footer: React.FC = () => {
 
           {/* Contact / CTA Column */}
           <div>
-            <h4 className="text-slate-900 dark:text-white font-bold mb-6">Contáctame</h4>
+            <h4 className="text-[#f5fcff] font-bold mb-6">Contáctame</h4>
             <p className="text-slate-500 dark:text-slate-400 text-sm mb-4">
                 ¿Listo para escalar tu negocio con tecnología?
             </p>
             <a 
                 href={`mailto:${siteContent.footer.contactEmail}`}
-                className="inline-flex items-center justify-center w-full px-4 py-2.5 rounded-lg bg-primary-900 dark:bg-white text-white dark:text-slate-900 font-semibold text-sm hover:shadow-lg hover:-translate-y-0.5 transition-all"
+                className="inline-flex items-center justify-center w-full px-4 py-2.5 rounded-lg bg-[#f5fcff] text-[#1e1e1e] font-bold text-sm hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 transition-all"
             >
                 Iniciar Conversación
             </a>

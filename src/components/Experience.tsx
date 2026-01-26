@@ -5,7 +5,7 @@ import { experiences, education } from '../data/portfolio';
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-24 relative bg-slate-50 dark:bg-dark">
+    <section id="experience" className="py-24 relative bg-[#1e1e1e]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -13,10 +13,10 @@ const Experience = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
         >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-primary-900 dark:text-white font-display">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#f5fcff] font-display">
                 Trayectoria Profesional
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-300 max-w-2xl mx-auto">
                 Evolución estratégica desde roles operativos hasta liderazgo tecnológico.
             </p>
         </motion.div>
@@ -29,7 +29,7 @@ const Experience = () => {
                         <Building2 size={24} />
                     </div>
                     <div>
-                         <div className="text-2xl font-bold text-slate-900 dark:text-white" role="heading" aria-level={3}>Experiencia Laboral</div>
+                         <div className="text-2xl font-bold text-[#f5fcff]" role="heading" aria-level={3}>Experiencia Laboral</div>
                          <p className="text-sm text-slate-500">Roles clave y logros de negocio</p>
                     </div>
                 </div>
@@ -45,17 +45,17 @@ const Experience = () => {
                             className="relative pl-10"
                         >
                             {/* Timeline Dot */}
-                            <div className="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-white dark:bg-dark-surface border-2 border-primary-600 dark:border-primary-400 ring-4 ring-slate-50 dark:ring-dark" />
+                            <div className="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-[#1e1e1e] border-2 border-primary ring-4 ring-[#1e1e1e]" />
                             
-                            <div className="group bg-white dark:bg-dark-surface p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                            <div className="group bg-[#2d2d2d] p-6 rounded-2xl border border-slate-700 shadow-sm hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1">
                                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-4">
                                     <div>
-                                        <div className="text-lg font-bold text-slate-900 dark:text-white font-display">{exp.role}</div>
+                                        <div className="text-lg font-bold text-[#f5fcff] font-display">{exp.role}</div>
                                         <div className="text-primary-700 dark:text-primary-300 font-medium">
                                             {exp.company}
                                         </div>
                                     </div>
-                                    <span className="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 whitespace-nowrap">
+                                    <span className="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-[#1e1e1e] text-slate-300 whitespace-nowrap">
                                         {exp.duration}
                                     </span>
                                 </div>
@@ -78,7 +78,7 @@ const Experience = () => {
 
                                 <div className="flex flex-wrap gap-2 mt-5 pt-4 border-t border-slate-100 dark:border-slate-800">
                                     {exp.techStack.map((tech, i) => (
-                                        <span key={i} className="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 rounded bg-slate-50 dark:bg-slate-900 text-slate-500 dark:text-slate-400 border border-slate-100 dark:border-slate-800">
+                                        <span key={i} className="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 rounded bg-[#1e1e1e] text-slate-400 border border-slate-700">
                                             {tech}
                                         </span>
                                     ))}
@@ -96,7 +96,7 @@ const Experience = () => {
                         <GraduationCap size={24} />
                     </div>
                      <div>
-                         <div className="text-2xl font-bold text-slate-900 dark:text-white" role="heading" aria-level={3}>Formación</div>
+                         <div className="text-2xl font-bold text-[#f5fcff]" role="heading" aria-level={3}>Formación</div>
                          <p className="text-sm text-slate-500">Base académica y certificaciones</p>
                     </div>
                 </div>
@@ -111,11 +111,11 @@ const Experience = () => {
                             transition={{ delay: index * 0.1 }}
                             className="relative pl-10"
                         >
-                            <div className="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-white dark:bg-dark-surface border-2 border-secondary-500 dark:border-secondary-400 ring-4 ring-slate-50 dark:ring-dark" />
+                            <div className="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-[#1e1e1e] border-2 border-secondary ring-4 ring-[#1e1e1e]" />
                             
-                            <div className="bg-white dark:bg-dark-surface p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                            <div className="bg-[#2d2d2d] p-6 rounded-2xl border border-slate-700 shadow-sm hover:shadow-md transition-shadow">
                                 <div className="flex justify-between items-start mb-2 gap-3">
-                                     <div className="text-lg font-bold text-slate-900 dark:text-white font-display leading-snug">{edu.degree}</div>
+                                     <div className="text-lg font-bold text-[#f5fcff] font-display leading-snug">{edu.degree}</div>
                                      <span className="text-xs font-semibold text-secondary-600 dark:text-secondary-400 whitespace-nowrap">
                                         {edu.duration}
                                     </span>

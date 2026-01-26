@@ -50,8 +50,8 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300
         ${scrolled 
-            ? 'bg-white/90 dark:bg-dark/90 backdrop-blur-md shadow-sm border-b border-slate-200/50 dark:border-slate-800/50 py-3' 
-            : 'bg-transparent py-5'
+            ? 'bg-[#1e1e1e]/95 backdrop-blur-md shadow-sm border-b border-slate-700/50 py-3' 
+          : 'bg-transparent py-5'
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
@@ -63,7 +63,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
             onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}
             className="flex items-center gap-3 group relative z-50"
           >
-             <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-primary-500/20 group-hover:shadow-primary-500/40 transition-shadow">
+             <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-white/5 group-hover:shadow-primary/20 transition-shadow">
                 <img 
                   src="/images/iconoweb.webp" 
                   alt="Sebastián Jaque - Consultor Transformación Digital Lima"
@@ -73,14 +73,14 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
                   loading="eager"
                 />
              </div>
-             <span className={`font-display font-bold text-lg tracking-tight ${scrolled ? 'text-slate-900 dark:text-white' : 'text-slate-900 dark:text-white'}`}>
+             <span className={`font-display font-bold text-lg tracking-tight text-white`}>
                 {siteContent.brand.name}
              </span>
           </a>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-1">
-             <div className={`flex items-center gap-1 px-2 py-1.5 rounded-full border transition-all duration-300 ${scrolled ? 'bg-slate-100/50 dark:bg-slate-800/50 border-slate-200/50 dark:border-slate-700/50' : 'bg-white/50 dark:bg-black/20 border-transparent has-backdrop-filter'}`}>
+             <div className={`flex items-center gap-1 px-2 py-1.5 rounded-full border transition-all duration-300 ${scrolled ? 'bg-slate-800/50 border-slate-700/50' : 'bg-black/20 border-transparent has-backdrop-filter'}`}>
                 {navItems.map((item) => {
                     const isActive = activeSection === item.id;
                     return (
@@ -89,13 +89,13 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
                             onClick={() => scrollToSection(item.id)}
                             className={`
                                 relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-200
-                                ${isActive ? 'text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-300 hover:text-slate-700 dark:hover:text-white'}
+                                ${isActive ? 'text-white' : 'text-slate-400 hover:text-white'}
                             `}
                         >
                             {isActive && (
                                 <motion.div 
                                     layoutId="nav-bg"
-                                    className="absolute inset-0 bg-white dark:bg-slate-700 rounded-full shadow-sm"
+                                    className="absolute inset-0 bg-slate-700/50 rounded-full shadow-sm"
                                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                                 />
                             )}
@@ -105,11 +105,11 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
                 })}
              </div>
 
-             <div className="w-px h-8 bg-slate-200 dark:bg-slate-800 mx-4" />
+             <div className="w-px h-8 bg-slate-700 mx-4" />
 
              <button 
                 onClick={() => scrollToSection('contact')}
-                className="px-5 py-2.5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-medium text-sm hover:scale-105 transition-transform shadow-lg shadow-slate-900/10 dark:shadow-white/10 flex items-center gap-2"
+                className="px-5 py-2.5 rounded-full bg-[#f5fcff] text-[#1e1e1e] font-bold text-sm hover:scale-105 transition-transform shadow-lg shadow-primary/10 flex items-center gap-2"
              >
                 Contactar <ArrowUpRight size={16} />
              </button>
@@ -118,7 +118,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden relative z-50 p-2 text-slate-900 dark:text-white"
+            className="md:hidden relative z-50 p-2 text-white"
             aria-label="Menu"
           >
             {mobileMenuOpen ? <X /> : <Menu />}
@@ -135,14 +135,14 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                className="fixed inset-0 z-40 bg-white dark:bg-dark pt-24 px-6 md:hidden flex flex-col gap-6"
+                className="fixed inset-0 z-40 bg-[#1e1e1e] pt-24 px-6 md:hidden flex flex-col gap-6"
             >
                 <div className="flex flex-col gap-2">
                     {navItems.map((item) => (
                         <button
                             key={item.id}
                             onClick={() => scrollToSection(item.id)}
-                            className="text-2xl font-display font-bold text-slate-900 dark:text-white py-4 border-b border-slate-100 dark:border-slate-800 text-left"
+                            className="text-2xl font-display font-bold text-[#f5fcff] py-4 border-b border-slate-700 text-left"
                         >
                             {item.label}
                         </button>

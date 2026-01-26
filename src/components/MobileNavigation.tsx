@@ -34,7 +34,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ activeSection, setA
 
   return (
     <div className="md:hidden fixed bottom-4 left-4 right-4 z-50">
-      <nav className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg border border-slate-200/50 dark:border-slate-800/50 rounded-2xl shadow-lg shadow-primary-900/10 dark:shadow-black/40 px-4 py-3">
+      <nav className="bg-[#2d2d2d]/95 backdrop-blur-lg border border-slate-700/50 rounded-2xl shadow-lg shadow-black/40 px-4 py-3">
         <div className="flex justify-between items-center">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
@@ -49,7 +49,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ activeSection, setA
                 <div 
                   className={`
                     relative p-2 rounded-xl transition-all duration-300
-                    ${isActive ? 'bg-primary-50 dark:bg-slate-800 text-primary-600 dark:text-primary-400' : 'text-slate-500 dark:text-slate-400'}
+                    ${isActive ? 'bg-primary/10 text-primary' : 'text-slate-400'}
                   `}
                 >
                   <Icon size={20} className={isActive ? 'stroke-2' : 'stroke-[1.5]'} />
@@ -61,7 +61,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ activeSection, setA
                     />
                   )}
                 </div>
-                <span className={`text-[10px] font-medium transition-colors ${isActive ? 'text-primary-700 dark:text-primary-300' : 'text-slate-500/80 dark:text-slate-500'}`}>
+                <span className={`text-[10px] font-medium transition-colors ${isActive ? 'text-primary' : 'text-slate-400'}`}>
                     {item.label}
                 </span>
               </button>

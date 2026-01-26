@@ -40,23 +40,23 @@ class ErrorBoundary extends Component<Props, State> {
       }
 
       return (
-        <div className="min-h-screen bg-gray-900 flex items-center justify-center px-6">
+        <div className="min-h-screen bg-[#1e1e1e] flex items-center justify-center px-6">
           <div className="max-w-md text-center">
             <div className="mb-6">
-              <AlertTriangle size={64} className="mx-auto text-red-400 mb-4" />
-              <h2 className="text-2xl font-semibold text-white mb-2">
+              <AlertTriangle size={64} className="mx-auto text-primary mb-4" />
+              <h2 className="text-2xl font-semibold text-[#f5fcff] mb-2">
                 Algo salió mal
               </h2>
-              <p className="text-gray-400 mb-6">
+              <p className="text-slate-300 mb-6">
                 Ha ocurrido un error inesperado. Puedes intentar recargar la página o contactar al administrador.
               </p>
               
               {import.meta.env.DEV && this.state.error && (
-                <details className="text-left bg-gray-800 p-4 rounded-lg mb-6 text-sm">
-                  <summary className="cursor-pointer text-gray-300 mb-2">
+                <details className="text-left bg-[#2d2d2d] p-4 rounded-lg mb-6 text-sm">
+                  <summary className="cursor-pointer text-slate-300 mb-2">
                     Detalles técnicos
                   </summary>
-                  <pre className="text-red-300 whitespace-pre-wrap">
+                  <pre className="text-primary whitespace-pre-wrap">
                     {this.state.error.message}
                     {'\n'}
                     {this.state.error.stack}

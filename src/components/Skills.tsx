@@ -25,7 +25,7 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="py-24 bg-white dark:bg-dark-surface relative overflow-hidden">
+    <section id="skills" className="py-24 bg-[#1e1e1e] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
            initial={{ opacity: 0, y: 20 }}
@@ -33,10 +33,10 @@ const Skills = () => {
            viewport={{ once: true }}
            className="text-center mb-16"
         >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-white font-display">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#f5fcff] font-display">
                 Stack Tecnológico
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-300 max-w-2xl mx-auto">
                 Herramientas y plataformas que utilizo para construir soluciones escalables y basadas en datos.
             </p>
         </motion.div>
@@ -51,13 +51,13 @@ const Skills = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: idx * 0.1 }}
-                        className="bg-slate-50 dark:bg-dark border border-slate-200 dark:border-slate-800 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300"
+                        className="bg-[#2d2d2d] border border-slate-700 rounded-2xl p-8 hover:shadow-lg hover:shadow-primary/10 transition-shadow duration-300"
                     >
                         <div className="flex items-center gap-4 mb-8">
-                            <div className="w-12 h-12 rounded-xl bg-white dark:bg-slate-800 shadow-sm flex items-center justify-center text-primary-600 dark:text-primary-400 border border-slate-100 dark:border-slate-700">
+                            <div className="w-12 h-12 rounded-xl bg-[#1e1e1e] shadow-sm flex items-center justify-center text-primary border border-slate-700">
                                 <Icon size={24} />
                             </div>
-                            <div className="text-xl font-bold text-slate-900 dark:text-white capitalize" role="heading" aria-level={3}>
+                            <div className="text-xl font-bold text-[#f5fcff] capitalize" role="heading" aria-level={3}>
                                 {category}
                             </div>
                         </div>
@@ -66,20 +66,20 @@ const Skills = () => {
                             {skills.map((skill) => (
                                 <div key={skill.name} className="group">
                                     <div className="flex justify-between items-center mb-2">
-                                        <span className="text-slate-700 dark:text-slate-300 font-medium flex items-center gap-2">
+                                        <span className="text-slate-200 font-medium flex items-center gap-2">
                                             {/* Icon placeholder if needed, or simple bullet */}
-                                            <span className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 group-hover:bg-primary-500 transition-colors" />
+                                            <span className="w-1.5 h-1.5 rounded-full bg-slate-600 group-hover:bg-primary transition-colors" />
                                             {skill.name}
                                         </span>
                                     </div>
-                                    <div className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden relative">
+                                    <div className="w-full h-1.5 bg-[#1e1e1e] rounded-full overflow-hidden relative">
                                         <motion.div
                                             initial={{ width: 0 }}
                                             whileInView={{ width: "100%" }} // Simple full width for "mastery" look or random
                                             transition={{ duration: 1.5, ease: "easeOut" }}
                                             className="h-full bg-gradient-to-r from-primary-500 to-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity relative z-10"
                                         />
-                                        <div className="h-full bg-slate-300 dark:bg-slate-700 w-3/4 opacity-100 group-hover:opacity-0 transition-opacity absolute top-0 left-0" /> {/* Static bar fallback */}
+                                        <div className="h-full bg-slate-700 w-3/4 opacity-100 group-hover:opacity-0 transition-opacity absolute top-0 left-0" />
                                     </div>
                                 </div>
                             ))}

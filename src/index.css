@@ -14,15 +14,15 @@
   
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    @apply text-slate-900 dark:text-white;
+    @apply text-[#f5fcff];
   }
 
   p, span, li, a {
-     @apply text-slate-600 dark:text-slate-300;
+     @apply text-slate-300;
   }
 
   body {
-    @apply bg-slate-50 text-slate-900 dark:bg-gray-900 dark:text-slate-100 antialiased selection:bg-secondary-400/30 selection:text-primary-800 pb-24 md:pb-0;
+    @apply bg-[#1e1e1e] text-[#f5fcff] dark:bg-[#1e1e1e] dark:text-[#f5fcff] antialiased selection:bg-primary-500/30 selection:text-slate-900 pb-24 md:pb-0;
     overflow-x: hidden;
   }
 }
@@ -30,7 +30,7 @@
 @layer components {
   /* ... existing components ... */
   .mobile-card {
-     @apply bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm p-5;
+     @apply bg-[#2d2d2d] dark:bg-[#2d2d2d] rounded-xl border border-slate-700 dark:border-slate-700 shadow-sm p-5;
   }
 }
 /* ... rest of css ... */
@@ -38,11 +38,11 @@
 
 @layer components {
   .dashboard-card {
-    @apply bg-white dark:bg-dark-surface rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-lg transition-all duration-300;
+    @apply bg-[#2d2d2d] dark:bg-[#2d2d2d] rounded-xl border border-slate-700 dark:border-slate-700 shadow-sm hover:shadow-lg transition-all duration-300;
   }
   
   .stat-value {
-    @apply font-display font-bold text-3xl tracking-tight text-primary-900 dark:text-white;
+    @apply font-display font-bold text-3xl tracking-tight text-white dark:text-white;
   }
 
   .stat-label {
@@ -53,25 +53,23 @@
 /* TEMA OSCURO (Único y predeterminado) */
 :root {
   /* Updated CSS variables to match Tailwind config for legacy support */
-  --color-primary: #0F172A;
+  --color-primary: #d9e512;
   --primary: var(--color-primary);
-  --color-secondary: #0D9488;
+  --color-secondary: #3861d7;
   --secondary: var(--color-secondary);
-  --primary-rgb: 11,95,255;
-  --color-primary-600: #0A4BD6;
-  --color-primary-700: #083FB0;
-  --color-primary-50: rgba(11, 95, 255, 0.1);
+  --primary-rgb: 217, 229, 18;
+  --color-primary-600: #aec70e;
+  --color-primary-700: #82950a;
+  --color-primary-50: rgba(217, 229, 18, 0.1);
 
-  --color-secondary: #F2B705;
-  --secondary: var(--color-secondary);
-  --secondary-rgb: 242,183,5;
-  --color-secondary-600: #D99A03;
-  --color-secondary-50: rgba(242, 183, 5, 0.1);
+  --secondary-rgb: 56, 97, 215;
+  --color-secondary-600: #2a4ab5;
+  --color-secondary-50: rgba(56, 97, 215, 0.1);
 
-  --color-dark: #0A0E16;
-  --color-dark-100: #1A1E26;
-  --color-dark-200: #2A2E36;
-  --color-dark-300: #3A3E46;
+  --color-dark: #1e1e1e;
+  --color-dark-100: #2d2d2d;
+  --color-dark-200: #3e3e3e;
+  --color-dark-300: #4b4b4b;
 
   /* Textos para tema oscuro */
   --text-primary: #FFFFFF;
@@ -93,13 +91,13 @@
   --transition-slow: 0.5s ease-out;
 
   /* Background para tema oscuro */
-  --c-bg-0: #0a0f17;
-  --c-bg-1: #0c1622;
-  --c-bg-2: #081018;
-  --c-primary: #0476D9;
-  --c-primary-soft: #1b6fbf;
-  --c-secondary: #F2B705;
-  --c-secondary-soft: #d49d09;
+  --c-bg-0: #1e1e1e;
+  --c-bg-1: #252525;
+  --c-bg-2: #2d2d2d;
+  --c-primary: #d9e512;
+  --c-primary-soft: #aec70e;
+  --c-secondary: #3861d7;
+  --c-secondary-soft: #6f8be6;
   --bg-shift-x: 0px;
   --bg-shift-y: 0px;
   --muted: #64748B;

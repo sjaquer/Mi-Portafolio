@@ -47,7 +47,7 @@ export const Skeleton: React.FC<SkeletonProps> = ({
   className = '',
   variant = 'text'
 }) => {
-  const baseClasses = 'animate-pulse bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 bg-[length:200%_100%]';
+  const baseClasses = 'animate-pulse bg-gradient-to-r from-[#2d2d2d] via-slate-700 to-[#2d2d2d] bg-[length:200%_100%]';
   
   const variantClasses = {
     text: 'h-4 rounded-md',
@@ -61,7 +61,7 @@ export const Skeleton: React.FC<SkeletonProps> = ({
       animate={{ opacity: 1 }}
       className={`${baseClasses} ${variantClasses[variant]} ${className}`}
       style={{
-        backgroundImage: 'linear-gradient(90deg, #374151 0%, #4B5563 50%, #374151 100%)',
+        backgroundImage: 'linear-gradient(90deg, #2d2d2d 0%, #475569 50%, #2d2d2d 100%)',
         animation: 'shimmer 2s infinite linear'
       }}
     />
@@ -86,8 +86,8 @@ export const LoadingState: React.FC<LoadingStateProps> = ({
       className={`flex flex-col items-center justify-center py-12 ${className}`}
     >
       <LoadingSpinner size="lg" variant="primary" className="mb-4" />
-      <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
-      <p className="text-sm text-gray-400 text-center max-w-sm">{description}</p>
+      <h3 className="text-lg font-semibold text-[#f5fcff] mb-2">{title}</h3>
+      <p className="text-sm text-slate-300 text-center max-w-sm">{description}</p>
     </motion.div>
   );
 };
