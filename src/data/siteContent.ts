@@ -2,14 +2,14 @@ export const siteContent = {
   brand: {
     name: 'Sebastián Jaque',
     subtitle: 'BizOps & Tech Strategist en Lima',
-    logo: '/images/iconoweb.webp'
+    logo: '/icon0.svg'
   },
   seo: {
     title: 'Sebastián Jaque | BizOps & Tech Strategist en Lima, Perú',
     description: 'Sebastián Jaque, BizOps & Tech Strategist en Lima, Perú. Consultor en transformación digital, desarrollo de software y automatización de procesos empresariales.',
     keywords: 'Sebastián Jaque, BizOps, Tech Strategist, Lima, Perú, transformación digital, desarrollo software',
     url: 'https://sjaquer.is-a.dev/',
-    image: 'https://sjaquer.is-a.dev/images/iconoweb.webp'
+    image: 'https://sjaquer.is-a.dev/web-app-manifest-512x512.png'
   },
   nav: [
     { id: 'home', label: 'Inicio' },

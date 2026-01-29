@@ -65,7 +65,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
           >
              <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-white/5 group-hover:shadow-primary/20 transition-shadow">
                 <img 
-                  src="/images/iconoweb.webp" 
+                  src="/icon0.svg" 
                   alt="Sebastián Jaque - Consultor Transformación Digital Lima"
                   width={40}
                   height={40}

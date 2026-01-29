@@ -1,97 +1,21 @@
 {
-  "name": "Sebastián Jaque | Consultor Transformación Digital Lima",
-  "short_name": "S. Jaque",
-  "description": "Consultor en Transformación Digital en Lima, Perú. Desarrollo software, dashboards Power BI y automatización de procesos empresariales.",
-  "start_url": "/",
-  "id": "/",
-  "display": "standalone",
-  "display_override": ["window-controls-overlay", "standalone", "browser"],
-  "background_color": "#1e1e1e",
-  "theme_color": "#D9E512",
+  "name": "SJAQUER",
+  "short_name": "SJAQUER",
   "icons": [
     {
-      "src": "/images/iconoweb.webp",
-      "sizes": "72x72",
-      "type": "image/webp",
-      "purpose": "any"
-    },
-    {
-      "src": "/images/iconoweb.webp",
-      "sizes": "96x96",
-      "type": "image/webp",
-      "purpose": "any"
-    },
-    {
-      "src": "/images/iconoweb.webp",
-      "sizes": "128x128",
-      "type": "image/webp",
-      "purpose": "any"
-    },
-    {
-      "src": "/images/iconoweb.webp",
-      "sizes": "144x144",
-      "type": "image/webp",
-      "purpose": "any"
-    },
-    {
-      "src": "/images/iconoweb.webp",
-      "sizes": "152x152",
-      "type": "image/webp",
-      "purpose": "any"
-    },
-    {
-      "src": "/images/iconoweb.webp",
+      "src": "/web-app-manifest-192x192.png",
       "sizes": "192x192",
-      "type": "image/webp",
-      "purpose": "any"
+      "type": "image/png",
+      "purpose": "maskable"
     },
     {
-      "src": "/images/iconoweb.webp",
-      "sizes": "384x384",
-      "type": "image/webp",
-      "purpose": "any"
-    },
-    {
-      "src": "/images/iconoweb.webp",
+      "src": "/web-app-manifest-512x512.png",
       "sizes": "512x512",
-      "type": "image/webp",
-      "purpose": "any maskable"
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
-  "categories": ["business", "technology", "productivity", "consulting"],
-  "lang": "es-PE",
-  "dir": "ltr",
-  "scope": "/",
-  "orientation": "portrait-primary",
-  "prefer_related_applications": false,
-  "screenshots": [
-    {
-      "src": "/images/og-image.webp",
-      "sizes": "1200x630",
-      "type": "image/webp",
-      "form_factor": "wide",
-      "label": "Portafolio de Sebastián Jaque"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "Contactar",
-      "short_name": "Contacto",
-      "description": "Solicitar una consultoría",
-      "url": "/#contact",
-      "icons": [{ "src": "/images/iconoweb.webp", "sizes": "96x96" }]
-    },
-    {
-      "name": "Ver Proyectos",
-      "short_name": "Proyectos",
-      "description": "Casos de éxito y portafolio",
-      "url": "/#portfolio",
-      "icons": [{ "src": "/images/iconoweb.webp", "sizes": "96x96" }]
-    }
-  ],
-  "related_applications": [],
-  "handle_links": "preferred",
-  "launch_handler": {
-    "client_mode": ["navigate-existing", "auto"]
-  }
+  "theme_color": "#d5e000",
+  "background_color": "#d5e000",
+  "display": "standalone"
 }

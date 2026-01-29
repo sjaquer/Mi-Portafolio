@@ -128,7 +128,7 @@ const DashboardSidebar = ({ currentView, setView, isOpen, toggle }: any) => {
            <div className="hidden md:flex p-6 items-center gap-3 overflow-hidden whitespace-nowrap border-b border-slate-700 h-20">
                 <div className="w-8 h-8 rounded-lg overflow-hidden shadow-lg shadow-primary-500/30 shrink-0">
                     <img 
-                        src="/images/iconoweb.webp" 
+                        src="/icon0.svg" 
                         alt="Logo" 
                         className="w-full h-full object-cover"
                     />

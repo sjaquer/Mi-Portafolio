@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
                 <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-primary-500/20 group-hover:shadow-primary-500/40 transition-shadow">
                         <img 
-                            src="/images/iconoweb.webp" 
+                            src="/icon0.svg" 
                             alt="Sebastián Jaque - Consultor Transformación Digital Lima"
                             width={40}
                             height={40}

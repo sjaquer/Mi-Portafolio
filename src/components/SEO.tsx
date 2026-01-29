@@ -29,7 +29,7 @@ const SEO: React.FC<SEOProps> = ({
   noindex = false
 }) => {
   const siteUrl = 'https://sjaquer.is-a.dev';
-  const defaultImage = `${siteUrl}/images/og-image.webp`;
+  const defaultImage = `${siteUrl}/web-app-manifest-512x512.png`;
   const defaultDescription = 'Consultor en Transformación Digital en Lima, Perú. Desarrollo software, dashboards Power BI y automatización de procesos. BizOps & Tech Strategist certificado.';
   
   // Títulos optimizados por tipo de página para mejor CTR
