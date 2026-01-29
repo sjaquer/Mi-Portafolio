@@ -48,35 +48,35 @@ const Skills = () => {
           </p>
         </div>
 
-        {/* Grid de categorías - Simple y limpio */}
-        <div className="grid md:grid-cols-3 gap-4 sm:gap-6">
+        {/* Grid de categorías - Mejorado visualmente */}
+        <div className="grid md:grid-cols-3 gap-5 sm:gap-8">
           {skillCategories.map((category) => {
             const Icon = category.icon;
             return (
               <div
                 key={category.id}
-                className="bg-[#252525] border border-slate-700/50 rounded-2xl p-5 sm:p-6 hover:border-slate-600 transition-colors"
+                className="bg-[#252525] border border-slate-700/50 rounded-2xl p-6 sm:p-8 hover:border-slate-600 hover:bg-[#2a2a2a] transition-all duration-300"
               >
                 {/* Header de categoría */}
-                <div className="flex items-start gap-3 mb-4">
+                <div className="flex items-start gap-4 mb-6">
                   <div 
-                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                    style={{ backgroundColor: `${category.color}15` }}
+                    className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 shadow-lg"
+                    style={{ backgroundColor: `${category.color}20`, boxShadow: `0 4px 20px ${category.color}15` }}
                   >
-                    <Icon size={20} style={{ color: category.color }} />
+                    <Icon size={28} style={{ color: category.color }} />
                   </div>
                   <div>
-                    <h3 className="font-bold text-white text-base">{category.title}</h3>
-                    <p className="text-slate-500 text-xs mt-0.5">{category.subtitle}</p>
+                    <h3 className="font-bold text-white text-lg">{category.title}</h3>
+                    <p className="text-slate-400 text-sm mt-1">{category.subtitle}</p>
                   </div>
                 </div>
 
-                {/* Tags de skills - Simple */}
-                <div className="flex flex-wrap gap-2">
+                {/* Tags de skills - Más grandes y legibles */}
+                <div className="flex flex-wrap gap-2.5">
                   {category.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-1.5 bg-slate-800/60 text-slate-300 text-xs font-medium rounded-lg border border-slate-700/50"
+                      className="px-4 py-2 bg-slate-800/70 text-slate-200 text-sm font-medium rounded-xl border border-slate-700/50 hover:border-slate-600 hover:bg-slate-800 transition-colors"
                     >
                       {skill}
                     </span>
@@ -87,16 +87,16 @@ const Skills = () => {
           })}
         </div>
 
-        {/* Tecnologías destacadas - Grid compacto */}
-        <div className="mt-10 pt-8 border-t border-slate-800">
-          <p className="text-center text-slate-500 text-xs uppercase tracking-wider mb-5">
+        {/* Tecnologías destacadas - Más prominente */}
+        <div className="mt-12 pt-10 border-t border-slate-800">
+          <p className="text-center text-slate-400 text-sm uppercase tracking-widest mb-6 font-medium">
             Tecnologías principales
           </p>
           <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
-            {['React', 'TypeScript', 'Node.js', 'Python', 'Power BI', 'SQL', 'Firebase', 'Tailwind'].map((tech) => (
+            {['React', 'TypeScript', 'Node.js', 'Python', 'Power BI', 'SQL Server', 'Firebase', 'Tailwind CSS'].map((tech) => (
               <span
                 key={tech}
-                className="px-4 py-2 bg-slate-800/40 text-slate-300 text-sm font-medium rounded-full border border-slate-700/30 hover:border-primary/30 hover:text-primary transition-colors"
+                className="px-5 py-2.5 bg-slate-800/50 text-slate-200 text-base font-medium rounded-full border border-slate-700/40 hover:border-primary/40 hover:text-primary hover:bg-slate-800 transition-all duration-200 cursor-default"
               >
                 {tech}
               </span>

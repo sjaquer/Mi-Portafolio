@@ -52,10 +52,10 @@ const Hero = memo(() => {
               </p>
               
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-white leading-[1.1] tracking-tight">
-                BizOps & Tech<br />
-                <span className="text-slate-400">Strategist en</span>{' '}
+                Consultor en<br />
+                <span className="text-slate-400">Transformación</span>{' '}
                 <span className="text-white relative inline-block">
-                  <span className="text-primary relative z-10">Lima</span>
+                  <span className="text-primary relative z-10">Digital</span>
                   <svg 
                     className="absolute left-0 -bottom-2 w-full h-4 text-primary" 
                     viewBox="0 0 120 16" 

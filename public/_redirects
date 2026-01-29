@@ -1,5 +1,12 @@
-# Redirect para SPA - todas las rutas van a index.html
-/*    /index.html   200
+# Redirecciones para sjaquer.is-a.dev
+# =====================================
 
-# 404 personalizado
-/*    /404.html     404
+# Redirección 301: www a non-www (canonical URL)
+https://www.sjaquer.is-a.dev/* https://sjaquer.is-a.dev/:splat 301!
+
+# Redirección 301: HTTP a HTTPS
+http://sjaquer.is-a.dev/* https://sjaquer.is-a.dev/:splat 301!
+http://www.sjaquer.is-a.dev/* https://sjaquer.is-a.dev/:splat 301!
+
+# SPA: todas las rutas van a index.html
+/*    /index.html   200

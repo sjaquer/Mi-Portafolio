@@ -1,0 +1,61 @@
+# Configuración de Netlify para sjaquer.is-a.dev
+# Última actualización: 2026-01-28
+
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+# Redirecciones 301 para www a non-www (canonical)
+[[redirects]]
+  from = "https://www.sjaquer.is-a.dev/*"
+  to = "https://sjaquer.is-a.dev/:splat"
+  status = 301
+  force = true
+
+# SPA fallback - todas las rutas van a index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers para mejor SEO y rendimiento
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Compresión y caché
+    Cache-Control = "public, max-age=31536000, immutable"
+    # Seguridad
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    # Permisos
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    # Content Language para SEO
+    Content-Language = "es-PE"
+
+# Headers específicos para HTML
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    Content-Language = "es-PE"
+
+# Headers para assets estáticos (JS, CSS)
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Headers para imágenes
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Headers para fuentes
+[[headers]]
+  for = "/*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Access-Control-Allow-Origin = "*"

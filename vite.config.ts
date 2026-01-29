@@ -1,9 +1,24 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import compression from 'vite-plugin-compression';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    // Compresión Gzip
+    compression({
+      algorithm: 'gzip',
+      ext: '.gz',
+      threshold: 1024, // Solo comprimir archivos > 1KB
+    }),
+    // Compresión Brotli (mejor compresión)
+    compression({
+      algorithm: 'brotliCompress',
+      ext: '.br',
+      threshold: 1024,
+    }),
+  ],
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
