@@ -128,36 +128,91 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
       </div>
     </motion.header>
 
-    {/* Mobile Menu Overlay */}
+    {/* Mobile Menu Overlay - Mejorado para iOS/Android */}
     <AnimatePresence>
         {mobileMenuOpen && (
             <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                className="fixed inset-0 z-40 bg-[#1e1e1e] pt-24 px-6 md:hidden flex flex-col gap-6"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 z-40 md:hidden"
             >
-                <div className="flex flex-col gap-2">
-                    {navItems.map((item) => (
-                        <button
-                            key={item.id}
-                            onClick={() => scrollToSection(item.id)}
-                            className="text-2xl font-display font-bold text-[#f5fcff] py-4 border-b border-slate-700 text-left"
-                        >
-                            {item.label}
-                        </button>
-                    ))}
-                    <button
-                        onClick={() => scrollToSection('contact')}
-                        className="text-2xl font-display font-bold text-primary-600 dark:text-primary-400 py-4 text-left"
-                    >
-                        Contactar
-                    </button>
-                </div>
+                {/* Backdrop con blur */}
+                <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+                    onClick={() => setMobileMenuOpen(false)}
+                />
                 
-                <div className="mt-auto pb-12">
-                    <p className="text-slate-500 text-sm">© {new Date().getFullYear()} Sebastian Jaque</p>
-                </div>
+                {/* Menu Panel */}
+                <motion.div
+                    initial={{ x: '100%' }}
+                    animate={{ x: 0 }}
+                    exit={{ x: '100%' }}
+                    transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                    className="absolute right-0 top-0 bottom-0 w-[85%] max-w-sm bg-[#1e1e1e] shadow-2xl flex flex-col safe-area-inset-bottom"
+                >
+                    {/* Header del menu */}
+                    <div className="flex items-center justify-between p-6 border-b border-slate-700/50">
+                        <span className="text-lg font-bold text-white">Menú</span>
+                        <button
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="p-2 rounded-xl bg-slate-800/50 text-slate-400 hover:text-white transition-colors touch-manipulation"
+                            aria-label="Cerrar menú"
+                        >
+                            <X size={20} />
+                        </button>
+                    </div>
+                    
+                    {/* Navigation items */}
+                    <div className="flex-1 overflow-y-auto py-4 px-4">
+                        <div className="flex flex-col gap-1">
+                            {navItems.map((item, index) => (
+                                <motion.button
+                                    key={item.id}
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: index * 0.05 }}
+                                    onClick={() => scrollToSection(item.id)}
+                                    className={`
+                                        flex items-center gap-4 p-4 rounded-xl text-left transition-all touch-manipulation
+                                        ${activeSection === item.id 
+                                            ? 'bg-primary/10 text-primary border border-primary/20' 
+                                            : 'text-slate-300 hover:bg-slate-800/50'
+                                        }
+                                    `}
+                                >
+                                    <span className={`w-2 h-2 rounded-full ${activeSection === item.id ? 'bg-primary' : 'bg-slate-600'}`} />
+                                    <span className="text-lg font-semibold">{item.label}</span>
+                                </motion.button>
+                            ))}
+                        </div>
+                        
+                        {/* CTA Button */}
+                        <motion.button
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3 }}
+                            onClick={() => scrollToSection('contact')}
+                            className="w-full mt-6 px-6 py-4 rounded-xl bg-primary text-black font-bold text-lg hover:bg-primary-400 transition-all flex items-center justify-center gap-2 touch-manipulation"
+                        >
+                            Contactar
+                            <ArrowUpRight size={20} />
+                        </motion.button>
+                    </div>
+                    
+                    {/* Footer */}
+                    <div className="p-6 border-t border-slate-700/50">
+                        <p className="text-slate-500 text-sm text-center">
+                            © {new Date().getFullYear()} Sebastián Jaque
+                        </p>
+                        <p className="text-slate-600 text-xs text-center mt-1">
+                            Consultor en Transformación Digital
+                        </p>
+                    </div>
+                </motion.div>
             </motion.div>
         )}
     </AnimatePresence>

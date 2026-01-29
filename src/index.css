@@ -9,7 +9,10 @@
     font-family: 'Outfit', sans-serif;
     scroll-behavior: smooth;
     /* Prevent horizontal scroll on mobile */
-    overflow-x: hidden; 
+    overflow-x: hidden;
+    /* Mejor rendering en móviles */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -22,8 +25,132 @@
   }
 
   body {
-    @apply bg-[#1e1e1e] text-[#f5fcff] dark:bg-[#1e1e1e] dark:text-[#f5fcff] antialiased selection:bg-primary-500/30 selection:text-slate-900 pb-24 md:pb-0;
+    @apply bg-[#1e1e1e] text-[#f5fcff] dark:bg-[#1e1e1e] dark:text-[#f5fcff] antialiased selection:bg-primary-500/30 selection:text-slate-900;
     overflow-x: hidden;
+    /* Padding inferior para navegación móvil fija */
+    padding-bottom: env(safe-area-inset-bottom, 0);
+    /* Mejor rendering de fuentes en iOS */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Safe area padding para dispositivos con notch (iPhone X+) */
+  @supports (padding: max(0px)) {
+    body {
+      padding-left: max(0px, env(safe-area-inset-left));
+      padding-right: max(0px, env(safe-area-inset-right));
+      padding-bottom: max(80px, env(safe-area-inset-bottom));
+    }
+    
+    @media (min-width: 768px) {
+      body {
+        padding-bottom: 0;
+      }
+    }
+  }
+}
+
+/* ============================================
+   MEJORAS MÓVILES - iOS & Android
+   ============================================ */
+
+/* Prevenir zoom en inputs en iOS */
+@media screen and (max-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="url"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}
+
+/* Touch manipulation para mejor respuesta táctil */
+.touch-manipulation {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Optimización de scroll en móviles */
+.scroll-smooth-mobile {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Safe area utilities */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.mb-safe {
+  margin-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.safe-area-inset-bottom {
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+}
+
+/* Mejoras de accesibilidad táctil - targets mínimos de 44px */
+@media (pointer: coarse) {
+  button,
+  a,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Prevenir selección accidental en móviles */
+.no-select {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Animación suave de scroll momentum en iOS */
+.momentum-scroll {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* Mejoras para teclado virtual en móviles */
+@media (max-height: 500px) and (orientation: landscape) {
+  .mobile-keyboard-aware {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+}
+
+/* Estilos específicos para Android */
+@supports (-webkit-touch-callout: none) {
+  /* iOS specific styles */
+  .ios-bounce-fix {
+    overscroll-behavior-y: none;
+  }
+}
+
+/* Focus visible mejorado para móviles */
+@media (hover: none) {
+  button:focus,
+  a:focus,
+  input:focus,
+  textarea:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+/* Reducir motion para usuarios con preferencia */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
@@ -31,6 +158,13 @@
   /* ... existing components ... */
   .mobile-card {
      @apply bg-[#2d2d2d] dark:bg-[#2d2d2d] rounded-xl border border-slate-700 dark:border-slate-700 shadow-sm p-5;
+  }
+  
+  /* Card optimizada para móvil con mejor touch target */
+  .mobile-touch-card {
+    @apply bg-[#2d2d2d] rounded-2xl border border-slate-700 p-4 sm:p-6;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
 }
 /* ... rest of css ... */
@@ -958,3 +1092,97 @@ textarea::placeholder {
 }
 
 /* Removed all light-theme specific animated variants and mappings — dark-only site */
+
+/* ============================================
+   ANIMACIONES CSS OPTIMIZADAS PARA PERFORMANCE
+   Reemplazan Framer Motion para mejor FPS
+   ============================================ */
+
+/* Animación de entrada fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Animación fade-in con movimiento hacia arriba */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animación de dibujo de línea SVG */
+@keyframes drawLine {
+  from {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+  }
+  to {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Bounce sutil para indicador de scroll */
+@keyframes bounceSubtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+/* Clases de utilidad para animaciones */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s ease-out forwards;
+}
+
+.animate-fade-in-delayed {
+  animation: fadeIn 1s ease-out 1.2s forwards;
+  opacity: 0;
+}
+
+.animate-draw-line {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: drawLine 0.8s ease-out 0.4s forwards;
+}
+
+.animate-bounce-subtle {
+  animation: bounceSubtle 1.5s ease-in-out infinite;
+}
+
+/* Optimizaciones de rendimiento para animaciones */
+.animate-fade-in,
+.animate-fade-in-up,
+.animate-fade-in-delayed {
+  will-change: opacity, transform;
+}
+
+/* Desactivar animaciones si el usuario prefiere menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-fade-in-up,
+  .animate-fade-in-delayed,
+  .animate-draw-line,
+  .animate-bounce-subtle {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+}

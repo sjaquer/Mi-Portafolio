@@ -1,19 +1,85 @@
+# =========================================================
 # Robots.txt para sjaquer.is-a.dev
-# Sebastián Jaque - BizOps & Tech Strategist
+# Sebastián Jaque - Consultor en Transformación Digital
+# Última actualización: 2026-01-28
+# =========================================================
 
+# Reglas para todos los bots
 User-agent: *
 Allow: /
-
-# Archivos estáticos permitidos
 Allow: /images/
 Allow: /*.js$
 Allow: /*.css$
+Allow: /*.webp$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.svg$
+Allow: /*.woff2$
 
 # Bloquear archivos innecesarios para SEO
 Disallow: /api/
-Disallow: /*.json$
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /*.map$
+Disallow: /src/
 
-# Sitemap
+# Permitir archivos críticos
+Allow: /manifest.json
+Allow: /sitemap.xml
+
+# Reglas específicas para Googlebot
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Reglas específicas para Googlebot-Image
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /*.webp$
+Allow: /*.png$
+Allow: /*.jpg$
+
+# Reglas específicas para Bingbot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+# Reglas específicas para bots de redes sociales
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+# Bloquear bots maliciosos conocidos
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+# =========================================================
+# Sitemaps
+# =========================================================
 Sitemap: https://sjaquer.is-a.dev/sitemap.xml
 
 # Host preferido (canonical)

@@ -1,92 +1,107 @@
-// src/components/Skills.tsx
-import { useMemo } from 'react';
-import { motion } from 'framer-motion';
-import { skills as skillsData } from '../data/portfolio';
-import { Terminal, Cpu, BarChart, TrendingUp } from 'lucide-react';
+// src/components/Skills.tsx - Versión optimizada y simplificada
+import { TrendingUp, BarChart3, Code2, Sparkles } from 'lucide-react';
+
+// Definición de categorías con sus tecnologías
+const skillCategories = [
+  {
+    id: 'operations',
+    title: 'Eficiencia Operativa',
+    subtitle: 'Optimizo procesos y reduzco costos',
+    icon: TrendingUp,
+    color: '#10B981',
+    skills: ['BizOps', 'Reingeniería', 'Supply Chain', 'Costos', 'Liderazgo']
+  },
+  {
+    id: 'intelligence',
+    title: 'Inteligencia de Negocios',
+    subtitle: 'Transformo datos en decisiones',
+    icon: BarChart3,
+    color: '#3B82F6',
+    skills: ['Power BI', 'SQL Server', 'Análisis Financiero', 'KPIs', 'ETL']
+  },
+  {
+    id: 'development',
+    title: 'Desarrollo de Producto',
+    subtitle: 'Construyo soluciones escalables',
+    icon: Code2,
+    color: '#D9E512',
+    skills: ['React', 'TypeScript', 'Node.js', 'Python', 'APIs']
+  }
+];
 
 const Skills = () => {
-  // Agrupar habilidades por categoría
-  const groupedSkills = useMemo(() => {
-    const grouped: Record<string, typeof skillsData> = {};
-    skillsData.forEach(skill => {
-      if (!grouped[skill.category]) grouped[skill.category] = [];
-      grouped[skill.category].push(skill);
-    });
-    return grouped;
-  }, []);
-
-  const getCategoryIcon = (category: string) => {
-    switch (category.toLowerCase()) {
-      case 'estrategia & crecimiento': return TrendingUp; // Icono para growth/marketing
-      case 'data & analytics': return BarChart;       // Icono para datos
-      case 'ingeniería de producto': return Cpu;      // Icono para tech
-      default: return Terminal;
-    }
-  };
-
   return (
-    <section id="skills" className="py-24 bg-[#1e1e1e] relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
-           initial={{ opacity: 0, y: 20 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           viewport={{ once: true }}
-           className="text-center mb-16"
-        >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#f5fcff] font-display">
-                Stack Tecnológico
-            </h2>
-            <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-                Herramientas y plataformas que utilizo para construir soluciones escalables y basadas en datos.
-            </p>
-        </motion.div>
+    <section id="skills" className="py-16 sm:py-20 bg-[#1e1e1e]">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Header simple */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold border border-primary/20 mb-4">
+            <Sparkles size={14} />
+            Expertise
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white font-display mb-3">
+            Stack Tecnológico
+          </h2>
+          <p className="text-slate-400 max-w-lg mx-auto text-sm sm:text-base">
+            Herramientas que domino para resolver problemas de negocio.
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {Object.entries(groupedSkills).map(([category, skills], idx) => {
-                const Icon = getCategoryIcon(category);
-                return (
-                    <motion.div
-                        key={category}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: idx * 0.1 }}
-                        className="bg-[#2d2d2d] border border-slate-700 rounded-2xl p-8 hover:shadow-lg hover:shadow-primary/10 transition-shadow duration-300"
+        {/* Grid de categorías - Simple y limpio */}
+        <div className="grid md:grid-cols-3 gap-4 sm:gap-6">
+          {skillCategories.map((category) => {
+            const Icon = category.icon;
+            return (
+              <div
+                key={category.id}
+                className="bg-[#252525] border border-slate-700/50 rounded-2xl p-5 sm:p-6 hover:border-slate-600 transition-colors"
+              >
+                {/* Header de categoría */}
+                <div className="flex items-start gap-3 mb-4">
+                  <div 
+                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                    style={{ backgroundColor: `${category.color}15` }}
+                  >
+                    <Icon size={20} style={{ color: category.color }} />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-white text-base">{category.title}</h3>
+                    <p className="text-slate-500 text-xs mt-0.5">{category.subtitle}</p>
+                  </div>
+                </div>
+
+                {/* Tags de skills - Simple */}
+                <div className="flex flex-wrap gap-2">
+                  {category.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-3 py-1.5 bg-slate-800/60 text-slate-300 text-xs font-medium rounded-lg border border-slate-700/50"
                     >
-                        <div className="flex items-center gap-4 mb-8">
-                            <div className="w-12 h-12 rounded-xl bg-[#1e1e1e] shadow-sm flex items-center justify-center text-primary border border-slate-700">
-                                <Icon size={24} />
-                            </div>
-                            <div className="text-xl font-bold text-[#f5fcff] capitalize" role="heading" aria-level={3}>
-                                {category}
-                            </div>
-                        </div>
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
 
-                        <div className="space-y-6">
-                            {skills.map((skill) => (
-                                <div key={skill.name} className="group">
-                                    <div className="flex justify-between items-center mb-2">
-                                        <span className="text-slate-200 font-medium flex items-center gap-2">
-                                            {/* Icon placeholder if needed, or simple bullet */}
-                                            <span className="w-1.5 h-1.5 rounded-full bg-slate-600 group-hover:bg-primary transition-colors" />
-                                            {skill.name}
-                                        </span>
-                                    </div>
-                                    <div className="w-full h-1.5 bg-[#1e1e1e] rounded-full overflow-hidden relative">
-                                        <motion.div
-                                            initial={{ width: 0 }}
-                                            whileInView={{ width: "100%" }} // Simple full width for "mastery" look or random
-                                            transition={{ duration: 1.5, ease: "easeOut" }}
-                                            className="h-full bg-gradient-to-r from-primary-500 to-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity relative z-10"
-                                        />
-                                        <div className="h-full bg-slate-700 w-3/4 opacity-100 group-hover:opacity-0 transition-opacity absolute top-0 left-0" />
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </motion.div>
-                );
-            })}
+        {/* Tecnologías destacadas - Grid compacto */}
+        <div className="mt-10 pt-8 border-t border-slate-800">
+          <p className="text-center text-slate-500 text-xs uppercase tracking-wider mb-5">
+            Tecnologías principales
+          </p>
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+            {['React', 'TypeScript', 'Node.js', 'Python', 'Power BI', 'SQL', 'Firebase', 'Tailwind'].map((tech) => (
+              <span
+                key={tech}
+                className="px-4 py-2 bg-slate-800/40 text-slate-300 text-sm font-medium rounded-full border border-slate-700/30 hover:border-primary/30 hover:text-primary transition-colors"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -1,55 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   
-  <!-- Página Principal -->
+  <!-- 
+    Sitemap de Sebastián Jaque - Consultor en Transformación Digital
+    Última actualización: 2026-01-28
+    URL: https://sjaquer.is-a.dev/
+  -->
+  
+  <!-- Página Principal - Máxima prioridad -->
   <url>
     <loc>https://sjaquer.is-a.dev/</loc>
-    <lastmod>2026-01-14</lastmod>
+    <lastmod>2026-01-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sjaquer.is-a.dev/"/>
+    <xhtml:link rel="alternate" hreflang="es-PE" href="https://sjaquer.is-a.dev/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sjaquer.is-a.dev/"/>
+    <image:image>
+      <image:loc>https://sjaquer.is-a.dev/images/iconoweb.webp</image:loc>
+      <image:title>Sebastián Jaque - Consultor en Transformación Digital Lima</image:title>
+      <image:caption>Logo de Sebastián Jaque, consultor especializado en transformación digital en Lima, Perú</image:caption>
+    </image:image>
   </url>
   
-  <!-- Áreas de Impacto / Skills -->
+  <!-- Stack Tecnológico / Skills - Alta prioridad -->
   <url>
     <loc>https://sjaquer.is-a.dev/#skills</loc>
-    <lastmod>2026-01-14</lastmod>
+    <lastmod>2026-01-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
-  <!-- Trayectoria / Experience -->
+  <!-- Trayectoria Profesional / Experience -->
   <url>
     <loc>https://sjaquer.is-a.dev/#experience</loc>
-    <lastmod>2026-01-14</lastmod>
+    <lastmod>2026-01-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
-  <!-- Casos de Éxito / Portfolio -->
+  <!-- Casos de Éxito / Portfolio - Alta prioridad -->
   <url>
     <loc>https://sjaquer.is-a.dev/#portfolio</loc>
-    <lastmod>2026-01-14</lastmod>
+    <lastmod>2026-01-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1556742049-0cfed4f7a07d</image:loc>
+      <image:title>Big Jack O.S. - Sistema Operativo Centralizado</image:title>
+      <image:caption>Proyecto de transformación digital con ERP personalizado</image:caption>
+    </image:image>
   </url>
   
   <!-- Testimonios / Reviews -->
   <url>
     <loc>https://sjaquer.is-a.dev/#reviews</loc>
-    <lastmod>2026-01-14</lastmod>
+    <lastmod>2026-01-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
-  <!-- Contacto -->
+  <!-- Contacto - Alta prioridad para conversiones -->
   <url>
     <loc>https://sjaquer.is-a.dev/#contact</loc>
-    <lastmod>2026-01-14</lastmod>
+    <lastmod>2026-01-28</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   
 </urlset>

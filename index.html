@@ -1,98 +1,228 @@
 <!doctype html>
-<html lang="es" class="dark">
+<html lang="es" class="dark" prefix="og: https://ogp.me/ns#">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/images/iconoweb.webp" />
+    <link rel="icon" type="image/webp" sizes="32x32" href="/images/iconoweb.webp" />
+    <link rel="icon" type="image/webp" sizes="16x16" href="/images/iconoweb.webp" />
     <link rel="manifest" href="/manifest.json" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#2563eb" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#D9E512" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#D9E512" media="(prefers-color-scheme: light)" />
+    <meta name="color-scheme" content="dark light" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="bingbot" content="index, follow" />
+    
+    <!-- Mobile Web App Capable -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Sebastián Jaque" />
+    <meta name="application-name" content="Sebastián Jaque Portfolio" />
+    <meta name="msapplication-TileColor" content="#D9E512" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    <meta name="format-detection" content="telephone=yes" />
+    
+    <!-- Geolocalización y Targeting -->
+    <meta name="geo.region" content="PE-LIM" />
+    <meta name="geo.placename" content="Lima" />
+    <meta name="geo.position" content="-12.0464;-77.0428" />
+    <meta name="ICBM" content="-12.0464, -77.0428" />
+    <meta name="language" content="Spanish" />
+    <meta name="content-language" content="es-PE" />
     
     <!-- CSS crítico inline para evitar bloqueo de renderizado -->
     <style>
       /* Critical CSS para first paint */
-      html, body { margin: 0; padding: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
-      #root { min-height: 100vh; }
-      .loading-fallback { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+      html, body { margin: 0; padding: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+      html { scroll-behavior: smooth; }
+      #root { min-height: 100vh; min-height: 100dvh; }
+      .loading-fallback { display: flex; align-items: center; justify-content: center; min-height: 100vh; min-height: 100dvh; background: #0a0a0a; }
+      /* Prevent layout shift */
+      img, video { max-width: 100%; height: auto; }
+      /* Safe area for notched devices */
+      @supports (padding: max(0px)) {
+        body { padding-left: max(0px, env(safe-area-inset-left)); padding-right: max(0px, env(safe-area-inset-right)); }
+      }
     </style>
     
     <!-- Preload recursos críticos para mejor performance -->
-    <link rel="preload" href="/images/iconoweb.webp" as="image" type="image/webp" />
+    <link rel="preload" href="/images/iconoweb.webp" as="image" type="image/webp" fetchpriority="high" />
     
     <!-- Preconnect para recursos críticos -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
     
     <!-- DNS prefetch para recursos externos -->
     <link rel="dns-prefetch" href="//images.unsplash.com" />
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     
-    <!-- Título optimizado para SEO con keywords (50-60 caracteres ideal) -->
-    <title>Sebastián Jaque | BizOps & Tech Strategist en Lima, Perú</title>
+    <!-- Título optimizado para SEO con keywords principales (55 caracteres) -->
+    <title>Sebastián Jaque | Consultor Transformación Digital Lima Perú</title>
     
-    <!-- Meta Descripción optimizada (150-160 caracteres para snippet completo) -->
-    <meta name="description" content="Sebastián Jaque, BizOps & Tech Strategist en Lima, Perú. Consultor en transformación digital, desarrollo de software y automatización de procesos empresariales." />
+    <!-- Meta Descripción optimizada (158 caracteres para snippet completo en Google) -->
+    <meta name="description" content="Consultor en Transformación Digital en Lima, Perú. Desarrollo software, dashboards Power BI y automatización de procesos. BizOps & Tech Strategist certificado." />
     
+    <!-- Meta tags adicionales para SEO -->
     <meta name="author" content="Sebastián Jaque" />
-    <meta name="keywords" content="Sebastián Jaque, BizOps, Tech Strategist, Lima, Perú, transformación digital, desarrollo software, automatización procesos" />
+    <meta name="creator" content="Sebastián Jaque" />
+    <meta name="publisher" content="Sebastián Jaque" />
+    <meta name="keywords" content="consultor transformación digital Lima, desarrollo software Perú, automatización procesos empresariales, Power BI dashboard Lima, BizOps strategist, consultoría tecnológica Lima, desarrollo web React Perú, optimización operaciones, business intelligence Lima, ERP personalizado Perú" />
+    <meta name="subject" content="Consultoría en Transformación Digital y Desarrollo de Software" />
+    <meta name="copyright" content="© 2026 Sebastián Jaque. Todos los derechos reservados." />
+    <meta name="revised" content="2026-01-28" />
+    <meta name="abstract" content="Portafolio profesional de Sebastián Jaque, consultor especializado en transformación digital, desarrollo de software y automatización de procesos en Lima, Perú." />
+    <meta name="topic" content="Transformación Digital, Desarrollo de Software, Consultoría Empresarial" />
+    <meta name="summary" content="Sebastián Jaque transforma operaciones complejas en software de alto rendimiento. Servicios de consultoría BizOps, desarrollo web y automatización en Lima." />
+    <meta name="classification" content="Business, Technology, Consulting" />
+    <meta name="coverage" content="Peru, Latin America, Worldwide" />
+    <meta name="distribution" content="global" />
+    <meta name="rating" content="general" />
+    <meta name="referrer" content="origin-when-cross-origin" />
     <link rel="canonical" href="https://sjaquer.is-a.dev/" />
+    <link rel="alternate" hreflang="es" href="https://sjaquer.is-a.dev/" />
+    <link rel="alternate" hreflang="es-PE" href="https://sjaquer.is-a.dev/" />
+    <link rel="alternate" hreflang="x-default" href="https://sjaquer.is-a.dev/" />
 
-    <!-- Open Graph (OG) optimizado -->
-    <meta property="og:title" content="Sebastián Jaque | BizOps & Tech Strategist en Lima" />
-    <meta property="og:description" content="Sebastián Jaque, BizOps & Tech Strategist en Lima, Perú. Consultor en transformación digital, desarrollo de software y automatización de procesos." />
-    <meta property="og:type" content="website" />
+    <!-- Open Graph (OG) optimizado para compartir en redes sociales -->
+    <meta property="og:title" content="Sebastián Jaque | Consultor Transformación Digital Lima" />
+    <meta property="og:description" content="Transformo operaciones complejas en software de alto rendimiento. Consultoría BizOps, desarrollo web, dashboards Power BI y automatización en Lima, Perú." />
+    <meta property="og:type" content="profile" />
     <meta property="og:url" content="https://sjaquer.is-a.dev/" />
-    <meta property="og:image" content="https://sjaquer.is-a.dev/images/iconoweb.webp" />
+    <meta property="og:image" content="https://sjaquer.is-a.dev/images/og-image.webp" />
+    <meta property="og:image:secure_url" content="https://sjaquer.is-a.dev/images/og-image.webp" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Sebastián Jaque - BizOps & Tech Strategist" />
+    <meta property="og:image:alt" content="Sebastián Jaque - Consultor en Transformación Digital Lima, Perú" />
     <meta property="og:locale" content="es_PE" />
-    <meta property="og:site_name" content="Sebastián Jaque Portfolio" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    <meta property="og:site_name" content="Sebastián Jaque - Consultor Digital" />
+    <meta property="og:see_also" content="https://github.com/sjaquer" />
+    <meta property="og:see_also" content="https://linkedin.com/in/sjaquer" />
+    <meta property="profile:first_name" content="Sebastián" />
+    <meta property="profile:last_name" content="Jaque" />
+    <meta property="profile:username" content="sjaquer" />
 
-    <!-- Twitter Cards optimizado -->
+    <!-- Twitter Cards optimizado para máxima visibilidad -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@sjaquer" />
     <meta name="twitter:creator" content="@sjaquer" />
-    <meta name="twitter:title" content="Sebastián Jaque | BizOps & Tech Strategist Lima" />
-    <meta name="twitter:description" content="Sebastián Jaque, BizOps & Tech Strategist en Lima, Perú. Transformación digital, software y automatización de procesos." />
-    <meta name="twitter:image" content="https://sjaquer.is-a.dev/images/iconoweb.webp" />
-    <meta name="twitter:image:alt" content="Sebastián Jaque - BizOps & Tech Strategist en Lima, Perú" />
+    <meta name="twitter:title" content="Sebastián Jaque | Consultor Transformación Digital Lima" />
+    <meta name="twitter:description" content="Transformo operaciones en software de alto rendimiento. Consultoría BizOps, desarrollo web y automatización en Lima, Perú. 🚀" />
+    <meta name="twitter:image" content="https://sjaquer.is-a.dev/images/og-image.webp" />
+    <meta name="twitter:image:alt" content="Sebastián Jaque - Consultor en Transformación Digital" />
+    <meta name="twitter:domain" content="sjaquer.is-a.dev" />
 
-    <!-- Google tag (gtag.js) -->
+    <!-- LinkedIn específico -->
+    <meta property="article:author" content="Sebastián Jaque" />
+    <meta property="article:publisher" content="https://linkedin.com/in/sjaquer" />
+
+    <!-- Google tag (gtag.js) con configuración avanzada -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GDPBN9G1M5"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-GDPBN9G1M5', { 'anonymize_ip': true });
+      gtag('config', 'G-GDPBN9G1M5', {
+        'anonymize_ip': true,
+        'allow_google_signals': true,
+        'allow_ad_personalization_signals': false,
+        'page_title': document.title,
+        'page_location': window.location.href,
+        'custom_map': {'dimension1': 'user_type'}
+      });
+      // Track Core Web Vitals
+      if ('web-vital' in window) {
+        gtag('event', 'web_vitals', {
+          'event_category': 'Web Vitals',
+          'non_interaction': true
+        });
+      }
     </script>
     
-    <!-- ProfessionalService JSON-LD para SEO local -->
+    <!-- Google Search Console Verification (añadir tu código) -->
+    <!-- <meta name="google-site-verification" content="TU_CODIGO_VERIFICACION" /> -->
+    
+    <!-- Bing Webmaster Tools Verification (añadir tu código) -->
+    <!-- <meta name="msvalidate.01" content="TU_CODIGO_BING" /> -->
+    
+    <!-- ProfessionalService JSON-LD para SEO local avanzado -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
-      "name": "Sebastián Jaque - BizOps & Tech Strategist",
+      "@id": "https://sjaquer.is-a.dev/#business",
+      "name": "Sebastián Jaque - Consultor en Transformación Digital",
+      "alternateName": "SJaquer Consulting",
       "url": "https://sjaquer.is-a.dev",
-      "logo": "https://sjaquer.is-a.dev/images/iconoweb.webp",
-      "image": "https://sjaquer.is-a.dev/images/iconoweb.webp",
-      "description": "Consultoría en BizOps, desarrollo de software y automatización de procesos. Transformo operaciones complejas en sistemas eficientes.",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://sjaquer.is-a.dev/images/iconoweb.webp",
+        "width": 512,
+        "height": 512
+      },
+      "image": [
+        "https://sjaquer.is-a.dev/images/iconoweb.webp",
+        "https://sjaquer.is-a.dev/images/og-image.webp"
+      ],
+      "description": "Consultoría especializada en transformación digital, desarrollo de software personalizado, dashboards Power BI y automatización de procesos empresariales en Lima, Perú.",
       "telephone": "+51-946-978-919",
       "email": "sjaquer@outlook.es",
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "Lima",
         "addressLocality": "Lima",
         "addressRegion": "Lima",
+        "postalCode": "15000",
         "addressCountry": "PE"
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": "-12.0464",
-        "longitude": "-77.0428"
+        "latitude": -12.0464,
+        "longitude": -77.0428
       },
-      "areaServed": ["PE", "LATAM"],
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "Perú"
+        },
+        {
+          "@type": "GeoCircle",
+          "geoMidpoint": {
+            "@type": "GeoCoordinates",
+            "latitude": -12.0464,
+            "longitude": -77.0428
+          },
+          "geoRadius": "50000"
+        },
+        {
+          "@type": "Continent",
+          "name": "América Latina"
+        }
+      ],
       "priceRange": "$$",
-      "openingHours": "Mo-Fr 09:00-18:00",
+      "currenciesAccepted": "PEN, USD",
+      "paymentAccepted": "Transferencia bancaria, PayPal",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+51-946-978-919",
+        "contactType": "customer service",
+        "email": "sjaquer@outlook.es",
+        "availableLanguage": ["Spanish", "English"],
+        "areaServed": "PE"
+      },
       "sameAs": [
         "https://github.com/sjaquer",
         "https://linkedin.com/in/sjaquer",
@@ -100,22 +230,30 @@
       ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
-        "name": "Servicios de Consultoría",
+        "name": "Servicios de Consultoría Digital",
         "itemListElement": [
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
               "name": "Consultoría BizOps",
-              "description": "Optimización de operaciones empresariales mediante tecnología"
+              "description": "Optimización de operaciones empresariales mediante tecnología y análisis de datos"
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Desarrollo de Software",
-              "description": "Desarrollo web y aplicaciones con React, TypeScript y más"
+              "name": "Desarrollo de Software a Medida",
+              "description": "Desarrollo web y aplicaciones con React, TypeScript, Node.js y tecnologías modernas"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Dashboards Power BI",
+              "description": "Creación de tableros de control ejecutivos para toma de decisiones basada en datos"
             }
           },
           {
@@ -123,15 +261,22 @@
             "itemOffered": {
               "@type": "Service",
               "name": "Automatización de Procesos",
-              "description": "Automatización con IA, APIs y herramientas low-code"
+              "description": "Automatización con IA, APIs, integraciones y herramientas low-code/no-code"
             }
           }
         ]
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "2",
+        "bestRating": "5",
+        "worstRating": "1"
       }
     }
     </script>
 
-    <!-- Schema.org Person (JSON-LD) -->
+    <!-- Schema.org Person (JSON-LD) con datos estructurados completos -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -141,35 +286,92 @@
       "givenName": "Sebastián",
       "familyName": "Jaque",
       "url": "https://sjaquer.is-a.dev/",
-      "image": "https://sjaquer.is-a.dev/images/iconoweb.webp",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://sjaquer.is-a.dev/images/iconoweb.webp",
+        "width": 512,
+        "height": 512
+      },
       "sameAs": [
         "https://github.com/sjaquer",
         "https://linkedin.com/in/sjaquer",
         "https://instagram.com/sjaquer.dev"
       ],
-      "jobTitle": "BizOps & Tech Strategist",
-      "description": "Consultor especializado en transformar operaciones complejas en software de alto rendimiento",
+      "jobTitle": "Consultor en Transformación Digital",
+      "description": "Consultor especializado en transformar operaciones complejas en software de alto rendimiento. Experto en BizOps, desarrollo web y automatización.",
       "worksFor": {
         "@type": "Organization",
-        "name": "NHL Publicidad"
+        "name": "Big Jack",
+        "url": "#"
       },
-      "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": "Universidad Norbert Wiener"
-      },
+      "alumniOf": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "Universidad Norbert Wiener",
+          "url": "https://www.uwiener.edu.pe/"
+        },
+        {
+          "@type": "Organization",
+          "name": "Amazon Web Services (AWS)"
+        },
+        {
+          "@type": "Organization",
+          "name": "CertiProf"
+        }
+      ],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Artificial Intelligence Professional (CAIPC®)",
+          "credentialCategory": "Professional Certification"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Generative AI for Executives",
+          "credentialCategory": "Executive Certification"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Microsoft SQL Server Certified",
+          "credentialCategory": "Technical Certification"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Power BI Data Visualization Specialist",
+          "credentialCategory": "Technical Certification"
+        }
+      ],
       "knowsAbout": [
+        "Transformación Digital",
         "BizOps",
-        "Desarrollo Web",
+        "Desarrollo Web Full Stack",
         "React",
         "TypeScript",
+        "Node.js",
+        "Python",
         "Automatización de Procesos",
-        "Analítica de Datos",
+        "Business Intelligence",
         "Power BI",
-        "SEO",
+        "Análisis de Datos",
+        "SQL Server",
         "Firebase",
-        "Inteligencia Artificial"
+        "Inteligencia Artificial",
+        "Machine Learning",
+        "SEO Técnico",
+        "Optimización de Operaciones"
       ],
-      "knowsLanguage": ["es", "en"],
+      "knowsLanguage": [
+        {
+          "@type": "Language",
+          "name": "Spanish",
+          "alternateName": "es"
+        },
+        {
+          "@type": "Language",
+          "name": "English",
+          "alternateName": "en"
+        }
+      ],
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Lima",
@@ -177,27 +379,44 @@
         "addressCountry": "PE"
       },
       "email": "sjaquer@outlook.es",
-      "telephone": "+51-946-978-919"
+      "telephone": "+51-946-978-919",
+      "nationality": {
+        "@type": "Country",
+        "name": "Peru"
+      }
     }
     </script>
 
-    <!-- WebSite Schema para búsquedas -->
+    <!-- WebSite Schema para búsquedas y Sitelinks -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "@id": "https://sjaquer.is-a.dev/#website",
       "url": "https://sjaquer.is-a.dev/",
-      "name": "Sebastián Jaque - BizOps & Tech Strategist",
-      "description": "Portafolio profesional de Sebastián Jaque",
+      "name": "Sebastián Jaque - Consultor en Transformación Digital",
+      "alternateName": ["SJaquer", "Sebastián Jaque Portfolio", "SJaquer Consulting"],
+      "description": "Portafolio profesional de Sebastián Jaque - Consultor especializado en transformación digital, desarrollo de software y automatización en Lima, Perú",
       "publisher": {
         "@id": "https://sjaquer.is-a.dev/#person"
       },
-      "inLanguage": "es"
+      "inLanguage": "es-PE",
+      "copyrightYear": 2026,
+      "copyrightHolder": {
+        "@id": "https://sjaquer.is-a.dev/#person"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://sjaquer.is-a.dev/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     }
     </script>
 
-    <!-- BreadcrumbList Schema -->
+    <!-- BreadcrumbList Schema para navegación -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -212,13 +431,13 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Áreas de Impacto",
+          "name": "Stack Tecnológico",
           "item": "https://sjaquer.is-a.dev/#skills"
         },
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Trayectoria",
+          "name": "Trayectoria Profesional",
           "item": "https://sjaquer.is-a.dev/#experience"
         },
         {
@@ -230,8 +449,48 @@
         {
           "@type": "ListItem",
           "position": 5,
+          "name": "Testimonios",
+          "item": "https://sjaquer.is-a.dev/#reviews"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
           "name": "Contacto",
           "item": "https://sjaquer.is-a.dev/#contact"
+        }
+      ]
+    }
+    </script>
+
+    <!-- FAQPage Schema para posibles preguntas frecuentes -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Qué servicios ofrece Sebastián Jaque como consultor digital?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sebastián Jaque ofrece consultoría en transformación digital, desarrollo de software a medida con React y Node.js, creación de dashboards Power BI, y automatización de procesos empresariales. Especializado en BizOps y optimización de operaciones."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿En qué ciudades trabaja Sebastián Jaque?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sebastián Jaque trabaja principalmente en Lima, Perú, pero también ofrece servicios de consultoría remota para empresas en toda Latinoamérica y el mundo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuáles son las tecnologías que domina Sebastián Jaque?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sebastián Jaque domina React, TypeScript, Node.js, Python, SQL Server, Power BI, Firebase, y herramientas de automatización. También tiene certificaciones en Inteligencia Artificial y AWS."
+          }
         }
       ]
     }
@@ -242,14 +501,6 @@
     <noscript>
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     </noscript>
-    
-    <!-- Fallback font-display para evitar FOIT -->
-    <style>
-      @font-face {
-        font-family: 'Inter';
-        font-display: swap;
-      }
-    </style>
   </head>
   <body>
     <div id="root">
