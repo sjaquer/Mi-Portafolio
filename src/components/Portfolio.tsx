@@ -155,7 +155,7 @@ const Portfolio = () => {
           {categories.map((cat) => (
             <button
               key={cat}
-              onClick={() => setFilter(cat)}
+              onClick={() => cat && setFilter(cat)}
               className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 capitalize relative
                 ${
                   filter === cat

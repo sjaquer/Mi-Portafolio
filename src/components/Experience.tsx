@@ -76,13 +76,15 @@ const Experience = () => {
                                     </ul>
                                 )}
 
-                                <div className="flex flex-wrap gap-2 mt-5 pt-4 border-t border-slate-800">
-                                    {exp.techStack.map((tech, i) => (
-                                        <span key={i} className="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 rounded bg-[#202020] text-slate-400 border border-slate-700/50">
-                                            {tech}
-                                        </span>
-                                    ))}
-                                </div>
+                                {exp.techStack && exp.techStack.length > 0 && (
+                                    <div className="flex flex-wrap gap-2 mt-5 pt-4 border-t border-slate-800">
+                                        {exp.techStack.map((tech, i) => (
+                                            <span key={i} className="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 rounded bg-[#202020] text-slate-400 border border-slate-700/50">
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
+                                )}
                             </div>
                         </motion.div>
                     ))}

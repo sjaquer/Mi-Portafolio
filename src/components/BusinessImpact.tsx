@@ -1,5 +1,5 @@
 // src/components/BusinessImpact.tsx
-import { useState, useEffect, memo } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   TrendingUp, Users, ArrowUpRight, 
@@ -106,7 +106,7 @@ const DashboardApp = () => {
     );
 };
 
-const DashboardSidebar = ({ currentView, setView, isOpen, toggle }: any) => {
+const DashboardSidebar = ({ currentView, setView, isOpen }: any) => {
     const menuItems = [
         { id: 'general', label: 'Resumen', icon: PieChart },
         { id: 'ventas', label: 'Ventas', icon: ShoppingCart },
@@ -222,7 +222,7 @@ const GeneralView = () => (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="bg-[#171717] p-6 rounded-2xl border border-slate-800 shadow-sm">
                  <h4 className="font-bold text-[#f5fcff] mb-6">Proyección de Crecimiento</h4>
-                 <AnimatedChart mode="growth" />
+                 <AnimatedChart />
             </div>
             <div className="bg-[#171717] p-6 rounded-2xl border border-slate-800 shadow-sm flex flex-col">
                 <h4 className="font-bold text-[#f5fcff] mb-4">Actividad Reciente</h4>
@@ -379,7 +379,7 @@ const StatCard = ({ title, value, trend, trendUp, icon: Icon }: any) => {
     )
 }
 
-const AnimatedChart = ({ mode }: { mode: 'growth' | 'other' }) => {
+const AnimatedChart = () => {
     const data = [35, 50, 45, 70, 60, 85, 95, 75, 90, 80, 100, 110];
     const max = Math.max(...data);
 
