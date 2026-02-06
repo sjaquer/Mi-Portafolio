@@ -16,7 +16,7 @@ const skillCategories = [
     title: 'Inteligencia de Negocios',
     subtitle: 'Transformo datos en decisiones',
     icon: BarChart3,
-    color: '#3B82F6',
+    color: '#3861d7', // Brand Secondary
     skills: ['Power BI', 'SQL Server', 'Análisis Financiero', 'KPIs', 'ETL']
   },
   {
@@ -24,14 +24,14 @@ const skillCategories = [
     title: 'Desarrollo de Producto',
     subtitle: 'Construyo soluciones escalables',
     icon: Code2,
-    color: '#D9E512',
+    color: '#d9e512', // Brand Primary
     skills: ['React', 'TypeScript', 'Node.js', 'Python', 'APIs']
   }
 ];
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-16 sm:py-20 bg-[#1e1e1e]">
+    <section id="skills" className="py-16 sm:py-20 bg-[#0b1121]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header simple */}
@@ -55,18 +55,20 @@ const Skills = () => {
             return (
               <div
                 key={category.id}
-                className="bg-[#252525] border border-slate-700/50 rounded-2xl p-6 sm:p-8 hover:border-slate-600 hover:bg-[#2a2a2a] transition-all duration-300"
+                className="group bg-[#252525] border border-slate-700/50 rounded-2xl p-6 sm:p-8 hover:border-primary/30 hover:bg-[#2a2a2a] hover:shadow-[0_0_30px_rgba(217,229,18,0.05)] transition-all duration-300 relative overflow-hidden"
               >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/5 to-transparent rounded-bl-full -mr-10 -mt-10 transition-transform group-hover:scale-110" />
+                
                 {/* Header de categoría */}
-                <div className="flex items-start gap-4 mb-6">
+                <div className="flex items-start gap-4 mb-6 relative z-10">
                   <div 
-                    className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 shadow-lg"
-                    style={{ backgroundColor: `${category.color}20`, boxShadow: `0 4px 20px ${category.color}15` }}
+                    className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300"
+                    style={{ backgroundColor: `${category.color}20`, boxShadow: `0 4px 20px ${category.color}15`, color: category.color }}
                   >
-                    <Icon size={28} style={{ color: category.color }} />
+                    <Icon size={28} />
                   </div>
                   <div>
-                    <h3 className="font-bold text-white text-lg">{category.title}</h3>
+                    <h3 className="font-bold text-white text-lg group-hover:text-primary transition-colors">{category.title}</h3>
                     <p className="text-slate-400 text-sm mt-1">{category.subtitle}</p>
                   </div>
                 </div>

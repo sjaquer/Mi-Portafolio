@@ -135,70 +135,102 @@ export const education: Education[] = [
   }
 ];
 
+
 export const projects: Project[] = [
   {
     id: '1',
-    title: 'Big Jack O.S. (Operating System)',
-    subtitle: 'Control Total de Operaciones',
+    title: 'TaskZenith',
+    subtitle: 'Gestión de Tareas & Productividad IA',
     description:
-      'Sistema Operativo Centralizado. Reducción de tiempos de despacho en 40% y eliminación de mermas de inventario mediante control digital en tiempo real. No es solo software, es el corazón del negocio.',
+      'Herramienta central de gestión de tareas enfocada en la productividad y la "calma". Integra IA para priorización automática, posicionándose como un estándar de administración moderna.',
     details: [
-      'Problema: Pérdida de inventario y lentitud en cocina por comandas manuales.',
-      'Solución: ERP React/Node integrado con cocina (KDS) e inventario.',
-      'Impacto: +20% de margen operativo recuperado por control de mermas, además de reducir el tiempo de atención al cliente.'
+      'Propósito: Centralizar la gestión operativa personal y de equipos.',
+      'Valor: Interfaz minimalista que reduce la carga cognitiva.',
+      'Tech: IA para clasificación y estimación de tiempos.'
     ],
-    techStack: ['BizOps', 'React/Node', 'Digital Transformation'],
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?auto=format&fit=crop&q=80&w=1600',
+    techStack: ['React', 'AI Integration', 'Productivity Tools', 'Node.js'],
+    image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=1600',
     category: 'desarrollo',
     year: '2025'
   },
   {
     id: '2',
-    title: 'Suite de Logística Aérea',
-    subtitle: 'Optimización Matemática de Costos',
+    title: 'DentalFlow-Student',
+    subtitle: 'ERP Clínico Integral',
     description:
-      'Algoritmo de reducción de costos operativos (combustible/tiempo) mediante análisis de variables geoespaciales. Herramienta de soporte a la decisión para planificación de rutas complejas.',
+      'Sistema robusto para la gestión vertical de clínicas dentales. Administra desde historias clínicas y citas hasta inventarios y recursos humanos.',
     details: [
-      'Problema: Rutas ineficientes generaban sobrecostos de operación.',
-      'Solución: Algoritmo Greedy/Heurístico en Python para cálculo de rutas óptimas.',
-      'Impacto: Reducción teórica del 15% en costos por kilómetro recorrido.'
+      'Propósito: Digitalización total del flujo de trabajo clínico.',
+      'Valor: Solución "All-in-One" para administración médica.',
+      'Funcionalidad: Control de pacientes, empleados y stock en tiempo real.'
     ],
-    techStack: ['Python', 'Investigación Operativa', 'Logística'],
+    techStack: ['Full Stack', 'Database Design', 'Healthcare Soft', 'Management'],
+    image: 'https://images.unsplash.com/photo-1588776813186-600f91643418?auto=format&fit=crop&q=80&w=1600',
+    category: 'desarrollo',
+    year: '2024'
+  },
+  {
+    id: '3',
+    title: 'Optimizador de Vuelos (ORDEV)',
+    subtitle: 'Logística Algorítmica & CP-SAT',
+    description:
+      'Proyecto de alta complejidad lógica que utiliza Google OR-Tools y el motor CP-SAT para resolver problemas de optimización logística y ruteo.',
+    details: [
+      'Importancia Técnica: Implementación avanzada de algoritmos de Investigación de Operaciones.',
+      'Tech: Python, Google OR-Tools, Constraint Programming.',
+      'Impacto: Minimización matemática de costos operativos.'
+    ],
+    techStack: ['Python', 'Google OR-Tools', 'CP-SAT', 'Algorithms'],
     image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80&w=1600',
     liveUrl: 'https://optimizador-vuelos-cp-sat.vercel.app/',
     category: 'desarrollo',
     year: '2024'
   },
   {
-    id: '3',
-    title: 'Dearel Intelligence Hub',
-    subtitle: 'Dashboards de Rentabilidad',
+    id: '4',
+    title: 'Digital Bakery Commerce',
+    subtitle: 'Vitrina Digital & Suscripciones',
     description:
-      'Plataforma de inteligencia comercial que unifica canales de venta. Permite pasar de "vender por intuición" a "vender por margen de contribución".',
+      'Plataforma de comercio electrónico adaptable para gestión de catálogos y pedidos. Diseñada para modelos de negocio por suscripción o venta directa.',
     details: [
-      'Problema: Ceguera financiera sobre la rentabilidad real por producto.',
-      'Solución: Pipeline de datos automatizado hacia Power BI/Web.',
-      'Impacto: Identificación inmediata de productos con margen negativo.'
+      'Valor: Adaptabilidad a diversos nichos (panaderías, floristerías, etc.).',
+      'Funcionalidad: Gestión de catálogo dinámico y tracking de pedidos.'
     ],
-    techStack: ['Business Intelligence', 'Data Engineering', 'Finanzas'],
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1600',
-    category: 'business intelligence',
+    techStack: ['E-commerce', 'React', 'Payment Gateways', 'UX/UI'],
+    image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=1600',
+    category: 'desarrollo',
     year: '2025'
   },
   {
-    id: '4',
-    title: 'Neon Growth Engine',
-    subtitle: 'Infraestructura de Captación',
+    id: '5',
+    title: 'Digital Bakery Frontend',
+    subtitle: 'Arquitectura SPA Moderna',
     description:
-      'Ecosistema web optimizado para conversión. No es una "página bonita", es una máquina de generación de leads con SEO técnico integrado y performance de alta velocidad.',
+      'Demostración técnica de dominio del stack frontend moderno. Single Page Application (SPA) que prioriza el rendimiento, la escalabilidad y la experiencia de usuario.',
     details: [
-      'Impacto: Mejora del Quality Score en campañas publicitarias (menor costo por clic).',
-      'Tech: Core Web Vitals optimizados al 95+.'
+      'Importancia Técnica: Clean Code y mejores prácticas en React.',
+      'Stack: React, TypeScript, Vite, Tailwind CSS.',
+      'Performance: Optimización de Core Web Vitals.'
     ],
-    techStack: ['Growth Hacking', 'Technical SEO', 'Conversion Rate Opt'],
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1600',
-    liveUrl: 'https://demo-lading-nlp.vercel.app/',
-    category: 'marketing',
+    techStack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'],
+    image: 'https://images.unsplash.com/photo-1555099962-4199c345e5dd?auto=format&fit=crop&q=80&w=1600',
+    category: 'desarrollo',
+    year: '2025'
+  },
+  {
+    id: '6',
+    title: 'Dearel Intelligence Hub',
+    subtitle: 'Business Intelligence & P&L',
+    description:
+      'Plataforma de inteligencia comercial que unifica canales de venta. Permite pasar de "vender por intuición" a "vender por margen de contribución".',
+    details: [
+      'Problema: Ceguera financiera sobre la rentabilidad real.',
+      'Solución: Pipeline de datos automatizado hacia Power BI.',
+      'Impacto: Identificación de productos con margen negativo.'
+    ],
+    techStack: ['Power BI', 'Data Engineering', 'Financial Analysis'],
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1600',
+    category: 'business intelligence',
     year: '2025'
   }
 ];

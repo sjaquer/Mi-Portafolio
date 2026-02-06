@@ -9,14 +9,14 @@ import {
 
 const BusinessImpact: React.FC = () => {
   return (
-    <section id="demo" className="py-24 bg-[#1e1e1e] relative overflow-hidden">
+    <section id="demo" className="py-24 bg-[#0b1121] relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary-50 dark:bg-secondary-900/30 text-secondary-800 dark:text-secondary-300 text-sm font-semibold mb-6 border border-secondary-200 dark:border-secondary-800"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/10 text-secondary text-sm font-semibold mb-6 border border-secondary/20 shadow-[0_0_15px_rgba(56,97,215,0.2)]"
           >
             <TrendingUp size={16} />
             <span>Resultados Comprobables</span>
@@ -29,7 +29,7 @@ const BusinessImpact: React.FC = () => {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-5xl font-bold text-[#f5fcff] mb-6 font-display tracking-tight"
           >
-            Simulando el <span className="text-secondary-600 dark:text-secondary-400">Éxito Real</span>
+            Simulando el <span className="text-secondary drop-shadow-[0_0_8px_rgba(56,97,215,0.4)]">Éxito Real</span>
           </motion.h2>
           
           <motion.p
@@ -41,7 +41,7 @@ const BusinessImpact: React.FC = () => {
           >
             Mis soluciones transforman datos confusos en decisiones claras.
             <br />
-            <span className="font-semibold text-primary-600 dark:text-primary-400">Interactúa con este demo</span> y visualiza el control que podrías tener sobre tu negocio.
+            <span className="font-semibold text-primary">Interactúa con este demo</span> y visualiza el control que podrías tener sobre tu negocio.
           </motion.p>
         </div>
 
@@ -51,7 +51,7 @@ const BusinessImpact: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="max-w-6xl mx-auto rounded-xl overflow-hidden shadow-2xl border border-slate-700 bg-[#2d2d2d] ring-1 ring-slate-900/5"
+            className="max-w-6xl mx-auto rounded-xl overflow-hidden shadow-2xl border border-slate-700 bg-[#162032] ring-1 ring-slate-900/5"
         >
             {/* Fake Browser Toolbar */}
             <div className="bg-slate-900 border-b border-slate-800 p-3 flex items-center justify-between select-none">
@@ -84,14 +84,14 @@ const DashboardApp = () => {
     const [sidebarOpen, setSidebarOpen] = useState(true);
 
     return (
-        <div className="flex flex-col md:flex-row h-auto md:h-[700px] overflow-hidden bg-[#1e1e1e] rounded-2xl shadow-2xl border border-slate-700">
+        <div className="flex flex-col md:flex-row h-auto md:h-[700px] overflow-hidden bg-[#0b1121] rounded-2xl shadow-2xl border border-slate-700">
             <DashboardSidebar 
                 currentView={view} 
                 setView={setView} 
                 isOpen={sidebarOpen} 
                 toggle={() => setSidebarOpen(!sidebarOpen)}
             />
-            <div className="flex-1 flex flex-col min-w-0 bg-[#1e1e1e] h-[600px] md:h-auto">
+            <div className="flex-1 flex flex-col min-w-0 bg-[#0b1121] h-[600px] md:h-auto">
                 <DashboardHeader title={view} />
                 <main className="flex-1 overflow-y-auto p-4 md:p-8 scroll-smooth custom-scrollbar">
                     <AnimatePresence mode="wait">
@@ -116,7 +116,7 @@ const DashboardSidebar = ({ currentView, setView, isOpen, toggle }: any) => {
 
     return (
         <div className={`
-            bg-[#2d2d2d] 
+            bg-[#162032] 
             border-b md:border-b-0 md:border-r border-slate-700 
             flex flex-row md:flex-col
             w-full md:w-auto

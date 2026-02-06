@@ -14,6 +14,10 @@ const Hero = memo(() => {
       id="home"
       className="relative min-h-screen flex flex-col justify-center pt-28 pb-12 sm:pt-32 sm:pb-16 px-4 sm:px-6 lg:px-12 overflow-hidden bg-transparent"
     >
+      {/* Background Gradients for Brand Atmosphere */}
+      <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[500px] h-[500px] bg-secondary/20 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
+
       <div className="relative w-full max-w-[1400px] mx-auto z-10 flex-grow flex items-center">
         
         {/* Floating Socials - Desktop Only */}
@@ -47,7 +51,7 @@ const Hero = memo(() => {
             </div>
 
             <div className="space-y-4 sm:space-y-6">
-              <p className="text-base sm:text-lg font-medium text-primary">
+              <p className="text-base sm:text-lg font-bold tracking-wide text-primary/80 uppercase">
                 Sebastián Jaque
               </p>
               
@@ -55,9 +59,9 @@ const Hero = memo(() => {
                 Consultor en<br />
                 <span className="text-slate-400">Transformación</span>{' '}
                 <span className="text-white relative inline-block">
-                  <span className="text-primary relative z-10">Digital</span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-400 to-white relative z-10">Digital</span>
                   <svg 
-                    className="absolute left-0 -bottom-2 w-full h-4 text-primary" 
+                    className="absolute left-0 -bottom-2 w-full h-4 text-primary drop-shadow-[0_0_8px_rgba(217,229,18,0.5)]" 
                     viewBox="0 0 120 16" 
                     fill="none" 
                     xmlns="http://www.w3.org/2000/svg"

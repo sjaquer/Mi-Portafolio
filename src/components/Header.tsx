@@ -89,13 +89,13 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
                             onClick={() => scrollToSection(item.id)}
                             className={`
                                 relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-200
-                                ${isActive ? 'text-white' : 'text-slate-400 hover:text-white'}
+                                ${isActive ? 'text-primary' : 'text-slate-400 hover:text-white'}
                             `}
                         >
                             {isActive && (
                                 <motion.div 
                                     layoutId="nav-bg"
-                                    className="absolute inset-0 bg-slate-700/50 rounded-full shadow-sm"
+                                    className="absolute inset-0 bg-primary/10 border border-primary/20 rounded-full shadow-[0_0_10px_rgba(217,229,18,0.2)]"
                                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                                 />
                             )}

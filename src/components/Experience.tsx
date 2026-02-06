@@ -5,7 +5,7 @@ import { experiences, education } from '../data/portfolio';
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-24 relative bg-[#1e1e1e]">
+    <section id="experience" className="py-24 relative bg-[#0b1121]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -25,7 +25,7 @@ const Experience = () => {
             {/* Experience Column */}
             <div className="space-y-8">
                 <div className="flex items-center gap-4 mb-8">
-                    <div className="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-700 dark:text-primary-300">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shadow-[0_0_15px_rgba(217,229,18,0.1)]">
                         <Building2 size={24} />
                     </div>
                     <div>
@@ -45,13 +45,13 @@ const Experience = () => {
                             className="relative pl-10"
                         >
                             {/* Timeline Dot */}
-                            <div className="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-[#1e1e1e] border-2 border-primary ring-4 ring-[#1e1e1e]" />
+                            <div className="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-primary border-2 border-primary ring-4 ring-[#1e1e1e] shadow-[0_0_10px_rgba(217,229,18,0.5)]" />
                             
-                            <div className="group bg-[#2d2d2d] p-6 rounded-2xl border border-slate-700 shadow-sm hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1">
+                            <div className="group bg-[#2d2d2d] p-6 rounded-2xl border border-slate-700 shadow-sm hover:shadow-xl hover:shadow-primary/5 hover:border-primary/30 transition-all duration-300 hover:-translate-y-1">
                                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-4">
                                     <div>
-                                        <div className="text-lg font-bold text-[#f5fcff] font-display">{exp.role}</div>
-                                        <div className="text-primary-700 dark:text-primary-300 font-medium">
+                                        <div className="text-lg font-bold text-[#f5fcff] font-display group-hover:text-primary transition-colors">{exp.role}</div>
+                                        <div className="text-slate-300 font-medium">
                                             {exp.company}
                                         </div>
                                     </div>
@@ -92,7 +92,7 @@ const Experience = () => {
             {/* Education Column */}
             <div className="space-y-8">
                  <div className="flex items-center gap-4 mb-8">
-                    <div className="w-12 h-12 rounded-xl bg-secondary-100 dark:bg-secondary-900/30 flex items-center justify-center text-secondary-700 dark:text-secondary-400">
+                    <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary shadow-[0_0_15px_rgba(56,97,215,0.1)]">
                         <GraduationCap size={24} />
                     </div>
                      <div>
