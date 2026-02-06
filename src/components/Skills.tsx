@@ -31,7 +31,7 @@ const skillCategories = [
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-16 sm:py-20 bg-[#0b1121]">
+    <section id="skills" className="py-16 sm:py-20 bg-[#0a0a0a]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header simple */}
@@ -55,15 +55,15 @@ const Skills = () => {
             return (
               <div
                 key={category.id}
-                className="group bg-[#252525] border border-slate-700/50 rounded-2xl p-6 sm:p-8 hover:border-primary/30 hover:bg-[#2a2a2a] hover:shadow-[0_0_30px_rgba(217,229,18,0.05)] transition-all duration-300 relative overflow-hidden"
+                className="group bg-[#171717] border border-slate-800 rounded-2xl p-6 sm:p-8 hover:border-primary/30 hover:bg-[#202020] hover:shadow-[0_0_30px_rgba(217,229,18,0.05)] transition-all duration-300 relative overflow-hidden"
               >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/5 to-transparent rounded-bl-full -mr-10 -mt-10 transition-transform group-hover:scale-110" />
                 
                 {/* Header de categoría */}
                 <div className="flex items-start gap-4 mb-6 relative z-10">
                   <div 
-                    className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300"
-                    style={{ backgroundColor: `${category.color}20`, boxShadow: `0 4px 20px ${category.color}15`, color: category.color }}
+                    className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300 ring-1 ring-white/5"
+                    style={{ backgroundColor: `${category.color}15`, boxShadow: `0 4px 20px ${category.color}15`, color: category.color }}
                   >
                     <Icon size={28} />
                   </div>
@@ -78,7 +78,7 @@ const Skills = () => {
                   {category.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-4 py-2 bg-slate-800/70 text-slate-200 text-sm font-medium rounded-xl border border-slate-700/50 hover:border-slate-600 hover:bg-slate-800 transition-colors"
+                      className="px-4 py-2 bg-slate-900/50 text-slate-300 text-sm font-medium rounded-xl border border-slate-800 hover:border-slate-600 hover:bg-slate-800 hover:text-white transition-colors"
                     >
                       {skill}
                     </span>

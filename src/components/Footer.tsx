@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer id="contact" role="contentinfo" className="relative border-t border-slate-700 bg-[#2d2d2d] z-10">
+    <footer id="contact" role="contentinfo" className="relative border-t border-slate-800 bg-[#171717] z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-8">
           
@@ -50,13 +50,13 @@ const Footer: React.FC = () => {
             
             <div className="flex flex-col gap-3 text-sm text-slate-600 dark:text-slate-300">
                 <a href={`mailto:${siteContent.footer.contactEmail}`} className="flex items-center gap-2 hover:text-primary transition-colors w-fit">
-                    <div className="w-8 h-8 rounded-full bg-[#1e1e1e] border border-slate-700 flex items-center justify-center shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-[#202020] border border-slate-800 flex items-center justify-center shrink-0">
                         <Mail size={14} />
                     </div>
                     {siteContent.footer.contactEmail}
                 </a>
                 <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-full bg-[#1e1e1e] border border-slate-700 flex items-center justify-center shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-[#202020] border border-slate-800 flex items-center justify-center shrink-0">
                         <MapPin size={14} />
                     </div>
                     <span>Lima, Perú</span>
@@ -67,7 +67,7 @@ const Footer: React.FC = () => {
               {socialLinks.map((s, i) => {
                 const Icon = s.icon;
                 return (
-                  <a key={i} href={s.url} target="_blank" rel="noreferrer" className="p-2.5 rounded-full bg-[#1e1e1e] border border-slate-700 text-slate-300 hover:text-primary hover:scale-110 transition-all shadow-sm">
+                  <a key={i} href={s.url} target="_blank" rel="noreferrer" className="p-2.5 rounded-full bg-[#202020] border border-slate-800 text-slate-300 hover:text-primary hover:scale-110 transition-all shadow-sm">
                     <Icon size={18} />
                   </a>
                 );

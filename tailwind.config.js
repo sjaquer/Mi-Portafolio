@@ -55,9 +55,9 @@ export default {
         },
         // Background: Gris Negro (#1e1e1e) - Fondo principal
         dark: {
-          DEFAULT: '#1e1e1e', 
-          surface: '#2d2d2d', 
-          border: '#3e3e3e',
+          DEFAULT: '#0a0a0a', 
+          surface: '#171717', 
+          border: '#262626',
         },
         
         // Colores específicos para mejor contraste en tema claro

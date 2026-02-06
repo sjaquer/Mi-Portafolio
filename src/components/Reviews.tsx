@@ -5,7 +5,7 @@ import { testimonials } from '../data/portfolio';
 
 const Reviews = () => {
   return (
-    <section id="reviews" className="py-24 bg-[#1e1e1e] relative overflow-hidden">
+    <section id="reviews" className="py-24 bg-[#0a0a0a] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
            initial={{ opacity: 0, y: 20 }}
@@ -29,11 +29,11 @@ const Reviews = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className="bg-[#2d2d2d] p-8 rounded-2xl border border-slate-700 shadow-sm hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300 flex flex-col"
+                    className="bg-[#171717] p-8 rounded-2xl border border-slate-800 shadow-sm hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300 flex flex-col"
                 >
                     <div className="flex items-start justify-between mb-6">
                          <div className="flex items-center gap-4">
-                            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 flex items-center justify-center text-slate-600 dark:text-slate-300 font-bold text-xl">
+                            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center text-slate-300 font-bold text-xl">
                                 {t.name.charAt(0)}
                             </div>
                             <div>

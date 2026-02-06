@@ -9,7 +9,7 @@
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  @apply bg-[#0b1121];
+  @apply bg-[#0a0a0a];
 }
 ::-webkit-scrollbar-thumb {
   @apply bg-slate-700/50 rounded-full hover:bg-primary/50 transition-colors;
@@ -36,7 +36,7 @@
   }
 
   body {
-    @apply bg-[#0b1121] text-[#f5fcff] dark:bg-[#0b1121] dark:text-[#f5fcff] antialiased selection:bg-primary-500/30 selection:text-slate-900;
+    @apply bg-[#0a0a0a] text-[#f5fcff] dark:bg-[#0a0a0a] dark:text-[#f5fcff] antialiased selection:bg-primary-500/30 selection:text-slate-900;
     overflow-x: hidden;
     /* Padding inferior para navegación móvil fija */
     padding-bottom: env(safe-area-inset-bottom, 0);
@@ -211,8 +211,8 @@
   --color-secondary-600: #2a4ab5;
   --color-secondary-50: rgba(56, 97, 215, 0.1);
 
-  --color-dark: #1e1e1e;
-  --color-dark-100: #2d2d2d;
+  --color-dark: #0a0a0a;
+  --color-dark-100: #171717;
   --color-dark-200: #3e3e3e;
   --color-dark-300: #4b4b4b;
 
@@ -236,9 +236,9 @@
   --transition-slow: 0.5s ease-out;
 
   /* Background para tema oscuro */
-  --c-bg-0: #1e1e1e;
-  --c-bg-1: #252525;
-  --c-bg-2: #2d2d2d;
+  --c-bg-0: #0a0a0a;
+  --c-bg-1: #171717;
+  --c-bg-2: #262626;
   --c-primary: #d9e512;
   --c-primary-soft: #aec70e;
   --c-secondary: #3861d7;

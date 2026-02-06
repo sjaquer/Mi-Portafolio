@@ -1,6 +1,7 @@
-// src/components/Hero.tsx - Versión ultra-optimizada sin Framer Motion
-import { useState, useEffect, memo, useCallback } from 'react';
-import { Github, Linkedin, Instagram, ArrowRight, Activity, TrendingUp, Server, AlertTriangle, CheckCircle, BarChart3, Zap } from 'lucide-react';
+
+// src/components/Hero.tsx - Versión ultra-optimizada
+import { useState, useEffect, memo } from 'react';
+import { Github, Linkedin, Instagram, ArrowRight, TrendingUp, BarChart3, Zap, ArrowUpRight, Activity } from 'lucide-react';
 
 const socialLinks = [
   { icon: Github, url: 'https://github.com/sjaquer', label: 'GitHub' },
@@ -100,7 +101,7 @@ const Hero = memo(() => {
               <div className="flex flex-wrap gap-6 justify-center lg:justify-start">
                 <a href="#skills" className="flex items-center gap-2 text-sm font-semibold text-slate-400 hover:text-primary transition-colors group">
                   <div className="p-1.5 rounded-md bg-slate-800/50 group-hover:bg-primary/20 transition-colors">
-                    <Server size={16} className="text-slate-400 group-hover:text-primary transition-colors" />
+                    <Zap size={16} className="text-slate-400 group-hover:text-primary transition-colors" />
                   </div>
                   <span>Software</span>
                 </a>
@@ -139,9 +140,9 @@ const Hero = memo(() => {
             </div>
           </div>
 
-          {/* Right Column: Before/After Transformation */}
+          {/* Right Column: KPI Card */}
           <div className="order-1 lg:order-2 relative h-[450px] sm:h-[500px] lg:h-[600px] w-full flex items-center justify-center lg:justify-end animate-fade-in-up">
-            <TransformationCard />
+            <KpiCard />
             
             {/* Background shapes */}
             <div className="absolute top-1/2 -translate-y-1/2 right-10 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10 pointer-events-none" />
@@ -159,179 +160,106 @@ const Hero = memo(() => {
   );
 });
 
-// Componente de tarjeta optimizado - SIN animaciones pesadas
-const TransformationCard = memo(() => {
-  const [showAfter, setShowAfter] = useState(false);
-  
-  // Auto-toggle cada 4 segundos
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setShowAfter(prev => !prev);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
+// KPI Card: muestra badges con contadores animados y CTA
+const KpiCard = memo(() => {
+  // Valores de ejemplo — cámbialos por métricas reales cuando las tengas
+  const ahorroTarget = 37; // %
+  const activacionTarget = 64; // %
+  const proyectosTarget = 27; // cantidad
 
-  const handleToggle = useCallback((value: boolean) => {
-    setShowAfter(value);
-  }, []);
+  const useCountUp = (target: number, duration = 1400) => {
+    const [value, setValue] = useState(0);
+    useEffect(() => {
+      let raf = 0;
+      let start: number | null = null;
+      const step = (ts: number) => {
+        if (!start) start = ts;
+        const progress = Math.min((ts - start) / duration, 1);
+        setValue(Math.round(progress * target));
+        if (progress < 1) raf = requestAnimationFrame(step);
+      };
+      raf = requestAnimationFrame(step);
+      return () => cancelAnimationFrame(raf);
+    }, [target, duration]);
+    return value;
+  };
+
+  const ahorro = useCountUp(ahorroTarget);
+  const activacion = useCountUp(activacionTarget);
+  const proyectos = useCountUp(proyectosTarget);
 
   return (
-    <div className="relative w-full max-w-[280px] sm:max-w-sm lg:max-w-md mx-auto">
-      {/* Toggle Controls */}
-      <div className="relative -mb-2 z-30 flex justify-center">
-        <div className="flex p-1 bg-slate-900/80 backdrop-blur-md border border-slate-700/50 rounded-full shadow-lg gap-1">
-          <button
-            onClick={() => handleToggle(false)}
-            className={`relative px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 z-10 focus:outline-none ${
-              !showAfter 
-                ? 'bg-red-500/10 border border-red-500/20 text-red-400' 
-                : 'text-slate-500 hover:text-red-400/70'
-            }`}
-          >
-            <span className="flex items-center justify-center gap-1.5 sm:gap-2">
-              <AlertTriangle size={14} className={!showAfter ? "" : "opacity-50"} />
-              ANTES
-            </span>
-          </button>
-
-          <button
-            onClick={() => handleToggle(true)}
-            className={`relative px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 z-10 focus:outline-none ${
-              showAfter 
-                ? 'bg-primary/10 border border-primary/20 text-primary' 
-                : 'text-slate-500 hover:text-primary/70'
-            }`}
-          >
-            <span className="flex items-center justify-center gap-1.5 sm:gap-2">
-              <CheckCircle size={14} className={showAfter ? "" : "opacity-50"} />
-              DESPUÉS
-            </span>
-          </button>
-        </div>
-      </div>
-
-      {/* Card Container */}
-      <div 
-        className="relative w-full aspect-[3/4] cursor-pointer mt-4"
-        onClick={() => handleToggle(!showAfter)}
-      >
-        {/* Glow effect */}
-        <div className={`absolute inset-0 rounded-2xl sm:rounded-3xl blur-2xl transition-all duration-500 ${
-          showAfter ? 'bg-primary/20 opacity-60' : 'bg-red-600/10 opacity-30'
-        }`} />
-
-        {/* BEFORE Card */}
-        <div className={`absolute inset-0 bg-gradient-to-br from-red-950/40 to-slate-950 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-red-900/30 p-4 sm:p-6 backdrop-blur-sm transition-all duration-500 ${
-          !showAfter ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
-        }`}>
-          <div className="flex items-center justify-between mb-4 sm:mb-6 border-b border-red-900/30 pb-3 sm:pb-4">
-            <div className="flex gap-1.5 sm:gap-2">
-              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500/50 animate-pulse" />
-              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500/50 animate-pulse" style={{ animationDelay: '0.2s' }} />
-              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500/50 animate-pulse" style={{ animationDelay: '0.4s' }} />
-            </div>
-            <span className="text-red-400 text-[10px] sm:text-xs font-mono tracking-wider">SIN CONTROL</span>
-          </div>
-
-          <div className="space-y-3 sm:space-y-4">
-            <div className="flex justify-between items-center px-1">
-              <span className="text-slate-400 text-xs sm:text-sm">Negocio Sin Rumbo</span>
-              <span className="text-red-400 bg-red-500/10 px-2 py-0.5 rounded text-[10px] sm:text-xs font-bold border border-red-500/20">CRÍTICO</span>
-            </div>
-
-            <div className="space-y-2 sm:space-y-3">
-              {[
-                { label: 'Eficiencia', value: '23%' },
-                { label: 'Ventas', value: '???' },
-                { label: 'Inventario', value: 'ERROR' }
-              ].map((item, i) => (
-                <div key={i} className="p-2 sm:p-3 bg-red-950/20 border border-red-900/30 rounded-lg">
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-500 text-[10px] sm:text-xs">{item.label}</span>
-                    <span className="text-red-400 font-bold text-xs sm:text-sm">{item.value}</span>
-                  </div>
+    <div className="relative w-full max-w-[340px] sm:max-w-[400px] mx-auto z-10 group">
+        {/* Glow behind */}
+        <div className="absolute -inset-1 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-3xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500" />
+        
+        <div className="relative w-full rounded-2xl border border-slate-700/50 bg-[#171717] p-6 shadow-2xl backdrop-blur-xl">
+            {/* Header */}
+            <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
+                <div>
+                   <h3 className="text-lg font-bold text-white">Impacto Real</h3>
+                   <p className="text-xs text-slate-400">Métricas acumuladas 2024-2025</p>
                 </div>
-              ))}
+                <div className="p-2 rounded-lg bg-slate-800/50 text-primary">
+                    <TrendingUp size={20} />
+                </div>
             </div>
 
-            <div className="relative h-24 sm:h-32 border border-red-900/20 rounded-lg bg-slate-950/50 overflow-hidden flex items-center justify-center">
-              <div className="absolute top-4 left-4 w-6 h-6 sm:w-8 sm:h-8 bg-red-500/10 border border-red-500/20 rounded-lg flex items-center justify-center">
-                <AlertTriangle size={12} className="sm:w-4 sm:h-4 text-red-400" />
-              </div>
-              <div className="absolute bottom-4 right-6 w-6 h-6 sm:w-8 sm:h-8 bg-red-500/10 border border-red-500/20 rounded-lg flex items-center justify-center">
-                <AlertTriangle size={12} className="sm:w-4 sm:h-4 text-red-400" />
-              </div>
-              <span className="text-red-400/40 text-[10px] sm:text-xs font-mono">Datos perdidos...</span>
-            </div>
-          </div>
-        </div>
-
-        {/* AFTER Card */}
-        <div className={`absolute inset-0 bg-gradient-to-br from-slate-900 to-slate-950 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-primary/30 p-4 sm:p-6 backdrop-blur-sm ring-1 ring-primary/20 transition-all duration-500 ${
-          showAfter ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
-        }`}>
-          <div className="flex items-center justify-between mb-4 sm:mb-6 border-b border-primary/20 pb-3 sm:pb-4">
-            <div className="flex gap-1.5 sm:gap-2">
-              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500 shadow-lg shadow-green-500/50" />
-              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500/50" />
-              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500/20" />
-            </div>
-            <span className="text-primary text-[10px] sm:text-xs font-mono tracking-wider font-semibold">OPTIMIZADO</span>
-          </div>
-
-          <div className="space-y-3 sm:space-y-4">
-            <div className="flex justify-between items-center px-1">
-              <span className="text-slate-300 text-xs sm:text-sm font-medium">Con Tecnología</span>
-              <span className="text-primary bg-primary/10 px-2 py-0.5 rounded text-[10px] sm:text-xs font-bold border border-primary/20">ACTIVO</span>
-            </div>
-
-            <div className="space-y-2 sm:space-y-3">
-              {[
-                { label: 'Eficiencia', value: '94%', icon: Zap },
-                { label: 'Ventas', value: '+185%', icon: TrendingUp },
-                { label: 'Control', value: '100%', icon: BarChart3 }
-              ].map((item, i) => (
-                <div key={i} className="p-2 sm:p-3 bg-slate-800/50 border border-slate-700/50 rounded-lg hover:border-primary/30 hover:bg-slate-800 transition-colors">
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center gap-1.5 sm:gap-2">
-                      <div className="p-1 rounded bg-primary/10 text-primary">
-                        <item.icon size={12} className="sm:w-[14px] sm:h-[14px]" />
-                      </div>
-                      <span className="text-slate-300 text-[10px] sm:text-xs">{item.label}</span>
+            {/* Metrics Grid */}
+            <div className="grid grid-cols-2 gap-4 mb-6">
+                <div className="p-4 rounded-xl bg-slate-900/50 border border-slate-800 hover:border-primary/20 transition-colors">
+                    <div className="flex items-center gap-2 mb-2 text-primary">
+                        <Zap size={16} />
+                        <span className="text-xs font-semibold uppercase tracking-wider">Ahorro</span>
                     </div>
-                    <span className="text-white font-bold text-xs sm:text-sm tracking-tight">{item.value}</span>
-                  </div>
-                  <div className="mt-2 sm:mt-2.5 w-full bg-slate-900/50 h-1 sm:h-1.5 rounded-full overflow-hidden">
-                    <div 
-                      className="h-full bg-gradient-to-r from-primary to-green-400 rounded-full transition-all duration-1000"
-                      style={{ width: showAfter ? '100%' : '0%' }}
-                    />
-                  </div>
+                    <div className="text-3xl font-display font-bold text-white tracking-tight">
+                        {ahorro}%
+                    </div>
+                    <div className="mt-1 h-1 w-full bg-slate-800 rounded-full overflow-hidden">
+                        <div className="h-full bg-primary" style={{ width: `${ahorro}%` }} />
+                    </div>
                 </div>
-              ))}
+
+                <div className="p-4 rounded-xl bg-slate-900/50 border border-slate-800 hover:border-secondary/20 transition-colors">
+                    <div className="flex items-center gap-2 mb-2 text-secondary">
+                        <Activity size={16} />
+                        <span className="text-xs font-semibold uppercase tracking-wider">Eficiencia</span>
+                    </div>
+                    <div className="text-3xl font-display font-bold text-white tracking-tight">
+                        +{activacion}%
+                    </div>
+                    <div className="mt-1 h-1 w-full bg-slate-800 rounded-full overflow-hidden">
+                        <div className="h-full bg-secondary" style={{ width: `${activacion}%` }} />
+                    </div>
+                </div>
+
+                <div className="col-span-2 p-4 rounded-xl bg-slate-900/50 border border-slate-800 flex items-center justify-between hover:border-slate-700 transition-colors">
+                    <div>
+                        <div className="text-xs text-slate-400 font-medium uppercase tracking-wider mb-1">Proyectos Exitosos</div>
+                        <div className="text-2xl font-display font-bold text-white">{proyectos}+</div>
+                    </div>
+                    <div className="h-10 w-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300">
+                        <BarChart3 size={20} />
+                    </div>
+                </div>
             </div>
 
-            <div className="relative h-24 sm:h-32 border border-primary/20 rounded-lg bg-slate-900/30 p-2 sm:p-3 overflow-hidden">
-              <div className="grid grid-cols-3 gap-1.5 sm:gap-2 h-full">
-                {[0, 1, 2].map((i) => (
-                  <div key={i} className="bg-primary/5 rounded border border-primary/10 flex items-center justify-center hover:bg-primary/10 transition-colors">
-                    <CheckCircle size={16} className="sm:w-5 sm:h-5 text-primary/70" />
-                  </div>
-                ))}
-              </div>
-              <div className="absolute bottom-2 right-2 flex items-center gap-1.5 bg-slate-950/80 px-2 py-1 rounded-full border border-primary/20 backdrop-blur-sm">
-                <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-white/80 text-[10px] font-medium">Online</span>
-              </div>
+            {/* CTA Footer */}
+            <div className="pt-2">
+                <a 
+                    href="#portfolio" 
+                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gradient-to-r from-slate-800 to-slate-900 hover:from-primary hover:to-primary-600 hover:text-black text-white font-medium transition-all duration-300 shadow-lg group/btn border border-slate-700 hover:border-primary"
+                >
+                    <span>Ver casos de éxito</span>
+                    <ArrowUpRight size={18} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                </a>
             </div>
-          </div>
         </div>
-      </div>
     </div>
   );
 });
 
 Hero.displayName = 'Hero';
-TransformationCard.displayName = 'TransformationCard';
+KpiCard.displayName = 'KpiCard';
 
 export default Hero;

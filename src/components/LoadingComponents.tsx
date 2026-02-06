@@ -47,7 +47,7 @@ export const Skeleton: React.FC<SkeletonProps> = ({
   className = '',
   variant = 'text'
 }) => {
-  const baseClasses = 'animate-pulse bg-gradient-to-r from-[#2d2d2d] via-slate-700 to-[#2d2d2d] bg-[length:200%_100%]';
+  const baseClasses = 'animate-pulse bg-gradient-to-r from-[#171717] via-slate-800 to-[#171717] bg-[length:200%_100%]';
   
   const variantClasses = {
     text: 'h-4 rounded-md',
@@ -61,7 +61,7 @@ export const Skeleton: React.FC<SkeletonProps> = ({
       animate={{ opacity: 1 }}
       className={`${baseClasses} ${variantClasses[variant]} ${className}`}
       style={{
-        backgroundImage: 'linear-gradient(90deg, #2d2d2d 0%, #475569 50%, #2d2d2d 100%)',
+        backgroundImage: 'linear-gradient(90deg, #171717 0%, #334155 50%, #171717 100%)',
         animation: 'shimmer 2s infinite linear'
       }}
     />

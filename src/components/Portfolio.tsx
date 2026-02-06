@@ -40,12 +40,12 @@ const ProjectCard = ({ project }: { project: any }) => {
       viewport={{ once: true }}
       className="group relative h-full"
     >
-      <div className="relative h-full bg-[#162032] border border-slate-800 rounded-3xl overflow-hidden hover:border-primary/40 transition-all duration-500 shadow-xl hover:shadow-[0_0_40px_rgba(217,229,18,0.1)] flex flex-col">
+      <div className="relative h-full bg-[#171717] border border-slate-800 rounded-3xl overflow-hidden hover:border-primary/40 transition-all duration-500 shadow-xl hover:shadow-[0_0_40px_rgba(217,229,18,0.1)] flex flex-col ring-1 ring-white/5">
         {/* Top Gradient Line */}
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         
         {/* Image / Preview */}
-        <div className="relative aspect-[16/10] overflow-hidden bg-slate-900 group">
+        <div className="relative aspect-[16/10] overflow-hidden bg-black group">
           <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-transparent transition-colors z-10" />
           <img
             src={project.image?.replace('w=1600', 'w=800') || ''}
@@ -130,7 +130,7 @@ const Portfolio = () => {
     filter === 'all' ? projects : projects.filter((p) => p.category === filter);
 
   return (
-    <section id="portfolio" className="py-24 bg-[#0b1121] relative overflow-hidden">
+    <section id="portfolio" className="py-24 bg-[#0a0a0a] relative overflow-hidden">
         {/* Background Atmosphere */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[100px] pointer-events-none translate-y-1/2 -translate-x-1/2" />
@@ -159,8 +159,8 @@ const Portfolio = () => {
               className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 capitalize relative
                 ${
                   filter === cat
-                    ? 'bg-primary text-[#0b1121] shadow-[0_0_25px_rgba(217,229,18,0.4)] scale-105 z-10'
-                    : 'bg-[#162032] text-slate-400 hover:bg-slate-800 hover:text-white border border-slate-800'
+                    ? 'bg-primary text-[#0a0a0a] shadow-[0_0_25px_rgba(217,229,18,0.4)] scale-105 z-10'
+                    : 'bg-[#171717] text-slate-400 hover:bg-slate-800 hover:text-white border border-slate-800 hover:border-slate-600'
                 }`}
             >
               {cat === 'all' ? 'Todos' : cat}

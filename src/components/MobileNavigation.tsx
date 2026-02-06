@@ -33,7 +33,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = memo(({ activeSection,
 
   return (
     <div className="md:hidden fixed bottom-0 left-0 right-0 z-50">
-      <nav className="mx-2 mb-2 bg-[#1e1e1e]/95 backdrop-blur-sm border border-slate-800 rounded-2xl px-1 py-1.5">
+      <nav className="mx-2 mb-2 bg-[#171717]/95 backdrop-blur-sm border border-slate-800 rounded-2xl px-1 py-1.5">
         <div className="flex justify-around items-center">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;

@@ -50,7 +50,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300
         ${scrolled 
-            ? 'bg-[#1e1e1e]/95 backdrop-blur-md shadow-sm border-b border-slate-700/50 py-3' 
+            ? 'bg-[#0a0a0a]/90 backdrop-blur-md shadow-sm border-b border-slate-800 py-3' 
           : 'bg-transparent py-5'
         }`}
     >
@@ -105,11 +105,11 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
                 })}
              </div>
 
-             <div className="w-px h-8 bg-slate-700 mx-4" />
+             <div className="w-px h-8 bg-slate-800 mx-4" />
 
              <button 
                 onClick={() => scrollToSection('contact')}
-                className="px-5 py-2.5 rounded-full bg-[#f5fcff] text-[#1e1e1e] font-bold text-sm hover:scale-105 transition-transform shadow-lg shadow-primary/10 flex items-center gap-2"
+                className="px-5 py-2.5 rounded-full bg-[#f5fcff] text-[#0a0a0a] font-bold text-sm hover:scale-105 transition-transform shadow-lg shadow-primary/10 flex items-center gap-2"
              >
                 Contactar <ArrowUpRight size={16} />
              </button>
@@ -152,14 +152,14 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
                     animate={{ x: 0 }}
                     exit={{ x: '100%' }}
                     transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                    className="absolute right-0 top-0 bottom-0 w-[85%] max-w-sm bg-[#1e1e1e] shadow-2xl flex flex-col safe-area-inset-bottom"
+                    className="absolute right-0 top-0 bottom-0 w-[85%] max-w-sm bg-[#171717] shadow-2xl flex flex-col safe-area-inset-bottom"
                 >
                     {/* Header del menu */}
-                    <div className="flex items-center justify-between p-6 border-b border-slate-700/50">
+                    <div className="flex items-center justify-between p-6 border-b border-slate-800">
                         <span className="text-lg font-bold text-white">Menú</span>
                         <button
                             onClick={() => setMobileMenuOpen(false)}
-                            className="p-2 rounded-xl bg-slate-800/50 text-slate-400 hover:text-white transition-colors touch-manipulation"
+                            className="p-2 rounded-xl bg-slate-900/50 text-slate-400 hover:text-white transition-colors touch-manipulation"
                             aria-label="Cerrar menú"
                         >
                             <X size={20} />
@@ -204,7 +204,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
                     </div>
                     
                     {/* Footer */}
-                    <div className="p-6 border-t border-slate-700/50">
+                    <div className="p-6 border-t border-slate-800">
                         <p className="text-slate-500 text-sm text-center">
                             © {new Date().getFullYear()} Sebastián Jaque
                         </p>

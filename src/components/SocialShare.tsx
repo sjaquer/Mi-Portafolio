@@ -60,7 +60,7 @@ const SocialShare: React.FC<SocialShareProps> = ({
         transition={{ delay: 1 }}
         className={`fixed left-4 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-2 ${className}`}
       >
-        <div className="bg-[#2d2d2d] rounded-full shadow-lg border border-slate-700 p-2 flex flex-col gap-2">
+        <div className="bg-[#171717] rounded-full shadow-lg border border-slate-800 p-2 flex flex-col gap-2">
           {/* Native share button (if supported) */}
           {'share' in navigator && (
             <button
@@ -111,7 +111,7 @@ const SocialShare: React.FC<SocialShareProps> = ({
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`p-2 rounded-full bg-[#1e1e1e] text-slate-300 transition-all duration-300 ${link.color}`}
+              className={`p-2 rounded-full bg-[#202020] text-slate-300 transition-all duration-300 ${link.color}`}
               aria-label={link.label}
               title={link.label}
             >

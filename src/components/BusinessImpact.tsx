@@ -9,7 +9,7 @@ import {
 
 const BusinessImpact: React.FC = () => {
   return (
-    <section id="demo" className="py-24 bg-[#0b1121] relative overflow-hidden">
+    <section id="demo" className="py-24 bg-[#0a0a0a] relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.div
@@ -51,21 +51,21 @@ const BusinessImpact: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="max-w-6xl mx-auto rounded-xl overflow-hidden shadow-2xl border border-slate-700 bg-[#162032] ring-1 ring-slate-900/5"
+            className="max-w-6xl mx-auto rounded-xl overflow-hidden shadow-2xl border border-slate-800 bg-[#171717] ring-1 ring-white/5"
         >
             {/* Fake Browser Toolbar */}
-            <div className="bg-slate-900 border-b border-slate-800 p-3 flex items-center justify-between select-none">
+            <div className="bg-[#0f0f0f] border-b border-slate-800 p-3 flex items-center justify-between select-none">
                 <div className="flex gap-2">
                     <div className="w-3 h-3 rounded-full bg-red-400 hover:bg-red-500 transition-colors" />
                     <div className="w-3 h-3 rounded-full bg-amber-400 hover:bg-amber-500 transition-colors" />
                     <div className="w-3 h-3 rounded-full bg-green-400 hover:bg-green-500 transition-colors" />
                 </div>
-                <div className="bg-slate-800 px-4 py-1.5 rounded-md text-xs text-slate-300 font-mono w-2/3 md:w-1/3 text-center border border-slate-700 flex items-center justify-center gap-2 transition-all hover:border-primary/50">
+                <div className="bg-[#1a1a1a] px-4 py-1.5 rounded-md text-xs text-slate-400 font-mono w-2/3 md:w-1/3 text-center border border-slate-800 flex items-center justify-center gap-2 transition-all hover:border-primary/50">
                     <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
                     admin.sebastianjaque.dev/dashboard/analytics
                 </div>
                 <div className="flex gap-2">
-                    <div className="w-8 h-8 rounded-full bg-slate-700" />
+                    <div className="w-8 h-8 rounded-full bg-slate-800" />
                 </div>
             </div>
 
@@ -84,14 +84,14 @@ const DashboardApp = () => {
     const [sidebarOpen, setSidebarOpen] = useState(true);
 
     return (
-        <div className="flex flex-col md:flex-row h-auto md:h-[700px] overflow-hidden bg-[#0b1121] rounded-2xl shadow-2xl border border-slate-700">
+        <div className="flex flex-col md:flex-row h-auto md:h-[700px] overflow-hidden bg-[#0a0a0a] rounded-2xl shadow-2xl border border-slate-800">
             <DashboardSidebar 
                 currentView={view} 
                 setView={setView} 
                 isOpen={sidebarOpen} 
                 toggle={() => setSidebarOpen(!sidebarOpen)}
             />
-            <div className="flex-1 flex flex-col min-w-0 bg-[#0b1121] h-[600px] md:h-auto">
+            <div className="flex-1 flex flex-col min-w-0 bg-[#0a0a0a] h-[600px] md:h-auto">
                 <DashboardHeader title={view} />
                 <main className="flex-1 overflow-y-auto p-4 md:p-8 scroll-smooth custom-scrollbar">
                     <AnimatePresence mode="wait">
@@ -116,8 +116,8 @@ const DashboardSidebar = ({ currentView, setView, isOpen, toggle }: any) => {
 
     return (
         <div className={`
-            bg-[#162032] 
-            border-b md:border-b-0 md:border-r border-slate-700 
+            bg-[#171717] 
+            border-b md:border-b-0 md:border-r border-slate-800 
             flex flex-row md:flex-col
             w-full md:w-auto
             md:transition-all md:duration-300
@@ -125,7 +125,7 @@ const DashboardSidebar = ({ currentView, setView, isOpen, toggle }: any) => {
             z-20 relative shrink-0
         `}>
            {/* Desktop Logo Header */}
-           <div className="hidden md:flex p-6 items-center gap-3 overflow-hidden whitespace-nowrap border-b border-slate-700 h-20">
+           <div className="hidden md:flex p-6 items-center gap-3 overflow-hidden whitespace-nowrap border-b border-slate-800 h-20">
                 <div className="w-8 h-8 rounded-lg overflow-hidden shadow-lg shadow-primary-500/30 shrink-0">
                     <img 
                         src="/icon0.svg" 
@@ -150,7 +150,7 @@ const DashboardSidebar = ({ currentView, setView, isOpen, toggle }: any) => {
                                 flex items-center gap-3 px-4 md:px-3 py-2 md:py-3 rounded-xl transition-all duration-200 group shrink-0
                                 ${isActive 
                                     ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 font-medium shadow-sm' 
-                                    : 'text-slate-400 hover:bg-[#1e1e1e] hover:text-slate-200'
+                                    : 'text-slate-400 hover:bg-[#202020] hover:text-slate-200'
                                 }
                             `}
                         >
@@ -187,13 +187,13 @@ const DashboardSidebar = ({ currentView, setView, isOpen, toggle }: any) => {
 }
 
 const DashboardHeader = ({ title }: { title: string }) => (
-    <div className="h-20 bg-[#2d2d2d]/80 backdrop-blur-sm border-b border-slate-700 flex items-center justify-between px-6 md:px-8 z-10 sticky top-0">
+    <div className="h-20 bg-[#171717]/80 backdrop-blur-sm border-b border-slate-800 flex items-center justify-between px-6 md:px-8 z-10 sticky top-0">
         <h3 className="font-display font-bold text-xl text-[#f5fcff] capitalize flex items-center gap-2">
             {title === 'general' ? 'Resumen Ejecutivo' : title}
             {title === 'ventas' && <span className="text-xs px-2 py-0.5 bg-green-100 text-green-700 rounded-full font-medium ml-2">En vivo</span>}
         </h3>
         <div className="flex items-center gap-3">
-             <button className="p-2 text-slate-400 hover:text-primary transition-colors rounded-full hover:bg-[#1e1e1e] relative">
+             <button className="p-2 text-slate-400 hover:text-primary transition-colors rounded-full hover:bg-[#202020] relative">
                  <Bell size={20} />
                  <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-dark-surface"></span>
              </button>
@@ -220,16 +220,16 @@ const GeneralView = () => (
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="bg-[#2d2d2d] p-6 rounded-2xl border border-slate-700 shadow-sm">
+            <div className="bg-[#171717] p-6 rounded-2xl border border-slate-800 shadow-sm">
                  <h4 className="font-bold text-[#f5fcff] mb-6">Proyección de Crecimiento</h4>
                  <AnimatedChart mode="growth" />
             </div>
-            <div className="bg-[#2d2d2d] p-6 rounded-2xl border border-slate-700 shadow-sm flex flex-col">
+            <div className="bg-[#171717] p-6 rounded-2xl border border-slate-800 shadow-sm flex flex-col">
                 <h4 className="font-bold text-[#f5fcff] mb-4">Actividad Reciente</h4>
                 <div className="flex-1 overflow-auto pr-2 custom-scrollbar">
                     <div className="space-y-4">
                         {[1,2,3,4].map(i => (
-                            <div key={i} className="flex items-center gap-4 p-3 rounded-lg hover:bg-[#1e1e1e] transition-colors border border-transparent hover:border-slate-700">
+                            <div key={i} className="flex items-center gap-4 p-3 rounded-lg hover:bg-[#202020] transition-colors border border-transparent hover:border-slate-800">
                                 <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${i % 2 === 0 ? 'bg-primary-100 text-primary-700' : 'bg-secondary/10 text-secondary'}`}>
                                     {i % 2 === 0 ? <DollarSign size={18} /> : <Users size={18} />}
                                 </div>
@@ -253,7 +253,7 @@ const SalesView = () => (
         initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 1.05 }}
         className="space-y-6"
     >
-        <div className="bg-[#2d2d2d] p-6 rounded-2xl border border-slate-700 shadow-sm">
+        <div className="bg-[#171717] p-6 rounded-2xl border border-slate-800 shadow-sm">
              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
                  <div>
                     <h4 className="font-bold text-xl text-[#f5fcff]">Ventas por Región</h4>
@@ -284,12 +284,12 @@ const InventoryView = () => (
             { zone: 'Despacho Express', status: 'Operativo', load: 45, color: 'bg-secondary' },
             { zone: 'Flota Primaria', status: 'En Ruta', load: 78, color: 'bg-purple-500' },
         ].map((hub, i) => (
-            <div key={i} className="bg-[#2d2d2d] p-6 rounded-2xl border border-slate-700 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-24 h-24 bg-[#1e1e1e] rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110" />
+            <div key={i} className="bg-[#171717] p-6 rounded-2xl border border-slate-800 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-[#202020] rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110" />
                 
                 <div className="relative">
                     <div className="flex justify-between items-start mb-4">
-                        <div className="p-3 bg-[#1e1e1e] rounded-xl text-slate-300">
+                        <div className="p-3 bg-[#202020] rounded-xl text-slate-300">
                              <MapPin size={24} />
                         </div>
                         <span className={`text-xs font-bold px-2 py-1 rounded-full border ${hub.status === 'Operativo' ? 'bg-primary-50 text-primary-700 border-primary-200' : 'bg-amber-50 text-amber-700 border-amber-200'}`}>
@@ -303,7 +303,7 @@ const InventoryView = () => (
                         <span className="text-xs text-slate-500 mb-1">capacidad ocupada</span>
                     </div>
 
-                    <div className="w-full bg-[#1e1e1e] h-2 rounded-full overflow-hidden">
+                    <div className="w-full bg-[#202020] h-2 rounded-full overflow-hidden">
                         <motion.div 
                             initial={{ width: 0 }}
                             animate={{ width: `${hub.load}%` }}
@@ -318,9 +318,9 @@ const InventoryView = () => (
 );
 
 const UsersView = () => (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-[#2d2d2d] rounded-2xl border border-slate-700 shadow-sm overflow-hidden">
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-[#171717] rounded-2xl border border-slate-800 shadow-sm overflow-hidden">
         <table className="w-full text-left text-sm">
-            <thead className="bg-[#1e1e1e] border-b border-slate-700">
+            <thead className="bg-[#0a0a0a] border-b border-slate-800">
                 <tr>
                     <th className="px-6 py-4 font-semibold text-[#f5fcff]">Cliente</th>
                     <th className="px-6 py-4 font-semibold text-[#f5fcff]">Estado</th>
@@ -362,9 +362,9 @@ const UsersView = () => (
 
 const StatCard = ({ title, value, trend, trendUp, icon: Icon }: any) => {
     return (
-        <div className="bg-[#2d2d2d] p-5 rounded-2xl border border-slate-700 shadow-sm hover:shadow-lg transition-transform hover:-translate-y-1 group">
+        <div className="bg-[#171717] p-5 rounded-2xl border border-slate-800 shadow-sm hover:shadow-lg transition-transform hover:-translate-y-1 group">
             <div className="flex justify-between items-start mb-4">
-                <div className="p-2.5 bg-[#1e1e1e] rounded-lg text-slate-400 group-hover:text-primary group-hover:bg-primary/10 transition-colors">
+                <div className="p-2.5 bg-[#202020] rounded-lg text-slate-400 group-hover:text-primary group-hover:bg-primary/10 transition-colors">
                      {Icon && <Icon size={20} />}
                 </div>
                 <div className={`text-xs font-bold px-2 py-1 rounded-full flex items-center gap-1 ${trendUp ? 'bg-green-50 text-green-600 dark:bg-green-900/20 dark:text-green-400' : 'bg-red-50 text-red-600'}`}>
@@ -392,7 +392,7 @@ const AnimatedChart = ({ mode }: { mode: 'growth' | 'other' }) => {
                         whileInView={{ height: `${(h / max) * 100}%` }}
                         viewport={{ once: true }}
                         transition={{ duration: 1, delay: i * 0.05, type: "spring", bounce: 0 }}
-                        className="w-full bg-[#1e1e1e] rounded-t-sm relative overflow-hidden group-hover:shadow-[0_0_20px_rgba(217,229,18,0.3)] transition-shadow"
+                        className="w-full bg-[#202020] rounded-t-sm relative overflow-hidden group-hover:shadow-[0_0_20px_rgba(217,229,18,0.3)] transition-shadow"
                     >
                          <motion.div 
                             initial={{ y: "100%" }}
