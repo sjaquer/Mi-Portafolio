@@ -2,7 +2,6 @@
 import React from 'react';
 import { Github, Linkedin, Instagram, Mail, ArrowUp, MapPin, Briefcase, Code, FileText } from 'lucide-react';
 import { siteContent } from '../data/siteContent';
-import SocialShare from './SocialShare';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -49,15 +48,15 @@ const Footer: React.FC = () => {
             </p>
             
             <div className="flex flex-col gap-3 text-sm text-slate-600 dark:text-slate-300">
-                <a href={`mailto:${siteContent.footer.contactEmail}`} className="flex items-center gap-2 hover:text-primary transition-colors w-fit">
-                    <div className="w-8 h-8 rounded-full bg-[#202020] border border-slate-800 flex items-center justify-center shrink-0">
-                        <Mail size={14} />
+                <a href={`mailto:${siteContent.footer.contactEmail}`} className="flex items-center gap-3 hover:text-primary transition-colors w-fit">
+                    <div className="w-8 h-8 min-w-[2rem] rounded-full bg-[#202020] border border-slate-800 flex items-center justify-center shrink-0">
+                        <Mail size={14} strokeWidth={2} />
                     </div>
-                    {siteContent.footer.contactEmail}
+                    <span className="break-all">{siteContent.footer.contactEmail}</span>
                 </a>
-                <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-full bg-[#202020] border border-slate-800 flex items-center justify-center shrink-0">
-                        <MapPin size={14} />
+                <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 min-w-[2rem] rounded-full bg-[#202020] border border-slate-800 flex items-center justify-center shrink-0">
+                        <MapPin size={14} strokeWidth={2} />
                     </div>
                     <span>Lima, Perú</span>
                 </div>
@@ -67,8 +66,15 @@ const Footer: React.FC = () => {
               {socialLinks.map((s, i) => {
                 const Icon = s.icon;
                 return (
-                  <a key={i} href={s.url} target="_blank" rel="noreferrer" className="p-2.5 rounded-full bg-[#202020] border border-slate-800 text-slate-300 hover:text-primary hover:scale-110 transition-all shadow-sm">
-                    <Icon size={18} />
+                  <a 
+                    key={i} 
+                    href={s.url} 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="w-10 h-10 flex items-center justify-center rounded-full bg-[#202020] border border-slate-800 text-slate-300 hover:text-primary hover:scale-110 transition-all shadow-sm shrink-0"
+                    aria-label={s.label}
+                  >
+                    <Icon size={18} strokeWidth={2} />
                   </a>
                 );
               })}
@@ -129,15 +135,10 @@ const Footer: React.FC = () => {
                 <span>Automatización de Procesos</span>
               </li>
             </ul>
-            
-            {/* Share buttons inline para móvil */}
-            <div className="mt-6 pt-6 border-t border-slate-200 dark:border-slate-700">
-              <SocialShare variant="inline" />
-            </div>
           </div>
 
           {/* Contact / CTA Column */}
-          <div>
+          <div className="md:col-start-4">
             <h4 className="text-[#f5fcff] font-bold mb-6">Contáctame</h4>
             <p className="text-slate-500 dark:text-slate-400 text-sm mb-4">
                 ¿Listo para escalar tu negocio con tecnología?

@@ -8,7 +8,6 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import BusinessImpact from './components/BusinessImpact';
 import MobileNavigation from './components/MobileNavigation';
-import SocialShare from './components/SocialShare';
 
 // Lazy loading para todos los componentes no críticos
 const Skills = React.lazy(() => import('./components/Skills'));
@@ -77,9 +76,6 @@ const App: React.FC = () => {
           className="min-h-screen bg-[#1e1e1e] text-[#f5fcff]"
         >
           <Header activeSection={activeSection} setActiveSection={setActiveSection} />
-          
-          {/* Botones de compartir flotantes */}
-          <SocialShare variant="floating" />
           
           <main>
             <Hero />
