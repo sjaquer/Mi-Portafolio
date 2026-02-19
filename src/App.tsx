@@ -6,6 +6,7 @@ import { ScrollProgressIndicator } from './components/ScrollProgress';
 import SEO from './components/SEO';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import ProfessionalFocus from './components/ProfessionalFocus';
 import BusinessImpact from './components/BusinessImpact';
 import MobileNavigation from './components/MobileNavigation';
 
@@ -80,6 +81,7 @@ const App: React.FC = () => {
           
           <main>
             <Hero />
+            <ProfessionalFocus />
             <BusinessImpact />
             <Suspense fallback={<LoadingState title="Cargando contenido..." description="Preparando experiencia" />}>
               <Portfolio />

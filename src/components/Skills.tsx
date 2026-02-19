@@ -60,7 +60,7 @@ const Skills = () => {
             Arquitectura y Herramientas
           </h2>
           <p className="text-slate-400 max-w-lg mx-auto text-sm sm:text-base">
-            Stack técnico orientado a resolver problemas de negocio con datos y sistemas.
+            Herramientas utilizadas para el desarrollo de soluciones orientadas a negocio y análisis de datos.
           </p>
         </div>
 
@@ -111,7 +111,7 @@ const Skills = () => {
             Tecnologías principales
           </p>
           <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
-            {['React', 'TypeScript', 'Node.js', 'Python', 'Power BI', 'SQL Server', 'Firebase', 'Excel Avanzado'].map((tech) => (
+            {['Excel Avanzado', 'Power BI', 'Python', 'APIs', 'Firebase', 'SQL Server', 'React', 'TypeScript'].map((tech) => (
               <span
                 key={tech}
                 className="px-5 py-2.5 bg-slate-800/50 text-slate-200 text-base font-medium rounded-full border border-slate-700/40 hover:border-primary/40 hover:text-primary hover:bg-slate-800 transition-all duration-200 cursor-default"

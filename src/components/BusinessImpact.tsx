@@ -32,17 +32,15 @@ const BusinessImpact: React.FC = () => {
             Experiencia Aplicada en <span className="text-secondary drop-shadow-[0_0_8px_rgba(56,97,215,0.4)]">Entornos Reales</span>
           </motion.h2>
           
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-xl text-slate-300 leading-relaxed"
-          >
-            Mis proyectos operan en producción, resuelven problemas reales e integran datos, automatización y experiencia de usuario.
-            <br />
-            <span className="font-semibold text-primary">Interactúa con este demo</span> para visualizar el tipo de control operativo que construyo.
-          </motion.p>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                        className="text-xl text-slate-300 leading-relaxed"
+                    >
+                        Proyectos implementados en entornos reales con enfoque en automatización, control operativo y análisis de datos.
+                    </motion.p>
         </div>
 
         {/* Dashboard Demo Container */}

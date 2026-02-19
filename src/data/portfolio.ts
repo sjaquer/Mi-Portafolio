@@ -10,7 +10,7 @@ export const experiences: Experience[] = [
     location: 'Lima, Perú',
     current: true,
     summary:
-      'Reingeniería total de la operación mediante sistemas propios que eliminan ineficiencias y permiten escalabilidad.',
+      'Implementación de sistemas propios para reingeniería operativa, reduciendo trabajo manual y mejorando el control de costos.',
     techStack: [
       'ERP In-House',
       'Reingeniería de Procesos',
@@ -18,9 +18,9 @@ export const experiences: Experience[] = [
       'Automatización'
     ],
     responsibilities: [
-      'Digitalización operativa: ERP a medida que centraliza inventarios, recetas y ventas — eliminación del 90% de papel y hojas de cálculo desconectadas.',
-      'Optimización de márgenes: Reestructuración de ingeniería de menú basada en data real de costos, incremento del margen bruto operativo.',
-      'Estandarización de procesos: Manuales de procedimientos y protocolos para replicabilidad del modelo de negocio.'
+      'Implementé un ERP a medida que centraliza inventarios, recetas y ventas, reduciendo el uso de papel y hojas de cálculo desconectadas.',
+      'Optimicé márgenes mediante reestructuración de la ingeniería de menú basada en datos reales de costos.',
+      'Estandaricé procesos con manuales y protocolos operativos para asegurar replicabilidad del modelo de negocio.'
     ]
   },
   {
@@ -31,7 +31,7 @@ export const experiences: Experience[] = [
     duration: 'May 2025 - Nov 2025',
     location: 'Lima, Perú',
     summary:
-      'Implementación de infraestructura de datos para monitorear rentabilidad real de múltiples canales de venta.',
+      'Diseño e implementación de infraestructura de datos para monitorear rentabilidad real por canal y producto.',
     techStack: [
       'Power BI',
       'Data Warehousing',
@@ -39,9 +39,9 @@ export const experiences: Experience[] = [
       'Automatización ETL'
     ],
     responsibilities: [
-      'Centralización de data: Unificación de fuentes dispersas (Shopify, Ads, Almacén) en una fuente única de verdad para gerencia.',
-      'Visibilidad financiera: Dashboards automatizados para seguimiento de flujo de caja y P&L en tiempo real.',
-      'Predicción de demanda: Algoritmos para optimizar compras y reducir sobre-stock (capital inmovilizado).'
+      'Implementé un modelo de datos que unifica fuentes dispersas (Shopify, Ads, almacén) en una única base para gerencia.',
+      'Desarrollé dashboards automatizados para seguimiento de flujo de caja y P&L por canal y producto.',
+      'Diseñé modelos de demanda para optimizar compras y reducir sobrestock y capital inmovilizado.'
     ]
   },
   {
@@ -52,7 +52,7 @@ export const experiences: Experience[] = [
     duration: 'Jun 2022 - Actualidad',
     location: 'Remoto',
     summary:
-      'Desarrollo de soluciones algorítmicas para problemas logísticos complejos que las herramientas estándar no resuelven.',
+      'Desarrollo de soluciones algorítmicas para optimizar rutas y uso de recursos en operaciones logísticas.',
     techStack: [
       'Python',
       'Google OR-Tools',
@@ -60,9 +60,9 @@ export const experiences: Experience[] = [
       'Investigación Operativa'
     ],
     responsibilities: [
-      'Optimización de transporte: Desarrollo de solvers personalizados para ruteo de vehículos (VRP) y asignación de recursos.',
-      'Arquitectura de soluciones: Diseño de sistemas modulares integrados con la operación física existente.',
-      'Análisis de viabilidad: Evaluación técnica y económica de proyectos de modernización tecnológica.'
+      'Desarrollé solvers personalizados para ruteo de vehículos (VRP) y asignación de recursos en transporte.',
+      'Diseñé arquitecturas de solución modulares integradas con la operación física existente.',
+      'Analicé viabilidad técnica y económica de proyectos de modernización tecnológica y automatización logística.'
     ]
   }
 ];
@@ -140,9 +140,11 @@ export const projects: Project[] = [
   {
     id: '1',
     title: 'Coralia Web',
-    subtitle: 'E-commerce + CRM + Automatización + IA',
+    subtitle: 'Plataforma modular de e-commerce con CRM e integración de IA.',
     description:
-      'Plataforma modular de e-commerce con CRM integrado, automatización operativa e integración de IA. Actualmente operando en producción con flujos reales de pedidos, clientes y métricas.',
+      'Problema: Desorden en la gestión de pedidos, stock y seguimiento de clientes. ' +
+      'Solución desarrollada: Sistema web centralizado con e-commerce, CRM y panel administrativo para controlar pedidos, clientes y stock en un solo lugar. ' +
+      'Enfoque técnico/analítico: Automatización de procesos transaccionales, control de inventario y visualización de indicadores operativos y comerciales.',
     details: [
       'Plataforma completa: Catálogo, carrito, checkout y gestión de pedidos en producción.',
       'CRM integrado: Seguimiento de clientes, historial de compras y segmentación automatizada.',
@@ -157,9 +159,11 @@ export const projects: Project[] = [
   {
     id: '2',
     title: 'Dearel Intelligence Hub',
-    subtitle: 'Business Intelligence & Análisis Multifuente',
+    subtitle: 'Hub de datos para rentabilidad y control comercial.',
     description:
-      'Plataforma de inteligencia comercial que unifica canales de venta. Pipeline de datos automatizado desde múltiples fuentes hacia dashboards ejecutivos para toma de decisiones basada en márgenes reales.',
+      'Problema: Falta de visibilidad unificada de ventas, costos y rentabilidad por canal. ' +
+      'Solución desarrollada: Intelligence hub que integra datos de Shopify, plataformas de anuncios y almacén en un modelo único de reporte financiero. ' +
+      'Enfoque técnico/analítico: Automatización ETL, modelado de datos y dashboards de KPIs de margen, flujo de caja y rotación de inventario.',
     details: [
       'Pipeline ETL: Webhooks y automatización para centralizar datos de Shopify, Ads y Almacén.',
       'Dashboard ejecutivo: Métricas de P&L, flujo de caja y rentabilidad por producto en tiempo real.',
@@ -176,7 +180,9 @@ export const projects: Project[] = [
     title: 'Big Jack Manager',
     subtitle: 'Sistema de Gestión Operativa Integral',
     description:
-      'ERP a medida para gestión operativa de restaurante. Integra punto de venta, control de inventario, flujo de caja y dashboard de rendimiento en una sola plataforma.',
+      'Problema: Operación fragmentada entre hojas de cálculo, cajas manuales y control débil de inventario. ' +
+      'Solución desarrollada: Sistema interno que integra punto de venta, inventario, recetas y caja diaria en un solo flujo operativo. ' +
+      'Enfoque técnico/analítico: Automatización de registros de venta, control de costos por receta y monitoreo de indicadores diarios de operación.',
     details: [
       'POS integrado: Registro de ventas en tiempo real con control de turnos y cierre de caja.',
       'Inventario inteligente: Control de insumos, recetas y alertas de reposición automáticas.',
@@ -191,9 +197,11 @@ export const projects: Project[] = [
   {
     id: '4',
     title: 'TaskZenith',
-    subtitle: 'Productividad con Roles y Arquitectura Modular',
+    subtitle: 'Gestión de tareas con control por roles.',
     description:
-      'Plataforma de gestión de tareas con sistema de roles, sincronización en tiempo real y arquitectura modular. Diseñada para equipos que necesitan control granular de productividad.',
+      'Problema: Falta de trazabilidad y control de carga de trabajo en equipos pequeños. ' +
+      'Solución desarrollada: Plataforma de tareas con asignación por rol, estados y vista consolidada de pendientes. ' +
+      'Enfoque técnico/analítico: Registro estructurado de actividades, métricas de cumplimiento y automatización básica de recordatorios.',
     details: [
       'Roles y permisos: Sistema de acceso por niveles para equipos multifuncionales.',
       'Sincronización: Datos en tiempo real entre múltiples usuarios y dispositivos.',
@@ -206,10 +214,12 @@ export const projects: Project[] = [
   },
   {
     id: '5',
-    title: 'Optimizador Logístico (ORDEV)',
-    subtitle: 'Optimización Algorítmica & CP-SAT',
+    title: 'Optimización Logística',
+    subtitle: 'Modelo de optimización de rutas y costos de transporte.',
     description:
-      'Motor de optimización logística que utiliza Google OR-Tools y CP-SAT para minimizar costos operativos de transporte mediante programación por restricciones.',
+      'Problema: Ruteo manual de vehículos con altos costos operativos y baja utilización de capacidad. ' +
+      'Solución desarrollada: Motor de optimización basado en Google OR-Tools para definir rutas y asignaciones con restricciones reales de operación. ' +
+      'Enfoque técnico/analítico: Modelado matemático tipo VRP, uso de CP-SAT y análisis de escenarios para reducción de kilómetros recorridos y tiempos de servicio.',
     details: [
       'Investigación Operativa: Implementación avanzada de algoritmos de ruteo vehicular (VRP).',
       'Minimización de costos: Reducción matemática de costos logísticos mediante restricciones.',
@@ -224,9 +234,11 @@ export const projects: Project[] = [
   {
     id: '6',
     title: 'HoneyNotes',
-    subtitle: 'Producto Experimental UX + IA',
+    subtitle: 'Notas estructuradas con clasificación automática.',
     description:
-      'Aplicación experimental de notas inteligentes que combina diseño UX minimalista con capacidades de IA para organización automática y generación de resúmenes.',
+      'Problema: Notas dispersas sin estructura para seguimiento de ideas y tareas. ' +
+      'Solución desarrollada: Aplicación de notas que organiza información por proyectos y etiquetas, con apoyo de IA para clasificación. ' +
+      'Enfoque técnico/analítico: Definición de modelos de categorización y consolidación de información para facilitar el seguimiento operativo.',
     details: [
       'UX Research: Diseño centrado en reducir la carga cognitiva del usuario.',
       'IA integrada: Categorización automática y generación de resúmenes de notas.',

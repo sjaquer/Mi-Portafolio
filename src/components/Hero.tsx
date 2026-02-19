@@ -83,7 +83,7 @@ const Hero = memo(() => {
               </h1>
 
               <div className="text-base sm:text-lg lg:text-xl text-slate-400 font-light max-w-xl leading-relaxed mx-auto lg:mx-0">
-                Desarrollo <span className="font-semibold text-white">soluciones tecnológicas</span> orientadas a optimizar operaciones, centralizar información y mejorar la <span className="text-slate-300">toma de decisiones mediante análisis de datos</span>.
+                Desarrollo <span className="font-semibold text-white">sistemas y herramientas</span> orientadas a optimizar <span className="text-slate-300">procesos</span>, centralizar información y generar <span className="text-slate-300">indicadores</span> clave para la toma de decisiones.
               </div>
             </div>
 
@@ -199,8 +199,8 @@ const KpiCard = memo(() => {
             {/* Header */}
             <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
                 <div>
-                   <h3 className="text-lg font-bold text-white">Resultados Reales</h3>
-                   <p className="text-xs text-slate-400">Impacto acumulado 2024-2026</p>
+                   <h3 className="text-lg font-bold text-white">Resultados Operativos</h3>
+                   <p className="text-xs text-slate-400">Resultados acumulados 2024-2026</p>
                 </div>
                 <div className="p-2 rounded-lg bg-slate-800/50 text-primary">
                     <TrendingUp size={20} />
@@ -252,7 +252,7 @@ const KpiCard = memo(() => {
                     href="#portfolio" 
                     className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gradient-to-r from-slate-800 to-slate-900 hover:from-primary hover:to-primary-600 hover:text-black text-white font-medium transition-all duration-300 shadow-lg group/btn border border-slate-700 hover:border-primary"
                 >
-                    <span>Ver casos de éxito</span>
+                    <span>Ver sistemas en producción</span>
                     <ArrowUpRight size={18} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
                 </a>
             </div>

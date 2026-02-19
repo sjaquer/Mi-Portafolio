@@ -5,7 +5,7 @@ import { testimonials } from '../data/portfolio';
 
 const Reviews = () => {
   return (
-    <section id="reviews" className="py-24 bg-[#0a0a0a] relative overflow-hidden">
+        <section id="reviews" className="py-24 bg-[#0a0a0a] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
            initial={{ opacity: 0, y: 20 }}
@@ -14,10 +14,10 @@ const Reviews = () => {
            className="text-center mb-16"
         >
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#f5fcff] font-display">
-                Respaldo Profesional
+                Casos Implementados
             </h2>
             <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-                Feedback de organizaciones donde he generado impacto directo en operaciones y datos.
+                Proyectos en producción u operación real, con resultados medibles en control y uso de datos.
             </p>
         </motion.div>
 
@@ -44,18 +44,8 @@ const Reviews = () => {
                          <Quote className="text-primary-200 dark:text-primary-900/30 rotate-180" size={40} />
                     </div>
 
-                    <div className="flex mb-6">
-                        {[...Array(5)].map((_, idx) => (
-                            <Star 
-                                key={idx} 
-                                size={16} 
-                                className={`${idx < (t.rating || 5) ? 'text-amber-400 fill-amber-400' : 'text-slate-200 dark:text-slate-700'}`} 
-                            />
-                        ))}
-                    </div>
-
-                    <p className="text-slate-400 dark:text-slate-300 text-sm leading-relaxed italic flex-grow">
-                        "{t.text}"
+                    <p className="text-slate-400 dark:text-slate-300 text-sm leading-relaxed flex-grow">
+                        {t.text}
                     </p>
 
                     <div className="mt-8 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400">

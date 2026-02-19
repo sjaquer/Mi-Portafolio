@@ -14,35 +14,35 @@ import {
 const automationItems = [
   {
     icon: FileSpreadsheet,
-    title: 'Automatización de Reportes',
-    description: 'Scripts y macros que generan reportes financieros automáticos desde múltiples fuentes de datos, eliminando trabajo manual repetitivo.',
+    title: 'Modelo automatizado de reportes financieros en Excel',
+    description: 'Modelo de generación de reportes que consolida información financiera desde múltiples fuentes en Excel y Power BI, reduciendo carga manual y errores en el cierre.',
     tags: ['Excel VBA', 'Python', 'Power Query'],
     color: '#10B981',
-    metric: '90% menos tiempo manual'
+    metric: 'Reducción de carga manual en reportes'
   },
   {
     icon: Terminal,
-    title: 'Scripts de Procesamiento',
-    description: 'Pipelines en Python para ETL, limpieza de datos y transformaciones automatizadas que alimentan dashboards en tiempo real.',
+    title: 'Scripts en Python para consolidación de datos',
+    description: 'Scripts en Python para consolidar y limpiar datos operativos, alimentando modelos de reporte y dashboards de KPIs.',
     tags: ['Python', 'Pandas', 'ETL'],
     color: '#8B5CF6',
-    metric: 'Procesamiento en segundos'
+    metric: 'Menos reprocesos manuales en datos'
   },
   {
     icon: BarChart3,
-    title: 'Dashboards de Métricas',
-    description: 'Tableros de control ejecutivos en Power BI con KPIs financieros, operativos y comerciales actualizados automáticamente.',
+    title: 'Dashboard de seguimiento de KPIs operativos',
+    description: 'Tableros en Power BI con KPIs financieros y operativos actualizados automáticamente, integrados a modelos de control de gestión.',
     tags: ['Power BI', 'DAX', 'SQL'],
     color: '#3861d7',
-    metric: 'Decisiones basadas en datos'
+    metric: 'Visibilidad de KPIs en tiempo real'
   },
   {
     icon: Workflow,
-    title: 'Modelos Financieros',
-    description: 'Proyecciones de flujo de caja, análisis de punto de equilibrio y modelos de rentabilidad por producto/servicio.',
+    title: 'Modelos financieros para control de gestión',
+    description: 'Modelos en Excel para proyección de flujo de caja y rentabilidad, integrados a indicadores de control financiero.',
     tags: ['Excel Avanzado', 'Análisis Financiero', 'Proyecciones'],
     color: '#F59E0B',
-    metric: 'Visibilidad financiera total'
+    metric: 'Soporte a decisiones financieras operativas'
   }
 ];
 
@@ -74,7 +74,7 @@ const AutomationData = () => {
           </h2>
           
           <p className="text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Así resuelvo problemas reales mediante datos y sistemas. Cada solución reduce tiempo manual y mejora la calidad de las decisiones.
+            Modelos y herramientas desarrolladas para optimizar control financiero y operativo.
           </p>
         </motion.div>
 

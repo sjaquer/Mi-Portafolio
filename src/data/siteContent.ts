@@ -6,7 +6,7 @@ export const siteContent = {
   },
   seo: {
     title: 'Sebastián Jaque | Administrador — Datos, Automatización y Sistemas Digitales',
-    description: 'Sebastián Jaque — Administrador con enfoque en datos, automatización y sistemas digitales. Desarrollo soluciones tecnológicas para optimizar operaciones, centralizar información y mejorar la toma de decisiones.',
+    description: 'Sebastián Jaque — Administrador con enfoque en datos, automatización y sistemas digitales. Desarrollo sistemas y herramientas orientadas a optimizar procesos, centralizar información y generar indicadores clave para la toma de decisiones.',
     keywords: 'Sebastián Jaque, administración, datos, automatización, sistemas digitales, Power BI, business intelligence, operaciones, Lima, Perú',
     url: 'https://sjaquer.is-a.dev/',
     image: 'https://sjaquer.is-a.dev/web-app-manifest-512x512.png'
@@ -21,21 +21,21 @@ export const siteContent = {
   ],
   hero: {
     title: 'Administrador con enfoque en Datos, Automatización y Sistemas Digitales',
-    subtitle: 'Desarrollo soluciones tecnológicas orientadas a optimizar operaciones, centralizar información y mejorar la toma de decisiones mediante análisis de datos.',
+    subtitle: 'Desarrollo sistemas y herramientas orientadas a optimizar procesos, centralizar información y generar indicadores clave para la toma de decisiones.',
     ctaPrimary: 'Ver Proyectos',
     ctaSecondary: 'Contactar'
   },
   skills: {
     title: 'Arquitectura y Herramientas',
-    subtitle: 'Stack técnico orientado a resolver problemas de negocio con datos y sistemas.'
+    subtitle: 'Herramientas utilizadas para el desarrollo de soluciones orientadas a negocio y análisis de datos.'
   },
   portfolio: {
     title: 'Proyectos Destacados',
     subtitle: 'Soluciones reales en producción que integran datos, automatización y sistemas operativos.'
   },
   reviews: {
-    title: 'Respaldo Profesional',
-    subtitle: 'Feedback de organizaciones donde he generado impacto directo.'
+    title: 'Casos Implementados',
+    subtitle: 'Proyectos en organizaciones reales con resultados medibles en control y datos.'
   },
   footer: {
     copyright: '© 2026 Sebastián Jaque',
