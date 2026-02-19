@@ -13,8 +13,8 @@ interface SocialShareProps {
 
 const SocialShare: React.FC<SocialShareProps> = ({
   url = 'https://sjaquer.is-a.dev/',
-  title = 'Sebastián Jaque | BizOps & Tech Strategist',
-  description = 'Transformo operaciones complejas en software de alto rendimiento. Consultoría en automatización, datos y desarrollo web.',
+  title = 'Sebastián Jaque | Datos, Automatización y Sistemas Digitales',
+  description = 'Soluciones tecnológicas orientadas a optimizar operaciones y mejorar la toma de decisiones mediante análisis de datos.',
   className = '',
   variant = 'floating'
 }) => {

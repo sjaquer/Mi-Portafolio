@@ -1,7 +1,7 @@
 # =========================================================
 # Robots.txt para sjaquer.is-a.dev
-# Sebastián Jaque - Consultor en Transformación Digital
-# Última actualización: 2026-01-28
+# Sebastián Jaque - Datos, Automatización y Sistemas Digitales
+# Última actualización: 2026-02-18
 # =========================================================
 
 # Reglas para todos los bots

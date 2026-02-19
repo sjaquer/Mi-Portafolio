@@ -146,7 +146,7 @@ const Portfolio = () => {
                 Proyectos <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-200 to-white">Destacados</span>
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto font-light">
-                Ingeniería aplicada a la resolución de problemas reales.
+                Soluciones reales en producción que integran datos, automatización y sistemas operativos.
             </p>
         </motion.div>
 

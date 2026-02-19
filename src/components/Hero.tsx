@@ -48,7 +48,7 @@ const Hero = memo(() => {
           <div className="space-y-6 sm:space-y-8 order-2 lg:order-1 relative z-20 text-center lg:text-left animate-fade-in">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-semibold border border-primary/20 mx-auto lg:mx-0">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              Disponible para Consultorías
+              Abierto a oportunidades corporativas
             </div>
 
             <div className="space-y-4 sm:space-y-6">
@@ -56,11 +56,11 @@ const Hero = memo(() => {
                 Sebastián Jaque
               </p>
               
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-white leading-[1.1] tracking-tight">
-                Consultor en<br />
-                <span className="text-slate-400">Transformación</span>{' '}
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-display font-bold text-white leading-[1.1] tracking-tight">
+                Administrador con<br />enfoque en{' '}
+                <span className="text-slate-400">Datos</span>,{' '}
                 <span className="text-white relative inline-block">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-400 to-white relative z-10">Digital</span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-400 to-white relative z-10">Automatización</span>
                   <svg 
                     className="absolute left-0 -bottom-2 w-full h-4 text-primary drop-shadow-[0_0_8px_rgba(217,229,18,0.5)]" 
                     viewBox="0 0 120 16" 
@@ -78,44 +78,46 @@ const Hero = memo(() => {
                     />
                   </svg>
                 </span>
+                <br /><span className="text-slate-400">&</span>{' '}
+                <span className="text-white">Sistemas Digitales</span>
               </h1>
 
               <div className="text-base sm:text-lg lg:text-xl text-slate-400 font-light max-w-xl leading-relaxed mx-auto lg:mx-0">
-                <span className="font-semibold text-white">Consultor en Transformación Digital en Perú.</span> Desarrollo software, dashboards Power BI y automatización de procesos para empresas en Lima y <span className="text-slate-300">Latinoamérica</span>.
+                Desarrollo <span className="font-semibold text-white">soluciones tecnológicas</span> orientadas a optimizar operaciones, centralizar información y mejorar la <span className="text-slate-300">toma de decisiones mediante análisis de datos</span>.
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <a href="#contact" className="group px-8 py-4 rounded-xl bg-primary text-black font-bold text-base hover:bg-primary-400 hover:shadow-[0_0_20px_rgba(217,229,18,0.4)] transition-all flex items-center justify-center gap-2 relative overflow-hidden transform hover:-translate-y-1">
+              <a href="#portfolio" className="group px-8 py-4 rounded-xl bg-primary text-black font-bold text-base hover:bg-primary-400 hover:shadow-[0_0_20px_rgba(217,229,18,0.4)] transition-all flex items-center justify-center gap-2 relative overflow-hidden transform hover:-translate-y-1">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-                <span className="relative z-10 text-black">Solicitar Consultoría</span>
+                <span className="relative z-10 text-black">Ver Proyectos</span>
                 <ArrowRight className="group-hover:translate-x-1 transition-transform relative z-10 text-black" size={20} />
               </a>
-              <a href="#portfolio" className="px-8 py-4 rounded-xl bg-slate-900/50 border border-slate-600 text-white font-semibold text-base hover:bg-slate-800 hover:border-slate-500 transition-all flex items-center justify-center backdrop-blur-sm">
-                Ver Proyectos
+              <a href="#contact" className="px-8 py-4 rounded-xl bg-slate-900/50 border border-slate-600 text-white font-semibold text-base hover:bg-slate-800 hover:border-slate-500 transition-all flex items-center justify-center backdrop-blur-sm">
+                Contactar
               </a>
             </div>
             
             {/* Trust Badges */}
             <div className="pt-8 border-t border-slate-800/60 flex flex-col items-center lg:items-start gap-6 mb-6 sm:mb-8">
               <div className="flex flex-wrap gap-6 justify-center lg:justify-start">
-                <a href="#skills" className="flex items-center gap-2 text-sm font-semibold text-slate-400 hover:text-primary transition-colors group">
+                <a href="#portfolio" className="flex items-center gap-2 text-sm font-semibold text-slate-400 hover:text-primary transition-colors group">
                   <div className="p-1.5 rounded-md bg-slate-800/50 group-hover:bg-primary/20 transition-colors">
-                    <Zap size={16} className="text-slate-400 group-hover:text-primary transition-colors" />
+                    <BarChart3 size={16} className="text-slate-400 group-hover:text-primary transition-colors" />
                   </div>
-                  <span>Software</span>
+                  <span>Datos & BI</span>
                 </a>
-                <a href="#experience" className="flex items-center gap-2 text-sm font-semibold text-slate-400 hover:text-primary transition-colors group">
+                <a href="#automation" className="flex items-center gap-2 text-sm font-semibold text-slate-400 hover:text-primary transition-colors group">
                   <div className="p-1.5 rounded-md bg-slate-800/50 group-hover:bg-primary/20 transition-colors">
                     <Activity size={16} className="text-slate-400 group-hover:text-primary transition-colors" />
                   </div>
                   <span>Automatización</span>
                 </a>
-                <a href="#portfolio" className="flex items-center gap-2 text-sm font-semibold text-slate-400 hover:text-primary transition-colors group">
+                <a href="#skills" className="flex items-center gap-2 text-sm font-semibold text-slate-400 hover:text-primary transition-colors group">
                   <div className="p-1.5 rounded-md bg-slate-800/50 group-hover:bg-primary/20 transition-colors">
-                    <TrendingUp size={16} className="text-slate-400 group-hover:text-primary transition-colors" />
+                    <Zap size={16} className="text-slate-400 group-hover:text-primary transition-colors" />
                   </div>
-                  <span>Power BI</span>
+                  <span>Sistemas</span>
                 </a>
               </div>
 
@@ -163,9 +165,9 @@ const Hero = memo(() => {
 // KPI Card: muestra badges con contadores animados y CTA
 const KpiCard = memo(() => {
   // Valores de ejemplo — cámbialos por métricas reales cuando las tengas
-  const ahorroTarget = 37; // %
-  const activacionTarget = 64; // %
-  const proyectosTarget = 27; // cantidad
+  const ahorroTarget = 90; // % reducción de trabajo manual
+  const activacionTarget = 32; // % mejora en margen operativo
+  const proyectosTarget = 6; // sistemas en producción
 
   const useCountUp = (target: number, duration = 1400) => {
     const [value, setValue] = useState(0);
@@ -197,8 +199,8 @@ const KpiCard = memo(() => {
             {/* Header */}
             <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
                 <div>
-                   <h3 className="text-lg font-bold text-white">Impacto Real</h3>
-                   <p className="text-xs text-slate-400">Métricas acumuladas 2024-2025</p>
+                   <h3 className="text-lg font-bold text-white">Resultados Reales</h3>
+                   <p className="text-xs text-slate-400">Impacto acumulado 2024-2026</p>
                 </div>
                 <div className="p-2 rounded-lg bg-slate-800/50 text-primary">
                     <TrendingUp size={20} />
@@ -210,7 +212,7 @@ const KpiCard = memo(() => {
                 <div className="p-4 rounded-xl bg-slate-900/50 border border-slate-800 hover:border-primary/20 transition-colors">
                     <div className="flex items-center gap-2 mb-2 text-primary">
                         <Zap size={16} />
-                        <span className="text-xs font-semibold uppercase tracking-wider">Ahorro</span>
+                        <span className="text-xs font-semibold uppercase tracking-wider">Reducción manual</span>
                     </div>
                     <div className="text-3xl font-display font-bold text-white tracking-tight">
                         {ahorro}%
@@ -223,7 +225,7 @@ const KpiCard = memo(() => {
                 <div className="p-4 rounded-xl bg-slate-900/50 border border-slate-800 hover:border-secondary/20 transition-colors">
                     <div className="flex items-center gap-2 mb-2 text-secondary">
                         <Activity size={16} />
-                        <span className="text-xs font-semibold uppercase tracking-wider">Eficiencia</span>
+                        <span className="text-xs font-semibold uppercase tracking-wider">Optimización</span>
                     </div>
                     <div className="text-3xl font-display font-bold text-white tracking-tight">
                         +{activacion}%
@@ -235,7 +237,7 @@ const KpiCard = memo(() => {
 
                 <div className="col-span-2 p-4 rounded-xl bg-slate-900/50 border border-slate-800 flex items-center justify-between hover:border-slate-700 transition-colors">
                     <div>
-                        <div className="text-xs text-slate-400 font-medium uppercase tracking-wider mb-1">Proyectos Exitosos</div>
+                        <div className="text-xs text-slate-400 font-medium uppercase tracking-wider mb-1">Sistemas en Producción</div>
                         <div className="text-2xl font-display font-bold text-white">{proyectos}+</div>
                     </div>
                     <div className="h-10 w-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300">

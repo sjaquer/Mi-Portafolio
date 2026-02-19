@@ -10,9 +10,10 @@ import BusinessImpact from './components/BusinessImpact';
 import MobileNavigation from './components/MobileNavigation';
 
 // Lazy loading para todos los componentes no críticos
+const Portfolio = React.lazy(() => import('./components/Portfolio'));
+const AutomationData = React.lazy(() => import('./components/AutomationData'));
 const Skills = React.lazy(() => import('./components/Skills'));
 const Experience = React.lazy(() => import('./components/Experience'));
-const Portfolio = React.lazy(() => import('./components/Portfolio'));
 const Reviews = React.lazy(() => import('./components/Reviews'));
 const Footer = React.lazy(() => import('./components/Footer'));
 import { throttle } from './utils/throttle';
@@ -23,7 +24,7 @@ const App: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       // Added 'impact' section to scroll spy if needed, though usually part of home flow
-      const sections = ['home', 'skills', 'experience', 'portfolio', 'reviews'];
+      const sections = ['home', 'portfolio', 'automation', 'skills', 'experience', 'reviews'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -63,7 +64,7 @@ const App: React.FC = () => {
   return (
     <ErrorBoundary>
       <SEO 
-        title="Consultor en Transformación Digital"
+        title="Administrador — Datos, Automatización y Sistemas Digitales"
         pageType="home"
       />
       <ScrollProgressIndicator />
@@ -81,9 +82,10 @@ const App: React.FC = () => {
             <Hero />
             <BusinessImpact />
             <Suspense fallback={<LoadingState title="Cargando contenido..." description="Preparando experiencia" />}>
+              <Portfolio />
+              <AutomationData />
               <Skills />
               <Experience />
-              <Portfolio />
               <Reviews />
             </Suspense>
           </main>

@@ -10,17 +10,17 @@ export const experiences: Experience[] = [
     location: 'Lima, Perú',
     current: true,
     summary:
-      'Lidero la reingeniería total de la operación. Mi objetivo no es solo "mantener" el negocio, sino escalarlo mediante sistemas propios que eliminan ineficiencias humanas.',
+      'Reingeniería total de la operación mediante sistemas propios que eliminan ineficiencias y permiten escalabilidad.',
     techStack: [
-      'BizOps',
       'ERP In-House',
       'Reingeniería de Procesos',
-      'Gestión de Costos'
+      'Gestión de Costos',
+      'Automatización'
     ],
     responsibilities: [
-      'Digitalización Operativa: Diseño y despliegue de un ERP a medida que centraliza inventarios, recetas y ventas, eliminando el 90% del uso de papel y hojas de cálculo desconectadas.',
-      'Optimización de Márgenes: Reestructuración de la ingeniería de menú basada en data real de costos, incrementando el margen bruto operativo.',
-      'Estandarización: Creación de manuales de procedimientos y protocolos que permiten la replicabilidad del modelo de negocio (Franquiciabilidad).'
+      'Digitalización operativa: ERP a medida que centraliza inventarios, recetas y ventas — eliminación del 90% de papel y hojas de cálculo desconectadas.',
+      'Optimización de márgenes: Reestructuración de ingeniería de menú basada en data real de costos, incremento del margen bruto operativo.',
+      'Estandarización de procesos: Manuales de procedimientos y protocolos para replicabilidad del modelo de negocio.'
     ]
   },
   {
@@ -31,38 +31,38 @@ export const experiences: Experience[] = [
     duration: 'May 2025 - Nov 2025',
     location: 'Lima, Perú',
     summary:
-      'Transformé una operación "ciega" en una organización basada en datos. Implementé la infraestructura para monitorear la rentabilidad real de múltiples canales de venta.',
+      'Implementación de infraestructura de datos para monitorear rentabilidad real de múltiples canales de venta.',
     techStack: [
-      'Data Warehousing',
       'Power BI',
+      'Data Warehousing',
       'Proyección Financiera',
-      'Automatización'
+      'Automatización ETL'
     ],
     responsibilities: [
-      'Centralización de Data: Unificación de fuentes de datos dispersas (Shopify, Ads, Almacén) en una "Fuente Única de Verdad" para la gerencia.',
-      'Visibilidad Financiera: Desarrollo de dashboards automatizados para seguimiento de flujo de caja y P&L (Pérdidas y Ganancias) en tiempo real.',
-      'Eficiencia de Stock: Algoritmos de predicción de demanda para optimizar las compras y evitar sobre-stock (Dinero inmovilizado).'
+      'Centralización de data: Unificación de fuentes dispersas (Shopify, Ads, Almacén) en una fuente única de verdad para gerencia.',
+      'Visibilidad financiera: Dashboards automatizados para seguimiento de flujo de caja y P&L en tiempo real.',
+      'Predicción de demanda: Algoritmos para optimizar compras y reducir sobre-stock (capital inmovilizado).'
     ]
   },
   {
     id: '3',
-    title: 'Consultor de Logística Algorítmica',
+    title: 'Analista de Optimización Logística',
     company: 'Independiente',
-    role: 'Tech Consultant',
+    role: 'Analista Operativo',
     duration: 'Jun 2022 - Actualidad',
     location: 'Remoto',
     summary:
-      'Desarrollo soluciones matemáticas y de software para problemas logísticos complejos que las herramientas estándar no pueden resolver.',
+      'Desarrollo de soluciones algorítmicas para problemas logísticos complejos que las herramientas estándar no resuelven.',
     techStack: [
-      'Investigación Operativa',
-      'Algoritmos (Python)',
+      'Python',
+      'Google OR-Tools',
       'Optimización de Rutas',
-      'Simulación'
+      'Investigación Operativa'
     ],
     responsibilities: [
-      'Optimización de Transporte: Desarrollo de "Solvers" personalizados para problemas de ruteo de vehículos (VRP) y asignación de recursos.',
-      'Arquitectura de Soluciones: Diseño de sistemas modulares que se integran con la operación física existente sin interrumpirla.',
-      'Análisis de Viabilidad: Evaluación técnica y económica de proyectos de modernización tecnológica.'
+      'Optimización de transporte: Desarrollo de solvers personalizados para ruteo de vehículos (VRP) y asignación de recursos.',
+      'Arquitectura de soluciones: Diseño de sistemas modulares integrados con la operación física existente.',
+      'Análisis de viabilidad: Evaluación técnica y económica de proyectos de modernización tecnológica.'
     ]
   }
 ];
@@ -139,46 +139,81 @@ export const education: Education[] = [
 export const projects: Project[] = [
   {
     id: '1',
-    title: 'TaskZenith',
-    subtitle: 'Gestión de Tareas & Productividad IA',
+    title: 'Coralia Web',
+    subtitle: 'E-commerce + CRM + Automatización + IA',
     description:
-      'Herramienta central de gestión de tareas enfocada en la productividad y la "calma". Integra IA para priorización automática, posicionándose como un estándar de administración moderna.',
+      'Plataforma modular de e-commerce con CRM integrado, automatización operativa e integración de IA. Actualmente operando en producción con flujos reales de pedidos, clientes y métricas.',
     details: [
-      'Propósito: Centralizar la gestión operativa personal y de equipos.',
-      'Valor: Interfaz minimalista que reduce la carga cognitiva.',
-      'Tech: IA para clasificación y estimación de tiempos.'
+      'Plataforma completa: Catálogo, carrito, checkout y gestión de pedidos en producción.',
+      'CRM integrado: Seguimiento de clientes, historial de compras y segmentación automatizada.',
+      'IA aplicada: Recomendaciones de producto y asistente de atención al cliente.'
     ],
-    techStack: ['React', 'AI Integration', 'Productivity Tools', 'Node.js'],
+    techStack: ['React', 'Node.js', 'Firebase', 'IA Integration', 'Shopify API'],
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=1600',
+    category: 'plataforma',
+    featured: true,
+    year: '2025'
+  },
+  {
+    id: '2',
+    title: 'Dearel Intelligence Hub',
+    subtitle: 'Business Intelligence & Análisis Multifuente',
+    description:
+      'Plataforma de inteligencia comercial que unifica canales de venta. Pipeline de datos automatizado desde múltiples fuentes hacia dashboards ejecutivos para toma de decisiones basada en márgenes reales.',
+    details: [
+      'Pipeline ETL: Webhooks y automatización para centralizar datos de Shopify, Ads y Almacén.',
+      'Dashboard ejecutivo: Métricas de P&L, flujo de caja y rentabilidad por producto en tiempo real.',
+      'Impacto: Identificación de productos con margen negativo y optimización de inventario.'
+    ],
+    techStack: ['Power BI', 'Data Engineering', 'Webhooks', 'ETL', 'SQL'],
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1600',
+    category: 'business intelligence',
+    featured: true,
+    year: '2025'
+  },
+  {
+    id: '3',
+    title: 'Big Jack Manager',
+    subtitle: 'Sistema de Gestión Operativa Integral',
+    description:
+      'ERP a medida para gestión operativa de restaurante. Integra punto de venta, control de inventario, flujo de caja y dashboard de rendimiento en una sola plataforma.',
+    details: [
+      'POS integrado: Registro de ventas en tiempo real con control de turnos y cierre de caja.',
+      'Inventario inteligente: Control de insumos, recetas y alertas de reposición automáticas.',
+      'Dashboard financiero: Flujo de caja diario, costos operativos y margen por producto.'
+    ],
+    techStack: ['React', 'Firebase', 'Node.js', 'Firestore', 'Dashboard'],
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1600',
+    category: 'plataforma',
+    featured: true,
+    year: '2025'
+  },
+  {
+    id: '4',
+    title: 'TaskZenith',
+    subtitle: 'Productividad con Roles y Arquitectura Modular',
+    description:
+      'Plataforma de gestión de tareas con sistema de roles, sincronización en tiempo real y arquitectura modular. Diseñada para equipos que necesitan control granular de productividad.',
+    details: [
+      'Roles y permisos: Sistema de acceso por niveles para equipos multifuncionales.',
+      'Sincronización: Datos en tiempo real entre múltiples usuarios y dispositivos.',
+      'IA: Clasificación automática y estimación inteligente de tiempos.'
+    ],
+    techStack: ['React', 'TypeScript', 'Node.js', 'AI Integration'],
     image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=1600',
     category: 'desarrollo',
     year: '2025'
   },
   {
-    id: '2',
-    title: 'DentalFlow-Student',
-    subtitle: 'ERP Clínico Integral',
+    id: '5',
+    title: 'Optimizador Logístico (ORDEV)',
+    subtitle: 'Optimización Algorítmica & CP-SAT',
     description:
-      'Sistema robusto para la gestión vertical de clínicas dentales. Administra desde historias clínicas y citas hasta inventarios y recursos humanos.',
+      'Motor de optimización logística que utiliza Google OR-Tools y CP-SAT para minimizar costos operativos de transporte mediante programación por restricciones.',
     details: [
-      'Propósito: Digitalización total del flujo de trabajo clínico.',
-      'Valor: Solución "All-in-One" para administración médica.',
-      'Funcionalidad: Control de pacientes, empleados y stock en tiempo real.'
-    ],
-    techStack: ['Full Stack', 'Database Design', 'Healthcare Soft', 'Management'],
-    image: 'https://images.unsplash.com/photo-1588776813186-600f91643418?auto=format&fit=crop&q=80&w=1600',
-    category: 'desarrollo',
-    year: '2024'
-  },
-  {
-    id: '3',
-    title: 'Optimizador de Vuelos (ORDEV)',
-    subtitle: 'Logística Algorítmica & CP-SAT',
-    description:
-      'Proyecto de alta complejidad lógica que utiliza Google OR-Tools y el motor CP-SAT para resolver problemas de optimización logística y ruteo.',
-    details: [
-      'Importancia Técnica: Implementación avanzada de algoritmos de Investigación de Operaciones.',
-      'Tech: Python, Google OR-Tools, Constraint Programming.',
-      'Impacto: Minimización matemática de costos operativos.'
+      'Investigación Operativa: Implementación avanzada de algoritmos de ruteo vehicular (VRP).',
+      'Minimización de costos: Reducción matemática de costos logísticos mediante restricciones.',
+      'Escalable: Arquitectura modular adaptable a diferentes escenarios de distribución.'
     ],
     techStack: ['Python', 'Google OR-Tools', 'CP-SAT', 'Algorithms'],
     image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80&w=1600',
@@ -187,72 +222,53 @@ export const projects: Project[] = [
     year: '2024'
   },
   {
-    id: '4',
-    title: 'Digital Bakery Commerce',
-    subtitle: 'Vitrina Digital & Suscripciones',
-    description:
-      'Plataforma de comercio electrónico adaptable para gestión de catálogos y pedidos. Diseñada para modelos de negocio por suscripción o venta directa.',
-    details: [
-      'Valor: Adaptabilidad a diversos nichos (panaderías, floristerías, etc.).',
-      'Funcionalidad: Gestión de catálogo dinámico y tracking de pedidos.'
-    ],
-    techStack: ['E-commerce', 'React', 'Payment Gateways', 'UX/UI'],
-    image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=1600',
-    category: 'desarrollo',
-    year: '2025'
-  },
-  {
-    id: '5',
-    title: 'Digital Bakery Frontend',
-    subtitle: 'Arquitectura SPA Moderna',
-    description:
-      'Demostración técnica de dominio del stack frontend moderno. Single Page Application (SPA) que prioriza el rendimiento, la escalabilidad y la experiencia de usuario.',
-    details: [
-      'Importancia Técnica: Clean Code y mejores prácticas en React.',
-      'Stack: React, TypeScript, Vite, Tailwind CSS.',
-      'Performance: Optimización de Core Web Vitals.'
-    ],
-    techStack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'],
-    image: 'https://images.unsplash.com/photo-1555099962-4199c345e5dd?auto=format&fit=crop&q=80&w=1600',
-    category: 'desarrollo',
-    year: '2025'
-  },
-  {
     id: '6',
-    title: 'Dearel Intelligence Hub',
-    subtitle: 'Business Intelligence & P&L',
+    title: 'HoneyNotes',
+    subtitle: 'Producto Experimental UX + IA',
     description:
-      'Plataforma de inteligencia comercial que unifica canales de venta. Permite pasar de "vender por intuición" a "vender por margen de contribución".',
+      'Aplicación experimental de notas inteligentes que combina diseño UX minimalista con capacidades de IA para organización automática y generación de resúmenes.',
     details: [
-      'Problema: Ceguera financiera sobre la rentabilidad real.',
-      'Solución: Pipeline de datos automatizado hacia Power BI.',
-      'Impacto: Identificación de productos con margen negativo.'
+      'UX Research: Diseño centrado en reducir la carga cognitiva del usuario.',
+      'IA integrada: Categorización automática y generación de resúmenes de notas.',
+      'Experimental: Laboratorio para probar nuevas interacciones de IA con el usuario.'
     ],
-    techStack: ['Power BI', 'Data Engineering', 'Financial Analysis'],
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1600',
-    category: 'business intelligence',
+    techStack: ['React', 'AI/NLP', 'TypeScript', 'UX Design'],
+    image: 'https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&q=80&w=1600',
+    category: 'desarrollo',
     year: '2025'
   }
 ];
 
 export const skills: Skill[] = [
-  // GRUPO 1: EL CEREBRO OPERATIVO
-  { name: 'Reingeniería de Procesos', category: 'Eficiencia Operativa', icon: 'settings' },
-  { name: 'Gestión de Cadena de Suministro', category: 'Eficiencia Operativa', icon: 'truck' },
-  { name: 'Ingeniería de Costos', category: 'Eficiencia Operativa', icon: 'dollar-sign' },
-  { name: 'Liderazgo de Equipos', category: 'Eficiencia Operativa', icon: 'users' },
+  // Frontend
+  { name: 'React', category: 'Frontend', icon: 'code' },
+  { name: 'Next.js', category: 'Frontend', icon: 'layout' },
+  { name: 'TypeScript', category: 'Frontend', icon: 'code' },
+  { name: 'Tailwind CSS', category: 'Frontend', icon: 'layout' },
 
-  // GRUPO 2: LA INTELIGENCIA
-  { name: 'Business Intelligence', category: 'Inteligencia de Negocios', icon: 'bar-chart' },
-  { name: 'Modelado de Datos (SQL)', category: 'Inteligencia de Negocios', icon: 'database' },
-  { name: 'Análisis Financiero', category: 'Inteligencia de Negocios', icon: 'trending-up' },
-  { name: 'Estrategia de Growth', category: 'Inteligencia de Negocios', icon: 'search' },
+  // Backend & APIs
+  { name: 'Node.js', category: 'Backend & APIs', icon: 'server' },
+  { name: 'Firebase', category: 'Backend & APIs', icon: 'database' },
+  { name: 'Firestore', category: 'Backend & APIs', icon: 'database' },
+  { name: 'SQL Server', category: 'Backend & APIs', icon: 'database' },
 
-  // GRUPO 3: LA HERRAMIENTA (TECH)
-  { name: 'Desarrollo Full Stack (React/Node)', category: 'Desarrollo de Producto', icon: 'code' },
-  { name: 'Arquitectura de Software', category: 'Desarrollo de Producto', icon: 'layout' },
-  { name: 'Automatización (APIs)', category: 'Desarrollo de Producto', icon: 'cpu' },
-  { name: 'Algoritmos (Python)', category: 'Desarrollo de Producto', icon: 'terminal' }
+  // Business Intelligence
+  { name: 'Power BI', category: 'Business Intelligence', icon: 'bar-chart' },
+  { name: 'Excel Avanzado', category: 'Business Intelligence', icon: 'trending-up' },
+  { name: 'DAX', category: 'Business Intelligence', icon: 'bar-chart' },
+  { name: 'Modelado de Datos', category: 'Business Intelligence', icon: 'database' },
+
+  // Automatización
+  { name: 'Python', category: 'Automatización', icon: 'terminal' },
+  { name: 'Webhooks', category: 'Automatización', icon: 'cpu' },
+  { name: 'ETL', category: 'Automatización', icon: 'cpu' },
+  { name: 'Scripts de Automatización', category: 'Automatización', icon: 'terminal' },
+
+  // Integraciones
+  { name: 'Shopify API', category: 'Integraciones', icon: 'settings' },
+  { name: 'WhatsApp API', category: 'Integraciones', icon: 'settings' },
+  { name: 'Zadarma', category: 'Integraciones', icon: 'settings' },
+  { name: 'Google OR-Tools', category: 'Integraciones', icon: 'cpu' }
 ];
 
 export const testimonials = [

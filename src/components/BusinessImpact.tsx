@@ -29,7 +29,7 @@ const BusinessImpact: React.FC = () => {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-5xl font-bold text-[#f5fcff] mb-6 font-display tracking-tight"
           >
-            Simulando el <span className="text-secondary drop-shadow-[0_0_8px_rgba(56,97,215,0.4)]">Éxito Real</span>
+            Experiencia Aplicada en <span className="text-secondary drop-shadow-[0_0_8px_rgba(56,97,215,0.4)]">Entornos Reales</span>
           </motion.h2>
           
           <motion.p
@@ -39,9 +39,9 @@ const BusinessImpact: React.FC = () => {
             transition={{ delay: 0.2 }}
             className="text-xl text-slate-300 leading-relaxed"
           >
-            Mis soluciones transforman datos confusos en decisiones claras.
+            Mis proyectos operan en producción, resuelven problemas reales e integran datos, automatización y experiencia de usuario.
             <br />
-            <span className="font-semibold text-primary">Interactúa con este demo</span> y visualiza el control que podrías tener sobre tu negocio.
+            <span className="font-semibold text-primary">Interactúa con este demo</span> para visualizar el tipo de control operativo que construyo.
           </motion.p>
         </div>
 

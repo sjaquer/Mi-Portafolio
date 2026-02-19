@@ -17,7 +17,7 @@ const Experience = () => {
                 Trayectoria Profesional
             </h2>
             <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-                Evolución estratégica desde roles operativos hasta liderazgo tecnológico.
+                Resultados concretos en cada rol: automatización, control de datos y mejora operativa.
             </p>
         </motion.div>
 

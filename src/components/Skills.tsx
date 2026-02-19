@@ -1,31 +1,47 @@
-// src/components/Skills.tsx - Versión optimizada y simplificada
-import { TrendingUp, BarChart3, Code2, Sparkles } from 'lucide-react';
+// src/components/Skills.tsx - Versión corporativa
+import { Server, BarChart3, Code2, Sparkles, Cpu, Globe } from 'lucide-react';
 
-// Definición de categorías con sus tecnologías
+// Definición de categorías corporativas
 const skillCategories = [
   {
-    id: 'operations',
-    title: 'Eficiencia Operativa',
-    subtitle: 'Optimizo procesos y reduzco costos',
-    icon: TrendingUp,
+    id: 'frontend',
+    title: 'Frontend',
+    subtitle: 'Interfaces modernas y responsivas',
+    icon: Globe,
+    color: '#d9e512',
+    skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Vite']
+  },
+  {
+    id: 'backend',
+    title: 'Backend & APIs',
+    subtitle: 'Servicios y lógica de negocio',
+    icon: Server,
     color: '#10B981',
-    skills: ['BizOps', 'Reingeniería', 'Supply Chain', 'Costos', 'Liderazgo']
+    skills: ['Node.js', 'Firebase', 'Firestore', 'REST APIs', 'SQL Server']
   },
   {
-    id: 'intelligence',
-    title: 'Inteligencia de Negocios',
-    subtitle: 'Transformo datos en decisiones',
+    id: 'bi',
+    title: 'Business Intelligence',
+    subtitle: 'Análisis y visualización de datos',
     icon: BarChart3,
-    color: '#3861d7', // Brand Secondary
-    skills: ['Power BI', 'SQL Server', 'Análisis Financiero', 'KPIs', 'ETL']
+    color: '#3861d7',
+    skills: ['Power BI', 'Excel Avanzado', 'DAX', 'Modelado de Datos', 'KPIs']
   },
   {
-    id: 'development',
-    title: 'Desarrollo de Producto',
-    subtitle: 'Construyo soluciones escalables',
+    id: 'automation',
+    title: 'Automatización',
+    subtitle: 'Procesos y flujos automatizados',
+    icon: Cpu,
+    color: '#8B5CF6',
+    skills: ['Python', 'Webhooks', 'ETL', 'Scripts', 'Cron Jobs']
+  },
+  {
+    id: 'integrations',
+    title: 'Integraciones',
+    subtitle: 'Conexión entre plataformas',
     icon: Code2,
-    color: '#d9e512', // Brand Primary
-    skills: ['React', 'TypeScript', 'Node.js', 'Python', 'APIs']
+    color: '#F59E0B',
+    skills: ['Shopify API', 'WhatsApp API', 'Zadarma', 'Google OR-Tools', 'APIs externas']
   }
 ];
 
@@ -41,15 +57,15 @@ const Skills = () => {
             Expertise
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-white font-display mb-3">
-            Stack Tecnológico
+            Arquitectura y Herramientas
           </h2>
           <p className="text-slate-400 max-w-lg mx-auto text-sm sm:text-base">
-            Herramientas que domino para resolver problemas de negocio.
+            Stack técnico orientado a resolver problemas de negocio con datos y sistemas.
           </p>
         </div>
 
         {/* Grid de categorías - Mejorado visualmente */}
-        <div className="grid md:grid-cols-3 gap-5 sm:gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
           {skillCategories.map((category) => {
             const Icon = category.icon;
             return (
@@ -95,7 +111,7 @@ const Skills = () => {
             Tecnologías principales
           </p>
           <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
-            {['React', 'TypeScript', 'Node.js', 'Python', 'Power BI', 'SQL Server', 'Firebase', 'Tailwind CSS'].map((tech) => (
+            {['React', 'TypeScript', 'Node.js', 'Python', 'Power BI', 'SQL Server', 'Firebase', 'Excel Avanzado'].map((tech) => (
               <span
                 key={tech}
                 className="px-5 py-2.5 bg-slate-800/50 text-slate-200 text-base font-medium rounded-full border border-slate-700/40 hover:border-primary/40 hover:text-primary hover:bg-slate-800 transition-all duration-200 cursor-default"

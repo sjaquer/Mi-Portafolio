@@ -14,10 +14,10 @@ const Reviews = () => {
            className="text-center mb-16"
         >
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#f5fcff] font-display">
-                Testimonios
+                Respaldo Profesional
             </h2>
             <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-                Lo que dicen mis clientes y colaboradores sobre el impacto de mi trabajo.
+                Feedback de organizaciones donde he generado impacto directo en operaciones y datos.
             </p>
         </motion.div>
 

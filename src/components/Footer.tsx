@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
                     <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-primary-500/20 group-hover:shadow-primary-500/40 transition-shadow">
                         <img 
                             src="/icon0.svg" 
-                            alt="Sebastián Jaque - Consultor Transformación Digital Lima"
+                            alt="Sebastián Jaque - Datos, Automatización y Sistemas Digitales"
                             width={40}
                             height={40}
                             className="w-full h-full object-cover"
@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
             </a>
             
             <p className="text-slate-300 mt-2 max-w-sm leading-relaxed">
-                Consultor especializado en <a href="#portfolio" onClick={(e) => { e.preventDefault(); scrollToSection('#portfolio'); }} className="text-primary hover:underline">transformación digital</a>, desarrollo de <a href="#skills" onClick={(e) => { e.preventDefault(); scrollToSection('#skills'); }} className="text-primary hover:underline">software</a> y <a href="#experience" onClick={(e) => { e.preventDefault(); scrollToSection('#experience'); }} className="text-primary hover:underline">automatización de operaciones</a> para empresas.
+                Administrador con enfoque en <a href="#automation" onClick={(e) => { e.preventDefault(); scrollToSection('#automation'); }} className="text-primary hover:underline">datos y automatización</a>, <a href="#skills" onClick={(e) => { e.preventDefault(); scrollToSection('#skills'); }} className="text-primary hover:underline">sistemas digitales</a> y <a href="#experience" onClick={(e) => { e.preventDefault(); scrollToSection('#experience'); }} className="text-primary hover:underline">optimización operativa</a>.
             </p>
             
             <div className="flex flex-col gap-3 text-sm text-slate-600 dark:text-slate-300">
@@ -120,15 +120,15 @@ const Footer: React.FC = () => {
 
           {/* Services Column - Nuevo */}
           <div>
-            <h4 className="text-[#f5fcff] font-bold mb-6">Servicios</h4>
+            <h4 className="text-[#f5fcff] font-bold mb-6">Áreas de Enfoque</h4>
             <ul className="space-y-4 text-slate-600 dark:text-slate-400 text-sm">
               <li className="flex items-center gap-2">
                 <Briefcase size={14} className="text-primary-500" />
-                <span>Consultoría BizOps</span>
+                <span>Operaciones & Control</span>
               </li>
               <li className="flex items-center gap-2">
                 <Code size={14} className="text-secondary-500" />
-                <span>Desarrollo de Software</span>
+                <span>Datos & Business Intelligence</span>
               </li>
               <li className="flex items-center gap-2">
                 <FileText size={14} className="text-green-500" />
@@ -139,15 +139,15 @@ const Footer: React.FC = () => {
 
           {/* Contact / CTA Column */}
           <div className="md:col-start-4">
-            <h4 className="text-[#f5fcff] font-bold mb-6">Contáctame</h4>
+            <h4 className="text-[#f5fcff] font-bold mb-6">Contacto</h4>
             <p className="text-slate-500 dark:text-slate-400 text-sm mb-4">
-                ¿Listo para escalar tu negocio con tecnología?
+                Abierto a oportunidades en finanzas, BI, operaciones e innovación.
             </p>
             <a 
                 href={`mailto:${siteContent.footer.contactEmail}`}
                 className="inline-flex items-center justify-center w-full px-4 py-2.5 rounded-lg bg-[#f5fcff] text-[#1e1e1e] font-bold text-sm hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 transition-all"
             >
-                Iniciar Conversación
+                Enviar Mensaje
             </a>
           </div>
         </div>

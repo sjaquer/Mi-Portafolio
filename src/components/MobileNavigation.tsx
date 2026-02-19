@@ -1,6 +1,6 @@
 // src/components/MobileNavigation.tsx - Versión optimizada sin lag
 import React, { memo, useCallback } from 'react';
-import { Home, Briefcase, Layers, Mail, Sparkles } from 'lucide-react';
+import { Home, Briefcase, Layers, Mail, Database } from 'lucide-react';
 
 interface MobileNavigationProps {
   activeSection: string;
@@ -9,9 +9,9 @@ interface MobileNavigationProps {
 
 const navItems = [
   { id: 'home', icon: Home, label: 'Inicio' },
-  { id: 'skills', icon: Sparkles, label: 'Stack' },
-  { id: 'experience', icon: Briefcase, label: 'Exp.' },
   { id: 'portfolio', icon: Layers, label: 'Proyectos' },
+  { id: 'automation', icon: Database, label: 'Data' },
+  { id: 'experience', icon: Briefcase, label: 'Exp.' },
   { id: 'contact', icon: Mail, label: 'Contacto' },
 ];
 

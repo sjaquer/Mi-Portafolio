@@ -38,9 +38,10 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
 
   const navItems = [
       { id: 'home', label: 'Inicio' },
-      { id: 'skills', label: 'Stack' },
-      { id: 'experience', label: 'Trayectoria' },
       { id: 'portfolio', label: 'Proyectos' },
+      { id: 'automation', label: 'Data' },
+      { id: 'skills', label: 'Herramientas' },
+      { id: 'experience', label: 'Trayectoria' },
   ];
 
   return (
@@ -66,7 +67,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
              <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-white/5 group-hover:shadow-primary/20 transition-shadow">
                 <img 
                   src="/icon0.svg" 
-                  alt="Sebastián Jaque - Consultor Transformación Digital Lima"
+                  alt="Sebastián Jaque - Datos, Automatización y Sistemas Digitales"
                   width={40}
                   height={40}
                   className="w-full h-full object-cover"
@@ -209,7 +210,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
                             © {new Date().getFullYear()} Sebastián Jaque
                         </p>
                         <p className="text-slate-600 text-xs text-center mt-1">
-                            Consultor en Transformación Digital
+                            Datos · Automatización · Sistemas Digitales
                         </p>
                     </div>
                 </motion.div>

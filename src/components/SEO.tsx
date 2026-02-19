@@ -30,25 +30,25 @@ const SEO: React.FC<SEOProps> = ({
 }) => {
   const siteUrl = 'https://sjaquer.is-a.dev';
   const defaultImage = `${siteUrl}/web-app-manifest-512x512.png`;
-  const defaultDescription = 'Consultor en Transformación Digital en Lima, Perú. Desarrollo software, dashboards Power BI y automatización de procesos. BizOps & Tech Strategist certificado.';
+  const defaultDescription = 'Sebastián Jaque — Administrador con enfoque en Datos, Automatización y Sistemas Digitales. Soluciones tecnológicas para optimizar operaciones y mejorar la toma de decisiones.';
   
   // Títulos optimizados por tipo de página para mejor CTR
   const pageTitles: Record<string, string> = {
-    home: 'Sebastián Jaque | Consultor Transformación Digital Lima Perú',
-    portfolio: 'Proyectos y Casos de Éxito | Sebastián Jaque',
-    contact: 'Contacto - Solicita una Consultoría | Sebastián Jaque',
-    about: 'Sobre Mí - Trayectoria Profesional | Sebastián Jaque',
-    skills: 'Stack Tecnológico y Habilidades | Sebastián Jaque',
+    home: 'Sebastián Jaque | Administrador — Datos, Automatización y Sistemas Digitales',
+    portfolio: 'Proyectos en Producción | Sebastián Jaque',
+    contact: 'Contacto | Sebastián Jaque',
+    about: 'Trayectoria Profesional | Sebastián Jaque',
+    skills: 'Arquitectura y Herramientas | Sebastián Jaque',
     experience: 'Experiencia Profesional | Sebastián Jaque'
   };
 
   const pageDescriptions: Record<string, string> = {
     home: defaultDescription,
-    portfolio: 'Descubre proyectos de transformación digital: ERPs personalizados, dashboards Power BI y automatización de procesos en Lima, Perú.',
-    contact: 'Contacta a Sebastián Jaque para consultoría en transformación digital, desarrollo de software o automatización de procesos en Lima.',
-    about: 'Conoce la trayectoria de Sebastián Jaque como consultor en transformación digital y desarrollo de software en Lima, Perú.',
-    skills: 'Stack tecnológico: React, TypeScript, Node.js, Python, Power BI, SQL Server y más. Herramientas para transformación digital.',
-    experience: 'Experiencia liderando proyectos de transformación digital en Big Jack, Dearel y consultoría independiente.'
+    portfolio: 'Proyectos reales en producción: plataformas e-commerce, dashboards de BI, ERPs operativos y sistemas de automatización.',
+    contact: 'Contacta a Sebastián Jaque. Abierto a oportunidades en finanzas, BI, operaciones e innovación corporativa.',
+    about: 'Trayectoria profesional de Sebastián Jaque en datos, automatización y sistemas digitales.',
+    skills: 'Stack técnico: React, TypeScript, Node.js, Python, Power BI, SQL Server, Firebase y más.',
+    experience: 'Experiencia en operaciones, business intelligence y automatización en Big Jack, Dearel y proyectos independientes.'
   };
 
   const pageTitle = title || pageTitles[pageType] || pageTitles.home;
@@ -62,8 +62,8 @@ const SEO: React.FC<SEOProps> = ({
         return {
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          "name": "Proyectos de Transformación Digital - Sebastián Jaque",
-          "description": "Software, dashboards y automatizaciones desarrollados para resolver problemas reales de negocio",
+          "name": "Proyectos en Producción - Sebastián Jaque",
+          "description": "Plataformas, dashboards y sistemas de automatización operando en entornos reales",
           "url": `${siteUrl}/#portfolio`,
           "mainEntity": {
             "@type": "ItemList",
@@ -71,20 +71,20 @@ const SEO: React.FC<SEOProps> = ({
               {
                 "@type": "ListItem",
                 "position": 1,
-                "name": "Big Jack O.S.",
-                "description": "Sistema Operativo Centralizado para restaurantes"
+                "name": "Coralia Web",
+                "description": "Plataforma e-commerce con CRM e integración de IA"
               },
               {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "Suite de Logística Aérea",
-                "description": "Optimización matemática de costos operativos"
+                "name": "Dearel Intelligence Hub",
+                "description": "Business Intelligence y análisis multifuente"
               },
               {
                 "@type": "ListItem",
                 "position": 3,
-                "name": "Dearel Intelligence Hub",
-                "description": "Dashboards de rentabilidad con Power BI"
+                "name": "Big Jack Manager",
+                "description": "Sistema de gestión operativa integral"
               }
             ]
           }
@@ -94,8 +94,8 @@ const SEO: React.FC<SEOProps> = ({
         return {
           "@context": "https://schema.org",
           "@type": "ItemList",
-          "name": "Stack Tecnológico - Sebastián Jaque",
-          "description": "Herramientas y tecnologías para transformación digital",
+          "name": "Arquitectura y Herramientas - Sebastián Jaque",
+          "description": "Stack técnico para datos, automatización y sistemas digitales",
           "url": `${siteUrl}/#skills`,
           "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": "React & TypeScript" },
@@ -110,7 +110,7 @@ const SEO: React.FC<SEOProps> = ({
           "@context": "https://schema.org",
           "@type": "ItemList",
           "name": "Experiencia Profesional - Sebastián Jaque",
-          "description": "Trayectoria en transformación digital y consultoría",
+          "description": "Trayectoria en operaciones, datos y automatización",
           "url": `${siteUrl}/#experience`,
           "itemListElement": [
             {
@@ -139,7 +139,7 @@ const SEO: React.FC<SEOProps> = ({
           "@context": "https://schema.org",
           "@type": "ContactPage",
           "name": "Contacto - Sebastián Jaque",
-          "description": "Solicita una consultoría en transformación digital",
+          "description": "Abierto a oportunidades en finanzas, BI, operaciones e innovación",
           "url": `${siteUrl}/#contact`,
           "mainEntity": {
             "@type": "Person",
