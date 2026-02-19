@@ -150,7 +150,7 @@ export const projects: Project[] = [
       'CRM integrado: Seguimiento de clientes, historial de compras y segmentación automatizada.',
       'IA aplicada: Recomendaciones de producto y asistente de atención al cliente.'
     ],
-    techStack: ['React', 'Node.js', 'Firebase', 'IA Integration', 'Shopify API'],
+    techStack: ['React', 'Node.js', 'Firebase', 'IA Integration'],
     image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=1600',
     category: 'plataforma',
     featured: true,
@@ -169,7 +169,7 @@ export const projects: Project[] = [
       'Dashboard ejecutivo: Métricas de P&L, flujo de caja y rentabilidad por producto en tiempo real.',
       'Impacto: Identificación de productos con margen negativo y optimización de inventario.'
     ],
-    techStack: ['Power BI', 'Data Engineering', 'Webhooks', 'ETL', 'SQL'],
+    techStack: ['Data Engineering', 'Webhooks', 'ETL', 'SQL', 'Shopify API'],
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1600',
     category: 'business intelligence',
     featured: true,
