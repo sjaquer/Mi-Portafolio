@@ -147,24 +147,27 @@ const DashboardSidebar = ({ currentView, setView, isOpen }: any) => {
                             key={item.id}
                             onClick={() => setView(item.id)}
                             className={`
-                                flex items-center gap-3 px-4 md:px-3 py-2 md:py-3 rounded-xl transition-all duration-200 group shrink-0
+                                flex items-center gap-3 px-4 md:px-3 py-2 md:py-3 rounded-xl transition-all duration-300 group shrink-0 relative overflow-hidden
                                 ${isActive 
-                                    ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 font-medium shadow-sm' 
-                                    : 'text-slate-400 hover:bg-[#202020] hover:text-slate-200'
+                                    ? 'bg-gradient-to-r from-primary/20 to-transparent text-primary font-bold shadow-lg shadow-primary/5' 
+                                    : 'text-slate-400 hover:bg-[#202020] hover:text-slate-200 hover:pl-5'
                                 }
                             `}
                         >
-                            <item.icon size={20} className={isActive ? 'text-primary-600 dark:text-primary-400' : 'text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300'} />
+                            {isActive && (
+                                <motion.div 
+                                    layoutId="active-bg"
+                                    className="absolute inset-y-0 left-0 w-1 bg-primary rounded-r-full"
+                                />
+                            )}
+                            <item.icon size={20} className={`transition-colors duration-300 ${isActive ? 'text-primary drop-shadow-[0_0_8px_rgba(217,229,18,0.5)]' : 'text-slate-400 group-hover:text-slate-300'}`} />
                             <span className={`
-                                whitespace-nowrap text-sm md:text-base
+                                whitespace-nowrap text-sm md:text-base transition-opacity
                                 ${isOpen ? 'md:block' : 'md:hidden'}
                                 block
                             `}>
                                 {item.label}
                             </span>
-                             {isActive && isOpen && (
-                                <motion.div layoutId="active-indicator" className="hidden md:block ml-auto w-1.5 h-1.5 rounded-full bg-primary-500" />
-                            )}
                         </button>
                     );
                 })}
@@ -362,18 +365,22 @@ const UsersView = () => (
 
 const StatCard = ({ title, value, trend, trendUp, icon: Icon }: any) => {
     return (
-        <div className="bg-[#171717] p-5 rounded-2xl border border-slate-800 shadow-sm hover:shadow-lg transition-transform hover:-translate-y-1 group">
-            <div className="flex justify-between items-start mb-4">
-                <div className="p-2.5 bg-[#202020] rounded-lg text-slate-400 group-hover:text-primary group-hover:bg-primary/10 transition-colors">
-                     {Icon && <Icon size={20} />}
+        <div className="bg-[#171717] p-5 rounded-2xl border border-slate-800 shadow-sm hover:shadow-[0_0_20px_rgba(217,229,18,0.1)] hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
+             <div className="absolute top-0 right-0 w-20 h-20 bg-primary/5 rounded-bl-full -mr-10 -mt-10 transition-transform group-hover:scale-150" />
+            
+            <div className="relative z-10">
+                <div className="flex justify-between items-start mb-4">
+                    <div className="p-2.5 bg-[#202020] rounded-lg text-slate-400 group-hover:text-primary group-hover:bg-primary/10 transition-colors duration-300 shadow-inner">
+                        {Icon && <Icon size={20} />}
+                    </div>
+                    <div className={`text-xs font-bold px-2 py-1 rounded-full flex items-center gap-1 ${trendUp ? 'bg-green-50 text-green-600 dark:bg-green-900/20 dark:text-green-400 border border-green-200 dark:border-green-800' : 'bg-red-50 text-red-600 border border-red-200'}`}>
+                        {trend} {trendUp ? <ArrowUpRight size={12} /> : <ArrowUpRight className="rotate-90" size={12} />}
+                    </div>
                 </div>
-                <div className={`text-xs font-bold px-2 py-1 rounded-full flex items-center gap-1 ${trendUp ? 'bg-green-50 text-green-600 dark:bg-green-900/20 dark:text-green-400' : 'bg-red-50 text-red-600'}`}>
-                    {trend} {trendUp ? <ArrowUpRight size={12} /> : <ArrowUpRight className="rotate-90" size={12} />}
+                <div>
+                    <p className="text-slate-500 dark:text-slate-400 text-sm font-medium mb-1">{title}</p>
+                    <h4 className="text-2xl font-bold text-[#f5fcff] tracking-tight group-hover:text-white transition-colors">{value}</h4>
                 </div>
-            </div>
-            <div>
-                <p className="text-slate-500 dark:text-slate-400 text-sm font-medium mb-1">{title}</p>
-                <h4 className="text-2xl font-bold text-[#f5fcff] tracking-tight">{value}</h4>
             </div>
         </div>
     )
