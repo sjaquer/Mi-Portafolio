@@ -154,7 +154,8 @@ export const projects: Project[] = [
     image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=1600',
     category: 'plataforma',
     featured: true,
-    year: '2025'
+    year: '2025',
+    liveUrl: 'https://www.coraliadulcedetalle.com/'
   },
   {
     id: '2',
@@ -192,7 +193,8 @@ export const projects: Project[] = [
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1600',
     category: 'plataforma',
     featured: true,
-    year: '2025'
+    year: '2025',
+    liveUrl: 'https://bigjack-rp.vercel.app/'
   },
   {
     id: '4',
@@ -210,7 +212,8 @@ export const projects: Project[] = [
     techStack: ['React', 'TypeScript', 'Node.js', 'AI Integration'],
     image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=1600',
     category: 'desarrollo',
-    year: '2025'
+    year: '2025',
+    liveUrl: 'https://task-zenith-nu.vercel.app/'
   },
   {
     id: '5',
@@ -247,7 +250,8 @@ export const projects: Project[] = [
     techStack: ['React', 'AI/NLP', 'TypeScript', 'UX Design'],
     image: 'https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&q=80&w=1600',
     category: 'desarrollo',
-    year: '2025'
+    year: '2025',
+    liveUrl: 'https://honeynotes.vercel.app/'
   }
 ];
 
