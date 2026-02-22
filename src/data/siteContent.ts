@@ -1,13 +1,13 @@
 export const siteContent = {
   brand: {
     name: 'Sebastián Jaque',
-    subtitle: 'Datos · Automatización · Sistemas Digitales',
+    subtitle: 'Operaciones · Datos · Automatización',
     logo: '/icon0.svg'
   },
   seo: {
-    title: 'Sebastián Jaque | Administrador — Datos, Automatización y Sistemas Digitales',
-    description: 'Sebastián Jaque — Administrador con enfoque en datos, automatización y sistemas digitales. Desarrollo sistemas y herramientas orientadas a optimizar procesos, centralizar información y generar indicadores clave para la toma de decisiones.',
-    keywords: 'Sebastián Jaque, administración, datos, automatización, sistemas digitales, Power BI, business intelligence, operaciones, Lima, Perú',
+    title: 'Sebastián Jaque | Analista de Operaciones y Datos',
+    description: 'Sebastián Jaque — Joven profesional con enfoque en operaciones, análisis de datos y automatización de procesos. Construyo herramientas y sistemas para optimizar control operativo y apoyar la toma de decisiones.',
+    keywords: 'Sebastián Jaque, operaciones, datos, automatización, Power BI, business intelligence, analista, Lima, Perú',
     url: 'https://sjaquer.is-a.dev/',
     image: 'https://sjaquer.is-a.dev/web-app-manifest-512x512.png'
   },
@@ -20,26 +20,26 @@ export const siteContent = {
     { id: 'contact', label: 'Contacto' }
   ],
   hero: {
-    title: 'Administrador con enfoque en Datos, Automatización y Sistemas Digitales',
-    subtitle: 'Desarrollo sistemas y herramientas orientadas a optimizar procesos, centralizar información y generar indicadores clave para la toma de decisiones.',
+    title: 'Analista de Operaciones y Datos con enfoque en automatización y mejora de procesos',
+    subtitle: 'Construyo herramientas y sistemas orientados a optimizar operaciones, centralizar información y generar indicadores para la toma de decisiones.',
     ctaPrimary: 'Ver Proyectos',
     ctaSecondary: 'Contactar'
   },
   skills: {
-    title: 'Arquitectura y Herramientas',
-    subtitle: 'Herramientas utilizadas para el desarrollo de soluciones orientadas a negocio y análisis de datos.'
+    title: 'Herramientas y Tecnologías',
+    subtitle: 'Herramientas que utilizo para construir soluciones orientadas a operaciones, datos y automatización.'
   },
   portfolio: {
     title: 'Proyectos Destacados',
     subtitle: 'Soluciones reales en producción que integran datos, automatización y sistemas operativos.'
   },
   reviews: {
-    title: 'Casos Implementados',
-    subtitle: 'Proyectos en organizaciones reales con resultados medibles en control y datos.'
+    title: 'Resultados en Proyectos Reales',
+    subtitle: 'Feedback de clientes directos en proyectos con resultados medibles.'
   },
   footer: {
     copyright: '© 2026 Sebastián Jaque',
-    about: 'Administrador con enfoque en datos, automatización y sistemas digitales. Orientado a optimizar operaciones y mejorar la toma de decisiones.',
+    about: 'Joven profesional con enfoque en operaciones, datos y automatización. Orientado a optimizar procesos y apoyar la toma de decisiones con herramientas digitales.',
     contactEmail: 'sjaquer@outlook.es',
     contactPhone: '+51 946 978 919'
   }

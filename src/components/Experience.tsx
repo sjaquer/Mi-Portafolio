@@ -17,7 +17,7 @@ const Experience = () => {
                 Trayectoria Profesional
             </h2>
             <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-                Resultados concretos en cada rol: automatización, control de datos y mejora operativa.
+                Resultados concretos en cada rol: automatización, control de datos y mejora de procesos.
             </p>
         </motion.div>
 
@@ -29,8 +29,8 @@ const Experience = () => {
                         <Building2 size={24} />
                     </div>
                     <div>
-                         <div className="text-2xl font-bold text-[#f5fcff]" role="heading" aria-level={3}>Experiencia Laboral</div>
-                         <p className="text-sm text-slate-400">Roles clave y logros de negocio</p>
+                         <div className="text-2xl font-bold text-[#f5fcff]" role="heading" aria-level={3}>Experiencia</div>
+                         <p className="text-sm text-slate-400">Roles y logros concretos</p>
                     </div>
                 </div>
                 
@@ -105,8 +105,8 @@ const Experience = () => {
                         <GraduationCap size={24} />
                     </div>
                      <div>
-                         <div className="text-2xl font-bold text-[#f5fcff]" role="heading" aria-level={3}>Formación</div>
-                         <p className="text-sm text-slate-400">Base académica y certificaciones</p>
+                         <div className="text-2xl font-bold text-[#f5fcff]" role="heading" aria-level={3}>Formación y Cursos</div>
+                         <p className="text-sm text-slate-400">Base académica y cursos complementarios</p>
                     </div>
                 </div>
 

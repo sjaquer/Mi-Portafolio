@@ -3,56 +3,56 @@ import { Experience, Education, Project, Skill } from '../types';
 export const experiences: Experience[] = [
   {
     id: '1',
-    title: 'Head of Operations & Digital Transformation',
+    title: 'Coordinador de Operaciones y Sistemas',
     company: 'Big Jack',
-    role: 'Líder de Transformación',
+    role: 'Coordinador Operativo',
     duration: 'Nov 2025 - Actualidad',
     location: 'Lima, Perú',
     current: true,
     summary:
-      'Implementación de sistemas propios para reingeniería operativa, reduciendo trabajo manual y mejorando el control de costos.',
+      'Construí e implementé un sistema interno para digitalizar la operación del negocio, reduciendo ~90% del trabajo manual en registros y control de insumos.',
     techStack: [
       'ERP In-House',
-      'Reingeniería de Procesos',
-      'Gestión de Costos',
-      'Automatización'
+      'Control de Costos',
+      'Automatización',
+      'React / Firebase'
     ],
     responsibilities: [
-      'Implementé un ERP a medida que centraliza inventarios, recetas y ventas, reduciendo el uso de papel y hojas de cálculo desconectadas.',
-      'Optimicé márgenes mediante reestructuración de la ingeniería de menú basada en datos reales de costos.',
-      'Estandaricé procesos con manuales y protocolos operativos para asegurar replicabilidad del modelo de negocio.'
+      'Desarrollé un sistema ERP a medida que centraliza inventarios, recetas y ventas, eliminando hojas de cálculo y reduciendo errores de registro en ~90%.',
+      'Reduje costos operativos en 8–12% mediante reingeniería de recetas y control digital de insumos.',
+      'Estandaricé procesos con manuales y protocolos operativos para facilitar la replicabilidad del negocio.'
     ]
   },
   {
     id: '2',
-    title: 'Lead de Business Intelligence',
+    title: 'Analista de Inteligencia Comercial',
     company: 'Dearel',
-    role: 'BI Specialist',
+    role: 'Analista BI',
     duration: 'May 2025 - Nov 2025',
     location: 'Lima, Perú',
     summary:
-      'Diseño e implementación de infraestructura de datos para monitorear rentabilidad real por canal y producto.',
+      'Construí un modelo de datos unificado que conecta ventas, costos y publicidad en un solo dashboard para la toma de decisiones.',
     techStack: [
       'Power BI',
-      'Data Warehousing',
-      'Proyección Financiera',
-      'Automatización ETL'
+      'SQL',
+      'ETL',
+      'Shopify API'
     ],
     responsibilities: [
-      'Implementé un modelo de datos que unifica fuentes dispersas (Shopify, Ads, almacén) en una única base para gerencia.',
-      'Desarrollé dashboards automatizados para seguimiento de flujo de caja y P&L por canal y producto.',
-      'Diseñé modelos de demanda para optimizar compras y reducir sobrestock y capital inmovilizado.'
+      'Implementé un pipeline de datos que unifica Shopify, plataformas de Ads y almacén en una base consolidada de reportes.',
+      'Desarrollé dashboards automatizados de flujo de caja, P&L por canal y rentabilidad por producto.',
+      'Construí modelos de proyección de demanda que apoyaron decisiones de compra y redujeron sobrestock.'
     ]
   },
   {
     id: '3',
     title: 'Analista de Optimización Logística',
-    company: 'Independiente',
+    company: 'Proyectos Independientes',
     role: 'Analista Operativo',
     duration: 'Jun 2022 - Actualidad',
     location: 'Remoto',
     summary:
-      'Desarrollo de soluciones algorítmicas para optimizar rutas y uso de recursos en operaciones logísticas.',
+      'Desarrollé soluciones algorítmicas para optimizar rutas de transporte y asignación de recursos usando investigación operativa.',
     techStack: [
       'Python',
       'Google OR-Tools',
@@ -60,9 +60,9 @@ export const experiences: Experience[] = [
       'Investigación Operativa'
     ],
     responsibilities: [
-      'Desarrollé solvers personalizados para ruteo de vehículos (VRP) y asignación de recursos en transporte.',
-      'Diseñé arquitecturas de solución modulares integradas con la operación física existente.',
-      'Analicé viabilidad técnica y económica de proyectos de modernización tecnológica y automatización logística.'
+      'Desarrollé solvers de ruteo vehicular (VRP) con restricciones reales de capacidad, distancia y ventanas horarias.',
+      'Construí módulos reutilizables para distintos escenarios de distribución y asignación de recursos.',
+      'Analicé viabilidad técnica y económica de proyectos de automatización logística para operadores pequeños.'
     ]
   }
 ];
@@ -70,68 +70,68 @@ export const experiences: Experience[] = [
 export const education: Education[] = [
   {
     id: '1',
-    degree: 'Bachiller en Administración y Negocios Internacionales',
+    degree: 'Administración y Negocios Internacionales',
     institution: 'Universidad Norbert Wiener',
-    duration: '2026',
-    status: 'Grado Profesional (En proceso de titulación)',
+    duration: '2022 – 2026',
+    status: 'Noveno ciclo (en curso)',
     relevant: [
-      'Gerencia de Operaciones',
-      'Finanzas Corporativas',
+      'Gestión de Operaciones',
+      'Finanzas',
       'Planeamiento Estratégico'
     ],
     certificateUrl: '',
     description:
-      'Formación gerencial enfocada en la creación y escala de modelos de negocio eficientes y rentables.'
+      'Formación en administración con énfasis en operaciones, análisis financiero y negocios internacionales.'
   },
   {
     id: '2',
     degree: 'Artificial Intelligence Professional (CAIPC®)',
     institution: 'CertiProf',
     duration: '2025',
-    status: 'Certificación Internacional',
-    relevant: ['Machine Learning Strategy', 'AI Project Lead', 'NLP Fundamentals'],
+    status: 'Certificación',
+    relevant: ['Fundamentos de ML', 'Estrategia de IA', 'NLP Básico'],
     certificateUrl: '',
-    description: 'Validación profesional para liderar proyectos de IA, desde la conceptualización hasta la implementación de modelos predictivos.'
+    description: 'Certificación en fundamentos de inteligencia artificial aplicada a proyectos y estrategia de datos.'
   },
   {
     id: '3',
-    degree: 'Generative AI for Executives',
+    degree: 'Curso especializado en IA Generativa',
     institution: 'Amazon Web Services (AWS)',
     duration: '2025',
-    status: 'Certificación Ejecutiva',
-    relevant: ['Estrategia de IA', 'Prompt Engineering', 'Innovación Corporativa'],
+    status: 'Curso especializado',
+    relevant: ['IA Generativa', 'Prompt Engineering', 'Casos de uso empresarial'],
     certificateUrl: '',
-    description: 'Visión estratégica sobre el impacto y ROI de la IA generativa en la gestión empresarial moderna.'
+    description: 'Curso sobre aplicaciones prácticas de IA generativa en entornos de negocio y automatización.'
   },
   {
     id: '4',
     degree: 'Microsoft Official Course: SQL Server',
     institution: 'Microsoft / IDAT',
     duration: '2025',
-    status: 'Certificación Oficial',
-    relevant: ['Admin de Base de Datos', 'Optimización SQL', 'Data Mining'],
+    status: 'Curso oficial',
+    relevant: ['Administración de BD', 'Consultas SQL', 'Optimización'],
     certificateUrl: '',
-    description: 'Competencia técnica oficial de Microsoft para la gestión avanzada y optimización de bases de datos relacionales.'
+    description: 'Curso oficial de Microsoft en gestión y optimización de bases de datos SQL Server.'
   },
   {
     id: '5',
-    degree: 'Power BI Data Visualization Specialist',
+    degree: 'Especialización en Power BI',
     institution: 'Zegel / Intercorp',
     duration: '2025',
-    status: 'Especialización Técnica',
-    relevant: ['DAX Actions', 'Modelado de Datos', 'Storytelling con Datos'],
+    status: 'Especialización técnica',
+    relevant: ['DAX', 'Modelado de Datos', 'Visualización'],
     certificateUrl: '',
-    description: 'Especialización en transformar datos complejos en tableros de control ejecutivos para la toma de decisiones.'
+    description: 'Especialización práctica en Power BI: modelado de datos, DAX y construcción de dashboards operativos.'
   },
   {
     id: '6',
-    degree: 'Organizational Sustainability & Global Trade',
+    degree: 'Sustainability & Global Trade',
     institution: 'Arizona State University',
     duration: '2024',
-    status: 'Certificación Internacional',
-    relevant: ['Sostenibilidad ESG', 'Comercio Global 5.0'],
+    status: 'Curso internacional',
+    relevant: ['Sostenibilidad', 'Comercio Internacional'],
     certificateUrl: '',
-    description: 'Formación en estrategias de sostenibilidad corporativa y logística internacional moderna.'
+    description: 'Curso en sostenibilidad organizacional y comercio internacional impartido por Arizona State University.'
   }
 ];
 
@@ -140,15 +140,15 @@ export const projects: Project[] = [
   {
     id: '1',
     title: 'Coralia Web',
-    subtitle: 'Plataforma modular de e-commerce con CRM e integración de IA.',
+    subtitle: 'E-commerce con CRM y panel administrativo integrado.',
     description:
       'Problema: Desorden en la gestión de pedidos, stock y seguimiento de clientes. ' +
-      'Solución desarrollada: Sistema web centralizado con e-commerce, CRM y panel administrativo para controlar pedidos, clientes y stock en un solo lugar. ' +
-      'Enfoque técnico/analítico: Automatización de procesos transaccionales, control de inventario y visualización de indicadores operativos y comerciales.',
+      'Solución desarrollada: Sistema web que centraliza e-commerce, CRM y panel administrativo para controlar pedidos, clientes y stock en un solo lugar. ' +
+      'Enfoque técnico: Automatización de pedidos, control de inventario y visualización de indicadores de venta.',
     details: [
-      'Plataforma completa: Catálogo, carrito, checkout y gestión de pedidos en producción.',
-      'CRM integrado: Seguimiento de clientes, historial de compras y segmentación automatizada.',
-      'IA aplicada: Recomendaciones de producto y asistente de atención al cliente.'
+      'Plataforma funcional: Catálogo, carrito, checkout y gestión de pedidos en producción.',
+      'CRM integrado: Seguimiento de clientes, historial de compras y segmentación.',
+      'IA básica: Recomendaciones de producto y asistente de consultas.'
     ],
     techStack: ['React', 'Node.js', 'Firebase', 'IA Integration'],
     image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=1600',
@@ -159,16 +159,16 @@ export const projects: Project[] = [
   },
   {
     id: '2',
-    title: 'Dearel Intelligence Hub',
-    subtitle: 'Hub de datos para rentabilidad y control comercial.',
+    title: 'Dearel – Dashboard Comercial',
+    subtitle: 'Modelo de datos y dashboards para control de rentabilidad.',
     description:
       'Problema: Falta de visibilidad unificada de ventas, costos y rentabilidad por canal. ' +
-      'Solución desarrollada: Intelligence hub que integra datos de Shopify, plataformas de anuncios y almacén en un modelo único de reporte financiero. ' +
-      'Enfoque técnico/analítico: Automatización ETL, modelado de datos y dashboards de KPIs de margen, flujo de caja y rotación de inventario.',
+      'Solución desarrollada: Modelo de datos que integra Shopify, plataformas de Ads y almacén en un reporte financiero consolidado. ' +
+      'Enfoque técnico: Pipeline ETL, modelado de datos y dashboards de KPIs de margen y flujo de caja.',
     details: [
-      'Pipeline ETL: Webhooks y automatización para centralizar datos de Shopify, Ads y Almacén.',
-      'Dashboard ejecutivo: Métricas de P&L, flujo de caja y rentabilidad por producto en tiempo real.',
-      'Impacto: Identificación de productos con margen negativo y optimización de inventario.'
+      'Pipeline ETL: Webhooks y scripts para centralizar datos de Shopify, Ads y almacén.',
+      'Dashboard operativo: Métricas de P&L, flujo de caja y rentabilidad por producto.',
+      'Resultado: Identifiqué productos con margen negativo y apoyé decisiones de inventario.'
     ],
     techStack: ['Data Engineering', 'Webhooks', 'ETL', 'SQL', 'Shopify API'],
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1600',
@@ -179,15 +179,15 @@ export const projects: Project[] = [
   {
     id: '3',
     title: 'Big Jack Manager',
-    subtitle: 'Sistema de Gestión Operativa Integral',
+    subtitle: 'Sistema interno de gestión operativa para restaurante.',
     description:
       'Problema: Operación fragmentada entre hojas de cálculo, cajas manuales y control débil de inventario. ' +
-      'Solución desarrollada: Sistema interno que integra punto de venta, inventario, recetas y caja diaria en un solo flujo operativo. ' +
-      'Enfoque técnico/analítico: Automatización de registros de venta, control de costos por receta y monitoreo de indicadores diarios de operación.',
+      'Solución desarrollada: Sistema que integra punto de venta, inventario, recetas y caja diaria en un solo flujo. ' +
+      'Enfoque técnico: Automatización de registros de venta, control de costos por receta y seguimiento de indicadores diarios.',
     details: [
       'POS integrado: Registro de ventas en tiempo real con control de turnos y cierre de caja.',
-      'Inventario inteligente: Control de insumos, recetas y alertas de reposición automáticas.',
-      'Dashboard financiero: Flujo de caja diario, costos operativos y margen por producto.'
+      'Control de insumos: Recetas vinculadas a inventario con alertas de reposición.',
+      'Dashboard operativo: Flujo de caja diario, costos y margen por producto.'
     ],
     techStack: ['React', 'Firebase', 'Node.js', 'Firestore', 'Dashboard'],
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1600',
@@ -199,15 +199,15 @@ export const projects: Project[] = [
   {
     id: '4',
     title: 'TaskZenith',
-    subtitle: 'Gestión de tareas con control por roles.',
+    subtitle: 'Proyecto personal – Gestión de tareas con roles.',
     description:
-      'Problema: Falta de trazabilidad y control de carga de trabajo en equipos pequeños. ' +
-      'Solución desarrollada: Plataforma de tareas con asignación por rol, estados y vista consolidada de pendientes. ' +
-      'Enfoque técnico/analítico: Registro estructurado de actividades, métricas de cumplimiento y automatización básica de recordatorios.',
+      'Problema: Necesitaba una herramienta para organizar tareas por rol y prioridad en equipos pequeños. ' +
+      'Solución desarrollada: App de tareas con asignación por rol, estados y vista consolidada de pendientes. ' +
+      'Enfoque técnico: Registro estructurado, métricas de cumplimiento y recordatorios automáticos.',
     details: [
-      'Roles y permisos: Sistema de acceso por niveles para equipos multifuncionales.',
-      'Sincronización: Datos en tiempo real entre múltiples usuarios y dispositivos.',
-      'IA: Clasificación automática y estimación inteligente de tiempos.'
+      'Roles y permisos: Acceso por niveles para equipos pequeños.',
+      'Sincronización: Datos en tiempo real entre múltiples dispositivos.',
+      'IA experimental: Clasificación automática y estimación de tiempos.'
     ],
     techStack: ['React', 'TypeScript', 'Node.js', 'AI Integration'],
     image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=1600',
@@ -218,15 +218,15 @@ export const projects: Project[] = [
   {
     id: '5',
     title: 'Optimización Logística',
-    subtitle: 'Modelo de optimización de rutas y costos de transporte.',
+    subtitle: 'Proyecto de investigación – Optimización de rutas con OR-Tools.',
     description:
-      'Problema: Ruteo manual de vehículos con altos costos operativos y baja utilización de capacidad. ' +
-      'Solución desarrollada: Motor de optimización basado en Google OR-Tools para definir rutas y asignaciones con restricciones reales de operación. ' +
-      'Enfoque técnico/analítico: Modelado matemático tipo VRP, uso de CP-SAT y análisis de escenarios para reducción de kilómetros recorridos y tiempos de servicio.',
+      'Problema: Ruteo manual de vehículos con altos costos y baja utilización de capacidad. ' +
+      'Solución desarrollada: Solver basado en Google OR-Tools para definir rutas con restricciones reales de operación. ' +
+      'Enfoque técnico: Modelado VRP, uso de CP-SAT y análisis de escenarios para reducir kilómetros y tiempos.',
     details: [
-      'Investigación Operativa: Implementación avanzada de algoritmos de ruteo vehicular (VRP).',
-      'Minimización de costos: Reducción matemática de costos logísticos mediante restricciones.',
-      'Escalable: Arquitectura modular adaptable a diferentes escenarios de distribución.'
+      'Investigación Operativa: Algoritmos de ruteo vehicular (VRP) con restricciones reales.',
+      'Reducción de costos: Optimización matemática de rutas y asignación de recursos.',
+      'Modular: Componentes reutilizables para distintos escenarios de distribución.'
     ],
     techStack: ['Python', 'Google OR-Tools', 'CP-SAT', 'Algorithms'],
     image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80&w=1600',
@@ -237,15 +237,15 @@ export const projects: Project[] = [
   {
     id: '6',
     title: 'HoneyNotes',
-    subtitle: 'Notas estructuradas con clasificación automática.',
+    subtitle: 'Laboratorio de aprendizaje – Notas con IA.',
     description:
-      'Problema: Notas dispersas sin estructura para seguimiento de ideas y tareas. ' +
-      'Solución desarrollada: Aplicación de notas que organiza información por proyectos y etiquetas, con apoyo de IA para clasificación. ' +
-      'Enfoque técnico/analítico: Definición de modelos de categorización y consolidación de información para facilitar el seguimiento operativo.',
+      'Problema: Notas dispersas sin estructura para seguimiento de ideas. ' +
+      'Solución desarrollada: App de notas que organiza información por proyectos y etiquetas, con IA para clasificación automática. ' +
+      'Enfoque técnico: Proyecto experimental para aprender integración de IA/NLP en interfaces de usuario.',
     details: [
-      'UX Research: Diseño centrado en reducir la carga cognitiva del usuario.',
-      'IA integrada: Categorización automática y generación de resúmenes de notas.',
-      'Experimental: Laboratorio para probar nuevas interacciones de IA con el usuario.'
+      'UX enfocada: Diseño centrado en reducir la carga cognitiva del usuario.',
+      'IA experimental: Categorización automática y generación de resúmenes.',
+      'Laboratorio: Proyecto personal para explorar interacciones de IA con el usuario.'
     ],
     techStack: ['React', 'AI/NLP', 'TypeScript', 'UX Design'],
     image: 'https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&q=80&w=1600',
@@ -256,58 +256,50 @@ export const projects: Project[] = [
 ];
 
 export const skills: Skill[] = [
-  // Frontend
-  { name: 'React', category: 'Frontend', icon: 'code' },
-  { name: 'Next.js', category: 'Frontend', icon: 'layout' },
-  { name: 'TypeScript', category: 'Frontend', icon: 'code' },
-  { name: 'Tailwind CSS', category: 'Frontend', icon: 'layout' },
-
-  // Backend & APIs
-  { name: 'Node.js', category: 'Backend & APIs', icon: 'server' },
-  { name: 'Firebase', category: 'Backend & APIs', icon: 'database' },
-  { name: 'Firestore', category: 'Backend & APIs', icon: 'database' },
-  { name: 'SQL Server', category: 'Backend & APIs', icon: 'database' },
+  // Operaciones y Gestión
+  { name: 'Control de Costos', category: 'Operaciones y Gestión', icon: 'trending-up' },
+  { name: 'Gestión de Inventarios', category: 'Operaciones y Gestión', icon: 'database' },
+  { name: 'Reingeniería de Procesos', category: 'Operaciones y Gestión', icon: 'settings' },
+  { name: 'Investigación Operativa', category: 'Operaciones y Gestión', icon: 'cpu' },
+  { name: 'Excel Avanzado', category: 'Operaciones y Gestión', icon: 'bar-chart' },
 
   // Business Intelligence
   { name: 'Power BI', category: 'Business Intelligence', icon: 'bar-chart' },
-  { name: 'Excel Avanzado', category: 'Business Intelligence', icon: 'trending-up' },
   { name: 'DAX', category: 'Business Intelligence', icon: 'bar-chart' },
   { name: 'Modelado de Datos', category: 'Business Intelligence', icon: 'database' },
+  { name: 'SQL Server', category: 'Business Intelligence', icon: 'database' },
+  { name: 'ETL / Pipelines', category: 'Business Intelligence', icon: 'cpu' },
 
-  // Automatización
-  { name: 'Python', category: 'Automatización', icon: 'terminal' },
-  { name: 'Webhooks', category: 'Automatización', icon: 'cpu' },
-  { name: 'ETL', category: 'Automatización', icon: 'cpu' },
-  { name: 'Scripts de Automatización', category: 'Automatización', icon: 'terminal' },
-
-  // Integraciones
-  { name: 'Shopify API', category: 'Integraciones', icon: 'settings' },
-  { name: 'WhatsApp API', category: 'Integraciones', icon: 'settings' },
-  { name: 'Zadarma', category: 'Integraciones', icon: 'settings' },
-  { name: 'Google OR-Tools', category: 'Integraciones', icon: 'cpu' }
+  // Desarrollo y Automatización
+  { name: 'React', category: 'Desarrollo y Automatización', icon: 'code' },
+  { name: 'TypeScript', category: 'Desarrollo y Automatización', icon: 'code' },
+  { name: 'Node.js', category: 'Desarrollo y Automatización', icon: 'server' },
+  { name: 'Python', category: 'Desarrollo y Automatización', icon: 'terminal' },
+  { name: 'Firebase', category: 'Desarrollo y Automatización', icon: 'database' },
+  { name: 'APIs e Integraciones', category: 'Desarrollo y Automatización', icon: 'settings' }
 ];
 
 export const testimonials = [
   {
     id: 't1',
-    name: 'Dirección General',
-    role: 'Big Jack',
+    name: 'Dueño – Big Jack',
+    role: 'Cliente directo',
     rating: 5,
-    text: 'Sebastian transformó nuestra forma de trabajar. Pasamos del desorden manual a tener un control digital preciso de cada insumo y venta.',
+    text: 'Sebastian construyó el sistema que usamos a diario. Pasamos de registrar todo en papel a tener control digital de cada insumo y venta. Noté la diferencia desde la primera semana.',
     date: '2025-12-01',
     location: 'Lima, Perú',
-    projectId: '1',
+    projectId: '3',
     source: 'Interno'
   },
   {
     id: 't2',
-    name: 'Gerencia Comercial',
-    role: 'Dearel',
+    name: 'Responsable Comercial – Dearel',
+    role: 'Cliente directo',
     rating: 5,
-    text: 'La claridad que tenemos ahora sobre nuestros números es impresionante. Las herramientas que implementó son vitales para nuestras decisiones diarias.',
+    text: 'Antes no teníamos claro qué productos eran rentables. Los dashboards que implementó nos ayudaron a tomar mejores decisiones de compra e inventario.',
     date: '2025-10-15',
     location: 'Lima, Perú',
-    projectId: '3',
+    projectId: '2',
     source: 'Cliente'
   }
 ];

@@ -57,10 +57,11 @@ const Hero = memo(() => {
               </p>
               
               <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-display font-bold text-white leading-[1.1] tracking-tight">
-                Administrador con<br />enfoque en{' '}
-                <span className="text-slate-400">Datos</span>,{' '}
+                Analista de{' '}
+                <span className="text-slate-400">Operaciones</span>{' '}
+                y{' '}
                 <span className="text-white relative inline-block">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-400 to-white relative z-10">Automatización</span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-400 to-white relative z-10">Datos</span>
                   <svg 
                     className="absolute left-0 -bottom-2 w-full h-4 text-primary drop-shadow-[0_0_8px_rgba(217,229,18,0.5)]" 
                     viewBox="0 0 120 16" 
@@ -78,12 +79,12 @@ const Hero = memo(() => {
                     />
                   </svg>
                 </span>
-                <br /><span className="text-slate-400">&</span>{' '}
-                <span className="text-white">Sistemas Digitales</span>
+                <br /><span className="text-slate-400">con enfoque en</span>{' '}
+                <span className="text-white">Automatización</span>
               </h1>
 
               <div className="text-base sm:text-lg lg:text-xl text-slate-400 font-light max-w-xl leading-relaxed mx-auto lg:mx-0">
-                Desarrollo <span className="font-semibold text-white">sistemas y herramientas</span> orientadas a optimizar <span className="text-slate-300">procesos</span>, centralizar información y generar <span className="text-slate-300">indicadores</span> clave para la toma de decisiones.
+                Construyo <span className="font-semibold text-white">herramientas y sistemas</span> orientados a optimizar <span className="text-slate-300">operaciones</span>, centralizar información y generar <span className="text-slate-300">indicadores</span> para la toma de decisiones.
               </div>
             </div>
 
@@ -105,7 +106,7 @@ const Hero = memo(() => {
                   <div className="p-1.5 rounded-md bg-slate-800/50 group-hover:bg-primary/20 transition-colors">
                     <BarChart3 size={16} className="text-slate-400 group-hover:text-primary transition-colors" />
                   </div>
-                  <span>Datos & BI</span>
+                  <span>Operaciones & BI</span>
                 </a>
                 <a href="#automation" className="flex items-center gap-2 text-sm font-semibold text-slate-400 hover:text-primary transition-colors group">
                   <div className="p-1.5 rounded-md bg-slate-800/50 group-hover:bg-primary/20 transition-colors">
@@ -117,7 +118,7 @@ const Hero = memo(() => {
                   <div className="p-1.5 rounded-md bg-slate-800/50 group-hover:bg-primary/20 transition-colors">
                     <Zap size={16} className="text-slate-400 group-hover:text-primary transition-colors" />
                   </div>
-                  <span>Sistemas</span>
+                  <span>Desarrollo</span>
                 </a>
               </div>
 
@@ -199,7 +200,7 @@ const KpiCard = memo(() => {
             {/* Header */}
             <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
                 <div>
-                   <h3 className="text-lg font-bold text-white">Resultados Operativos</h3>
+                   <h3 className="text-lg font-bold text-white">Impacto Operativo</h3>
                    <p className="text-xs text-slate-400">Resultados acumulados 2024-2026</p>
                 </div>
                 <div className="p-2 rounded-lg bg-slate-800/50 text-primary">

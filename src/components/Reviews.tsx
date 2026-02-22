@@ -14,10 +14,10 @@ const Reviews = () => {
            className="text-center mb-16"
         >
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#f5fcff] font-display">
-                Casos Implementados
+                Resultados en Proyectos Reales
             </h2>
             <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-                Proyectos en producción u operación real, con resultados medibles en control y uso de datos.
+                Feedback de clientes directos en proyectos con resultados medibles.
             </p>
         </motion.div>
 

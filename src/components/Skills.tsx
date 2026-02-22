@@ -1,47 +1,31 @@
-// src/components/Skills.tsx - Versión corporativa
-import { Server, BarChart3, Code2, Sparkles, Cpu, Globe } from 'lucide-react';
+// src/components/Skills.tsx - Versión estratégica
+import { Server, BarChart3, Code2, Sparkles } from 'lucide-react';
 
-// Definición de categorías corporativas
+// Definición de categorías estratégicas
 const skillCategories = [
   {
-    id: 'frontend',
-    title: 'Frontend',
-    subtitle: 'Interfaces modernas y responsivas',
-    icon: Globe,
-    color: '#d9e512',
-    skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Vite']
-  },
-  {
-    id: 'backend',
-    title: 'Backend & APIs',
-    subtitle: 'Servicios y lógica de negocio',
-    icon: Server,
+    id: 'operations',
+    title: 'Operaciones y Gestión',
+    subtitle: 'Control operativo y mejora de procesos',
+    icon: BarChart3,
     color: '#10B981',
-    skills: ['Node.js', 'Firebase', 'Firestore', 'REST APIs', 'SQL Server']
+    skills: ['Control de Costos', 'Gestión de Inventarios', 'Reingeniería de Procesos', 'Investigación Operativa', 'Excel Avanzado']
   },
   {
     id: 'bi',
     title: 'Business Intelligence',
     subtitle: 'Análisis y visualización de datos',
-    icon: BarChart3,
+    icon: Server,
     color: '#3861d7',
-    skills: ['Power BI', 'Excel Avanzado', 'DAX', 'Modelado de Datos', 'KPIs']
+    skills: ['Power BI', 'DAX', 'Modelado de Datos', 'SQL Server', 'ETL / Pipelines']
   },
   {
-    id: 'automation',
-    title: 'Automatización',
-    subtitle: 'Procesos y flujos automatizados',
-    icon: Cpu,
-    color: '#8B5CF6',
-    skills: ['Python', 'Webhooks', 'ETL', 'Scripts', 'Cron Jobs']
-  },
-  {
-    id: 'integrations',
-    title: 'Integraciones',
-    subtitle: 'Conexión entre plataformas',
+    id: 'dev',
+    title: 'Desarrollo y Automatización',
+    subtitle: 'Herramientas y sistemas digitales',
     icon: Code2,
-    color: '#F59E0B',
-    skills: ['Shopify API', 'WhatsApp API', 'Zadarma', 'Google OR-Tools', 'APIs externas']
+    color: '#d9e512',
+    skills: ['React', 'TypeScript', 'Node.js', 'Python', 'Firebase', 'APIs e Integraciones']
   }
 ];
 
@@ -57,10 +41,10 @@ const Skills = () => {
             Expertise
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-white font-display mb-3">
-            Arquitectura y Herramientas
+            Herramientas y Tecnologías
           </h2>
           <p className="text-slate-400 max-w-lg mx-auto text-sm sm:text-base">
-            Herramientas utilizadas para el desarrollo de soluciones orientadas a negocio y análisis de datos.
+            Herramientas que utilizo para construir soluciones orientadas a operaciones, datos y automatización.
           </p>
         </div>
 
@@ -111,7 +95,7 @@ const Skills = () => {
             Tecnologías principales
           </p>
           <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
-            {['Excel Avanzado', 'Power BI', 'Python', 'APIs', 'Firebase', 'SQL Server', 'React', 'TypeScript'].map((tech) => (
+            {['Power BI', 'Python', 'Excel Avanzado', 'SQL Server', 'React', 'Firebase', 'Node.js', 'TypeScript'].map((tech) => (
               <span
                 key={tech}
                 className="px-5 py-2.5 bg-slate-800/50 text-slate-200 text-base font-medium rounded-full border border-slate-700/40 hover:border-primary/40 hover:text-primary hover:bg-slate-800 transition-all duration-200 cursor-default"
