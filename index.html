@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/svg+xml" href="/icon0.svg" />
-    <link rel="apple-touch-icon" href="/apple-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#D9E512" media="(prefers-color-scheme: dark)" />
-    <meta name="theme-color" content="#D9E512" media="(prefers-color-scheme: light)" />
-    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#09090b" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#09090b" media="(prefers-color-scheme: light)" />
+    <meta name="color-scheme" content="dark" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="bingbot" content="index, follow" />
@@ -20,7 +20,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="SJAQUER" />
     <meta name="application-name" content="Sebastián Jaque Portfolio" />
-    <meta name="msapplication-TileColor" content="#D9E512" />
+    <meta name="msapplication-TileColor" content="#09090b" />
     <meta name="msapplication-config" content="/browserconfig.xml" />
     <meta name="format-detection" content="telephone=yes" />
     
@@ -38,7 +38,7 @@
       html, body { margin: 0; padding: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
       html { scroll-behavior: smooth; }
       #root { min-height: 100vh; min-height: 100dvh; }
-      .loading-fallback { display: flex; align-items: center; justify-content: center; min-height: 100vh; min-height: 100dvh; background: #0a0a0a; }
+      .loading-fallback { display: flex; align-items: center; justify-content: center; min-height: 100vh; min-height: 100dvh; background: #09090b; }
       /* Prevent layout shift */
       img, video { max-width: 100%; height: auto; }
       /* Safe area for notched devices */
@@ -48,7 +48,7 @@
     </style>
     
     <!-- Preload recursos críticos para mejor performance -->
-    <link rel="preload" href="/images/iconoweb.webp" as="image" type="image/webp" fetchpriority="high" />
+    <link rel="preload" href="/web-app-manifest-512x512.png" as="image" type="image/png" fetchpriority="high" />
     
     <!-- Preconnect para recursos críticos -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -60,24 +60,24 @@
     <link rel="dns-prefetch" href="//images.unsplash.com" />
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     
-    <!-- Título optimizado para SEO con keywords principales (55 caracteres) -->
-    <title>Sebastián Jaque | Administrador — Datos, Automatización y Sistemas Digitales</title>
+    <!-- Título optimizado para SEO -->
+    <title>Sebastián Jaque | Full-Stack Developer & AI Integration Specialist</title>
     
-    <!-- Meta Descripción optimizada (158 caracteres para snippet completo en Google) -->
-    <meta name="description" content="Sebastián Jaque — Administrador con enfoque en datos, automatización y sistemas digitales. Soluciones tecnológicas para optimizar operaciones y toma de decisiones." />
+    <!-- Meta Descripción optimizada -->
+    <meta name="description" content="Full-Stack Developer especializado en React, Node.js, Python e integración de IA Generativa. Soluciones web escalables con AI-driven features. Lima, Perú." />
     
     <!-- Meta tags adicionales para SEO -->
     <meta name="author" content="Sebastián Jaque" />
     <meta name="creator" content="Sebastián Jaque" />
     <meta name="publisher" content="Sebastián Jaque" />
-    <meta name="keywords" content="administrador datos Lima, automatización procesos Perú, business intelligence, Power BI dashboard, sistemas digitales, desarrollo software React, optimización operaciones, análisis datos, ERP personalizado, control gestión" />
-    <meta name="subject" content="Datos, Automatización y Sistemas Digitales" />
+    <meta name="keywords" content="full-stack developer, AI integration, React developer, Node.js, Python, IA generativa, freelance developer Lima, software engineer" />
+    <meta name="subject" content="Desarrollo de Software e Integración de IA" />
     <meta name="copyright" content="© 2026 Sebastián Jaque. Todos los derechos reservados." />
     <meta name="revised" content="2026-02-18" />
-    <meta name="abstract" content="Portafolio profesional de Sebastián Jaque. Administrador con enfoque en datos, automatización y sistemas digitales orientados a optimizar operaciones." />
-    <meta name="topic" content="Datos, Automatización, Sistemas Digitales, Business Intelligence" />
-    <meta name="summary" content="Sebastián Jaque desarrolla soluciones tecnológicas para optimizar operaciones, centralizar información y mejorar la toma de decisiones mediante análisis de datos." />
-    <meta name="classification" content="Business, Technology, Consulting" />
+    <meta name="abstract" content="Portafolio profesional de Sebastián Jaque. Full-Stack Developer & AI Integration Specialist. React, Node.js, Python, OpenAI, AWS." />
+    <meta name="topic" content="Full-Stack Development, AI Integration, React, Node.js, Python" />
+    <meta name="summary" content="Sebastián Jaque construye software escalable potenciado por IA Generativa. Especializado en React, Node.js, Python e integración de OpenAI y AWS Bedrock." />
+    <meta name="classification" content="Software Development, Technology, AI" />
     <meta name="coverage" content="Peru, Latin America, Worldwide" />
     <meta name="distribution" content="global" />
     <meta name="rating" content="general" />
@@ -88,15 +88,15 @@
     <link rel="alternate" hreflang="x-default" href="https://sjaquer.is-a.dev/" />
 
     <!-- Open Graph (OG) optimizado para compartir en redes sociales -->
-    <meta property="og:title" content="Sebastián Jaque | Datos, Automatización y Sistemas Digitales" />
-    <meta property="og:description" content="Soluciones tecnológicas para optimizar operaciones, centralizar información y mejorar la toma de decisiones mediante análisis de datos." />
+    <meta property="og:title" content="Sebastián Jaque | Full-Stack Developer & AI Integration Specialist" />
+    <meta property="og:description" content="Full-Stack Developer especializado en React, Node.js, Python e integración de IA Generativa. Soluciones web escalables con AI-driven features." />
     <meta property="og:type" content="profile" />
     <meta property="og:url" content="https://sjaquer.is-a.dev/" />
-    <meta property="og:image" content="https://sjaquer.is-a.dev/images/og-image.webp" />
-    <meta property="og:image:secure_url" content="https://sjaquer.is-a.dev/images/og-image.webp" />
+    <meta property="og:image" content="https://sjaquer.is-a.dev/web-app-manifest-512x512.png" />
+    <meta property="og:image:secure_url" content="https://sjaquer.is-a.dev/web-app-manifest-512x512.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Sebastián Jaque — Datos, Automatización y Sistemas Digitales" />
+    <meta property="og:image:alt" content="Sebastián Jaque — Full-Stack Developer & AI Integration Specialist" />
     <meta property="og:locale" content="es_PE" />
     <meta property="og:locale:alternate" content="es_ES" />
     <meta property="og:site_name" content="Sebastián Jaque" />
@@ -110,10 +110,10 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@sjaquer" />
     <meta name="twitter:creator" content="@sjaquer" />
-    <meta name="twitter:title" content="Sebastián Jaque | Datos, Automatización y Sistemas Digitales" />
-    <meta name="twitter:description" content="Soluciones tecnológicas para optimizar operaciones y mejorar la toma de decisiones mediante datos y automatización." />
-    <meta name="twitter:image" content="https://sjaquer.is-a.dev/images/og-image.webp" />
-    <meta name="twitter:image:alt" content="Sebastián Jaque — Datos, Automatización y Sistemas Digitales" />
+    <meta name="twitter:title" content="Sebastián Jaque | Full-Stack Developer & AI Integration Specialist" />
+    <meta name="twitter:description" content="Full-Stack Developer especializado en React, Node.js, Python e integración de IA Generativa." />
+    <meta name="twitter:image" content="https://sjaquer.is-a.dev/web-app-manifest-512x512.png" />
+    <meta name="twitter:image:alt" content="Sebastián Jaque — Full-Stack Developer & AI Integration Specialist" />
     <meta name="twitter:domain" content="sjaquer.is-a.dev" />
 
     <!-- LinkedIn específico -->
@@ -155,20 +155,20 @@
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
       "@id": "https://sjaquer.is-a.dev/#business",
-      "name": "Sebastián Jaque - Datos, Automatización y Sistemas Digitales",
+      "name": "Sebastián Jaque - Full-Stack Developer & AI Integration Specialist",
       "alternateName": "SJaquer",
       "url": "https://sjaquer.is-a.dev",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://sjaquer.is-a.dev/images/iconoweb.webp",
+        "url": "https://sjaquer.is-a.dev/web-app-manifest-512x512.png",
         "width": 512,
         "height": 512
       },
       "image": [
-        "https://sjaquer.is-a.dev/images/iconoweb.webp",
-        "https://sjaquer.is-a.dev/images/og-image.webp"
+        "https://sjaquer.is-a.dev/web-app-manifest-512x512.png",
+        "https://sjaquer.is-a.dev/web-app-manifest-512x512.png"
       ],
-      "description": "Soluciones tecnológicas orientadas a optimizar operaciones, centralizar información y mejorar la toma de decisiones mediante análisis de datos.",
+      "description": "Full-Stack Developer especializado en React, Node.js, Python e integración de IA Generativa. Soluciones web escalables con AI-driven features.",
       "telephone": "+51-946-978-919",
       "email": "sjaquer@outlook.es",
       "address": {
@@ -235,32 +235,24 @@
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Optimización Operativa",
-              "description": "Automatización de procesos y sistemas de control para mejorar eficiencia operativa"
+              "name": "Desarrollo Web Full-Stack",
+              "description": "Aplicaciones SPA con React, TypeScript y Framer Motion. Interfaces premium con SEO optimizado."
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Desarrollo de Software a Medida",
-              "description": "Desarrollo web y aplicaciones con React, TypeScript, Node.js y tecnologías modernas"
+              "name": "Backend & APIs Escalables",
+              "description": "Arquitecturas serverless con Node.js, Python, Firebase y Cloud Functions."
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Dashboards Power BI",
-              "description": "Creación de tableros de control ejecutivos para toma de decisiones basada en datos"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Automatización de Procesos",
-              "description": "Automatización con IA, APIs, integraciones y herramientas low-code/no-code"
+              "name": "Integración de IA Generativa",
+              "description": "Integración de OpenAI API, AWS Bedrock, embeddings y NLP para features inteligentes."
             }
           }
         ]
@@ -287,7 +279,7 @@
       "url": "https://sjaquer.is-a.dev/",
       "image": {
         "@type": "ImageObject",
-        "url": "https://sjaquer.is-a.dev/images/iconoweb.webp",
+        "url": "https://sjaquer.is-a.dev/web-app-manifest-512x512.png",
         "width": 512,
         "height": 512
       },
@@ -296,8 +288,8 @@
         "https://linkedin.com/in/sjaquer",
         "https://instagram.com/sjaquer.dev"
       ],
-      "jobTitle": "Administrador — Datos, Automatización y Sistemas Digitales",
-      "description": "Administrador con enfoque en datos, automatización y sistemas digitales. Desarrollo soluciones tecnológicas para optimizar operaciones y mejorar la toma de decisiones.",
+      "jobTitle": "Full-Stack Developer & AI Integration Specialist",
+      "description": "Full-Stack Developer especializado en React, Node.js, Python e integración de IA Generativa. Construyo soluciones web escalables con AI-driven features.",
       "worksFor": {
         "@type": "Organization",
         "name": "Big Jack",
@@ -341,20 +333,19 @@
         }
       ],
       "knowsAbout": [
-        "Datos y Análisis",
-        "Automatización de Procesos",
-        "Business Intelligence",
-        "Desarrollo Web Full Stack",
+        "Full-Stack Development",
+        "AI Integration",
         "React",
         "TypeScript",
         "Node.js",
         "Python",
-        "Power BI",
-        "SQL Server",
+        "OpenAI API",
+        "AWS Bedrock",
         "Firebase",
-        "Control de Gestión",
-        "Finanzas Operativas",
-        "Optimización de Operaciones"
+        "SQL Server",
+        "Prompt Engineering",
+        "LLM Integration",
+        "Vector Embeddings"
       ],
       "knowsLanguage": [
         {
@@ -390,9 +381,9 @@
       "@type": "WebSite",
       "@id": "https://sjaquer.is-a.dev/#website",
       "url": "https://sjaquer.is-a.dev/",
-      "name": "Sebastián Jaque — Datos, Automatización y Sistemas Digitales",
+      "name": "Sebastián Jaque — Full-Stack Developer & AI Integration Specialist",
       "alternateName": ["SJaquer", "Sebastián Jaque Portfolio"],
-      "description": "Portafolio profesional de Sebastián Jaque. Administrador con enfoque en datos, automatización y sistemas digitales",
+      "description": "Portafolio profesional de Sebastián Jaque. Full-Stack Developer & AI Integration Specialist. React, Node.js, Python.",
       "publisher": {
         "@id": "https://sjaquer.is-a.dev/#person"
       },
@@ -469,7 +460,7 @@
           "name": "¿Qué hace Sebastián Jaque?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sebastián Jaque es administrador con enfoque en datos, automatización y sistemas digitales. Desarrolla soluciones tecnológicas para optimizar operaciones, centralizar información y mejorar la toma de decisiones mediante análisis de datos."
+            "text": "Sebastián Jaque es Full-Stack Developer & AI Integration Specialist. Construye soluciones web escalables con React, Node.js y Python, potenciadas por IA Generativa (OpenAI, AWS Bedrock). Cuenta con certificaciones en IA de CertiProf y AWS."
           }
         },
         {
@@ -477,7 +468,7 @@
           "name": "¿Dónde está ubicado Sebastián Jaque?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sebastián Jaque está ubicado en Lima, Perú. Está abierto a oportunidades corporativas en finanzas, BI, operaciones e innovación."
+            "text": "Sebastián Jaque está ubicado en Lima, Perú. Disponible para proyectos freelance, consultoría técnica y oportunidades de empleo como Full-Stack Developer o AI Engineer."
           }
         },
         {
@@ -493,9 +484,9 @@
     </script>
 
     <!-- Carga diferida de fonts para mejor performance - NO bloquea renderizado -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
     </noscript>
   </head>
   <body>
@@ -503,7 +494,7 @@
       <!-- Fallback de carga para mejor UX -->
       <div class="loading-fallback">
         <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
-          <div style="width: 3rem; height: 3rem; border: 4px solid #374151; border-top: 4px solid #3B82F6; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+          <div style="width: 3rem; height: 3rem; border: 4px solid #27272a; border-top: 4px solid #22d3ee; border-radius: 50%; animation: spin 1s linear infinite;"></div>
           <p style="color: #9CA3AF; font-size: 0.875rem;">Cargando portafolio de Sebastián Jaque...</p>
         </div>
       </div>

@@ -1,0 +1,45 @@
+SEBASTIÁN JAQUE - FULL-STACK DEVELOPER & AI INTEGRATION SPECIALIST
+
+PERFIL PROFESIONAL
+Desarrollador Full-Stack especializado en React, Node.js y Python. Construyo soluciones web escalables, APIs robustas e integraciones complejas. Integrador de Inteligencia Artificial Generativa para transformar aplicaciones tradicionales en productos inteligentes.
+
+ESPECIALIDADES TÉCNICAS
+- Frontend: React, TypeScript, Tailwind CSS, Framer Motion, Next.js
+- Backend: Node.js, Python, Firebase, Cloud Functions, APIs REST
+- AI & Data: OpenAI API, Embeddings, NLP, Prompt Engineering, SQL Server
+- DevOps: Git, Vercel, Docker
+
+EXPERIENCIA PROFESIONAL
+
+1. FULL-STACK DEVELOPER & SYSTEMS ARCHITECT - Big Jack (Nov 2023 - Presente)
+- Arquitecturé y desarrollé un ERP SPA en React + Firebase
+- Backend serverless y listeners en tiempo real con latencia <50ms
+- Tecnologías: React, TypeScript, Firebase, Node.js
+
+2. DATA ENGINEER & BACKEND DEVELOPER - Dearel (May 2023 - Nov 2023)
+- Diseñé pipelines ETL en Python para unificar APIs heterogéneas
+- Modelado de bases de datos Star Schema en SQL Server
+- Tecnologías: Python, SQL Server, APIs REST, Power BI
+
+3. DESARROLLADOR FULL-STACK INDEPENDIENTE (Jun 2022 - Presente)
+- Desarrollo end-to-end de SPA desplegadas en Vercel
+- Integración de APIs de IA (OpenAI) para capacidades semánticas
+
+PROYECTOS EN PRODUCCIÓN DESTACADOS
+- HoneyNotes: App de notas con auto-categorización NLP y búsqueda semántica vectorial.
+- Coralia Web: Plataforma e-commerce con recomendaciones de IA.
+- TaskZenith: SaaS de gestión de tareas con sincronización optimística y NLP básico.
+- Optimizador VRP: Solver algorítmico usando Google OR-Tools CP-SAT en Python.
+
+CERTIFICACIONES Y FORMACIÓN
+- Artificial Intelligence Professional (CAIPC®) - CertiProf, 2025
+- Generative AI Specialization - AWS, 2025
+- Curso Oficial: SQL Server - Microsoft / IDAT, 2025
+- Especialización Power BI - Zegel, 2025
+
+DATOS DE CONTACTO
+Email: sjaquer@outlook.es
+Teléfono: +51 946 978 919
+Ubicación: Lima, Perú
+GitHub: https://github.com/sjaquer
+Website: https://sjaquer.is-a.dev

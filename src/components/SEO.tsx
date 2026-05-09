@@ -1,16 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
-/**
- * Componente SEO avanzado para optimización en motores de búsqueda
- * 
- * Características:
- * - Títulos dinámicos optimizados para CTR
- * - Schema.org específico por tipo de página
- * - Meta tags para compartir en redes sociales
- * - Soporte para breadcrumbs dinámicos
- */
-
 interface SEOProps {
   title?: string;
   description?: string;
@@ -20,135 +10,52 @@ interface SEOProps {
   noindex?: boolean;
 }
 
-const SEO: React.FC<SEOProps> = ({ 
-  title,
-  description,
-  pageType = 'home',
-  image,
-  article = false,
-  noindex = false
-}) => {
+const SEO: React.FC<SEOProps> = ({ title, description, pageType = 'home', image, article = false, noindex = false }) => {
   const siteUrl = 'https://sjaquer.is-a.dev';
   const defaultImage = `${siteUrl}/web-app-manifest-512x512.png`;
-  const defaultDescription = 'Sebastián Jaque — Administrador con enfoque en Datos, Automatización y Sistemas Digitales. Soluciones tecnológicas para optimizar operaciones y mejorar la toma de decisiones.';
-  
-  // Títulos optimizados por tipo de página para mejor CTR
+  const defaultDescription = 'Full-Stack Developer & AI Integration Specialist. React, Node.js, Python. Soluciones web escalables con IA Generativa. Lima, Perú.';
+
   const pageTitles: Record<string, string> = {
-    home: 'Sebastián Jaque | Administrador — Datos, Automatización y Sistemas Digitales',
-    portfolio: 'Proyectos en Producción | Sebastián Jaque',
+    home: 'Sebastián Jaque | Full-Stack Developer & AI Integration Specialist',
+    portfolio: 'Proyectos en Producción | Full-Stack Developer & AI',
     contact: 'Contacto | Sebastián Jaque',
-    about: 'Trayectoria Profesional | Sebastián Jaque',
-    skills: 'Arquitectura y Herramientas | Sebastián Jaque',
-    experience: 'Experiencia Profesional | Sebastián Jaque'
+    about: 'Sobre Mí | Full-Stack Developer & AI',
+    skills: 'Stack Técnico | React, Node.js, Python, OpenAI, AWS',
+    experience: 'Trayectoria Profesional | Full-Stack Developer & AI'
   };
 
   const pageDescriptions: Record<string, string> = {
     home: defaultDescription,
-    portfolio: 'Proyectos reales en producción: plataformas e-commerce, dashboards de BI, ERPs operativos y sistemas de automatización.',
-    contact: 'Contacta a Sebastián Jaque. Abierto a oportunidades en finanzas, BI, operaciones e innovación corporativa.',
-    about: 'Trayectoria profesional de Sebastián Jaque en datos, automatización y sistemas digitales.',
-    skills: 'Stack técnico: React, TypeScript, Node.js, Python, Power BI, SQL Server, Firebase y más.',
-    experience: 'Experiencia en operaciones, business intelligence y automatización en Big Jack, Dearel y proyectos independientes.'
+    portfolio: 'Proyectos en producción: plataformas e-commerce con IA, sistemas de gestión con Firebase, y aplicaciones web escalables con React y TypeScript.',
+    contact: 'Contáctame para proyectos freelance, consultoría técnica o conversaciones sobre desarrollo web y AI Integration.',
+    about: 'Full-Stack Developer con certificaciones en IA (CertiProf CAIPC®, AWS GenAI). Especializado en React, Node.js, Python y arquitecturas cloud.',
+    skills: 'Stack técnico: React, TypeScript, Node.js, Python, Firebase, OpenAI API, AWS Bedrock, SQL Server, Docker, Vercel.',
+    experience: 'Trayectoria como Full-Stack Developer: Systems Architect en Big Jack, Data Engineer en Dearel, y 6+ proyectos independientes con IA.'
   };
 
   const pageTitle = title || pageTitles[pageType] || pageTitles.home;
   const pageDescription = description || pageDescriptions[pageType] || defaultDescription;
   const pageImage = image || defaultImage;
 
-  // Schema.org específico por tipo de página
   const getPageSchema = () => {
     switch (pageType) {
-      case 'portfolio':
+      case 'home':
         return {
           "@context": "https://schema.org",
-          "@type": "CollectionPage",
-          "name": "Proyectos en Producción - Sebastián Jaque",
-          "description": "Plataformas, dashboards y sistemas de automatización operando en entornos reales",
-          "url": `${siteUrl}/#portfolio`,
-          "mainEntity": {
-            "@type": "ItemList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Coralia Web",
-                "description": "Plataforma e-commerce con CRM e integración de IA"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Dearel Intelligence Hub",
-                "description": "Business Intelligence y análisis multifuente"
-              },
-              {
-                "@type": "ListItem",
-                "position": 3,
-                "name": "Big Jack Manager",
-                "description": "Sistema de gestión operativa integral"
-              }
-            ]
-          }
-        };
-      
-      case 'skills':
-        return {
-          "@context": "https://schema.org",
-          "@type": "ItemList",
-          "name": "Arquitectura y Herramientas - Sebastián Jaque",
-          "description": "Stack técnico para datos, automatización y sistemas digitales",
-          "url": `${siteUrl}/#skills`,
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "React & TypeScript" },
-            { "@type": "ListItem", "position": 2, "name": "Node.js & Python" },
-            { "@type": "ListItem", "position": 3, "name": "Power BI & SQL Server" },
-            { "@type": "ListItem", "position": 4, "name": "Firebase & Cloud" }
+          "@type": "Person",
+          "name": "Sebastián Jaque",
+          "url": siteUrl,
+          "jobTitle": "Full-Stack Developer & AI Integration Specialist",
+          "email": "sjaquer@outlook.es",
+          "telephone": "+51-946-978-919",
+          "image": defaultImage,
+          "sameAs": ["https://github.com/sjaquer", "https://linkedin.com/in/sjaquer"],
+          "knowsAbout": ["React", "TypeScript", "Node.js", "Python", "Firebase", "OpenAI API", "AWS Bedrock", "AI Integration", "Full-Stack Development", "Prompt Engineering", "LLM Integration"],
+          "hasCredential": [
+            { "@type": "EducationalOccupationalCredential", "name": "Artificial Intelligence Professional (CAIPC®)", "credentialCategory": "Professional Certification", "recognizedBy": { "@type": "Organization", "name": "CertiProf" } },
+            { "@type": "EducationalOccupationalCredential", "name": "Generative AI Specialization", "credentialCategory": "Technical Certification", "recognizedBy": { "@type": "Organization", "name": "Amazon Web Services" } }
           ]
         };
-      
-      case 'experience':
-        return {
-          "@context": "https://schema.org",
-          "@type": "ItemList",
-          "name": "Experiencia Profesional - Sebastián Jaque",
-          "description": "Trayectoria en operaciones, datos y automatización",
-          "url": `${siteUrl}/#experience`,
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "item": {
-                "@type": "Organization",
-                "name": "Big Jack",
-                "description": "Head of Operations & Digital Transformation"
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "item": {
-                "@type": "Organization",
-                "name": "Dearel",
-                "description": "Lead de Business Intelligence"
-              }
-            }
-          ]
-        };
-
-      case 'contact':
-        return {
-          "@context": "https://schema.org",
-          "@type": "ContactPage",
-          "name": "Contacto - Sebastián Jaque",
-          "description": "Abierto a oportunidades en finanzas, BI, operaciones e innovación",
-          "url": `${siteUrl}/#contact`,
-          "mainEntity": {
-            "@type": "Person",
-            "name": "Sebastián Jaque",
-            "email": "sjaquer@outlook.es",
-            "telephone": "+51-946-978-919"
-          }
-        };
-
       default:
         return null;
     }
@@ -158,16 +65,9 @@ const SEO: React.FC<SEOProps> = ({
 
   return (
     <Helmet>
-      {/* Título dinámico optimizado */}
       <title>{pageTitle}</title>
-      
-      {/* Meta description si es diferente al default del index.html */}
       {description && <meta name="description" content={pageDescription} />}
-      
-      {/* Robots */}
       {noindex && <meta name="robots" content="noindex, nofollow" />}
-      
-      {/* Open Graph dinámico para páginas específicas */}
       {pageType !== 'home' && (
         <>
           <meta property="og:title" content={pageTitle} />
@@ -176,8 +76,6 @@ const SEO: React.FC<SEOProps> = ({
           <meta property="og:type" content={article ? 'article' : 'website'} />
         </>
       )}
-      
-      {/* Twitter Cards dinámico */}
       {pageType !== 'home' && (
         <>
           <meta name="twitter:title" content={pageTitle} />
@@ -185,8 +83,6 @@ const SEO: React.FC<SEOProps> = ({
           <meta name="twitter:image" content={pageImage} />
         </>
       )}
-      
-      {/* Schema.org adicional solo si es necesario para la página */}
       {pageSchema && (
         <script type="application/ld+json">
           {JSON.stringify(pageSchema)}

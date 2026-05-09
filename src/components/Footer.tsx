@@ -1,168 +1,93 @@
-// src/components/Footer.tsx
 import React from 'react';
-import { Github, Linkedin, Instagram, Mail, ArrowUp, MapPin, Briefcase, Code, FileText } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Github, Linkedin, Mail, ArrowUp, MapPin, Phone } from 'lucide-react';
 import { siteContent } from '../data/siteContent';
 
-const Footer: React.FC = () => {
-  const currentYear = new Date().getFullYear();
+const Footer: React.FC = () => (
+  <footer id="contact" className="bg-zinc-950 relative overflow-hidden">
+    {/* Top gradient border */}
+    <div className="h-px bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent" />
 
-  const socialLinks = [
-    { icon: Github, url: 'https://github.com/sjaquer', label: 'GitHub' },
-    { icon: Linkedin, url: 'https://www.linkedin.com/in/sjaquer', label: 'LinkedIn' },
-    { icon: Instagram, url: 'https://instagram.com/sjaquer.dev', label: 'Instagram' },
-    // { icon: Youtube, url: 'https://youtube.com/@sjaquer', label: 'YouTube' }
-  ];
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-10">
+      {/* CTA Banner */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+        className="relative text-center mb-20 p-12 rounded-3xl bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 border border-zinc-800/60 backdrop-blur-sm overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_50%_50%,rgba(34,211,238,0.06),transparent)] pointer-events-none" />
+        <div className="relative z-10">
+          <h3 className="text-3xl md:text-4xl font-extrabold text-zinc-50 font-display tracking-tight mb-4">
+            ¿Tienes un proyecto en mente?
+          </h3>
+          <p className="text-zinc-400 text-lg mb-8 max-w-xl mx-auto">
+            Hablemos sobre cómo puedo ayudarte a construir tu próxima solución.
+          </p>
+          <motion.a
+            whileHover={{ scale: 1.04, boxShadow: '0 0 30px rgba(34,211,238,0.3)' }}
+            whileTap={{ scale: 0.97 }}
+            href={`mailto:${siteContent.footer.contactEmail}`}
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-cyan-400 text-zinc-950 font-bold text-sm shadow-lg shadow-cyan-500/25"
+          >
+            <Mail size={16} /> Contactar
+          </motion.a>
+        </div>
+      </motion.div>
 
-  const scrollToSection = (href: string) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  return (
-    <footer id="contact" role="contentinfo" className="relative border-t border-slate-800 bg-[#171717] z-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-8">
-          
-          {/* Brand Column */}
-          <div className="md:col-span-2 space-y-6">
-            <a href="/" onClick={(e) => { e.preventDefault(); scrollToSection('#home'); }} className="inline-block group">
-                <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-primary-500/20 group-hover:shadow-primary-500/40 transition-shadow">
-                        <img 
-                            src="/icon0.svg" 
-                            alt="Sebastián Jaque - Datos, Automatización y Sistemas Digitales"
-                            width={40}
-                            height={40}
-                            className="w-full h-full object-cover"
-                            loading="lazy"
-                        />
-                    </div>
-                    <span className="text-2xl font-bold font-display text-[#f5fcff] tracking-tight">
-                        {siteContent.brand.name}
-                    </span>
-                </div>
-            </a>
-            
-            <p className="text-slate-300 mt-2 max-w-sm leading-relaxed">
-                Administrador con enfoque en <a href="#automation" onClick={(e) => { e.preventDefault(); scrollToSection('#automation'); }} className="text-primary hover:underline">datos y automatización</a>, <a href="#skills" onClick={(e) => { e.preventDefault(); scrollToSection('#skills'); }} className="text-primary hover:underline">sistemas digitales</a> y <a href="#experience" onClick={(e) => { e.preventDefault(); scrollToSection('#experience'); }} className="text-primary hover:underline">optimización operativa</a>.
-            </p>
-            
-            <div className="flex flex-col gap-3 text-sm text-slate-600 dark:text-slate-300">
-                <a href={`mailto:${siteContent.footer.contactEmail}`} className="flex items-center gap-3 hover:text-primary transition-colors w-fit">
-                    <div className="w-8 h-8 min-w-[2rem] rounded-full bg-[#202020] border border-slate-800 flex items-center justify-center shrink-0">
-                        <Mail size={14} strokeWidth={2} />
-                    </div>
-                    <span className="break-all">{siteContent.footer.contactEmail}</span>
-                </a>
-                <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 min-w-[2rem] rounded-full bg-[#202020] border border-slate-800 flex items-center justify-center shrink-0">
-                        <MapPin size={14} strokeWidth={2} />
-                    </div>
-                    <span>Lima, Perú</span>
-                </div>
-            </div>
-
-            <div className="flex gap-3 pt-2">
-              {socialLinks.map((s, i) => {
-                const Icon = s.icon;
-                return (
-                  <a 
-                    key={i} 
-                    href={s.url} 
-                    target="_blank" 
-                    rel="noreferrer" 
-                    className="w-10 h-10 flex items-center justify-center rounded-full bg-[#202020] border border-slate-800 text-slate-300 hover:text-primary hover:scale-110 transition-all shadow-sm shrink-0"
-                    aria-label={s.label}
-                  >
-                    <Icon size={18} strokeWidth={2} />
-                  </a>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Links Column - Mejorado con más enlaces internos */}
-          <div>
-            <h4 className="text-[#f5fcff] font-bold mb-6">Navegación</h4>
-            <ul className="space-y-4 text-slate-600 dark:text-slate-400 text-sm">
-              <li>
-                <a href="#home" onClick={(e) => { e.preventDefault(); scrollToSection('#home'); }} className="flex items-center gap-2 hover:text-primary transition-colors">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary-500"></span>
-                  Inicio
-                </a>
-              </li>
-              <li>
-                <a href="#skills" onClick={(e) => { e.preventDefault(); scrollToSection('#skills'); }} className="flex items-center gap-2 hover:text-primary transition-colors">
-                  <span className="w-1.5 h-1.5 rounded-full bg-secondary-500"></span>
-                  Áreas de Impacto
-                </a>
-              </li>
-              <li>
-                <a href="#experience" onClick={(e) => { e.preventDefault(); scrollToSection('#experience'); }} className="flex items-center gap-2 hover:text-primary transition-colors">
-                  <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-                  Trayectoria Profesional
-                </a>
-              </li>
-              <li>
-                <a href="#portfolio" onClick={(e) => { e.preventDefault(); scrollToSection('#portfolio'); }} className="flex items-center gap-2 hover:text-primary transition-colors">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
-                  Casos de Éxito
-                </a>
-              </li>
-              <li>
-                <a href="#reviews" onClick={(e) => { e.preventDefault(); scrollToSection('#reviews'); }} className="flex items-center gap-2 hover:text-primary transition-colors">
-                  <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
-                  Testimonios
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Services Column - Nuevo */}
-          <div>
-            <h4 className="text-[#f5fcff] font-bold mb-6">Áreas de Enfoque</h4>
-            <ul className="space-y-4 text-slate-600 dark:text-slate-400 text-sm">
-              <li className="flex items-center gap-2">
-                <Briefcase size={14} className="text-primary-500" />
-                <span>Operaciones & Control</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Code size={14} className="text-secondary-500" />
-                <span>Datos & Business Intelligence</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <FileText size={14} className="text-green-500" />
-                <span>Automatización de Procesos</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact / CTA Column */}
-          <div className="md:col-start-4">
-            <h4 className="text-[#f5fcff] font-bold mb-6">Contacto</h4>
-            <p className="text-slate-500 dark:text-slate-400 text-sm mb-4">
-                Abierto a oportunidades en finanzas, BI, operaciones e innovación.
-            </p>
-            <a 
-                href={`mailto:${siteContent.footer.contactEmail}`}
-                className="inline-flex items-center justify-center w-full px-4 py-2.5 rounded-lg bg-[#f5fcff] text-[#1e1e1e] font-bold text-sm hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 transition-all"
-            >
-                Enviar Mensaje
-            </a>
+      {/* Footer grid */}
+      <div className="grid md:grid-cols-3 gap-12 mb-16">
+        <div>
+          <h4 className="text-lg font-bold text-zinc-50 mb-4 font-display">{siteContent.brand.name}</h4>
+          <p className="text-zinc-500 text-sm leading-relaxed mb-6">{siteContent.footer.about}</p>
+          <div className="flex gap-3">
+            {[
+              { href: 'https://github.com/sjaquer', icon: Github, label: 'GitHub' },
+              { href: 'https://www.linkedin.com/in/sjaquer', icon: Linkedin, label: 'LinkedIn' },
+            ].map(social => (
+              <motion.a key={social.label} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} href={social.href} target="_blank" rel="noreferrer"
+                className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-500 hover:text-cyan-400 hover:border-cyan-500/30 transition-colors" aria-label={social.label}>
+                <social.icon size={18} strokeWidth={1.5} />
+              </motion.a>
+            ))}
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-slate-200 dark:border-slate-800/50 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-500">
-          <div className="flex items-center gap-2">
-              © {currentYear} {siteContent.brand.name} — Lima, Perú.
+        <div>
+          <h4 className="text-sm font-bold text-zinc-50 mb-4 uppercase tracking-wider">Contacto</h4>
+          <div className="space-y-3 text-sm">
+            <a href={`mailto:${siteContent.footer.contactEmail}`} className="flex items-center gap-2 text-zinc-500 hover:text-cyan-400 transition-colors">
+              <Mail size={14} /> {siteContent.footer.contactEmail}
+            </a>
+            <a href={`tel:${siteContent.footer.contactPhone}`} className="flex items-center gap-2 text-zinc-500 hover:text-cyan-400 transition-colors">
+              <Phone size={14} /> {siteContent.footer.contactPhone}
+            </a>
+            <div className="flex items-center gap-2 text-zinc-600">
+              <MapPin size={14} /> Lima, Perú
+            </div>
           </div>
-          <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
-              <ArrowUp size={14} /> Volver arriba
-          </button>
+        </div>
+
+        <div>
+          <h4 className="text-sm font-bold text-zinc-50 mb-4 uppercase tracking-wider">Recursos</h4>
+          <div className="space-y-3">
+            <a href="/resume.txt" target="_blank" className="flex items-center gap-2 text-sm font-mono text-zinc-500 hover:text-zinc-300 transition-colors">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-500" /> resume.txt
+            </a>
+            <a href="/ai.txt" target="_blank" className="flex items-center gap-2 text-sm font-mono text-violet-500/60 hover:text-violet-400 transition-colors">
+              <span className="w-1.5 h-1.5 rounded-full bg-violet-500" /> ai.txt
+            </a>
+          </div>
         </div>
       </div>
-    </footer>
-  );
-};
+
+      {/* Bottom bar */}
+      <div className="pt-8 border-t border-zinc-900 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-zinc-600">
+        <p>{siteContent.footer.copyright}</p>
+        <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-1.5 hover:text-zinc-300 transition-colors group">
+          Volver arriba <ArrowUp size={12} className="group-hover:-translate-y-0.5 transition-transform" />
+        </button>
+      </div>
+    </div>
+  </footer>
+);
 
 export default Footer;

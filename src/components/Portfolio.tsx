@@ -1,121 +1,67 @@
-// src/components/Portfolio.tsx
 import React, { useState } from 'react';
-import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
-import { Github, ArrowUpRight, FolderGit2, Monitor } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Github, ExternalLink, Sparkles } from 'lucide-react';
 import { projects } from '../data/portfolio';
+import { MOTION } from '../utils/animations';
 
-// 3D Card Component
 const ProjectCard = ({ project }: { project: any }) => {
-  // Mouse tracking for 3D effect
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const rotateX = useTransform(y, [-100, 100], [5, -5]);
-  const rotateY = useTransform(x, [-100, 100], [-5, 5]);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    x.set(e.clientX - centerX);
-    y.set(e.clientY - centerY);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
+  const hasAI = project.aiFeatures && project.aiFeatures.length > 0;
 
   return (
     <motion.div
-      style={{
-        perspective: 1000,
-        rotateX,
-        rotateY,
-      }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="group relative h-full"
+      variants={MOTION.staggerChild}
+      whileHover={{ y: -8 }}
+      className={`group relative h-full bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-3xl overflow-hidden flex flex-col transition-all duration-500 ${hasAI ? 'hover:border-violet-500/30' : 'hover:border-cyan-500/30'}`}
     >
-      <div className="relative h-full bg-[#171717] border border-slate-800 rounded-3xl overflow-hidden hover:border-primary/40 transition-all duration-500 shadow-xl hover:shadow-[0_0_40px_rgba(217,229,18,0.1)] flex flex-col ring-1 ring-white/5">
-        {/* Top Gradient Line */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        
-        {/* Image / Preview */}
-        <div className="relative aspect-[16/10] overflow-hidden bg-black group">
-          <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-transparent transition-colors z-10" />
-          <img
-            src={project.image?.replace('w=1600', 'w=800') || ''}
-            alt={project.title}
-            className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
-            loading="lazy"
-          />
+      <div className="relative aspect-[16/10] overflow-hidden bg-zinc-950 p-2">
+        <div className="w-full h-full rounded-2xl overflow-hidden relative">
+          <img src={project.image?.replace('w=1600', 'w=800') || ''} alt={project.title} className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-80" />
           
-          {/* Overlay Actions */}
-          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 flex items-center justify-center gap-4 backdrop-blur-sm">
+          <div className="absolute inset-0 bg-zinc-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 flex items-center justify-center gap-4 backdrop-blur-sm">
             {project.liveUrl && (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="p-3 bg-white text-black rounded-full hover:bg-primary hover:scale-110 transition-all shadow-lg shadow-primary/20"
-                title="Ver Demo"
-              >
-                <ArrowUpRight size={24} />
-              </a>
+              <motion.a whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} href={project.liveUrl} target="_blank" rel="noreferrer" className="w-12 h-12 flex items-center justify-center bg-zinc-100 text-zinc-950 rounded-full shadow-xl"><ExternalLink size={20} /></motion.a>
             )}
             {project.githubUrl && (
-               <a
-                href="#"
-                className="p-3 bg-slate-800 text-white rounded-full hover:bg-white hover:text-black hover:scale-110 transition-all border border-slate-700"
-                title="Ver Código"
-              >
-                <Github size={24} />
-              </a>
+              <motion.a whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} href={project.githubUrl} target="_blank" rel="noreferrer" className="w-12 h-12 flex items-center justify-center bg-zinc-900/80 text-zinc-100 rounded-full border border-zinc-700 backdrop-blur-md"><Github size={20} /></motion.a>
             )}
           </div>
 
-          {/* Type Badge */}
-          <div className="absolute top-4 left-4 z-20">
-             <span className="px-3 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-xs font-semibold text-white flex items-center gap-1.5">
-                {project.category === 'desarrollo' ? <Monitor size={12} /> : <FolderGit2 size={12} />}
-                {project.category.toUpperCase()}
-             </span>
+          {hasAI && (
+            <div className="absolute top-3 right-3 z-20 px-2.5 py-1 rounded-full bg-violet-500/90 text-[10px] font-bold uppercase tracking-widest text-white shadow-lg flex items-center gap-1.5 backdrop-blur-md">
+              <Sparkles size={10} /> AI Powered
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className="flex flex-col flex-grow p-6 sm:p-8">
+        <h3 className="text-xl font-bold text-zinc-100 mb-2 tracking-tight">{project.title}</h3>
+        <p className="text-zinc-400 text-sm mb-6 line-clamp-2 font-light leading-relaxed">{project.subtitle}</p>
+
+        <div className="flex flex-wrap gap-2 mb-6">
+          {project.techStack.map((tech: string, i: number) => {
+            const isAITech = ['IA/ML', 'AI/ML', 'OpenAI API', 'Embeddings', 'NLP Básico'].includes(tech);
+            return (
+              <span key={i} className={`px-2.5 py-1 rounded-md text-[11px] font-mono border ${isAITech ? 'bg-violet-500/10 text-violet-300 border-violet-500/20' : 'bg-zinc-800/30 text-zinc-400 border-zinc-700/50'}`}>
+                {tech}
+              </span>
+            );
+          })}
+        </div>
+
+        <div className="flex-grow" />
+
+        {hasAI && (
+          <div className="pt-4 border-t border-zinc-800/50">
+            {project.aiFeatures.slice(0, 2).map((feat: string, i: number) => (
+              <div key={i} className="flex items-start gap-2 mb-2 last:mb-0">
+                <Sparkles className="text-violet-400 shrink-0 mt-0.5 opacity-70" size={12} />
+                <span className="text-xs text-zinc-500 font-light leading-relaxed">{feat}</span>
+              </div>
+            ))}
           </div>
-        </div>
-
-        {/* Content */}
-        <div className="flex flex-col flex-grow p-6 sm:p-8 relative">
-           {/* Glow Effect inside card */}
-           <div className="absolute bottom-0 right-0 w-32 h-32 bg-primary/5 blur-3xl rounded-full -z-10" />
-
-           <div className="mb-4">
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-1 font-display group-hover:text-primary transition-colors">
-                {project.title}
-              </h3>
-              <p className="text-primary-400 font-medium text-sm">
-                {project.subtitle}
-              </p>
-           </div>
-
-           <p className="text-slate-400 text-sm leading-relaxed mb-6 line-clamp-3">
-              {project.description}
-           </p>
-
-           <div className="mt-auto flex flex-wrap gap-2">
-              {project.techStack.map((tech: string, i: number) => (
-                <span
-                  key={i}
-                  className="px-2.5 py-1 rounded-md bg-slate-800/50 text-slate-300 text-xs border border-slate-700/50"
-                >
-                  {tech}
-                </span>
-              ))}
-           </div>
-        </div>
+        )}
       </div>
     </motion.div>
   );
@@ -123,72 +69,36 @@ const ProjectCard = ({ project }: { project: any }) => {
 
 const Portfolio = () => {
   const [filter, setFilter] = useState('all');
-
   const categories = ['all', ...Array.from(new Set(projects.map((p) => p.category)))];
-
-  const filteredProjects =
-    filter === 'all' ? projects : projects.filter((p) => p.category === filter);
+  const filteredProjects = filter === 'all' ? projects : projects.filter((p) => p.category === filter);
 
   return (
-    <section id="portfolio" className="py-24 bg-[#0a0a0a] relative overflow-hidden">
-        {/* Background Atmosphere */}
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/2" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[100px] pointer-events-none translate-y-1/2 -translate-x-1/2" />
-
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-        >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white font-display tracking-tight">
-                Proyectos <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-200 to-white">Destacados</span>
+    <section id="portfolio" className="py-32 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div variants={MOTION.fadeUp} initial="initial" whileInView="whileInView" viewport={MOTION.fadeUp.viewport} className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
+          <div className="max-w-2xl">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-zinc-50 font-display tracking-tight mb-4">
+              Proyectos.
             </h2>
-            <p className="text-xl text-slate-400 max-w-2xl mx-auto font-light">
-                Soluciones reales en producción que integran datos, automatización y sistemas operativos.
+            <p className="text-lg text-zinc-400 font-light">
+              Plataformas escalables, sistemas distribuidos e integraciones de IA en producción.
             </p>
+          </div>
+          
+          <div className="flex flex-wrap gap-2">
+            {categories.map((cat) => (
+              <button key={cat} onClick={() => cat && setFilter(cat)} className={`px-4 py-2 rounded-xl text-sm font-medium transition-all capitalize ${filter === cat ? 'bg-zinc-100 text-zinc-950 shadow-lg' : 'bg-zinc-900/50 text-zinc-400 hover:text-zinc-100 border border-zinc-800/50 hover:bg-zinc-800/80 backdrop-blur-sm'}`}>
+                {cat === 'all' ? 'Todos' : cat}
+              </button>
+            ))}
+          </div>
         </motion.div>
 
-        {/* Categories Filter */}
-        <div className="flex flex-wrap justify-center gap-3 mb-16">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => cat && setFilter(cat)}
-              className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 capitalize relative
-                ${
-                  filter === cat
-                    ? 'bg-primary text-[#0a0a0a] shadow-[0_0_25px_rgba(217,229,18,0.4)] scale-105 z-10'
-                    : 'bg-[#171717] text-slate-400 hover:bg-slate-800 hover:text-white border border-slate-800 hover:border-slate-600'
-                }`}
-            >
-              {cat === 'all' ? 'Todos' : cat}
-            </button>
-          ))}
-        </div>
-
-        {/* Dynamic 3D Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-            <AnimatePresence mode='popLayout'>
-            {filteredProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-            ))}
-            </AnimatePresence>
-        </div>
-        
-        {/* View More Link */}
-        <div className="mt-20 text-center">
-            <a 
-                href="https://github.com/sjaquer" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors border-b border-transparent hover:border-primary pb-0.5"
-            >
-                <Github size={18} />
-                <span>Explorar más repositorios en GitHub</span>
-            </a>
-        </div>
+        <motion.div variants={MOTION.stagger} initial="hidden" whileInView="visible" viewport={MOTION.fadeUp.viewport} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <AnimatePresence mode='popLayout'>
+            {filteredProjects.map((project) => <ProjectCard key={project.id} project={project} />)}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
   );

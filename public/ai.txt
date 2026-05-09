@@ -1,0 +1,19 @@
+SEBASTIÁN JAQUE — FULL-STACK DEVELOPER & AI INTEGRATION SPECIALIST
+
+CORE EXPERTISE
+- Full-Stack: React, TypeScript, Node.js, Python, Firebase
+- AI Integration: OpenAI API, NLP, Embeddings, Semantic Search, AWS Bedrock
+- Certifications: CertiProf CAIPC® (AI Professional), AWS Generative AI
+
+PRODUCTION PROJECTS WITH AI
+1. Coralia Web — E-commerce with AI-powered recommendations
+2. HoneyNotes — Smart notes with NLP categorization & semantic search
+3. TaskZenith — Task management with NLP classification & ML estimation
+
+AVAILABLE FOR
+- Freelance: Custom web development, API architecture, AI integration
+- Employment: Full-Stack Developer, Software Engineer, AI Engineer
+
+CONTACT: sjaquer@outlook.es | Lima, Peru
+WEBSITE: https://sjaquer.is-a.dev
+GITHUB: https://github.com/sjaquer

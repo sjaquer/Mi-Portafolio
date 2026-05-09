@@ -20,6 +20,8 @@ export interface Education {
   relevant?: string[];
   certificateUrl?: string;
   description?: string;
+  tier?: 'ai-certification' | 'tech' | 'academic';
+  badgeColor?: string;
 }
 
 export interface Project {
@@ -35,6 +37,8 @@ export interface Project {
   details?: string[];
   subtitle?: string;
   year?: string;
+  aiFeatures?: string[];
+  metrics?: { label: string; value: string }[];
 }
 
 export interface Skill {

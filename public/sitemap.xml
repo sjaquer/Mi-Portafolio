@@ -22,9 +22,9 @@
     <xhtml:link rel="alternate" hreflang="es-PE" href="https://sjaquer.is-a.dev/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sjaquer.is-a.dev/"/>
     <image:image>
-      <image:loc>https://sjaquer.is-a.dev/images/iconoweb.webp</image:loc>
-      <image:title>Sebastián Jaque - Datos, Automatización y Sistemas Digitales</image:title>
-      <image:caption>Logo de Sebastián Jaque, administrador con enfoque en datos y automatización</image:caption>
+      <image:loc>https://sjaquer.is-a.dev/web-app-manifest-512x512.png</image:loc>
+      <image:title>Sebastián Jaque - Full-Stack Developer & AI Integration</image:title>
+      <image:caption>Logo de Sebastián Jaque — Full-Stack Developer especializado en React, Node.js y Python</image:caption>
     </image:image>
   </url>
   

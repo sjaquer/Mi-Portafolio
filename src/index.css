@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -17,7 +17,7 @@
 
 @layer base {
   html {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
     scroll-behavior: smooth;
     /* Prevent horizontal scroll on mobile */
     overflow-x: hidden;
@@ -27,7 +27,7 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
     @apply text-[#f5fcff];
   }
 
@@ -198,23 +198,23 @@
 /* TEMA OSCURO (Único y predeterminado) */
 :root {
   /* Updated CSS variables to match Tailwind config for legacy support */
-  --color-primary: #d9e512;
+  --color-primary: #22d3ee;
   --primary: var(--color-primary);
-  --color-secondary: #3861d7;
+  --color-secondary: #a855f7;
   --secondary: var(--color-secondary);
-  --primary-rgb: 217, 229, 18;
-  --color-primary-600: #aec70e;
-  --color-primary-700: #82950a;
-  --color-primary-50: rgba(217, 229, 18, 0.1);
+  --primary-rgb: 34, 211, 238;
+  --color-primary-600: #0891b2;
+  --color-primary-700: #0e7490;
+  --color-primary-50: rgba(34, 211, 238, 0.1);
 
-  --secondary-rgb: 56, 97, 215;
-  --color-secondary-600: #2a4ab5;
-  --color-secondary-50: rgba(56, 97, 215, 0.1);
+  --secondary-rgb: 168, 85, 247;
+  --color-secondary-600: #9333ea;
+  --color-secondary-50: rgba(168, 85, 247, 0.1);
 
-  --color-dark: #0a0a0a;
-  --color-dark-100: #171717;
-  --color-dark-200: #3e3e3e;
-  --color-dark-300: #4b4b4b;
+  --color-dark: #09090b;
+  --color-dark-100: #18181b;
+  --color-dark-200: #27272a;
+  --color-dark-300: #3f3f46;
 
   /* Textos para tema oscuro */
   --text-primary: #FFFFFF;
@@ -236,13 +236,13 @@
   --transition-slow: 0.5s ease-out;
 
   /* Background para tema oscuro */
-  --c-bg-0: #0a0a0a;
-  --c-bg-1: #171717;
-  --c-bg-2: #262626;
-  --c-primary: #d9e512;
-  --c-primary-soft: #aec70e;
-  --c-secondary: #3861d7;
-  --c-secondary-soft: #6f8be6;
+  --c-bg-0: #09090b;
+  --c-bg-1: #18181b;
+  --c-bg-2: #27272a;
+  --c-primary: #22d3ee;
+  --c-primary-soft: #0891b2;
+  --c-secondary: #a855f7;
+  --c-secondary-soft: #9333ea;
   --bg-shift-x: 0px;
   --bg-shift-y: 0px;
   --muted: #64748B;

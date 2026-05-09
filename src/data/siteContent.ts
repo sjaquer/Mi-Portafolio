@@ -1,45 +1,46 @@
 export const siteContent = {
   brand: {
     name: 'Sebastián Jaque',
-    subtitle: 'Operaciones · Datos · Automatización',
-    logo: '/icon0.svg'
+    subtitle: 'Full-Stack Developer · AI Integration',
+    logo: '/favicon.svg'
   },
   seo: {
-    title: 'Sebastián Jaque | Analista de Operaciones y Datos',
-    description: 'Sebastián Jaque — Joven profesional con enfoque en operaciones, análisis de datos y automatización de procesos. Construyo herramientas y sistemas para optimizar control operativo y apoyar la toma de decisiones.',
-    keywords: 'Sebastián Jaque, operaciones, datos, automatización, Power BI, business intelligence, analista, Lima, Perú',
+    title: 'Sebastián Jaque | Full-Stack Developer & AI Integration Specialist',
+    description: 'Full-Stack Developer especializado en React, Node.js, Python e integración de IA Generativa en productos. Soluciones web escalables con AI-driven features.',
+    keywords: 'desarrollador full-stack, AI integration, React developer, Node.js, IA generativa, freelance developer Lima',
     url: 'https://sjaquer.is-a.dev/',
     image: 'https://sjaquer.is-a.dev/web-app-manifest-512x512.png'
   },
   nav: [
     { id: 'home', label: 'Inicio' },
+    { id: 'freelance-services', label: 'Servicios' },
+    { id: 'ai-showcase', label: 'IA' },
     { id: 'portfolio', label: 'Proyectos' },
-    { id: 'automation', label: 'Automatización' },
-    { id: 'skills', label: 'Herramientas' },
+    { id: 'skills', label: 'Stack' },
     { id: 'experience', label: 'Trayectoria' },
     { id: 'contact', label: 'Contacto' }
   ],
   hero: {
-    title: 'Analista de Operaciones y Datos con enfoque en automatización y mejora de procesos',
-    subtitle: 'Construyo herramientas y sistemas orientados a optimizar operaciones, centralizar información y generar indicadores para la toma de decisiones.',
-    ctaPrimary: 'Ver Proyectos',
-    ctaSecondary: 'Contactar'
+    title: 'Full-Stack Developer',
+    subtitle: 'Construyo software escalable potenciado por IA Generativa. React · Node.js · Python · AI Integration.',
+    ctaPrimary: 'Iniciar Proyecto',
+    ctaSecondary: 'Ver Stack Técnico'
   },
   skills: {
-    title: 'Herramientas y Tecnologías',
-    subtitle: 'Herramientas que utilizo para construir soluciones orientadas a operaciones, datos y automatización.'
+    title: 'Stack Técnico',
+    subtitle: 'Tecnologías y herramientas que utilizo para construir soluciones web modernas, backends escalables y sistemas de integración IA.'
   },
   portfolio: {
     title: 'Proyectos Destacados',
-    subtitle: 'Soluciones reales en producción que integran datos, automatización y sistemas operativos.'
+    subtitle: 'Soluciones reales en producción: plataformas e-commerce con IA, sistemas distribuidos y aplicaciones escalables.'
   },
   reviews: {
-    title: 'Resultados en Proyectos Reales',
-    subtitle: 'Feedback de clientes directos en proyectos con resultados medibles.'
+    title: 'Feedback de Clientes',
+    subtitle: 'Resultados y testimonios de proyectos reales con impacto medible en negocios.'
   },
   footer: {
     copyright: '© 2026 Sebastián Jaque',
-    about: 'Joven profesional con enfoque en operaciones, datos y automatización. Orientado a optimizar procesos y apoyar la toma de decisiones con herramientas digitales.',
+    about: 'Desarrollador Full-Stack especializado en React, Node.js y Python. Creo soluciones web escalables e integro IA Generativa para startups y empresas.',
     contactEmail: 'sjaquer@outlook.es',
     contactPhone: '+51 946 978 919'
   }

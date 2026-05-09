@@ -5,70 +5,68 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Outfit', 'sans-serif'],
-        display: ['Plus Jakarta Sans', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
       },
       colors: {
-        // Business / Navy Palette (Renamed to 'slate-custom' or just relied on slate, 
-        // but keeping structure for safety, now 'neutral-dark')
-        'neutral-dark': {
-          DEFAULT: '#0F172A',
-          50: '#F8FAFC',
-          100: '#F1F5F9',
-          200: '#E2E8F0',
-          300: '#CBD5E1',
-          400: '#94A3B8',
-          500: '#64748B',
-          600: '#475569',
-          700: '#334155',
-          800: '#1E293B',
-          900: '#0F172A',
-        },
-        // Primary: Verde Lima (#d9e512) - Color Principal
-        primary: {
-          DEFAULT: '#d9e512', 
-          50: '#fcfde7',
-          100: '#f9fccf',
-          200: '#f1f89f',
-          300: '#e9f470',
-          400: '#e1f040',
-          500: '#d9e512', // Base
-          600: '#aec70e',
-          700: '#82950a',
-          800: '#66760f',
-          900: '#546110',
-          foreground: '#1e1e1e', // Text on primary
-        },
-        // Secondary: Azul Celeste (#3861d7)
-        secondary: {
-          DEFAULT: '#3861d7', 
-          50: '#eff4ff',
-          100: '#dfe8ff',
-          200: '#c5d7ff',
-          300: '#9dbfff',
-          400: '#709dff',
-          500: '#3861d7', // Base
-          600: '#2a4ab5',
-          700: '#233b93',
-          800: '#1e3176',
-          900: '#121c43',
-        },
-        // Background: Gris Negro (#1e1e1e) - Fondo principal
+        // FONDO: Oscuro profundo inmersivo
         dark: {
-          DEFAULT: '#0a0a0a', 
-          surface: '#171717', 
-          border: '#262626',
+          DEFAULT: '#09090b',    // zinc-950
+          surface: '#18181b',    // zinc-900
+          card: '#1c1c1f',
+          border: '#27272a',     // zinc-800
         },
-        
-        // Colores específicos para mejor contraste en tema claro
-        'light-text': {
-          primary: '#0F172A',    // Negro profundo
-          secondary: '#334155',  // Gris muy oscuro
-          muted: '#475569',      // Gris mejorado para tema claro
-          subtle: '#64748B'      // Gris más legible
+        // ACENTO CÓDIGO/BACKEND: Cyan + Emerald
+        accent: {
+          DEFAULT: '#22d3ee',    // cyan-400
+          hover: '#06b6d4',      // cyan-500
+          subtle: 'rgba(34,211,238,0.1)',
         },
-        
-        // Grises mejorados para ambos temas
+        emerald: {
+          400: '#34d399',
+          500: '#10b981',
+          600: '#059669',
+        },
+        // ACENTO IA EXCLUSIVO: Violet -> Fuchsia
+        ai: {
+          DEFAULT: '#a855f7',    // violet-500
+          light: '#c084fc',      // violet-400
+          dark: '#7c3aed',       // violet-600
+          glow: 'rgba(168,85,247,0.4)',
+          gradient: {
+            from: '#8b5cf6',     // violet-500
+            to: '#d946ef',       // fuchsia-500
+          }
+        },
+        // Colores legacy para evitar fallos (que irán desapareciendo)
+        primary: {
+          DEFAULT: '#22d3ee', 
+          50: '#ecf8fb',
+          100: '#cdeefb',
+          200: '#9fe8f5',
+          300: '#67e8f9',
+          400: '#22d3ee',
+          500: '#06b6d4',
+          600: '#0891b2',
+          700: '#0e7490',
+          800: '#164e63',
+          900: '#083344',
+          foreground: '#09090b',
+        },
+        secondary: {
+          DEFAULT: '#a855f7',
+          50: '#faf5ff',
+          100: '#f3e8ff',
+          200: '#e9d5ff',
+          300: '#d8b4fe',
+          400: '#c084fc',
+          500: '#a855f7',
+          600: '#9333ea',
+          700: '#7e22ce',
+          800: '#6b21a8',
+          900: '#581c87',
+        },
         slate: {
           50: '#f8fafc',
           100: '#f1f5f9',
@@ -81,6 +79,19 @@ export default {
           800: '#1e293b',
           900: '#0f172a',
           950: '#020617'
+        },
+        zinc: {
+          50: '#fafafa',
+          100: '#f4f4f5',
+          200: '#e4e4e7',
+          300: '#d4d4d8',
+          400: '#a1a1aa',
+          500: '#71717a',
+          600: '#52525b',
+          700: '#3f3f46',
+          800: '#27272a',
+          900: '#18181b',
+          950: '#09090b',
         }
       },
       animation: {
@@ -89,13 +100,18 @@ export default {
         'slide-in-right': 'slideInRight 0.5s ease-out',
         'slide-in-up': 'slideInUp 0.5s ease-out',
         'bounce-slow': 'bounce 2s infinite',
-        'pulse-slow': 'pulse 3s ease-in-out infinite'
+        'pulse-slow': 'pulse 3s ease-in-out infinite',
+        'gradient-x': 'gradient-x 3s ease infinite'
       },
       keyframes: {
         fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
         slideInLeft: { '0%': { transform: 'translateX(-100%)', opacity: '0' }, '100%': { transform: 'translateX(0)', opacity: '1' } },
         slideInRight: { '0%': { transform: 'translateX(100%)', opacity: '0' }, '100%': { transform: 'translateX(0)', opacity: '1' } },
-        slideInUp: { '0%': { transform: 'translateY(100%)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } }
+        slideInUp: { '0%': { transform: 'translateY(100%)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
+        'gradient-x': {
+          '0%, 100%': { 'background-size': '200% 200%', 'background-position': '0% 50%' },
+          '50%': { 'background-size': '200% 200%', 'background-position': '100% 50%' },
+        },
       },
       backdropBlur: {
         xs: '2px'

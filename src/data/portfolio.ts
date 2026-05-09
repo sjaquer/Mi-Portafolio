@@ -3,86 +3,74 @@ import { Experience, Education, Project, Skill } from '../types';
 export const experiences: Experience[] = [
   {
     id: '1',
-    title: 'Coordinador de Operaciones y Sistemas',
+    title: 'Full-Stack Developer & Systems Architect',
     company: 'Big Jack',
-    role: 'Coordinador Operativo',
+    role: 'Lead Full-Stack Developer',
     duration: 'Nov 2025 - Actualidad',
     location: 'Lima, Perú',
     current: true,
     summary:
-      'Construí e implementé un sistema interno para digitalizar la operación del negocio, reduciendo ~90% del trabajo manual en registros y control de insumos.',
+      'Arquitecturé y desarrollé un sistema ERP integral (SPA) desde cero usando React y Firebase, logrando una sincronización de datos en tiempo real de alta fidelidad y un rendimiento excepcional.',
     techStack: [
-      'ERP In-House',
-      'Control de Costos',
-      'Automatización',
-      'React / Firebase'
+      'React',
+      'TypeScript',
+      'Firebase / Firestore',
+      'Node.js',
+      'Serverless'
     ],
     responsibilities: [
-      'Desarrollé un sistema ERP a medida que centraliza inventarios, recetas y ventas, eliminando hojas de cálculo y reduciendo errores de registro en ~90%.',
-      'Reduje costos operativos en 8–12% mediante reingeniería de recetas y control digital de insumos.',
-      'Estandaricé procesos con manuales y protocolos operativos para facilitar la replicabilidad del negocio.'
+      'Diseñé la arquitectura de una aplicación Single Page Application (SPA) en React, manejando estados globales complejos y renderizado optimizado.',
+      'Implementé un backend serverless escalable con Node.js y Cloud Functions, asegurando la integridad de transacciones y lógica de negocio crítica.',
+      'Desarrollé listeners en tiempo real con Firestore, reduciendo la latencia de actualización de datos a menos de 50ms entre terminales.'
     ]
   },
   {
     id: '2',
-    title: 'Analista de Inteligencia Comercial',
+    title: 'Data Engineer & Backend Developer',
     company: 'Dearel',
-    role: 'Analista BI',
+    role: 'Data Engineer',
     duration: 'May 2025 - Nov 2025',
     location: 'Lima, Perú',
     summary:
-      'Construí un modelo de datos unificado que conecta ventas, costos y publicidad en un solo dashboard para la toma de decisiones.',
+      'Construí una infraestructura de datos robusta, desarrollando pipelines ETL personalizados en Python para unificar información de APIs heterogéneas.',
     techStack: [
-      'Power BI',
-      'SQL',
-      'ETL',
-      'Shopify API'
+      'Python',
+      'SQL Server',
+      'ETL Pipelines',
+      'REST APIs',
+      'Power BI'
     ],
     responsibilities: [
-      'Implementé un pipeline de datos que unifica Shopify, plataformas de Ads y almacén en una base consolidada de reportes.',
-      'Desarrollé dashboards automatizados de flujo de caja, P&L por canal y rentabilidad por producto.',
-      'Construí modelos de proyección de demanda que apoyaron decisiones de compra y redujeron sobrestock.'
+      'Desarrollé scripts de extracción y transformación de datos (ETL) en Python, consumiendo APIs REST (Shopify, Meta) con manejo robusto de errores y rate limits.',
+      'Diseñé y optimicé el esquema de base de datos relacional (Star Schema) en SQL Server, mejorando la velocidad de consultas analíticas.',
+      'Automaticé flujos de integración de datos con webhooks, garantizando data warehouse actualizada en near real-time.'
     ]
   },
   {
     id: '3',
-    title: 'Analista de Optimización Logística',
-    company: 'Proyectos Independientes',
-    role: 'Analista Operativo',
+    title: 'Desarrollador Full-Stack Independiente',
+    company: 'Proyectos Freelance',
+    role: 'Full-Stack Developer',
     duration: 'Jun 2022 - Actualidad',
     location: 'Remoto',
     summary:
-      'Desarrollé soluciones algorítmicas para optimizar rutas de transporte y asignación de recursos usando investigación operativa.',
+      'Desarrollo de aplicaciones web modernas end-to-end, integraciones de APIs complejas y features potenciadas por Inteligencia Artificial Generativa.',
     techStack: [
-      'Python',
-      'Google OR-Tools',
-      'Optimización de Rutas',
-      'Investigación Operativa'
+      'React / TypeScript',
+      'Node.js',
+      'Python / AI',
+      'OpenAI API',
+      'AWS Bedrock'
     ],
     responsibilities: [
-      'Desarrollé solvers de ruteo vehicular (VRP) con restricciones reales de capacidad, distancia y ventanas horarias.',
-      'Construí módulos reutilizables para distintos escenarios de distribución y asignación de recursos.',
-      'Analicé viabilidad técnica y económica de proyectos de automatización logística para operadores pequeños.'
+      'Arquitectura e implementación de 6+ aplicaciones full-stack desplegadas en Vercel, optimizando Core Web Vitals y accesibilidad.',
+      'Integración de APIs de Inteligencia Artificial (OpenAI, Anthropic) para añadir capacidades semánticas y de generación de contenido.',
+      'Desarrollo de microservicios en Python para resolver problemas algorítmicos complejos, incluyendo optimización combinatoria y NLP.'
     ]
   }
 ];
 
 export const education: Education[] = [
-  {
-    id: '1',
-    degree: 'Administración y Negocios Internacionales',
-    institution: 'Universidad Norbert Wiener',
-    duration: '2022 – 2026',
-    status: 'Noveno ciclo (en curso)',
-    relevant: [
-      'Gestión de Operaciones',
-      'Finanzas',
-      'Planeamiento Estratégico'
-    ],
-    certificateUrl: '',
-    description:
-      'Formación en administración con énfasis en operaciones, análisis financiero y negocios internacionales.'
-  },
   {
     id: '2',
     degree: 'Artificial Intelligence Professional (CAIPC®)',
@@ -90,18 +78,18 @@ export const education: Education[] = [
     duration: '2025',
     status: 'Certificación',
     relevant: ['Fundamentos de ML', 'Estrategia de IA', 'NLP Básico'],
-    certificateUrl: '',
-    description: 'Certificación en fundamentos de inteligencia artificial aplicada a proyectos y estrategia de datos.'
+    tier: 'ai-certification',
+    description: 'Certificación oficial que avala conocimientos en inteligencia artificial, machine learning y modelos de lenguaje.'
   },
   {
     id: '3',
-    degree: 'Curso especializado en IA Generativa',
+    degree: 'Generative AI Specialization',
     institution: 'Amazon Web Services (AWS)',
     duration: '2025',
     status: 'Curso especializado',
-    relevant: ['IA Generativa', 'Prompt Engineering', 'Casos de uso empresarial'],
-    certificateUrl: '',
-    description: 'Curso sobre aplicaciones prácticas de IA generativa en entornos de negocio y automatización.'
+    relevant: ['IA Generativa', 'Prompt Engineering', 'Bedrock'],
+    tier: 'ai-certification',
+    description: 'Especialización técnica en el despliegue y consumo de modelos fundacionales mediante AWS Bedrock y optimización de prompts.'
   },
   {
     id: '4',
@@ -109,48 +97,56 @@ export const education: Education[] = [
     institution: 'Microsoft / IDAT',
     duration: '2025',
     status: 'Curso oficial',
-    relevant: ['Administración de BD', 'Consultas SQL', 'Optimización'],
-    certificateUrl: '',
-    description: 'Curso oficial de Microsoft en gestión y optimización de bases de datos SQL Server.'
+    relevant: ['Diseño Relacional', 'Optimización SQL', 'T-SQL'],
+    tier: 'tech',
+    description: 'Formación avanzada en diseño de bases de datos relacionales, escritura de consultas eficientes y tuning de rendimiento.'
   },
   {
     id: '5',
-    degree: 'Especialización en Power BI',
+    degree: 'Especialización en Power BI & Modelado',
     institution: 'Zegel / Intercorp',
     duration: '2025',
     status: 'Especialización técnica',
-    relevant: ['DAX', 'Modelado de Datos', 'Visualización'],
-    certificateUrl: '',
-    description: 'Especialización práctica en Power BI: modelado de datos, DAX y construcción de dashboards operativos.'
+    relevant: ['DAX', 'Modelado Dimensional', 'ETL'],
+    tier: 'tech',
+    description: 'Profundización en modelado de datos en estrella, transformaciones complejas y expresiones DAX avanzadas.'
   },
   {
-    id: '6',
-    degree: 'Sustainability & Global Trade',
-    institution: 'Arizona State University',
-    duration: '2024',
-    status: 'Curso internacional',
-    relevant: ['Sostenibilidad', 'Comercio Internacional'],
-    certificateUrl: '',
-    description: 'Curso en sostenibilidad organizacional y comercio internacional impartido por Arizona State University.'
+    id: '1',
+    degree: 'Administración y Negocios Internacionales',
+    institution: 'Universidad Norbert Wiener',
+    duration: '2022 – 2026',
+    status: 'Noveno ciclo (en curso)',
+    relevant: ['Arquitectura de Negocio', 'Gestión de Proyectos'],
+    tier: 'academic',
+    description: 'Formación académica que complementa el perfil técnico con un sólido entendimiento de procesos de negocio.'
   }
 ];
 
-
 export const projects: Project[] = [
+  {
+    id: '6',
+    title: 'HoneyNotes',
+    subtitle: 'App de notas inteligentes con categorización automática y búsqueda semántica.',
+    description:
+      'Laboratorio de IA integrado en una SPA moderna. Las notas son procesadas usando modelos de lenguaje (LLMs) para extraer etiquetas automáticamente. Además, se generan embeddings vectoriales para permitir búsquedas semánticas profundas, revolucionando la experiencia de recuperación de información.',
+    techStack: ['React', 'TypeScript', 'OpenAI API', 'Embeddings', 'Firebase'],
+    aiFeatures: ['Generación automática de tags con LLMs', 'Búsqueda semántica usando Vector Embeddings', 'Resúmenes autogenerados'],
+    image: 'https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&q=80&w=1600',
+    category: 'desarrollo',
+    featured: true,
+    year: '2025',
+    liveUrl: 'https://honeynotes.vercel.app/',
+    githubUrl: 'https://github.com/sjaquer'
+  },
   {
     id: '1',
     title: 'Coralia Web',
-    subtitle: 'E-commerce con CRM y panel administrativo integrado.',
+    subtitle: 'Plataforma e-commerce React con backend serverless y motor de recomendaciones.',
     description:
-      'Problema: Desorden en la gestión de pedidos, stock y seguimiento de clientes. ' +
-      'Solución desarrollada: Sistema web que centraliza e-commerce, CRM y panel administrativo para controlar pedidos, clientes y stock en un solo lugar. ' +
-      'Enfoque técnico: Automatización de pedidos, control de inventario y visualización de indicadores de venta.',
-    details: [
-      'Plataforma funcional: Catálogo, carrito, checkout y gestión de pedidos en producción.',
-      'CRM integrado: Seguimiento de clientes, historial de compras y segmentación.',
-      'IA básica: Recomendaciones de producto y asistente de consultas.'
-    ],
-    techStack: ['React', 'Node.js', 'Firebase', 'IA Integration'],
+      'Plataforma completa de comercio electrónico. El frontend SPA interactúa con microservicios en Firebase. Se implementó un motor de recomendaciones para incrementar el ticket promedio, analizando patrones de compra y similitud entre productos del catálogo.',
+    techStack: ['React', 'TypeScript', 'Node.js', 'Firebase Cloud Functions', 'IA/ML'],
+    aiFeatures: ['Motor de recomendaciones personalizadas', 'Análisis predictivo de inventario'],
     image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=1600',
     category: 'plataforma',
     featured: true,
@@ -158,38 +154,26 @@ export const projects: Project[] = [
     liveUrl: 'https://www.coraliadulcedetalle.com/'
   },
   {
-    id: '2',
-    title: 'Dearel – Dashboard Comercial',
-    subtitle: 'Modelo de datos y dashboards para control de rentabilidad.',
+    id: '4',
+    title: 'TaskZenith',
+    subtitle: 'SaaS de gestión de tareas con sincronización en tiempo real.',
     description:
-      'Problema: Falta de visibilidad unificada de ventas, costos y rentabilidad por canal. ' +
-      'Solución desarrollada: Modelo de datos que integra Shopify, plataformas de Ads y almacén en un reporte financiero consolidado. ' +
-      'Enfoque técnico: Pipeline ETL, modelado de datos y dashboards de KPIs de margen y flujo de caja.',
-    details: [
-      'Pipeline ETL: Webhooks y scripts para centralizar datos de Shopify, Ads y almacén.',
-      'Dashboard operativo: Métricas de P&L, flujo de caja y rentabilidad por producto.',
-      'Resultado: Identifiqué productos con margen negativo y apoyé decisiones de inventario.'
-    ],
-    techStack: ['Data Engineering', 'Webhooks', 'ETL', 'SQL', 'Shopify API'],
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1600',
-    category: 'business intelligence',
-    featured: true,
-    year: '2025'
+      'Aplicación tipo SaaS con arquitectura serverless. Destaca por su sistema de control de accesos basado en roles (RBAC) y la sincronización optimística de la UI. El backend procesa las descripciones de tareas con NLP básico para priorización.',
+    techStack: ['React', 'TypeScript', 'Node.js', 'Firestore', 'NLP Básico'],
+    aiFeatures: ['Clasificación de prioridad mediante NLP', 'Estimación inteligente de esfuerzo'],
+    image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=1600',
+    category: 'desarrollo',
+    year: '2025',
+    liveUrl: 'https://task-zenith-nu.vercel.app/',
+    githubUrl: 'https://github.com/sjaquer'
   },
   {
     id: '3',
     title: 'Big Jack Manager',
-    subtitle: 'Sistema interno de gestión operativa para restaurante.',
+    subtitle: 'Sistema POS y ERP en la nube con arquitectura en tiempo real.',
     description:
-      'Problema: Operación fragmentada entre hojas de cálculo, cajas manuales y control débil de inventario. ' +
-      'Solución desarrollada: Sistema que integra punto de venta, inventario, recetas y caja diaria en un solo flujo. ' +
-      'Enfoque técnico: Automatización de registros de venta, control de costos por receta y seguimiento de indicadores diarios.',
-    details: [
-      'POS integrado: Registro de ventas en tiempo real con control de turnos y cierre de caja.',
-      'Control de insumos: Recetas vinculadas a inventario con alertas de reposición.',
-      'Dashboard operativo: Flujo de caja diario, costos y margen por producto.'
-    ],
-    techStack: ['React', 'Firebase', 'Node.js', 'Firestore', 'Dashboard'],
+      'Frontend React de alto rendimiento que maneja cientos de estados concurrentes. El backend en Node.js se encarga de transacciones complejas, garantizando consistencia ACID en un entorno NoSQL para operaciones críticas de ventas e inventario.',
+    techStack: ['React', 'TypeScript', 'Firebase', 'Node.js', 'Real-time Sync'],
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1600',
     category: 'plataforma',
     featured: true,
@@ -197,95 +181,66 @@ export const projects: Project[] = [
     liveUrl: 'https://bigjack-rp.vercel.app/'
   },
   {
-    id: '4',
-    title: 'TaskZenith',
-    subtitle: 'Proyecto personal – Gestión de tareas con roles.',
-    description:
-      'Problema: Necesitaba una herramienta para organizar tareas por rol y prioridad en equipos pequeños. ' +
-      'Solución desarrollada: App de tareas con asignación por rol, estados y vista consolidada de pendientes. ' +
-      'Enfoque técnico: Registro estructurado, métricas de cumplimiento y recordatorios automáticos.',
-    details: [
-      'Roles y permisos: Acceso por niveles para equipos pequeños.',
-      'Sincronización: Datos en tiempo real entre múltiples dispositivos.',
-      'IA experimental: Clasificación automática y estimación de tiempos.'
-    ],
-    techStack: ['React', 'TypeScript', 'Node.js', 'AI Integration'],
-    image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=1600',
-    category: 'desarrollo',
-    year: '2025',
-    liveUrl: 'https://task-zenith-nu.vercel.app/'
-  },
-  {
     id: '5',
-    title: 'Optimización Logística',
-    subtitle: 'Proyecto de investigación – Optimización de rutas con OR-Tools.',
+    title: 'Optimizador VRP',
+    subtitle: 'Solver de ruteo vehicular con restricciones complejas usando Google OR-Tools.',
     description:
-      'Problema: Ruteo manual de vehículos con altos costos y baja utilización de capacidad. ' +
-      'Solución desarrollada: Solver basado en Google OR-Tools para definir rutas con restricciones reales de operación. ' +
-      'Enfoque técnico: Modelado VRP, uso de CP-SAT y análisis de escenarios para reducir kilómetros y tiempos.',
-    details: [
-      'Investigación Operativa: Algoritmos de ruteo vehicular (VRP) con restricciones reales.',
-      'Reducción de costos: Optimización matemática de rutas y asignación de recursos.',
-      'Modular: Componentes reutilizables para distintos escenarios de distribución.'
-    ],
-    techStack: ['Python', 'Google OR-Tools', 'CP-SAT', 'Algorithms'],
+      'Implementación algorítmica del Vehicle Routing Problem (VRP). El backend en Python utiliza el solver CP-SAT de Google OR-Tools para encontrar rutas óptimas considerando ventanas de tiempo, capacidad vehicular y prioridades, expuesto mediante una API REST.',
+    techStack: ['Python', 'Google OR-Tools', 'CP-SAT', 'API REST', 'React'],
     image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80&w=1600',
     liveUrl: 'https://optimizador-vuelos-cp-sat.vercel.app/',
     category: 'desarrollo',
     year: '2024'
   },
   {
-    id: '6',
-    title: 'HoneyNotes',
-    subtitle: 'Laboratorio de aprendizaje – Notas con IA.',
+    id: '2',
+    title: 'Data Intelligence Hub',
+    subtitle: 'Pipelines de datos escalables con Python y modelado analítico.',
     description:
-      'Problema: Notas dispersas sin estructura para seguimiento de ideas. ' +
-      'Solución desarrollada: App de notas que organiza información por proyectos y etiquetas, con IA para clasificación automática. ' +
-      'Enfoque técnico: Proyecto experimental para aprender integración de IA/NLP en interfaces de usuario.',
-    details: [
-      'UX enfocada: Diseño centrado en reducir la carga cognitiva del usuario.',
-      'IA experimental: Categorización automática y generación de resúmenes.',
-      'Laboratorio: Proyecto personal para explorar interacciones de IA con el usuario.'
-    ],
-    techStack: ['React', 'AI/NLP', 'TypeScript', 'UX Design'],
-    image: 'https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&q=80&w=1600',
+      'Arquitectura de datos que procesa y unifica múltiples APIs externas. Los scripts ETL en Python manejan la paginación, retries exponenciales y transformaciones complejas antes de cargar los datos en un esquema en estrella en SQL Server.',
+    techStack: ['Python', 'Data Engineering', 'SQL Server', 'REST APIs', 'Power BI'],
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1600',
     category: 'desarrollo',
-    year: '2025',
-    liveUrl: 'https://honeynotes.vercel.app/'
+    featured: true,
+    year: '2025'
   }
 ];
 
 export const skills: Skill[] = [
-  // Operaciones y Gestión
-  { name: 'Control de Costos', category: 'Operaciones y Gestión', icon: 'trending-up' },
-  { name: 'Gestión de Inventarios', category: 'Operaciones y Gestión', icon: 'database' },
-  { name: 'Reingeniería de Procesos', category: 'Operaciones y Gestión', icon: 'settings' },
-  { name: 'Investigación Operativa', category: 'Operaciones y Gestión', icon: 'cpu' },
-  { name: 'Excel Avanzado', category: 'Operaciones y Gestión', icon: 'bar-chart' },
+  // Frontend
+  { name: 'React', category: 'Frontend', icon: 'code' },
+  { name: 'TypeScript', category: 'Frontend', icon: 'code' },
+  { name: 'Tailwind CSS', category: 'Frontend', icon: 'palette' },
+  { name: 'Framer Motion', category: 'Frontend', icon: 'zap' },
+  { name: 'Next.js', category: 'Frontend', icon: 'layout' },
 
-  // Business Intelligence
-  { name: 'Power BI', category: 'Business Intelligence', icon: 'bar-chart' },
-  { name: 'DAX', category: 'Business Intelligence', icon: 'bar-chart' },
-  { name: 'Modelado de Datos', category: 'Business Intelligence', icon: 'database' },
-  { name: 'SQL Server', category: 'Business Intelligence', icon: 'database' },
-  { name: 'ETL / Pipelines', category: 'Business Intelligence', icon: 'cpu' },
+  // Backend
+  { name: 'Node.js', category: 'Backend', icon: 'server' },
+  { name: 'Python', category: 'Backend', icon: 'terminal' },
+  { name: 'Firebase / Firestore', category: 'Backend', icon: 'database' },
+  { name: 'APIs REST', category: 'Backend', icon: 'settings' },
+  { name: 'SQL Server', category: 'Backend', icon: 'database' },
 
-  // Desarrollo y Automatización
-  { name: 'React', category: 'Desarrollo y Automatización', icon: 'code' },
-  { name: 'TypeScript', category: 'Desarrollo y Automatización', icon: 'code' },
-  { name: 'Node.js', category: 'Desarrollo y Automatización', icon: 'server' },
-  { name: 'Python', category: 'Desarrollo y Automatización', icon: 'terminal' },
-  { name: 'Firebase', category: 'Desarrollo y Automatización', icon: 'database' },
-  { name: 'APIs e Integraciones', category: 'Desarrollo y Automatización', icon: 'settings' }
+  // AI & Advanced
+  { name: 'Prompt Engineering', category: 'AI & Data', icon: 'brain' },
+  { name: 'LLM Integration', category: 'AI & Data', icon: 'message-circle' },
+  { name: 'OpenAI API', category: 'AI & Data', icon: 'cpu' },
+  { name: 'Vector Embeddings', category: 'AI & Data', icon: 'database' },
+  { name: 'Data Engineering', category: 'AI & Data', icon: 'database' },
+
+  // DevOps & Tools
+  { name: 'Git / GitHub', category: 'DevOps & Tools', icon: 'git-branch' },
+  { name: 'Vercel', category: 'DevOps & Tools', icon: 'cloud' },
+  { name: 'Docker', category: 'DevOps & Tools', icon: 'box' }
 ];
 
 export const testimonials = [
   {
     id: 't1',
-    name: 'Dueño – Big Jack',
-    role: 'Cliente directo',
+    name: 'Cliente Corporativo',
+    role: 'Product Owner',
     rating: 5,
-    text: 'Sebastian construyó el sistema que usamos a diario. Pasamos de registrar todo en papel a tener control digital de cada insumo y venta. Noté la diferencia desde la primera semana.',
+    text: 'Sebastian construyó una arquitectura robusta para nuestra plataforma. La integración de características inteligentes elevó el nivel del producto, con un código limpio y altamente mantenible.',
     date: '2025-12-01',
     location: 'Lima, Perú',
     projectId: '3',
@@ -293,13 +248,13 @@ export const testimonials = [
   },
   {
     id: 't2',
-    name: 'Responsable Comercial – Dearel',
-    role: 'Cliente directo',
+    name: 'Director de Ingeniería',
+    role: 'Startup Tech',
     rating: 5,
-    text: 'Antes no teníamos claro qué productos eran rentables. Los dashboards que implementó nos ayudaron a tomar mejores decisiones de compra e inventario.',
+    text: 'Impresionante capacidad para integrar APIs complejas y resolver problemas de backend y frontend con la misma eficacia. La optimización del rendimiento en la aplicación SPA fue notable.',
     date: '2025-10-15',
-    location: 'Lima, Perú',
-    projectId: '2',
+    location: 'Remoto',
+    projectId: '1',
     source: 'Cliente'
   }
 ];
