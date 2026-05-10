@@ -167,11 +167,18 @@ const Portfolio = () => {
           </div>
         </motion.div>
 
-        <motion.div variants={MOTION.stagger} initial="hidden" whileInView="visible" viewport={MOTION.viewport} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          <AnimatePresence mode='popLayout'>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeFilter ?? 'all'}
+            variants={MOTION.stagger}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+          >
             {filteredProjects.map((project) => <ProjectCard key={project.id} project={project} />)}
-          </AnimatePresence>
-        </motion.div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );
