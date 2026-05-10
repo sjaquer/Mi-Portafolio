@@ -1,24 +1,65 @@
 import { motion } from 'framer-motion';
-import { Code2, Server, BrainCircuit, CloudCog } from 'lucide-react';
+import { Database, BrainCircuit, LineChart, Globe } from 'lucide-react';
 import { MOTION } from '../utils/animations';
+import { siteContent } from '../data/siteContent';
+
+/* ── Skill icon mapping ──────────────────────────────────────────────
+   Uses https://skillicons.dev/ — keys must match their icon IDs exactly.
+   For skills without a skillicons entry we fall back to a simple dot.
+   ──────────────────────────────────────────────────────────────────── */
+
+const ICON_MAP: Record<string, string> = {
+  'React': 'react',
+  'TypeScript': 'ts',
+  'Next.js': 'nextjs',
+  'Tailwind': 'tailwind',
+  'Framer Motion': 'framer',           // ← doesn't exist on skillicons, handled by fallback
+  'Node.js': 'nodejs',
+  'Python': 'python',
+  'Firebase': 'firebase',
+  'SQL Server': 'postgres',            // closest match
+  'SQL': 'postgres',
+  'REST APIs': 'postman',
+  'Power BI': 'powerbi',               // ← doesn't exist, handled by fallback
+  'Google Analytics': 'google',         // ← doesn't exist, handled by fallback
+  'Git': 'git',
+  'Vercel': 'vercel',
+  'Docker': 'docker',
+  'GCP': 'gcp',
+  'Prompt Engineering': '',
+  'Gemini & OpenAI API': '',
+  'SEO Técnico': '',
+  'Análisis Predictivo': '',
+  'Google Sheets API': '',
+  'Automatización': '',
+  'Integración de APIs': '',
+  'Excel Avanzado': '',
+  'ETL': '',
+};
+
+const getIconUrl = (skill: string): string | null => {
+  const id = ICON_MAP[skill];
+  if (id === undefined || id === '') return null;
+  return `https://skillicons.dev/icons?i=${id}&theme=dark`;
+};
 
 const skillCategories = [
   {
-    id: 'frontend', title: 'Frontend', icon: Code2,
-    skills: ['React', 'TypeScript', 'Tailwind', 'Framer Motion', 'Next.js']
+    id: 'data', title: 'Tecnologías & Datos', icon: Database,
+    skills: ['SQL Server', 'Python', 'Power BI', 'Firebase', 'Git', 'REST APIs']
   },
   {
-    id: 'backend', title: 'Backend', icon: Server,
-    skills: ['Node.js', 'Python', 'Firebase', 'SQL', 'REST APIs', 'ETL']
-  },
-  {
-    id: 'ai', title: 'AI Integration', icon: BrainCircuit,
-    skills: ['Prompt Engineering', 'Gemini & OpenAI API', 'Modelos Locales', 'Vector Embeddings', 'RAG Architectures'],
+    id: 'ai', title: 'IA & Analytics', icon: BrainCircuit,
+    skills: ['Análisis Predictivo', 'Prompt Engineering', 'Google Analytics', 'ETL'],
     featured: true
   },
   {
-    id: 'devops', title: 'DevOps', icon: CloudCog,
-    skills: ['Git', 'Vercel', 'Docker', 'GCP', 'CI/CD']
+    id: 'strategy', title: 'Estrategia', icon: LineChart,
+    skills: ['SEO Técnico', 'Automatización', 'Excel Avanzado', 'Integración de APIs']
+  },
+  {
+    id: 'frontend', title: 'Desarrollo Web', icon: Globe,
+    skills: ['React', 'TypeScript', 'Next.js', 'Node.js', 'Tailwind']
   }
 ];
 
@@ -34,11 +75,10 @@ const Skills = () => (
         className="mb-16"
       >
         <h2 className="text-4xl md:text-5xl font-extrabold text-zinc-50 font-display tracking-tight mb-6">
-          Stack Técnico.
+          {siteContent.skills.title}.
         </h2>
         <p className="text-lg text-zinc-400 font-light max-w-2xl leading-relaxed">
-          Herramientas y tecnologías que utilizo para construir arquitecturas escalables, 
-          integraciones de IA de alto rendimiento y experiencias de usuario premium.
+          {siteContent.skills.subtitle}
         </p>
       </motion.div>
 
@@ -59,22 +99,30 @@ const Skills = () => (
               </div>
               
               <div className="flex flex-wrap gap-2">
-                {cat.skills.map(skill => (
-                  <div 
-                    key={skill} 
-                    className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-950/50 border border-zinc-800/50 hover:border-zinc-700 transition-colors group/skill"
-                  >
-                    <img 
-                      src={`https://skillicons.dev/icons?i=${skill.toLowerCase().replace(' & ', ',').replace(' / ', ',').replace('.js', 'js').replace(' ', '')}`} 
-                      alt={skill}
-                      className="w-4 h-4 grayscale group-hover/skill:grayscale-0 transition-all duration-300"
-                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-                    />
-                    <span className="text-xs font-medium text-zinc-400 group-hover/skill:text-zinc-200 transition-colors">
-                      {skill}
-                    </span>
-                  </div>
-                ))}
+                {cat.skills.map(skill => {
+                  const iconUrl = getIconUrl(skill);
+                  return (
+                    <div 
+                      key={skill} 
+                      className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-950/50 border border-zinc-800/50 hover:border-zinc-700 transition-colors group/skill"
+                    >
+                      {iconUrl ? (
+                        <img 
+                          src={iconUrl}
+                          alt={skill}
+                          className="w-4 h-4 grayscale group-hover/skill:grayscale-0 transition-all duration-300"
+                          loading="lazy"
+                          onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                        />
+                      ) : (
+                        <span className={`w-1.5 h-1.5 rounded-full ${cat.featured ? 'bg-violet-500' : 'bg-cyan-500'}`} />
+                      )}
+                      <span className="text-xs font-medium text-zinc-400 group-hover/skill:text-zinc-200 transition-colors">
+                        {skill}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
             </motion.div>
           );

@@ -1,45 +1,120 @@
-SEBASTIÁN JAQUE - FULL-STACK DEVELOPER & AI INTEGRATION SPECIALIST
+================================================================================
+                    SEBASTIÁN EMILIANO JAQUE REATEGUI
+              Business Intelligence & Soluciones Digitales
+================================================================================
 
 PERFIL PROFESIONAL
-Desarrollador Full-Stack especializado en React, Node.js y Python. Construyo soluciones web escalables, APIs robustas e integraciones complejas. Integrador de Inteligencia Artificial Generativa para transformar aplicaciones tradicionales en productos inteligentes.
-
-ESPECIALIDADES TÉCNICAS
-- Frontend: React, TypeScript, Tailwind CSS, Framer Motion, Next.js
-- Backend: Node.js, Python, Firebase, Cloud Functions, APIs REST
-- AI & Data: OpenAI API, Embeddings, NLP, Prompt Engineering, SQL Server
-- DevOps: Git, Vercel, Docker
-
-EXPERIENCIA PROFESIONAL
-
-1. FULL-STACK DEVELOPER & SYSTEMS ARCHITECT - Big Jack (Nov 2023 - Presente)
-- Arquitecturé y desarrollé un ERP SPA en React + Firebase
-- Backend serverless y listeners en tiempo real con latencia <50ms
-- Tecnologías: React, TypeScript, Firebase, Node.js
-
-2. DATA ENGINEER & BACKEND DEVELOPER - Dearel (May 2023 - Nov 2023)
-- Diseñé pipelines ETL en Python para unificar APIs heterogéneas
-- Modelado de bases de datos Star Schema en SQL Server
-- Tecnologías: Python, SQL Server, APIs REST, Power BI
-
-3. DESARROLLADOR FULL-STACK INDEPENDIENTE (Jun 2022 - Presente)
-- Desarrollo end-to-end de SPA desplegadas en Vercel
-- Integración de APIs de IA (OpenAI) para capacidades semánticas
-
-PROYECTOS EN PRODUCCIÓN DESTACADOS
-- HoneyNotes: App de notas con auto-categorización NLP y búsqueda semántica vectorial.
-- Coralia Web: Plataforma e-commerce con recomendaciones de IA.
-- TaskZenith: SaaS de gestión de tareas con sincronización optimística y NLP básico.
-- Optimizador VRP: Solver algorítmico usando Google OR-Tools CP-SAT en Python.
-
-CERTIFICACIONES Y FORMACIÓN
-- Artificial Intelligence Professional (CAIPC®) - CertiProf, 2025
-- Generative AI Specialization - AWS, 2025
-- Curso Oficial: SQL Server - Microsoft / IDAT, 2025
-- Especialización Power BI - Zegel, 2025
+──────────────────────────────────────────────────────────────────────────────────
+Estudiante de 9.º ciclo de Administración y Negocios Internacionales.
+Especializado en el desarrollo de herramientas digitales, estrategias de
+marketing basado en datos, Business Intelligence (BI) y Data Visualization
+para optimizar la toma de decisiones empresariales.
 
 DATOS DE CONTACTO
-Email: sjaquer@outlook.es
-Teléfono: +51 946 978 919
-Ubicación: Lima, Perú
-GitHub: https://github.com/sjaquer
-Website: https://sjaquer.is-a.dev
+──────────────────────────────────────────────────────────────────────────────────
+Ubicación   : Centro de Lima - Lima, Perú
+Teléfono    : +51 946 978 919
+Email       : sjaquer@outlook.es
+LinkedIn    : linkedin.com/in/sjaquer
+Website     : sjaquer.is-a.dev
+
+EXPERIENCIA PROFESIONAL
+──────────────────────────────────────────────────────────────────────────────────
+
+▸ LÍDER DE OPERACIONES Y MARKETING
+  Big Jack-Burgers | Nov 2025 - Ene 2026 | Lima, Perú
+  - Desarrolló un sistema interno (como único programador) que redujo el
+    tiempo de procesamiento de pedidos en un 35%.
+  - Aumentó el margen de rentabilidad mensual en un 15% aplicando modelos
+    de análisis predictivo sobre costos de insumos y recetas.
+  - Implementó dashboards de control de inventario en tiempo real.
+  Tecnologías: React, Firebase, Python, Análisis Predictivo
+
+▸ DESARROLLADOR DE SOLUCIONES DE NEGOCIOS
+  Dearel | Ago 2025 - Nov 2025 | Lima, Perú
+  - Diseñó dashboards interactivos para monitoreo de ventas en tiempo real.
+  - Integró plataformas (Shopify, Google Sheets, CRM) vía APIs, eliminando
+    un 30% de las tareas manuales de digitación.
+  - Automatizó el flujo de leads y pedidos hacia el sistema logístico central.
+  Tecnologías: Python, SQL Server, Shopify API, Google Sheets API, Power BI
+
+▸ PRÁCTICAS MARKETING DIGITAL
+  Neon LED Publicidad | Jun 2025 - Ago 2025 | Lima, Perú
+  - Incrementó los leads orgánicos en un 40% liderando la estrategia del
+    canal de YouTube.
+  - Aplicó optimización SEO técnica y analizó el tráfico con Google Analytics.
+  Tecnologías: Google Analytics, SEO Técnico, YouTube Strategy
+
+▸ DESARROLLADOR INDEPENDIENTE (FREELANCE)
+  Jun 2022 - Actualidad | Remoto
+  - Lideró la creación de más de 6 sistemas web corporativos y e-commerce.
+  - Implementó automatizaciones con Python y SQL, reduciendo errores de
+    digitación en un 25%.
+  - Diseñó arquitecturas escalables integrando servicios de IA y pasarelas
+    de pago.
+  Tecnologías: React, TypeScript, Python, SQL, Node.js, APIs
+
+▸ PRACTICANTE DE LOGÍSTICA
+  Zeus Maritime-Shipchandler | Abr 2025 - May 2025 | Callao, Perú
+  - Gestionó órdenes de compra en el ERP con un 95% de precisión.
+  - Coordinó con proveedores y almacén para la recepción y despacho.
+  Tecnologías: ERP Management, Excel Avanzado
+
+EDUCACIÓN
+──────────────────────────────────────────────────────────────────────────────────
+
+▸ Bachiller en Administración y Negocios Internacionales
+  Universidad Norbert Wiener | Mar 2022 - Dic 2026 | 9.º Ciclo (en curso)
+
+CERTIFICACIONES
+──────────────────────────────────────────────────────────────────────────────────
+
+IA & Datos:
+  ▸ Artificial Intelligence Professional (CAIPC®) — CertiProf, 2025
+  ▸ Diplomado en IA para Negocios — IDAT, 2025
+  ▸ AWS Generative AI for Executives — Amazon Web Services, 2025
+  ▸ Microsoft SQL Server — Microsoft / IDAT, 2024
+
+Desarrollo & BI:
+  ▸ Especialización en Power BI — Intercorp, 2025
+  ▸ Python para Análisis de Datos — Udemy, 2024
+  ▸ Excel Avanzado & Dashboards — 2024
+
+Digital:
+  ▸ Competencias Digitales — Google, 2024
+
+HABILIDADES CLAVE
+──────────────────────────────────────────────────────────────────────────────────
+
+Tecnologías & Datos:
+  Business Intelligence, Data Visualization, SQL Server, Python,
+  Integración de APIs, Git, React, TypeScript, Firebase
+
+Estrategia:
+  Análisis Predictivo, SEO Técnico, Google Analytics, Prompt Engineering
+
+Operaciones:
+  Automatización de flujos, análisis de costos, métricas KPIs, ETL
+
+Idiomas:
+  Inglés C1 (Nivel Avanzado)
+
+PROYECTOS DESTACADOS
+──────────────────────────────────────────────────────────────────────────────────
+
+▸ Big Jack RP — ERP operativo para restaurantes con POS, inventario por
+  recetas y reportes ejecutivos con IA.
+▸ DataWeave-BI — Dashboard BI para múltiples tiendas Shopify con reportes
+  diarios y control de usuarios.
+▸ LogiFlow — ERP para call centers integrando Kommo CRM y Shopify con
+  caché local (<100ms).
+▸ Cabine Grid — Sistema para LAN centers con POS, monitoreo de PCs y
+  cierres de caja automatizados.
+▸ Coralia Delights — E-commerce artesanal con CRM y mensajería IA
+  hiperpersonalizada por WhatsApp.
+▸ Ecos Literarios — Plataforma de análisis literario asistida por IA
+  (Gemini + Genkit).
+
+================================================================================
+  Generado desde: sjaquer.is-a.dev | Actualizado: Mayo 2026
+================================================================================
