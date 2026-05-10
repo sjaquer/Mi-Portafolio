@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, ExternalLink, Sparkles } from 'lucide-react';
+import { Github, ExternalLink, BrainCircuit } from 'lucide-react';
 import { projects } from '../data/portfolio';
+import { Project } from '../types';
 import { MOTION } from '../utils/animations';
 
-const ProjectCard = ({ project }: { project: any }) => {
+const ProjectCard = ({ project }: { project: Project }) => {
   const hasAI = project.aiFeatures && project.aiFeatures.length > 0;
 
   return (
@@ -28,8 +29,8 @@ const ProjectCard = ({ project }: { project: any }) => {
           </div>
 
           {hasAI && (
-            <div className="absolute top-3 right-3 z-20 px-2.5 py-1 rounded-full bg-violet-500/90 text-[10px] font-bold uppercase tracking-widest text-white shadow-lg flex items-center gap-1.5 backdrop-blur-md">
-              <Sparkles size={10} /> AI Powered
+            <div className="absolute top-3 right-3 z-20 px-3 py-1 rounded-full bg-zinc-950/80 text-[10px] font-bold uppercase tracking-widest text-violet-400 border border-violet-500/30 shadow-lg flex items-center gap-1.5 backdrop-blur-md">
+              <BrainCircuit size={10} /> AI Agentic
             </div>
           )}
         </div>
@@ -40,10 +41,10 @@ const ProjectCard = ({ project }: { project: any }) => {
         <p className="text-zinc-400 text-sm mb-6 line-clamp-2 font-light leading-relaxed">{project.subtitle}</p>
 
         <div className="flex flex-wrap gap-2 mb-6">
-          {project.techStack.map((tech: string, i: number) => {
-            const isAITech = ['IA/ML', 'AI/ML', 'OpenAI API', 'Embeddings', 'NLP Básico'].includes(tech);
+          {project.techStack?.map((tech: string, i: number) => {
+            const isAITech = ['IA/ML', 'AI/ML', 'OpenAI API', 'Google Gemini API', 'Modelos Locales', 'Embeddings', 'NLP Básico'].includes(tech);
             return (
-              <span key={i} className={`px-2.5 py-1 rounded-md text-[11px] font-mono border ${isAITech ? 'bg-violet-500/10 text-violet-300 border-violet-500/20' : 'bg-zinc-800/30 text-zinc-400 border-zinc-700/50'}`}>
+              <span key={i} className={`px-2.5 py-1 rounded-md text-[11px] font-mono border ${isAITech ? 'bg-violet-500/10 text-violet-300 border-violet-500/20' : 'bg-zinc-900/30 text-zinc-500 border-zinc-800/50'}`}>
                 {tech}
               </span>
             );
@@ -54,9 +55,9 @@ const ProjectCard = ({ project }: { project: any }) => {
 
         {hasAI && (
           <div className="pt-4 border-t border-zinc-800/50">
-            {project.aiFeatures.slice(0, 2).map((feat: string, i: number) => (
+            {project.aiFeatures?.slice(0, 2).map((feat: string, i: number) => (
               <div key={i} className="flex items-start gap-2 mb-2 last:mb-0">
-                <Sparkles className="text-violet-400 shrink-0 mt-0.5 opacity-70" size={12} />
+                <BrainCircuit className="text-violet-500 shrink-0 mt-0.5 opacity-50" size={12} />
                 <span className="text-xs text-zinc-500 font-light leading-relaxed">{feat}</span>
               </div>
             ))}
@@ -73,9 +74,9 @@ const Portfolio = () => {
   const filteredProjects = filter === 'all' ? projects : projects.filter((p) => p.category === filter);
 
   return (
-    <section id="portfolio" className="py-32 relative z-10">
+    <section id="portfolio" className="py-16 relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div variants={MOTION.fadeUp} initial="initial" whileInView="whileInView" viewport={MOTION.fadeUp.viewport} className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
+        <motion.div variants={MOTION.fadeUp} initial="initial" whileInView="whileInView" viewport={MOTION.viewport} className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="max-w-2xl">
             <h2 className="text-4xl md:text-5xl font-extrabold text-zinc-50 font-display tracking-tight mb-4">
               Proyectos.
@@ -94,7 +95,7 @@ const Portfolio = () => {
           </div>
         </motion.div>
 
-        <motion.div variants={MOTION.stagger} initial="hidden" whileInView="visible" viewport={MOTION.fadeUp.viewport} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <motion.div variants={MOTION.stagger} initial="hidden" whileInView="visible" viewport={MOTION.viewport} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           <AnimatePresence mode='popLayout'>
             {filteredProjects.map((project) => <ProjectCard key={project.id} project={project} />)}
           </AnimatePresence>

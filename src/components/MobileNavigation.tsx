@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Home, Briefcase, Layers, Mail, Code2, Bot } from 'lucide-react';
+import { Home, Briefcase, Layers, Code2, Bot } from 'lucide-react';
 
 const navItems = [
   { id: 'home', icon: Home, label: 'Inicio' },

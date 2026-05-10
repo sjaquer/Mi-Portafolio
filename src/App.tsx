@@ -10,6 +10,7 @@ import FreelanceServices from './components/FreelanceServices';
 import AIShowcase from './components/AIShowcase';
 import MobileNavigation from './components/MobileNavigation';
 import { GradientBackground } from './components/GradientBackground';
+import { SocialProof } from './components/SocialProof';
 import { throttle } from './utils/throttle';
 
 const Portfolio = React.lazy(() => import('./components/Portfolio'));
@@ -53,6 +54,7 @@ const App: React.FC = () => {
           <main className="relative z-10">
             <Hero />
             <FreelanceServices />
+            <SocialProof />
             <AIShowcase />
             <Suspense fallback={<LoadingState title="Cargando contenido..." description="Preparando experiencia" />}>
               <Portfolio />

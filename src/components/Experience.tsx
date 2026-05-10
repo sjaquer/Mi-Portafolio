@@ -5,20 +5,22 @@ import { MOTION } from '../utils/animations';
 const Experience = () => {
   const aiCerts = education.filter(e => e.tier === 'ai-certification');
   const techEdu = education.filter(e => e.tier === 'tech');
-  const academicEdu = education.filter(e => e.tier === 'academic');
 
   return (
-    <section id="experience" className="py-32 relative z-10 border-t border-zinc-900/50 mt-16">
+    <section id="experience" className="py-16 relative z-10 border-t border-zinc-900/50 mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div variants={MOTION.fadeUp} initial="initial" whileInView="whileInView" viewport={MOTION.fadeUp.viewport} className="mb-20">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-zinc-50 font-display tracking-tight">
-            Background.
+        <motion.div variants={MOTION.fadeUp} initial="initial" whileInView="whileInView" viewport={MOTION.viewport} className="mb-24">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-zinc-50 font-display tracking-tight mb-4">
+            Trayectoria Profesional.
           </h2>
+          <p className="text-zinc-400 font-light max-w-xl leading-relaxed">
+            Ingeniería de software con especialización en arquitecturas de datos y sistemas inteligentes.
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
           {/* Experience Column */}
-          <motion.div variants={MOTION.stagger} initial="hidden" whileInView="visible" viewport={MOTION.fadeUp.viewport}>
+          <motion.div variants={MOTION.stagger} initial="hidden" whileInView="visible" viewport={MOTION.viewport}>
             <div className="text-xl font-light text-zinc-400 mb-10 tracking-wide uppercase text-sm">Experiencia</div>
 
             <div className="relative border-l border-zinc-800/50 ml-2 space-y-12">
@@ -44,7 +46,7 @@ const Experience = () => {
           </motion.div>
 
           {/* Education Column */}
-          <motion.div variants={MOTION.stagger} initial="hidden" whileInView="visible" viewport={MOTION.fadeUp.viewport}>
+          <motion.div variants={MOTION.stagger} initial="hidden" whileInView="visible" viewport={MOTION.viewport}>
             <div className="text-xl font-light text-zinc-400 mb-10 tracking-wide uppercase text-sm">Educación & Certificaciones</div>
 
             <div className="relative border-l border-zinc-800/50 ml-2 space-y-10">

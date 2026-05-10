@@ -1,6 +1,6 @@
 // src/components/Reviews.tsx
 import { motion } from 'framer-motion';
-import { Star, Quote, MapPin } from 'lucide-react';
+import { Quote, MapPin } from 'lucide-react';
 import { testimonials } from '../data/portfolio';
 
 const Reviews = () => {

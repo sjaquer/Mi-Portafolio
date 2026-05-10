@@ -1,5 +1,5 @@
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useState } from 'react';
-import { motion, AnimatePresence, type Transition } from 'framer-motion';
+import { motion, AnimatePresence, type Transition, type TargetAndTransition, type VariantLabels } from 'framer-motion';
 
 function cn(...classes: (string | undefined | null | boolean)[]): string {
   return classes.filter(Boolean).join(' ');
@@ -16,9 +16,9 @@ export interface RotatingTextProps {
   texts: string[];
   rotationInterval?: number;
   transition?: Transition;
-  initial?: any;
-  animate?: any;
-  exit?: any;
+  initial?: TargetAndTransition | VariantLabels;
+  animate?: TargetAndTransition | VariantLabels;
+  exit?: TargetAndTransition | VariantLabels;
   mainClassName?: string;
   splitBy?: 'characters' | 'words' | string;
   auto?: boolean;

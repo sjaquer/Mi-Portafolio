@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Monitor, Server, BrainCircuit, ArrowRight, Check } from 'lucide-react';
+import { Monitor, Server, BrainCircuit, ArrowRight } from 'lucide-react';
 import { MOTION } from '../utils/animations';
 
 const services = [
@@ -32,7 +32,7 @@ const services = [
     title: 'IA Generativa',
     description: 'Modelos de lenguaje integrados en tu producto para potenciar búsquedas, recomendaciones y tareas cognitivas.',
     icon: BrainCircuit,
-    features: ['OpenAI / AWS Bedrock', 'RAG & Embeddings', 'Prompt Engineering'],
+    features: ['Google Gemini API', 'RAG & Embeddings', 'Modelos Locales'],
     glowColor: 'rgba(168,85,247,0.08)',
     borderHover: 'hover:border-violet-500/30',
     iconColor: 'text-violet-400',
@@ -42,9 +42,16 @@ const services = [
 
 const FreelanceServices = () => {
   return (
-    <section id="freelance-services" className="py-32 relative z-10">
+    <section id="freelance-services" className="py-16 relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div variants={MOTION.fadeUp} initial="initial" whileInView="whileInView" viewport={MOTION.fadeUp.viewport} transition={MOTION.fadeUp.transition} className="mb-20 max-w-2xl">
+        <motion.div 
+          variants={MOTION.fadeUp} 
+          initial="initial" 
+          whileInView="whileInView" 
+          viewport={MOTION.viewport} 
+          transition={MOTION.fadeUpTransition} 
+          className="mb-20 max-w-2xl"
+        >
           <h2 className="text-4xl md:text-5xl font-extrabold text-zinc-50 font-display tracking-tight mb-6">
             Especialidades.
           </h2>
@@ -53,7 +60,7 @@ const FreelanceServices = () => {
           </p>
         </motion.div>
 
-        <motion.div variants={MOTION.stagger} initial="hidden" whileInView="visible" viewport={MOTION.fadeUp.viewport} className="grid lg:grid-cols-3 gap-6">
+        <motion.div variants={MOTION.stagger} initial="hidden" whileInView="visible" viewport={MOTION.viewport} className="grid lg:grid-cols-3 gap-6">
           {services.map(service => {
             const Icon = service.icon;
             return (

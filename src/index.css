@@ -533,41 +533,22 @@ a:hover {
 
 /* Cards mejoradas con micro-interacciones */
 .card {
-  background: linear-gradient(135deg, var(--surface), var(--surface-2));
-  backdrop-filter: blur(var(--glass-blur));
-  border-radius: var(--radius-lg);
-  padding: 1.5rem;
-  border: 1px solid rgba(255,255,255,0.1);
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(var(--primary-rgb),0.12), transparent);
-  opacity: 0; /* keep hidden by default; glass style avoids visible white lines */
-  transition: opacity var(--transition-normal);
-  transition: all var(--transition-normal);
+  background: rgba(24, 24, 27, 0.4);
+  backdrop-filter: blur(12px);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
   position: relative;
-.card:hover {
-  transform: translateY(-6px) scale(1.015);
-  box-shadow: 0 18px 48px rgba(2,6,23,0.45);
-  border-color: rgba(255,255,255,0.03);
-}
-
-.card:hover::before {
-  opacity: 0.12; /* subtle highlight on hover */
-}
-  transition: opacity var(--transition-normal);
+  overflow: hidden;
 }
 
 .card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.15),
-    0 8px 16px rgba(11, 95, 255, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  border-color: rgba(11, 95, 255, 0.3);
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(24, 24, 27, 0.6);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-.card:hover::before {
-  opacity: 1;
-}
 
 /* Interactive elements */
 .interactive-element {
