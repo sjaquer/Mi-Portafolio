@@ -90,13 +90,15 @@ const Footer: React.FC = () => (
         <div>
           <h4 className="text-sm font-bold text-zinc-50 mb-4 uppercase tracking-wider">Recursos</h4>
           <div className="space-y-3">
-            <a href="/resume.pdf" target="_blank" className="flex items-center gap-2.5 text-sm text-zinc-500 hover:text-cyan-400 transition-colors group">
+            <a href="/resume.txt" target="_blank" className="flex items-center gap-2.5 text-sm text-zinc-500 hover:text-cyan-400 transition-colors group">
               <FileText size={14} className="shrink-0" />
-              <span>Descargar CV</span>
-              <span className="ml-auto text-[10px] font-mono text-zinc-700 group-hover:text-cyan-500/50">.pdf</span>
+              <span>CV (Español)</span>
+              <span className="ml-auto text-[10px] font-mono text-zinc-700 group-hover:text-cyan-500/50">.txt</span>
             </a>
-            <a href="/resume.txt" target="_blank" className="flex items-center gap-2.5 text-sm font-mono text-zinc-500 hover:text-zinc-300 transition-colors">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 shrink-0" /> resume.txt
+            <a href="/resume_en.txt" target="_blank" className="flex items-center gap-2.5 text-sm text-zinc-500 hover:text-violet-400 transition-colors group">
+              <Bot size={14} className="shrink-0" />
+              <span>CV (English)</span>
+              <span className="ml-auto text-[10px] font-mono text-zinc-700 group-hover:text-violet-500/50">.txt</span>
             </a>
             <a href="/ai.txt" target="_blank" className="flex items-center gap-2.5 text-sm font-mono text-violet-500/60 hover:text-violet-400 transition-colors">
               <span className="w-1.5 h-1.5 rounded-full bg-violet-500 shrink-0" /> ai.txt

@@ -1,0 +1,115 @@
+================================================================================
+                    SEBASTIÁN EMILIANO JAQUE REATEGUI
+              Business Intelligence & Digital Solutions
+================================================================================
+
+PROFESSIONAL PROFILE
+──────────────────────────────────────────────────────────────────────────────────
+Undergraduate student (9th semester) in Business Administration and International
+Business. Specialized in building digital tools, data-driven marketing strategies,
+Business Intelligence (BI), and Data Visualization to improve business decision-making.
+
+CONTACT
+──────────────────────────────────────────────────────────────────────────────────
+Location    : Central Lima - Lima, Peru
+Phone       : +51 946 978 919
+Email       : sjaquer@outlook.es
+LinkedIn    : linkedin.com/in/sjaquer
+Website     : sjaquer.is-a.dev
+
+PROFESSIONAL EXPERIENCE
+──────────────────────────────────────────────────────────────────────────────────
+
+▸ OPERATIONS & MARKETING LEAD
+  Big Jack-Burgers | Nov 2025 - Jan 2026 | Lima, Peru
+  - Built an internal system (sole developer) that reduced order processing time
+    by 35%.
+  - Increased monthly profit margin by 15% by applying predictive analysis models
+    on ingredient costs and recipes.
+  - Implemented real-time inventory control dashboards.
+  Technologies: React, Firebase, Python, Predictive Analytics
+
+▸ BUSINESS SOLUTIONS DEVELOPER
+  Dearel | Aug 2025 - Nov 2025 | Lima, Peru
+  - Designed interactive dashboards for real-time sales monitoring.
+  - Integrated platforms (Shopify, Google Sheets, CRM) via APIs, removing 30% of
+    manual data entry tasks.
+  - Automated lead and order flows into the central logistics system.
+  Technologies: Python, SQL Server, Shopify API, Google Sheets API, Power BI
+
+▸ DIGITAL MARKETING INTERN
+  Neon LED Publicidad | Jun 2025 - Aug 2025 | Lima, Peru
+  - Increased organic leads by 40% by leading the YouTube channel strategy.
+  - Applied technical SEO optimizations and analyzed traffic with Google Analytics.
+  Technologies: Google Analytics, Technical SEO, YouTube Strategy
+
+▸ FREELANCE DEVELOPER
+  Jun 2022 - Present | Remote
+  - Led the creation of over 6 corporate web systems and e-commerce platforms.
+  - Implemented automations with Python and SQL, reducing data-entry errors by 25%.
+  - Designed scalable architectures integrating AI services and payment gateways.
+  Technologies: React, TypeScript, Python, SQL, Node.js, APIs
+
+▸ LOGISTICS INTERN
+  Zeus Maritime-Shipchandler | Apr 2025 - May 2025 | Callao, Peru
+  - Managed purchase orders in the ERP with 95% accuracy.
+  - Coordinated with suppliers and warehouse for receiving and dispatch.
+  Technologies: ERP Management, Advanced Excel
+
+EDUCATION
+──────────────────────────────────────────────────────────────────────────────────
+
+▸ Bachelor's in Business Administration and International Business
+  Universidad Norbert Wiener | Mar 2022 - Dec 2026 | 9th Semester (in progress)
+
+CERTIFICATIONS
+──────────────────────────────────────────────────────────────────────────────────
+
+AI & Data:
+  ▸ Artificial Intelligence Professional (CAIPC®) — CertiProf, 2025
+  ▸ Diploma in AI for Business — IDAT, 2025
+  ▸ AWS Generative AI for Executives — Amazon Web Services, 2025
+  ▸ Microsoft SQL Server — Microsoft / IDAT, 2024
+
+Development & BI:
+  ▸ Power BI Specialization — Intercorp, 2025
+  ▸ Python for Data Analysis — Udemy, 2024
+  ▸ Advanced Excel & Dashboards — 2024
+
+Digital:
+  ▸ Digital Skills — Google, 2024
+
+KEY SKILLS
+──────────────────────────────────────────────────────────────────────────────────
+
+Technologies & Data:
+  Business Intelligence, Data Visualization, SQL Server, Python,
+  API Integration, Git, React, TypeScript, Firebase
+
+Strategy:
+  Predictive Analytics, Technical SEO, Google Analytics, Prompt Engineering
+
+Operations:
+  Workflow Automation, Cost Analysis, KPI Metrics, ETL
+
+Languages:
+  English C1 (Advanced)
+
+SELECTED PROJECTS
+──────────────────────────────────────────────────────────────────────────────────
+
+▸ Big Jack RP — Operational ERP for restaurants with POS, recipe-based inventory
+  and executive reports enhanced by AI.
+▸ DataWeave-BI — BI dashboard for multiple Shopify stores with daily reports and
+  user access control.
+▸ LogiFlow — ERP for call centers integrating Kommo CRM and Shopify with local
+  caching (<100ms).
+▸ Cabine Grid — System for LAN centers with POS, PC monitoring and automated
+  cash-close procedures.
+▸ Coralia Delights — Artisan e-commerce with CRM and hyper-personalized AI
+  messaging via WhatsApp.
+▸ Ecos Literarios — AI-assisted literary analysis platform (Gemini + Genkit).
+
+================================================================================
+  Generated from: sjaquer.is-a.dev | Updated: May 2026
+================================================================================
