@@ -1,261 +1,420 @@
-import { Experience, Education, Project, Skill } from '../types';
+import { Experience, Education, Project } from '../types';
 
 export const experiences: Experience[] = [
   {
     id: '1',
-    title: 'Full-Stack Developer & Systems Architect',
-    company: 'Big Jack',
-    role: 'Lead Full-Stack Developer',
-    duration: 'Nov 2025 - Actualidad',
+    title: 'Líder de Operaciones y Marketing',
+    company: 'Big Jack-Burgers',
+    role: 'Líder de Operaciones y Programador',
+    duration: 'Nov 2025 - Ene 2026',
     location: 'Lima, Perú',
-    current: true,
     summary:
-      'Arquitecturé y desarrollé un sistema ERP integral (SPA) desde cero usando React y Firebase, logrando una sincronización de datos en tiempo real de alta fidelidad y un rendimiento excepcional.',
+      'Lideré la optimización operativa y el desarrollo de sistemas internos, logrando mejoras críticas en el procesamiento de pedidos y la rentabilidad del negocio.',
     techStack: [
       'React',
-      'TypeScript',
-      'Firebase / Firestore',
-      'Node.js',
-      'Serverless'
+      'Firebase',
+      'Python',
+      'Análisis Predictivo',
+      'Costeo de Recetas'
     ],
     responsibilities: [
-      'Diseñé la arquitectura de una aplicación Single Page Application (SPA) en React, manejando estados globales complejos y renderizado optimizado.',
-      'Implementé un backend serverless escalable con Node.js y Cloud Functions, asegurando la integridad de transacciones y lógica de negocio crítica.',
-      'Desarrollé listeners en tiempo real con Firestore, reduciendo la latencia de actualización de datos a menos de 50ms entre terminales.'
+      'Desarrolló, como único programador a cargo, un sistema interno que redujo el tiempo de procesamiento de pedidos en un 35%.',
+      'Aumentó el margen de rentabilidad mensual en un 15% aplicando modelos de análisis predictivo sobre los costos de insumos y recetas.',
+      'Implementó dashboards de control de inventario en tiempo real vinculados a la cola de producción.'
     ]
   },
   {
     id: '2',
-    title: 'Data Engineer & Backend Developer',
+    title: 'Desarrollador de Soluciones de Negocios',
     company: 'Dearel',
-    role: 'Data Engineer',
-    duration: 'May 2025 - Nov 2025',
+    role: 'Solutions Developer',
+    duration: 'Ago 2025 - Nov 2025',
     location: 'Lima, Perú',
     summary:
-      'Construí una infraestructura de datos robusta, desarrollando pipelines ETL personalizados en Python para unificar información de APIs heterogéneas.',
+      'Diseñé e implementé infraestructuras de datos para unificar operaciones de e-commerce y CRM, eliminando cuellos de botella manuales.',
     techStack: [
       'Python',
       'SQL Server',
-      'ETL Pipelines',
-      'REST APIs',
+      'Shopify API',
+      'Google Sheets API',
       'Power BI'
     ],
     responsibilities: [
-      'Desarrollé scripts de extracción y transformación de datos (ETL) en Python, consumiendo APIs REST (Shopify, Meta) con manejo robusto de errores y rate limits.',
-      'Diseñé y optimicé el esquema de base de datos relacional (Star Schema) en SQL Server, mejorando la velocidad de consultas analíticas.',
-      'Automaticé flujos de integración de datos con webhooks, garantizando data warehouse actualizada en near real-time.'
+      'Diseñó dashboards interactivos para monitorear ventas en tiempo real, permitiendo una reacción inmediata a tendencias de mercado.',
+      'Integró plataformas heterogéneas (Shopify, Google Sheets, CRM) usando APIs personalizadas, eliminando un 30% de las tareas manuales de digitación.',
+      'Automatizó el flujo de leads y pedidos hacia el sistema logístico central.'
     ]
   },
   {
     id: '3',
-    title: 'Desarrollador Full-Stack Independiente',
-    company: 'Proyectos Freelance & Startups',
+    title: 'Prácticas Marketing Digital',
+    company: 'Neon LED Publicidad',
+    role: 'Marketing Intern',
+    duration: 'Jun 2025 - Ago 2025',
+    location: 'Lima, Perú',
+    summary:
+      'Lideré estrategias de contenido y optimización técnica para canales digitales, incrementando significativamente la captación de clientes.',
+    techStack: [
+      'Google Analytics',
+      'SEO Técnico',
+      'YouTube Strategy',
+      'Content Planning'
+    ],
+    responsibilities: [
+      'Incrementó los leads orgánicos en un 40% liderando la estrategia de crecimiento y contenido del canal de YouTube.',
+      'Aplicó optimización SEO técnica en el sitio web corporativo, mejorando el ranking para palabras clave competitivas.',
+      'Analizó el tráfico y comportamiento del usuario con Google Analytics para ajustar las campañas de pauta.'
+    ]
+  },
+  {
+    id: '4',
+    title: 'Desarrollador Independiente',
+    company: 'Freelance',
     role: 'Full-Stack Developer',
     duration: 'Jun 2022 - Actualidad',
     location: 'Remoto',
     summary:
-      'Lidero la arquitectura técnica para startups en etapas tempranas, transformando visiones de negocio en MVPs de alto impacto. He participado en ferias de emprendimiento donde mis soluciones fueron clave para validar modelos de negocio y asegurar tracción inicial mediante la integración estratégica de IA.',
+      'Arquitecto soluciones web personalizadas y automatizaciones para diversos sectores, enfocándome en la eficiencia operativa y escalabilidad.',
     techStack: [
       'React / TypeScript',
+      'Python / SQL',
       'Node.js',
-      'Python / AI',
-      'Google Gemini API',
-      'Modelos Locales'
+      'Integración de APIs',
+      'Automatización'
     ],
     responsibilities: [
-      'Desarrollé MVPs para startups locales, logrando presentaciones exitosas en ferias de emprendimiento con sistemas funcionales de alta fidelidad.',
-      'Implementé soluciones de IA híbridas combinando APIs de nube (Gemini, OpenAI) con modelos locales optimizados para reducir latencia y costos.',
-      'Diseñé flujos de automatización para negocios en crecimiento, centralizando operaciones críticas en dashboards intuitivos.'
+      'Lideró la creación de más de 6 sistemas web corporativos y e-commerce de alta complejidad.',
+      'Implementó automatizaciones con Python y SQL para procesamiento de datos masivos, reduciendo errores de digitación en un 25%.',
+      'Diseñó arquitecturas escalables para startups, integrando servicios de IA y pasarelas de pago.'
+    ]
+  },
+  {
+    id: '5',
+    title: 'Practicante de Logística',
+    company: 'Zeus Maritime-Shipchandler',
+    role: 'Logistic Intern',
+    duration: 'Abr 2025 - May 2025',
+    location: 'Callao, Perú',
+    summary:
+      'Soporte administrativo y operativo en la gestión de suministros marítimos bajo estándares de alta precisión.',
+    techStack: [
+      'ERP Management',
+      'Excel Avanzado',
+      'Logística Internacional'
+    ],
+    responsibilities: [
+      'Gestionó órdenes de compra en el ERP con un 95% de precisión, asegurando el flujo de suministros sin retrasos.',
+      'Coordinó con proveedores y almacén para la recepción y despacho de mercancía crítica.',
+      'Mantuvo la integridad de los datos de inventario mediante auditorías periódicas en el sistema.'
     ]
   }
 ];
 
 export const education: Education[] = [
   {
+    id: '1',
+    degree: 'Bachiller en Administración y Negocios Internacionales',
+    institution: 'Universidad Norbert Wiener',
+    duration: 'Mar 2022 - Dic 2026',
+    status: '9.º Ciclo (en curso)',
+    relevant: ['Arquitectura de Negocio', 'Gestión de Proyectos', 'Estrategia Digital'],
+    tier: 'academic',
+    description: 'Formación académica enfocada en la optimización de procesos de negocio internacionales y gestión estratégica.'
+  },
+  {
     id: '2',
     degree: 'Artificial Intelligence Professional (CAIPC®)',
     institution: 'CertiProf',
     duration: '2025',
     status: 'Certificación',
-    relevant: ['Fundamentos de ML', 'Estrategia de IA', 'NLP Básico'],
+    relevant: ['Fundamentos de ML', 'Estrategia de IA'],
     tier: 'ai-certification',
-    description: 'Certificación oficial que avala conocimientos en inteligencia artificial, machine learning y modelos de lenguaje.'
+    description: 'Certificación oficial que avala conocimientos en inteligencia artificial y modelos de lenguaje.'
   },
   {
     id: '3',
-    degree: 'Generative AI Specialization',
-    institution: 'Amazon Web Services (AWS)',
+    degree: 'Diplomado en IA para Negocios',
+    institution: 'IDAT',
     duration: '2025',
-    status: 'Curso especializado',
-    relevant: ['IA Generativa', 'Prompt Engineering', 'Bedrock'],
+    status: 'Diplomado',
+    relevant: ['IA Aplicada', 'Optimización de Procesos'],
     tier: 'ai-certification',
-    description: 'Especialización técnica en el despliegue y consumo de modelos fundacionales mediante AWS Bedrock y optimización de prompts.'
+    description: 'Especialización en la implementación de soluciones de inteligencia artificial para la mejora de la rentabilidad y eficiencia empresarial.'
   },
   {
     id: '4',
-    degree: 'Microsoft Official Course: SQL Server',
-    institution: 'Microsoft / IDAT',
+    degree: 'AWS Generative AI for Executives',
+    institution: 'Amazon Web Services (AWS)',
     duration: '2025',
-    status: 'Curso oficial',
-    relevant: ['Diseño Relacional', 'Optimización SQL', 'T-SQL'],
-    tier: 'tech',
-    description: 'Formación avanzada en diseño de bases de datos relacionales, escritura de consultas eficientes y tuning de rendimiento.'
+    status: 'Certificación',
+    relevant: ['IA Generativa', 'Estrategia Corporativa'],
+    tier: 'ai-certification',
+    description: 'Enfoque ejecutivo sobre el despliegue de modelos fundacionales para la creación de valor en organizaciones.'
   },
   {
     id: '5',
-    degree: 'Especialización en Power BI & Modelado',
-    institution: 'Zegel / Intercorp',
-    duration: '2025',
-    status: 'Especialización técnica',
-    relevant: ['DAX', 'Modelado Dimensional', 'ETL'],
+    degree: 'Microsoft SQL Server',
+    institution: 'Microsoft / IDAT',
+    duration: '2024',
+    status: 'Curso oficial',
+    relevant: ['Diseño Relacional', 'T-SQL', 'BI'],
     tier: 'tech',
-    description: 'Profundización en modelado de datos en estrella, transformaciones complejas y expresiones DAX avanzadas.'
+    description: 'Diseño y gestión de bases de datos relacionales para entornos corporativos y analítica.'
   },
   {
-    id: '1',
-    degree: 'Administración y Negocios Internacionales',
-    institution: 'Universidad Norbert Wiener',
-    duration: '2022 – 2026',
-    status: 'Noveno ciclo (en curso)',
-    relevant: ['Arquitectura de Negocio', 'Gestión de Proyectos'],
-    tier: 'academic',
-    description: 'Formación académica que complementa el perfil técnico con un sólido entendimiento de procesos de negocio.'
+    id: '6',
+    degree: 'Especialización en Power BI',
+    institution: 'Intercorp',
+    duration: '2025',
+    status: 'Especialización',
+    relevant: ['DAX', 'Data Visualization', 'ETL'],
+    tier: 'tech',
+    description: 'Dominio de herramientas de visualización de datos y modelado para la toma de decisiones.'
+  },
+  {
+    id: '7',
+    degree: 'Python para Análisis de Datos',
+    institution: 'Udemy',
+    duration: '2024',
+    status: 'Curso especializado',
+    relevant: ['Automatización', 'Pandas', 'NumPy'],
+    tier: 'tech',
+    description: 'Desarrollo de scripts para automatización de tareas y procesamiento de grandes volúmenes de información.'
+  },
+  {
+    id: '8',
+    degree: 'Excel Avanzado & Dashboards',
+    institution: 'Formación Profesional',
+    duration: '2024',
+    status: 'Certificación',
+    relevant: ['Macros', 'VBA', 'Análisis Financiero'],
+    tier: 'tech',
+    description: 'Creación de herramientas de control financiero y operativo mediante hojas de cálculo avanzadas.'
+  },
+  {
+    id: '9',
+    degree: 'Competencias Digitales',
+    institution: 'Google',
+    duration: '2024',
+    status: 'Certificación',
+    relevant: ['Marketing Digital', 'Analítica Web'],
+    tier: 'tech',
+    description: 'Fundamentos de presencia digital, estrategia de contenidos y análisis de métricas.'
   }
 ];
 
 export const projects: Project[] = [
   {
-    id: '6',
-    title: 'HoneyNotes',
-    subtitle: 'App de notas inteligentes con búsqueda semántica (RAG).',
-    description:
-      'Sistema avanzado de gestión de conocimiento que utiliza Vector Embeddings para permitir búsquedas por significado, no solo por palabras clave. Implementé un pipeline de preprocesamiento que redujo el tiempo de organización manual en un 70% mediante etiquetado automático con LLMs.',
-    techStack: ['React', 'TypeScript', 'Gemini API', 'Vector DB', 'Firebase'],
-    aiFeatures: ['Búsqueda semántica (Vector Search)', 'Categorización autonoma con LLMs', 'Extracción de entidades'],
-    image: 'https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&q=80&w=1600',
-    category: 'desarrollo',
-    featured: true,
-    year: '2025',
-    liveUrl: 'https://honeynotes.vercel.app/',
-    githubUrl: 'https://github.com/sjaquer'
-  },
-  {
     id: '1',
-    title: 'Coralia Web',
-    subtitle: 'E-commerce escalable con motor de recomendaciones IA.',
+    title: 'Ecos Literarios',
+    subtitle: 'Analizador literario con IA para obras clásicas y contemporáneas.',
     description:
-      'Arquitectura robusta para comercio electrónico que procesa miles de sesiones mensuales. Desarrollé un motor de recomendación personalizado que incrementó el ticket promedio en un 15% mediante análisis de afinidad de productos y patrones de comportamiento.',
-    techStack: ['React', 'Node.js', 'Firebase Cloud Functions', 'IA/ML'],
-    aiFeatures: ['Motor de recomendaciones personalizado', 'Análisis predictivo de demanda'],
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=1600',
-    category: 'plataforma',
+      'Plataforma web pensada para estudiar obras en profundidad y obtener lecturas asistidas por IA sobre autor, estilo, simbolismo, temas y contexto. Está orientada a análisis literarios más ricos que una búsqueda tradicional por palabras clave.',
+    techStack: ['Next.js 15', 'Tailwind CSS', 'Firebase Firestore', 'Google Genkit', 'Gemini 3.1 Flash'],
+    aiFeatures: ['Análisis literario profundo', 'Síntesis semántica de obras', 'Lectura asistida con Gemini'],
+    image: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1600&q=80',
+    category: 'ia',
     featured: true,
-    year: '2025',
-    liveUrl: 'https://www.coraliadulcedetalle.com/'
-  },
-  {
-    id: '4',
-    title: 'TaskZenith',
-    subtitle: 'SaaS de gestión ágil con priorización inteligente NLP.',
-    description:
-      'Plataforma de gestión de proyectos que utiliza Procesamiento de Lenguaje Natural para asignar prioridades automáticamente según la descripción de la tarea. Logró una mejora del 25% en la eficiencia de triaje de tickets para equipos de desarrollo pequeños.',
-    techStack: ['React', 'TypeScript', 'Node.js', 'Firestore', 'NLP'],
-    aiFeatures: ['Clasificación automática de prioridad', 'Estimación de esfuerzo asistida por IA'],
-    image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=1600',
-    category: 'desarrollo',
-    year: '2025',
-    liveUrl: 'https://task-zenith-nu.vercel.app/',
-    githubUrl: 'https://github.com/sjaquer'
-  },
-  {
-    id: '3',
-    title: 'Big Jack Manager',
-    subtitle: 'ERP & POS Cloud con sincronización en tiempo real < 50ms.',
-    description:
-      'Sistema integral de gestión empresarial optimizado para baja latencia. Arquitecturé la base de datos para soportar operaciones críticas de inventario y ventas con integridad ACID, eliminando el 100% de las discrepancias de stock registradas anteriormente.',
-    techStack: ['React', 'Firebase', 'Node.js', 'Real-time Architectures'],
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1600',
-    category: 'plataforma',
-    featured: true,
-    year: '2025',
-    liveUrl: 'https://bigjack-rp.vercel.app/'
-  },
-  {
-    id: '5',
-    title: 'Optimizador VRP',
-    subtitle: 'Algoritmo de optimización logística con Google OR-Tools.',
-    description:
-      'Solución avanzada para el problema de ruteo vehicular (VRP). Implementé modelos matemáticos que redujeron los costos operativos de transporte en un 12% mediante la optimización de rutas considerando múltiples restricciones de tiempo y capacidad.',
-    techStack: ['Python', 'Google OR-Tools', 'CP-SAT Solver', 'API REST'],
-    image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80&w=1600',
-    liveUrl: 'https://optimizador-vuelos-cp-sat.vercel.app/',
-    category: 'desarrollo',
-    year: '2024'
+    year: '2026',
+    githubUrl: 'https://github.com/sjaquer/ecos'
   },
   {
     id: '2',
-    title: 'Data Intelligence Hub',
-    subtitle: 'Pipelines ETL automáticos para unificación de datos.',
+    title: 'TaskME',
+    subtitle: 'Ecosistema de productividad personal y académico.',
     description:
-      'Infraestructura de datos que centraliza información de múltiples canales de venta (Shopify, Meta). Automaticé la recolección de métricas clave reduciendo el tiempo de reporte semanal de 4 horas a solo 5 minutos para el equipo directivo.',
-    techStack: ['Python', 'SQL Server', 'Power BI', 'Data Pipelines'],
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1600',
-    category: 'desarrollo',
+      'Sistema de productividad con estética Cyber-Focus que combina tablero Kanban, monitor de rutinas, sincronización bidireccional con Google Calendar y métricas de eficiencia. Incluye soporte de IA para transformar textos desordenados en tareas accionables.',
+    techStack: ['React', 'TypeScript', 'Google Calendar API', 'Firestore', 'Terminal UI'],
+    aiFeatures: ['Autoorganización de texto en tareas', 'Creación automática de pendientes', 'Soporte de productividad asistida'],
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80',
+    category: 'productividad',
     featured: true,
-    year: '2025'
-  }
-];
-
-export const skills: Skill[] = [
-  // Frontend
-  { name: 'React', category: 'Frontend', icon: 'code' },
-  { name: 'TypeScript', category: 'Frontend', icon: 'code' },
-  { name: 'Tailwind CSS', category: 'Frontend', icon: 'palette' },
-  { name: 'Framer Motion', category: 'Frontend', icon: 'zap' },
-  { name: 'Next.js', category: 'Frontend', icon: 'layout' },
-
-  // Backend
-  { name: 'Node.js', category: 'Backend', icon: 'server' },
-  { name: 'Python', category: 'Backend', icon: 'terminal' },
-  { name: 'Firebase / Firestore', category: 'Backend', icon: 'database' },
-  { name: 'APIs REST', category: 'Backend', icon: 'settings' },
-  { name: 'SQL Server', category: 'Backend', icon: 'database' },
-
-  // AI & Advanced
-  { name: 'Prompt Engineering', category: 'AI & Data', icon: 'brain' },
-  { name: 'LLM Integration', category: 'AI & Data', icon: 'message-circle' },
-  { name: 'Google Gemini API', category: 'AI & Data', icon: 'sparkles' },
-  { name: 'Modelos Locales', category: 'AI & Data', icon: 'cpu' },
-  { name: 'Vector Embeddings', category: 'AI & Data', icon: 'database' },
-  { name: 'Data Engineering', category: 'AI & Data', icon: 'database' },
-
-  // DevOps & Tools
-  { name: 'Git / GitHub', category: 'DevOps & Tools', icon: 'git-branch' },
-  { name: 'Vercel', category: 'DevOps & Tools', icon: 'cloud' },
-  { name: 'Docker', category: 'DevOps & Tools', icon: 'box' }
-];
-
-export const testimonials = [
-  {
-    id: 't1',
-    name: 'Cliente Corporativo',
-    role: 'Product Owner',
-    rating: 5,
-    text: 'Sebastian construyó una arquitectura robusta para nuestra plataforma. La integración de características inteligentes elevó el nivel del producto, con un código limpio y altamente mantenible.',
-    date: '2025-12-01',
-    location: 'Lima, Perú',
-    projectId: '3',
-    source: 'Interno'
+    year: '2025',
+    githubUrl: 'https://github.com/sjaquer/taskME'
   },
   {
-    id: 't2',
-    name: 'Director de Ingeniería',
-    role: 'Startup Tech',
-    rating: 5,
-    text: 'Impresionante capacidad para integrar APIs complejas y resolver problemas de backend y frontend con la misma eficacia. La optimización del rendimiento en la aplicación SPA fue notable.',
-    date: '2025-10-15',
-    location: 'Remoto',
-    projectId: '1',
-    source: 'Cliente'
+    id: '3',
+    title: 'LogINV',
+    subtitle: 'Inventario y logística para entornos exigentes.',
+    description:
+      'Sistema de control de inventario y logística con conteo a pantalla completa, escáner de código de barras, gestión multiubicación y reportes exportables en PDF y CSV. El enfoque está en reducir errores operativos y mejorar el seguimiento de stock.',
+    techStack: ['React', 'TypeScript', 'Barcode Scanner', 'PDF/CSV', 'Firebase'],
+    image: 'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1600&q=80',
+    category: 'logistica',
+    year: '2025',
+    githubUrl: 'https://github.com/sjaquer/LogINV'
+  },
+  {
+    id: '4',
+    title: 'Alerta Multienda',
+    subtitle: 'Monitoreo y alertas en tiempo real para múltiples tiendas Shopify.',
+    description:
+      'Extensión y sistema de soporte para tiendas Shopify con detección de ubicación, sincronización de estados en tiempo real y prevención de alertas duplicadas entre usuarios. Está pensado para operaciones donde cada notificación debe llegar una sola vez y en el contexto correcto.',
+    techStack: ['Chrome Extension', 'Firebase Firestore', 'Shopify API', 'Realtime Sync'],
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80',
+    category: 'retail',
+    year: '2025',
+    githubUrl: 'https://github.com/sjaquer/Alerta-Multienda'
+  },
+  {
+    id: '5',
+    title: 'Big Jack Menu',
+    subtitle: 'Menú digital y checkout con integración a ERP.',
+    description:
+      'Menú digital interactivo para restaurante con catálogo de variantes, checkout optimizado, webhooks hacia ERP y Libro de Reclamaciones digital. El foco está en acelerar el pedido y mantener el flujo operativo alineado con procesos legales y administrativos.',
+    techStack: ['Next.js', 'Webhooks', 'ERP', 'PWA', 'Legal Forms'],
+    image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=80',
+    category: 'restaurante',
+    year: '2025',
+    githubUrl: 'https://github.com/sjaquer/big-jack-menu'
+  },
+  {
+    id: '6',
+    title: 'Cabine Grid',
+    subtitle: 'Gestión integral para cabinas de internet y cibercafés.',
+    description:
+      'Sistema operativo para LAN centers con monitoreo de PCs, POS integrado, control de inventario y cierres de caja automatizados. La interfaz tipo grid permite asignar, cobrar y auditar sesiones desde el dashboard con trazabilidad por roles.',
+    techStack: ['React', 'TypeScript', 'Firestore', 'POS', 'Roles'],
+    aiFeatures: ['Redacción automática de reportes', 'Auditoría asistida'],
+    image: 'https://images.unsplash.com/photo-1519996529931-28324d5a630e?auto=format&fit=crop&w=1600&q=80',
+    category: 'operaciones',
+    featured: true,
+    year: '2025',
+    githubUrl: 'https://github.com/sjaquer/Cabine-Grid'
+  },
+  {
+    id: '7',
+    title: 'HoneyNotes',
+    subtitle: 'Refugio digital gamificado para parejas.',
+    description:
+      'Experiencia emocional interactiva centrada en recuperar la escritura como medio de conexión. Incluye editor de cartas con texturas reales, buzón animado, tienda de recompensas y una asistente IA que ayuda a mejorar el tono y la claridad del mensaje.',
+    techStack: ['React', 'TypeScript', 'Gemini API', 'Firebase', 'Motion UI'],
+    aiFeatures: ['Lectura emocional del texto', 'Sugerencias de escritura', 'Predicción de reacción'],
+    image: '/honey-note.webp',
+    category: 'ia',
+    featured: true,
+    year: '2025',
+    liveUrl: 'https://honeynotes.vercel.app/',
+    githubUrl: 'https://github.com/sjaquer/honeynotes'
+  },
+  {
+    id: '8',
+    title: 'Coralia Delights',
+    subtitle: 'E-commerce artesanal con CRM y automatización hiperpersonalizada.',
+    description:
+      'Plataforma e-commerce pensada para negocios artesanos con landing, tienda y CRM en un mismo flujo. Incorpora checkout avanzado, rastreo de órdenes, inventario de combos y mensajes personalizados por WhatsApp generados con apoyo de IA.',
+    techStack: ['Next.js 15', 'Firebase', 'Genkit', 'Gemini 2.5 Flash', 'WhatsApp'],
+    aiFeatures: ['Perfilado de clientes', 'Mensajería hiperpersonalizada', 'Lealtad automatizada'],
+    image: '/coralia-web.webp',
+    category: 'ecommerce',
+    featured: true,
+    year: '2025',
+    liveUrl: 'https://coraliadulcedetalle.vercel.app/',
+    githubUrl: 'https://github.com/sjaquer/Carolia-Delights'
+  },
+  {
+    id: '9',
+    title: 'TaskZenith',
+    subtitle: 'Gestión de tareas corporativas con colaboración en tiempo real.',
+    description:
+      'Plataforma de organización con múltiples vistas, Pomodoro integrado y autenticación por roles. El dashboard se construyó sobre una cuadrícula flexible de 48 columnas con drag-and-drop y detección de colisiones para mantener densidad sin perder control.',
+    techStack: ['React', 'TypeScript', 'Firestore', 'Drag and Drop', 'Pomodoro'],
+    image: '/task-zentih.webp',
+    category: 'productividad',
+    year: '2025',
+    liveUrl: 'https://task-zenith-nu.vercel.app/',
+    githubUrl: 'https://github.com/sjaquer/TaskZenith'
+  },
+  {
+    id: '10',
+    title: 'Big Jack RP',
+    subtitle: 'ERP operativo moderno para restaurantes fast-food.',
+    description:
+      'Sistema que centraliza POS, cola de pedidos, inventario basado en recetas y pedidos online. También automatiza el descuento de ingredientes por receta y genera reportes ejecutivos con IA para convertir datos operativos en decisiones accionables.',
+    techStack: ['React', 'Firebase', 'Node.js', 'Webhooks', 'Inventario por recetas'],
+    aiFeatures: ['Reportes ejecutivos automáticos', 'Insights del negocio', 'Síntesis operativa'],
+    image: '/saphp.webp',
+    category: 'restaurante',
+    featured: true,
+    year: '2025',
+    liveUrl: 'https://bigjack-rp.vercel.app/',
+    githubUrl: 'https://github.com/sjaquer/big-jack-rp'
+  },
+  {
+    id: '11',
+    title: 'gamejamdevjs-2026',
+    subtitle: 'Videojuego Phaser 4 con escritorio retro y robots.',
+    description:
+      'Proyecto jugable que combina una capa diegética tipo sistema operativo con un juego de plataformas de reparación modular. La narrativa y la interacción se apoyan en Gemini REST API para que el asistente EVA responda de forma dinámica y no como simple texto decorativo.',
+    techStack: ['Phaser 4', 'TypeScript', 'Gemini REST API', 'Narrative UI', 'Game Systems'],
+    aiFeatures: ['Asistente virtual EVA', 'Narrativa dinámica', 'Respuestas contextuales'],
+    image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1600&q=80',
+    category: 'gaming',
+    year: '2026',
+    githubUrl: 'https://github.com/sjaquer/gamejamdevjs-2026'
+  },
+  {
+    id: '12',
+    title: 'Optimizador-Vuelos-CP-SAT',
+    subtitle: 'Planificación logística para helicópteros con carga y pasajeros.',
+    description:
+      'Aplicación web para planificar rutas de vuelo con motor de optimización, validación estricta de datos y visualización interactiva sobre mapas SVG. La solución calcula escenarios según prioridad de carga, peso y eficiencia operativa.',
+    techStack: ['Python', 'CP-SAT', 'Google OR-Tools', 'Excel Import', 'SVG Maps'],
+    image: 'https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=1600&q=80',
+    category: 'logistica',
+    year: '2025',
+    githubUrl: 'https://github.com/sjaquer/Optimizador-Vuelos-CP-SAT'
+  },
+  {
+    id: '13',
+    title: 'DataWeave-BI',
+    subtitle: 'Dashboard BI para múltiples tiendas y reportes diarios.',
+    description:
+      'Dashboard dinámico que consolida datos de distintas tiendas Shopify, organiza la información y genera reportes diarios con filtros, calendario y control de usuarios mediante Zadarma API. Está orientado a dar visibilidad operativa y reducir trabajo manual.',
+    techStack: ['Next.js', 'Shopify APIs', 'Calendars', 'Zadarma API', 'BI'],
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80',
+    category: 'analitica',
+    featured: true,
+    year: '2025',
+    githubUrl: 'https://github.com/sjaquer/DataWeave-BI'
+  },
+  {
+    id: '14',
+    title: 'Secret Love',
+    subtitle: 'Experiencia romántica interactiva con narrativa generada.',
+    description:
+      'Experiencia web creada como regalo especial, con fondo parallax, cuenta regresiva y puertas lógicas desbloqueables mediante códigos secretos. Al ingresar el código correcto, la historia se genera de forma dinámica con IA para volver cada visita distinta.',
+    techStack: ['Next.js', 'Genkit', 'Gemini', 'Parallax', 'Interactive UX'],
+    aiFeatures: ['Historia dinámica', 'Narrativa generativa', 'Desbloqueo por código secreto'],
+    image: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=1600&q=80',
+    category: 'experiencia',
+    year: '2025',
+    githubUrl: 'https://github.com/sjaquer/secretlove'
+  },
+  {
+    id: '15',
+    title: 'eCommerce-Panaderia',
+    subtitle: 'SPA de catálogo y compra para panaderías y negocios de vitrina.',
+    description:
+      'Aplicación web rápida y modular diseñada como vitrina digital para catálogos. Incluye flujo de compra completo, notificaciones SSE y optimización de imágenes, con una arquitectura preparada para incorporar IA futura sin rehacer el producto.',
+    techStack: ['React', 'SSE', 'Image FX', 'Modular Architecture', 'Catalog Flow'],
+    image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1600&q=80',
+    category: 'ecommerce',
+    year: '2025',
+    githubUrl: 'https://github.com/sjaquer/eCommerce-Panaderia'
+  },
+  {
+    id: '16',
+    title: 'LogiFlow',
+    subtitle: 'ERP para call centers con leads, logística e inventario unificados.',
+    description:
+      'Sistema empresarial que integra Kommo CRM y Shopify con roles granulares, analíticas de rendimiento y una caché local agresiva para responder en menos de 100 ms. El resultado es una operación más rápida y con menos lecturas a base de datos.',
+    techStack: ['React', 'Kommo CRM', 'Shopify API', 'localStorage Cache', 'Webhooks'],
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80',
+    category: 'operaciones',
+    featured: true,
+    year: '2025',
+    githubUrl: 'https://github.com/sjaquer/logiflow'
   }
 ];
+

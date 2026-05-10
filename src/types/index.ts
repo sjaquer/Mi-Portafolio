@@ -40,21 +40,3 @@ export interface Project {
   aiFeatures?: string[];
   metrics?: { label: string; value: string }[];
 }
-
-export interface Skill {
-  name: string;
-  category: string;
-  icon?: string;
-}
-
-export interface Testimonial {
-  id: string;
-  name: string;
-  role?: string;
-  rating: number;
-  text: string;
-  date?: string;
-  location?: string;
-  projectId?: string;
-  source?: string;
-}

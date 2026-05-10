@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Monitor, Server, BrainCircuit, ArrowRight } from 'lucide-react';
 import { MOTION } from '../utils/animations';
@@ -44,12 +43,12 @@ const FreelanceServices = () => {
   return (
     <section id="freelance-services" className="py-16 relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          variants={MOTION.fadeUp} 
-          initial="initial" 
-          whileInView="whileInView" 
-          viewport={MOTION.viewport} 
-          transition={MOTION.fadeUpTransition} 
+        <motion.div
+          variants={MOTION.fadeUp}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={MOTION.viewport}
+          transition={MOTION.fadeUpTransition}
           className="mb-20 max-w-2xl"
         >
           <h2 className="text-4xl md:text-5xl font-extrabold text-zinc-50 font-display tracking-tight mb-6">

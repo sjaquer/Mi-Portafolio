@@ -1,13 +1,13 @@
 export const siteContent = {
   brand: {
-    name: 'Sebastián Jaque',
-    subtitle: 'Full-Stack Developer · AI Integration',
+    name: 'Sebastián Emiliano Jaque Reategui',
+    subtitle: 'BI · Soluciones Digitales · Marketing de Datos',
     logo: '/favicon.svg'
   },
   seo: {
-    title: 'Sebastián Jaque | Full-Stack Developer & AI Integration Specialist',
-    description: 'Full-Stack Developer especializado en React, Node.js, Python e integración de IA Generativa en productos. Soluciones web escalables con AI-driven features.',
-    keywords: 'desarrollador full-stack, AI integration, React developer, Node.js, IA generativa, freelance developer Lima',
+    title: 'Sebastián Jaque | Business Intelligence & Desarrollador de Soluciones',
+    description: 'Estudiante de Administración especializado en desarrollo de herramientas digitales, estrategias de marketing basado en datos, BI y Data Visualization para optimizar la toma de decisiones.',
+    keywords: 'business intelligence, data visualization, marketing de datos, desarrollo de soluciones, SQL Server, Python, SEO técnico, administración de negocios',
     url: 'https://sjaquer.is-a.dev/',
     image: 'https://sjaquer.is-a.dev/web-app-manifest-512x512.png'
   },
@@ -21,18 +21,18 @@ export const siteContent = {
     { id: 'contact', label: 'Contacto' }
   ],
   hero: {
-    title: 'Full-Stack Developer',
-    subtitle: 'Construyo software escalable potenciado por IA Generativa. React · Node.js · Python · AI Integration.',
-    ctaPrimary: 'Iniciar Proyecto',
-    ctaSecondary: 'Ver Stack Técnico'
+    title: 'Business Intelligence & Soluciones Digitales',
+    subtitle: 'Especializado en optimizar la toma de decisiones mediante herramientas digitales, análisis predictivo y estrategias de marketing basadas en datos.',
+    ctaPrimary: 'Explorar Proyectos',
+    ctaSecondary: 'Ver Trayectoria'
   },
   skills: {
-    title: 'Stack Técnico',
-    subtitle: 'Tecnologías y herramientas que utilizo para construir soluciones web modernas, backends escalables y sistemas de integración IA.'
+    title: 'Stack & Habilidades',
+    subtitle: 'Tecnologías y herramientas que utilizo para transformar datos en decisiones y procesos manuales en flujos automatizados.'
   },
   portfolio: {
-    title: 'Proyectos Destacados',
-    subtitle: 'Soluciones reales en producción: plataformas e-commerce con IA, sistemas distribuidos y aplicaciones escalables.'
+    title: 'Soluciones & Proyectos',
+    subtitle: 'Casos reales en e-commerce, BI, logística y automatización con impacto medible.'
   },
   reviews: {
     title: 'Feedback de Clientes',
@@ -40,7 +40,7 @@ export const siteContent = {
   },
   footer: {
     copyright: '© 2026 Sebastián Jaque',
-    about: 'Desarrollador Full-Stack especializado en React, Node.js y Python. Creo soluciones web escalables e integro IA Generativa para startups y empresas.',
+    about: 'Estudiante de 9.º ciclo de Administración y Negocios Internacionales. Desarrollador de herramientas digitales y estratega de datos orientado a resultados.',
     contactEmail: 'sjaquer@outlook.es',
     contactPhone: '+51 946 978 919'
   }

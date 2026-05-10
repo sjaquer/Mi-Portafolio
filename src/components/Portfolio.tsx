@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Github, ExternalLink, BrainCircuit } from 'lucide-react';
 import { projects } from '../data/portfolio';
 import { Project } from '../types';
 import { MOTION } from '../utils/animations';
+
+const filterOptions = [
+  { id: 'ia', label: 'IA' },
+  { id: 'negocio', label: 'Negocio' },
+  { id: 'operaciones', label: 'Operaciones' }
+] as const;
 
 const ProjectCard = ({ project }: { project: Project }) => {
   const hasAI = project.aiFeatures && project.aiFeatures.length > 0;
@@ -38,7 +44,14 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
       <div className="flex flex-col flex-grow p-6 sm:p-8">
         <h3 className="text-xl font-bold text-zinc-100 mb-2 tracking-tight">{project.title}</h3>
-        <p className="text-zinc-400 text-sm mb-6 line-clamp-2 font-light leading-relaxed">{project.subtitle}</p>
+        {project.subtitle && (
+          <p className="text-zinc-400 text-[11px] uppercase tracking-[0.2em] mb-2 font-semibold line-clamp-2 leading-relaxed">
+            {project.subtitle}
+          </p>
+        )}
+        <p className="text-zinc-300 text-sm mb-6 line-clamp-3 font-light leading-relaxed">
+          {project.description || project.subtitle}
+        </p>
 
         <div className="flex flex-wrap gap-2 mb-6">
           {project.techStack?.map((tech: string, i: number) => {
@@ -68,10 +81,26 @@ const ProjectCard = ({ project }: { project: Project }) => {
   );
 };
 
+type PortfolioFilter = (typeof filterOptions)[number]['id'];
+
 const Portfolio = () => {
-  const [filter, setFilter] = useState('all');
-  const categories = ['all', ...Array.from(new Set(projects.map((p) => p.category)))];
-  const filteredProjects = filter === 'all' ? projects : projects.filter((p) => p.category === filter);
+  const [activeFilter, setActiveFilter] = useState<PortfolioFilter | null>(null);
+
+  const getProjectGroup = (project: Project): PortfolioFilter => {
+    const category = (project.category ?? '').toLowerCase().trim();
+
+    if (project.aiFeatures?.length || ['ia', 'gaming', 'experiencia'].includes(category)) {
+      return 'ia';
+    }
+
+    if (['logistica', 'operaciones'].includes(category)) {
+      return 'operaciones';
+    }
+
+    return 'negocio';
+  };
+
+  const filteredProjects = activeFilter ? projects.filter((project) => getProjectGroup(project) === activeFilter) : projects;
 
   return (
     <section id="portfolio" className="py-16 relative z-10">
@@ -82,16 +111,20 @@ const Portfolio = () => {
               Proyectos.
             </h2>
             <p className="text-lg text-zinc-400 font-light">
-              Plataformas escalables, sistemas distribuidos e integraciones de IA en producción.
+              Casos reales en e-commerce, ERP, logística, productividad e integraciones de IA.
             </p>
           </div>
-          
+
           <div className="flex flex-wrap gap-2">
-            {categories.map((cat) => (
-              <button key={cat} onClick={() => cat && setFilter(cat)} className={`px-4 py-2 rounded-xl text-sm font-medium transition-all capitalize ${filter === cat ? 'bg-zinc-100 text-zinc-950 shadow-lg' : 'bg-zinc-900/50 text-zinc-400 hover:text-zinc-100 border border-zinc-800/50 hover:bg-zinc-800/80 backdrop-blur-sm'}`}>
-                {cat === 'all' ? 'Todos' : cat}
-              </button>
-            ))}
+            <button onClick={() => setActiveFilter(activeFilter === 'ia' ? null : 'ia')} className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${activeFilter === 'ia' ? 'bg-zinc-100 text-zinc-950 shadow-lg' : 'bg-zinc-900/50 text-zinc-400 hover:text-zinc-100 border border-zinc-800/50 hover:bg-zinc-800/80 backdrop-blur-sm'}`}>
+              IA
+            </button>
+            <button onClick={() => setActiveFilter(activeFilter === 'negocio' ? null : 'negocio')} className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${activeFilter === 'negocio' ? 'bg-zinc-100 text-zinc-950 shadow-lg' : 'bg-zinc-900/50 text-zinc-400 hover:text-zinc-100 border border-zinc-800/50 hover:bg-zinc-800/80 backdrop-blur-sm'}`}>
+              Negocio
+            </button>
+            <button onClick={() => setActiveFilter(activeFilter === 'operaciones' ? null : 'operaciones')} className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${activeFilter === 'operaciones' ? 'bg-zinc-100 text-zinc-950 shadow-lg' : 'bg-zinc-900/50 text-zinc-400 hover:text-zinc-100 border border-zinc-800/50 hover:bg-zinc-800/80 backdrop-blur-sm'}`}>
+              Operaciones
+            </button>
           </div>
         </motion.div>
 
