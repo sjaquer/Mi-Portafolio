@@ -1,47 +1,60 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { ArrowRight, ChevronDown, Play, CheckCircle2, Loader2, BrainCircuit, Sparkles, ShieldCheck, Wand2 } from 'lucide-react';
+import { ArrowRight, ChevronDown, Play, BrainCircuit, TrendingUp, Cpu, Clock, RefreshCw } from 'lucide-react';
 import Tilt from 'react-parallax-tilt';
 import { ResumeButton } from './ResumeButton';
 import { cn } from '../utils/cn';
 
-const logs = [
-  { text: "Initializing Google Gemini API...", status: "pending", color: "text-zinc-500" },
-  { text: "Loading Local Model (Llama-3)...", status: "pending", color: "text-zinc-500" },
-  { text: "Connecting Vector Database...", status: "pending", color: "text-zinc-500" },
-  { text: "AI Agent active and listening.", status: "success", color: "text-emerald-400" },
-];
-
 const Hero: React.FC = () => {
-  const [terminalStep, setTerminalStep] = useState(0);
-  const [isRunning, setIsRunning] = useState(false);
+  const [conversion, setConversion] = useState(0);
+  const [costReduction, setCostReduction] = useState(0);
+  const [latency, setLatency] = useState(150);
+  const [isSimulating, setIsSimulating] = useState(false);
   const prefersReducedMotion = useReducedMotion();
 
-  const handleExecute = () => {
-    if (isRunning) return;
-    setIsRunning(true);
-    setTerminalStep(0);
+  const startSimulation = () => {
+    if (isSimulating) return;
+    setIsSimulating(true);
+    setConversion(0);
+    setCostReduction(0);
+    setLatency(150);
+
+    let currentConversion = 0;
+    let currentCost = 0;
+    let currentLatency = 150;
+
+    const interval = setInterval(() => {
+      let done = true;
+      if (currentConversion < 340) {
+        currentConversion += Math.min(10, 340 - currentConversion);
+        setConversion(currentConversion);
+        done = false;
+      }
+      if (currentCost < 65) {
+        currentCost += Math.min(2, 65 - currentCost);
+        setCostReduction(currentCost);
+        done = false;
+      }
+      if (currentLatency > 12) {
+        currentLatency -= Math.min(6, currentLatency - 12);
+        setLatency(currentLatency);
+        done = false;
+      }
+
+      if (done) {
+        clearInterval(interval);
+        setIsSimulating(false);
+      }
+    }, 25);
   };
 
   useEffect(() => {
-    // Auto-start terminal after a small delay
-    const startTimer = setTimeout(() => {
-      setIsRunning(true);
-    }, 1500);
-    return () => clearTimeout(startTimer);
+    // Auto-trigger simulation on mount
+    const timer = setTimeout(() => {
+      startSimulation();
+    }, 1000);
+    return () => clearTimeout(timer);
   }, []);
-
-  useEffect(() => {
-    if (isRunning && terminalStep < logs.length) {
-      const timer = setTimeout(() => {
-        setTerminalStep(prev => prev + 1);
-      }, 800 + Math.random() * 1000);
-      return () => clearTimeout(timer);
-    } else if (terminalStep === logs.length) {
-      const timer = setTimeout(() => setIsRunning(false), 2000);
-      return () => clearTimeout(timer);
-    }
-  }, [isRunning, terminalStep]);
 
   return (
     <section id="home" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
@@ -85,7 +98,7 @@ const Hero: React.FC = () => {
               transition={{ delay: 0.5, duration: 0.6 }}
               className="max-w-xl text-zinc-400 text-base md:text-lg mb-8 leading-relaxed font-light"
             >
-              Full-Stack Developer especializado en transformar ideas en productos digitales escalables, con IA aplicada, arquitectura sólida y una interfaz que se siente diseñada por un equipo senior de producto.
+              Full-Stack Developer especializado en transformar ideas en productos digitales escalables, potenciados por inteligencia artificial aplicada, arquitecturas robustas y dashboards de negocio inteligentes.
             </motion.p>
 
             <motion.div
@@ -108,7 +121,7 @@ const Hero: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* Right Column: Interactive minimal terminal */}
+          {/* Right Column: Visual Scaling Dashboard */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.95, filter: 'blur(10px)' }}
             animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
@@ -118,103 +131,157 @@ const Hero: React.FC = () => {
               <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/10 to-violet-500/10 blur-3xl rounded-[3rem] pointer-events-none" />
 
               <Tilt
-                tiltMaxAngleX={7}
-                tiltMaxAngleY={7}
+                tiltMaxAngleX={5}
+                tiltMaxAngleY={5}
                 tiltEnable={!prefersReducedMotion}
                 glareEnable={true}
-                glareMaxOpacity={0.12}
-                glareColor="rgba(34, 211, 238, 0.12)"
+                glareMaxOpacity={0.1}
+                glareColor="rgba(34, 211, 238, 0.1)"
                 perspective={1200}
-                scale={1.02}
+                scale={1.01}
                 className="relative"
               >
-                <div className="relative bg-[#0c0c0e]/82 backdrop-blur-2xl rounded-[1.75rem] border border-zinc-800/80 shadow-2xl overflow-hidden min-h-[360px] flex flex-col ring-1 ring-white/5">
-              {/* Terminal Header */}
-                <div className="flex items-center px-4 py-3 border-b border-zinc-800/50 bg-black/40">
-                <div className="flex gap-2">
-                  <div className="w-3 h-3 rounded-full bg-zinc-800" />
-                  <div className="w-3 h-3 rounded-full bg-zinc-800" />
-                  <div className="w-3 h-3 rounded-full bg-zinc-800" />
-                </div>
-                  <div className="mx-auto text-[10px] text-zinc-400 font-mono flex items-center gap-2 uppercase tracking-[0.28em]">
-                    <BrainCircuit size={12} className="text-violet-400" /> AI Engine v4.0
-                </div>
-                <div className="w-12 text-right">
-                    <span className="text-[10px] text-emerald-400/70 font-mono tracking-[0.24em]">LIVE</span>
-                </div>
-              </div>
+                <div className="relative bg-[#0c0c0e]/82 backdrop-blur-2xl rounded-[1.75rem] border border-zinc-800/80 shadow-2xl overflow-hidden min-h-[380px] flex flex-col ring-1 ring-white/5">
+                  {/* Dashboard Header */}
+                  <div className="flex items-center justify-between px-5 py-4 border-b border-zinc-800/50 bg-black/40">
+                    <div className="flex gap-2">
+                      <div className="w-3 h-3 rounded-full bg-zinc-800" />
+                      <div className="w-3 h-3 rounded-full bg-zinc-800" />
+                      <div className="w-3 h-3 rounded-full bg-zinc-800" />
+                    </div>
+                    <div className="text-[10px] text-zinc-400 font-mono flex items-center gap-2 uppercase tracking-[0.25em]">
+                      <BrainCircuit size={12} className="text-cyan-400 animate-pulse" /> Optimización de Negocio (IA)
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                      <span className="text-[9px] text-emerald-400 font-mono uppercase tracking-[0.2em]">ACTIVO</span>
+                    </div>
+                  </div>
 
-              {/* Terminal Body */}
-                <div className="p-8 font-mono text-sm leading-relaxed flex-grow">
-                  <div className="flex items-center gap-3 mb-6">
-                    <span className="text-cyan-500">❯</span>
-                    <span className="text-zinc-100">run ./startup-ia.sh</span>
-                  {!isRunning && terminalStep === 0 && (
-                    <motion.span animate={{ opacity: [1, 0] }} transition={{ repeat: Infinity, duration: 0.8 }} className="w-2 h-4 bg-zinc-500 inline-block align-middle" />
-                  )}
-                </div>
+                  {/* Dashboard Body / Graph */}
+                  <div className="p-6 flex-grow flex flex-col justify-between">
+                    <div className="relative mb-6 bg-zinc-950/40 rounded-xl p-4 border border-zinc-800/50">
+                      <div className="absolute top-2 left-3 flex items-center gap-1 text-[9px] text-zinc-600 font-mono tracking-widest uppercase">
+                        <span>Escalamiento y Tráfico</span>
+                      </div>
+                      
+                      {/* Interactive SVG Chart */}
+                      <svg className="w-full h-40 overflow-visible mt-2" viewBox="0 0 300 120">
+                        <defs>
+                          <linearGradient id="chartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stopColor="#22d3ee" stopOpacity="0.9" />
+                            <stop offset="50%" stopColor="#8b5cf6" stopOpacity="0.9" />
+                            <stop offset="100%" stopColor="#ec4899" stopOpacity="0.9" />
+                          </linearGradient>
+                          <linearGradient id="areaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stopColor="#22d3ee" stopOpacity="0.25" />
+                            <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
+                          </linearGradient>
+                        </defs>
+                        
+                        {/* Grid Lines */}
+                        <line x1="0" y1="20" x2="300" y2="20" stroke="#1c1c24" strokeWidth="1" strokeDasharray="3 3" />
+                        <line x1="0" y1="55" x2="300" y2="55" stroke="#1c1c24" strokeWidth="1" strokeDasharray="3 3" />
+                        <line x1="0" y1="90" x2="300" y2="90" stroke="#1c1c24" strokeWidth="1" strokeDasharray="3 3" />
+                        <line x1="0" y1="110" x2="300" y2="110" stroke="#27273a" strokeWidth="1.5" />
+                        
+                        {/* Area Fill */}
+                        <motion.path
+                          d="M 0 110 Q 50 105 100 85 T 200 45 T 300 15 L 300 110 Z"
+                          fill="url(#areaGrad)"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ duration: 0.6 }}
+                        />
 
-                <div className="space-y-3">
-                  <AnimatePresence>
-                    {logs.slice(0, terminalStep).map((log, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        className="flex items-center gap-3"
-                      >
-                        {i === terminalStep - 1 && isRunning ? (
-                          <Loader2 size={14} className="text-cyan-400 animate-spin" />
-                        ) : (
-                          <CheckCircle2 size={14} className={i === logs.length - 1 ? 'text-emerald-400' : 'text-zinc-600'} />
+                        {/* Curve stroke */}
+                        <motion.path
+                          d="M 0 110 Q 50 105 100 85 T 200 45 T 300 15"
+                          fill="none"
+                          stroke="url(#chartGrad)"
+                          strokeWidth="3.5"
+                          strokeLinecap="round"
+                          initial={{ pathLength: 0 }}
+                          animate={{ pathLength: 1 }}
+                          transition={{ duration: 1.6, ease: "easeInOut" }}
+                          key={isSimulating ? "sim-line" : "idle-line"}
+                        />
+                        
+                        {/* Interactive pulsing node */}
+                        {(!isSimulating || conversion > 330) && (
+                          <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                            <circle cx="300" cy="15" r="9" fill="#ec4899" fillOpacity="0.2" className="animate-ping" />
+                            <circle cx="300" cy="15" r="4.5" fill="#ec4899" />
+                          </motion.g>
                         )}
-                        <span className={`${log.color} text-xs md:text-sm`}>{log.text}</span>
-                      </motion.div>
-                    ))}
-                  </AnimatePresence>
-                </div>
+                        {(!isSimulating || conversion > 180) && (
+                          <circle cx="180" cy="50" r="3.5" fill="#8b5cf6" />
+                        )}
+                        {(!isSimulating || conversion > 90) && (
+                          <circle cx="90" cy="88" r="3.5" fill="#22d3ee" />
+                        )}
+                      </svg>
+                    </div>
 
-                {terminalStep === logs.length && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="mt-8 pt-6 border-t border-zinc-800/50"
-                  >
-                    <div className="grid grid-cols-3 gap-3">
-                      <div className="rounded-xl border border-zinc-800/60 bg-zinc-950/60 px-3 py-3">
-                        <span className="block text-[10px] uppercase font-bold tracking-[0.22em] text-zinc-500 mb-1">Latency</span>
-                        <span className="text-emerald-400 text-xs">12ms</span>
+                    {/* Dynamic Metrics Cards */}
+                    <div className="grid grid-cols-3 gap-3 mb-4">
+                      {/* Metric 1 */}
+                      <div className="rounded-xl border border-zinc-800/70 bg-zinc-950/60 p-3 flex flex-col justify-between hover:border-cyan-500/20 transition-colors">
+                        <div className="flex items-center justify-between text-zinc-500 mb-1">
+                          <span className="text-[9px] uppercase font-bold tracking-wider">Conversión</span>
+                          <TrendingUp size={10} className="text-cyan-400" />
+                        </div>
+                        <div>
+                          <span className="text-xl sm:text-2xl font-display font-extrabold text-zinc-100 tracking-tight">
+                            +{conversion}%
+                          </span>
+                        </div>
                       </div>
-                      <div className="rounded-xl border border-zinc-800/60 bg-zinc-950/60 px-3 py-3">
-                        <span className="block text-[10px] uppercase font-bold tracking-[0.22em] text-zinc-500 mb-1">Motion</span>
-                        <span className="text-cyan-400 text-xs">Balanced</span>
+
+                      {/* Metric 2 */}
+                      <div className="rounded-xl border border-zinc-800/70 bg-zinc-950/60 p-3 flex flex-col justify-between hover:border-violet-500/20 transition-colors">
+                        <div className="flex items-center justify-between text-zinc-500 mb-1">
+                          <span className="text-[9px] uppercase font-bold tracking-wider">Ahorro Costos</span>
+                          <Cpu size={10} className="text-violet-400" />
+                        </div>
+                        <div>
+                          <span className="text-xl sm:text-2xl font-display font-extrabold text-zinc-100 tracking-tight">
+                            -{costReduction}%
+                          </span>
+                        </div>
                       </div>
-                      <div className="rounded-xl border border-zinc-800/60 bg-zinc-950/60 px-3 py-3 text-right">
-                        <span className="block text-[10px] uppercase font-bold tracking-[0.22em] text-zinc-500 mb-1">Model</span>
-                        <span className="text-violet-400 text-xs italic">Gemini Pro Integrated</span>
+
+                      {/* Metric 3 */}
+                      <div className="rounded-xl border border-zinc-800/70 bg-zinc-950/60 p-3 flex flex-col justify-between hover:border-emerald-500/20 transition-colors">
+                        <div className="flex items-center justify-between text-zinc-500 mb-1">
+                          <span className="text-[9px] uppercase font-bold tracking-wider">Latencia</span>
+                          <Clock size={10} className="text-emerald-400 animate-pulse" />
+                        </div>
+                        <div>
+                          <span className="text-xl sm:text-2xl font-display font-extrabold text-zinc-100 tracking-tight">
+                            {latency}ms
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </motion.div>
-                )}
-              </div>
 
-              {/* Terminal Footer / Interaction */}
-              <div className="p-4 bg-black/20 border-t border-zinc-800/30">
-                <button 
-                  onClick={handleExecute}
-                  disabled={isRunning}
-                  className={cn(
-                    'w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border text-xs font-bold tracking-[0.22em] uppercase transition-all',
-                    isRunning
-                      ? 'text-zinc-600 border-zinc-900 bg-zinc-950/50'
-                      : 'text-zinc-300 border-zinc-700/80 bg-zinc-900/40 hover:text-zinc-50 hover:border-cyan-500/30 hover:bg-zinc-800/70 active:scale-[0.98]'
-                  )}
-                >
-                  {isRunning ? 'Synthesizing...' : <><Play size={12} fill="currentColor" /> Reboot Environment</>}
-                </button>
-              </div>
-              </div>
-            </Tilt>
+                    {/* Simulation trigger */}
+                    <button 
+                      onClick={startSimulation}
+                      disabled={isSimulating}
+                      className={cn(
+                        'w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border text-xs font-bold tracking-[0.22em] uppercase transition-all',
+                        isSimulating
+                          ? 'text-zinc-500 border-zinc-900 bg-zinc-950/30'
+                          : 'text-zinc-300 border-zinc-700/80 bg-zinc-900/40 hover:text-zinc-50 hover:border-cyan-500/30 hover:bg-zinc-800/70 active:scale-[0.98]'
+                      )}
+                    >
+                      <RefreshCw size={12} className={cn('text-cyan-400', isSimulating && 'animate-spin')} />
+                      {isSimulating ? 'Optimizando Negocio...' : 'Simular Optimización IA'}
+                    </button>
+                  </div>
+                </div>
+              </Tilt>
           </motion.div>
         </div>
 
