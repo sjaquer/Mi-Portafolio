@@ -1,5 +1,6 @@
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { Terminal, BrainCircuit, MessageSquare, BarChart3, Search, Zap, Languages } from 'lucide-react';
+import Tilt from 'react-parallax-tilt';
 import { MOTION } from '../utils/animations';
 import React from 'react';
 
@@ -122,22 +123,34 @@ const AIShowcase = () => {
         {/* Practical Applications Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {solutions.map((item, i) => (
-            <motion.div
+            <Tilt
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              viewport={{ once: true }}
-              className="group p-8 rounded-3xl bg-zinc-900/30 backdrop-blur-xl border border-zinc-800/50 hover:border-violet-500/20 transition-all duration-500"
+              tiltMaxAngleX={10}
+              tiltMaxAngleY={10}
+              glareEnable={true}
+              glareMaxOpacity={0.1}
+              glareColor="rgba(167, 139, 250, 0.15)"
+              glarePosition="all"
+              glareBorderRadius="24px"
+              perspective={800}
+              className="h-full"
             >
-              <div className={`w-12 h-12 rounded-2xl ${item.bg} ${item.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500`}>
-                <item.icon size={24} />
-              </div>
-              <h3 className="text-lg font-bold text-zinc-100 mb-3">{item.title}</h3>
-              <p className="text-sm text-zinc-500 font-light leading-relaxed group-hover:text-zinc-400 transition-colors">
-                {item.desc}
-              </p>
-            </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                viewport={{ once: true }}
+                className="group h-full p-8 rounded-3xl bg-zinc-900/30 backdrop-blur-xl border border-zinc-800/50 hover:border-violet-500/20 transition-all duration-500"
+              >
+                <div className={`w-12 h-12 rounded-2xl ${item.bg} ${item.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500`}>
+                  <item.icon size={24} />
+                </div>
+                <h3 className="text-lg font-bold text-zinc-100 mb-3">{item.title}</h3>
+                <p className="text-sm text-zinc-500 font-light leading-relaxed group-hover:text-zinc-400 transition-colors">
+                  {item.desc}
+                </p>
+              </motion.div>
+            </Tilt>
           ))}
         </div>
 

@@ -23,3 +23,14 @@ dist-ssr
 *.sln
 *.sw?
 .env
+.roo/
+.roomodes
+.clinespec
+.cursorrules
+**/.mcp.json
+
+# Roo Code & local AI assistant settings / skills
+.roo/
+.roomodes
+.clinespec
+.cursorrules

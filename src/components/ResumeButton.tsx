@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { FileText, Bot } from 'lucide-react';
 import { motion } from 'framer-motion';
 import jsPDF from 'jspdf';
+import confetti from 'canvas-confetti';
+import { cn } from '../utils/cn';
 
 /**
  * Reemplaza caracteres Unicode problemáticos por equivalentes ASCII
@@ -142,6 +144,15 @@ export const ResumeButton: React.FC = () => {
       } else {
         await generatePdfFromText('/resume_en.txt', 'Sebastian_Jaque_CV_EN.pdf', 'Resume - Sebastian Jaque', [139, 92, 246]);
       }
+
+      // Celebración de éxito con confeti
+      confetti({
+        particleCount: 120,
+        spread: 80,
+        origin: { y: 0.6 },
+        disableForReducedMotion: true,
+        colors: lang === 'es' ? ['#22d3ee', '#06b6d4', '#0891b2'] : ['#a78bfa', '#8b5cf6', '#7c3aed']
+      });
     } catch (e) {
       console.error('[ResumeButton] ERROR:', e);
       alert('Error generando PDF. Revisa la consola.');
@@ -155,7 +166,7 @@ export const ResumeButton: React.FC = () => {
       <motion.button
         whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
         onClick={() => handleDownload('es')}
-        className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-mono text-zinc-400 hover:text-cyan-400 transition-colors"
+        className={cn('flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-mono transition-colors', 'text-zinc-400 hover:text-cyan-400')}
       >
         <FileText size={14} strokeWidth={1.5} /> {loading.es ? 'Generando...' : 'Descargar CV (ES)'}
       </motion.button>
@@ -163,10 +174,11 @@ export const ResumeButton: React.FC = () => {
       <motion.button
         whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
         onClick={() => handleDownload('en')}
-        className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-mono text-zinc-400 hover:text-violet-400 transition-colors"
+        className={cn('flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-mono transition-colors', 'text-zinc-400 hover:text-violet-400')}
       >
         <Bot size={14} strokeWidth={1.5} /> {loading.en ? 'Generando...' : 'Download (EN)'}
       </motion.button>
     </div>
   );
 };
+

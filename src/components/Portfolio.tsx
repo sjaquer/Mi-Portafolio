@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, ExternalLink, BrainCircuit, ArrowUpRight } from 'lucide-react';
+import { Github, ExternalLink, BrainCircuit, ArrowUpRight, Filter } from 'lucide-react';
+import Tilt from 'react-parallax-tilt';
 import { projects } from '../data/portfolio';
 import { Project } from '../types';
 import { MOTION } from '../utils/animations';
+import { cn } from '../utils/cn';
 
 const filterOptions = [
   { id: 'ia', label: 'IA' },
@@ -14,14 +16,33 @@ const filterOptions = [
 /* ── Minimal text-only project card ──────────────────────────── */
 const ProjectCard = ({ project }: { project: Project }) => {
   const hasAI = project.aiFeatures && project.aiFeatures.length > 0;
+  const glareColor = hasAI ? 'rgba(168, 85, 247, 0.12)' : 'rgba(34, 211, 238, 0.12)';
 
   return (
-    <motion.div
-      variants={MOTION.staggerChild}
-      layout
-      className={`group relative h-full bg-zinc-900/30 backdrop-blur-xl border border-zinc-800/50 rounded-2xl overflow-hidden flex flex-col transition-all duration-500 hover:bg-zinc-900/50 ${hasAI ? 'hover:border-violet-500/30' : 'hover:border-cyan-500/30'}`}
+    <Tilt
+      tiltMaxAngleX={7}
+      tiltMaxAngleY={7}
+      glareEnable={true}
+      glareMaxOpacity={0.14}
+      glareColor={glareColor}
+      glarePosition="all"
+      glareBorderRadius="24px"
+      perspective={1200}
+      scale={1.02}
+      className="h-full"
     >
-      <div className="flex flex-col flex-grow p-6 sm:p-8">
+      <motion.div
+        variants={MOTION.staggerChild}
+        layout
+        whileHover={{ y: -6 }}
+        className={cn(
+          'group relative h-full overflow-hidden flex flex-col rounded-[1.5rem] border bg-zinc-900/30 backdrop-blur-2xl transition-all duration-500',
+          hasAI ? 'border-violet-500/20 hover:border-violet-500/35' : 'border-cyan-500/15 hover:border-cyan-500/30',
+          'shadow-[0_18px_60px_rgba(0,0,0,0.24)] hover:bg-zinc-900/45'
+        )}
+      >
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/[0.03] via-transparent to-transparent" />
+      <div className="flex flex-col flex-grow p-6 sm:p-8 relative z-10">
         {/* Header row */}
         <div className="flex items-start justify-between gap-4 mb-3">
           <div className="flex-1 min-w-0">
@@ -88,7 +109,10 @@ const ProjectCard = ({ project }: { project: Project }) => {
           {project.techStack?.map((tech: string, i: number) => {
             const isAITech = ['Gemini API', 'Gemini REST API', 'Google Genkit', 'Gemini 3.1 Flash', 'Gemini 2.5 Flash', 'OpenAI API', 'Modelos Locales', 'Narrative UI'].includes(tech);
             return (
-              <span key={i} className={`px-2 py-0.5 rounded-md text-[10px] font-mono border ${isAITech ? 'bg-violet-500/10 text-violet-300 border-violet-500/20' : 'bg-zinc-900/30 text-zinc-500 border-zinc-800/50'}`}>
+              <span key={i} className={cn(
+                'px-2 py-0.5 rounded-md text-[10px] font-mono border',
+                isAITech ? 'bg-violet-500/10 text-violet-300 border-violet-500/20' : 'bg-zinc-900/30 text-zinc-500 border-zinc-800/50'
+              )}>
                 {tech}
               </span>
             );
@@ -117,6 +141,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
         </div>
       </div>
     </motion.div>
+    </Tilt>
   );
 };
 
@@ -142,15 +167,23 @@ const Portfolio = () => {
   const filteredProjects = activeFilter ? projects.filter((project) => getProjectGroup(project) === activeFilter) : projects;
 
   return (
-    <section id="portfolio" className="py-16 relative z-10">
+    <section id="portfolio" className="py-20 relative z-10 overflow-hidden">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-[-10%] top-0 h-72 w-72 rounded-full bg-violet-500/10 blur-3xl" />
+        <div className="absolute right-[-8%] bottom-16 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl" />
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div variants={MOTION.fadeUp} initial="initial" whileInView="whileInView" viewport={MOTION.viewport} className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
+        <motion.div variants={MOTION.fadeUp} initial="initial" whileInView="whileInView" viewport={MOTION.viewport} className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="max-w-2xl">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-zinc-50 font-display tracking-tight mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-800/70 bg-zinc-900/40 backdrop-blur-xl text-[10px] font-semibold uppercase tracking-[0.28em] text-zinc-400 mb-4">
+              <Filter size={12} className="text-cyan-400" /> Selected work
+            </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-zinc-50 font-display tracking-tight mb-4 max-w-[12ch]">
               Soluciones & Proyectos.
             </h2>
-            <p className="text-lg text-zinc-400 font-light">
-              Casos reales en e-commerce, BI, logística y automatización con impacto medible.
+            <p className="text-lg text-zinc-400 font-light max-w-2xl leading-relaxed">
+              Casos reales en e-commerce, BI, logística y automatización, presentados con una narrativa visual más limpia, más profunda y más orientada a producto.
             </p>
           </div>
 
@@ -159,7 +192,12 @@ const Portfolio = () => {
               <button
                 key={filter.id}
                 onClick={() => setActiveFilter(activeFilter === filter.id ? null : filter.id)}
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${activeFilter === filter.id ? 'bg-zinc-100 text-zinc-950 shadow-lg' : 'bg-zinc-900/50 text-zinc-400 hover:text-zinc-100 border border-zinc-800/50 hover:bg-zinc-800/80 backdrop-blur-sm'}`}
+                className={cn(
+                  'px-4 py-2 rounded-xl text-sm font-medium transition-all border backdrop-blur-xl',
+                  activeFilter === filter.id
+                    ? 'bg-zinc-100 text-zinc-950 border-zinc-100 shadow-lg shadow-cyan-500/10'
+                    : 'bg-zinc-900/50 text-zinc-400 border-zinc-800/50 hover:text-zinc-100 hover:bg-zinc-800/80 hover:border-zinc-700'
+                )}
               >
                 {filter.label}
               </button>
@@ -174,7 +212,7 @@ const Portfolio = () => {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {filteredProjects.map((project) => <ProjectCard key={project.id} project={project} />)}
           </motion.div>
