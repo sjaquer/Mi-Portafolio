@@ -9,6 +9,7 @@ export interface Experience {
   current?: boolean;
   role?: string;
   summary?: string;
+  logoUrl?: string;
 }
 
 export interface Education {
@@ -22,6 +23,13 @@ export interface Education {
   description?: string;
   tier?: 'ai-certification' | 'tech' | 'academic';
   badgeColor?: string;
+  logoUrl?: string;
+}
+
+export interface CaseStudy {
+  problem: string;
+  solution: string;
+  metrics: { label: string; value: string; prefix?: string }[];
 }
 
 export interface Project {
@@ -39,4 +47,6 @@ export interface Project {
   year?: string;
   aiFeatures?: string[];
   metrics?: { label: string; value: string }[];
+  caseStudy?: CaseStudy;
+  simulatorId?: string; // Identificador para renderizar el simulador interactivo correspondiente
 }

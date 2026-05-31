@@ -86,8 +86,8 @@ const skillCategories = [
 const Skills = () => (
   <section id="skills" className="py-24 relative z-10 overflow-hidden">
     <div className="pointer-events-none absolute inset-0">
-      <div className="absolute left-[-8%] top-12 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl" />
-      <div className="absolute right-[-8%] bottom-0 h-72 w-72 rounded-full bg-violet-500/10 blur-3xl" />
+      <div className="absolute left-[-8%] top-12 h-72 w-72 rounded-full bg-emerald-500/[0.02] blur-3xl" />
+      <div className="absolute right-[-8%] bottom-0 h-72 w-72 rounded-full bg-slate-500/[0.02] blur-3xl" />
     </div>
 
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -99,13 +99,13 @@ const Skills = () => (
         viewport={MOTION.viewport}
         className="mb-16"
       >
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-800/70 bg-zinc-900/40 backdrop-blur-xl text-[10px] font-semibold uppercase tracking-[0.28em] text-zinc-400 mb-4">
-          <BrainCircuit size={12} className="text-violet-400" /> Core stack
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-800 bg-slate-900/40 backdrop-blur-xl text-[10px] font-semibold uppercase tracking-[0.28em] text-slate-400 mb-4">
+          <BrainCircuit size={12} className="text-emerald-400 animate-pulse" /> Stack Tecnológico
         </div>
-        <h2 className="text-4xl md:text-5xl font-extrabold text-zinc-50 font-display tracking-tight mb-6 max-w-[12ch]">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-slate-50 font-display tracking-tight mb-6 max-w-[12ch]">
           {siteContent.skills.title}.
         </h2>
-        <p className="text-lg text-zinc-400 font-light max-w-2xl leading-relaxed">
+        <p className="text-lg text-slate-400 font-light max-w-2xl leading-relaxed">
           {siteContent.skills.subtitle}
         </p>
       </motion.div>
@@ -120,23 +120,23 @@ const Skills = () => (
                 variants={MOTION.staggerChild}
                 whileHover={{ y: -4 }}
                 className={cn(
-                  'group relative flex flex-col rounded-[1.5rem] border bg-zinc-900/30 p-8 backdrop-blur-2xl transition-all duration-500',
+                  'group relative flex flex-col rounded-[1.5rem] border bg-slate-950/20 p-8 backdrop-blur-2xl transition-all duration-500 shadow-bento-dark',
                   cat.featured
-                    ? 'border-violet-500/20 shadow-xl shadow-violet-500/5 hover:border-violet-500/35'
-                    : 'border-zinc-800/50 hover:border-zinc-700/70 hover:bg-zinc-900/40'
+                    ? 'border-emerald-500/20 hover:border-emerald-500/35'
+                    : 'border-slate-900 hover:border-slate-800 hover:bg-slate-950/40'
                 )}
               >
-                <div className="pointer-events-none absolute inset-0 rounded-[1.5rem] bg-gradient-to-br from-white/[0.03] via-transparent to-transparent" />
+                <div className="pointer-events-none absolute inset-0 rounded-[1.5rem] bg-gradient-to-br from-white/[0.01] via-transparent to-transparent" />
                 <div className="relative z-10 flex items-center gap-4 mb-10">
                   <div className={cn(
                     'w-12 h-12 rounded-2xl flex items-center justify-center border backdrop-blur-xl',
-                    cat.featured ? 'bg-violet-500/10 border-violet-500/20 text-violet-400' : 'bg-zinc-950/50 border-zinc-800/50 text-zinc-400'
+                    cat.featured ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' : 'bg-slate-950 border border-slate-900 text-slate-400'
                   )}>
                     <Icon size={24} strokeWidth={1} />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-zinc-100 font-display">{cat.title}</h3>
-                    <p className="text-[11px] uppercase tracking-[0.22em] text-zinc-500 mt-1">{cat.featured ? 'High leverage' : 'Core capability'}</p>
+                    <h3 className="text-xl font-bold text-slate-100 font-display leading-tight">{cat.title}</h3>
+                    <p className="text-[10px] uppercase tracking-[0.22em] text-slate-500 mt-1">{cat.featured ? 'Alto Impacto' : 'Core capability'}</p>
                   </div>
                 </div>
 
@@ -149,24 +149,24 @@ const Skills = () => (
                         <Tooltip.Trigger asChild>
                           <div
                             className={cn(
-                              'flex items-center gap-2 px-3 py-1.5 rounded-xl border transition-all cursor-default',
+                              'flex items-center gap-2 px-3 py-1.5 rounded-xl border transition-all cursor-default select-none shadow-sm',
                               cat.featured
-                                ? 'bg-zinc-950/60 border-zinc-800/60 hover:border-violet-500/30'
-                                : 'bg-zinc-950/50 border-zinc-800/50 hover:border-zinc-700'
+                                ? 'bg-slate-950/80 border-slate-800 hover:border-emerald-500/30'
+                                : 'bg-slate-950/50 border-slate-900 hover:border-slate-700'
                             )}
                           >
                             {iconUrl ? (
                               <img
                                 src={iconUrl}
                                 alt={skill}
-                                className="w-4 h-4 grayscale group-hover/skill:grayscale-0 transition-all duration-300"
+                                className="w-4 h-4 grayscale opacity-80 group-hover/skill:grayscale-0 group-hover/skill:opacity-100 transition-all duration-300"
                                 loading="lazy"
                                 onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                               />
                             ) : (
-                              <span className={cn('w-1.5 h-1.5 rounded-full', cat.featured ? 'bg-violet-500' : 'bg-cyan-500')} />
+                              <span className={cn('w-1.5 h-1.5 rounded-full', cat.featured ? 'bg-emerald-400' : 'bg-slate-500')} />
                             )}
-                            <span className="text-xs font-medium text-zinc-400 transition-colors">
+                            <span className="text-xs font-mono text-slate-400 transition-colors">
                               {skill}
                             </span>
                           </div>
@@ -175,10 +175,10 @@ const Skills = () => (
                           <Tooltip.Content
                             side="top"
                             sideOffset={8}
-                            className="z-50 max-w-[220px] rounded-2xl border border-zinc-800 bg-zinc-950/95 px-3 py-2 text-xs leading-relaxed text-zinc-300 shadow-2xl shadow-black/40 backdrop-blur-xl"
+                            className="z-50 max-w-[220px] rounded-2xl border border-slate-800 bg-slate-950 px-3 py-2 text-xs leading-relaxed text-slate-300 shadow-2xl shadow-black/60 backdrop-blur-xl"
                           >
                             {note}
-                            <Tooltip.Arrow className="fill-zinc-800" />
+                            <Tooltip.Arrow className="fill-slate-800" />
                           </Tooltip.Content>
                         </Tooltip.Portal>
                       </Tooltip.Root>

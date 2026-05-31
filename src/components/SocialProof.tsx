@@ -2,8 +2,8 @@ import { motion } from 'framer-motion';
 import { Briefcase, Award, Zap } from 'lucide-react';
 
 const stats = [
-  { label: 'Proyectos Reales', value: '6+', icon: Briefcase, color: 'text-cyan-400' },
-  { label: 'Certificaciones IA', value: '3+', icon: Award, color: 'text-violet-400' },
+  { label: 'Proyectos Reales', value: '6+', icon: Briefcase, color: 'text-emerald-400' },
+  { label: 'Certificaciones IA', value: '3+', icon: Award, color: 'text-emerald-500' },
   { label: 'Uptime Soluciones', value: '99%', icon: Zap, color: 'text-emerald-400' },
 ];
 

@@ -9,30 +9,30 @@ const solutions = [
   { 
     icon: MessageSquare, 
     title: 'Chatbots con Memoria', 
-    desc: 'Atención al cliente que entiende el contexto y recuerda conversaciones pasadas, no solo respuestas programadas.',
+    desc: 'Agentes conversacionales que retienen el contexto y recuerdan interacciones pasadas para un trato verdaderamente humano.',
     color: 'text-blue-400',
     bg: 'bg-blue-500/5'
   },
   { 
     icon: Search, 
     title: 'Búsqueda Inteligente', 
-    desc: 'Encuentra información en tus documentos legales o técnicos preguntando con lenguaje natural, como si hablaras con un experto.',
+    desc: 'Exploración semántica de datos complejos en lenguaje natural para extraer respuestas instantáneas de tus repositorios.',
     color: 'text-cyan-400',
     bg: 'bg-cyan-500/5'
   },
   { 
     icon: BarChart3, 
     title: 'Análisis Predictivo', 
-    desc: 'Transforma tus datos de ventas en predicciones útiles para saber qué stock necesitarás el próximo mes.',
+    desc: 'Modelado estadístico avanzado sobre tus datos de negocio para proyectar demandas futuras y evitar quiebres de inventario.',
     color: 'text-emerald-400',
     bg: 'bg-emerald-500/5'
   },
   { 
     icon: Languages, 
     title: 'Traducción y Resumen', 
-    desc: 'Procesa miles de correos o reportes en segundos, extrayendo los puntos clave y traduciéndolos con precisión humana.',
-    color: 'text-violet-400',
-    bg: 'bg-violet-500/5'
+    desc: 'Síntesis automatizada de grandes volúmenes de documentos, extrayendo insights clave y traduciéndolos con máxima fidelidad.',
+    color: 'text-teal-400',
+    bg: 'bg-teal-500/5'
   },
 ];
 
@@ -58,15 +58,15 @@ const AIShowcase = () => {
   };
 
   const inputs = [
-    { label: 'Contrato PDF', detail: 'Clasificar cláusulas', icon: FileText, color: 'text-cyan-400', glow: 'shadow-cyan-500/10 border-cyan-500/30' },
-    { label: 'Consulta Chat', detail: '"¿Tienen stock...?"', icon: MessageSquare, color: 'text-violet-400', glow: 'shadow-violet-500/10 border-violet-500/30' },
-    { label: 'Mensaje de Voz', detail: 'Audio transcrito', icon: Mic, color: 'text-pink-400', glow: 'shadow-pink-500/10 border-pink-500/30' },
+    { label: 'Contrato PDF', detail: 'Clasificar cláusulas', icon: FileText, color: 'text-emerald-400', glow: 'shadow-emerald-500/10 border-emerald-500/30' },
+    { label: 'Consulta Chat', detail: '"¿Tienen stock...?"', icon: MessageSquare, color: 'text-teal-400', glow: 'shadow-teal-500/10 border-teal-500/30' },
+    { label: 'Mensaje de Voz', detail: 'Audio transcrito', icon: Mic, color: 'text-emerald-400', glow: 'shadow-emerald-500/10 border-emerald-500/30' },
   ];
 
   const outputs = [
-    { label: 'Responder Email', action: 'Borrador generado', icon: Mail, color: 'text-cyan-400' },
-    { label: 'Actualizar CRM', action: 'Datos registrados', icon: Database, color: 'text-violet-400' },
-    { label: 'Notificar Slack', action: 'Alerta de negocio', icon: Slack, color: 'text-pink-400' },
+    { label: 'Responder Email', action: 'Borrador generado', icon: Mail, color: 'text-emerald-400' },
+    { label: 'Actualizar CRM', action: 'Datos registrados', icon: Database, color: 'text-teal-400' },
+    { label: 'Notificar Slack', action: 'Alerta de negocio', icon: Slack, color: 'text-emerald-400' },
   ];
 
   return (
@@ -120,11 +120,11 @@ const AIShowcase = () => {
                   
                   <defs>
                     <linearGradient id="activeBeam" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#22d3ee" stopOpacity="0" />
-                      <stop offset="100%" stopColor="#8b5cf6" />
+                      <stop offset="0%" stopColor="#10b981" stopOpacity="0" />
+                      <stop offset="100%" stopColor="#0d9488" />
                     </linearGradient>
                     <linearGradient id="activeBeamOut" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#8b5cf6" />
+                      <stop offset="0%" stopColor="#0d9488" />
                       <stop offset="100%" stopColor="#10b981" />
                     </linearGradient>
                   </defs>
@@ -178,7 +178,7 @@ const AIShowcase = () => {
                     <motion.div
                       animate={{ rotate: 360 }}
                       transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                      className="absolute inset-0 rounded-full border border-dashed border-violet-500/30"
+                      className="absolute inset-0 rounded-full border border-dashed border-emerald-500/20"
                     />
                     <motion.div
                       animate={{ rotate: -360 }}
@@ -188,9 +188,9 @@ const AIShowcase = () => {
 
                     {/* Central Brain core */}
                     <motion.div
-                      animate={{ scale: [1, 1.05, 1], boxShadow: ["0 0 10px rgba(139,92,246,0.1)", "0 0 25px rgba(139,92,246,0.25)", "0 0 10px rgba(139,92,246,0.1)"] }}
+                      animate={{ scale: [1, 1.05, 1], boxShadow: ["0 0 10px rgba(16,185,129,0.05)", "0 0 25px rgba(16,185,129,0.15)", "0 0 10px rgba(16,185,129,0.05)"] }}
                       transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                      className="relative h-16 w-16 rounded-full bg-gradient-to-tr from-cyan-950/60 to-violet-950/60 border border-violet-500/40 flex items-center justify-center z-10 shadow-2xl backdrop-blur-3xl"
+                      className="relative h-16 w-16 rounded-full bg-gradient-to-tr from-slate-900 to-slate-950 border border-emerald-500/30 flex items-center justify-center z-10 shadow-2xl backdrop-blur-3xl"
                     >
                       {/* Integrated Vector AI Robot Head */}
                       <svg className="w-8 h-8 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -252,9 +252,9 @@ const AIShowcase = () => {
 
               {/* Bottom Legend */}
               <div className="mt-4 pt-4 border-t border-zinc-900/60 flex items-center justify-between text-zinc-500 text-[10px] font-mono leading-none">
-                <span className="uppercase text-cyan-400">LECTURA SEMÁNTICA</span>
+                <span className="uppercase text-emerald-400">LECTURA SEMÁNTICA</span>
                 <ArrowRight size={10} className="text-zinc-700" />
-                <span className="uppercase text-violet-400">RAZONAMIENTO IA</span>
+                <span className="uppercase text-teal-400">RAZONAMIENTO IA</span>
                 <ArrowRight size={10} className="text-zinc-700" />
                 <span className="uppercase text-emerald-400">AUTO-ACCIONES</span>
               </div>
@@ -270,17 +270,17 @@ const AIShowcase = () => {
             className="w-full lg:w-5/12 space-y-8"
           >
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/10 text-violet-300 text-xs font-mono border border-violet-500/20 mb-6 uppercase tracking-widest">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 text-xs font-mono border border-emerald-500/20 mb-6 uppercase tracking-widest">
                 <BrainCircuit size={14} /> Soluciones Reales
               </div>
               <h2 className="text-3xl md:text-5xl font-extrabold text-zinc-50 font-display tracking-tight leading-tight mb-6">
-                No es magia, es <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-500">Ingeniería Cognitiva</span>
+                No es magia, es <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-emerald-500">Ingeniería Cognitiva</span>
               </h2>
               <p className="text-zinc-400 font-light text-lg leading-relaxed mb-4">
-                Llevo la Inteligencia Artificial fuera del laboratorio y la pongo a trabajar en tu negocio. 
+                Sistemas cognitivos que transforman datos masivos en decisiones automáticas.
               </p>
               <p className="text-zinc-500 font-light leading-relaxed">
-                Desde automatizar conversaciones complejas hasta analizar miles de documentos en segundos. Desarrollo sistemas que no solo procesan datos, sino que los entienden para tomar mejores decisiones.
+                Integro modelos avanzados que interpretan, sintetizan y actúan de forma autónoma, traduciendo la potencia de la IA en valor estratégico real para tus operaciones diarias.
               </p>
             </div>
           </motion.div>
@@ -295,7 +295,7 @@ const AIShowcase = () => {
               tiltMaxAngleY={10}
               glareEnable={true}
               glareMaxOpacity={0.1}
-              glareColor="rgba(167, 139, 250, 0.15)"
+              glareColor="rgba(16, 185, 129, 0.1)"
               glarePosition="all"
               glareBorderRadius="24px"
               perspective={800}
@@ -306,7 +306,7 @@ const AIShowcase = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="group h-full p-8 rounded-3xl bg-zinc-900/30 backdrop-blur-xl border border-zinc-800/50 hover:border-violet-500/20 transition-all duration-500"
+                className="group h-full p-8 rounded-3xl bg-zinc-900/30 backdrop-blur-xl border border-zinc-800/50 hover:border-emerald-500/20 transition-all duration-500"
               >
                 <div className={`w-12 h-12 rounded-2xl ${item.bg} ${item.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500`}>
                   <item.icon size={24} />
@@ -329,7 +329,7 @@ const AIShowcase = () => {
           <div className="inline-flex items-center gap-4 p-4 px-8 rounded-2xl bg-zinc-900/50 border border-zinc-800/30 text-sm text-zinc-400">
             <Zap size={16} className="text-yellow-500" />
             ¿Tienes una idea? <span className="text-zinc-100 font-bold">Integremos IA en tu flujo de trabajo.</span>
-            <a href="#contact" className="text-violet-400 hover:text-violet-300 font-bold ml-2 transition-colors">Hablar ahora →</a>
+            <a href="#contact" className="text-emerald-400 hover:text-emerald-300 font-bold ml-2 transition-colors">Hablar ahora →</a>
           </div>
         </motion.div>
 

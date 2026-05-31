@@ -119,7 +119,8 @@ export const education: Education[] = [
     status: '9.º Ciclo (en curso)',
     relevant: ['Arquitectura de Negocio', 'Gestión de Proyectos', 'Estrategia Digital'],
     tier: 'academic',
-    description: 'Formación académica enfocada en la optimización de procesos de negocio internacionales y gestión estratégica.'
+    description: 'Formación académica enfocada en la optimización de procesos de negocio internacionales y gestión estratégica.',
+    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_Universidad_Norbert_Wiener.png'
   },
   {
     id: '2',
@@ -129,7 +130,8 @@ export const education: Education[] = [
     status: 'Certificación',
     relevant: ['Fundamentos de ML', 'Estrategia de IA'],
     tier: 'ai-certification',
-    description: 'Certificación oficial que avala conocimientos en inteligencia artificial y modelos de lenguaje.'
+    description: 'Certificación oficial que avala conocimientos en inteligencia artificial y modelos de lenguaje.',
+    logoUrl: 'https://certiprof.com/cdn/shop/files/Logo_CertiProf_-_Web_White.png'
   },
   {
     id: '3',
@@ -139,7 +141,8 @@ export const education: Education[] = [
     status: 'Diplomado',
     relevant: ['IA Aplicada', 'Optimización de Procesos'],
     tier: 'ai-certification',
-    description: 'Especialización en la implementación de soluciones de inteligencia artificial para la mejora de la rentabilidad y eficiencia empresarial.'
+    description: 'Especialización en la implementación de soluciones de inteligencia artificial para la mejora de la rentabilidad y eficiencia empresarial.',
+    logoUrl: 'https://www.idat.edu.pe/assets/images/logo-idat.svg'
   },
   {
     id: '4',
@@ -149,7 +152,8 @@ export const education: Education[] = [
     status: 'Certificación',
     relevant: ['IA Generativa', 'Estrategia Corporativa'],
     tier: 'ai-certification',
-    description: 'Enfoque ejecutivo sobre el despliegue de modelos fundacionales para la creación de valor en organizaciones.'
+    description: 'Enfoque ejecutivo sobre el despliegue de modelos fundacionales para la creación de valor en organizaciones.',
+    logoUrl: 'https://cdn.simpleicons.org/amazonaws/white'
   },
   {
     id: '5',
@@ -159,7 +163,8 @@ export const education: Education[] = [
     status: 'Curso oficial',
     relevant: ['Diseño Relacional', 'T-SQL', 'BI'],
     tier: 'tech',
-    description: 'Diseño y gestión de bases de datos relacionales para entornos corporativos y analítica.'
+    description: 'Diseño y gestión de bases de datos relacionales para entornos corporativos y analítica.',
+    logoUrl: 'https://cdn.simpleicons.org/microsoft/white'
   },
   {
     id: '6',
@@ -169,7 +174,8 @@ export const education: Education[] = [
     status: 'Especialización',
     relevant: ['DAX', 'Data Visualization', 'ETL'],
     tier: 'tech',
-    description: 'Dominio de herramientas de visualización de datos y modelado para la toma de decisiones.'
+    description: 'Dominio de herramientas de visualización de datos y modelado para la toma de decisiones.',
+    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/63/Intercorp_logo.svg'
   },
   {
     id: '7',
@@ -179,7 +185,8 @@ export const education: Education[] = [
     status: 'Curso especializado',
     relevant: ['Automatización', 'Pandas', 'NumPy'],
     tier: 'tech',
-    description: 'Desarrollo de scripts para automatización de tareas y procesamiento de grandes volúmenes de información.'
+    description: 'Desarrollo de scripts para automatización de tareas y procesamiento de grandes volúmenes de información.',
+    logoUrl: 'https://cdn.simpleicons.org/udemy/white'
   },
   {
     id: '8',
@@ -189,7 +196,8 @@ export const education: Education[] = [
     status: 'Certificación',
     relevant: ['Macros', 'VBA', 'Análisis Financiero'],
     tier: 'tech',
-    description: 'Creación de herramientas de control financiero y operativo mediante hojas de cálculo avanzadas.'
+    description: 'Creación de herramientas de control financiero y operativo mediante hojas de cálculo avanzadas.',
+    logoUrl: '' // Placeholder local
   },
   {
     id: '9',
@@ -199,222 +207,124 @@ export const education: Education[] = [
     status: 'Certificación',
     relevant: ['Marketing Digital', 'Analítica Web'],
     tier: 'tech',
-    description: 'Fundamentos de presencia digital, estrategia de contenidos y análisis de métricas.'
+    description: 'Fundamentos de presencia digital, estrategia de contenidos y análisis de métricas.',
+    logoUrl: 'https://cdn.simpleicons.org/google/white'
   }
 ];
 
 export const projects: Project[] = [
   {
     id: '1',
-    title: 'Ecos Literarios',
-    subtitle: 'Analizador literario con IA para obras clásicas y contemporáneas.',
+    title: 'Big Jack RP & Menu',
+    subtitle: 'Ecosistema operativo unificado de producción gastronómica.',
     description:
-      'Plataforma web pensada para estudiar obras en profundidad y obtener lecturas asistidas por IA sobre autor, estilo, simbolismo, temas y contexto. Está orientada a análisis literarios más ricos que una búsqueda tradicional por palabras clave.',
-    techStack: ['Next.js 15', 'Tailwind CSS', 'Firebase Firestore', 'Google Genkit', 'Gemini 3.1 Flash'],
-    aiFeatures: ['Análisis literario profundo', 'Síntesis semántica de obras', 'Lectura asistida con Gemini'],
-    image: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1600&q=80',
-    category: 'ia',
+      'Ecosistema digital gastronómico en tiempo real. Unifica la experiencia de autoservicio del cliente con la producción en cocina, automatizando el control de inventario insumo a insumo mediante webhooks inteligentes.',
+    techStack: ['React', 'Firebase', 'Node.js', 'Next.js', 'Webhooks', 'Real-time Sync'],
+    category: 'restaurante',
     featured: true,
-    year: '2026',
-    githubUrl: 'https://github.com/sjaquer/ecos'
+    year: '2025',
+    githubUrl: 'https://github.com/sjaquer/big-jack-menu',
+    simulatorId: 'bigjack',
+    caseStudy: {
+      problem: 'La desconexión física entre el salón y la cocina provocaba un desfase de inventario del 20% y fricción operativa en los tiempos de despacho.',
+      solution: 'Sincronizamos la toma de pedidos y el stock en tiempo real mediante webhooks, automatizando el descuento exacto de insumos por receta vendida.',
+      metrics: [
+        { label: 'Tiempo de procesamiento', value: '35', prefix: '-' },
+        { label: 'Margen operativo mensual', value: '15', prefix: '+' },
+        { label: 'Precisión del inventario', value: '98', prefix: '' }
+      ]
+    }
   },
   {
     id: '2',
-    title: 'TaskME',
-    subtitle: 'Ecosistema de productividad personal y académico.',
+    title: 'TaskMe',
+    subtitle: 'Ecosistema de productividad personal y académico Cyber-Focus.',
     description:
-      'Sistema de productividad con estética Cyber-Focus que combina tablero Kanban, monitor de rutinas, sincronización bidireccional con Google Calendar y métricas de eficiencia. Incluye soporte de IA para transformar textos desordenados en tareas accionables.',
-    techStack: ['React', 'TypeScript', 'Google Calendar API', 'Firestore', 'Terminal UI'],
+      'Centro de control personal e interactivo de productividad. Integra un tablero Kanban elástico con dnd-kit, monitoreo de hábitos y sincronización bidireccional con Google Calendar, potenciado por Genkit IA para la estructuración semántica de pendientes.',
+    techStack: ['React 19', 'Next.js 15', 'Firebase Auth/Firestore', 'Google Genkit', 'dnd-kit', 'Framer Motion'],
     aiFeatures: ['Autoorganización de texto en tareas', 'Creación automática de pendientes', 'Soporte de productividad asistida'],
-    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80',
     category: 'productividad',
     featured: true,
     year: '2025',
-    githubUrl: 'https://github.com/sjaquer/taskME'
+    githubUrl: 'https://github.com/sjaquer/taskME',
+    simulatorId: 'taskme',
+    caseStudy: {
+      problem: 'La fragmentación de tareas académicas y personales entre múltiples herramientas dispersas generaba sobrecarga cognitiva e ineficiencia diaria.',
+      solution: 'Centralizamos el flujo de trabajo en una única interfaz unificada con sincronización bidireccional nativa y asistencia predictiva de inteligencia artificial.',
+      metrics: [
+        { label: 'Sincronización en vivo', value: '100', prefix: '' },
+        { label: 'Eficiencia diaria', value: '40', prefix: '+' },
+        { label: 'Sugerencias procesadas', value: '5000', prefix: '+' }
+      ]
+    }
   },
   {
     id: '3',
-    title: 'LogINV',
-    subtitle: 'Inventario y logística para entornos exigentes.',
+    title: 'ORDEV',
+    subtitle: 'Planificación logística aérea automatizada con CP-SAT solver.',
     description:
-      'Sistema de control de inventario y logística con conteo a pantalla completa, escáner de código de barras, gestión multiubicación y reportes exportables en PDF y CSV. El enfoque está en reducir errores operativos y mejorar el seguimiento de stock.',
-    techStack: ['React', 'TypeScript', 'Barcode Scanner', 'PDF/CSV', 'Firebase'],
-    image: 'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1600&q=80',
+      'Planificador lógico de rutas aéreas comerciales. Implementa el solver CP-SAT de Google OR-Tools para resolver problemas combinatorios complejos de carga, pasaje y combustible, representados dinámicamente sobre mapas vectoriales interactivos.',
+    techStack: ['Python', 'Google OR-Tools CP-SAT', 'React', 'SVG Maps', 'Vite', 'TypeScript'],
     category: 'logistica',
+    featured: true,
     year: '2025',
-    githubUrl: 'https://github.com/sjaquer/LogINV'
+    githubUrl: 'https://github.com/sjaquer/Optimizador-Vuelos-CP-SAT',
+    simulatorId: 'ordev',
+    caseStudy: {
+      problem: 'El cálculo manual de variables críticas de vuelo (peso, combustible, pasajeros) consumía horas de planificación y generaba un 18% de sobrecosto por rutas subóptimas.',
+      solution: 'Desarrollamos un motor combinatorio avanzado que procesa miles de restricciones en milisegundos para trazar y simular la ruta aérea de menor consumo.',
+      metrics: [
+        { label: 'Tiempo de cálculo', value: '99', prefix: '-' },
+        { label: 'Costos de combustible', value: '12', prefix: '-' },
+        { label: 'Rutas óptimas voladas', value: '250', prefix: '+' }
+      ]
+    }
   },
   {
     id: '4',
-    title: 'Alerta Multienda',
-    subtitle: 'Monitoreo y alertas en tiempo real para múltiples tiendas Shopify.',
+    title: 'TaskZenith',
+    subtitle: 'Gestión y personalización adaptativa en tiempo real.',
     description:
-      'Extensión y sistema de soporte para tiendas Shopify con detección de ubicación, sincronización de estados en tiempo real y prevención de alertas duplicadas entre usuarios. Está pensado para operaciones donde cada notificación debe llegar una sola vez y en el contexto correcto.',
-    techStack: ['Chrome Extension', 'Firebase Firestore', 'Shopify API', 'Realtime Sync'],
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80',
-    category: 'retail',
+      'Espacio de trabajo modular y dinámico. Cuenta con un grid interactivo persistente de 48 columnas con detección de colisiones, temporizadores Pomodoro integrados y gobernanza basada en roles.',
+    techStack: ['React', 'TypeScript', 'Firebase Firestore', 'CSS Grid', 'dnd-kit', 'Pomodoro API'],
+    category: 'productividad',
+    featured: true,
     year: '2025',
-    githubUrl: 'https://github.com/sjaquer/Alerta-Multienda'
+    liveUrl: 'https://task-zenith-nu.vercel.app/',
+    githubUrl: 'https://github.com/sjaquer/TaskZenith',
+    simulatorId: 'taskzenith',
+    caseStudy: {
+      problem: 'Los sistemas de gestión convencionales imponen estructuras rígidas que limitan la flexibilidad de los equipos y aumentan la fricción visual diaria.',
+      solution: 'Implementamos una interfaz infinitamente moldeable mediante drag-and-drop persistente, permitiendo a cada usuario construir su propio panel de enfoque.',
+      metrics: [
+        { label: 'Columnas del Grid', value: '48', prefix: '' },
+        { label: 'Widgets personalizados', value: '12', prefix: '+' },
+        { label: 'Productividad del equipo', value: '25', prefix: '+' }
+      ]
+    }
   },
   {
     id: '5',
-    title: 'Big Jack Menu',
-    subtitle: 'Menú digital y checkout con integración a ERP.',
+    title: 'IA-ToolBotWhatsapp',
+    subtitle: 'Automatización híbrida de pedidos en tiempo real con IA local/cloud.',
     description:
-      'Menú digital interactivo para restaurante con catálogo de variantes, checkout optimizado, webhooks hacia ERP y Libro de Reclamaciones digital. El foco está en acelerar el pedido y mantener el flujo operativo alineado con procesos legales y administrativos.',
-    techStack: ['Next.js', 'Webhooks', 'ERP', 'PWA', 'Legal Forms'],
-    image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=80',
-    category: 'restaurante',
-    year: '2025',
-    githubUrl: 'https://github.com/sjaquer/big-jack-menu'
-  },
-  {
-    id: '6',
-    title: 'Cabine Grid',
-    subtitle: 'Gestión integral para cabinas de internet y cibercafés.',
-    description:
-      'Sistema operativo para LAN centers con monitoreo de PCs, POS integrado, control de inventario y cierres de caja automatizados. La interfaz tipo grid permite asignar, cobrar y auditar sesiones desde el dashboard con trazabilidad por roles.',
-    techStack: ['React', 'TypeScript', 'Firestore', 'POS', 'Roles'],
-    aiFeatures: ['Redacción automática de reportes', 'Auditoría asistida'],
-    image: 'https://images.unsplash.com/photo-1519996529931-28324d5a630e?auto=format&fit=crop&w=1600&q=80',
-    category: 'operaciones',
-    featured: true,
-    year: '2025',
-    githubUrl: 'https://github.com/sjaquer/Cabine-Grid'
-  },
-  {
-    id: '7',
-    title: 'HoneyNotes',
-    subtitle: 'Refugio digital gamificado para parejas.',
-    description:
-      'Experiencia emocional interactiva centrada en recuperar la escritura como medio de conexión. Incluye editor de cartas con texturas reales, buzón animado, tienda de recompensas y una asistente IA que ayuda a mejorar el tono y la claridad del mensaje.',
-    techStack: ['React', 'TypeScript', 'Gemini API', 'Firebase', 'Motion UI'],
-    aiFeatures: ['Lectura emocional del texto', 'Sugerencias de escritura', 'Predicción de reacción'],
-    image: '/honey-note.webp',
+      'Orquestador de mensajería comercial asistido por inteligencia artificial híbrida. Procesa chats entrantes de WhatsApp en tiempo real, utilizando modelos locales (Ollama Llama-3) para privacidad y modelos cloud (Gemini) para extraer órdenes estructuradas.',
+    techStack: ['Electron', 'React', 'Ollama (Llama-3)', 'Gemini API', 'WhatsApp Web API', 'Node.js'],
+    aiFeatures: ['Procesamiento híbrido local/cloud', 'Extracción estructurada en JSON', 'Automatización de webhooks'],
     category: 'ia',
     featured: true,
     year: '2025',
-    liveUrl: 'https://honeynotes.vercel.app/',
-    githubUrl: 'https://github.com/sjaquer/honeynotes'
-  },
-  {
-    id: '8',
-    title: 'Coralia Delights',
-    subtitle: 'E-commerce artesanal con CRM y automatización hiperpersonalizada.',
-    description:
-      'Plataforma e-commerce pensada para negocios artesanos con landing, tienda y CRM en un mismo flujo. Incorpora checkout avanzado, rastreo de órdenes, inventario de combos y mensajes personalizados por WhatsApp generados con apoyo de IA.',
-    techStack: ['Next.js 15', 'Firebase', 'Genkit', 'Gemini 2.5 Flash', 'WhatsApp'],
-    aiFeatures: ['Perfilado de clientes', 'Mensajería hiperpersonalizada', 'Lealtad automatizada'],
-    image: '/coralia-web.webp',
-    category: 'ecommerce',
-    featured: true,
-    year: '2025',
-    liveUrl: 'https://coraliadulcedetalle.vercel.app/',
-    githubUrl: 'https://github.com/sjaquer/Carolia-Delights'
-  },
-  {
-    id: '9',
-    title: 'TaskZenith',
-    subtitle: 'Gestión de tareas corporativas con colaboración en tiempo real.',
-    description:
-      'Plataforma de organización con múltiples vistas, Pomodoro integrado y autenticación por roles. El dashboard se construyó sobre una cuadrícula flexible de 48 columnas con drag-and-drop y detección de colisiones para mantener densidad sin perder control.',
-    techStack: ['React', 'TypeScript', 'Firestore', 'Drag and Drop', 'Pomodoro'],
-    image: '/task-zentih.webp',
-    category: 'productividad',
-    year: '2025',
-    liveUrl: 'https://task-zenith-nu.vercel.app/',
-    githubUrl: 'https://github.com/sjaquer/TaskZenith'
-  },
-  {
-    id: '10',
-    title: 'Big Jack RP',
-    subtitle: 'ERP operativo moderno para restaurantes fast-food.',
-    description:
-      'Sistema que centraliza POS, cola de pedidos, inventario basado en recetas y pedidos online. También automatiza el descuento de ingredientes por receta y genera reportes ejecutivos con IA para convertir datos operativos en decisiones accionables.',
-    techStack: ['React', 'Firebase', 'Node.js', 'Webhooks', 'Inventario por recetas'],
-    aiFeatures: ['Reportes ejecutivos automáticos', 'Insights del negocio', 'Síntesis operativa'],
-    image: '/saphp.webp',
-    category: 'restaurante',
-    featured: true,
-    year: '2025',
-    liveUrl: 'https://bigjack-rp.vercel.app/',
-    githubUrl: 'https://github.com/sjaquer/big-jack-rp'
-  },
-  {
-    id: '11',
-    title: 'gamejamdevjs-2026',
-    subtitle: 'Videojuego Phaser 4 con escritorio retro y robots.',
-    description:
-      'Proyecto jugable que combina una capa diegética tipo sistema operativo con un juego de plataformas de reparación modular. La narrativa y la interacción se apoyan en Gemini REST API para que el asistente EVA responda de forma dinámica y no como simple texto decorativo.',
-    techStack: ['Phaser 4', 'TypeScript', 'Gemini REST API', 'Narrative UI', 'Game Systems'],
-    aiFeatures: ['Asistente virtual EVA', 'Narrativa dinámica', 'Respuestas contextuales'],
-    image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1600&q=80',
-    category: 'gaming',
-    year: '2026',
-    githubUrl: 'https://github.com/sjaquer/gamejamdevjs-2026'
-  },
-  {
-    id: '12',
-    title: 'Optimizador-Vuelos-CP-SAT',
-    subtitle: 'Planificación logística para helicópteros con carga y pasajeros.',
-    description:
-      'Aplicación web para planificar rutas de vuelo con motor de optimización, validación estricta de datos y visualización interactiva sobre mapas SVG. La solución calcula escenarios según prioridad de carga, peso y eficiencia operativa.',
-    techStack: ['Python', 'CP-SAT', 'Google OR-Tools', 'Excel Import', 'SVG Maps'],
-    image: 'https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=1600&q=80',
-    category: 'logistica',
-    year: '2025',
-    githubUrl: 'https://github.com/sjaquer/Optimizador-Vuelos-CP-SAT'
-  },
-  {
-    id: '13',
-    title: 'DataWeave-BI',
-    subtitle: 'Dashboard BI para múltiples tiendas y reportes diarios.',
-    description:
-      'Dashboard dinámico que consolida datos de distintas tiendas Shopify, organiza la información y genera reportes diarios con filtros, calendario y control de usuarios mediante Zadarma API. Está orientado a dar visibilidad operativa y reducir trabajo manual.',
-    techStack: ['Next.js', 'Shopify APIs', 'Calendars', 'Zadarma API', 'BI'],
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80',
-    category: 'analitica',
-    featured: true,
-    year: '2025',
-    githubUrl: 'https://github.com/sjaquer/DataWeave-BI'
-  },
-  {
-    id: '14',
-    title: 'Secret Love',
-    subtitle: 'Experiencia romántica interactiva con narrativa generada.',
-    description:
-      'Experiencia web creada como regalo especial, con fondo parallax, cuenta regresiva y puertas lógicas desbloqueables mediante códigos secretos. Al ingresar el código correcto, la historia se genera de forma dinámica con IA para volver cada visita distinta.',
-    techStack: ['Next.js', 'Genkit', 'Gemini', 'Parallax', 'Interactive UX'],
-    aiFeatures: ['Historia dinámica', 'Narrativa generativa', 'Desbloqueo por código secreto'],
-    image: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=1600&q=80',
-    category: 'experiencia',
-    year: '2025',
-    githubUrl: 'https://github.com/sjaquer/secretlove'
-  },
-  {
-    id: '15',
-    title: 'eCommerce-Panaderia',
-    subtitle: 'SPA de catálogo y compra para panaderías y negocios de vitrina.',
-    description:
-      'Aplicación web rápida y modular diseñada como vitrina digital para catálogos. Incluye flujo de compra completo, notificaciones SSE y optimización de imágenes, con una arquitectura preparada para incorporar IA futura sin rehacer el producto.',
-    techStack: ['React', 'SSE', 'Image FX', 'Modular Architecture', 'Catalog Flow'],
-    image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1600&q=80',
-    category: 'ecommerce',
-    year: '2025',
-    githubUrl: 'https://github.com/sjaquer/eCommerce-Panaderia'
-  },
-  {
-    id: '16',
-    title: 'LogiFlow',
-    subtitle: 'ERP para call centers con leads, logística e inventario unificados.',
-    description:
-      'Sistema empresarial que integra Kommo CRM y Shopify con roles granulares, analíticas de rendimiento y una caché local agresiva para responder en menos de 100 ms. El resultado es una operación más rápida y con menos lecturas a base de datos.',
-    techStack: ['React', 'Kommo CRM', 'Shopify API', 'localStorage Cache', 'Webhooks'],
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80',
-    category: 'operaciones',
-    featured: true,
-    year: '2025',
-    githubUrl: 'https://github.com/sjaquer/logiflow'
+    githubUrl: 'https://github.com/sjaquer/WhatsappBot',
+    simulatorId: 'whatsappbot',
+    caseStudy: {
+      problem: 'La toma y transcripción manual de pedidos por mensajería creaba demoras de hasta 8 minutos por cliente, reduciendo las ventas debido a respuestas lentas.',
+      solution: 'Desplegamos un agente de procesamiento lingüístico local y nube que analiza de inmediato notas de voz o textos informales para despachar pedidos estructurados en segundos.',
+      metrics: [
+        { label: 'Tiempo por pedido', value: '90', prefix: '-' },
+        { label: 'Tasa de conversión', value: '22', prefix: '+' },
+        { label: 'Costos de API', value: '65', prefix: '-' }
+      ]
+    }
   }
 ];
 

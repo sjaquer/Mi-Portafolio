@@ -59,9 +59,9 @@ const Hero: React.FC = () => {
   return (
     <section id="home" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-[-8%] top-12 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl" />
-        <div className="absolute right-[-6%] top-24 h-80 w-80 rounded-full bg-violet-500/10 blur-3xl" />
-        <div className="absolute bottom-0 left-1/2 h-48 w-[42rem] -translate-x-1/2 rounded-full bg-fuchsia-500/10 blur-3xl" />
+        <div className="absolute left-[-8%] top-12 h-72 w-72 rounded-full bg-emerald-500/[0.03] blur-3xl" />
+        <div className="absolute right-[-6%] top-24 h-80 w-80 rounded-full bg-slate-500/[0.03] blur-3xl" />
+        <div className="absolute bottom-0 left-1/2 h-48 w-[42rem] -translate-x-1/2 rounded-full bg-emerald-500/[0.02] blur-3xl" />
       </div>
 
       <div className="container px-4 md:px-6 z-10 pt-20">
@@ -86,7 +86,7 @@ const Hero: React.FC = () => {
               className="max-w-[12ch] text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-extrabold tracking-tighter text-zinc-50 mb-6 leading-[0.98]"
             >
               Code.<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-500 bg-[length:200%_auto] animate-gradient-x">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-emerald-500 bg-[length:200%_auto] animate-gradient-x">
                 Integrate AI.
               </span><br />
               Scale.
@@ -98,7 +98,7 @@ const Hero: React.FC = () => {
               transition={{ delay: 0.5, duration: 0.6 }}
               className="max-w-xl text-zinc-400 text-base md:text-lg mb-8 leading-relaxed font-light"
             >
-              Full-Stack Developer especializado en transformar ideas en productos digitales escalables, potenciados por inteligencia artificial aplicada, arquitecturas robustas y dashboards de negocio inteligentes.
+              Diseño e ingenio productos digitales de alta fidelidad. Combino arquitectura limpia e inteligencia artificial para dar vida a software que piensa, escala y resuelve.
             </motion.p>
 
             <motion.div
@@ -128,15 +128,24 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.6, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="relative order-1 lg:order-2 w-full"
           >
-              <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/10 to-violet-500/10 blur-3xl rounded-[3rem] pointer-events-none" />
+              {/* Floating 3D generated abstract glass image as backdrop */}
+              <div className="absolute -right-16 -top-16 w-88 h-88 opacity-25 pointer-events-none mix-blend-screen animate-pulse-slow">
+                <img 
+                  src="/images/hero_3d_glass.png" 
+                  alt="Futuristic 3D Glass Geometry" 
+                  className="w-full h-full object-contain filter drop-shadow-[0_0_50px_rgba(16,185,129,0.2)]" 
+                />
+              </div>
+
+              <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/[0.03] to-teal-500/[0.03] blur-3xl rounded-[3rem] pointer-events-none" />
 
               <Tilt
                 tiltMaxAngleX={5}
                 tiltMaxAngleY={5}
                 tiltEnable={!prefersReducedMotion}
                 glareEnable={true}
-                glareMaxOpacity={0.1}
-                glareColor="rgba(34, 211, 238, 0.1)"
+                glareMaxOpacity={0.08}
+                glareColor="rgba(16, 185, 129, 0.08)"
                 perspective={1200}
                 scale={1.01}
                 className="relative"
@@ -169,13 +178,13 @@ const Hero: React.FC = () => {
                       <svg className="w-full h-40 overflow-visible mt-2" viewBox="0 0 300 120">
                         <defs>
                           <linearGradient id="chartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stopColor="#22d3ee" stopOpacity="0.9" />
-                            <stop offset="50%" stopColor="#8b5cf6" stopOpacity="0.9" />
-                            <stop offset="100%" stopColor="#ec4899" stopOpacity="0.9" />
+                            <stop offset="0%" stopColor="#34d399" stopOpacity="0.9" stopColorOpacity="1" />
+                            <stop offset="50%" stopColor="#10b981" stopOpacity="0.9" stopColorOpacity="1" />
+                            <stop offset="100%" stopColor="#0d9488" stopOpacity="0.9" stopColorOpacity="1" />
                           </linearGradient>
                           <linearGradient id="areaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stopColor="#22d3ee" stopOpacity="0.25" />
-                            <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
+                            <stop offset="0%" stopColor="#10b981" stopOpacity="0.2" />
+                            <stop offset="100%" stopColor="#10b981" stopOpacity="0" />
                           </linearGradient>
                         </defs>
                         
@@ -210,15 +219,15 @@ const Hero: React.FC = () => {
                         {/* Interactive pulsing node */}
                         {(!isSimulating || conversion > 330) && (
                           <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                            <circle cx="300" cy="15" r="9" fill="#ec4899" fillOpacity="0.2" className="animate-ping" />
-                            <circle cx="300" cy="15" r="4.5" fill="#ec4899" />
+                            <circle cx="300" cy="15" r="9" fill="#0d9488" fillOpacity="0.2" className="animate-ping" />
+                            <circle cx="300" cy="15" r="4.5" fill="#0d9488" />
                           </motion.g>
                         )}
                         {(!isSimulating || conversion > 180) && (
-                          <circle cx="180" cy="50" r="3.5" fill="#8b5cf6" />
+                          <circle cx="180" cy="50" r="3.5" fill="#10b981" />
                         )}
                         {(!isSimulating || conversion > 90) && (
-                          <circle cx="90" cy="88" r="3.5" fill="#22d3ee" />
+                          <circle cx="90" cy="88" r="3.5" fill="#34d399" />
                         )}
                       </svg>
                     </div>
@@ -239,10 +248,10 @@ const Hero: React.FC = () => {
                       </div>
 
                       {/* Metric 2 */}
-                      <div className="rounded-xl border border-zinc-800/70 bg-zinc-950/60 p-3 flex flex-col justify-between hover:border-violet-500/20 transition-colors">
+                      <div className="rounded-xl border border-zinc-800/70 bg-zinc-950/60 p-3 flex flex-col justify-between hover:border-emerald-500/20 transition-colors">
                         <div className="flex items-center justify-between text-zinc-500 mb-1">
                           <span className="text-[9px] uppercase font-bold tracking-wider">Ahorro Costos</span>
-                          <Cpu size={10} className="text-violet-400" />
+                          <Cpu size={10} className="text-emerald-400" />
                         </div>
                         <div>
                           <span className="text-xl sm:text-2xl font-display font-extrabold text-zinc-100 tracking-tight">

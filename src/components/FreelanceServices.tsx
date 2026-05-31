@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Monitor, Server, BrainCircuit, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Tilt from 'react-parallax-tilt';
 import { MOTION } from '../utils/animations';
 
@@ -8,34 +8,34 @@ const services = [
     id: 'web-dev',
     num: '01',
     title: 'Desarrollo Web Full-Stack',
-    description: 'Aplicaciones SPA rápidas y modernas. Interfaces construidas con atención al detalle y animaciones fluidas.',
-    icon: Monitor,
+    description: 'Interfaces fluidas de alta fidelidad que convierten la historia de tu marca en una experiencia interactiva inolvidable.',
+    imageUrl: '/images/service_web_dev.png',
     features: ['React & TypeScript', 'Framer Motion', 'Arquitectura moderna'],
-    glowColor: 'rgba(34,211,238,0.08)',
-    borderHover: 'hover:border-cyan-500/30',
-    iconColor: 'text-cyan-400',
+    glowColor: 'rgba(16,185,129,0.05)',
+    borderHover: 'hover:border-emerald-500/20',
+    iconColor: 'text-emerald-400',
   },
   {
     id: 'backend',
     num: '02',
     title: 'Backend & APIs',
-    description: 'Bases de datos sólidas y lógica de negocio segura. Desarrollo de microservicios y APIs REST escalables.',
-    icon: Server,
+    description: 'Estructuras invisibles, seguras y robustas diseñadas para sostener el crecimiento y el rendimiento óptimo de tus ideas.',
+    imageUrl: '/images/service_backend.png',
     features: ['Node.js & Python', 'Bases de Datos (SQL/NoSQL)', 'Cloud & Serverless'],
-    glowColor: 'rgba(52,211,153,0.08)',
-    borderHover: 'hover:border-emerald-500/30',
-    iconColor: 'text-emerald-400',
+    glowColor: 'rgba(16,185,129,0.05)',
+    borderHover: 'hover:border-emerald-500/20',
+    iconColor: 'text-emerald-500',
   },
   {
     id: 'ai-integration',
     num: '03',
     title: 'IA Generativa',
-    description: 'Modelos de lenguaje integrados en tu producto para potenciar búsquedas, recomendaciones y tareas cognitivas.',
-    icon: BrainCircuit,
+    description: 'Modelos inteligentes integrados de forma nativa en tu flujo de trabajo para automatizar decisiones y potenciar tu producto.',
+    imageUrl: '/images/service_ai.png',
     features: ['Google Gemini API', 'RAG & Embeddings', 'Modelos Locales'],
-    glowColor: 'rgba(168,85,247,0.08)',
-    borderHover: 'hover:border-violet-500/30',
-    iconColor: 'text-violet-400',
+    glowColor: 'rgba(16,185,129,0.08)',
+    borderHover: 'hover:border-emerald-500/30',
+    iconColor: 'text-emerald-400',
     featured: true,
   }
 ];
@@ -62,12 +62,7 @@ const FreelanceServices = () => {
 
         <motion.div variants={MOTION.stagger} initial="hidden" whileInView="visible" viewport={MOTION.viewport} className="grid lg:grid-cols-3 gap-6">
           {services.map(service => {
-            const Icon = service.icon;
-            const glareColor = service.iconColor.includes('cyan')
-              ? 'rgba(34, 211, 238, 0.15)'
-              : service.iconColor.includes('emerald')
-              ? 'rgba(52, 211, 153, 0.15)'
-              : 'rgba(168, 85, 247, 0.15)';
+            const glareColor = 'rgba(16, 185, 129, 0.1)';
 
             return (
               <Tilt
@@ -75,7 +70,7 @@ const FreelanceServices = () => {
                 tiltMaxAngleX={8}
                 tiltMaxAngleY={8}
                 glareEnable={true}
-                glareMaxOpacity={0.15}
+                glareMaxOpacity={0.12}
                 glareColor={glareColor}
                 glarePosition="all"
                 glareBorderRadius="24px"
@@ -84,30 +79,38 @@ const FreelanceServices = () => {
               >
                 <motion.div
                   variants={MOTION.staggerChild}
-                  className={`group relative h-full bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 ${service.borderHover} rounded-3xl p-8 flex flex-col transition-all duration-500 ${service.featured ? 'bg-zinc-900/60 ring-1 ring-violet-500/10' : ''}`}
+                  className={`group relative h-full bg-slate-950/40 backdrop-blur-xl border border-slate-900 ${service.borderHover} rounded-3xl p-8 flex flex-col transition-all duration-500 ${service.featured ? 'bg-slate-900/10 ring-1 ring-emerald-500/10 border-emerald-500/20' : ''}`}
                 >
                   {/* Glow on hover */}
-                  <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ boxShadow: `inset 0 0 60px ${service.glowColor}, 0 20px 40px rgba(0,0,0,0.4)` }} />
+                  <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ boxShadow: `inset 0 0 60px ${service.glowColor}, 0 20px 40px rgba(0,0,0,0.6)` }} />
 
                   <div className="relative z-10 flex flex-col h-full">
                     <div className="flex justify-between items-start mb-8">
-                      <Icon size={32} strokeWidth={1} className={`${service.iconColor} group-hover:scale-110 transition-transform duration-500`} />
-                      <span className="text-3xl font-light text-zinc-800 font-mono select-none">{service.num}</span>
+                      {/* Premium 3D glass icon */}
+                      <div className="w-16 h-16 rounded-2xl bg-slate-950/80 border border-slate-900 flex items-center justify-center p-2 group-hover:scale-105 group-hover:border-emerald-500/20 transition-all duration-500 overflow-hidden shadow-inner">
+                        <img 
+                          src={service.imageUrl} 
+                          alt={service.title} 
+                          className="w-full h-full object-contain"
+                          loading="lazy"
+                        />
+                      </div>
+                      <span className="text-3xl font-light text-slate-800 font-mono select-none">{service.num}</span>
                     </div>
 
-                    <h3 className="text-2xl font-bold text-zinc-100 mb-4 tracking-tight">{service.title}</h3>
-                    <p className="text-zinc-400 text-sm mb-8 flex-grow leading-relaxed font-light">{service.description}</p>
+                    <h3 className="text-2xl font-bold text-slate-100 mb-4 tracking-tight">{service.title}</h3>
+                    <p className="text-slate-400 text-sm mb-8 flex-grow leading-relaxed font-light">{service.description}</p>
 
-                    <ul className="space-y-3 mb-10 border-t border-zinc-800/50 pt-6">
+                    <ul className="space-y-3 mb-10 border-t border-slate-900 pt-6">
                       {service.features.map((feature, i) => (
-                        <li key={i} className="flex items-center gap-3 text-sm text-zinc-300 font-light">
-                          <div className={`w-1 h-1 rounded-full bg-current ${service.iconColor} opacity-50`} />
+                        <li key={i} className="flex items-center gap-3 text-sm text-slate-300 font-light">
+                          <div className={`w-1.5 h-1.5 rounded-full bg-emerald-500 opacity-60`} />
                           <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
 
-                    <a href="#contact" className="mt-auto inline-flex items-center text-sm font-medium text-zinc-400 hover:text-zinc-100 transition-colors group/link w-fit">
+                    <a href="#contact" className="mt-auto inline-flex items-center text-sm font-medium text-slate-400 hover:text-emerald-400 transition-colors group/link w-fit">
                       Saber más <ArrowRight size={14} className="ml-2 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300" />
                     </a>
                   </div>

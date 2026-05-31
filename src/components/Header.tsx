@@ -34,7 +34,7 @@ const Header: React.FC<{ activeSection: string; setActiveSection: (s: string) =>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className="flex items-center justify-between">
           <a href="/" onClick={(e) => { e.preventDefault(); scrollToSection('home'); }} className="flex items-center gap-3 group relative z-50">
-           <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-white/5 group-hover:shadow-cyan-500/20 transition-shadow flex items-center justify-center bg-slate-800/10">
+           <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-white/5 group-hover:shadow-emerald-500/20 transition-shadow flex items-center justify-center bg-slate-800/10">
              <img src="/favicon.svg" alt="Logo" width={40} height={40} className="max-w-full max-h-full object-contain object-center p-1" loading="eager" />
            </div>
              <span className="font-display font-bold text-lg tracking-tight text-zinc-50">{siteContent.brand.name}</span>
@@ -45,15 +45,15 @@ const Header: React.FC<{ activeSection: string; setActiveSection: (s: string) =>
                 {siteContent.nav.filter(i => i.id !== 'contact' && i.id !== 'home').map((item) => {
                     const isActive = activeSection === item.id;
                     return (
-                        <button key={item.id} onClick={() => scrollToSection(item.id)} className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${isActive ? 'text-cyan-400' : 'text-zinc-400 hover:text-zinc-100'}`}>
-                            {isActive && <motion.div layoutId="nav-bg" className="absolute inset-0 bg-cyan-400/10 border border-cyan-400/20 rounded-full" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
+                        <button key={item.id} onClick={() => scrollToSection(item.id)} className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${isActive ? 'text-emerald-400' : 'text-zinc-400 hover:text-zinc-100'}`}>
+                            {isActive && <motion.div layoutId="nav-bg" className="absolute inset-0 bg-emerald-400/10 border border-emerald-400/20 rounded-full" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
                             <span className="relative z-10">{item.label}</span>
                         </button>
                     )
                 })}
              </div>
              <div className="w-px h-8 bg-zinc-800 mx-4" />
-             <button onClick={() => scrollToSection('contact')} className="px-5 py-2.5 rounded-full bg-zinc-100 text-zinc-950 font-bold text-sm hover:scale-105 transition-transform shadow-lg shadow-cyan-500/10 flex items-center gap-2">
+             <button onClick={() => scrollToSection('contact')} className="px-5 py-2.5 rounded-full bg-zinc-100 text-zinc-950 font-bold text-sm hover:scale-105 transition-transform shadow-lg shadow-emerald-500/10 flex items-center gap-2">
                 Contactar <ArrowUpRight size={16} />
              </button>
           </nav>
@@ -79,8 +79,8 @@ const Header: React.FC<{ activeSection: string; setActiveSection: (s: string) =>
                     <div className="flex-1 overflow-y-auto py-4 px-4">
                         <div className="flex flex-col gap-1">
                             {siteContent.nav.map((item) => (
-                                <button key={item.id} onClick={() => scrollToSection(item.id)} className={`flex items-center gap-4 p-4 rounded-xl text-left ${activeSection === item.id ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/20' : 'text-zinc-300 hover:bg-zinc-900'}`}>
-                                    <span className={`w-2 h-2 rounded-full ${activeSection === item.id ? 'bg-cyan-400' : 'bg-zinc-600'}`} />
+                                <button key={item.id} onClick={() => scrollToSection(item.id)} className={`flex items-center gap-4 p-4 rounded-xl text-left ${activeSection === item.id ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'text-zinc-300 hover:bg-zinc-900'}`}>
+                                    <span className={`w-2 h-2 rounded-full ${activeSection === item.id ? 'bg-emerald-400' : 'bg-zinc-600'}`} />
                                     <span className="text-lg font-semibold">{item.label}</span>
                                 </button>
                             ))}

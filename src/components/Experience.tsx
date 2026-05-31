@@ -3,9 +3,6 @@ import { experiences, education } from '../data/portfolio';
 import { MOTION } from '../utils/animations';
 
 const Experience = () => {
-  const aiCerts = education.filter(e => e.tier === 'ai-certification');
-  const techEdu = education.filter(e => e.tier === 'tech');
-
   return (
     <section id="experience" className="py-16 relative z-10 border-t border-zinc-900/50 mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -18,74 +15,155 @@ const Experience = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Experience Column */}
           <motion.div variants={MOTION.stagger} initial="hidden" whileInView="visible" viewport={MOTION.viewport}>
-            <div className="text-xl font-light text-zinc-400 mb-10 tracking-wide uppercase text-sm">Experiencia</div>
+            <div className="text-xs font-bold text-slate-500 font-mono tracking-widest uppercase mb-10">
+              ⚡ Experiencia Laboral
+            </div>
 
-            <div className="relative border-l border-zinc-800/50 ml-2 space-y-12">
-              {experiences.map((exp) => (
-                <motion.div key={exp.id} variants={MOTION.staggerChild} className="relative pl-8">
-                  <div className="absolute -left-[5px] top-2.5 w-2 h-2 rounded-full bg-cyan-400 ring-4 ring-zinc-950" />
-                  <div className="group bg-zinc-900/20 backdrop-blur-md p-6 rounded-3xl border border-zinc-800/40 hover:border-cyan-500/20 transition-all duration-300">
-                    <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 justify-between mb-4">
-                      <div className="text-lg font-medium text-zinc-100 group-hover:text-cyan-300 transition-colors">{exp.role || exp.title}</div>
-                      <span className="text-xs font-mono text-zinc-500">{exp.duration}</span>
+            <div className="relative border-l border-emerald-500/20 ml-3 space-y-10">
+              {experiences.map((exp) => {
+                const initials = exp.company
+                  .split(' ')
+                  .map((n) => n[0])
+                  .join('')
+                  .slice(0, 2)
+                  .toUpperCase();
+
+                return (
+                  <motion.div key={exp.id} variants={MOTION.staggerChild} className="relative pl-8">
+                    <div className="absolute -left-[5px] top-4 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-4 ring-slate-950" />
+                    
+                    <div className="group bg-slate-900/30 backdrop-blur-xl p-6 rounded-3xl border border-slate-800/40 hover:border-emerald-500/30 transition-all duration-500 shadow-bento-dark">
+                      <div className="flex gap-4 items-start">
+                        {/* Logo Monogram Placeholder (Clean White/Emerald Theme) */}
+                        <div className="w-12 h-12 rounded-2xl flex-shrink-0 flex items-center justify-center bg-slate-950 border border-slate-800 group-hover:border-emerald-500/20 transition-colors shadow-inner select-none overflow-hidden">
+                          {exp.logoUrl ? (
+                            <img 
+                              src={exp.logoUrl} 
+                              alt={exp.company} 
+                              className="w-7 h-7 object-contain filter brightness-100 contrast-100" 
+                              loading="lazy"
+                            />
+                          ) : (
+                            <span className="text-xs font-extrabold text-emerald-400 font-mono">{initials}</span>
+                          )}
+                        </div>
+
+                        <div className="flex-grow">
+                          <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 justify-between mb-2">
+                            <h3 className="text-lg font-bold text-slate-100 group-hover:text-emerald-400 transition-colors leading-snug">
+                              {exp.role || exp.title}
+                            </h3>
+                            <span className="text-xs font-mono text-slate-500">{exp.duration}</span>
+                          </div>
+                          
+                          <div className="text-slate-400 text-xs font-semibold mb-3 font-mono tracking-wider uppercase">
+                            {exp.company}
+                          </div>
+                          
+                          <p className="text-slate-400 text-sm leading-relaxed font-light mb-6">
+                            {exp.summary}
+                          </p>
+
+                          <div className="flex flex-wrap gap-1.5">
+                            {exp.techStack?.map((tech, i) => (
+                              <span 
+                                key={i} 
+                                className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-950 border border-slate-800 text-slate-400"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div className="text-zinc-400 text-sm mb-4 font-medium">{exp.company}</div>
-                    <p className="text-zinc-500 text-sm leading-relaxed font-light mb-6">{exp.summary}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {exp.techStack?.map((tech, i) => (
-                        <span key={i} className="text-[10px] font-mono px-2 py-1 rounded-md bg-zinc-900/50 text-zinc-400 border border-zinc-800">{tech}</span>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
 
-          {/* Education Column */}
+          {/* Education & Certifications Column */}
           <motion.div variants={MOTION.stagger} initial="hidden" whileInView="visible" viewport={MOTION.viewport}>
-            <div className="text-xl font-light text-zinc-400 mb-10 tracking-wide uppercase text-sm">Educación & Certificaciones</div>
+            <div className="text-xs font-bold text-slate-500 font-mono tracking-widest uppercase mb-10">
+              🎓 Educación & Certificaciones
+            </div>
 
-            <div className="relative border-l border-zinc-800/50 ml-2 space-y-10">
-              {/* AI Certifications */}
-              {aiCerts.map((edu) => (
-                <motion.div key={edu.id} variants={MOTION.staggerChild} className="relative pl-8">
-                  <div className="absolute -left-[5px] top-2.5 w-2 h-2 rounded-full bg-violet-400 ring-4 ring-zinc-950" />
-                  <div className="group bg-violet-500/5 backdrop-blur-md p-6 rounded-3xl border border-violet-500/10 hover:border-violet-500/30 transition-all duration-300">
-                    <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 justify-between mb-2">
-                      <div className="text-base font-medium text-zinc-100">{edu.degree}</div>
-                      <span className="text-xs font-mono text-violet-400/60">{edu.duration}</span>
-                    </div>
-                    <div className="text-violet-300/80 text-sm mb-4">{edu.institution}</div>
-                    {edu.relevant && (
-                      <div className="flex flex-wrap gap-2">
-                        {edu.relevant.map((tag, i) => (
-                          <span key={i} className="text-[10px] font-mono px-2 py-1 rounded-md bg-violet-500/10 text-violet-300/70 border border-violet-500/20">{tag}</span>
-                        ))}
+            <div className="relative border-l border-emerald-500/20 ml-3 space-y-8">
+              {education.map((edu) => {
+                const isAi = edu.tier === 'ai-certification';
+                const initials = edu.institution
+                  .split(' ')
+                  .map((n) => n[0])
+                  .join('')
+                  .slice(0, 2)
+                  .toUpperCase();
+
+                return (
+                  <motion.div key={edu.id} variants={MOTION.staggerChild} className="relative pl-8">
+                    <div className={`absolute -left-[5px] top-4 w-2.5 h-2.5 rounded-full ${isAi ? 'bg-emerald-400' : 'bg-slate-600'} ring-4 ring-slate-950`} />
+                    
+                    <div className={`group backdrop-blur-xl p-5 rounded-3xl border transition-all duration-500 shadow-bento-dark ${
+                      isAi 
+                        ? 'bg-emerald-500/[0.02] border-emerald-500/10 hover:border-emerald-500/30' 
+                        : 'bg-slate-900/20 border-slate-800/40 hover:border-slate-700/50'
+                    }`}>
+                      <div className="flex gap-4 items-start">
+                        {/* Institution Logo */}
+                        <div className="w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center bg-slate-950 border border-slate-800 shadow-inner overflow-hidden select-none">
+                          {edu.logoUrl ? (
+                            <img 
+                              src={edu.logoUrl} 
+                              alt={edu.institution} 
+                              className={`w-6 h-6 object-contain ${
+                                edu.institution.includes('Norbert Wiener') || edu.institution.includes('IDAT') || edu.institution.includes('CertiProf') 
+                                  ? 'filter brightness-0 invert'  // Convert local colored logos to white/monochrome
+                                  : ''
+                              }`} 
+                              loading="lazy"
+                            />
+                          ) : (
+                            <span className="text-[10px] font-bold text-slate-500 font-mono">{initials}</span>
+                          )}
+                        </div>
+
+                        <div className="flex-grow">
+                          <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 justify-between mb-2">
+                            <h3 className="text-sm font-bold text-slate-100 leading-snug">
+                              {edu.degree}
+                            </h3>
+                            <span className="text-[10px] font-mono text-slate-500">{edu.duration}</span>
+                          </div>
+                          
+                          <div className={`text-xs font-semibold mb-3 ${isAi ? 'text-emerald-400/80' : 'text-slate-400'} font-mono`}>
+                            {edu.institution}
+                          </div>
+
+                          {edu.relevant && (
+                            <div className="flex flex-wrap gap-1.5">
+                              {edu.relevant.map((tag, i) => (
+                                <span 
+                                  key={i} 
+                                  className={`text-[9px] font-mono px-2 py-0.5 rounded ${
+                                    isAi 
+                                      ? 'bg-emerald-950/40 border border-emerald-900/50 text-emerald-300/70' 
+                                      : 'bg-slate-950 border border-slate-800 text-slate-400'
+                                  }`}
+                                >
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
                       </div>
-                    )}
-                  </div>
-                </motion.div>
-              ))}
-
-              {/* Tech Certifications */}
-              {techEdu.map((edu) => (
-                <motion.div key={edu.id} variants={MOTION.staggerChild} className="relative pl-8">
-                  <div className="absolute -left-[5px] top-2.5 w-2 h-2 rounded-full bg-zinc-600 ring-4 ring-zinc-950" />
-                  <div className="bg-zinc-900/20 backdrop-blur-sm p-5 rounded-2xl border border-zinc-800/30">
-                    <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 justify-between mb-1">
-                      <div className="font-medium text-zinc-200 text-sm">{edu.degree}</div>
-                      <span className="text-[10px] font-mono text-zinc-600">{edu.duration}</span>
                     </div>
-                    <div className="text-zinc-500 text-sm font-light">
-                      {edu.institution}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
         </div>

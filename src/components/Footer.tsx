@@ -6,7 +6,7 @@ import { siteContent } from '../data/siteContent';
 const Footer: React.FC = () => (
   <footer id="contact" className="bg-zinc-950 relative overflow-hidden">
     {/* Top gradient border */}
-    <div className="h-px bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent" />
+    <div className="h-px bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
 
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-10">
       {/* CTA Banner */}
@@ -14,7 +14,7 @@ const Footer: React.FC = () => (
         initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
         className="relative text-center mb-20 p-12 md:p-16 rounded-3xl bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 border border-zinc-800/60 backdrop-blur-sm overflow-hidden"
       >
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_50%_50%,rgba(34,211,238,0.06),transparent)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_50%_50%,rgba(16,185,129,0.03),transparent)] pointer-events-none" />
         <div className="relative z-10">
           <h3 className="text-3xl md:text-4xl font-extrabold text-zinc-50 font-display tracking-tight mb-4">
             ¿Tienes un proyecto en mente?
@@ -24,10 +24,10 @@ const Footer: React.FC = () => (
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <motion.a
-              whileHover={{ scale: 1.04, boxShadow: '0 0 30px rgba(34,211,238,0.3)' }}
+              whileHover={{ scale: 1.04, boxShadow: '0 0 30px rgba(16,185,129,0.2)' }}
               whileTap={{ scale: 0.97 }}
               href={`mailto:${siteContent.footer.contactEmail}`}
-              className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-cyan-400 text-zinc-950 font-bold text-sm shadow-lg shadow-cyan-500/25"
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-400 text-zinc-950 font-bold text-sm shadow-lg shadow-emerald-500/20"
             >
               <Mail size={16} /> Enviar Correo
             </motion.a>
@@ -60,7 +60,7 @@ const Footer: React.FC = () => (
               { href: `mailto:${siteContent.footer.contactEmail}`, icon: Mail, label: 'Email' },
             ].map(social => (
               <motion.a key={social.label} whileHover={{ scale: 1.1, y: -2 }} whileTap={{ scale: 0.95 }} href={social.href} target={social.label !== 'Email' ? '_blank' : undefined} rel="noreferrer"
-                className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-500 hover:text-cyan-400 hover:border-cyan-500/30 transition-all" aria-label={social.label}>
+                className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-500 hover:text-emerald-400 hover:border-emerald-500/20 transition-all" aria-label={social.label}>
                 <social.icon size={18} strokeWidth={1.5} />
               </motion.a>
             ))}
@@ -71,16 +71,16 @@ const Footer: React.FC = () => (
         <div>
           <h4 className="text-sm font-bold text-zinc-50 mb-4 uppercase tracking-wider">Contacto</h4>
           <div className="space-y-3 text-sm">
-            <a href={`mailto:${siteContent.footer.contactEmail}`} className="flex items-center gap-2.5 text-zinc-500 hover:text-cyan-400 transition-colors">
+            <a href={`mailto:${siteContent.footer.contactEmail}`} className="flex items-center gap-2.5 text-zinc-500 hover:text-emerald-400 transition-colors">
               <Mail size={14} className="shrink-0" /> {siteContent.footer.contactEmail}
             </a>
-            <a href={`tel:${siteContent.footer.contactPhone}`} className="flex items-center gap-2.5 text-zinc-500 hover:text-cyan-400 transition-colors">
+            <a href={`tel:${siteContent.footer.contactPhone}`} className="flex items-center gap-2.5 text-zinc-500 hover:text-emerald-400 transition-colors">
               <Phone size={14} className="shrink-0" /> {siteContent.footer.contactPhone}
             </a>
             <div className="flex items-center gap-2.5 text-zinc-600">
               <MapPin size={14} className="shrink-0" /> Centro de Lima, Lima - Perú
             </div>
-            <a href="https://sjaquer.is-a.dev" target="_blank" rel="noreferrer" className="flex items-center gap-2.5 text-zinc-500 hover:text-cyan-400 transition-colors">
+            <a href="https://sjaquer.is-a.dev" target="_blank" rel="noreferrer" className="flex items-center gap-2.5 text-zinc-500 hover:text-emerald-400 transition-colors">
               <ExternalLink size={14} className="shrink-0" /> sjaquer.is-a.dev
             </a>
           </div>
@@ -90,18 +90,18 @@ const Footer: React.FC = () => (
         <div>
           <h4 className="text-sm font-bold text-zinc-50 mb-4 uppercase tracking-wider">Recursos</h4>
           <div className="space-y-3">
-            <a href="/resume.txt" target="_blank" className="flex items-center gap-2.5 text-sm text-zinc-500 hover:text-cyan-400 transition-colors group">
+            <a href="/resume.txt" target="_blank" className="flex items-center gap-2.5 text-sm text-zinc-500 hover:text-emerald-400 transition-colors group">
               <FileText size={14} className="shrink-0" />
               <span>CV (Español)</span>
-              <span className="ml-auto text-[10px] font-mono text-zinc-700 group-hover:text-cyan-500/50">.txt</span>
+              <span className="ml-auto text-[10px] font-mono text-zinc-700 group-hover:text-emerald-500/50">.txt</span>
             </a>
-            <a href="/resume_en.txt" target="_blank" className="flex items-center gap-2.5 text-sm text-zinc-500 hover:text-violet-400 transition-colors group">
+            <a href="/resume_en.txt" target="_blank" className="flex items-center gap-2.5 text-sm text-zinc-500 hover:text-emerald-400 transition-colors group">
               <Bot size={14} className="shrink-0" />
               <span>CV (English)</span>
-              <span className="ml-auto text-[10px] font-mono text-zinc-700 group-hover:text-violet-500/50">.txt</span>
+              <span className="ml-auto text-[10px] font-mono text-zinc-700 group-hover:text-emerald-500/50">.txt</span>
             </a>
-            <a href="/ai.txt" target="_blank" className="flex items-center gap-2.5 text-sm font-mono text-violet-500/60 hover:text-violet-400 transition-colors">
-              <span className="w-1.5 h-1.5 rounded-full bg-violet-500 shrink-0" /> ai.txt
+            <a href="/ai.txt" target="_blank" className="flex items-center gap-2.5 text-sm font-mono text-emerald-500/60 hover:text-emerald-400 transition-colors">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" /> ai.txt
             </a>
           </div>
         </div>
