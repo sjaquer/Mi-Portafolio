@@ -128,14 +128,40 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.6, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="relative order-1 lg:order-2 w-full"
           >
-              {/* Floating 3D generated abstract glass image as backdrop */}
-              <div className="absolute -right-48 -top-36 w-[720px] h-[720px] opacity-45 pointer-events-none mix-blend-screen animate-pulse-slow z-[-1]">
-                <img 
-                  src="/images/hero_3d_glass.png" 
-                  alt="Futuristic 3D Glass Geometry" 
-                  className="w-full h-full object-contain filter drop-shadow-[0_0_50px_rgba(16,185,129,0.25)] mix-blend-screen" 
-                  loading="lazy"
-                />
+              {/* Floating & Rotating 3D glass image acting as a seamless premium video loop */}
+              <div className="absolute -right-48 -top-36 w-[720px] h-[720px] opacity-45 pointer-events-none mix-blend-screen z-[-1]">
+                <motion.div
+                  animate={{
+                    rotate: [0, 360],
+                    y: [0, -20, 0],
+                    scale: [1, 1.03, 1]
+                  }}
+                  transition={{
+                    rotate: {
+                      duration: 60,
+                      repeat: Infinity,
+                      ease: "linear"
+                    },
+                    y: {
+                      duration: 8,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    },
+                    scale: {
+                      duration: 10,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }
+                  }}
+                  className="w-full h-full animate-pulse-slow"
+                >
+                  <img 
+                    src="/images/hero_3d_glass.png" 
+                    alt="Futuristic 3D Glass Geometry" 
+                    className="w-full h-full object-contain filter drop-shadow-[0_0_60px_rgba(16,185,129,0.2)] mix-blend-screen" 
+                    loading="lazy"
+                  />
+                </motion.div>
               </div>
 
               <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/[0.03] to-teal-500/[0.03] blur-3xl rounded-[3rem] pointer-events-none" />
