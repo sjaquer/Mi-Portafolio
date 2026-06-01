@@ -1,11 +1,66 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, ExternalLink, Brain, ArrowUpRight, Compass } from 'lucide-react';
+import { Github, ExternalLink, Brain, ArrowUpRight, Compass, RotateCcw, ShieldAlert } from 'lucide-react';
 import { projects } from '../data/portfolio';
 import { Project } from '../types';
 import { MOTION } from '../utils/animations';
 import { cn } from '../utils/cn';
-import { SimulatorSelector } from './simulators/WhatsappBotSim';
+import ErrorBoundary from './ErrorBoundary';
+
+// Lazy imports of simulator components to dramatically reduce primary JS bundle size
+const BigJackSim = React.lazy(() => import('./simulators/BigJackSim').then(m => ({ default: m.BigJackSim })));
+const TaskMeSim = React.lazy(() => import('./simulators/TaskMeSim').then(m => ({ default: m.TaskMeSim })));
+const OrdevSim = React.lazy(() => import('./simulators/OrdevSim').then(m => ({ default: m.OrdevSim })));
+const TaskZenithSim = React.lazy(() => import('./simulators/TaskZenithSim').then(m => ({ default: m.TaskZenithSim })));
+const WhatsappBotSim = React.lazy(() => import('./simulators/WhatsappBotSim').then(m => ({ default: m.WhatsappBotSim })));
+
+const SimulatorLoader = () => (
+  <div className="w-full h-full flex flex-col items-center justify-center font-mono">
+    <div className="w-8 h-8 border-2 border-slate-800 border-t-emerald-500 rounded-full animate-spin mb-3" />
+    <span className="text-[9px] text-slate-500 font-bold uppercase tracking-[0.2em] animate-pulse">Cargando Consola...</span>
+  </div>
+);
+
+const SimulatorFallbackError = () => (
+  <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center font-mono">
+    <ShieldAlert size={36} className="text-red-500 mb-3 animate-pulse" />
+    <h3 className="text-xs font-bold text-slate-100 mb-1">Console Offline</h3>
+    <p className="text-[9px] text-slate-500 max-w-[200px] leading-relaxed mb-4">
+      Se produjo un error de ejecución en este simulador. El portafolio sigue activo.
+    </p>
+    <button 
+      onClick={() => window.location.reload()} 
+      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 border border-slate-800 text-[9px] font-bold text-slate-400 hover:text-slate-200 rounded-xl transition-all cursor-pointer"
+    >
+      <RotateCcw size={10} /> Recargar Consola
+    </button>
+  </div>
+);
+
+const SimulatorSelector: React.FC<{ simulatorId: string }> = ({ simulatorId }) => {
+  return (
+    <ErrorBoundary fallback={<SimulatorFallbackError />}>
+      <Suspense fallback={<SimulatorLoader />}>
+        {(() => {
+          switch (simulatorId) {
+            case 'bigjack':
+              return <BigJackSim />;
+            case 'taskme':
+              return <TaskMeSim />;
+            case 'ordev':
+              return <OrdevSim />;
+            case 'taskzenith':
+              return <TaskZenithSim />;
+            case 'whatsappbot':
+              return <WhatsappBotSim />;
+            default:
+              return null;
+          }
+        })()}
+      </Suspense>
+    </ErrorBoundary>
+  );
+};
 
 const projectThemes: Record<string, {
   accent: string;

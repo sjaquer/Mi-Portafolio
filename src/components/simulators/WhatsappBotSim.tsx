@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, Play, RotateCcw, Brain, Terminal, ShieldAlert } from 'lucide-react';
-import { BigJackSim } from './BigJackSim';
-import { TaskMeSim } from './TaskMeSim';
-import { OrdevSim } from './OrdevSim';
-import { TaskZenithSim } from './TaskZenithSim';
 import { cn } from '../../utils/cn';
 
 export const WhatsappBotSim = React.memo(() => {
@@ -198,22 +194,4 @@ export const WhatsappBotSim = React.memo(() => {
     </div>
   );
 });
-
-export const SimulatorSelector: React.FC<{ simulatorId: string }> = ({ simulatorId }) => {
-  switch (simulatorId) {
-    case 'bigjack':
-      return <BigJackSim />;
-    case 'taskme':
-      return <TaskMeSim />;
-    case 'ordev':
-      return <OrdevSim />;
-    case 'taskzenith':
-      return <TaskZenithSim />;
-    case 'whatsappbot':
-      return <WhatsappBotSim />;
-    default:
-      return null;
-  }
-};
-
 WhatsappBotSim.displayName = 'WhatsappBotSim';
