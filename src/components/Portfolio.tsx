@@ -21,22 +21,14 @@ const ProjectCard: React.FC<{
       className={cn(
         'group glass-panel rounded-3xl p-6 sm:p-8 relative overflow-hidden transition-all duration-500 border scroll-mt-28',
         isActive 
-          ? 'bg-slate-900/40 border-emerald-500/30 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)]' 
-          : 'bg-zinc-950/20 border-slate-900 opacity-60 hover:opacity-85 hover:border-slate-800'
+          ? 'bg-zinc-900/40 border-emerald-500/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.03),0_20px_40px_-15px_rgba(0,0,0,0.4)] backdrop-blur-2xl' 
+          : 'bg-zinc-950/10 border-zinc-900/60 opacity-55 hover:opacity-80 hover:border-zinc-800/85'
       )}
     >
-      <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/[0.01] via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/[0.005] via-transparent to-transparent pointer-events-none" />
       
-      {/* Decorative Line on Active Card */}
-      {isActive && (
-        <motion.div 
-          layoutId="activeBorderLine" 
-          className="absolute left-0 top-0 bottom-0 w-[3px] bg-emerald-500" 
-        />
-      )}
-
       {/* Header Info */}
-      <div className="flex items-start justify-between gap-4 mb-4">
+      <div className="flex items-start justify-between gap-4 mb-3">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1.5">
             {hasAI && (
@@ -88,39 +80,27 @@ const ProjectCard: React.FC<{
 
       {/* Subtitle */}
       {project.subtitle && (
-        <p className="text-slate-400 text-xs font-mono uppercase tracking-[0.12em] mb-4 font-semibold">
+        <p className="text-zinc-500 text-[10px] sm:text-xs font-mono uppercase tracking-[0.15em] mb-3 font-semibold">
           {project.subtitle}
         </p>
       )}
 
       {/* Description */}
-      <p className="text-zinc-400 text-sm mb-6 leading-relaxed font-light font-sans">
+      <p className="text-zinc-400 text-sm mb-5 leading-relaxed font-light font-sans">
         {project.description}
       </p>
 
-      {/* Case Study Narrative Block */}
+      {/* Case Study Metrics (Unboxed system) */}
       {project.caseStudy && (
-        <div className="space-y-4 mb-6 border-t border-slate-900 pt-4 font-sans">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-            <div>
-              <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest block mb-1">El Desafío</span>
-              <p className="text-zinc-300 leading-normal font-light">{project.caseStudy.problem}</p>
-            </div>
-            <div>
-              <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest block mb-1">La Solución</span>
-              <p className="text-zinc-300 leading-normal font-light">{project.caseStudy.solution}</p>
-            </div>
-          </div>
-
-          {/* Metrics Grid */}
-          <div className="grid grid-cols-3 gap-2 pt-2">
+        <div className="border-t border-zinc-900/60 pt-4 mb-5">
+          <div className="grid grid-cols-3 gap-4">
             {project.caseStudy.metrics.map((metric, idx) => (
-              <div key={idx} className="p-2.5 bg-slate-950/40 border border-slate-900 rounded-xl text-center">
-                <span className="text-[8px] font-mono text-slate-500 uppercase tracking-widest block mb-1">
+              <div key={idx} className="relative flex flex-col text-left">
+                <span className="text-[8px] font-mono text-zinc-500 uppercase tracking-widest block mb-1.5 leading-none">
                   {metric.label}
                 </span>
-                <span className="text-lg font-extrabold text-emerald-400 tracking-tight font-mono">
-                  {metric.prefix}{metric.value}%
+                <span className="text-xl sm:text-2xl font-extrabold text-emerald-400 tracking-tight font-mono leading-none">
+                  {metric.prefix}{metric.value}{metric.suffix || ''}
                 </span>
               </div>
             ))}
@@ -128,27 +108,27 @@ const ProjectCard: React.FC<{
         </div>
       )}
 
-      {/* Tech Stack Badges */}
-      <div className="flex flex-wrap gap-1.5">
+      {/* Tech Stack Tipográfico */}
+      <div className="flex flex-wrap items-center gap-y-1 gap-x-2.5 text-[9px] sm:text-[10px] font-mono text-zinc-500">
         {project.techStack?.map((tech: string, idx: number) => (
-          <span 
-            key={idx} 
-            className="px-2 py-0.5 rounded bg-slate-950/60 text-slate-500 border border-slate-900/60 text-[9px] font-mono"
-          >
-            {tech}
-          </span>
+          <React.Fragment key={idx}>
+            {idx > 0 && <span className="text-zinc-800/80 font-bold select-none">•</span>}
+            <span className="transition-colors hover:text-emerald-400/85">
+              {tech}
+            </span>
+          </React.Fragment>
         ))}
       </div>
 
-      {/* Mobile Simulator Embed - Expandable Active Loading for Peak Mobile Performance */}
+      {/* Mobile Simulator Embed */}
       <AnimatePresence initial={false}>
         {isActive && (
           <motion.div 
             initial={{ height: 0, opacity: 0, marginTop: 0 }}
-            animate={{ height: 380, opacity: 1, marginTop: 24 }}
+            animate={{ height: 380, opacity: 1, marginTop: 20 }}
             exit={{ height: 0, opacity: 0, marginTop: 0 }}
             transition={{ type: 'spring', stiffness: 200, damping: 25 }}
-            className="block lg:hidden overflow-hidden w-[calc(100%+3rem)] sm:w-[calc(100%+4rem)] -mx-6 -mb-6 sm:-mx-8 sm:-mb-8 mt-6 border-t border-slate-900/60 bg-slate-950/30"
+            className="block lg:hidden overflow-hidden w-[calc(100%+3rem)] sm:w-[calc(100%+4rem)] -mx-6 -mb-6 sm:-mx-8 sm:-mb-8 mt-5 border-t border-slate-900/60 bg-slate-950/30"
           >
             <div className="h-[380px] w-full overflow-hidden">
               <SimulatorSelector simulatorId={project.simulatorId || ''} />

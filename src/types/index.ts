@@ -29,7 +29,7 @@ export interface Education {
 export interface CaseStudy {
   problem: string;
   solution: string;
-  metrics: { label: string; value: string; prefix?: string }[];
+  metrics: { label: string; value: string; prefix?: string; suffix?: string }[];
 }
 
 export interface Project {

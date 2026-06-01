@@ -103,55 +103,34 @@ const AIShowcase = () => {
               </div>
 
               {/* Pipeline Diagram Grid */}
-              <div className="relative grid grid-cols-12 gap-2 sm:gap-3 items-center flex-grow py-2 sm:py-4 z-10">
-                {/* SVG Connections in Background */}
-                <svg className="absolute inset-0 w-full h-full pointer-events-none stroke-zinc-900/50" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none">
-                  <path d="M 31,15 L 50,50 L 69,15" strokeWidth="0.5" />
-                  <path d="M 31,50 L 50,50 L 69,50" strokeWidth="0.5" />
-                  <path d="M 31,85 L 50,50 L 69,85" strokeWidth="0.5" />
-                  
-                  {/* Glowing active path (Input -> Robot) */}
-                  {activeStep === 0 && <motion.path d="M 31,15 L 50,50" stroke="url(#activeBeam)" strokeWidth="0.8" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.2, repeat: Infinity }} />}
-                  {activeStep === 1 && <motion.path d="M 31,50 L 50,50" stroke="url(#activeBeam)" strokeWidth="0.8" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.2, repeat: Infinity }} />}
-                  {activeStep === 2 && <motion.path d="M 31,85 L 50,50" stroke="url(#activeBeam)" strokeWidth="0.8" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.2, repeat: Infinity }} />}
-                  
-                  {/* Glowing active path (Robot -> Output) */}
-                  {activeStep === 0 && <motion.path d="M 50,50 L 69,15" stroke="url(#activeBeamOut)" strokeWidth="0.8" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.2, delay: 0.6, repeat: Infinity }} />}
-                  {activeStep === 1 && <motion.path d="M 50,50 L 69,50" stroke="url(#activeBeamOut)" strokeWidth="0.8" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.2, delay: 0.6, repeat: Infinity }} />}
-                  {activeStep === 2 && <motion.path d="M 50,50 L 69,85" stroke="url(#activeBeamOut)" strokeWidth="0.8" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.2, delay: 0.6, repeat: Infinity }} />}
-                  
-                  <defs>
-                    <linearGradient id="activeBeam" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#10b981" stopOpacity="0" />
-                      <stop offset="100%" stopColor="#0d9488" />
-                    </linearGradient>
-                    <linearGradient id="activeBeamOut" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#0d9488" />
-                      <stop offset="100%" stopColor="#10b981" />
-                    </linearGradient>
-                  </defs>
-                </svg>
+              <div className="flex-grow py-4 sm:py-6 flex flex-col justify-center gap-5 sm:gap-6 z-10">
+                {inputs.map((inp, idx) => {
+                  const isActive = activeStep === idx;
+                  const InpIcon = inp.icon;
+                  const out = outputs[idx];
+                  const OutIcon = out.icon;
 
-                {/* Left Column: Inputs */}
-                <div className="col-span-4 space-y-3 sm:space-y-4 z-20">
-                  {inputs.map((inp, idx) => {
-                    const isActive = activeStep === idx;
-                    const Icon = inp.icon;
-                    return (
+                  return (
+                    <motion.div
+                      key={idx}
+                      className={cn(
+                        "grid grid-cols-12 items-center gap-1.5 sm:gap-3 transition-all duration-500 cursor-pointer select-none",
+                        isActive ? "opacity-100 scale-[1.01]" : "opacity-35 hover:opacity-50"
+                      )}
+                      onClick={() => setActiveStep(idx)}
+                      whileTap={{ scale: 0.99 }}
+                    >
+                      {/* Left: Input Card (col-span-5) */}
                       <motion.div
-                        key={idx}
                         className={cn(
-                          "relative rounded-xl p-2 sm:p-3 border text-left bg-zinc-950/40 backdrop-blur-xl transition-all duration-500 cursor-pointer select-none",
+                          "col-span-5 relative rounded-xl p-2 sm:p-3 border text-left bg-zinc-950/40 backdrop-blur-xl transition-all duration-500",
                           isActive 
-                            ? `border-emerald-500/40 bg-emerald-950/5 shadow-[0_0_15px_rgba(16,185,129,0.04)]` 
-                            : "border-zinc-900 text-zinc-500 hover:border-zinc-800"
+                            ? "border-emerald-500/40 bg-emerald-950/5 shadow-[0_0_15px_rgba(16,185,129,0.04)]" 
+                            : "border-zinc-900 text-zinc-500"
                         )}
-                        animate={{ x: isActive ? 4 : 0 }}
-                        whileTap={{ scale: 0.98 }}
-                        onClick={() => setActiveStep(idx)}
                       >
                         <div className="flex items-center gap-1.5 sm:gap-2">
-                          <Icon size={13} className={isActive ? inp.color : "text-zinc-600"} />
+                          <InpIcon size={13} className={isActive ? inp.color : "text-zinc-600"} />
                           <span className={cn("text-[10px] sm:text-xs font-bold tracking-tight leading-none", isActive ? "text-zinc-100" : "text-zinc-500")}>
                             {inp.label}
                           </span>
@@ -170,73 +149,78 @@ const AIShowcase = () => {
                           />
                         )}
                       </motion.div>
-                    );
-                  })}
-                </div>
 
-                {/* Center Column: Animated Cognitive Vector Brain */}
-                <div className="col-span-4 flex justify-center z-20 relative">
-                  <div className="relative h-16 w-16 xs:h-20 xs:w-20 sm:h-28 sm:w-28 flex items-center justify-center">
-                    
-                    {/* Rotating orbit circles */}
-                    <motion.div
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                      className="absolute inset-0 rounded-full border border-dashed border-emerald-500/20"
-                    />
-                    <motion.div
-                      animate={{ rotate: -360 }}
-                      transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                      className="absolute inset-1.5 sm:inset-2 rounded-full border border-zinc-800/80 stroke-dash-array-[5,10]"
-                    />
+                      {/* Center: Bridge & Node (col-span-2) */}
+                      <div className="col-span-2 relative h-12 flex items-center justify-center">
+                        {/* Horizontal Connection SVG */}
+                        <svg className="absolute inset-0 w-full h-full pointer-events-none stroke-zinc-900/50" preserveAspectRatio="none" fill="none">
+                          <defs>
+                            <linearGradient id={`activeBeamHorizontal-${idx}`} x1="0%" y1="0%" x2="100%" y2="0%">
+                              <stop offset="0%" stopColor="#10b981" stopOpacity="0" />
+                              <stop offset="30%" stopColor="#10b981" stopOpacity="0.1" />
+                              <stop offset="50%" stopColor="#34d399" stopOpacity="1" />
+                              <stop offset="70%" stopColor="#0d9488" stopOpacity="0.1" />
+                              <stop offset="100%" stopColor="#0d9488" stopOpacity="0" />
+                            </linearGradient>
+                          </defs>
+                          <line x1="0%" y1="50%" x2="100%" y2="50%" strokeWidth="1" />
+                          
+                          {/* Glowing active path */}
+                          {isActive && (
+                            <motion.line
+                              x1="0%"
+                              y1="50%"
+                              x2="100%"
+                              y2="50%"
+                              stroke={`url(#activeBeamHorizontal-${idx})`}
+                              strokeWidth="1.5"
+                              initial={{ strokeDasharray: "40 60", strokeDashoffset: 100 }}
+                              animate={{ strokeDashoffset: -100 }}
+                              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                            />
+                          )}
+                        </svg>
 
-                    {/* Central Brain core */}
-                    <motion.div
-                      animate={{ scale: [1, 1.05, 1], boxShadow: ["0 0 10px rgba(16,185,129,0.05)", "0 0 25px rgba(16,185,129,0.15)", "0 0 10px rgba(16,185,129,0.05)"] }}
-                      transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                      className="relative h-10 w-10 xs:h-12 xs:w-12 sm:h-16 sm:w-16 rounded-full bg-gradient-to-tr from-slate-900 to-slate-950 border border-emerald-500/30 flex items-center justify-center z-10 shadow-2xl backdrop-blur-3xl"
-                    >
-                      {/* Integrated Vector AI Robot Head */}
-                      <svg className="w-5 h-5 xs:w-6 xs:h-6 sm:w-8 sm:h-8 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                        {/* Antenna */}
-                        <line x1="12" y1="5" x2="12" y2="2" />
-                        <circle cx="12" cy="2" r="1" fill="currentColor" />
-                        {/* Robot Head outline */}
-                        <rect x="5" y="5" width="14" height="12" rx="3" />
-                        {/* Cyber eyes */}
-                        <circle cx="9" cy="11" r="1.5" fill="#34d399" className="animate-pulse" />
-                        <circle cx="15" cy="11" r="1.5" fill="#34d399" className="animate-pulse" />
-                        {/* Circuit lines */}
-                        <path d="M 9,14 L 15,14" strokeWidth="1" strokeLinecap="round" />
-                        {/* Ears */}
-                        <path d="M 5,9 L 3,9" />
-                        <path d="M 19,9 L 21,9" />
-                      </svg>
-                    </motion.div>
-                  </div>
-                </div>
+                        {/* Minimal Processing Node */}
+                        <div className="relative z-10 flex items-center justify-center h-7 w-7 sm:h-8 sm:w-8 rounded-full">
+                          {/* Outer orbit circle */}
+                          <motion.div
+                            animate={isActive ? { rotate: 360 } : {}}
+                            transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+                            className={cn(
+                              "absolute inset-0 rounded-full border border-dashed transition-colors duration-500",
+                              isActive ? "border-emerald-500/20" : "border-zinc-900"
+                            )}
+                          />
 
-                {/* Right Column: Actions */}
-                <div className="col-span-4 space-y-3 sm:space-y-4 z-20">
-                  {outputs.map((out, idx) => {
-                    const isActive = activeStep === idx;
-                    const Icon = out.icon;
-                    return (
+                          {/* Inner Processor dot */}
+                          <motion.div
+                            animate={isActive ? { scale: [1, 1.15, 1] } : {}}
+                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                            className={cn(
+                              "h-3 w-3 sm:h-3.5 sm:w-3.5 rounded-full border transition-all duration-500 flex items-center justify-center",
+                              isActive 
+                                ? "bg-gradient-to-tr from-slate-900 to-slate-950 border-emerald-500/40 shadow-[0_0_10px_rgba(52,211,153,0.15)]" 
+                                : "bg-zinc-950 border-zinc-800"
+                            )}
+                          >
+                            <span className={cn("h-1 w-1 rounded-full", isActive ? "bg-emerald-400 animate-pulse" : "bg-zinc-700")} />
+                          </motion.div>
+                        </div>
+                      </div>
+
+                      {/* Right: Output Card (col-span-5) */}
                       <motion.div
-                        key={idx}
                         className={cn(
-                          "relative rounded-xl p-2 sm:p-3 border text-left bg-zinc-950/40 backdrop-blur-xl transition-all duration-500 cursor-pointer select-none",
+                          "col-span-5 relative rounded-xl p-2 sm:p-3 border text-left bg-zinc-950/40 backdrop-blur-xl transition-all duration-500",
                           isActive 
                             ? "border-emerald-500/40 bg-emerald-950/5 shadow-[0_0_15px_rgba(16,185,129,0.06)]" 
-                            : "border-zinc-900 text-zinc-500 hover:border-zinc-800"
+                            : "border-zinc-900 text-zinc-500"
                         )}
-                        animate={{ x: isActive ? -4 : 0 }}
-                        whileTap={{ scale: 0.98 }}
-                        onClick={() => setActiveStep(idx)}
                       >
                         <div className="flex items-center justify-between gap-1">
                           <div className="flex items-center gap-1.5 sm:gap-2 overflow-hidden">
-                            <Icon size={13} className={isActive ? out.color : "text-zinc-600"} />
+                            <OutIcon size={13} className={isActive ? out.color : "text-zinc-600"} />
                             <span className={cn("text-[10px] sm:text-xs font-bold tracking-tight leading-none truncate", isActive ? "text-zinc-100" : "text-zinc-500")}>
                               {out.label}
                             </span>
@@ -251,9 +235,9 @@ const AIShowcase = () => {
                           {out.action}
                         </span>
                       </motion.div>
-                    );
-                  })}
-                </div>
+                    </motion.div>
+                  );
+                })}
               </div>
 
               {/* Clean minimal spacer for card symmetry */}

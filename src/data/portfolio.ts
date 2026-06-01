@@ -229,9 +229,9 @@ export const projects: Project[] = [
       problem: 'La desconexión física entre el salón y la cocina provocaba un desfase de inventario del 20% y fricción operativa en los tiempos de despacho.',
       solution: 'Sincronizamos la toma de pedidos y el stock en tiempo real mediante webhooks, automatizando el descuento exacto de insumos por receta vendida.',
       metrics: [
-        { label: 'Tiempo de procesamiento', value: '35', prefix: '-' },
-        { label: 'Margen operativo mensual', value: '15', prefix: '+' },
-        { label: 'Precisión del inventario', value: '98', prefix: '' }
+        { label: 'Tiempo de procesamiento', value: '35', prefix: '-', suffix: '%' },
+        { label: 'Margen operativo mensual', value: '15', prefix: '+', suffix: '%' },
+        { label: 'Precisión del inventario', value: '98', prefix: '', suffix: '%' }
       ]
     }
   },
@@ -252,9 +252,9 @@ export const projects: Project[] = [
       problem: 'La fragmentación de tareas académicas y personales entre múltiples herramientas dispersas generaba sobrecarga cognitiva e ineficiencia diaria.',
       solution: 'Centralizamos el flujo de trabajo en una única interfaz unificada con sincronización bidireccional nativa y asistencia predictiva de inteligencia artificial.',
       metrics: [
-        { label: 'Sincronización en vivo', value: '100', prefix: '' },
-        { label: 'Eficiencia diaria', value: '40', prefix: '+' },
-        { label: 'Sugerencias procesadas', value: '5000', prefix: '+' }
+        { label: 'Sincronización en vivo', value: '100', prefix: '', suffix: '%' },
+        { label: 'Eficiencia diaria', value: '40', prefix: '+', suffix: '%' },
+        { label: 'Sugerencias procesadas', value: '5000', prefix: '+', suffix: '' }
       ]
     }
   },
@@ -274,9 +274,9 @@ export const projects: Project[] = [
       problem: 'El cálculo manual de variables críticas de vuelo (peso, combustible, pasajeros) consumía horas de planificación y generaba un 18% de sobrecosto por rutas subóptimas.',
       solution: 'Desarrollamos un motor combinatorio avanzado que procesa miles de restricciones en milisegundos para trazar y simular la ruta aérea de menor consumo.',
       metrics: [
-        { label: 'Tiempo de cálculo', value: '99', prefix: '-' },
-        { label: 'Costos de combustible', value: '12', prefix: '-' },
-        { label: 'Rutas óptimas voladas', value: '250', prefix: '+' }
+        { label: 'Tiempo de cálculo', value: '99', prefix: '-', suffix: '%' },
+        { label: 'Costos de combustible', value: '12', prefix: '-', suffix: '%' },
+        { label: 'Rutas óptimas voladas', value: '250', prefix: '+', suffix: '' }
       ]
     }
   },
@@ -297,9 +297,9 @@ export const projects: Project[] = [
       problem: 'Los sistemas de gestión convencionales imponen estructuras rígidas que limitan la flexibilidad de los equipos y aumentan la fricción visual diaria.',
       solution: 'Implementamos una interfaz infinitamente moldeable mediante drag-and-drop persistente, permitiendo a cada usuario construir su propio panel de enfoque.',
       metrics: [
-        { label: 'Columnas del Grid', value: '48', prefix: '' },
-        { label: 'Widgets personalizados', value: '12', prefix: '+' },
-        { label: 'Productividad del equipo', value: '25', prefix: '+' }
+        { label: 'Columnas del Grid', value: '48', prefix: '', suffix: '' },
+        { label: 'Widgets personalizados', value: '12', prefix: '+', suffix: '' },
+        { label: 'Productividad del equipo', value: '25', prefix: '+', suffix: '%' }
       ]
     }
   },
@@ -320,9 +320,9 @@ export const projects: Project[] = [
       problem: 'La toma y transcripción manual de pedidos por mensajería creaba demoras de hasta 8 minutos por cliente, reduciendo las ventas debido a respuestas lentas.',
       solution: 'Desplegamos un agente de procesamiento lingüístico local y nube que analiza de inmediato notas de voz o textos informales para despachar pedidos estructurados en segundos.',
       metrics: [
-        { label: 'Tiempo por pedido', value: '90', prefix: '-' },
-        { label: 'Tasa de conversión', value: '22', prefix: '+' },
-        { label: 'Costos de API', value: '65', prefix: '-' }
+        { label: 'Tiempo por pedido', value: '90', prefix: '-', suffix: '%' },
+        { label: 'Tasa de conversión', value: '22', prefix: '+', suffix: '%' },
+        { label: 'Costos de API', value: '65', prefix: '-', suffix: '%' }
       ]
     }
   }
