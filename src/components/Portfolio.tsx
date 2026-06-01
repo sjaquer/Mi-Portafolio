@@ -7,32 +7,89 @@ import { MOTION } from '../utils/animations';
 import { cn } from '../utils/cn';
 import { SimulatorSelector } from './simulators/WhatsappBotSim';
 
+const projectThemes: Record<string, {
+  accent: string;
+  rgb: string;
+  glow: string;
+  fontDisplay: string;
+  fontBody: string;
+}> = {
+  '1': { // Big Jack RP & Menu
+    accent: '#FCC900',
+    rgb: '252, 201, 0',
+    glow: 'rgba(252, 201, 0, 0.04)',
+    fontDisplay: "'Anton', sans-serif",
+    fontBody: "'Poppins', sans-serif"
+  },
+  '2': { // TaskMe
+    accent: '#3BCE89',
+    rgb: '59, 206, 137',
+    glow: 'rgba(59, 206, 137, 0.04)',
+    fontDisplay: "'JetBrains Mono', monospace",
+    fontBody: "'Outfit', sans-serif"
+  },
+  '3': { // ORDEV
+    accent: '#FF6600',
+    rgb: '255, 102, 0',
+    glow: 'rgba(255, 102, 0, 0.04)',
+    fontDisplay: "'Outfit', sans-serif",
+    fontBody: "'Outfit', sans-serif"
+  },
+  '4': { // TaskZenith
+    accent: '#004FCD',
+    rgb: '0, 79, 205',
+    glow: 'rgba(0, 79, 205, 0.04)',
+    fontDisplay: "'Outfit', sans-serif",
+    fontBody: "'Outfit', sans-serif"
+  },
+  '5': { // WhatsappBot
+    accent: '#22C55E',
+    rgb: '34, 197, 94',
+    glow: 'rgba(34, 197, 94, 0.04)',
+    fontDisplay: "'Outfit', sans-serif",
+    fontBody: "'Outfit', sans-serif"
+  }
+};
+
 const ProjectCard: React.FC<{ 
   project: Project; 
   isActive: boolean;
 }> = ({ project, isActive }) => {
   const hasAI = project.aiFeatures && project.aiFeatures.length > 0;
+  const currentTheme = projectThemes[project.id] || projectThemes['1'];
   
   return (
     <div 
       data-project-id={project.id}
       data-project-card
-      style={{ contentVisibility: 'auto', containIntrinsicSize: '0 600px' }}
+      style={{ 
+        contentVisibility: 'auto', 
+        containIntrinsicSize: '0 600px',
+        borderColor: isActive ? currentTheme.accent : undefined,
+        boxShadow: isActive ? `inset 0 1px 0 rgba(255,255,255,0.03), 0 20px 40px -15px rgba(${currentTheme.rgb}, 0.12)` : undefined
+      }}
       className={cn(
-        'group glass-panel rounded-3xl p-6 sm:p-8 relative overflow-hidden transition-all duration-500 border scroll-mt-28',
+        'group glass-panel rounded-3xl p-6 sm:p-8 relative overflow-hidden transition-all duration-700 border scroll-mt-28',
         isActive 
-          ? 'bg-zinc-900/40 border-emerald-500/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.03),0_20px_40px_-15px_rgba(0,0,0,0.4)] backdrop-blur-2xl' 
+          ? 'bg-zinc-900/40 backdrop-blur-2xl opacity-100' 
           : 'bg-zinc-950/10 border-zinc-900/60 opacity-55 hover:opacity-80 hover:border-zinc-800/85'
       )}
     >
-      <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/[0.005] via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/[0.002] via-transparent to-transparent pointer-events-none" />
       
       {/* Header Info */}
       <div className="flex items-start justify-between gap-4 mb-3">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1.5">
             {hasAI && (
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-500/10 text-[9px] font-bold uppercase tracking-wider text-emerald-400 border border-emerald-500/20 shrink-0">
+              <span 
+                style={{ 
+                  color: isActive ? currentTheme.accent : undefined,
+                  borderColor: isActive ? `${currentTheme.accent}40` : undefined,
+                  backgroundColor: isActive ? `${currentTheme.accent}15` : undefined
+                }}
+                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-500/10 text-[9px] font-bold uppercase tracking-wider text-emerald-400 border border-emerald-500/20 shrink-0 transition-all duration-500"
+              >
                 <Brain size={10} /> IA
               </span>
             )}
@@ -42,7 +99,10 @@ const ProjectCard: React.FC<{
               </span>
             )}
           </div>
-          <h3 className="text-2xl font-extrabold text-zinc-100 tracking-tight leading-none font-display">
+          <h3 
+            style={{ fontFamily: currentTheme.fontDisplay }}
+            className="text-2xl sm:text-3xl font-extrabold text-zinc-100 tracking-tight leading-none transition-all duration-500"
+          >
             {project.title}
           </h3>
         </div>
@@ -56,7 +116,10 @@ const ProjectCard: React.FC<{
               href={project.liveUrl}
               target="_blank"
               rel="noreferrer"
-              className="w-8 h-8 flex items-center justify-center rounded-lg bg-slate-900/80 text-slate-400 hover:text-emerald-400 border border-slate-800 hover:border-emerald-500/30 transition-all"
+              style={{
+                borderColor: isActive ? `${currentTheme.accent}30` : undefined,
+              }}
+              className="w-8 h-8 flex items-center justify-center rounded-lg bg-slate-900/80 text-slate-400 hover:text-emerald-400 border border-slate-800 transition-all duration-500"
               aria-label={`Ver ${project.title} en vivo`}
             >
               <ExternalLink size={13} />
@@ -80,13 +143,16 @@ const ProjectCard: React.FC<{
 
       {/* Subtitle */}
       {project.subtitle && (
-        <p className="text-zinc-500 text-[10px] sm:text-xs font-mono uppercase tracking-[0.15em] mb-3 font-semibold">
+        <p className="text-zinc-500 text-[10px] sm:text-xs font-mono uppercase tracking-[0.15em] mb-3 font-semibold transition-all duration-500">
           {project.subtitle}
         </p>
       )}
 
       {/* Description */}
-      <p className="text-zinc-400 text-sm mb-5 leading-relaxed font-light font-sans">
+      <p 
+        style={{ fontFamily: currentTheme.fontBody }}
+        className="text-zinc-400 text-sm mb-5 leading-relaxed font-light transition-all duration-500"
+      >
         {project.description}
       </p>
 
@@ -99,7 +165,10 @@ const ProjectCard: React.FC<{
                 <span className="text-[8px] font-mono text-zinc-500 uppercase tracking-widest block mb-1.5 leading-none">
                   {metric.label}
                 </span>
-                <span className="text-xl sm:text-2xl font-extrabold text-emerald-400 tracking-tight font-mono leading-none">
+                <span 
+                  style={{ color: isActive ? currentTheme.accent : undefined }}
+                  className="text-xl sm:text-2xl font-extrabold text-emerald-400 tracking-tight font-mono leading-none transition-colors duration-500"
+                >
                   {metric.prefix}{metric.value}{metric.suffix || ''}
                 </span>
               </div>
@@ -113,7 +182,10 @@ const ProjectCard: React.FC<{
         {project.techStack?.map((tech: string, idx: number) => (
           <React.Fragment key={idx}>
             {idx > 0 && <span className="text-zinc-800/80 font-bold select-none">•</span>}
-            <span className="transition-colors hover:text-emerald-400/85">
+            <span 
+              style={isActive ? { color: currentTheme.accent } : undefined}
+              className="transition-colors duration-500 hover:text-emerald-400"
+            >
               {tech}
             </span>
           </React.Fragment>
@@ -138,7 +210,7 @@ const ProjectCard: React.FC<{
       </AnimatePresence>
 
       <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none hidden lg:block">
-        <ArrowUpRight size={14} className="text-emerald-500/40" />
+        <ArrowUpRight size={14} style={{ color: isActive ? currentTheme.accent : undefined }} className="text-emerald-500/40" />
       </div>
     </div>
   );
@@ -146,6 +218,18 @@ const ProjectCard: React.FC<{
 
 const Portfolio = () => {
   const [activeProjectId, setActiveProjectId] = useState<string>('1');
+
+  useEffect(() => {
+    const theme = projectThemes[activeProjectId] || projectThemes['1'];
+    const container = document.getElementById('portfolio-section-container');
+    if (container) {
+      container.style.setProperty('--project-accent', theme.accent);
+      container.style.setProperty('--project-accent-rgb', theme.rgb);
+      container.style.setProperty('--project-accent-glow', theme.glow);
+      container.style.setProperty('--project-font-display', theme.fontDisplay);
+      container.style.setProperty('--project-font-body', theme.fontBody);
+    }
+  }, [activeProjectId]);
 
   useEffect(() => {
     const observerOptions = {
@@ -175,11 +259,21 @@ const Portfolio = () => {
   const activeProject = projects.find((p) => p.id === activeProjectId);
 
   return (
-    <section id="portfolio" className="py-24 relative z-10 bg-slate-950/10">
+    <section id="portfolio-section-container" className="py-24 relative z-10 bg-slate-950/10 transition-all duration-1000 scroll-mt-10">
       {/* Dynamic ambient grid backgrounds */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute left-[-15%] top-1/4 h-96 w-96 rounded-full bg-emerald-500/[0.03] blur-[120px]" />
-        <div className="absolute right-[-10%] bottom-1/4 h-96 w-96 rounded-full bg-teal-500/[0.02] blur-[120px]" />
+        {/* Left static glow */}
+        <div className="absolute left-[-15%] top-1/4 h-[400px] w-[400px] rounded-full bg-zinc-800/[0.015] blur-[140px]" />
+        
+        {/* Giant Floating Brand Glow (Moves dynamically!) */}
+        <motion.div
+          animate={{
+            y: activeProjectId === '1' ? '12%' : activeProjectId === '2' ? '30%' : activeProjectId === '3' ? '50%' : activeProjectId === '4' ? '70%' : '88%',
+            backgroundColor: projectThemes[activeProjectId]?.accent || '#10b981',
+          }}
+          transition={{ type: 'spring', stiffness: 45, damping: 15 }}
+          className="absolute right-[-10%] top-0 h-[480px] w-[480px] rounded-full opacity-[0.08] blur-[140px]"
+        />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -191,7 +285,7 @@ const Portfolio = () => {
           viewport={MOTION.viewport} 
           className="mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-800/80 bg-slate-900/40 backdrop-blur-xl text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-800/80 bg-slate-900/40 backdrop-blur-xl text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-4 transition-colors duration-500">
             <Compass size={11} className="text-emerald-400" /> CASOS DE ESTUDIO
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold text-zinc-50 font-display tracking-tight mb-4 leading-none">
@@ -218,7 +312,13 @@ const Portfolio = () => {
           </div>
 
           {/* Sticky Column (Right - Desktop Only) */}
-          <div className="hidden lg:block w-1/2 sticky top-[15vh] h-[520px] rounded-[2.5rem] overflow-hidden glass-panel bg-slate-950/40">
+          <div 
+            style={{
+              borderColor: projectThemes[activeProjectId]?.accent ? `${projectThemes[activeProjectId].accent}15` : undefined,
+              boxShadow: projectThemes[activeProjectId]?.rgb ? `inset 0 1px 0 rgba(255,255,255,0.02), 0 20px 40px -15px rgba(${projectThemes[activeProjectId].rgb}, 0.04)` : undefined
+            }}
+            className="hidden lg:block w-1/2 sticky top-[15vh] h-[520px] rounded-[2.5rem] overflow-hidden glass-panel bg-slate-950/40 transition-all duration-700"
+          >
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeProjectId}

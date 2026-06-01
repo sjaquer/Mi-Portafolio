@@ -36,47 +36,31 @@ const Experience = () => {
                     <div className="absolute -left-[5px] top-4 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-4 ring-slate-950" />
                     
                     <div className="group bg-slate-900/30 backdrop-blur-xl p-6 rounded-3xl border border-slate-800/40 hover:border-emerald-500/30 transition-all duration-500 shadow-bento-dark">
-                      <div className="flex gap-4 items-start">
-                        {/* Logo Monogram Placeholder (Clean White/Emerald Theme) */}
-                        <div className="w-12 h-12 rounded-2xl flex-shrink-0 flex items-center justify-center bg-slate-950 border border-slate-800 group-hover:border-emerald-500/20 transition-colors shadow-inner select-none overflow-hidden">
-                          {exp.logoUrl ? (
-                            <img 
-                              src={exp.logoUrl} 
-                              alt={exp.company} 
-                              className="w-7 h-7 object-contain filter brightness-100 contrast-100" 
-                              loading="lazy"
-                            />
-                          ) : (
-                            <span className="text-xs font-extrabold text-emerald-400 font-mono">{initials}</span>
-                          )}
+                      <div className="flex-grow">
+                        <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 justify-between mb-2">
+                          <h3 className="text-lg font-bold text-slate-100 group-hover:text-emerald-400 transition-colors leading-snug">
+                            {exp.role || exp.title}
+                          </h3>
+                          <span className="text-xs font-mono text-slate-500">{exp.duration}</span>
                         </div>
+                        
+                        <div className="text-slate-400 text-xs font-semibold mb-3 font-mono tracking-wider uppercase">
+                          {exp.company}
+                        </div>
+                        
+                        <p className="text-slate-400 text-sm leading-relaxed font-light mb-6">
+                          {exp.summary}
+                        </p>
 
-                        <div className="flex-grow">
-                          <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 justify-between mb-2">
-                            <h3 className="text-lg font-bold text-slate-100 group-hover:text-emerald-400 transition-colors leading-snug">
-                              {exp.role || exp.title}
-                            </h3>
-                            <span className="text-xs font-mono text-slate-500">{exp.duration}</span>
-                          </div>
-                          
-                          <div className="text-slate-400 text-xs font-semibold mb-3 font-mono tracking-wider uppercase">
-                            {exp.company}
-                          </div>
-                          
-                          <p className="text-slate-400 text-sm leading-relaxed font-light mb-6">
-                            {exp.summary}
-                          </p>
-
-                          <div className="flex flex-wrap gap-1.5">
-                            {exp.techStack?.map((tech, i) => (
-                              <span 
-                                key={i} 
-                                className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-950 border border-slate-800 text-slate-400"
-                              >
-                                {tech}
-                              </span>
-                            ))}
-                          </div>
+                        <div className="flex flex-wrap gap-1.5">
+                          {exp.techStack?.map((tech, i) => (
+                            <span 
+                              key={i} 
+                              className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-950 border border-slate-800 text-slate-400"
+                            >
+                              {tech}
+                            </span>
+                          ))}
                         </div>
                       </div>
                     </div>
