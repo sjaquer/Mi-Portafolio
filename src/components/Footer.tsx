@@ -46,7 +46,7 @@ const Footer: React.FC = () => (
       </motion.div>
 
       {/* Footer grid */}
-      <div className="grid md:grid-cols-4 gap-10 mb-16">
+      <div className="grid md:grid-cols-3 gap-10 mb-16">
         {/* Brand */}
         <div className="md:col-span-2">
           <h4 className="text-lg font-bold text-zinc-50 mb-3 font-display">Sebastián Jaque</h4>
@@ -82,26 +82,6 @@ const Footer: React.FC = () => (
             </div>
             <a href="https://sjaquer.is-a.dev" target="_blank" rel="noreferrer" className="flex items-center gap-2.5 text-zinc-500 hover:text-emerald-400 transition-colors">
               <ExternalLink size={14} className="shrink-0" /> sjaquer.is-a.dev
-            </a>
-          </div>
-        </div>
-
-        {/* Recursos */}
-        <div>
-          <h4 className="text-sm font-bold text-zinc-50 mb-4 uppercase tracking-wider">Recursos</h4>
-          <div className="space-y-3">
-            <a href="/resume.txt" target="_blank" className="flex items-center gap-2.5 text-sm text-zinc-500 hover:text-emerald-400 transition-colors group">
-              <FileText size={14} className="shrink-0" />
-              <span>CV (Español)</span>
-              <span className="ml-auto text-[10px] font-mono text-zinc-700 group-hover:text-emerald-500/50">.txt</span>
-            </a>
-            <a href="/resume_en.txt" target="_blank" className="flex items-center gap-2.5 text-sm text-zinc-500 hover:text-emerald-400 transition-colors group">
-              <Bot size={14} className="shrink-0" />
-              <span>CV (English)</span>
-              <span className="ml-auto text-[10px] font-mono text-zinc-700 group-hover:text-emerald-500/50">.txt</span>
-            </a>
-            <a href="/ai.txt" target="_blank" className="flex items-center gap-2.5 text-sm font-mono text-emerald-500/60 hover:text-emerald-400 transition-colors">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" /> ai.txt
             </a>
           </div>
         </div>

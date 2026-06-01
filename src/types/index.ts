@@ -1,26 +1,35 @@
 export interface Experience {
   id: string;
   title: string;
+  titleEn?: string;
   company: string;
   duration?: string;
   location?: string;
+  locationEn?: string;
   techStack?: string[];
   responsibilities?: string[];
+  responsibilitiesEn?: string[];
   current?: boolean;
   role?: string;
+  roleEn?: string;
   summary?: string;
+  summaryEn?: string;
   logoUrl?: string;
 }
 
 export interface Education {
   id: string;
   degree: string;
+  degreeEn?: string;
   institution: string;
+  institutionEn?: string;
   duration?: string;
   status?: string;
+  statusEn?: string;
   relevant?: string[];
   certificateUrl?: string;
   description?: string;
+  descriptionEn?: string;
   tier?: 'ai-certification' | 'tech' | 'academic';
   badgeColor?: string;
   logoUrl?: string;
