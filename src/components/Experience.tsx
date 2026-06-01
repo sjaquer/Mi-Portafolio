@@ -119,9 +119,11 @@ const Experience = () => {
                               src={edu.logoUrl} 
                               alt={edu.institution} 
                               className={`w-6 h-6 object-contain ${
-                                edu.institution.includes('Norbert Wiener') || edu.institution.includes('IDAT') || edu.institution.includes('CertiProf') 
-                                  ? 'filter brightness-0 invert'  // Convert local colored logos to white/monochrome
-                                  : ''
+                                edu.logoUrl.startsWith('/images/')
+                                  ? '' // Keep local assets exactly as saved, avoiding double filtering
+                                  : (edu.institution.includes('Norbert Wiener') || edu.institution.includes('IDAT') || edu.institution.includes('CertiProf')
+                                    ? 'filter brightness-0 invert'  // Convert external colored logos to white/monochrome
+                                    : '')
                               }`} 
                               loading="lazy"
                             />

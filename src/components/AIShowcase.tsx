@@ -10,15 +10,15 @@ const solutions = [
     icon: MessageSquare, 
     title: 'Chatbots con Memoria', 
     desc: 'Agentes conversacionales que retienen el contexto y recuerdan interacciones pasadas para un trato verdaderamente humano.',
-    color: 'text-blue-400',
-    bg: 'bg-blue-500/5'
+    color: 'text-emerald-400',
+    bg: 'bg-emerald-500/5'
   },
   { 
     icon: Search, 
     title: 'Búsqueda Inteligente', 
     desc: 'Exploración semántica de datos complejos en lenguaje natural para extraer respuestas instantáneas de tus repositorios.',
-    color: 'text-cyan-400',
-    bg: 'bg-cyan-500/5'
+    color: 'text-teal-400',
+    bg: 'bg-teal-500/5'
   },
   { 
     icon: BarChart3, 
@@ -87,36 +87,38 @@ const AIShowcase = () => {
           >
             <motion.div 
               style={{ rotateX, rotateY }} 
-              className="relative bg-zinc-950/80 backdrop-blur-2xl rounded-3xl border border-zinc-800/60 shadow-2xl p-6 overflow-hidden group min-h-[460px] flex flex-col justify-between"
+              className="relative bg-zinc-950/80 backdrop-blur-2xl rounded-3xl border border-zinc-800/60 shadow-2xl p-4 sm:p-6 overflow-hidden group min-h-[380px] xs:min-h-[420px] sm:min-h-[460px] flex flex-col justify-between"
             >
-              {/* Card Header */}
-              <div className="flex items-center justify-between border-b border-zinc-900 pb-4 mb-4">
-                <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-cyan-500 animate-pulse" />
-                  <span className="text-[10px] text-zinc-400 font-mono tracking-widest uppercase">PIPELINE DE AGENTE COGNITIVO</span>
+              {/* Card Header (Mac-like Minimalist Controls) */}
+              <div className="flex items-center justify-between border-b border-zinc-900/60 pb-3 mb-4">
+                <div className="flex gap-1.5">
+                  <div className="w-2 h-2 rounded-full bg-zinc-800" />
+                  <div className="w-2 h-2 rounded-full bg-zinc-800" />
+                  <div className="w-2 h-2 rounded-full bg-zinc-800" />
                 </div>
-                <div className="text-[9px] text-zinc-500 font-mono tracking-wider">
-                  PASO {activeStep + 1} DE 3
+                <div className="flex items-center gap-1.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="text-[9px] text-zinc-500 font-mono tracking-widest">STEP_0{activeStep + 1}_ACTIVE</span>
                 </div>
               </div>
 
               {/* Pipeline Diagram Grid */}
-              <div className="relative grid grid-cols-12 gap-3 items-center flex-grow py-4 z-10">
+              <div className="relative grid grid-cols-12 gap-2 sm:gap-3 items-center flex-grow py-2 sm:py-4 z-10">
                 {/* SVG Connections in Background */}
-                <svg className="absolute inset-0 w-full h-full pointer-events-none stroke-zinc-900" viewBox="0 0 320 240" fill="none">
-                  <path d="M 90,45 L 160,110 L 230,45" strokeWidth="1" />
-                  <path d="M 90,110 L 160,110 L 230,110" strokeWidth="1" />
-                  <path d="M 90,175 L 160,110 L 230,175" strokeWidth="1" />
+                <svg className="absolute inset-0 w-full h-full pointer-events-none stroke-zinc-900/50" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none">
+                  <path d="M 31,15 L 50,50 L 69,15" strokeWidth="0.5" />
+                  <path d="M 31,50 L 50,50 L 69,50" strokeWidth="0.5" />
+                  <path d="M 31,85 L 50,50 L 69,85" strokeWidth="0.5" />
                   
                   {/* Glowing active path (Input -> Robot) */}
-                  {activeStep === 0 && <motion.path d="M 90,45 L 160,110" stroke="url(#activeBeam)" strokeWidth="1.5" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.2, repeat: Infinity }} />}
-                  {activeStep === 1 && <motion.path d="M 90,110 L 160,110" stroke="url(#activeBeam)" strokeWidth="1.5" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.2, repeat: Infinity }} />}
-                  {activeStep === 2 && <motion.path d="M 90,175 L 160,110" stroke="url(#activeBeam)" strokeWidth="1.5" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.2, repeat: Infinity }} />}
+                  {activeStep === 0 && <motion.path d="M 31,15 L 50,50" stroke="url(#activeBeam)" strokeWidth="0.8" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.2, repeat: Infinity }} />}
+                  {activeStep === 1 && <motion.path d="M 31,50 L 50,50" stroke="url(#activeBeam)" strokeWidth="0.8" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.2, repeat: Infinity }} />}
+                  {activeStep === 2 && <motion.path d="M 31,85 L 50,50" stroke="url(#activeBeam)" strokeWidth="0.8" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.2, repeat: Infinity }} />}
                   
                   {/* Glowing active path (Robot -> Output) */}
-                  {activeStep === 0 && <motion.path d="M 160,110 L 230,45" stroke="url(#activeBeamOut)" strokeWidth="1.5" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.2, delay: 0.6, repeat: Infinity }} />}
-                  {activeStep === 1 && <motion.path d="M 160,110 L 230,110" stroke="url(#activeBeamOut)" strokeWidth="1.5" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.2, delay: 0.6, repeat: Infinity }} />}
-                  {activeStep === 2 && <motion.path d="M 160,110 L 230,175" stroke="url(#activeBeamOut)" strokeWidth="1.5" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.2, delay: 0.6, repeat: Infinity }} />}
+                  {activeStep === 0 && <motion.path d="M 50,50 L 69,15" stroke="url(#activeBeamOut)" strokeWidth="0.8" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.2, delay: 0.6, repeat: Infinity }} />}
+                  {activeStep === 1 && <motion.path d="M 50,50 L 69,50" stroke="url(#activeBeamOut)" strokeWidth="0.8" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.2, delay: 0.6, repeat: Infinity }} />}
+                  {activeStep === 2 && <motion.path d="M 50,50 L 69,85" stroke="url(#activeBeamOut)" strokeWidth="0.8" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.2, delay: 0.6, repeat: Infinity }} />}
                   
                   <defs>
                     <linearGradient id="activeBeam" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -131,7 +133,7 @@ const AIShowcase = () => {
                 </svg>
 
                 {/* Left Column: Inputs */}
-                <div className="col-span-4 space-y-4 z-20">
+                <div className="col-span-4 space-y-3 sm:space-y-4 z-20">
                   {inputs.map((inp, idx) => {
                     const isActive = activeStep === idx;
                     const Icon = inp.icon;
@@ -139,20 +141,22 @@ const AIShowcase = () => {
                       <motion.div
                         key={idx}
                         className={cn(
-                          "relative rounded-xl p-3 border text-left bg-zinc-950/40 backdrop-blur-xl transition-all duration-500",
+                          "relative rounded-xl p-2 sm:p-3 border text-left bg-zinc-950/40 backdrop-blur-xl transition-all duration-500 cursor-pointer select-none",
                           isActive 
-                            ? `border-cyan-500/40 bg-cyan-950/5 shadow-[0_0_15px_rgba(6,182,212,0.06)]` 
-                            : "border-zinc-900 text-zinc-500"
+                            ? `border-emerald-500/40 bg-emerald-950/5 shadow-[0_0_15px_rgba(16,185,129,0.04)]` 
+                            : "border-zinc-900 text-zinc-500 hover:border-zinc-800"
                         )}
                         animate={{ x: isActive ? 4 : 0 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={() => setActiveStep(idx)}
                       >
-                        <div className="flex items-center gap-2">
-                          <Icon size={14} className={isActive ? inp.color : "text-zinc-600"} />
-                          <span className={cn("text-xs font-bold", isActive ? "text-zinc-100" : "text-zinc-500")}>
+                        <div className="flex items-center gap-1.5 sm:gap-2">
+                          <Icon size={13} className={isActive ? inp.color : "text-zinc-600"} />
+                          <span className={cn("text-[10px] sm:text-xs font-bold tracking-tight leading-none", isActive ? "text-zinc-100" : "text-zinc-500")}>
                             {inp.label}
                           </span>
                         </div>
-                        <span className="block text-[10px] text-zinc-500 font-mono mt-0.5 ml-5 leading-none">
+                        <span className="block text-[8px] sm:text-[10px] text-zinc-500 font-mono mt-1 ml-4 sm:ml-5 leading-none">
                           {inp.detail}
                         </span>
 
@@ -162,7 +166,7 @@ const AIShowcase = () => {
                             initial={{ y: "0%" }}
                             animate={{ y: ["0%", "100%", "0%"] }}
                             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent pointer-events-none"
+                            className="absolute left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-emerald-400 to-transparent pointer-events-none"
                           />
                         )}
                       </motion.div>
@@ -172,7 +176,7 @@ const AIShowcase = () => {
 
                 {/* Center Column: Animated Cognitive Vector Brain */}
                 <div className="col-span-4 flex justify-center z-20 relative">
-                  <div className="relative h-28 w-28 flex items-center justify-center">
+                  <div className="relative h-16 w-16 xs:h-20 xs:w-20 sm:h-28 sm:w-28 flex items-center justify-center">
                     
                     {/* Rotating orbit circles */}
                     <motion.div
@@ -183,25 +187,25 @@ const AIShowcase = () => {
                     <motion.div
                       animate={{ rotate: -360 }}
                       transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                      className="absolute inset-2 rounded-full border border-zinc-800/80 stroke-dash-array-[5,10]"
+                      className="absolute inset-1.5 sm:inset-2 rounded-full border border-zinc-800/80 stroke-dash-array-[5,10]"
                     />
 
                     {/* Central Brain core */}
                     <motion.div
                       animate={{ scale: [1, 1.05, 1], boxShadow: ["0 0 10px rgba(16,185,129,0.05)", "0 0 25px rgba(16,185,129,0.15)", "0 0 10px rgba(16,185,129,0.05)"] }}
                       transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                      className="relative h-16 w-16 rounded-full bg-gradient-to-tr from-slate-900 to-slate-950 border border-emerald-500/30 flex items-center justify-center z-10 shadow-2xl backdrop-blur-3xl"
+                      className="relative h-10 w-10 xs:h-12 xs:w-12 sm:h-16 sm:w-16 rounded-full bg-gradient-to-tr from-slate-900 to-slate-950 border border-emerald-500/30 flex items-center justify-center z-10 shadow-2xl backdrop-blur-3xl"
                     >
                       {/* Integrated Vector AI Robot Head */}
-                      <svg className="w-8 h-8 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <svg className="w-5 h-5 xs:w-6 xs:h-6 sm:w-8 sm:h-8 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                         {/* Antenna */}
                         <line x1="12" y1="5" x2="12" y2="2" />
                         <circle cx="12" cy="2" r="1" fill="currentColor" />
                         {/* Robot Head outline */}
                         <rect x="5" y="5" width="14" height="12" rx="3" />
                         {/* Cyber eyes */}
-                        <circle cx="9" cy="11" r="1.5" fill="#22d3ee" className="animate-pulse" />
-                        <circle cx="15" cy="11" r="1.5" fill="#22d3ee" className="animate-pulse" />
+                        <circle cx="9" cy="11" r="1.5" fill="#34d399" className="animate-pulse" />
+                        <circle cx="15" cy="11" r="1.5" fill="#34d399" className="animate-pulse" />
                         {/* Circuit lines */}
                         <path d="M 9,14 L 15,14" strokeWidth="1" strokeLinecap="round" />
                         {/* Ears */}
@@ -213,7 +217,7 @@ const AIShowcase = () => {
                 </div>
 
                 {/* Right Column: Actions */}
-                <div className="col-span-4 space-y-4 z-20">
+                <div className="col-span-4 space-y-3 sm:space-y-4 z-20">
                   {outputs.map((out, idx) => {
                     const isActive = activeStep === idx;
                     const Icon = out.icon;
@@ -221,27 +225,29 @@ const AIShowcase = () => {
                       <motion.div
                         key={idx}
                         className={cn(
-                          "relative rounded-xl p-3 border text-left bg-zinc-950/40 backdrop-blur-xl transition-all duration-500",
+                          "relative rounded-xl p-2 sm:p-3 border text-left bg-zinc-950/40 backdrop-blur-xl transition-all duration-500 cursor-pointer select-none",
                           isActive 
                             ? "border-emerald-500/40 bg-emerald-950/5 shadow-[0_0_15px_rgba(16,185,129,0.06)]" 
-                            : "border-zinc-900 text-zinc-500"
+                            : "border-zinc-900 text-zinc-500 hover:border-zinc-800"
                         )}
                         animate={{ x: isActive ? -4 : 0 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={() => setActiveStep(idx)}
                       >
                         <div className="flex items-center justify-between gap-1">
-                          <div className="flex items-center gap-2">
-                            <Icon size={14} className={isActive ? out.color : "text-zinc-600"} />
-                            <span className={cn("text-xs font-bold", isActive ? "text-zinc-100" : "text-zinc-500")}>
+                          <div className="flex items-center gap-1.5 sm:gap-2 overflow-hidden">
+                            <Icon size={13} className={isActive ? out.color : "text-zinc-600"} />
+                            <span className={cn("text-[10px] sm:text-xs font-bold tracking-tight leading-none truncate", isActive ? "text-zinc-100" : "text-zinc-500")}>
                               {out.label}
                             </span>
                           </div>
                           {isActive && (
-                            <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
-                              <CheckCircle2 size={12} className="text-emerald-400 shrink-0" />
+                            <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="shrink-0">
+                              <CheckCircle2 size={11} className="text-emerald-400" />
                             </motion.div>
                           )}
                         </div>
-                        <span className="block text-[10px] text-zinc-500 font-mono mt-0.5 ml-5 leading-none">
+                        <span className="block text-[8px] sm:text-[10px] text-zinc-500 font-mono mt-1 ml-4 sm:ml-5 leading-none">
                           {out.action}
                         </span>
                       </motion.div>
@@ -250,14 +256,8 @@ const AIShowcase = () => {
                 </div>
               </div>
 
-              {/* Bottom Legend */}
-              <div className="mt-4 pt-4 border-t border-zinc-900/60 flex items-center justify-between text-zinc-500 text-[10px] font-mono leading-none">
-                <span className="uppercase text-emerald-400">LECTURA SEMÁNTICA</span>
-                <ArrowRight size={10} className="text-zinc-700" />
-                <span className="uppercase text-teal-400">RAZONAMIENTO IA</span>
-                <ArrowRight size={10} className="text-zinc-700" />
-                <span className="uppercase text-emerald-400">AUTO-ACCIONES</span>
-              </div>
+              {/* Clean minimal spacer for card symmetry */}
+              <div className="h-2" />
             </motion.div>
           </motion.div>
 
@@ -270,11 +270,8 @@ const AIShowcase = () => {
             className="w-full lg:w-5/12 space-y-8"
           >
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 text-xs font-mono border border-emerald-500/20 mb-6 uppercase tracking-widest">
-                <BrainCircuit size={14} /> Soluciones Reales
-              </div>
               <h2 className="text-3xl md:text-5xl font-extrabold text-zinc-50 font-display tracking-tight leading-tight mb-6">
-                No es magia, es <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-emerald-500">Ingeniería Cognitiva</span>
+                No es magia, es <span className="text-emerald-400">Ingeniería Cognitiva</span>
               </h2>
               <p className="text-zinc-400 font-light text-lg leading-relaxed mb-4">
                 Sistemas cognitivos que transforman datos masivos en decisiones automáticas.

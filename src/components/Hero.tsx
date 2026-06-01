@@ -129,11 +129,12 @@ const Hero: React.FC = () => {
             className="relative order-1 lg:order-2 w-full"
           >
               {/* Floating 3D generated abstract glass image as backdrop */}
-              <div className="absolute -right-16 -top-16 w-88 h-88 opacity-25 pointer-events-none mix-blend-screen animate-pulse-slow">
+              <div className="absolute -right-48 -top-36 w-[720px] h-[720px] opacity-45 pointer-events-none mix-blend-screen animate-pulse-slow z-[-1]">
                 <img 
                   src="/images/hero_3d_glass.png" 
                   alt="Futuristic 3D Glass Geometry" 
-                  className="w-full h-full object-contain filter drop-shadow-[0_0_50px_rgba(16,185,129,0.2)]" 
+                  className="w-full h-full object-contain filter drop-shadow-[0_0_50px_rgba(16,185,129,0.25)] mix-blend-screen" 
+                  loading="lazy"
                 />
               </div>
 

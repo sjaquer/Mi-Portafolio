@@ -91,7 +91,7 @@ const FreelanceServices = () => {
                         <img 
                           src={service.imageUrl} 
                           alt={service.title} 
-                          className="w-full h-full object-contain"
+                          className="w-full h-full object-contain mix-blend-screen"
                           loading="lazy"
                         />
                       </div>

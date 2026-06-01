@@ -120,7 +120,7 @@ export const education: Education[] = [
     relevant: ['Arquitectura de Negocio', 'Gestión de Proyectos', 'Estrategia Digital'],
     tier: 'academic',
     description: 'Formación académica enfocada en la optimización de procesos de negocio internacionales y gestión estratégica.',
-    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_Universidad_Norbert_Wiener.png'
+    logoUrl: '/images/wiener_logo.png'
   },
   {
     id: '2',
@@ -131,7 +131,7 @@ export const education: Education[] = [
     relevant: ['Fundamentos de ML', 'Estrategia de IA'],
     tier: 'ai-certification',
     description: 'Certificación oficial que avala conocimientos en inteligencia artificial y modelos de lenguaje.',
-    logoUrl: 'https://certiprof.com/cdn/shop/files/Logo_CertiProf_-_Web_White.png'
+    logoUrl: '/images/certiprof_logo.png'
   },
   {
     id: '3',
@@ -142,7 +142,7 @@ export const education: Education[] = [
     relevant: ['IA Aplicada', 'Optimización de Procesos'],
     tier: 'ai-certification',
     description: 'Especialización en la implementación de soluciones de inteligencia artificial para la mejora de la rentabilidad y eficiencia empresarial.',
-    logoUrl: 'https://www.idat.edu.pe/assets/images/logo-idat.svg'
+    logoUrl: '/images/idat_logo.png'
   },
   {
     id: '4',
@@ -153,7 +153,7 @@ export const education: Education[] = [
     relevant: ['IA Generativa', 'Estrategia Corporativa'],
     tier: 'ai-certification',
     description: 'Enfoque ejecutivo sobre el despliegue de modelos fundacionales para la creación de valor en organizaciones.',
-    logoUrl: 'https://cdn.simpleicons.org/amazonaws/white'
+    logoUrl: '/images/aws_logo.png'
   },
   {
     id: '5',
@@ -164,18 +164,18 @@ export const education: Education[] = [
     relevant: ['Diseño Relacional', 'T-SQL', 'BI'],
     tier: 'tech',
     description: 'Diseño y gestión de bases de datos relacionales para entornos corporativos y analítica.',
-    logoUrl: 'https://cdn.simpleicons.org/microsoft/white'
+    logoUrl: '/images/microsoft_logo.png'
   },
   {
     id: '6',
     degree: 'Especialización en Power BI',
-    institution: 'Intercorp',
+    institution: 'IDAT / Intercorp',
     duration: '2025',
     status: 'Especialización',
     relevant: ['DAX', 'Data Visualization', 'ETL'],
     tier: 'tech',
     description: 'Dominio de herramientas de visualización de datos y modelado para la toma de decisiones.',
-    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/63/Intercorp_logo.svg'
+    logoUrl: '/images/idat_logo.png'
   },
   {
     id: '7',
@@ -191,13 +191,13 @@ export const education: Education[] = [
   {
     id: '8',
     degree: 'Excel Avanzado & Dashboards',
-    institution: 'Formación Profesional',
+    institution: 'Udemy',
     duration: '2024',
     status: 'Certificación',
     relevant: ['Macros', 'VBA', 'Análisis Financiero'],
     tier: 'tech',
     description: 'Creación de herramientas de control financiero y operativo mediante hojas de cálculo avanzadas.',
-    logoUrl: '' // Placeholder local
+    logoUrl: 'https://cdn.simpleicons.org/udemy/white'
   },
   {
     id: '9',
