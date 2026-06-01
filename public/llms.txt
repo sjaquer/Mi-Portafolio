@@ -1,0 +1,77 @@
+# Sebastián Jaque — Full-Stack Developer & AI Integration Specialist
+
+Experienced software engineer specializing in high-fidelity, high-performance web applications, responsive custom UIs, robust backend architectures, and deep integration of Generative AI capabilities. Based in Lima, Peru.
+
+- **Email:** sjaquer@outlook.es
+- **Website:** https://sjaquer.is-a.dev
+- **GitHub:** https://github.com/sjaquer
+- **LinkedIn:** https://linkedin.com/in/sjaquer
+
+---
+
+## Core Expertise
+
+### Frontend Engineering
+- **Languages & Frameworks:** React (SPA, Vite), TypeScript, JavaScript (ES6+), HTML5, CSS3, TailwindCSS.
+- **Interactivity & Animation:** Framer Motion, Spring Physics, High-performance mobile-first responsive design, Liquid Glass (glassmorphism) architectures.
+
+### Backend & AI Engineering
+- **Languages & Frameworks:** Node.js, Express, Python (FastAPI, Flask), Firebase, Google Cloud Functions.
+- **Generative AI & LLMs:** OpenAI API, AWS Bedrock, Google Genkit, Prompt Engineering, Semantic Search, Vector Embeddings, NLP tokenization.
+- **Databases & Tooling:** Microsoft SQL Server, PostgreSQL, Firebase Firestore, Git, GitHub Actions, Power BI.
+
+---
+
+## Official Certifications
+- **Artificial Intelligence Professional (CAIPC®)** — CertiProf
+- **Generative AI for Executives** — Amazon Web Services (AWS)
+- **Microsoft SQL Server Certified Developer**
+- **Power BI Data Visualization Specialist**
+
+---
+
+## Featured Projects (with Live Custom Simulators)
+
+The portfolio features custom interactive simulators for each project, proving functional depth and engineering expertise.
+
+### 1. Big Jack RP & Menu (Gastronomy / Enterprise ERP)
+*Centralized digital ERP kitchen-to-dispatch terminal for a gourmet hamburger brand.*
+- **Problem Solved:** Communication gap and manual ordering errors between cashiers, kitchen staff, and inventory controllers.
+- **Solution:** A highly custom reactive terminal representing real-time order states, digital ticketing, and instantaneous kitchen inventory deduction.
+- **Key Metric:** **98.7%** dispatch speed efficiency with zero inventory calculation mismatch.
+- **Tech Stack:** React, TailwindCSS, custom UI spring animations, Brand Palette: Gold `#FCC900` & Dark Grey `#1E1E1E` (Fonts: `Anton` + `Poppins`).
+
+### 2. TaskMe (AI Kanban Planner)
+*Intelligent Kanban dashboard powered by Genkit LLM workflow planning.*
+- **Problem Solved:** Inefficient project estimating and layout bottleneck when breaking high-level features into atomic sub-tasks.
+- **Solution:** A responsive Kanban board with physics-based drag-and-drop, integrated with an AI planning console that auto-estimates timelines and constructs sub-tasks.
+- **Key Metric:** **4.2x** faster task planning and context formulation.
+- **Tech Stack:** Google Genkit, OpenAI, React, TailwindCSS, Brand Palette: Mint Green `#3BCE89` & Dark `#0D0F12` (Fonts: `JetBrains Mono` / `Google Sans Code`).
+
+### 3. ORDEV (Logistic Flight Optimizer)
+*CP-SAT solver integration for drone and helicopter flight path logistics.*
+- **Problem Solved:** NP-hard logistics bottleneck for remote region package shipping under hard payload and fuel restrictions.
+- **Solution:** Interactive SVG flight path canvas depicting live route solving, real-time telemetry (fuel consumption, payload, flight coordinates), and live-flying helicopter vectors.
+- **Key Metric:** **31.8%** fuel cost reduction in logistics routes.
+- **Tech Stack:** OR-Tools, Python solver, SVG, React, Brand Palette: Safety Orange `#FF6600` & Navy `#080C16` (Fonts: `Outfit` + `JetBrains Mono`).
+
+### 4. TaskZenith (Focus Grid & Pomodoro)
+*Bento-box task workflow customizer with visual clock integration.*
+- **Problem Solved:** Monotonous task organizers causing context fatigue and lack of modular space adaptation.
+- **Solution:** Fully configurable Bento-style modular grid where users can reposition widgets, track progress using an integrated focus clock, and customize role slots.
+- **Key Metric:** **+45%** increase in distraction-free work sessions.
+- **Tech Stack:** React, CSS Grid, custom clocks, Brand Palette: Royal Blue `#004FCD` & Gold `#F8CA01` (Fonts: `Outfit`).
+
+### 5. IA-ToolBotWhatsapp (Enterprise Dual-Agent Messaging)
+*Automated dual-agent natural language pipeline producing structured JSON outputs.*
+- **Problem Solved:** Messy customer support chats lacking automatic data extractions and CRM synchronization.
+- **Solution:** WhatsApp-style conversational terminal showing multi-agent reasoning, message history routing, and real-time JSON metadata extraction.
+- **Key Metric:** **100%** automated initial customer screening and data categorization.
+- **Tech Stack:** OpenAI API, Node.js, NLP extraction, React, Brand Palette: WhatsApp Green `#22C55E` & Dark Slate `#090D16` (Fonts: `Outfit` + `JetBrains Mono`).
+
+---
+
+## Professional Philosophy & Work Style
+- **AI-First Design:** Using Generative AI not just as a chatbot wrapper, but as a cognitive layer deeply embedded in UX (dynamic estimation, real-time solver loops, automated NLP parsing).
+- **High-End UI/UX Taste:** Strong aesthetic standards utilizing typography pairing, responsive layout structures, premium color palettes, glassmorphism elements, and smooth spring physics animations.
+- **Type Safety & Production Focus:** Codebases fully validated in strict TypeScript environments with zero warnings, high performance scores, and optimized search engine crawl configurations.

@@ -1,10 +1,65 @@
 # =========================================================
 # Robots.txt para sjaquer.is-a.dev
-# Sebastián Jaque - Datos, Automatización y Sistemas Digitales
-# Última actualización: 2026-02-18
+# Sebastián Jaque - Full-Stack Developer & AI Integration Specialist
+# Última actualización: 2026-06-01
 # =========================================================
 
-# Reglas para todos los bots
+# Reglas específicas para Agentes de Inteligencia Artificial (GEO / AIO)
+User-agent: GPTBot
+Allow: /llms.txt
+Allow: /ai.txt
+Allow: /resume.txt
+Allow: /sitemap.xml
+Allow: /
+Disallow: /api/
+Disallow: /node_modules/
+
+User-agent: ClaudeBot
+Allow: /llms.txt
+Allow: /ai.txt
+Allow: /resume.txt
+Allow: /sitemap.xml
+Allow: /
+Disallow: /api/
+Disallow: /node_modules/
+
+User-agent: PerplexityBot
+Allow: /llms.txt
+Allow: /ai.txt
+Allow: /resume.txt
+Allow: /sitemap.xml
+Allow: /
+Disallow: /api/
+Disallow: /node_modules/
+
+User-agent: OAI-SearchBot
+Allow: /llms.txt
+Allow: /ai.txt
+Allow: /resume.txt
+Allow: /sitemap.xml
+Allow: /
+Disallow: /api/
+Disallow: /node_modules/
+
+User-agent: Google-Extended
+Allow: /llms.txt
+Allow: /ai.txt
+Allow: /resume.txt
+Allow: /sitemap.xml
+Allow: /
+Disallow: /api/
+Disallow: /node_modules/
+
+User-agent: Amazonbot
+Allow: /llms.txt
+Allow: /ai.txt
+Allow: /resume.txt
+Allow: /sitemap.xml
+Allow: /
+Disallow: /api/
+Disallow: /node_modules/
+
+# Reglas para todos los bots generales
 User-agent: *
 Allow: /
 Allow: /images/

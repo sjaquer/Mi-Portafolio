@@ -1,19 +1,23 @@
 SEBASTIÁN JAQUE — FULL-STACK DEVELOPER & AI INTEGRATION SPECIALIST
 
 CORE EXPERTISE
-- Full-Stack: React, TypeScript, Node.js, Python, Firebase
-- AI Integration: OpenAI API, NLP, Embeddings, Semantic Search, AWS Bedrock
+- Full-Stack: React, TypeScript, Node.js, Python, TailwindCSS, Framer Motion
+- AI Integration: OpenAI API, Google Genkit, NLP, Embeddings, AWS Bedrock
+- Systems & Operations: OR-Tools Solver, CP-SAT Optimization, PostgreSQL, SQL Server
 - Certifications: CertiProf CAIPC® (AI Professional), AWS Generative AI
 
 PRODUCTION PROJECTS WITH AI
-1. Coralia Web — E-commerce with AI-powered recommendations
-2. HoneyNotes — Smart notes with NLP categorization & semantic search
-3. TaskZenith — Task management with NLP classification & ML estimation
+1. Big Jack RP & Menu — Real-time kitchen digital ERP & Dispatch system (98.7% speed efficiency)
+2. TaskMe — Kanban dashboard integrated with Genkit AI layout planner (4.2x planning speedup)
+3. ORDEV — CP-SAT remote logistics helicopter flight path solver (31.8% fuel savings)
+4. TaskZenith — Custom Bento Grid productivity layout with Pomodoro focus clock (+45% focus)
+5. IA-ToolBotWhatsapp — Dual-Agent conversational system with automatic structured JSON outputs
 
 AVAILABLE FOR
-- Freelance: Custom web development, API architecture, AI integration
-- Employment: Full-Stack Developer, Software Engineer, AI Engineer
+- Freelance: Custom React web development, API architectures, Generative AI integrations
+- Employment: Full-Stack Developer, AI Software Engineer, Solutions Architect
 
 CONTACT: sjaquer@outlook.es | Lima, Peru
 WEBSITE: https://sjaquer.is-a.dev
 GITHUB: https://github.com/sjaquer
+LINKEDIN: https://linkedin.com/in/sjaquer
