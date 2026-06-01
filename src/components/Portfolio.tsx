@@ -288,7 +288,7 @@ const Portfolio = () => {
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-800/80 bg-slate-900/40 backdrop-blur-xl text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-4 transition-colors duration-500">
             <Compass size={11} className="text-emerald-400" /> CASOS DE ESTUDIO
           </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-zinc-50 font-display tracking-tight mb-4 leading-none">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-zinc-50 font-sans tracking-tight mb-4 leading-none">
             Precision Engineering.
           </h2>
           <p className="text-md text-zinc-400 font-light max-w-2xl leading-relaxed font-sans">

@@ -24,13 +24,6 @@ const Experience = () => {
 
             <div className="relative border-l border-emerald-500/20 ml-3 space-y-10">
               {experiences.map((exp) => {
-                const initials = exp.company
-                  .split(' ')
-                  .map((n) => n[0])
-                  .join('')
-                  .slice(0, 2)
-                  .toUpperCase();
-
                 return (
                   <motion.div key={exp.id} variants={MOTION.staggerChild} className="relative pl-8">
                     <div className="absolute -left-[5px] top-4 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-4 ring-slate-950" />
