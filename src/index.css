@@ -76,34 +76,64 @@
   font-family: var(--project-font-body), 'Outfit', system-ui, sans-serif;
 }
 
-/* Scoped Dynamic Brand Color Overrides for Portfolio Section */
+/* Scoped Dynamic Brand Overrides for Portfolio Section & Simulators */
+#portfolio-section-container .font-sans {
+  font-family: var(--project-font-body), 'Outfit', system-ui, sans-serif !important;
+  transition: font-family 0.4s ease-in-out !important;
+}
+
+#portfolio-section-container .font-display {
+  font-family: var(--project-font-display), 'Outfit', system-ui, sans-serif !important;
+  transition: font-family 0.4s ease-in-out !important;
+}
+
 #portfolio-section-container .text-emerald-400 {
   color: var(--project-accent, #10b981) !important;
+  transition: color 0.4s ease-in-out !important;
 }
+
 #portfolio-section-container .text-emerald-500 {
   color: var(--project-accent, #10b981) !important;
+  transition: color 0.4s ease-in-out !important;
 }
+
 #portfolio-section-container .border-emerald-500\/30,
 #portfolio-section-container .border-emerald-500\/20,
 #portfolio-section-container .border-emerald-500\/10,
 #portfolio-section-container .border-emerald-500\/40,
-#portfolio-section-container .border-emerald-500\/25 {
+#portfolio-section-container .border-emerald-500\/25,
+#portfolio-section-container .hover\:border-emerald-500\/30:hover {
   border-color: rgba(var(--project-accent-rgb, 16, 185, 129), 0.25) !important;
+  transition: border-color 0.4s ease-in-out !important;
 }
+
+#portfolio-section-container .bg-emerald-500 {
+  background-color: var(--project-accent, #10b981) !important;
+  transition: background-color 0.4s ease-in-out !important;
+}
+
+#portfolio-section-container .hover\:bg-emerald-400:hover {
+  background-color: var(--project-accent, #10b981) !important;
+  opacity: 0.9 !important;
+  transition: background-color 0.4s ease-in-out !important;
+}
+
 #portfolio-section-container .bg-emerald-500\/10,
 #portfolio-section-container .bg-emerald-500\/20,
 #portfolio-section-container .bg-emerald-500\/5 {
   background-color: rgba(var(--project-accent-rgb, 16, 185, 129), 0.08) !important;
+  transition: background-color 0.4s ease-in-out !important;
 }
+
 #portfolio-section-container .bg-slate-900\/80 {
   background-color: rgba(15, 23, 42, 0.9) !important;
 }
+
 #portfolio-section-container .hover\:text-emerald-400:hover {
   color: var(--project-accent, #10b981) !important;
+  transition: color 0.4s ease-in-out !important;
 }
-#portfolio-section-container .hover\:border-emerald-500\/30:hover {
-  border-color: rgba(var(--project-accent-rgb, 16, 185, 129), 0.3) !important;
-}
+
 #portfolio-section-container .shadow-emerald-500\/10 {
   --tw-shadow-color: rgba(var(--project-accent-rgb, 16, 185, 129), 0.1) !important;
 }
