@@ -11,7 +11,7 @@ export const SocialProof = () => {
   return (
     <div className="py-12 relative z-10 border-y border-zinc-900/50 bg-zinc-950/20 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
+        <div className="grid grid-cols-3 gap-8 md:gap-12">
           {stats.map((stat, i) => {
             const Icon = stat.icon;
             return (

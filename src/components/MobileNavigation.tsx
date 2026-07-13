@@ -26,7 +26,7 @@ const MobileNavigation: React.FC<{ activeSection: string; setActiveSection: (s: 
             const isActive = activeSection === item.id;
             const Icon = item.icon;
             return (
-              <button key={item.id} onClick={() => scrollToSection(item.id)} className={`flex flex-col items-center p-2 min-w-[52px] rounded-xl transition-colors ${isActive ? 'bg-cyan-500/10 text-cyan-400' : 'text-zinc-500'}`}>
+              <button key={item.id} onClick={() => scrollToSection(item.id)} className={`flex flex-col items-center p-2 min-w-[52px] rounded-xl transition-colors ${isActive ? 'bg-emerald-500/10 text-emerald-400' : 'text-zinc-500'}`}>
                 <Icon size={20} strokeWidth={isActive ? 2 : 1.8} />
                 <span className="text-[10px] font-medium mt-1">{item.label}</span>
               </button>

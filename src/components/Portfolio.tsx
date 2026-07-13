@@ -22,7 +22,7 @@ const SimulatorFallbackError = () => (
   <div className="w-full h-full flex flex-col items-center justify-center">
     <ShieldAlert size={20} className="text-red-500/40 mb-3" />
     <button onClick={() => window.location.reload()}
-      className="p-2 rounded-lg bg-zinc-950 border border-zinc-850 text-zinc-500 hover:text-zinc-300 transition-all cursor-pointer">
+      className="p-2 rounded-lg bg-zinc-950 border border-zinc-800 text-zinc-500 hover:text-zinc-300 transition-all cursor-pointer">
       <RotateCcw size={14} />
     </button>
   </div>
