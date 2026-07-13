@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, Brain, Compass, RotateCcw, ShieldAlert, UtensilsCrossed, Globe, LayoutGrid, Bot, ChevronDown } from 'lucide-react';
+import { Github, ExternalLink, Brain, RotateCcw, ShieldAlert, UtensilsCrossed, Globe, LayoutGrid, Bot } from 'lucide-react';
 import { projects } from '../data/portfolio';
 import { Project } from '../types';
 import ErrorBoundary from './ErrorBoundary';
@@ -12,24 +12,17 @@ const TaskZenithSim = React.lazy(() => import('./simulators/TaskZenithSim').then
 const WhatsappBotSim = React.lazy(() => import('./simulators/WhatsappBotSim').then(m => ({ default: m.WhatsappBotSim })));
 
 const SimulatorLoader = () => (
-  <div className="w-full h-full flex flex-col items-center justify-center font-mono">
-    <div className="w-8 h-8 border-2 border-slate-800 border-t-emerald-500 rounded-full animate-spin mb-3" />
-    <span className="text-[9px] text-slate-500 font-bold uppercase tracking-[0.2em] animate-pulse">Cargando Consola...</span>
+  <div className="w-full h-full flex flex-col items-center justify-center">
+    <div className="w-7 h-7 border-2 border-slate-800 border-t-emerald-500 rounded-full animate-spin" />
   </div>
 );
 
 const SimulatorFallbackError = () => (
-  <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center font-mono">
-    <ShieldAlert size={36} className="text-red-500 mb-3 animate-pulse" />
-    <h3 className="text-xs font-bold text-slate-100 mb-1">Console Offline</h3>
-    <p className="text-[9px] text-slate-500 max-w-[200px] leading-relaxed mb-4">
-      Se produjo un error de ejecución en este simulador. El portafolio sigue activo.
-    </p>
-    <button
-      onClick={() => window.location.reload()}
-      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 border border-slate-800 text-[9px] font-bold text-slate-400 hover:text-slate-200 rounded-xl transition-all cursor-pointer"
-    >
-      <RotateCcw size={10} /> Recargar Consola
+  <div className="w-full h-full flex flex-col items-center justify-center">
+    <ShieldAlert size={20} className="text-red-500/40 mb-3" />
+    <button onClick={() => window.location.reload()}
+      className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-500 hover:text-slate-300 transition-all cursor-pointer">
+      <RotateCcw size={14} />
     </button>
   </div>
 );
@@ -184,32 +177,21 @@ const Portfolio = () => {
   }, []);
 
   return (
-    <section id="portfolio-section-container" className="relative z-10">
+    <section id="portfolio" className="relative z-10">
       {/* Title Screen */}
       <div className="relative min-h-screen snap-start flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/[0.02] via-transparent to-transparent pointer-events-none" />
         <div className="text-center px-4 max-w-3xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-800/80 bg-slate-900/40 backdrop-blur-xl text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-6">
-              <Compass size={11} className="text-emerald-400" /> CASOS DE ESTUDIO
-            </div>
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-zinc-50 tracking-tight mb-5 leading-none">
-              Precision Engineering.
-            </h2>
-            <p className="text-zinc-400 font-light max-w-xl mx-auto leading-relaxed">
-              5 proyectos destacados con simuladores interactivos integrados en tiempo real.
-            </p>
-            <div className="mt-10">
-              <span className="text-[10px] text-zinc-600 font-mono tracking-[0.3em] uppercase inline-flex items-center gap-2">
-                Desplázate <ChevronDown size={12} className="animate-bounce" />
-              </span>
-            </div>
-          </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <h2 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-zinc-50 tracking-tight leading-none">
+                Precision Engineering.
+              </h2>
+            </motion.div>
         </div>
       </div>
 
@@ -250,9 +232,7 @@ const Portfolio = () => {
                     {project.simulatorId ? (
                       <SimulatorSelector simulatorId={project.simulatorId} />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center text-zinc-600 font-mono text-xs">
-                        Consola no disponible
-                      </div>
+                      <div className="w-full h-full" />
                     )}
                   </div>
                 </div>

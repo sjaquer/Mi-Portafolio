@@ -134,6 +134,7 @@ export const BigJackSim = React.memo(() => {
               {/* Top Bun */}
               {(step === 'idle' || step === 'ready' || step === 'cooking' || step === 'ordered') && (
                 <motion.div
+                  key="top-bun"
                   layout
                   initial={{ y: -80, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
@@ -145,6 +146,7 @@ export const BigJackSim = React.memo(() => {
               {/* Lettuce */}
               {(step === 'cooking' || step === 'ready') && (
                 <motion.div
+                  key="lettuce"
                   initial={{ y: -50, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ type: 'spring', stiffness: 180, damping: 14, delay: 0.1 }}
@@ -155,6 +157,7 @@ export const BigJackSim = React.memo(() => {
               {/* Cheese 1 */}
               {(step === 'cooking' || step === 'ready') && (
                 <motion.div
+                  key="cheese-1"
                   initial={{ y: -40, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ type: 'spring', stiffness: 220, damping: 13, delay: 0.2 }}
@@ -165,6 +168,7 @@ export const BigJackSim = React.memo(() => {
               {/* Meat Patty */}
               {(step === 'cooking' || step === 'ready') && (
                 <motion.div
+                  key="meat"
                   initial={{ y: -30, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ type: 'spring', stiffness: 250, damping: 12, delay: 0.3 }}
@@ -175,6 +179,7 @@ export const BigJackSim = React.memo(() => {
               {/* Cheese 2 */}
               {step === 'ready' && (
                 <motion.div
+                  key="cheese-2"
                   initial={{ y: -20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ type: 'spring', stiffness: 220, damping: 13, delay: 0.4 }}
@@ -185,6 +190,7 @@ export const BigJackSim = React.memo(() => {
               {/* Bottom Bun */}
               {(step === 'idle' || step === 'ready' || step === 'cooking' || step === 'ordered') && (
                 <motion.div
+                  key="bottom-bun"
                   layout
                   initial={{ y: 0, opacity: 1 }}
                   className="w-16 h-3 bg-amber-600 rounded-b-md mt-0.5 shadow border-t border-amber-500/20"
