@@ -47,7 +47,7 @@ const App: React.FC = () => {
       <SEO pageType="home" />
       <ScrollProgressIndicator />
       <AnimatePresence>
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }} className="min-h-screen text-zinc-50 selection:bg-cyan-500/30 selection:text-cyan-200 relative">
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }} className="min-h-screen text-zinc-50 selection:bg-cyan-500/30 selection:text-cyan-200 relative snap-y snap-proximity">
           <GradientBackground />
           <Header activeSection={activeSection} setActiveSection={setActiveSection} />
           <main className="relative z-10">

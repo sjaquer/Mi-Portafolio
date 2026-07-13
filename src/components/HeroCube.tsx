@@ -6,40 +6,64 @@ import * as THREE from 'three';
 const mouse = { x: 0, y: 0 };
 
 function TorusKnotMesh() {
-  const meshRef = useRef<THREE.Mesh>(null);
+  const outerRef = useRef<THREE.Mesh>(null);
+  const innerRef = useRef<THREE.Mesh>(null);
 
   useFrame(() => {
-    if (!meshRef.current) return;
-    meshRef.current.rotation.x += 0.003;
-    meshRef.current.rotation.y += 0.006;
-    const dx = mouse.y * 0.3 - meshRef.current.rotation.x;
-    const dy = mouse.x * 0.3 - meshRef.current.rotation.y;
-    meshRef.current.rotation.x += dx * 0.012;
-    meshRef.current.rotation.y += dy * 0.012;
+    if (!outerRef.current || !innerRef.current) return;
+
+    outerRef.current.rotation.x += 0.003;
+    outerRef.current.rotation.y += 0.008;
+
+    innerRef.current.rotation.x -= 0.004;
+    innerRef.current.rotation.y += 0.01;
+
+    const targetRotX = mouse.y * 0.6;
+    const targetRotY = mouse.x * 0.6;
+
+    outerRef.current.rotation.x += (targetRotX - outerRef.current.rotation.x) * 0.04;
+    outerRef.current.rotation.y += (targetRotY - outerRef.current.rotation.y) * 0.04;
+
+    innerRef.current.rotation.x += (targetRotX - innerRef.current.rotation.x) * 0.05;
+    innerRef.current.rotation.y += (targetRotY - innerRef.current.rotation.y) * 0.05;
   });
 
   return (
-    <TorusKnot ref={meshRef} args={[0.9, 0.28, 128, 16]}>
-      <meshPhysicalMaterial
-        color="#34d399"
-        emissive="#10b981"
-        emissiveIntensity={0.08}
-        wireframe
-        metalness={0.9}
-        roughness={0.15}
-        transparent
-        opacity={0.55}
-      />
-    </TorusKnot>
+    <>
+      <TorusKnot ref={outerRef} args={[1.5, 0.4, 160, 20]}>
+        <meshPhysicalMaterial
+          color="#34d399"
+          emissive="#10b981"
+          emissiveIntensity={0.5}
+          wireframe
+          metalness={0.95}
+          roughness={0.06}
+          transparent
+          opacity={0.85}
+        />
+      </TorusKnot>
+      <TorusKnot ref={innerRef} args={[0.7, 0.18, 96, 12]}>
+        <meshPhysicalMaterial
+          color="#0d9488"
+          emissive="#14b8a6"
+          emissiveIntensity={0.3}
+          metalness={0.8}
+          roughness={0.15}
+          transparent
+          opacity={0.5}
+        />
+      </TorusKnot>
+    </>
   );
 }
 
 function Scene() {
   return (
     <>
-      <ambientLight intensity={0.4} />
-      <pointLight position={[5, 5, 5]} intensity={0.6} color="#34d399" />
-      <pointLight position={[-3, -3, 5]} intensity={0.3} color="#0d9488" />
+      <ambientLight intensity={0.2} />
+      <pointLight position={[5, 5, 5]} intensity={0.8} color="#34d399" />
+      <pointLight position={[-3, -3, 5]} intensity={0.4} color="#0d9488" />
+      <pointLight position={[0, -5, 3]} intensity={0.3} color="#14b8a6" />
       <TorusKnotMesh />
     </>
   );
@@ -77,7 +101,7 @@ const HeroCube = () => {
   return (
     <Suspense fallback={null}>
       <Canvas
-        camera={{ position: [0, 0, 4], fov: 40 }}
+        camera={{ position: [0, 0, 3.8], fov: 55 }}
         gl={{ antialias: true, alpha: true, failIfMajorPerformanceCaveat: false }}
         style={{
           width: '100%',

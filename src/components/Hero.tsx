@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowRight, ChevronDown, BrainCircuit, TrendingUp, Cpu, Clock, RefreshCw } from 'lucide-react';
+import { ArrowRight, ChevronDown, BrainCircuit, TrendingUp, Cpu, Clock, RefreshCw, Sparkles } from 'lucide-react';
 import Tilt from 'react-parallax-tilt';
-import { ResumeButton } from './ResumeButton';
 import HeroCube from './HeroCube';
 import ErrorBoundary from './ErrorBoundary';
 import { cn } from '../utils/cn';
@@ -56,7 +55,14 @@ const Hero: React.FC = () => {
 
   return (
     <section id="home" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="pointer-events-none absolute inset-0">
+      {/* Full-screen 3D background */}
+      <ErrorBoundary fallback={null}>
+        <div className="absolute inset-0 opacity-80 pointer-events-none z-0">
+          <HeroCube />
+        </div>
+      </ErrorBoundary>
+
+      <div className="pointer-events-none absolute inset-0 z-[1]">
         <div className="absolute left-[-8%] top-12 h-72 w-72 rounded-full bg-emerald-500/[0.03] blur-3xl" />
         <div className="absolute right-[-6%] top-24 h-80 w-80 rounded-full bg-slate-500/[0.03] blur-3xl" />
         <div className="absolute bottom-0 left-1/2 h-48 w-[42rem] -translate-x-1/2 rounded-full bg-emerald-500/[0.02] blur-3xl" />
@@ -115,7 +121,16 @@ const Hero: React.FC = () => {
                 Empezar Proyecto
                 <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
               </a>
-              <ResumeButton />
+              <a
+                href="#portfolio"
+                className={cn(
+                  'group inline-flex h-12 items-center justify-center rounded-xl px-6 text-sm font-semibold transition-all',
+                  'border border-zinc-800/80 text-zinc-300 hover:border-emerald-500/30 hover:text-emerald-300 active:scale-95'
+                )}
+              >
+                <Sparkles size={15} className="mr-2 text-emerald-400" />
+                Proyectos
+              </a>
             </motion.div>
           </div>
 
@@ -126,12 +141,6 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.6, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="relative order-1 lg:order-2 w-full"
           >
-              <ErrorBoundary fallback={null}>
-                <div className="absolute -right-48 -top-36 w-[720px] h-[720px] opacity-40 pointer-events-none z-[-1]">
-                  <HeroCube />
-                </div>
-              </ErrorBoundary>
-
               <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/[0.03] to-teal-500/[0.03] blur-3xl rounded-[3rem] pointer-events-none" />
 
               <Tilt

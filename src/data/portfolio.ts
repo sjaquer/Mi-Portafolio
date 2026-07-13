@@ -411,24 +411,6 @@ export const projects: Project[] = [
         { label: 'Costos de API', value: '65', prefix: '-', suffix: '%' }
       ]
     }
-  },
-  {
-    id: '6',
-    title: 'Coralia Delights',
-    subtitle: 'E-commerce artesanal con CRM y mensajería IA hiperpersonalizada — proyecto propio, en pausa.',
-    description:
-      'Emprendimiento propio de e-commerce artesanal con CRM integrado y mensajería de WhatsApp hiperpersonalizada mediante IA. Actualmente en pausa por priorización de otros proyectos — la base técnica está construida y funcional.',
-    techStack: ['React', 'Node.js', 'WhatsApp API', 'IA Generativa'],
-    category: 'ecommerce',
-    featured: true,
-    year: '2025',
-    caseStudy: {
-      problem: 'Los negocios artesanales pequeños carecen de herramientas de CRM accesibles que permitan personalizar la comunicación con cada cliente sin contratar un equipo de atención.',
-      solution: 'Diseñé un sistema de CRM ligero con mensajería asistida por IA que genera respuestas personalizadas por cliente basadas en su historial de compra.',
-      metrics: [
-        { label: 'Estado', value: 'Pausado', prefix: '', suffix: '' }
-      ]
-    }
   }
 ];
 
