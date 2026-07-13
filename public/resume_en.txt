@@ -20,8 +20,8 @@ Website     : sjaquer.is-a.dev
 PROFESSIONAL EXPERIENCE
 ──────────────────────────────────────────────────────────────────────────────────
 
-▸ OPERATIONS & MARKETING LEAD
-  Big Jack-Burgers | Nov 2025 - Jan 2026 | Lima, Peru
+▸ OPERATIONS COORDINATOR
+  Big Jack-Burgers | Nov 2025 - Present | Lima, Peru
   - Built an internal system (sole developer) that reduced order processing time
     by 35%.
   - Increased monthly profit margin by 15% by applying predictive analysis models
@@ -60,7 +60,7 @@ EDUCATION
 ──────────────────────────────────────────────────────────────────────────────────
 
 ▸ Bachelor's in Business Administration and International Business
-  Universidad Norbert Wiener | Mar 2022 - Dec 2026 | 9th Semester (in progress)
+  Universidad Norbert Wiener | Mar 2022 - Dec 2026 | 10th Semester (in progress)
 
 CERTIFICATIONS
 ──────────────────────────────────────────────────────────────────────────────────
@@ -100,14 +100,12 @@ SELECTED PROJECTS
 
 ▸ Big Jack RP — Operational ERP for restaurants with POS, recipe-based inventory
   and executive reports enhanced by AI.
-▸ DataWeave-BI — BI dashboard for multiple Shopify stores with daily reports and
-  user access control.
-▸ LogiFlow — ERP for call centers integrating Kommo CRM and Shopify with local
-  caching (<100ms).
+▸ Big Jack Bot — WhatsApp bot with hybrid AI (local/cloud) for restaurant
+  order automation.
+▸ Coralia Delights — Artisan e-commerce with CRM and hyper-personalized AI
+  messaging via WhatsApp (personal project, on hold).
 ▸ Cabine Grid — System for LAN centers with POS, PC monitoring and automated
   cash-close procedures.
-▸ Coralia Delights — Artisan e-commerce with CRM and hyper-personalized AI
-  messaging via WhatsApp.
 ▸ Ecos Literarios — AI-assisted literary analysis platform (Gemini + Genkit).
 
 ================================================================================

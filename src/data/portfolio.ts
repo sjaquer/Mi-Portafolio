@@ -3,18 +3,18 @@ import { Experience, Education, Project } from '../types';
 export const experiences: Experience[] = [
   {
     id: '1',
-    title: 'Líder de Operaciones y Marketing',
-    titleEn: 'Operations & Marketing Lead',
+    title: 'Operations Coordinator',
+    titleEn: 'Operations Coordinator',
     company: 'Big Jack-Burgers',
-    role: 'Líder de Operaciones y Programador',
-    roleEn: 'Operations Lead & Programmer',
-    duration: 'Nov 2025 - Ene 2026',
+    role: 'Operations Coordinator',
+    roleEn: 'Operations Coordinator',
+    duration: 'Nov 2025 - Actualidad',
     location: 'Lima, Perú',
     locationEn: 'Lima, Peru',
     summary:
-      'Lideré la optimización operativa y el desarrollo de sistemas internos, logrando mejoras críticas en el procesamiento de pedidos y la rentabilidad del negocio.',
+      'Lidero la optimización operativa y el desarrollo de sistemas internos, logrando mejoras críticas en el procesamiento de pedidos y la rentabilidad del negocio.',
     summaryEn:
-      'Led operational optimization and the development of internal systems, achieving critical improvements in order processing and business profitability.',
+      'Leading operational optimization and internal systems development, achieving critical improvements in order processing and business profitability.',
     techStack: [
       'React',
       'Firebase',
@@ -23,9 +23,9 @@ export const experiences: Experience[] = [
       'Costeo de Recetas'
     ],
     responsibilities: [
-      'Desarrolló, como único programador a cargo, un sistema interno que redujo el tiempo de procesamiento de pedidos en un 35%.',
-      'Aumentó el margen de rentabilidad mensual en un 15% aplicando modelos de análisis predictivo sobre los costos de insumos y recetas.',
-      'Implementó dashboards de control de inventario en tiempo real vinculados a la cola de producción.'
+      'Desarrollé, como único programador a cargo, un sistema interno que redujo el tiempo de procesamiento de pedidos en un 35%.',
+      'Aumenté el margen de rentabilidad mensual en un 15% aplicando modelos de análisis predictivo sobre los costos de insumos y recetas.',
+      'Implementé dashboards de control de inventario en tiempo real vinculados a la cola de producción.'
     ],
     responsibilitiesEn: [
       'Built an internal system (sole developer) that reduced order processing time by 35%.',
@@ -168,8 +168,8 @@ export const education: Education[] = [
     institution: 'Universidad Norbert Wiener',
     institutionEn: 'Norbert Wiener University',
     duration: 'Mar 2022 - Dic 2026',
-    status: '9.º Ciclo (en curso)',
-    statusEn: '9th Semester (in progress)',
+    status: '10.º Ciclo (en curso)',
+    statusEn: '10th Semester (in progress)',
     relevant: ['Arquitectura de Negocio', 'Gestión de Proyectos', 'Estrategia Digital'],
     tier: 'academic',
     description: 'Formación académica enfocada en la optimización de procesos de negocio internacionales y gestión estratégica.',
@@ -391,7 +391,7 @@ export const projects: Project[] = [
   },
   {
     id: '5',
-    title: 'IA-ToolBotWhatsapp',
+    title: 'Big Jack Bot',
     subtitle: 'Automatización híbrida de pedidos en tiempo real con IA local/cloud.',
     description:
       'Orquestador de mensajería comercial asistido por inteligencia artificial híbrida. Procesa chats entrantes de WhatsApp en tiempo real, utilizando modelos locales (Ollama Llama-3) para privacidad y modelos cloud (Gemini) para extraer órdenes estructuradas.',
@@ -400,7 +400,7 @@ export const projects: Project[] = [
     category: 'ia',
     featured: true,
     year: '2025',
-    githubUrl: 'https://github.com/sjaquer/WhatsappBot',
+    githubUrl: 'https://github.com/sjaquer/bigjack-bot',
     simulatorId: 'whatsappbot',
     caseStudy: {
       problem: 'La toma y transcripción manual de pedidos por mensajería creaba demoras de hasta 8 minutos por cliente, reduciendo las ventas debido a respuestas lentas.',
@@ -409,6 +409,24 @@ export const projects: Project[] = [
         { label: 'Tiempo por pedido', value: '90', prefix: '-', suffix: '%' },
         { label: 'Tasa de conversión', value: '22', prefix: '+', suffix: '%' },
         { label: 'Costos de API', value: '65', prefix: '-', suffix: '%' }
+      ]
+    }
+  },
+  {
+    id: '6',
+    title: 'Coralia Delights',
+    subtitle: 'E-commerce artesanal con CRM y mensajería IA hiperpersonalizada — proyecto propio, en pausa.',
+    description:
+      'Emprendimiento propio de e-commerce artesanal con CRM integrado y mensajería de WhatsApp hiperpersonalizada mediante IA. Actualmente en pausa por priorización de otros proyectos — la base técnica está construida y funcional.',
+    techStack: ['React', 'Node.js', 'WhatsApp API', 'IA Generativa'],
+    category: 'ecommerce',
+    featured: true,
+    year: '2025',
+    caseStudy: {
+      problem: 'Los negocios artesanales pequeños carecen de herramientas de CRM accesibles que permitan personalizar la comunicación con cada cliente sin contratar un equipo de atención.',
+      solution: 'Diseñé un sistema de CRM ligero con mensajería asistida por IA que genera respuestas personalizadas por cliente basadas en su historial de compra.',
+      metrics: [
+        { label: 'Estado', value: 'Pausado', prefix: '', suffix: '' }
       ]
     }
   }

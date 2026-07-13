@@ -21,13 +21,13 @@ Website     : sjaquer.is-a.dev
 EXPERIENCIA PROFESIONAL
 ──────────────────────────────────────────────────────────────────────────────────
 
-▸ LÍDER DE OPERACIONES Y MARKETING
-  Big Jack-Burgers | Nov 2025 - Ene 2026 | Lima, Perú
-  - Desarrolló un sistema interno (como único programador) que redujo el
+▸ OPERATIONS COORDINATOR
+  Big Jack-Burgers | Nov 2025 - Actualidad | Lima, Perú
+  - Desarrollé un sistema interno (como único programador) que redujo el
     tiempo de procesamiento de pedidos en un 35%.
-  - Aumentó el margen de rentabilidad mensual en un 15% aplicando modelos
+  - Aumenté el margen de rentabilidad mensual en un 15% aplicando modelos
     de análisis predictivo sobre costos de insumos y recetas.
-  - Implementó dashboards de control de inventario en tiempo real.
+  - Implementé dashboards de control de inventario en tiempo real.
   Tecnologías: React, Firebase, Python, Análisis Predictivo
 
 ▸ DESARROLLADOR DE SOLUCIONES DE NEGOCIOS
@@ -64,7 +64,7 @@ EDUCACIÓN
 ──────────────────────────────────────────────────────────────────────────────────
 
 ▸ Bachiller en Administración y Negocios Internacionales
-  Universidad Norbert Wiener | Mar 2022 - Dic 2026 | 9.º Ciclo (en curso)
+  Universidad Norbert Wiener | Mar 2022 - Dic 2026 | 10.º Ciclo (en curso)
 
 CERTIFICACIONES
 ──────────────────────────────────────────────────────────────────────────────────
@@ -104,14 +104,12 @@ PROYECTOS DESTACADOS
 
 ▸ Big Jack RP — ERP operativo para restaurantes con POS, inventario por
   recetas y reportes ejecutivos con IA.
-▸ DataWeave-BI — Dashboard BI para múltiples tiendas Shopify con reportes
-  diarios y control de usuarios.
-▸ LogiFlow — ERP para call centers integrando Kommo CRM y Shopify con
-  caché local (<100ms).
+▸ Big Jack Bot — Bot de WhatsApp con IA híbrida (local/cloud) para
+  automatización de pedidos en restaurantes.
+▸ Coralia Delights — E-commerce artesanal con CRM y mensajería IA
+  hiperpersonalizada por WhatsApp (proyecto propio, en pausa).
 ▸ Cabine Grid — Sistema para LAN centers con POS, monitoreo de PCs y
   cierres de caja automatizados.
-▸ Coralia Delights — E-commerce artesanal con CRM y mensajería IA
-  hiperpersonalizada por WhatsApp.
 ▸ Ecos Literarios — Plataforma de análisis literario asistida por IA
   (Gemini + Genkit).
 
