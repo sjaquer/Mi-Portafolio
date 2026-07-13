@@ -1,7 +1,6 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ErrorBoundary from './components/ErrorBoundary';
-import { LoadingState } from './components/LoadingComponents';
 import { ScrollProgressIndicator } from './components/ScrollProgress';
 import SEO from './components/SEO';
 import Header from './components/Header';
@@ -56,7 +55,7 @@ const App: React.FC = () => {
             <FreelanceServices />
             <SocialProof />
             <AIShowcase />
-            <Suspense fallback={<LoadingState title="Cargando contenido..." description="Preparando experiencia" />}>
+            <Suspense fallback={null}>
               <Portfolio />
               <Skills />
               <Experience />

@@ -174,7 +174,7 @@ export const education: Education[] = [
     tier: 'academic',
     description: 'Formación académica enfocada en la optimización de procesos de negocio internacionales y gestión estratégica.',
     descriptionEn: 'Academic training focused on international business process optimization and strategic management.',
-    logoUrl: '/images/wiener_logo.png'
+    logoUrl: '/images/wiener_logo.webp'
   },
   {
     id: '2',
@@ -189,7 +189,7 @@ export const education: Education[] = [
     tier: 'ai-certification',
     description: 'Certificación oficial que avala conocimientos en inteligencia artificial y modelos de lenguaje.',
     descriptionEn: 'Official certification validating knowledge in artificial intelligence and language models.',
-    logoUrl: '/images/certiprof_logo.png'
+    logoUrl: '/images/certiprof_logo.webp'
   },
   {
     id: '3',
@@ -204,7 +204,7 @@ export const education: Education[] = [
     tier: 'ai-certification',
     description: 'Especialización en la implementación de soluciones de inteligencia artificial para la mejora de la rentabilidad y eficiencia empresarial.',
     descriptionEn: 'Specialization in implementing artificial intelligence solutions to improve corporate profitability and efficiency.',
-    logoUrl: '/images/idat_logo.png'
+    logoUrl: '/images/idat_logo.webp'
   },
   {
     id: '4',
@@ -219,7 +219,7 @@ export const education: Education[] = [
     tier: 'ai-certification',
     description: 'Enfoque ejecutivo sobre el despliegue de modelos fundacionales para la creación de valor en organizaciones.',
     descriptionEn: 'Executive focus on deploying foundational models for organizational value creation.',
-    logoUrl: '/images/aws_logo.png'
+    logoUrl: '/images/aws_logo.webp'
   },
   {
     id: '5',
@@ -234,7 +234,7 @@ export const education: Education[] = [
     tier: 'tech',
     description: 'Diseño y gestión de bases de datos relacionales para entornos corporativos y analítica.',
     descriptionEn: 'Design and management of relational databases for corporate environments and analytics.',
-    logoUrl: '/images/microsoft_logo.png'
+    logoUrl: '/images/microsoft_logo.webp'
   },
   {
     id: '6',
@@ -249,7 +249,7 @@ export const education: Education[] = [
     tier: 'tech',
     description: 'Dominio de herramientas de visualización de datos y modelado para la toma de decisiones.',
     descriptionEn: 'Mastery of data visualization tools and modeling for decision making.',
-    logoUrl: '/images/idat_logo.png'
+    logoUrl: '/images/idat_logo.webp'
   },
   {
     id: '7',

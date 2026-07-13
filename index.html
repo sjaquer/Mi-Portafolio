@@ -601,24 +601,16 @@
     }
     </script>
 
-    <!-- Carga diferida de fonts para mejor performance - NO bloquea renderizado -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
-      <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     </noscript>
   </head>
   <body>
     <div id="root">
-      <!-- Fallback de carga para mejor UX -->
       <div class="loading-fallback">
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
-          <div style="width: 3rem; height: 3rem; border: 4px solid #27272a; border-top: 4px solid #22d3ee; border-radius: 50%; animation: spin 1s linear infinite;"></div>
-          <p style="color: #9CA3AF; font-size: 0.875rem;">Cargando portafolio de Sebastián Jaque...</p>
-        </div>
+        <div style="width: 100%; height: 100vh; background: #09090b;"></div>
       </div>
-      <style>
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-      </style>
     </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

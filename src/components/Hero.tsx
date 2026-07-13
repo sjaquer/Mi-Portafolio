@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { ArrowRight, ChevronDown, Play, BrainCircuit, TrendingUp, Cpu, Clock, RefreshCw } from 'lucide-react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { ArrowRight, ChevronDown, BrainCircuit, TrendingUp, Cpu, Clock, RefreshCw } from 'lucide-react';
 import Tilt from 'react-parallax-tilt';
 import { ResumeButton } from './ResumeButton';
+import HeroCube from './HeroCube';
+import ErrorBoundary from './ErrorBoundary';
 import { cn } from '../utils/cn';
 
 const Hero: React.FC = () => {
@@ -49,11 +51,7 @@ const Hero: React.FC = () => {
   };
 
   useEffect(() => {
-    // Auto-trigger simulation on mount
-    const timer = setTimeout(() => {
-      startSimulation();
-    }, 1000);
-    return () => clearTimeout(timer);
+    startSimulation();
   }, []);
 
   return (
@@ -128,41 +126,11 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.6, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="relative order-1 lg:order-2 w-full"
           >
-              {/* Floating & Rotating 3D glass image acting as a seamless premium video loop */}
-              <div className="absolute -right-48 -top-36 w-[720px] h-[720px] opacity-45 pointer-events-none mix-blend-screen z-[-1]">
-                <motion.div
-                  animate={{
-                    rotate: [0, 360],
-                    y: [0, -20, 0],
-                    scale: [1, 1.03, 1]
-                  }}
-                  transition={{
-                    rotate: {
-                      duration: 60,
-                      repeat: Infinity,
-                      ease: "linear"
-                    },
-                    y: {
-                      duration: 8,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    },
-                    scale: {
-                      duration: 10,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }
-                  }}
-                  className="w-full h-full animate-pulse-slow"
-                >
-                  <img 
-                    src="/images/hero_3d_glass.png" 
-                    alt="Futuristic 3D Glass Geometry" 
-                    className="w-full h-full object-contain filter drop-shadow-[0_0_60px_rgba(16,185,129,0.2)] mix-blend-screen" 
-                    loading="lazy"
-                  />
-                </motion.div>
-              </div>
+              <ErrorBoundary fallback={null}>
+                <div className="absolute -right-48 -top-36 w-[720px] h-[720px] opacity-40 pointer-events-none z-[-1]">
+                  <HeroCube />
+                </div>
+              </ErrorBoundary>
 
               <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/[0.03] to-teal-500/[0.03] blur-3xl rounded-[3rem] pointer-events-none" />
 

@@ -42,7 +42,8 @@ export default defineConfig({
           // Separar bibliotecas grandes en chunks específicos
           'react-vendor': ['react', 'react-dom'],
           'animation-vendor': ['framer-motion'],
-          'ui-vendor': ['lucide-react', 'react-intersection-observer'],
+          'three-vendor': ['three', '@react-three/fiber', '@react-three/drei'],
+          'ui-vendor': ['lucide-react'],
         },
         // Optimizar nombres de archivos para caché
         entryFileNames: 'assets/[name]-[hash].js',
