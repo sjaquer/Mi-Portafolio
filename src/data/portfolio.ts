@@ -302,9 +302,9 @@ export const projects: Project[] = [
   {
     id: '1',
     title: 'Big Jack RP & Menu',
-    subtitle: 'Ecosistema operativo unificado de producción gastronómica.',
+    subtitle: 'Ecosistema operativo de producción gastronómica.',
     description:
-      'Ecosistema digital gastronómico en tiempo real. Unifica la experiencia de autoservicio del cliente con la producción en cocina, automatizando el control de inventario insumo a insumo mediante webhooks inteligentes.',
+      'Ecosistema en tiempo real que automatiza el control de inventario insumo a insumo desde el autopedido del cliente hasta la producción en cocina.',
     techStack: ['React', 'Firebase', 'Node.js', 'Next.js', 'Webhooks', 'Real-time Sync'],
     category: 'restaurante',
     featured: true,
@@ -312,57 +312,57 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/sjaquer/big-jack-menu',
     simulatorId: 'bigjack',
     caseStudy: {
-      problem: 'La desconexión física entre el salón y la cocina provocaba un desfase de inventario del 20% y fricción operativa en los tiempos de despacho.',
-      solution: 'Sincronizamos la toma de pedidos y el stock en tiempo real mediante webhooks, automatizando el descuento exacto de insumos por receta vendida.',
+      problem: 'Desfase del 20% en inventario e ineficiencias por desconexión entre salón y cocina.',
+      solution: 'Sincronización automatizada de stock y comandas en tiempo real por webhooks por cada receta vendida.',
       metrics: [
-        { label: 'Tiempo de procesamiento', value: '35', prefix: '-', suffix: '%' },
-        { label: 'Margen operativo mensual', value: '15', prefix: '+', suffix: '%' },
-        { label: 'Precisión del inventario', value: '98', prefix: '', suffix: '%' }
+        { label: 'Tiempo de proceso', value: '35', prefix: '-', suffix: '%' },
+        { label: 'Margen mensual', value: '15', prefix: '+', suffix: '%' },
+        { label: 'Precisión stock', value: '98', prefix: '', suffix: '%' }
       ]
     }
   },
   {
     id: '2',
     title: 'TaskMe',
-    subtitle: 'Ecosistema de productividad personal y académico Cyber-Focus.',
+    subtitle: 'Productividad personal y académica Cyber-Focus.',
     description:
-      'Centro de control personal e interactivo de productividad. Integra un tablero Kanban elástico con dnd-kit, monitoreo de hábitos y sincronización bidireccional con Google Calendar, potenciado por Genkit IA para la estructuración semántica de pendientes.',
-    techStack: ['React 19', 'Next.js 15', 'Firebase Auth/Firestore', 'Google Genkit', 'dnd-kit', 'Framer Motion'],
-    aiFeatures: ['Autoorganización de texto en tareas', 'Creación automática de pendientes', 'Soporte de productividad asistida'],
+      'Tablero Kanban interactivo con Google Calendar e IA semántica de Genkit para estructurar tareas a partir de lenguaje natural.',
+    techStack: ['React 19', 'Next.js 15', 'Firebase', 'Google Genkit', 'dnd-kit', 'Framer Motion'],
+    aiFeatures: ['Autoorganización de tareas', 'Mapeo semántico de lenguaje natural', 'Preferencia horaria inteligente'],
     category: 'productividad',
     featured: true,
     year: '2025',
     githubUrl: 'https://github.com/sjaquer/taskME',
     simulatorId: 'taskme',
     caseStudy: {
-      problem: 'La fragmentación de tareas académicas y personales entre múltiples herramientas dispersas generaba sobrecarga cognitiva e ineficiencia diaria.',
-      solution: 'Centralizamos el flujo de trabajo en una única interfaz unificada con sincronización bidireccional nativa y asistencia predictiva de inteligencia artificial.',
+      problem: 'Sobrecarga cognitiva e ineficiencia debido a tareas dispersas en múltiples aplicaciones.',
+      solution: 'Flujo centralizado con sincronización bidireccional y estructuración predictiva con modelos de lenguaje.',
       metrics: [
         { label: 'Sincronización en vivo', value: '100', prefix: '', suffix: '%' },
         { label: 'Eficiencia diaria', value: '40', prefix: '+', suffix: '%' },
-        { label: 'Sugerencias procesadas', value: '5000', prefix: '+', suffix: '' }
+        { label: 'Sugerencias IA', value: '5000', prefix: '+', suffix: '' }
       ]
     }
   },
   {
     id: '3',
     title: 'ORDEV',
-    subtitle: 'Planificación logística aérea automatizada con CP-SAT solver.',
+    subtitle: 'Planificación logística aérea con CP-SAT solver.',
     description:
-      'Planificador lógico de rutas aéreas comerciales. Implementa el solver CP-SAT de Google OR-Tools para resolver problemas combinatorios complejos de carga, pasaje y combustible, representados dinámicamente sobre mapas vectoriales interactivos.',
-    techStack: ['Python', 'Google OR-Tools CP-SAT', 'React', 'SVG Maps', 'Vite', 'TypeScript'],
+      'Planificador de rutas aéreas con el solver CP-SAT de Google OR-Tools para resolver peso, combustible y pasaje en mapas interactivos.',
+    techStack: ['Python', 'Google OR-Tools CP-SAT', 'React', 'SVG Maps', 'TypeScript'],
     category: 'logistica',
     featured: true,
     year: '2025',
     githubUrl: 'https://github.com/sjaquer/Optimizador-Vuelos-CP-SAT',
     simulatorId: 'ordev',
     caseStudy: {
-      problem: 'El cálculo manual de variables críticas de vuelo (peso, combustible, pasajeros) consumía horas de planificación y generaba un 18% de sobrecosto por rutas subóptimas.',
-      solution: 'Desarrollamos un motor combinatorio avanzado que procesa miles de restricciones en milisegundos para trazar y simular la ruta aérea de menor consumo.',
+      problem: 'Horas de cálculo manual y sobrecosto de combustible del 18% por rutas subóptimas.',
+      solution: 'Motor combinatorio avanzado que procesa miles de restricciones por segundo y dibuja la trayectoria óptima.',
       metrics: [
         { label: 'Tiempo de cálculo', value: '99', prefix: '-', suffix: '%' },
-        { label: 'Costos de combustible', value: '12', prefix: '-', suffix: '%' },
-        { label: 'Rutas óptimas voladas', value: '250', prefix: '+', suffix: '' }
+        { label: 'Ahorro combustible', value: '12', prefix: '-', suffix: '%' },
+        { label: 'Rutas calculadas', value: '250', prefix: '+', suffix: '' }
       ]
     }
   },
@@ -371,7 +371,7 @@ export const projects: Project[] = [
     title: 'TaskZenith',
     subtitle: 'Gestión y personalización adaptativa en tiempo real.',
     description:
-      'Espacio de trabajo modular y dinámico. Cuenta con un grid interactivo persistente de 48 columnas con detección de colisiones, temporizadores Pomodoro integrados y gobernanza basada en roles.',
+      'Espacio de trabajo modular con grid persistente de 48 columnas, temporizadores Pomodoro integrados y control de acceso.',
     techStack: ['React', 'TypeScript', 'Firebase Firestore', 'CSS Grid', 'dnd-kit', 'Pomodoro API'],
     category: 'productividad',
     featured: true,
@@ -380,35 +380,35 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/sjaquer/TaskZenith',
     simulatorId: 'taskzenith',
     caseStudy: {
-      problem: 'Los sistemas de gestión convencionales imponen estructuras rígidas que limitan la flexibilidad de los equipos y aumentan la fricción visual diaria.',
-      solution: 'Implementamos una interfaz infinitamente moldeable mediante drag-and-drop persistente, permitiendo a cada usuario construir su propio panel de enfoque.',
+      problem: 'Estructuras de gestión rígidas que limitan la flexibilidad visual y la fluidez del equipo.',
+      solution: 'Dashboard modular interactivo con detección de colisiones y persistencia de widgets en base de datos.',
       metrics: [
         { label: 'Columnas del Grid', value: '48', prefix: '', suffix: '' },
-        { label: 'Widgets personalizados', value: '12', prefix: '+', suffix: '' },
-        { label: 'Productividad del equipo', value: '25', prefix: '+', suffix: '%' }
+        { label: 'Widgets modulares', value: '12', prefix: '+', suffix: '' },
+        { label: 'Productividad', value: '25', prefix: '+', suffix: '%' }
       ]
     }
   },
   {
     id: '5',
     title: 'Big Jack Bot',
-    subtitle: 'Automatización híbrida de pedidos en tiempo real con IA local/cloud.',
+    subtitle: 'Procesamiento de pedidos con IA híbrida.',
     description:
-      'Orquestador de mensajería comercial asistido por inteligencia artificial híbrida. Procesa chats entrantes de WhatsApp en tiempo real, utilizando modelos locales (Ollama Llama-3) para privacidad y modelos cloud (Gemini) para extraer órdenes estructuradas.',
+      'Agente conversacional que procesa chats de WhatsApp mediante Llama-3 local para privacidad y Gemini en la nube para estructuración.',
     techStack: ['Electron', 'React', 'Ollama (Llama-3)', 'Gemini API', 'WhatsApp Web API', 'Node.js'],
-    aiFeatures: ['Procesamiento híbrido local/cloud', 'Extracción estructurada en JSON', 'Automatización de webhooks'],
+    aiFeatures: ['Detección de intenciones local', 'Extracción de entidades a JSON', 'Webhook automático a ERP'],
     category: 'ia',
     featured: true,
     year: '2025',
     githubUrl: 'https://github.com/sjaquer/bigjack-bot',
     simulatorId: 'whatsappbot',
     caseStudy: {
-      problem: 'La toma y transcripción manual de pedidos por mensajería creaba demoras de hasta 8 minutos por cliente, reduciendo las ventas debido a respuestas lentas.',
-      solution: 'Desplegamos un agente de procesamiento lingüístico local y nube que analiza de inmediato notas de voz o textos informales para despachar pedidos estructurados en segundos.',
+      problem: 'Demoras de 8 minutos por cliente en toma manual de pedidos, reduciendo la conversión.',
+      solution: 'Procesamiento lingüístico híbrido local/nube que extrae órdenes en segundos a partir de mensajes informales.',
       metrics: [
-        { label: 'Tiempo por pedido', value: '90', prefix: '-', suffix: '%' },
-        { label: 'Tasa de conversión', value: '22', prefix: '+', suffix: '%' },
-        { label: 'Costos de API', value: '65', prefix: '-', suffix: '%' }
+        { label: 'Tiempo por orden', value: '90', prefix: '-', suffix: '%' },
+        { label: 'Conversión de chat', value: '22', prefix: '+', suffix: '%' },
+        { label: 'Reducción costo API', value: '65', prefix: '-', suffix: '%' }
       ]
     }
   }

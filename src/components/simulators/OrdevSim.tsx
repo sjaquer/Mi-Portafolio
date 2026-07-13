@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, RotateCcw, Compass, MapPin, Gauge, Terminal } from 'lucide-react';
+import { Play, RotateCcw, MapPin, Gauge, Terminal } from 'lucide-react';
 import { cn } from '../../utils/cn';
 
 export const OrdevSim = React.memo(() => {
@@ -18,27 +18,25 @@ export const OrdevSim = React.memo(() => {
   const runOptimizer = async () => {
     if (flightState !== 'idle') return;
     
-    // 1. Solving CP-SAT
     setFlightState('solving');
-    setSolverLogs(['[CP-SAT] Iniciando solver de optimización...', '[CP-SAT] Asignando límites de carga (450kg)...']);
+    setSolverLogs(['[CP-SAT] Iniciando solver...', '[CP-SAT] Asignando límites de carga (450kg)...']);
     
     await new Promise(r => setTimeout(r, 650));
-    setSolverLogs(prev => [...prev, '[CP-SAT] Analizando 4,812 rutas alternativas...', '[CP-SAT] Restricciones de viento y combustible: OK.']);
+    setSolverLogs(prev => [...prev, '[CP-SAT] Analizando 4,812 rutas...', '[CP-SAT] Restricciones clima: OK.']);
     
     await new Promise(r => setTimeout(r, 650));
-    setSolverLogs(prev => [...prev, '➔ Ruta Óptima calculada (11.8ms).', 'Asignación: Callao ➔ Chorrillos ➔ La Molina.']);
+    setSolverLogs(prev => [...prev, '➔ Ruta calculada en 11.8ms.', 'Ruta: Callao ➔ Chorrillos ➔ La Molina.']);
     
     await new Promise(r => setTimeout(r, 400));
     
-    // 2. Start flight animation
     setFlightState('flying');
     
-    // Volar a Nodo A
+    // Fly to Node A
     setHeliPos({ x: nodeA.x, y: nodeA.y });
     setStats({ fuel: 82, cost: 120, time: 24 });
     
     await new Promise(r => setTimeout(r, 1400));
-    // Volar a Nodo B
+    // Fly to Node B
     setHeliPos({ x: nodeB.x, y: nodeB.y });
     setStats({ fuel: 54, cost: 240, time: 48 });
     
@@ -56,94 +54,84 @@ export const OrdevSim = React.memo(() => {
   };
 
   return (
-    <div className="w-full h-full flex flex-col justify-between p-2 lg:p-6 relative overflow-hidden font-sans select-none">
-      {/* Subtle background ambient mesh */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/[0.03] via-transparent to-transparent pointer-events-none" />
-
-      {/* Header */}
-      <div className="flex items-center justify-between border-b border-slate-900 pb-3.5 z-10">
-        <div>
-          <span className="text-[8px] font-mono font-bold tracking-[0.2em] text-emerald-400 uppercase">Console</span>
-          <h4 className="text-xs sm:text-sm font-extrabold text-slate-100 flex items-center gap-2 mt-0.5 tracking-tight font-display">
-            <Compass size={13} className="text-emerald-400" /> ORDEV Solver CP-SAT
-          </h4>
-        </div>
-        <div className="flex gap-1.5">
+    <div className="w-full h-full flex flex-col justify-between p-1 lg:p-4 bg-transparent text-zinc-100 font-sans select-none">
+      {/* Top action controls */}
+      <div className="flex items-center justify-between pb-2 mb-2 border-b border-zinc-900/60">
+        <span className="text-[8px] font-mono font-bold tracking-wider text-orange-500">SIMULACIÓN CP-SAT</span>
+        <div className="flex gap-2">
           <motion.button
             whileHover={{ scale: flightState !== 'idle' ? 1 : 1.02 }}
             whileTap={{ scale: flightState !== 'idle' ? 1 : 0.98 }}
             onClick={runOptimizer}
             disabled={flightState !== 'idle'}
-            className="flex items-center gap-1 px-2 py-1 rounded-xl bg-emerald-500 hover:bg-emerald-400 disabled:opacity-30 disabled:pointer-events-none text-slate-950 text-[10px] font-bold transition-all shadow-md shadow-emerald-500/10 cursor-pointer"
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-orange-500 hover:bg-orange-400 disabled:opacity-30 disabled:pointer-events-none text-zinc-950 text-[10px] font-bold transition-all shadow-md cursor-pointer"
           >
-            <Play size={8} fill="currentColor" /> Simular Ruta
+            <Play size={8} fill="currentColor" /> Resolver
           </motion.button>
           <button
             onClick={resetSimulator}
-            className="p-1 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-slate-200 transition-all cursor-pointer"
-            aria-label="Reiniciar simulador"
+            className="p-1 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-zinc-200 transition-all cursor-pointer"
+            aria-label="Reiniciar"
           >
-            <RotateCcw size={11} />
+            <RotateCcw size={10} />
           </button>
         </div>
       </div>
 
-      {/* Mobile Responsive Tab Selector */}
-      <div className="flex sm:hidden w-full rounded-xl bg-slate-950/80 p-1 border border-slate-900/60 mt-4 z-10">
+      {/* Mobile Tab Selector */}
+      <div className="flex sm:hidden w-full rounded-lg bg-zinc-900/60 p-0.5 border border-zinc-900 mb-2">
         <button 
           onClick={() => setActiveTab('left')} 
           className={cn(
-            "flex-1 py-1.5 text-[9px] font-bold rounded-lg font-mono tracking-wider transition-all", 
-            activeTab === 'left' ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/5' : 'text-slate-500 hover:text-slate-300'
+            "flex-1 py-1 text-[9px] font-bold rounded-md font-mono transition-all", 
+            activeTab === 'left' ? 'bg-orange-500 text-zinc-950' : 'text-zinc-500 hover:text-zinc-300'
           )}
         >
-          MAPA RADAR
+          MAPA
         </button>
         <button 
           onClick={() => setActiveTab('right')} 
           className={cn(
-            "flex-1 py-1.5 text-[9px] font-bold rounded-lg font-mono tracking-wider transition-all", 
-            activeTab === 'right' ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/5' : 'text-slate-500 hover:text-slate-300'
+            "flex-1 py-1 text-[9px] font-bold rounded-md font-mono transition-all", 
+            activeTab === 'right' ? 'bg-orange-500 text-zinc-950' : 'text-zinc-500 hover:text-zinc-300'
           )}
         >
-          SOLVER LOGS
+          LOGS
         </button>
       </div>
 
-      {/* Core Simulation Panels */}
-      <div className="grid grid-cols-1 sm:grid-cols-5 gap-3 sm:gap-5 my-3 sm:my-5 flex-grow z-10 overflow-hidden">
-        
-        {/* Panel Izquierdo: SVG Vector Map (columnas 3/5) */}
+      {/* Panels */}
+      <div className="grid grid-cols-1 sm:grid-cols-5 gap-3 sm:gap-4 flex-grow overflow-hidden">
+        {/* Radar Map (cols 3/5) */}
         <div className={cn(
-          "sm:col-span-3 flex flex-col p-3 sm:p-4 bg-slate-900/40 rounded-[1.5rem] border border-slate-800/60 shadow-bento-dark relative overflow-hidden",
+          "sm:col-span-3 flex flex-col p-3 rounded-2xl bg-zinc-950/20 border border-zinc-900/30 relative overflow-hidden",
           activeTab === 'left' ? 'flex' : 'hidden sm:flex'
         )}>
-          <div className="flex items-center justify-between text-[9px] font-bold text-slate-500 font-mono uppercase tracking-widest mb-3">
-            <span className="flex items-center gap-1"><MapPin size={11} /> Monitoreo Georeferenciado</span>
-            <span className="text-emerald-400 font-mono">RADAR ACTIVE</span>
+          <div className="flex items-center justify-between text-[8px] font-bold text-zinc-500 font-mono tracking-wider mb-2">
+            <span>MONITOREO RADAR</span>
+            <span className="text-orange-500">ACTIVO</span>
           </div>
 
-          <div className="flex-grow w-full bg-slate-950/80 rounded-2xl relative overflow-hidden border border-slate-900/60 min-h-[140px]">
+          <div className="flex-grow w-full bg-zinc-950/50 rounded-xl relative overflow-hidden border border-zinc-900/40 min-h-[120px]">
             <svg className="w-full h-full" viewBox="0 0 240 140">
-              {/* Pattern grid background */}
               <defs>
                 <pattern id="radarGrid" width="20" height="20" patternUnits="userSpaceOnUse">
-                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.01)" strokeWidth="1"/>
+                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.015)" strokeWidth="1"/>
                 </pattern>
               </defs>
               <rect width="100%" height="100%" fill="url(#radarGrid)" />
 
-              {/* Radar Sweep Effect (Infinite Rotating Laser) */}
+              {/* Radar Sweep Effect */}
               <g transform="translate(120, 70)">
-                <circle r="60" fill="none" stroke="rgba(16, 185, 129, 0.03)" strokeWidth="1" />
-                <circle r="40" fill="none" stroke="rgba(16, 185, 129, 0.02)" strokeWidth="1" />
-                <line x1="0" y1="0" x2="80" y2="0" stroke="rgba(52, 211, 153, 0.15)" strokeWidth="1.5">
+                <circle r="55" fill="none" stroke="rgba(249, 115, 22, 0.04)" strokeWidth="1" />
+                <circle r="35" fill="none" stroke="rgba(249, 115, 22, 0.02)" strokeWidth="1" />
+                <line x1="0" y1="0" x2="75" y2="0" stroke="rgba(249, 115, 22, 0.15)" strokeWidth="1.5">
                   <animateTransform
                     attributeName="transform"
                     type="rotate"
                     from="0"
                     to="360"
-                    dur="5s"
+                    dur="6s"
                     repeatCount="indefinite"
                   />
                 </line>
@@ -155,40 +143,39 @@ export const OrdevSim = React.memo(() => {
                   <motion.line
                     x1={baseNode.x} y1={baseNode.y}
                     x2={nodeA.x} y2={nodeA.y}
-                    stroke="rgba(52, 211, 153, 0.4)"
+                    stroke="rgba(249, 115, 22, 0.4)"
                     strokeWidth="1.2"
-                    strokeDasharray="4,3"
+                    strokeDasharray="3,3"
                   />
                   <motion.line
                     x1={nodeA.x} y1={nodeA.y}
                     x2={nodeB.x} y2={nodeB.y}
-                    stroke="rgba(52, 211, 153, 0.4)"
+                    stroke="rgba(249, 115, 22, 0.4)"
                     strokeWidth="1.2"
-                    strokeDasharray="4,3"
+                    strokeDasharray="3,3"
                   />
                 </>
               )}
 
               {/* Node Indicators */}
-              <circle cx={baseNode.x} cy={baseNode.y} r="4" fill="#475569" />
-              <text x={baseNode.x - 15} y={baseNode.y + 13} fill="#64748b" className="text-[6.5px] font-mono font-bold uppercase">Callao</text>
+              <circle cx={baseNode.x} cy={baseNode.y} r="3.5" fill="#475569" />
+              <text x={baseNode.x - 12} y={baseNode.y + 10} fill="#64748b" className="text-[6px] font-mono font-bold">Callao</text>
 
-              <circle cx={nodeA.x} cy={nodeA.y} r="4.5" fill="#10b981" className={flightState === 'flying' && stats.fuel <= 82 ? "animate-pulse" : ""} />
-              <text x={nodeA.x - 22} y={nodeA.y - 8} fill="#94a3b8" className="text-[6.5px] font-mono font-bold uppercase">Chorrillos</text>
+              <circle cx={nodeA.x} cy={nodeA.y} r="4" fill="#f97316" className={flightState === 'flying' && stats.fuel <= 82 ? "animate-pulse" : ""} />
+              <text x={nodeA.x - 18} y={nodeA.y - 6} fill="#94a3b8" className="text-[6px] font-mono font-bold">Chorrillos</text>
 
-              <circle cx={nodeB.x} cy={nodeB.y} r="4.5" fill="#10b981" />
-              <text x={nodeB.x - 20} y={nodeB.y + 13} fill="#94a3b8" className="text-[6.5px] font-mono font-bold uppercase">La Molina</text>
+              <circle cx={nodeB.x} cy={nodeB.y} r="4" fill="#f97316" />
+              <text x={nodeB.x - 18} y={nodeB.y + 10} fill="#94a3b8" className="text-[6px] font-mono font-bold">La Molina</text>
 
               {/* Draggable Helicopter Icon */}
               <motion.g
-                animate={{ x: heliPos.x - 8, y: heliPos.y - 8 }}
+                animate={{ x: heliPos.x - 6, y: heliPos.y - 6 }}
                 transition={{ type: 'spring', stiffness: 22, damping: 11 }}
               >
-                {/* Visual helicopter SVG */}
-                <circle cx="8" cy="8" r="4.5" fill="#34d399" className="shadow-md" />
-                <line x1="1" y1="8" x2="15" y2="8" stroke="#34d399" strokeWidth="1.5" />
-                <line x1="8" y1="2" x2="8" y2="8" stroke="#34d399" strokeWidth="1.5" />
-                <path d="M 3 2 L 13 2" stroke="#34d399" strokeWidth="1" />
+                <circle cx="6" cy="6" r="3.5" fill="#fdba74" className="shadow-md" />
+                <line x1="1" y1="6" x2="11" y2="6" stroke="#fdba74" strokeWidth="1" />
+                <line x1="6" y1="2" x2="6" y2="6" stroke="#fdba74" strokeWidth="1" />
+                <path d="M 3 2 L 9 2" stroke="#fdba74" strokeWidth="0.8" />
               </motion.g>
             </svg>
           </div>
@@ -196,27 +183,26 @@ export const OrdevSim = React.memo(() => {
 
         {/* Panel Derecho: Logs + Telemetría (columnas 2/5) */}
         <div className={cn(
-          "sm:col-span-2 flex flex-col justify-between gap-3 sm:gap-4",
+          "sm:col-span-2 flex flex-col justify-between gap-3",
           activeTab === 'right' ? 'flex' : 'hidden sm:flex'
         )}>
-          
           {/* Solver Logging Console */}
-          <div className="flex-grow p-3 sm:p-4 bg-slate-900/40 rounded-[1.5rem] border border-slate-800/60 shadow-bento-dark flex flex-col justify-between overflow-hidden">
-            <div className="flex items-center justify-between text-[9px] font-bold text-slate-500 font-mono uppercase tracking-widest mb-2.5">
-              <span className="flex items-center gap-1"><Terminal size={11} /> Logs de CP-SAT</span>
+          <div className="flex-grow p-3 rounded-2xl bg-zinc-950/20 border border-zinc-900/30 flex flex-col justify-between overflow-hidden">
+            <div className="flex items-center justify-between text-[8px] font-bold text-zinc-500 font-mono tracking-wider mb-2">
+              <span>SOLVER LOGS</span>
             </div>
             
-            <div className="flex-grow bg-slate-950 p-2.5 rounded-xl border border-slate-900 font-mono text-[7px] text-slate-500 overflow-y-auto leading-relaxed min-h-[50px] flex flex-col gap-0.5">
+            <div className="flex-grow bg-zinc-950/60 p-2 rounded-xl border border-zinc-900/60 font-mono text-[7px] text-zinc-550 overflow-y-auto leading-relaxed min-h-[45px] flex flex-col gap-0.5">
               <AnimatePresence>
                 {solverLogs.length === 0 ? (
-                  <span className="text-slate-700 italic">Esperando instrucción...</span>
+                  <span className="text-zinc-700 italic">Esperando...</span>
                 ) : (
                   solverLogs.map((log, idx) => (
                     <motion.div
                       key={idx}
-                      initial={{ opacity: 0, x: -4 }}
+                      initial={{ opacity: 0, x: -2 }}
                       animate={{ opacity: 1, x: 0 }}
-                      className={idx === solverLogs.length - 1 ? "text-emerald-400" : ""}
+                      className={idx === solverLogs.length - 1 ? "text-orange-400 font-bold" : ""}
                     >
                       &gt; {log}
                     </motion.div>
@@ -227,31 +213,29 @@ export const OrdevSim = React.memo(() => {
           </div>
 
           {/* Symmetrical telemetry */}
-          <div className="p-3 sm:p-4 bg-slate-900/40 rounded-[1.5rem] border border-slate-800/60 shadow-bento-dark">
-            <div className="flex items-center justify-between text-[9px] font-bold text-slate-500 font-mono uppercase tracking-widest mb-2.5">
-              <span className="flex items-center gap-1"><Gauge size={11} /> Telemetría</span>
+          <div className="p-3 rounded-2xl bg-zinc-950/20 border border-zinc-900/30">
+            <div className="flex items-center justify-between text-[8px] font-bold text-zinc-500 font-mono tracking-wider mb-2">
+              <span>TELEMETRÍA</span>
             </div>
             
-            <div className="grid grid-cols-2 gap-2 text-center font-mono text-[8px]">
-              <div className="p-2 bg-slate-950 rounded-xl border border-slate-900">
-                <span className="text-slate-500 block mb-0.5">COMBUSTIBLE</span>
-                <span className="text-slate-200 font-bold">{stats.fuel}%</span>
+            <div className="grid grid-cols-2 gap-1.5 text-center font-mono text-[7.5px]">
+              <div className="p-1.5 bg-zinc-950/50 rounded-lg border border-zinc-900/50">
+                <span className="text-zinc-500 block mb-0.5">COMBUSTIBLE</span>
+                <span className="text-zinc-200 font-bold">{stats.fuel}%</span>
               </div>
-              <div className="p-2 bg-slate-950 rounded-xl border border-slate-900">
-                <span className="text-slate-500 block mb-0.5">VALOR DE RUTA</span>
-                <span className="text-emerald-400 font-bold">${stats.cost} USD</span>
+              <div className="p-1.5 bg-zinc-950/50 rounded-lg border border-zinc-900/50">
+                <span className="text-zinc-500 block mb-0.5">COSTO</span>
+                <span className="text-orange-400 font-bold">${stats.cost} USD</span>
               </div>
             </div>
           </div>
-
         </div>
-
       </div>
 
       {/* Footer Banner */}
-      <div className="border-t border-slate-900 pt-3 flex items-center justify-between text-[9px] text-slate-500 font-mono z-10">
-        <span>Cálculo óptimo: &lt; 15ms</span>
-        <span className="text-slate-600 font-bold">Google OR-Tools CP-SAT</span>
+      <div className="border-t border-zinc-900/60 pt-2 mt-2 flex items-center justify-between text-[7.5px] text-zinc-500 font-mono">
+        <span>Cálculo: &lt; 15ms</span>
+        <span className="text-zinc-650 font-bold">Google OR-Tools</span>
       </div>
     </div>
   );

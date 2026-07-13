@@ -44,62 +44,53 @@ export const TaskZenithSim = React.memo(() => {
   };
 
   return (
-    <div className="w-full h-full flex flex-col justify-between p-2 lg:p-6 relative overflow-hidden font-sans select-none">
-      {/* Subtle background ambient mesh */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/[0.03] via-transparent to-transparent pointer-events-none" />
-
-      {/* Header */}
-      <div className="flex items-center justify-between border-b border-slate-900 pb-3.5 z-10">
-        <div>
-          <span className="text-[8px] font-mono font-bold tracking-[0.2em] text-emerald-400 uppercase">Precision Console</span>
-          <h4 className="text-sm font-extrabold text-slate-100 flex items-center gap-2 mt-0.5 tracking-tight font-display">
-            <LayoutGrid size={15} className="text-emerald-400" /> Dashboard TaskZenith
-          </h4>
-        </div>
-        <div className="flex gap-1.5">
+    <div className="w-full h-full flex flex-col justify-between p-1 lg:p-4 bg-transparent text-zinc-100 font-sans select-none">
+      {/* Top action controls */}
+      <div className="flex items-center justify-between pb-2 mb-2 border-b border-zinc-900/60">
+        <span className="text-[8px] font-mono font-bold tracking-wider text-blue-500">MÓDULO DE REJILLA</span>
+        <div className="flex gap-2">
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={() => setIsLargeWidget(!isLargeWidget)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold transition-all shadow-md shadow-emerald-500/10 cursor-pointer"
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-blue-500 hover:bg-blue-400 text-zinc-950 text-[10px] font-bold transition-all shadow-md cursor-pointer"
           >
-            <Layers size={10} /> Escalar Layout
+            <Layers size={9} /> Escalar
           </motion.button>
           <button
             onClick={resetSimulator}
-            className="p-1.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-slate-200 transition-all cursor-pointer"
-            aria-label="Reiniciar simulador"
+            className="p-1 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-zinc-200 transition-all cursor-pointer"
+            aria-label="Reiniciar"
           >
-            <RotateCcw size={13} />
+            <RotateCcw size={10} />
           </button>
         </div>
       </div>
 
-      {/* Core Simulation Panels */}
-      <div className="grid grid-cols-1 gap-3 my-3 flex-grow z-10">
-        
+      {/* Panels */}
+      <div className="grid grid-cols-1 gap-2.5 my-2.5 flex-grow">
         {/* Role Bar Selector */}
-        <div className="flex items-center justify-between p-2 bg-slate-900/40 rounded-xl border border-slate-900 text-xs">
-          <span className="flex items-center gap-1.5 text-[9px] text-slate-500 font-mono font-bold uppercase tracking-wider">
-            <Shield size={12} className="text-emerald-400" /> Privilegios de Acceso:
+        <div className="flex items-center justify-between p-2 bg-zinc-950/40 rounded-xl border border-zinc-900/50 text-[9px]">
+          <span className="flex items-center gap-1.5 text-[7.5px] text-zinc-500 font-mono font-bold uppercase tracking-wider">
+            <Shield size={10} className="text-blue-400" /> Permisos:
           </span>
-          <div className="flex gap-1 font-mono text-[8px]">
+          <div className="flex gap-1 font-mono text-[7px]">
             <button
               onClick={() => setRole('admin')}
-              className={`px-2 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+              className={`px-2 py-0.5 rounded font-bold transition-all cursor-pointer ${
                 role === 'admin' 
-                  ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/25' 
-                  : 'bg-transparent text-slate-500 border border-transparent hover:text-slate-350'
+                  ? 'bg-blue-500/10 text-blue-400 border border-blue-500/20' 
+                  : 'bg-transparent text-zinc-500 border border-transparent hover:text-zinc-300'
               }`}
             >
               ADMIN
             </button>
             <button
               onClick={() => setRole('operator')}
-              className={`px-2 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+              className={`px-2 py-0.5 rounded font-bold transition-all cursor-pointer ${
                 role === 'operator' 
-                  ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/25' 
-                  : 'bg-transparent text-slate-500 border border-transparent hover:text-slate-350'
+                  ? 'bg-blue-500/10 text-blue-400 border border-blue-500/20' 
+                  : 'bg-transparent text-zinc-500 border border-transparent hover:text-zinc-300'
               }`}
             >
               OPERARIO
@@ -108,20 +99,19 @@ export const TaskZenithSim = React.memo(() => {
         </div>
 
         {/* Dashboard Grid Workspace */}
-        <div className="grid grid-cols-2 gap-2.5 text-left font-mono">
-          
+        <div className="grid grid-cols-2 gap-2 text-left font-mono">
           {/* Widget 1: Focus Module (Pomodoro) */}
-          <div className={`p-3 bg-slate-900/40 border border-slate-800/60 shadow-bento-dark rounded-[1.5rem] transition-all duration-300 flex flex-col justify-between relative overflow-hidden ${
+          <div className={`p-2.5 bg-zinc-950/20 border border-zinc-900/40 shadow-inner rounded-2xl transition-all duration-300 flex flex-col justify-between relative overflow-hidden ${
             isLargeWidget ? 'col-span-2' : 'col-span-1'
           }`}>
             {timerRunning && (
-              <div className="absolute inset-0 bg-radial-gradient from-emerald-500/5 to-transparent animate-pulse pointer-events-none" />
+              <div className="absolute inset-0 bg-radial-gradient from-blue-500/5 to-transparent animate-pulse pointer-events-none" />
             )}
             
-            <span className="text-[7.5px] font-bold text-slate-500 uppercase tracking-widest block">Módulo Enfoque</span>
-            <div className="my-2.5 text-center">
-              <span className={`text-xl font-extrabold block font-mono tracking-tighter ${
-                timerRunning ? "text-emerald-400 animate-pulse" : "text-slate-100"
+            <span className="text-[7px] font-bold text-zinc-500 uppercase tracking-widest block">Pomodoro</span>
+            <div className="my-1.5 text-center">
+              <span className={`text-lg font-extrabold block font-mono tracking-tighter ${
+                timerRunning ? "text-blue-400 animate-pulse" : "text-zinc-200"
               }`}>
                 {formatTime(timeLeft)}
               </span>
@@ -130,51 +120,51 @@ export const TaskZenithSim = React.memo(() => {
             <div className="flex justify-center gap-1.5 z-10">
               <button 
                 onClick={toggleTimer} 
-                className="p-1 px-2 rounded-lg bg-slate-950 border border-slate-900 text-slate-400 hover:text-emerald-400 transition-all cursor-pointer flex items-center justify-center"
-                aria-label={timerRunning ? "Pausar Pomodoro" : "Iniciar Pomodoro"}
+                className="p-1 px-1.5 rounded-lg bg-zinc-950 border border-zinc-900 text-zinc-400 hover:text-blue-400 transition-all cursor-pointer flex items-center justify-center"
+                aria-label={timerRunning ? "Pausar" : "Iniciar"}
               >
-                {timerRunning ? <Pause size={10} /> : <Play size={10} fill="currentColor" />}
+                {timerRunning ? <Pause size={8} /> : <Play size={8} fill="currentColor" />}
               </button>
               <button 
                 onClick={resetTimer} 
-                className="p-1 px-2 rounded-lg bg-slate-950 border border-slate-900 text-slate-400 hover:text-slate-100 transition-all cursor-pointer flex items-center justify-center"
-                aria-label="Reiniciar Pomodoro"
+                className="p-1 px-1.5 rounded-lg bg-zinc-950 border border-zinc-900 text-zinc-400 hover:text-zinc-100 transition-all cursor-pointer flex items-center justify-center"
+                aria-label="Reiniciar"
               >
-                <RotateCcw size={10} />
+                <RotateCcw size={8} />
               </button>
             </div>
           </div>
 
-          {/* Widget 2: Metrics/Task Feed (Admin vs. Operator) */}
-          <div className={`p-3 bg-slate-900/40 border border-slate-800/60 shadow-bento-dark rounded-[1.5rem] flex flex-col justify-between transition-all duration-300 ${
+          {/* Widget 2: Metrics/Task Feed */}
+          <div className={`p-2.5 bg-zinc-950/20 border border-zinc-900/40 shadow-inner rounded-2xl flex flex-col justify-between transition-all duration-300 ${
             isLargeWidget ? 'hidden' : 'col-span-1'
           }`}>
             {role === 'admin' ? (
               <>
-                <span className="text-[7.5px] font-bold text-slate-500 uppercase tracking-widest block">Monitoreo Ventas</span>
-                <div className="mt-2 flex flex-col gap-1">
-                  <div className="flex justify-between text-[8px] text-slate-400 font-bold">
-                    <span>Ventas</span>
-                    <span className="text-emerald-400 font-bold">$12,478.20</span>
+                <span className="text-[7px] font-bold text-zinc-500 uppercase tracking-widest block">Ventas</span>
+                <div className="mt-1 flex flex-col gap-1">
+                  <div className="flex justify-between text-[7px] text-zinc-400 font-bold">
+                    <span>Meta</span>
+                    <span className="text-blue-400 font-bold">$12,478</span>
                   </div>
-                  <div className="w-full h-1.5 bg-slate-950 rounded-full overflow-hidden border border-slate-900">
-                    <div className="h-full bg-emerald-500 w-[78%]" />
+                  <div className="w-full h-1 bg-zinc-900 rounded-full overflow-hidden">
+                    <div className="h-full bg-blue-500 w-[78%]" />
                   </div>
                 </div>
-                <div className="text-[6.5px] text-slate-500 mt-2 italic leading-snug">
-                  78.2% de la meta diaria
+                <div className="text-[6px] text-zinc-550 mt-1 italic leading-snug">
+                  78.2% completado
                 </div>
               </>
             ) : (
               <>
-                <span className="text-[7.5px] font-bold text-slate-500 uppercase tracking-widest block">Mis Tareas</span>
-                <div className="mt-2 flex flex-col gap-1.5 text-[7px] text-slate-400 leading-none">
-                  <div className="flex items-center gap-1.5">
-                    <input type="checkbox" defaultChecked className="accent-emerald-500 scale-75 cursor-not-allowed" disabled />
-                    <span className="line-through text-slate-600">Reunión diaria</span>
+                <span className="text-[7px] font-bold text-zinc-500 uppercase tracking-widest block">Tareas</span>
+                <div className="mt-1 flex flex-col gap-1 text-[6.5px] text-zinc-400 leading-none">
+                  <div className="flex items-center gap-1">
+                    <input type="checkbox" defaultChecked className="accent-blue-500 scale-75 cursor-not-allowed" disabled />
+                    <span className="line-through text-zinc-600">Reunión</span>
                   </div>
-                  <div className="flex items-center gap-1.5">
-                    <input type="checkbox" className="accent-emerald-500 scale-75 cursor-not-allowed" disabled />
+                  <div className="flex items-center gap-1">
+                    <input type="checkbox" className="accent-blue-500 scale-75 cursor-not-allowed" disabled />
                     <span>Despachar ERP</span>
                   </div>
                 </div>
@@ -182,20 +172,18 @@ export const TaskZenithSim = React.memo(() => {
             )}
           </div>
 
-          {/* Symmetrical Grid Indicator Panel */}
-          <div className="col-span-2 p-2 bg-slate-950/70 border border-slate-900 rounded-xl text-[7.5px] text-slate-500 flex justify-between items-center">
-            <span className="font-bold">GRID MULTIPROPÓSITO (48 COLUMNAS)</span>
-            <span className="text-emerald-400 animate-pulse font-bold tracking-widest">AUTOSYNC ON</span>
+          {/* Grid Metadata Footer */}
+          <div className="col-span-2 p-1.5 bg-zinc-950/50 border border-zinc-900/60 rounded-xl text-[7px] text-zinc-550 flex justify-between items-center">
+            <span className="font-bold">REJILLA DE 48 COLUMNAS</span>
+            <span className="text-blue-400 font-bold">AUTOSYNC</span>
           </div>
-
         </div>
-
       </div>
 
       {/* Footer Banner */}
-      <div className="border-t border-slate-900 pt-3 flex items-center justify-between text-[9px] text-slate-500 font-mono z-10">
-        <span>Colisiones en tiempo real</span>
-        <span className="text-slate-600 font-bold">Tailwind CSS Grid v3</span>
+      <div className="border-t border-zinc-900/60 pt-2 mt-2 flex items-center justify-between text-[7.5px] text-zinc-500 font-mono">
+        <span>Persistencia Local</span>
+        <span className="text-zinc-650 font-bold">CSS Grid</span>
       </div>
     </div>
   );
