@@ -127,7 +127,7 @@ const AIShowcase = () => {
               className="w-48 h-48 lg:w-60 lg:h-60 shrink-0 relative"
             >
               <Suspense fallback={null}>
-                <Canvas camera={{ position: [0, 0, 4], fov: 45 }} gl={{ alpha: true, antialias: true }} className={canvasClass}>
+                <Canvas camera={{ position: [0, 0, 4], fov: 45 }} gl={{ alpha: true, antialias: true }} dpr={[1, 1.5]} className={canvasClass}>
                   <Scene3D variant="top" />
                 </Canvas>
               </Suspense>
@@ -206,7 +206,7 @@ const AIShowcase = () => {
             onClick={handleSecretClick}
           >
             <Suspense fallback={null}>
-              <Canvas camera={{ position: [0, 0, 3.5], fov: 50 }} gl={{ alpha: true, antialias: true }} className={canvasClass}>
+              <Canvas camera={{ position: [0, 0, 3.5], fov: 50 }} gl={{ alpha: true, antialias: true }} dpr={[1, 1.5]} className={canvasClass}>
                 <Scene3D variant="bottom" />
               </Canvas>
             </Suspense>

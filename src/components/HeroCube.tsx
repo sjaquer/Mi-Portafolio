@@ -75,8 +75,18 @@ function MouseTracker() {
       mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
       mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
     };
+    const handleTouch = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        mouse.x = (e.touches[0].clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(e.touches[0].clientY / window.innerHeight) * 2 + 1;
+      }
+    };
     window.addEventListener('mousemove', handleMouse);
-    return () => window.removeEventListener('mousemove', handleMouse);
+    window.addEventListener('touchmove', handleTouch, { passive: true });
+    return () => {
+      window.removeEventListener('mousemove', handleMouse);
+      window.removeEventListener('touchmove', handleTouch);
+    };
   }, []);
   return null;
 }
@@ -103,6 +113,7 @@ const HeroCube = () => {
       <Canvas
         camera={{ position: [0, 0, 3.8], fov: 55 }}
         gl={{ antialias: true, alpha: true, failIfMajorPerformanceCaveat: false }}
+        dpr={[1, 1.5]}
         style={{
           width: '100%',
           height: '100%',

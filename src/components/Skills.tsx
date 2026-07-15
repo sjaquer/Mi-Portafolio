@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Suspense } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
@@ -68,6 +68,28 @@ function SkillGeometry() {
   );
 }
 
+function SkillMouseTracker() {
+  useEffect(() => {
+    const handleMouse = (e: MouseEvent) => {
+      mouse3d.x = (e.clientX / window.innerWidth) * 2 - 1;
+      mouse3d.y = -(e.clientY / window.innerHeight) * 2 + 1;
+    };
+    const handleTouch = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        mouse3d.x = (e.touches[0].clientX / window.innerWidth) * 2 - 1;
+        mouse3d.y = -(e.touches[0].clientY / window.innerHeight) * 2 + 1;
+      }
+    };
+    window.addEventListener('mousemove', handleMouse);
+    window.addEventListener('touchmove', handleTouch, { passive: true });
+    return () => {
+      window.removeEventListener('mousemove', handleMouse);
+      window.removeEventListener('touchmove', handleTouch);
+    };
+  }, []);
+  return null;
+}
+
 function SkillScene() {
   return (
     <>
@@ -75,6 +97,7 @@ function SkillScene() {
       <pointLight position={[5, 5, 5]} intensity={0.5} color="#34d399" />
       <pointLight position={[-4, -3, 5]} intensity={0.3} color="#0d9488" />
       <pointLight position={[3, -5, 4]} intensity={0.2} color="#14b8a6" />
+      <SkillMouseTracker />
       <SkillGeometry />
     </>
   );
@@ -119,15 +142,8 @@ const Skills = () => {
           <Canvas
             camera={{ position: [0, 0, 5.5], fov: 50 }}
             gl={{ antialias: true, alpha: true, failIfMajorPerformanceCaveat: false }}
+            dpr={[1, 1.5]}
             style={{ width: '100%', height: '100%' }}
-            onCreated={({ gl }) => {
-              const handleMouse = (e: MouseEvent) => {
-                mouse3d.x = (e.clientX / window.innerWidth) * 2 - 1;
-                mouse3d.y = -(e.clientY / window.innerHeight) * 2 + 1;
-              };
-              window.addEventListener('mousemove', handleMouse);
-              return () => window.removeEventListener('mousemove', handleMouse);
-            }}
           >
             <SkillScene />
           </Canvas>

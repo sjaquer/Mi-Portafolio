@@ -427,7 +427,7 @@ export const Project3DShowcase: React.FC<Project3DShowcaseProps> = ({ simulatorI
   };
 
   return (
-    <div className="w-full h-full relative cursor-grab active:cursor-grabbing select-none" style={{ minHeight: '280px' }}>
+    <div className="w-full h-full relative cursor-grab active:cursor-grabbing select-none" style={{ minHeight: '280px', touchAction: 'none' }}>
       <Suspense fallback={
         <div className="w-full h-full flex items-center justify-center">
           <div className="w-6 h-6 border-2 border-slate-800 border-t-emerald-500 rounded-full animate-spin" />
@@ -436,6 +436,7 @@ export const Project3DShowcase: React.FC<Project3DShowcaseProps> = ({ simulatorI
         <Canvas
           camera={{ position: [0, 0, 3.2], fov: 45 }}
           gl={{ antialias: true, alpha: true, failIfMajorPerformanceCaveat: false }}
+          dpr={[1, 2]}
           style={{ width: '100%', height: '100%', background: 'transparent' }}
         >
           <ambientLight intensity={0.5} />
