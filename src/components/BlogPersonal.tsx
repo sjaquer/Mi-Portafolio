@@ -470,16 +470,36 @@ const BlogPersonal: React.FC = () => {
           transition: color 0.5s ease;
         }
 
+        .poem-progress-bar {
+          position: fixed;
+          top: 0;
+          left: 0;
+          height: 2px;
+          z-index: 100;
+          transition: width 0.4s ease, background-color 0.5s ease;
+        }
+
         .poem-index {
           position: fixed;
           right: 2rem;
           top: 50%;
           transform: translateY(-50%);
+          height: 60vh; /* Altura de la ventana de scroll del índice */
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          z-index: 10;
+          overflow: hidden; /* Oculta desbordes de 56 poemas */
+          pointer-events: none;
+        }
+
+        .poem-index-inner {
           display: flex;
           flex-direction: column;
           align-items: flex-end;
           gap: 0.9rem;
-          z-index: 10;
+          transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+          pointer-events: auto;
         }
 
         .poem-index-btn {
@@ -543,19 +563,22 @@ const BlogPersonal: React.FC = () => {
             display: none;
           }
           .poem-index {
-            right: 0.75rem;
-            gap: 0.75rem;
+            right: 0.5rem;
+            height: 50vh; /* Ajuste para pantallas más bajas */
+          }
+          .poem-index-inner {
+            gap: 0.6rem;
           }
           .poem-index-btn {
             gap: 0;
-            padding: 0.3rem 0.2rem; /* Aumenta el área de tap */
+            padding: 0.4rem 0.3rem; /* Área de tap extra generosa para celulares */
           }
           .index-line {
-            width: 2px; /* Más gruesas para facilitar el tap */
-            height: 10px;
+            width: 2px;
+            height: 8px;
           }
           .poem-index-btn.active .index-line {
-            height: 22px;
+            height: 18px;
           }
         }
 
@@ -574,31 +597,48 @@ const BlogPersonal: React.FC = () => {
         <a href="/" onClick={handleGoBack} className="nav-back-btn">← Volver al sitio</a>
       </div>
 
-      {/* Index sidebar */}
+      {/* Barra de progreso de lectura horizontal fija arriba */}
+      <div
+        className="poem-progress-bar"
+        style={{
+          width: `${((activeIndex + 1) / poemas.length) * 100}%`,
+          backgroundColor: activeColor
+        }}
+      />
+
+      {/* Index sidebar deslizante dinámicamente para centrar el poema activo */}
       <nav className="poem-index">
-        {poemas.map((p, i) => {
-          const isActive = activeIndex === i;
-          return (
-            <button
-              key={p.id}
-              className={`poem-index-btn${isActive ? ' active' : ''}`}
-              onClick={() => scrollToPoem(i)}
-            >
-              <span
-                className="index-label"
-                style={{ color: isActive ? p.color.accent : undefined }}
+        <div
+          className="poem-index-inner"
+          style={{
+            // El scroll dinámico centra verticalmente la línea del poema activo
+            transform: `translateY(calc(30vh - ${activeIndex * (window.innerWidth <= 900 ? 22 : 28)}px))`
+          }}
+        >
+          {poemas.map((p, i) => {
+            const isActive = activeIndex === i;
+            return (
+              <button
+                key={p.id}
+                className={`poem-index-btn${isActive ? ' active' : ''}`}
+                onClick={() => scrollToPoem(i)}
               >
-                {p.titulo}
-              </span>
-              <span
-                className={`index-line${isActive ? ' active' : ''}`}
-                style={{
-                  background: isActive ? p.color.accent : undefined,
-                }}
-              />
-            </button>
-          );
-        })}
+                <span
+                  className="index-label"
+                  style={{ color: isActive ? p.color.accent : undefined }}
+                >
+                  {p.titulo}
+                </span>
+                <span
+                  className={`index-line${isActive ? ' active' : ''}`}
+                  style={{
+                    background: isActive ? p.color.accent : undefined,
+                  }}
+                />
+              </button>
+            );
+          })}
+        </div>
       </nav>
 
       {/* Progress counter */}
