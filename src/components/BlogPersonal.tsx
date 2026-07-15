@@ -155,7 +155,7 @@ const BlogPersonal: React.FC = () => {
   }, [isAuthenticated]);
 
   useEffect(() => {
-    if (!isAuthenticated || poemRefs.current.length === 0) return;
+    if (!isAuthenticated) return;
 
     const ratios = new Map<number, number>();
     const obs = new IntersectionObserver(
@@ -170,18 +170,31 @@ const BlogPersonal: React.FC = () => {
         for (let i = 0; i < poemas.length; i++) {
           const r = ratios.get(i) ?? 0;
           newVis[i] = r;
-          if (r > maxRatio) { maxRatio = r; maxIdx = i; }
+          if (r > maxRatio) {
+            maxRatio = r;
+            maxIdx = i;
+          }
         }
         setVisibility(newVis);
         setActiveIndex(maxIdx);
       },
-      { threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0] }
+      {
+        root: null,
+        rootMargin: '-30% 0px -30% 0px', // Mayor sensibilidad en la zona central de la pantalla
+        threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+      }
     );
 
-    for (const el of poemRefs.current) {
-      if (el) obs.observe(el);
-    }
-    return () => obs.disconnect();
+    // Esperar a que React renderice los elementos del DOM y observarlos directamente
+    const timer = setTimeout(() => {
+      const elements = document.querySelectorAll('.blog-article');
+      elements.forEach((el) => obs.observe(el));
+    }, 150);
+
+    return () => {
+      clearTimeout(timer);
+      obs.disconnect();
+    };
   }, [isAuthenticated]);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -293,6 +306,18 @@ const BlogPersonal: React.FC = () => {
           position: relative;
           margin-bottom: 40vh;
           padding: 2rem 0;
+          opacity: 0.25; /* Apagado por defecto para destacar el activo */
+          transform: translateY(15px);
+          transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .blog-article.active {
+          opacity: 1; /* Se ilumina al estar activo */
+          transform: translateY(0);
+        }
+
+        .blog-article:hover {
+          opacity: 1; /* Iluminado al pasar el ratón */
         }
 
         .blog-article:last-of-type {
@@ -514,16 +539,34 @@ const BlogPersonal: React.FC = () => {
         ::-webkit-scrollbar-thumb { background: #222; border-radius: 2px; }
 
         @media (max-width: 900px) {
-          .poem-index { display: none; }
+          .index-label {
+            display: none;
+          }
+          .poem-index {
+            right: 0.75rem;
+            gap: 0.75rem;
+          }
+          .poem-index-btn {
+            gap: 0;
+            padding: 0.3rem 0.2rem; /* Aumenta el área de tap */
+          }
+          .index-line {
+            width: 2px; /* Más gruesas para facilitar el tap */
+            height: 10px;
+          }
+          .poem-index-btn.active .index-line {
+            height: 22px;
+          }
         }
 
         @media (max-width: 640px) {
-          .blog-wrapper { padding: 10vh 6vw; }
-          .blog-article { margin-bottom: 30vh; }
-          .blog-title { font-size: 1.2rem; }
-          .blog-text { font-size: 1rem; }
+          .blog-wrapper { padding: 8vh 6vw; }
+          .blog-main { max-width: 100%; }
+          .blog-article { margin-bottom: 25vh; }
+          .blog-title { font-size: 1.25rem; margin-bottom: 1.5rem; }
+          .blog-text { font-size: 1rem; line-height: 1.8; }
           .blog-article::before { left: -1rem; right: -1rem; }
-          .progress-counter { right: 1rem; bottom: 1rem; }
+          .progress-counter { right: 1.2rem; bottom: 1.2rem; opacity: 0.4; }
         }
       `}</style>
 
