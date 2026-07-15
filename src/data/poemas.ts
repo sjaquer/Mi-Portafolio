@@ -1,13 +1,27 @@
+export interface PoemColor {
+  accent: string;
+  gradient: string;
+  glow: string;
+  border: string;
+}
+
 export interface Poema {
   id: string;
   titulo: string;
   contenido: string;
+  color: PoemColor;
 }
 
 export const poemas: Poema[] = [
   {
     id: "sinapsis-digestiva",
     titulo: "Sinapsis Digestiva",
+    color: {
+      accent: "#d97706",
+      gradient: "linear-gradient(135deg, #d97706, #f59e0b)",
+      glow: "rgba(217,119,6,0.08)",
+      border: "rgba(217,119,6,0.2)",
+    },
     contenido: `Carece de pensamiento;
 es solo instinto y sinapsis digestiva.
 Yo administro la ración
@@ -28,6 +42,12 @@ termina exactamente donde empieza su piel.`
   {
     id: "la-renuncia-al-arquitecto",
     titulo: "La Renuncia al Arquitecto",
+    color: {
+      accent: "#3b82f6",
+      gradient: "linear-gradient(135deg, #3b82f6, #60a5fa)",
+      glow: "rgba(59,130,246,0.08)",
+      border: "rgba(59,130,246,0.2)",
+    },
     contenido: `Me pregunto si mi mundo fue construido para el beneficio de otra persona. No soy capaz de encontrar, por mi propia cuenta, la convicción de querer vivir para mí. No quiero hacerlo, no me agrada, no siento que el esfuerzo valga la pena si el fin soy yo mismo.
 
 Quiero que alguien más tome mi vida y le dé el molde que yo no sé encontrar.
@@ -37,6 +57,12 @@ Deseo ser la masa para aquel que quiera tener a alguien como yo. Quiero que me h
   {
     id: "el-indulto",
     titulo: "El Indulto",
+    color: {
+      accent: "#b91c1c",
+      gradient: "linear-gradient(135deg, #b91c1c, #dc2626)",
+      glow: "rgba(185,28,28,0.08)",
+      border: "rgba(185,28,28,0.2)",
+    },
     contenido: `Ignoré el llanto de mamá.
 Me encerré en la ignorancia para no naufragar en su orilla;
 sostener el silencio fue mi única forma de seguir en pie.
@@ -52,6 +78,12 @@ me mató su incapacidad de dejarme ir.`
   {
     id: "ruina-estructural",
     titulo: "Ruina Estructural",
+    color: {
+      accent: "#7c3aed",
+      gradient: "linear-gradient(135deg, #7c3aed, #a855f7)",
+      glow: "rgba(124,58,237,0.08)",
+      border: "rgba(124,58,237,0.2)",
+    },
     contenido: `Quiero explotar.
 Dejar las vísceras en la calle y arrastrar mi sangre
 hasta que el suelo me absorba;
@@ -70,6 +102,12 @@ secándose.`
   {
     id: "corneas-sueltas",
     titulo: "Córneas Sueltas",
+    color: {
+      accent: "#0d9488",
+      gradient: "linear-gradient(135deg, #0d9488, #14b8a6)",
+      glow: "rgba(13,148,136,0.08)",
+      border: "rgba(13,148,136,0.2)",
+    },
     contenido: `No fue amor:
 fue mi arrogancia proyectada en tu carne.
 Tomé votos de córneas sueltas
