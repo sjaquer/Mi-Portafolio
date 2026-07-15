@@ -5,8 +5,8 @@ import SEO from './SEO';
 // ==========================================
 // CONFIGURACIÓN DE SEGURIDAD (Edita esto)
 // ==========================================
-const PREGUNTA_SECRETA = "¿Cuál es el código de acceso?"; // Tu pregunta personalizada
-const RESPUESTA_CORRECTA = "secreto"; // Tu respuesta secreta (en minúsculas)
+const PREGUNTA_SECRETA = "¿Cuál es mi color favorito?"; // Tu pregunta personalizada
+const RESPUESTA_CORRECTA = "azul"; // Tu respuesta secreta (en minúsculas)
 const AUTH_KEY = "sjaquer_blog_auth_state"; // Clave para guardar en localStorage
 
 const BlogPersonal: React.FC = () => {
