@@ -13,6 +13,7 @@ Allow: /sitemap.xml
 Allow: /
 Disallow: /api/
 Disallow: /node_modules/
+Disallow: /blog-personal
 
 User-agent: ClaudeBot
 Allow: /llms.txt
@@ -22,6 +23,7 @@ Allow: /sitemap.xml
 Allow: /
 Disallow: /api/
 Disallow: /node_modules/
+Disallow: /blog-personal
 
 User-agent: PerplexityBot
 Allow: /llms.txt
@@ -31,6 +33,7 @@ Allow: /sitemap.xml
 Allow: /
 Disallow: /api/
 Disallow: /node_modules/
+Disallow: /blog-personal
 
 User-agent: OAI-SearchBot
 Allow: /llms.txt
@@ -40,6 +43,7 @@ Allow: /sitemap.xml
 Allow: /
 Disallow: /api/
 Disallow: /node_modules/
+Disallow: /blog-personal
 
 User-agent: Google-Extended
 Allow: /llms.txt
@@ -49,6 +53,7 @@ Allow: /sitemap.xml
 Allow: /
 Disallow: /api/
 Disallow: /node_modules/
+Disallow: /blog-personal
 
 User-agent: Amazonbot
 Allow: /llms.txt
@@ -58,6 +63,7 @@ Allow: /sitemap.xml
 Allow: /
 Disallow: /api/
 Disallow: /node_modules/
+Disallow: /blog-personal
 
 # Reglas para todos los bots generales
 User-agent: *
@@ -78,6 +84,7 @@ Disallow: /node_modules/
 Disallow: /.git/
 Disallow: /*.map$
 Disallow: /src/
+Disallow: /blog-personal
 
 # Permitir archivos críticos
 Allow: /manifest.json
@@ -86,6 +93,7 @@ Allow: /sitemap.xml
 # Reglas específicas para Googlebot
 User-agent: Googlebot
 Allow: /
+Disallow: /blog-personal
 Crawl-delay: 1
 
 # Reglas específicas para Googlebot-Image
@@ -98,6 +106,7 @@ Allow: /*.jpg$
 # Reglas específicas para Bingbot
 User-agent: Bingbot
 Allow: /
+Disallow: /blog-personal
 Crawl-delay: 2
 
 # Reglas específicas para bots de redes sociales

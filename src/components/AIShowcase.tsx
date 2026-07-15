@@ -95,6 +95,22 @@ const cards = [
 const AIShowcase = () => {
   const topRef = useRef(null);
   const topInView = useInView(topRef, { once: true, margin: '-120px' });
+  const clickTimestamps = useRef<number[]>([]);
+
+  const handleSecretClick = () => {
+    const now = Date.now();
+    clickTimestamps.current.push(now);
+    if (clickTimestamps.current.length > 5) {
+      clickTimestamps.current.shift();
+    }
+    if (clickTimestamps.current.length === 5) {
+      const firstClick = clickTimestamps.current[0];
+      if (now - firstClick <= 3000) {
+        window.history.pushState({}, '', '/blog-personal');
+        window.dispatchEvent(new Event('popstate'));
+      }
+    }
+  };
 
   return (
     <section id="ai-showcase" className="relative z-10 py-32 border-t border-zinc-900/50 overflow-hidden">
@@ -186,7 +202,8 @@ const AIShowcase = () => {
             whileInView={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="w-32 h-32 mb-10 relative"
+            className="w-32 h-32 mb-10 relative cursor-pointer select-none"
+            onClick={handleSecretClick}
           >
             <Suspense fallback={null}>
               <Canvas camera={{ position: [0, 0, 3.5], fov: 50 }} gl={{ alpha: true, antialias: true }} className={canvasClass}>

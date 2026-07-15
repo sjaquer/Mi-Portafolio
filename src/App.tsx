@@ -16,11 +16,23 @@ const Portfolio = React.lazy(() => import('./components/Portfolio'));
 const Skills = React.lazy(() => import('./components/Skills'));
 const Experience = React.lazy(() => import('./components/Experience'));
 const Footer = React.lazy(() => import('./components/Footer'));
+const BlogPersonal = React.lazy(() => import('./components/BlogPersonal'));
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
 
   useEffect(() => {
+    const handleLocationChange = () => {
+      setCurrentPath(window.location.pathname);
+    };
+    window.addEventListener('popstate', handleLocationChange);
+    return () => window.removeEventListener('popstate', handleLocationChange);
+  }, []);
+
+  useEffect(() => {
+    if (currentPath !== '/' && currentPath !== '') return;
+
     const handleScroll = () => {
       const sections = ['home', 'freelance-services', 'ai-showcase', 'portfolio', 'skills', 'experience'];
       const scrollPosition = window.scrollY + 100;
@@ -40,7 +52,17 @@ const App: React.FC = () => {
     const throttledHandleScroll = throttle(handleScroll);
     window.addEventListener('scroll', throttledHandleScroll);
     return () => window.removeEventListener('scroll', throttledHandleScroll);
-  }, []);
+  }, [currentPath]);
+
+  if (currentPath === '/blog-personal') {
+    return (
+      <ErrorBoundary>
+        <Suspense fallback={null}>
+          <BlogPersonal />
+        </Suspense>
+      </ErrorBoundary>
+    );
+  }
 
   return (
     <ErrorBoundary>
