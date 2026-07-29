@@ -173,6 +173,9 @@ const Skills = () => {
               construyo
             </span>.
           </h2>
+          <p className="text-zinc-500 text-sm md:text-base mt-4 max-w-xl mx-auto font-light leading-relaxed">
+            No servicios genéricos. Soluciones para problemas concretos.
+          </p>
         </motion.div>
 
         {/* Vertical skill groups */}

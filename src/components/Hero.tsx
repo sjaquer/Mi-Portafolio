@@ -27,11 +27,11 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-extrabold tracking-tighter text-zinc-50 mb-6 leading-[0.98]"
           >
-            Code.<br />
+            Construyo sistemas<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-emerald-500 bg-[length:200%_auto] animate-gradient-x">
-              Integrate AI.
+              que automatizan
             </span><br />
-            Scale.
+            operaciones reales.
           </motion.h1>
 
           <motion.p
@@ -40,20 +40,29 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.5, duration: 0.6 }}
             className="max-w-xl text-zinc-400 text-base md:text-lg mb-8 leading-relaxed font-light mx-auto"
           >
-            Diseño e ingenio productos digitales de alta fidelidad. Combino arquitectura limpia e inteligencia artificial para dar vida a software que piensa, escala y resuelve.
+            Soy Sebastián Jaque — estudiante de Administración y builder desde 2022.
+            Trabajo en la intersección entre negocio y tecnología: entiendo el problema,
+            luego construyo algo que lo resuelva.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.5 }}
+            className="flex gap-4"
           >
             <a
-              href="#contact"
+              href="#portfolio"
               className="group relative inline-flex h-12 items-center justify-center rounded-xl px-8 text-sm font-bold transition-all bg-zinc-50 text-zinc-950 shadow-xl shadow-cyan-500/10 hover:bg-zinc-200 active:scale-95"
             >
-              Empezar Proyecto
+              Ver proyectos
               <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+            </a>
+            <a
+              href="#contact"
+              className="group relative inline-flex h-12 items-center justify-center rounded-xl px-8 text-sm font-bold transition-all bg-zinc-900 text-zinc-100 border border-zinc-800 hover:bg-zinc-800 active:scale-95"
+            >
+              Hablemos
             </a>
           </motion.div>
         </div>

@@ -34,7 +34,7 @@ const App: React.FC = () => {
     if (currentPath !== '/' && currentPath !== '') return;
 
     const handleScroll = () => {
-      const sections = ['home', 'freelance-services', 'ai-showcase', 'portfolio', 'skills', 'experience'];
+      const sections = ['home', 'freelance-services', 'portfolio', 'ai-showcase', 'skills', 'experience'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -74,11 +74,13 @@ const App: React.FC = () => {
           <Header activeSection={activeSection} setActiveSection={setActiveSection} />
           <main className="relative z-10">
             <Hero />
-            <FreelanceServices />
             <SocialProof />
-            <AIShowcase />
+            <FreelanceServices />
             <Suspense fallback={null}>
               <Portfolio />
+            </Suspense>
+            <AIShowcase />
+            <Suspense fallback={null}>
               <Skills />
               <Experience />
             </Suspense>

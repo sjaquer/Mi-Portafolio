@@ -68,24 +68,24 @@ const canvasClass = "w-full h-full pointer-events-none";
 const cards = [
   {
     icon: MessageSquare,
-    title: 'Chats Cognitivos',
-    desc: 'Agentes con memoria contextual que entienden, recuerdan y actúan.',
+    title: 'Automatización con IA',
+    desc: 'Flujos que usan modelos de lenguaje para clasificar, resumir o responder información operativa sin intervención humana.',
     color: 'from-emerald-400 to-teal-400',
     border: 'border-emerald-500/20',
     bg: 'bg-emerald-500/[0.03]',
   },
   {
     icon: BarChart3,
-    title: 'Análisis Predictivo',
-    desc: 'Modelos que anticipan demandas y optimizan inventarios en tiempo real.',
+    title: 'Procesamiento de datos',
+    desc: 'Pipelines que limpian, transforman y estructuran datos en bruto para alimentar dashboards y sistemas de decisión.',
     color: 'from-teal-400 to-cyan-400',
     border: 'border-teal-500/20',
     bg: 'bg-teal-500/[0.03]',
   },
   {
     icon: Languages,
-    title: 'Síntesis NLP',
-    desc: 'Traducción y resumen automático de documentos con máxima fidelidad.',
+    title: 'Integración de modelos',
+    desc: 'Conexión de APIs de IA (OpenAI, Claude, etc.) con sistemas existentes para agregar inteligencia a procesos ya en producción.',
     color: 'from-emerald-400 to-teal-400',
     border: 'border-emerald-500/20',
     bg: 'bg-emerald-500/[0.03]',
@@ -141,7 +141,7 @@ const AIShowcase = () => {
                 transition={{ delay: 0.2, duration: 0.5 }}
                 className="text-xs sm:text-sm font-mono font-bold tracking-[0.3em] text-emerald-400 uppercase block mb-6"
               >
-                Cognitive Engineering
+                IA Aplicada
               </motion.span>
               <motion.h2
                 initial={{ opacity: 0, y: 30 }}
@@ -149,12 +149,19 @@ const AIShowcase = () => {
                 transition={{ delay: 0.3, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 className="text-5xl sm:text-6xl lg:text-7xl font-display font-extrabold text-zinc-50 tracking-tight leading-[1.05] max-w-3xl"
               >
-                IA que{' '}
+                IA aplicada a operaciones,{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-emerald-500">
-                  transforma
-                </span>{' '}
-                datos en decisiones.
+                  no a experimentos
+                </span>.
               </motion.h2>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={topInView ? { opacity: 1 } : {}}
+                transition={{ delay: 0.4, duration: 0.5 }}
+                className="max-w-xl text-zinc-400 text-sm md:text-base mt-6 leading-relaxed font-light mx-auto lg:mx-0"
+              >
+                No vendo promesas de inteligencia artificial. Construyo aplicaciones concretas donde la IA resuelve un problema real de negocio.
+              </motion.p>
             </div>
           </div>
         </div>
@@ -212,26 +219,26 @@ const AIShowcase = () => {
             </Suspense>
           </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-            className="text-sm text-zinc-500 font-mono mb-6 tracking-wider uppercase"
-          >
-            Próximo proyecto
-          </motion.p>
-
           <motion.h3
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-zinc-50 tracking-tight mb-10 max-w-2xl leading-tight"
+            className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-zinc-50 tracking-tight mb-6 max-w-2xl leading-tight"
           >
-            Llevemos tu flujo de trabajo al{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">siguiente nivel</span>.
+            ¿Tienes un proceso
+            que se puede mejorar?
           </motion.h3>
+
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.45, duration: 0.5 }}
+            className="max-w-xl text-zinc-400 text-sm md:text-base mb-10 leading-relaxed font-light mx-auto"
+          >
+            No hace falta un equipo de tecnología ni un presupuesto enorme. Solo necesitas identificar el problema correcto.
+          </motion.p>
 
           <motion.a
             href="#contact"
@@ -241,7 +248,7 @@ const AIShowcase = () => {
             transition={{ delay: 0.5, duration: 0.5 }}
             className="group inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-zinc-50 text-zinc-950 font-bold text-base hover:bg-zinc-200 transition-all active:scale-95 shadow-xl shadow-emerald-500/5"
           >
-            Integrar IA ahora
+            Cuéntame tu caso
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </motion.a>
         </div>

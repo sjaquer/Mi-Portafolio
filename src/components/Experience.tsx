@@ -62,6 +62,9 @@ const Experience = () => {
               & Formación
             </span>.
           </h2>
+          <p className="text-zinc-500 text-sm md:text-base mt-4 max-w-xl font-light leading-relaxed">
+            He trabajado en retail, logística, food service, marketing y datos. Así se traduce eso en experiencia real.
+          </p>
         </motion.div>
 
         <div className="space-y-6">

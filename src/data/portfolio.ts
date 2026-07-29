@@ -2,13 +2,46 @@ import { Experience, Education, Project } from '../types';
 
 export const experiences: Experience[] = [
   {
+    id: '6',
+    title: 'Practicante Pre Profesional',
+    titleEn: 'Pre Professional Intern',
+    company: 'Universidad Norbert Wiener',
+    role: 'Practicante Pre Profesional',
+    roleEn: 'Pre Professional Intern',
+    duration: '2026',
+    location: 'Lima, Perú',
+    locationEn: 'Lima, Peru',
+    summary:
+      'Diseño la infraestructura de datos interna del área de sistemas, incluyendo pipelines ETL, migración de bases de datos y sistemas de campañas omnicanal.',
+    summaryEn:
+      'Design the internal data infrastructure of the systems area, including ETL pipelines, database migration, and omnichannel campaign systems.',
+    techStack: [
+      'Python',
+      'PostgreSQL',
+      'ETL',
+      'APIs',
+      'WhatsApp',
+      'SMTP'
+    ],
+    responsibilities: [
+      'Diseñé un pipeline ETL que valida y estandariza datos de estudiantes para el área de sistemas.',
+      'Implementé un sistema de campañas omnicanal usando SMTP y WhatsApp API.',
+      'Migré la base de datos institucional de SQLite a PostgreSQL.'
+    ],
+    responsibilitiesEn: [
+      'Designed an ETL pipeline that validates and standardizes student data for the systems area.',
+      'Implemented an omnichannel campaign system using SMTP and WhatsApp API.',
+      'Migrated the institutional database from SQLite to PostgreSQL.'
+    ]
+  },
+  {
     id: '1',
     title: 'Operations Coordinator',
     titleEn: 'Operations Coordinator',
     company: 'Big Jack-Burgers',
-    role: 'Operations Coordinator',
-    roleEn: 'Operations Coordinator',
-    duration: 'Nov 2025 - Actualidad',
+    role: 'Operations & Marketing',
+    roleEn: 'Operations & Marketing',
+    duration: '2025 - 2026',
     location: 'Lima, Perú',
     locationEn: 'Lima, Peru',
     summary:
@@ -38,7 +71,7 @@ export const experiences: Experience[] = [
     title: 'Desarrollador de Soluciones de Negocios',
     titleEn: 'Business Solutions Developer',
     company: 'Dearel',
-    role: 'Solutions Developer',
+    role: 'Soluciones de Negocio',
     roleEn: 'Solutions Developer',
     duration: 'Ago 2025 - Nov 2025',
     location: 'Lima, Perú',
@@ -133,7 +166,7 @@ export const experiences: Experience[] = [
     title: 'Practicante de Logística',
     titleEn: 'Logistics Intern',
     company: 'Zeus Maritime-Shipchandler',
-    role: 'Logistic Intern',
+    role: 'Logística',
     roleEn: 'Logistics Intern',
     duration: 'Abr 2025 - May 2025',
     location: 'Callao, Perú',
@@ -301,10 +334,10 @@ export const education: Education[] = [
 export const projects: Project[] = [
   {
     id: '1',
-    title: 'Big Jack RP & Menu',
+    title: 'Sistema de Gestión Operativa — Big Jack Burgers',
     subtitle: 'Ecosistema operativo de producción gastronómica.',
     description:
-      'Ecosistema en tiempo real que automatiza el control de inventario insumo a insumo desde el autopedido del cliente hasta la producción en cocina.',
+      'Diseñé e implementé un sistema interno de gestión de pedidos que redujo el tiempo de procesamiento en un 35%. Incluye análisis de precios con datos de ventas y seguimiento de indicadores de satisfacción del cliente.',
     techStack: ['React', 'Firebase', 'Node.js', 'Next.js', 'Webhooks', 'Real-time Sync'],
     category: 'restaurante',
     featured: true,
@@ -318,6 +351,46 @@ export const projects: Project[] = [
         { label: 'Tiempo de proceso', value: '35', prefix: '-', suffix: '%' },
         { label: 'Margen mensual', value: '15', prefix: '+', suffix: '%' },
         { label: 'Precisión stock', value: '98', prefix: '', suffix: '%' }
+      ]
+    }
+  },
+  {
+    id: '6',
+    title: 'Integración Omnicanal — Dearel',
+    subtitle: 'E-commerce, CRM y dashboards en tiempo real.',
+    description:
+      'Conecté Shopify, CRM y Google Sheets mediante APIs y construí dashboards de ventas en tiempo real. Reduje las tareas administrativas manuales en un 30% y mejoré la trazabilidad de pedidos en toda la operación.',
+    techStack: ['Python', 'SQL Server', 'Shopify API', 'Google Sheets API', 'Power BI'],
+    category: 'ecommerce',
+    featured: true,
+    year: '2025',
+    caseStudy: {
+      problem: 'Tareas manuales de conciliación de datos entre Shopify, CRM y hojas de cálculo, generando errores y retrasos.',
+      solution: 'Integración vía APIs personalizadas que sincronizan pedidos, inventario y clientes en tiempo real.',
+      metrics: [
+        { label: 'Reducción tareas manuales', value: '30', prefix: '-', suffix: '%' },
+        { label: 'Trazabilidad pedidos', value: '100', prefix: '+', suffix: '%' },
+        { label: 'Precisión datos', value: '95', prefix: '', suffix: '%' }
+      ]
+    }
+  },
+  {
+    id: '7',
+    title: 'Infraestructura de Datos Interna — Norbert Wiener',
+    subtitle: 'Pipeline ETL y sistema de campañas omnicanal.',
+    description:
+      'Pipeline ETL que valida y estandariza datos de estudiantes. Sistema de campañas omnicanal (email SMTP + WhatsApp). Migración de SQLite a PostgreSQL. Propuesta de servidor local con RBAC, auditoría y backups automatizados.',
+    techStack: ['Python', 'PostgreSQL', 'ETL', 'APIs', 'WhatsApp', 'SMTP'],
+    category: 'datos',
+    featured: true,
+    year: '2026',
+    caseStudy: {
+      problem: 'Datos de estudiantes dispersos, sin estandarización y procesos manuales de comunicación.',
+      solution: 'Pipeline ETL integrado con sistema de campañas omnicanal para automatizar la comunicación institucional.',
+      metrics: [
+        { label: 'Registros procesados', value: '10K', prefix: '', suffix: '+' },
+        { label: 'Automatización', value: '90', prefix: '', suffix: '%' },
+        { label: 'Sistemas integrados', value: '4', prefix: '', suffix: '' }
       ]
     }
   },

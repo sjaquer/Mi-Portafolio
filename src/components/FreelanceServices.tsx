@@ -1,30 +1,30 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Code2, Server, Brain } from 'lucide-react';
+import { ArrowRight, Server, GitBranch, BarChart3 } from 'lucide-react';
 
 const services = [
   {
-    id: 'web-dev',
+    id: 'systems',
     num: '01',
-    title: 'Desarrollo Web Full-Stack',
-    desc: 'Interfaces fluidas que convierten tu marca en una experiencia interactiva inolvidable.',
-    icon: Code2,
-    tags: ['React & TypeScript', 'Framer Motion', 'Arquitectura moderna'],
-  },
-  {
-    id: 'backend',
-    num: '02',
-    title: 'Backend & APIs',
-    desc: 'Estructuras robustas diseñadas para sostener el crecimiento y rendimiento de tus ideas.',
+    title: 'Sistemas & Herramientas Internas',
+    desc: 'Desarrollo herramientas operativas a medida: plataformas web, backends, bases de datos y flujos de trabajo digitales para que los equipos dejen de depender de Excel y procesos manuales.',
     icon: Server,
-    tags: ['Node.js & Python', 'SQL/NoSQL', 'Cloud & Serverless'],
+    tags: ['Python', 'SQL', 'PostgreSQL', 'Web'],
   },
   {
-    id: 'ai-integration',
+    id: 'automation',
+    num: '02',
+    title: 'Automatización & Integraciones',
+    desc: 'Conecto sistemas que no se hablan entre sí. CRM, Shopify, Google Sheets, WhatsApp, email — integrados mediante APIs para que los datos fluyan solos y sin intervención manual.',
+    icon: GitBranch,
+    tags: ['APIs', 'ETL', 'Automatización', 'Integraciones'],
+  },
+  {
+    id: 'bi',
     num: '03',
-    title: 'IA Generativa',
-    desc: 'Modelos integrados en tu flujo para automatizar decisiones y potenciar tu producto.',
-    icon: Brain,
-    tags: ['LLMs & RAG', 'Embeddings', 'Modelos Locales'],
+    title: 'Business Intelligence & Datos',
+    desc: 'Diseño dashboards y sistemas de reportería que convierten datos operativos en decisiones. Desde la base de datos hasta el dashboard en tiempo real.',
+    icon: BarChart3,
+    tags: ['Power BI', 'PostgreSQL', 'Dashboards', 'KPIs'],
   },
 ];
 
@@ -44,9 +44,9 @@ const FreelanceServices = () => {
             Especialidades
           </span>
           <h2 className="text-5xl sm:text-6xl lg:text-7xl font-display font-extrabold text-zinc-50 tracking-tight leading-[1.05] max-w-3xl">
-            Tres pilares,{' '}
+            Lo que hago,{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-emerald-500">
-              un solo enfoque
+              en concreto
             </span>.
           </h2>
         </motion.div>

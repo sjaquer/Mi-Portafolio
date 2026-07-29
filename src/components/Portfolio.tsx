@@ -54,7 +54,9 @@ const projectThemes: Record<string, {
   '2': { accent: '#3BCE89', rgb: '59, 206, 137', glow: 'rgba(59, 206, 137, 0.4)' },
   '3': { accent: '#FF6600', rgb: '255, 102, 0', glow: 'rgba(255, 102, 0, 0.4)' },
   '4': { accent: '#3B82F6', rgb: '59, 130, 246', glow: 'rgba(59, 130, 246, 0.4)' },
-  '5': { accent: '#22C55E', rgb: '34, 197, 94', glow: 'rgba(34, 197, 94, 0.4)' }
+  '5': { accent: '#22C55E', rgb: '34, 197, 94', glow: 'rgba(34, 197, 94, 0.4)' },
+  '6': { accent: '#A855F7', rgb: '168, 85, 247', glow: 'rgba(168, 85, 247, 0.4)' },
+  '7': { accent: '#06B6D4', rgb: '6, 182, 212', glow: 'rgba(6, 182, 212, 0.4)' }
 };
 
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
@@ -268,19 +270,34 @@ const Portfolio = () => {
 
   return (
     <section id="portfolio" className="relative z-10">
-      {/* Title Screen */}
+      {/* Quién soy */}
       <div className="relative min-h-screen snap-start flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/[0.02] via-transparent to-transparent pointer-events-none" />
-        <div className="text-center px-4 max-w-3xl mx-auto">
+        <div className="text-center px-4 max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
-              <h2 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-zinc-50 tracking-tight leading-none">
-                Precision Engineering.
+              <span className="text-xs font-mono font-bold tracking-[0.3em] text-emerald-400 uppercase block mb-6">
+                Quién soy
+              </span>
+              <h2 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-zinc-50 tracking-tight leading-none mb-8">
+                Soy Sebastián, estudiante de Administración y Negocios Internacionales en la Universidad Norbert Wiener (9.º ciclo).
               </h2>
+              <p className="max-w-2xl mx-auto text-zinc-400 text-base md:text-lg leading-relaxed font-light mb-4">
+                Desde 2022 construyo soluciones digitales para pequeñas y medianas empresas — sin esperar a graduarme.
+              </p>
+              <p className="max-w-2xl mx-auto text-zinc-400 text-base md:text-lg leading-relaxed font-light mb-4">
+                He trabajado en retail, logística marítima, marketing digital y operaciones de alimentos. En todos los casos el problema era el mismo: procesos manuales que se podían automatizar.
+              </p>
+              <p className="max-w-2xl mx-auto text-zinc-400 text-base md:text-lg leading-relaxed font-light mb-4">
+                Actualmente trabajo como Practicante Pre Profesional en Norbert Wiener, donde diseño la infraestructura de datos interna del área de sistemas.
+              </p>
+              <p className="max-w-2xl mx-auto text-emerald-400 text-base md:text-lg leading-relaxed font-semibold">
+                No soy desarrollador puro ni consultor de negocios. Soy las dos cosas al mismo tiempo.
+              </p>
             </motion.div>
         </div>
       </div>

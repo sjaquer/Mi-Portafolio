@@ -1,13 +1,13 @@
 export const siteContent = {
   brand: {
     name: 'Sebastián Emiliano Jaque Reategui',
-    subtitle: 'BI · Soluciones Digitales · Marketing de Datos',
+    subtitle: 'Automatización · Datos · Sistemas para operaciones reales',
     logo: '/favicon.svg'
   },
   seo: {
-    title: 'Sebastián Jaque | Business Intelligence & Desarrollador de Soluciones',
-    description: 'Estudiante de Administración especializado en desarrollo de herramientas digitales, estrategias de marketing basado en datos, BI y Data Visualization para optimizar la toma de decisiones.',
-    keywords: 'business intelligence, data visualization, marketing de datos, desarrollo de soluciones, SQL Server, Python, SEO técnico, administración de negocios',
+    title: 'Sebastián Jaque | Automatización, datos y sistemas para operaciones reales',
+    description: 'Estudiante de Administración especializado en desarrollo de herramientas digitales, automatización de procesos, BI y sistemas para operaciones reales.',
+    keywords: 'business intelligence, data visualization, automatización, desarrollo de soluciones, SQL Server, Python, administración de negocios',
     url: 'https://sjaquer.is-a.dev/',
     image: 'https://sjaquer.is-a.dev/web-app-manifest-512x512.png'
   },
@@ -27,11 +27,11 @@ export const siteContent = {
     ctaSecondary: 'Ver Trayectoria'
   },
   skills: {
-    title: 'Stack & Habilidades',
-    subtitle: 'Tecnologías y herramientas que utilizo para transformar datos en decisiones y procesos manuales en flujos automatizados.'
+    title: 'Lo que construyo.',
+    subtitle: 'No servicios genéricos. Soluciones para problemas concretos.'
   },
   portfolio: {
-    title: 'Soluciones & Proyectos',
+    title: 'Precision Engineering.',
     subtitle: 'Casos reales en e-commerce, BI, logística y automatización con impacto medible.'
   },
   reviews: {
@@ -40,7 +40,7 @@ export const siteContent = {
   },
   footer: {
     copyright: '© 2026 Sebastián Jaque',
-    about: 'Estudiante de 9.º ciclo de Administración y Negocios Internacionales. Desarrollador de herramientas digitales y estratega de datos orientado a resultados.',
+    about: 'Sebastián Jaque · Automatización, datos y sistemas para operaciones reales.',
     contactEmail: 'sjaquer@outlook.es',
     contactPhone: '+51 946 978 919'
   }
