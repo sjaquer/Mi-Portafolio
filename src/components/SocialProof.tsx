@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import anime from 'animejs';
+import { animate } from 'animejs';
 import CountUp from './CountUp';
 import { useInViewOnce } from './Reveal';
 
@@ -22,7 +22,7 @@ const StatItem: React.FC<{ stat: Stat; i: number }> = ({ stat, i }) => {
     if (!line) return;
     const len = line.getTotalLength();
     line.style.strokeDasharray = `${len}`;
-    anime({ targets: line, strokeDashoffset: [len, 0], duration: 900, delay: i * 120, easing: 'easeOutExpo' });
+    animate(line, { strokeDashoffset: [len, 0], duration: 900, delay: i * 120, ease: 'outExpo' });
   });
 
   return (

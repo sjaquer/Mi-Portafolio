@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, ChevronDown } from 'lucide-react';
-import anime from 'animejs';
+import { animate } from 'animejs';
 import { throttle } from '../utils/throttle';
 import HeroCube from './HeroCube';
 import ErrorBoundary from './ErrorBoundary';
@@ -19,12 +19,11 @@ const HeroLineArt: React.FC = () => {
       const len = shape.getTotalLength();
       shape.style.strokeDasharray = `${len}`;
       shape.style.strokeDashoffset = `${len}`;
-      anime({
-        targets: shape,
+      animate(shape, {
         strokeDashoffset: [len, 0],
         duration: 1500,
         delay: 400 + i * 220,
-        easing: 'easeInOutSine',
+        ease: 'inOutSine',
       });
     });
 

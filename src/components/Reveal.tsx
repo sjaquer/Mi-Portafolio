@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef } from 'react';
-import anime from 'animejs';
+import { animate, set, stagger } from 'animejs';
 import { throttle } from '../utils/throttle';
 
 interface RevealProps {
@@ -43,7 +43,7 @@ const Reveal: React.FC<RevealProps> = ({
   useLayoutEffect(() => {
     const el = ref.current;
     if (!el || !selector) return;
-    anime.set(el.querySelectorAll(selector), { opacity: opacityFrom, translateY: y });
+    set(el.querySelectorAll(selector), { opacity: opacityFrom, translateY: y });
   }, [selector, opacityFrom, y]);
 
   useEffect(() => {
@@ -56,13 +56,12 @@ const Reveal: React.FC<RevealProps> = ({
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
-          anime({
-            targets,
+          animate(targets, {
             opacity: [opacityFrom, 1],
             translateY: [y, 0],
-            delay: stagger ? anime.stagger(stagger, { start: delay }) : delay,
+            delay: stagger ? stagger(stagger, { start: delay }) : delay,
             duration,
-            easing: 'easeOutExpo',
+            ease: 'outExpo',
           });
           obs.unobserve(el);
         });

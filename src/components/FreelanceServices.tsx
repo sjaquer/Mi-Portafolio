@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Server, GitBranch, BarChart3 } from 'lucide-react';
-import anime from 'animejs';
-import { useInViewOnce } from './Reveal';
+import CardGlow from './CardGlow';
 
 const services = [
   {
@@ -33,22 +32,8 @@ const services = [
 const ServiceCard: React.FC<{ svc: typeof services[number]; i: number }> = ({ svc, i }) => {
   const Icon = svc.icon;
 
-  const cardRef = useInViewOnce<HTMLDivElement>((el) => {
-    const scan = el.querySelector<HTMLElement>('.scan-line');
-    if (scan) {
-      anime({
-        targets: scan,
-        translateX: ['-130%', '130%'],
-        duration: 1100,
-        delay: i * 150,
-        easing: 'easeInOutQuad',
-      });
-    }
-  });
-
   return (
     <motion.div
-      ref={cardRef}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
@@ -57,9 +42,7 @@ const ServiceCard: React.FC<{ svc: typeof services[number]; i: number }> = ({ sv
       className="group relative overflow-hidden rounded-3xl border border-zinc-800/50 bg-zinc-900/20 backdrop-blur-xl p-8 sm:p-10 hover:bg-zinc-900/40 hover:border-emerald-500/20 transition-all duration-500"
       style={{ marginTop: i === 1 ? '2.5rem' : i === 2 ? '-.5rem' : undefined }}
     >
-      <div className="scan-line pointer-events-none absolute inset-y-0 left-0 w-1/3 -translate-x-[130%] bg-gradient-to-r from-transparent via-emerald-400/20 to-transparent" />
-
-      <div className="absolute -inset-px bg-gradient-to-br from-emerald-400/0 via-emerald-400/0 to-emerald-400/0 group-hover:from-emerald-400/[0.02] group-hover:via-emerald-400/[0.01] group-hover:to-teal-400/[0.02] blur-xl rounded-3xl transition-all duration-700 pointer-events-none" />
+      <CardGlow color="rgba(16,185,129,0.35)" />
 
       <div className="relative z-10">
         <div className="flex items-center justify-between mb-10">

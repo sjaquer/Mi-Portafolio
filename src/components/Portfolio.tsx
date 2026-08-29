@@ -1,11 +1,13 @@
 import React, { useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
-import anime from 'animejs';
+import { animate, stagger } from 'animejs';
 import { Github, ExternalLink, RotateCcw, ShieldAlert } from 'lucide-react';
 import { projects } from '../data/portfolio';
 import { Project } from '../types';
 import ErrorBoundary from './ErrorBoundary';
 import { useInViewOnce } from './Reveal';
+import { useDraggable } from '../hooks/useDraggable';
+import CardGlow from './CardGlow';
 
 const BigJackSim = React.lazy(() => import('./simulators/BigJackSim').then(m => ({ default: m.BigJackSim })));
 const TaskMeSim = React.lazy(() => import('./simulators/TaskMeSim').then(m => ({ default: m.TaskMeSim })));
@@ -63,16 +65,20 @@ const projectThemes: Record<string, {
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   const currentTheme = projectThemes[project.id] || projectThemes['1'];
   const [viewMode, setViewMode] = useState<'impact' | 'tech'>('impact');
+  const dragRef = useDraggable<HTMLDivElement>();
 
   return (
     <div
+      ref={dragRef}
       data-project-card
       style={{
         borderColor: `${currentTheme.accent}22`,
         boxShadow: `0 0 60px -30px rgba(${currentTheme.rgb}, 0.15)`
       }}
-      className="rounded-3xl p-6 sm:p-8 backdrop-blur-xl bg-zinc-950/20 border transition-all duration-700 hover:border-zinc-800/40"
+      className="relative rounded-3xl p-6 sm:p-8 backdrop-blur-xl bg-zinc-950/20 border transition-colors duration-700 hover:border-zinc-800/40 cursor-grab active:cursor-grabbing"
     >
+      <CardGlow color={currentTheme.glow} />
+      <div className="relative z-10">
       {/* Header */}
       <div className="flex items-start justify-between gap-4 mb-4">
         <div>
@@ -185,6 +191,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
           )}
         </div>
       )}
+      </div>
     </div>
   );
 };
@@ -252,16 +259,15 @@ const ProjectPreview: React.FC<{ project: Project }> = ({ project }) => {
 
 const Portfolio = () => {
   const quienSoyRef = useInViewOnce<HTMLDivElement>((el) => {
-    anime({
-      targets: el.querySelectorAll('[data-line]'),
+    animate(el.querySelectorAll('[data-line]'), {
       opacity: [0, 1],
       translateY: [22, 0],
-      delay: anime.stagger(130),
+      delay: stagger(130),
       duration: 700,
-      easing: 'easeOutExpo',
+      ease: 'outExpo',
     });
     const bar = el.querySelector<HTMLElement>('.accent-bar');
-    if (bar) anime({ targets: bar, scaleX: [0, 1], duration: 900, easing: 'easeOutExpo' });
+    if (bar) animate(bar, { scaleX: [0, 1], duration: 900, ease: 'outExpo' });
   });
 
   return (

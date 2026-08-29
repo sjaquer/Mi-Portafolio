@@ -4,6 +4,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Icosahedron, Octahedron } from '@react-three/drei';
 import { ArrowRight, MessageSquare, BarChart3, Languages } from 'lucide-react';
 import Reveal from './Reveal';
+import CardGlow from './CardGlow';
 import * as THREE from 'three';
 
 function FloatingShape1() {
@@ -175,7 +176,7 @@ const AIShowcase = () => {
                   marginTop: i === 1 ? '2.5rem' : i === 2 ? '-1rem' : '0',
                 }}
               >
-                <div className={`absolute -inset-px bg-gradient-to-br ${card.color} opacity-0 group-hover:opacity-[0.04] blur-xl rounded-3xl transition-opacity duration-700 pointer-events-none`} />
+                <CardGlow color="rgba(20,184,166,0.3)" />
 
                 <div className="relative z-10">
                   <div className="w-14 h-14 rounded-2xl bg-zinc-800/50 border border-zinc-700/50 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:border-emerald-500/30 transition-all duration-500">

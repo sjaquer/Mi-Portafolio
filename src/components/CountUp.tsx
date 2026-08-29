@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import anime from 'animejs';
+import { animate } from 'animejs';
 
 interface CountUpProps {
   value: number;
@@ -26,14 +26,12 @@ const CountUp: React.FC<CountUpProps> = ({
     const obs = new IntersectionObserver(
       (entries) => {
         if (!entries[0]?.isIntersecting) return;
-        anime({
-          targets: obj,
+        animate(obj, {
           v: value,
-          round: 1,
           duration,
-          easing: 'easeOutExpo',
-          update: () => {
-            el.textContent = `${prefix}${obj.v}${suffix}`;
+          ease: 'outExpo',
+          onUpdate: () => {
+            el.textContent = `${prefix}${Math.round(obj.v)}${suffix}`;
           },
         });
         obs.unobserve(el);
