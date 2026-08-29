@@ -1,12 +1,12 @@
 import React, { memo } from 'react';
-import { Home, Briefcase, Layers, Code2, Bot } from 'lucide-react';
+import { IconHome, IconBriefcase, IconStack2, IconCode, IconRobot } from '@tabler/icons-react';
 
 const navItems = [
-  { id: 'home', icon: Home, label: 'Inicio' },
-  { id: 'freelance-services', icon: Code2, label: 'Servicios' },
-  { id: 'ai-showcase', icon: Bot, label: 'IA' },
-  { id: 'portfolio', icon: Layers, label: 'Proyectos' },
-  { id: 'experience', icon: Briefcase, label: 'Exp.' },
+  { id: 'home', icon: IconHome, label: 'Inicio' },
+  { id: 'freelance-services', icon: IconCode, label: 'Servicios' },
+  { id: 'ai-showcase', icon: IconRobot, label: 'IA' },
+  { id: 'portfolio', icon: IconStack2, label: 'Proyectos' },
+  { id: 'experience', icon: IconBriefcase, label: 'Exp.' },
 ];
 
 const MobileNavigation: React.FC<{ activeSection: string; setActiveSection: (s: string) => void }> = memo(({ activeSection, setActiveSection }) => {
@@ -27,7 +27,7 @@ const MobileNavigation: React.FC<{ activeSection: string; setActiveSection: (s: 
             const Icon = item.icon;
             return (
               <button key={item.id} onClick={() => scrollToSection(item.id)} className={`flex flex-col items-center p-2 min-w-[52px] rounded-xl transition-colors ${isActive ? 'bg-emerald-500/10 text-emerald-400' : 'text-zinc-500'}`}>
-                <Icon size={20} strokeWidth={isActive ? 2 : 1.8} />
+                <Icon size={20} stroke={isActive ? 2 : 1.5} />
                 <span className="text-[10px] font-medium mt-1">{item.label}</span>
               </button>
             );

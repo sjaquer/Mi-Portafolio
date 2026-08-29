@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Server, GitBranch, BarChart3 } from 'lucide-react';
+import { IconArrowRight, IconServer, IconGitBranch, IconChartBar } from '@tabler/icons-react';
 import CardGlow from './CardGlow';
 import { useTilt } from '../hooks/useTilt';
 import { useMagnetic } from '../hooks/useMagnetic';
@@ -10,7 +10,7 @@ const services = [
     num: '01',
     title: 'Sistemas & Herramientas Internas',
     desc: 'Plataformas web, backends y bases de datos a medida para que tu equipo deje de depender de Excel y procesos manuales.',
-    icon: Server,
+    icon: IconServer,
     tags: ['Python', 'SQL', 'PostgreSQL', 'Web'],
   },
   {
@@ -18,7 +18,7 @@ const services = [
     num: '02',
     title: 'Automatización & Integraciones',
     desc: 'Conecto CRM, Shopify, Sheets, WhatsApp y email mediante APIs para que los datos fluyan solos, sin intervención manual.',
-    icon: GitBranch,
+    icon: IconGitBranch,
     tags: ['APIs', 'ETL', 'Automatización', 'Integraciones'],
   },
   {
@@ -26,7 +26,7 @@ const services = [
     num: '03',
     title: 'Business Intelligence & Datos',
     desc: 'Dashboards y reportería que convierten datos operativos en decisiones — desde la base de datos hasta el dashboard en tiempo real.',
-    icon: BarChart3,
+    icon: IconChartBar,
     tags: ['Power BI', 'PostgreSQL', 'Dashboards', 'KPIs'],
   },
 ];
@@ -43,10 +43,10 @@ const ServiceCard: React.FC<{ svc: typeof services[number]; i: number }> = ({ sv
       viewport={{ once: true, margin: '-80px' }}
       transition={{ delay: i * 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       whileHover={{ y: -8, scale: 1.01 }}
-      className="group relative overflow-hidden rounded-3xl border border-zinc-800/50 bg-zinc-900/20 backdrop-blur-xl p-8 sm:p-10 hover:bg-zinc-900/40 hover:border-emerald-500/20 transition-all duration-500"
+      className="group relative overflow-hidden rounded-3xl liquid-glass p-8 sm:p-10 transition-all duration-500"
       style={{ marginTop: i === 1 ? '2.5rem' : i === 2 ? '-.5rem' : undefined }}
     >
-      <CardGlow color="rgba(16,185,129,0.35)" />
+      <CardGlow color="rgba(16,185,129,0.3)" />
 
       <div ref={tiltRef} className="relative z-10">
         <div className="flex items-center justify-between mb-10">
@@ -70,7 +70,7 @@ const ServiceCard: React.FC<{ svc: typeof services[number]; i: number }> = ({ sv
         <div className="mt-8 pt-6 border-t border-zinc-800/50">
           <a ref={linkRef} href="#contact" className="inline-flex items-center gap-2 text-sm font-medium text-zinc-500 hover:text-emerald-400 transition-colors group/link">
             Saber más
-            <ArrowRight size={14} className="transition-transform duration-300 group-hover/link:translate-x-1" />
+            <IconArrowRight size={14} className="transition-transform duration-300 group-hover/link:translate-x-1" />
           </a>
         </div>
       </div>

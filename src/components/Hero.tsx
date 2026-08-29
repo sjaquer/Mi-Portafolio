@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, ChevronDown } from 'lucide-react';
+import { IconArrowRight, IconChevronDown } from '@tabler/icons-react';
 import { animate } from 'animejs';
 import { throttle } from '../utils/throttle';
 import HeroCube from './HeroCube';
@@ -107,7 +107,7 @@ const Hero: React.FC = () => {
               className="group relative inline-flex h-12 items-center justify-center rounded-xl px-8 text-sm font-bold transition-all bg-zinc-50 text-zinc-950 shadow-xl shadow-cyan-500/10 hover:bg-zinc-200 active:scale-95"
             >
               Ver proyectos
-              <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+              <IconArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
             </a>
             <a
               href="#contact"
@@ -125,7 +125,7 @@ const Hero: React.FC = () => {
           className="absolute bottom-8 left-1/2 -translate-x-1/2"
         >
           <motion.a href="#freelance-services" animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }} className="block p-2 text-zinc-600 hover:text-zinc-400 transition-colors">
-            <ChevronDown size={24} strokeWidth={1} />
+            <IconChevronDown size={22} stroke={1.5} />
           </motion.a>
         </motion.div>
       </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Reveal from './Reveal';
-import { Github, Linkedin, Mail, ArrowUp, MapPin, Phone, ExternalLink } from 'lucide-react';
+import { IconBrandGithub, IconBrandLinkedin, IconMail, IconArrowUp, IconMapPin, IconPhone, IconArrowUpRight } from '@tabler/icons-react';
 import { siteContent } from '../data/siteContent';
 
 const Footer: React.FC = () => (
@@ -39,7 +39,7 @@ const Footer: React.FC = () => (
               href={`mailto:${siteContent.footer.contactEmail}`}
               className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-400 text-zinc-950 font-bold text-sm shadow-lg shadow-emerald-500/20"
             >
-              <Mail size={16} /> Escribirme
+              <IconMail size={16} /> Escribirme
             </motion.a>
             <motion.a
               data-reveal
@@ -50,7 +50,7 @@ const Footer: React.FC = () => (
               rel="noreferrer"
               className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-zinc-800/60 border border-zinc-700/50 text-zinc-300 hover:text-zinc-100 font-semibold text-sm transition-colors"
             >
-              <Linkedin size={16} /> Conectar en LinkedIn
+              <IconBrandLinkedin size={16} /> Conectar en LinkedIn
             </motion.a>
           </div>
         </div>
@@ -66,13 +66,13 @@ const Footer: React.FC = () => (
           </p>
           <div className="flex gap-3">
             {[
-              { href: 'https://github.com/sjaquer', icon: Github, label: 'GitHub' },
-              { href: 'https://www.linkedin.com/in/sjaquer', icon: Linkedin, label: 'LinkedIn' },
-              { href: `mailto:${siteContent.footer.contactEmail}`, icon: Mail, label: 'Email' },
+              { href: 'https://github.com/sjaquer', icon: IconBrandGithub, label: 'GitHub' },
+              { href: 'https://www.linkedin.com/in/sjaquer', icon: IconBrandLinkedin, label: 'LinkedIn' },
+              { href: `mailto:${siteContent.footer.contactEmail}`, icon: IconMail, label: 'Email' },
             ].map(social => (
               <motion.a key={social.label} whileHover={{ scale: 1.1, y: -2 }} whileTap={{ scale: 0.95 }} href={social.href} target={social.label !== 'Email' ? '_blank' : undefined} rel="noreferrer"
                 className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-500 hover:text-emerald-400 hover:border-emerald-500/20 transition-all" aria-label={social.label}>
-                <social.icon size={18} strokeWidth={1.5} />
+                <social.icon size={18} stroke={1.5} />
               </motion.a>
             ))}
           </div>
@@ -83,16 +83,16 @@ const Footer: React.FC = () => (
           <h4 className="text-sm font-bold text-zinc-50 mb-4 uppercase tracking-wider">Contacto</h4>
           <div className="space-y-3 text-sm">
             <a href={`mailto:${siteContent.footer.contactEmail}`} className="flex items-center gap-2.5 text-zinc-500 hover:text-emerald-400 transition-colors">
-              <Mail size={14} className="shrink-0" /> {siteContent.footer.contactEmail}
+              <IconMail size={14} className="shrink-0" /> {siteContent.footer.contactEmail}
             </a>
             <a href={`tel:${siteContent.footer.contactPhone}`} className="flex items-center gap-2.5 text-zinc-500 hover:text-emerald-400 transition-colors">
-              <Phone size={14} className="shrink-0" /> {siteContent.footer.contactPhone}
+              <IconPhone size={14} className="shrink-0" /> {siteContent.footer.contactPhone}
             </a>
             <div className="flex items-center gap-2.5 text-zinc-600">
-              <MapPin size={14} className="shrink-0" /> Centro de Lima, Lima - Perú
+              <IconMapPin size={14} className="shrink-0" /> Centro de Lima, Lima - Perú
             </div>
             <a href="https://sjaquer.is-a.dev" target="_blank" rel="noreferrer" className="flex items-center gap-2.5 text-zinc-500 hover:text-emerald-400 transition-colors">
-              <ExternalLink size={14} className="shrink-0" /> sjaquer.is-a.dev
+              <IconArrowUpRight size={14} className="shrink-0" /> sjaquer.is-a.dev
             </a>
           </div>
         </div>
@@ -109,8 +109,8 @@ const Footer: React.FC = () => (
             </span>
             <span className="text-zinc-600">Disponible para proyectos</span>
           </span>
-          <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-1.5 hover:text-zinc-300 transition-colors group">
-            Volver arriba <ArrowUp size={12} className="group-hover:-translate-y-0.5 transition-transform" />
+          <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-1.5 hover:text-zinc-300 transition-colors group cursor-pointer">
+            Volver arriba <IconArrowUp size={12} className="group-hover:-translate-y-0.5 transition-transform" />
           </button>
         </div>
       </div>

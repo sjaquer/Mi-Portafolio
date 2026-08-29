@@ -1,5 +1,5 @@
 import { Component, ErrorInfo, ReactNode } from 'react';
-import { RefreshCw, AlertTriangle } from 'lucide-react';
+import { IconReload, IconAlertTriangle } from '@tabler/icons-react';
 
 interface Props {
   children: ReactNode;
@@ -43,7 +43,7 @@ class ErrorBoundary extends Component<Props, State> {
         <div className="min-h-screen bg-[#1e1e1e] flex items-center justify-center px-6">
           <div className="max-w-md text-center">
             <div className="mb-6">
-              <AlertTriangle size={64} className="mx-auto text-primary mb-4" />
+              <IconAlertTriangle size={64} className="mx-auto text-emerald-400 mb-4" />
               <h2 className="text-2xl font-semibold text-[#f5fcff] mb-2">
                 Algo salió mal
               </h2>
@@ -68,9 +68,9 @@ class ErrorBoundary extends Component<Props, State> {
             <div className="flex gap-3 justify-center">
               <button
                 onClick={this.handleRetry}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500 text-zinc-950 rounded-lg hover:bg-emerald-400 transition-colors"
               >
-                <RefreshCw size={16} />
+                <IconReload size={16} />
                 Reintentar
               </button>
               <button

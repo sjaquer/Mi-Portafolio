@@ -2,7 +2,7 @@ import { Suspense, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Icosahedron, Octahedron } from '@react-three/drei';
-import { ArrowRight, MessageSquare, BarChart3, Languages } from 'lucide-react';
+import { IconArrowRight, IconMessageDots, IconChartBar, IconLanguage } from '@tabler/icons-react';
 import Reveal from './Reveal';
 import CardGlow from './CardGlow';
 import * as THREE from 'three';
@@ -69,7 +69,7 @@ const canvasClass = "w-full h-full pointer-events-none";
 
 const cards = [
   {
-    icon: MessageSquare,
+    icon: IconMessageDots,
     title: 'Automatización con IA',
     desc: 'Modelos de lenguaje que clasifican, resumen y responden información operativa sin intervención humana.',
     color: 'from-emerald-400 to-teal-400',
@@ -77,7 +77,7 @@ const cards = [
     bg: 'bg-emerald-500/[0.03]',
   },
   {
-    icon: BarChart3,
+    icon: IconChartBar,
     title: 'Procesamiento de datos',
     desc: 'Pipelines que limpian y estructuran datos en bruto para alimentar dashboards y sistemas de decisión.',
     color: 'from-teal-400 to-cyan-400',
@@ -85,7 +85,7 @@ const cards = [
     bg: 'bg-teal-500/[0.03]',
   },
   {
-    icon: Languages,
+    icon: IconLanguage,
     title: 'Integración de modelos',
     desc: 'Conecto APIs de IA (OpenAI, Claude) con sistemas existentes para darles inteligencia en producción.',
     color: 'from-emerald-400 to-teal-400',
@@ -170,8 +170,8 @@ const AIShowcase = () => {
               <motion.div
                 key={i}
                 data-reveal
-                whileHover={{ y: -10, scale: 1.02 }}
-                className={`group relative rounded-3xl border ${card.border} ${card.bg} backdrop-blur-xl bg-zinc-900/30 p-8 sm:p-10 hover:bg-zinc-900/50 transition-all duration-500`}
+                whileHover={{ y: -8, scale: 1.015 }}
+                className="group relative rounded-3xl liquid-glass p-8 sm:p-10 transition-all duration-500 overflow-hidden"
                 style={{
                   marginTop: i === 1 ? '2.5rem' : i === 2 ? '-1rem' : '0',
                 }}
@@ -235,7 +235,7 @@ const AIShowcase = () => {
             className="group inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-zinc-50 text-zinc-950 font-bold text-base hover:bg-zinc-200 transition-all active:scale-95 shadow-xl shadow-emerald-500/5"
           >
             Cuéntame tu caso
-            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            <IconArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </motion.a>
         </Reveal>
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { IconMenu2, IconX, IconArrowUpRight } from '@tabler/icons-react';
 import { siteContent } from '../data/siteContent';
 
 const Header: React.FC<{ activeSection: string; setActiveSection: (s: string) => void }> = ({ activeSection, setActiveSection }) => {
@@ -54,12 +54,12 @@ const Header: React.FC<{ activeSection: string; setActiveSection: (s: string) =>
              </div>
              <div className="w-px h-8 bg-zinc-800 mx-4" />
              <button onClick={() => scrollToSection('contact')} className="px-5 py-2.5 rounded-full bg-zinc-100 text-zinc-950 font-bold text-sm hover:scale-105 transition-transform shadow-lg shadow-emerald-500/10 flex items-center gap-2">
-                Contactar <ArrowUpRight size={16} />
+                Contactar <IconArrowUpRight size={16} />
              </button>
           </nav>
 
           <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden relative z-50 p-2 text-zinc-100">
-            {mobileMenuOpen ? <X /> : <Menu />}
+            {mobileMenuOpen ? <IconX size={22} /> : <IconMenu2 size={22} />}
           </button>
         </div>
       </div>
@@ -73,7 +73,7 @@ const Header: React.FC<{ activeSection: string; setActiveSection: (s: string) =>
                     <div className="flex items-center justify-between p-6 border-b border-zinc-800">
                         <span className="text-lg font-bold text-zinc-50">Menú</span>
                         <button onClick={() => setMobileMenuOpen(false)} className="p-2 rounded-xl bg-zinc-900 text-zinc-400 hover:text-zinc-50">
-                            <X size={20} />
+                            <IconX size={20} />
                         </button>
                     </div>
                     <div className="flex-1 overflow-y-auto py-4 px-4">
