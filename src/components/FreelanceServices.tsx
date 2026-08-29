@@ -59,7 +59,7 @@ const ServiceCard: React.FC<{ svc: typeof services[number]; i: number }> = ({ sv
 
         <div className="flex flex-wrap gap-2">
           {svc.tags.map((tag) => (
-            <span key={tag} className="text-xs font-mono px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-500 group-hover:border-zinc-700 transition-colors">
+            <span key={tag} className="text-xs font-mono px-3 py-1.5 rounded-lg bg-emerald-950/30 border border-emerald-800/40 text-emerald-300/80 group-hover:border-emerald-500/40 transition-colors">
               {tag}
             </span>
           ))}

@@ -114,7 +114,7 @@ const ProjectInfo: React.FC<{ project: Project; index: number }> = ({ project, i
             href={project.liveUrl}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-zinc-900/90 text-zinc-100 hover:text-white border border-zinc-800 hover:border-zinc-700 text-xs font-mono transition-all shadow-sm group"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emerald-950/40 text-emerald-100 hover:text-white border border-emerald-700/40 hover:border-emerald-400/50 text-xs font-mono transition-all shadow-sm group"
           >
             <span>Ver demo</span>
             <IconArrowUpRight size={13} className="text-zinc-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -126,7 +126,7 @@ const ProjectInfo: React.FC<{ project: Project; index: number }> = ({ project, i
             href={project.githubUrl}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-zinc-900/90 text-zinc-300 hover:text-zinc-100 border border-zinc-800 hover:border-zinc-700 text-xs font-mono transition-all shadow-sm"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emerald-950/20 text-emerald-200/80 hover:text-emerald-100 border border-emerald-700/30 hover:border-emerald-400/40 text-xs font-mono transition-all shadow-sm"
           >
             <IconBrandGithub size={14} />
             <span>Código</span>
