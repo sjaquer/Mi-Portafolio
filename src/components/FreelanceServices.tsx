@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { IconArrowRight, IconServer, IconGitBranch, IconChartBar } from '@tabler/icons-react';
 import CardGlow from './CardGlow';
-import { useTilt } from '../hooks/useTilt';
 import { useMagnetic } from '../hooks/useMagnetic';
 
 const services = [
@@ -33,7 +32,6 @@ const services = [
 
 const ServiceCard: React.FC<{ svc: typeof services[number]; i: number }> = ({ svc, i }) => {
   const Icon = svc.icon;
-  const tiltRef = useTilt<HTMLDivElement>();
   const linkRef = useMagnetic<HTMLAnchorElement>();
 
   return (
@@ -43,12 +41,12 @@ const ServiceCard: React.FC<{ svc: typeof services[number]; i: number }> = ({ sv
       viewport={{ once: true, margin: '-80px' }}
       transition={{ delay: i * 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       whileHover={{ y: -8, scale: 1.01 }}
-      className="group relative overflow-hidden rounded-3xl liquid-glass p-8 sm:p-10 transition-all duration-500"
+      className="group relative overflow-hidden rounded-3xl forest-glass p-8 sm:p-10 transition-all duration-500"
       style={{ marginTop: i === 1 ? '2.5rem' : i === 2 ? '-.5rem' : undefined }}
     >
       <CardGlow color="rgba(16,185,129,0.3)" />
 
-      <div ref={tiltRef} className="relative z-10">
+      <div className="relative z-10">
         <div className="flex items-center justify-between mb-10">
           <div className="w-14 h-14 rounded-2xl bg-zinc-800/40 border border-zinc-700/40 flex items-center justify-center group-hover:scale-110 group-hover:border-emerald-500/30 transition-all duration-500">
             <Icon size={26} className="text-emerald-400" />

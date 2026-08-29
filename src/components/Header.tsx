@@ -29,7 +29,7 @@ const Header: React.FC<{ activeSection: string; setActiveSection: (s: string) =>
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300
-        ${scrolled ? 'bg-zinc-950/80 backdrop-blur-md shadow-sm border-b border-zinc-800 py-3' : 'bg-transparent py-5'}`}
+        ${scrolled ? 'bg-[#051a12]/80 backdrop-blur-md shadow-sm border-b border-emerald-900/30 py-3' : 'bg-transparent py-5'}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className="flex items-center justify-between">

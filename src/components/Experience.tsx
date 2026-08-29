@@ -82,7 +82,7 @@ const Experience = () => {
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ delay: i * 0.08, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ y: -4 }}
-                className={`group rounded-2xl liquid-glass-subtle p-5 hover:border-emerald-500/30 transition-all duration-500 ${
+                className={`group rounded-2xl forest-glass-soft p-5 hover:border-emerald-500/30 transition-all duration-500 ${
                   i === 0 ? 'md:col-span-2' : ''
                 }`}
               >
@@ -115,7 +115,7 @@ const Experience = () => {
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ delay: 0.1, duration: 0.4 }}
                 whileHover={{ y: -4 }}
-                className="md:col-span-2 group rounded-2xl liquid-glass-subtle p-5 hover:border-emerald-500/30 transition-all duration-500"
+                className="md:col-span-2 group rounded-2xl forest-glass-soft p-5 hover:border-emerald-500/30 transition-all duration-500"
               >
                 <div className="flex gap-3 items-start">
                   <LogoIcon
@@ -150,7 +150,7 @@ const Experience = () => {
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ delay: 0.15 + i * 0.06, duration: 0.4 }}
                 whileHover={{ y: -4 }}
-                className="group rounded-2xl liquid-glass-subtle p-5 hover:border-emerald-500/30 transition-all duration-500"
+                className="group rounded-2xl forest-glass-soft p-5 hover:border-emerald-500/30 transition-all duration-500"
               >
                 <div className="flex gap-3 items-start">
                   <LogoIcon
@@ -190,10 +190,10 @@ const Experience = () => {
                   viewport={{ once: true, margin: '-80px' }}
                   transition={{ delay: 0.2 + i * 0.05, duration: 0.4 }}
                   whileHover={{ y: -4 }}
-                  className={`group rounded-2xl border backdrop-blur-xl p-4 transition-all duration-500 ${
+                  className={`group rounded-2xl border p-4 transition-all duration-500 forest-glass-soft ${
                     edu.tier === 'ai-certification'
-                      ? 'border-emerald-500/10 bg-emerald-500/[0.02] hover:border-emerald-500/30'
-                      : 'border-zinc-800/40 bg-zinc-900/20 hover:border-zinc-700/60'
+                      ? 'hover:border-emerald-500/30'
+                      : 'hover:border-emerald-400/20'
                   }`}
                 >
                   <div className="flex gap-3 items-center">

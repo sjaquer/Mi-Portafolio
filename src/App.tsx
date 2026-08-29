@@ -8,7 +8,7 @@ import Hero from './components/Hero';
 import FreelanceServices from './components/FreelanceServices';
 import AIShowcase from './components/AIShowcase';
 import MobileNavigation from './components/MobileNavigation';
-import { GradientBackground } from './components/GradientBackground';
+import { ForestScene } from './components/ForestScene';
 import { SocialProof } from './components/SocialProof';
 import ScrollDivider from './components/ScrollDivider';
 import { throttle } from './utils/throttle';
@@ -71,7 +71,7 @@ const App: React.FC = () => {
       <ScrollProgressIndicator />
       <AnimatePresence>
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }} className="min-h-screen text-zinc-50 selection:bg-cyan-500/30 selection:text-cyan-200 relative snap-y snap-proximity">
-          <GradientBackground />
+          <ForestScene />
           <Header activeSection={activeSection} setActiveSection={setActiveSection} />
           <main className="relative z-10">
             <Hero />

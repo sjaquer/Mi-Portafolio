@@ -12,7 +12,7 @@ const Footer: React.FC = () => (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-10">
       {/* CTA Banner */}
       <Reveal
-        className="relative text-center mb-20 p-12 md:p-16 rounded-3xl bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 border border-zinc-800/60 backdrop-blur-sm overflow-hidden"
+        className="relative text-center mb-20 p-12 md:p-16 rounded-3xl forest-glass overflow-hidden"
         y={20}
         stagger={100}
         selector="[data-reveal]"

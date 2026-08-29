@@ -171,7 +171,7 @@ const AIShowcase = () => {
                 key={i}
                 data-reveal
                 whileHover={{ y: -8, scale: 1.015 }}
-                className="group relative rounded-3xl liquid-glass p-8 sm:p-10 transition-all duration-500 overflow-hidden"
+                className="group relative rounded-3xl forest-glass p-8 sm:p-10 transition-all duration-500 overflow-hidden"
                 style={{
                   marginTop: i === 1 ? '2.5rem' : i === 2 ? '-1rem' : '0',
                 }}

@@ -20,7 +20,7 @@ const MobileNavigation: React.FC<{ activeSection: string; setActiveSection: (s: 
 
   return (
     <div className="md:hidden fixed bottom-0 left-0 right-0 z-50">
-      <nav className="mx-2 mb-2 bg-zinc-950/90 backdrop-blur-md border border-zinc-800 rounded-2xl px-1 py-1.5">
+      <nav className="mx-2 mb-2 bg-[#051a12]/90 backdrop-blur-md border border-emerald-900/30 rounded-2xl px-1 py-1.5">
         <div className="flex justify-around items-center">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;

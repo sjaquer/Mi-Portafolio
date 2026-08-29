@@ -6,8 +6,8 @@ import { projects } from '../data/portfolio';
 import { Project } from '../types';
 import ErrorBoundary from './ErrorBoundary';
 import { useInViewOnce } from './Reveal';
+import CountUp from './CountUp';
 import { useDraggable } from '../hooks/useDraggable';
-import { useTilt } from '../hooks/useTilt';
 import { useMagnetic } from '../hooks/useMagnetic';
 import CardGlow from './CardGlow';
 
@@ -140,7 +140,6 @@ const ProjectInfo: React.FC<{ project: Project; index: number }> = ({ project, i
 const ProjectInteractiveStage: React.FC<{ project: Project }> = ({ project }) => {
   const currentTheme = projectThemes[project.id] || projectThemes['1'];
   const dragRef = useDraggable<HTMLDivElement>();
-  const tiltRef = useTilt<HTMLDivElement>({ max: 8, scale: 1.01 });
 
   return (
     <div
@@ -149,7 +148,7 @@ const ProjectInteractiveStage: React.FC<{ project: Project }> = ({ project }) =>
         borderColor: `rgba(${currentTheme.rgb}, 0.22)`,
         boxShadow: `0 30px 70px -20px rgba(0, 0, 0, 0.7), 0 0 60px -25px rgba(${currentTheme.rgb}, 0.3)`
       }}
-      className="liquid-glass relative w-full h-[400px] sm:h-[440px] rounded-3xl p-3.5 sm:p-5 transition-all duration-700 hover:border-zinc-700/80 cursor-grab active:cursor-grabbing overflow-hidden flex flex-col justify-between"
+      className="forest-glass relative w-full h-[400px] sm:h-[440px] rounded-3xl p-3.5 sm:p-5 transition-all duration-700 hover:border-emerald-400/30 cursor-grab active:cursor-grabbing overflow-hidden flex flex-col justify-between"
     >
       <CardGlow color={currentTheme.glow} />
       
@@ -163,7 +162,7 @@ const ProjectInteractiveStage: React.FC<{ project: Project }> = ({ project }) =>
         style={{ background: currentTheme.accent }}
       />
 
-      <div ref={tiltRef} className="relative z-10 w-full h-full flex flex-col justify-between">
+      <div className="relative z-10 w-full h-full flex flex-col justify-between">
         {project.simulatorId ? (
           <SimulatorSelector simulatorId={project.simulatorId} />
         ) : (

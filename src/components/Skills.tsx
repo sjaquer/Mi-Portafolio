@@ -188,7 +188,7 @@ const Skills = () => {
               key={group.title}
               data-reveal
             >
-              <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5 p-5 sm:p-6 rounded-2xl bg-zinc-900/30 backdrop-blur-2xl border border-zinc-800/40 hover:border-emerald-500/20 transition-all duration-500">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5 p-5 sm:p-6 rounded-2xl forest-glass-soft hover:border-emerald-400/25 transition-all duration-500">
                 <span className={`text-xs font-mono font-bold text-transparent bg-clip-text bg-gradient-to-r ${group.color} shrink-0 sm:min-w-[9rem]`}>
                   {group.title}
                 </span>
