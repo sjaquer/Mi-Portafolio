@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef } from 'react';
-import { animate, set, stagger } from 'animejs';
+import { animate, set, stagger as staggerFn } from 'animejs';
 import { throttle } from '../utils/throttle';
 
 interface RevealProps {
@@ -59,7 +59,7 @@ const Reveal: React.FC<RevealProps> = ({
           animate(targets, {
             opacity: [opacityFrom, 1],
             translateY: [y, 0],
-            delay: stagger ? stagger(stagger, { start: delay }) : delay,
+            delay: stagger ? staggerFn(stagger, { start: delay }) : delay,
             duration,
             ease: 'outExpo',
           });

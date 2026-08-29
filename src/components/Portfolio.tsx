@@ -6,7 +6,10 @@ import { projects } from '../data/portfolio';
 import { Project } from '../types';
 import ErrorBoundary from './ErrorBoundary';
 import { useInViewOnce } from './Reveal';
+import CountUp from './CountUp';
 import { useDraggable } from '../hooks/useDraggable';
+import { useTilt } from '../hooks/useTilt';
+import { useMagnetic } from '../hooks/useMagnetic';
 import CardGlow from './CardGlow';
 
 const BigJackSim = React.lazy(() => import('./simulators/BigJackSim').then(m => ({ default: m.BigJackSim })));
@@ -66,6 +69,9 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   const currentTheme = projectThemes[project.id] || projectThemes['1'];
   const [viewMode, setViewMode] = useState<'impact' | 'tech'>('impact');
   const dragRef = useDraggable<HTMLDivElement>();
+  const tiltRef = useTilt<HTMLDivElement>();
+  const liveRef = useMagnetic<HTMLAnchorElement>();
+  const ghRef = useMagnetic<HTMLAnchorElement>();
 
   return (
     <div
@@ -78,7 +84,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
       className="relative rounded-3xl p-6 sm:p-8 backdrop-blur-xl bg-zinc-950/20 border transition-colors duration-700 hover:border-zinc-800/40 cursor-grab active:cursor-grabbing"
     >
       <CardGlow color={currentTheme.glow} />
-      <div className="relative z-10">
+      <div ref={tiltRef} className="relative z-10">
       {/* Header */}
       <div className="flex items-start justify-between gap-4 mb-4">
         <div>
@@ -91,14 +97,14 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
         </div>
         <div className="flex items-center gap-2 shrink-0">
           {project.liveUrl && (
-            <a href={project.liveUrl} target="_blank" rel="noreferrer"
+            <a ref={liveRef} href={project.liveUrl} target="_blank" rel="noreferrer"
               className="w-8 h-8 flex items-center justify-center rounded-lg bg-zinc-950/80 text-zinc-400 hover:text-zinc-100 border border-zinc-900 hover:border-zinc-800 transition-all"
               aria-label={`Ver ${project.title} en vivo`}>
               <ExternalLink size={13} />
             </a>
           )}
           {project.githubUrl && (
-            <a href={project.githubUrl} target="_blank" rel="noreferrer"
+            <a ref={ghRef} href={project.githubUrl} target="_blank" rel="noreferrer"
               className="w-8 h-8 flex items-center justify-center rounded-lg bg-zinc-950/80 text-zinc-400 hover:text-zinc-100 border border-zinc-900 hover:border-zinc-800 transition-all"
               aria-label={`Ver ${project.title} en GitHub`}>
               <Github size={13} />
@@ -154,7 +160,13 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
                 <div key={idx}>
                   <span className="block text-[7px] font-mono text-zinc-500 uppercase tracking-widest mb-1.5 leading-none">{metric.label}</span>
                   <span style={{ color: currentTheme.accent }} className="text-lg sm:text-xl font-extrabold font-mono tracking-tight">
-                    {metric.prefix}{metric.value}{metric.suffix || ''}
+                    {metric.prefix}
+                    {/^\d+$/.test(String(metric.value)) ? (
+                      <CountUp value={Number(metric.value)} />
+                    ) : (
+                      metric.value
+                    )}
+                    {metric.suffix || ''}
                   </span>
                 </div>
               ))}

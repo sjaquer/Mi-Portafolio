@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Server, GitBranch, BarChart3 } from 'lucide-react';
 import CardGlow from './CardGlow';
+import { useTilt } from '../hooks/useTilt';
+import { useMagnetic } from '../hooks/useMagnetic';
 
 const services = [
   {
@@ -31,6 +33,8 @@ const services = [
 
 const ServiceCard: React.FC<{ svc: typeof services[number]; i: number }> = ({ svc, i }) => {
   const Icon = svc.icon;
+  const tiltRef = useTilt<HTMLDivElement>();
+  const linkRef = useMagnetic<HTMLAnchorElement>();
 
   return (
     <motion.div
@@ -44,7 +48,7 @@ const ServiceCard: React.FC<{ svc: typeof services[number]; i: number }> = ({ sv
     >
       <CardGlow color="rgba(16,185,129,0.35)" />
 
-      <div className="relative z-10">
+      <div ref={tiltRef} className="relative z-10">
         <div className="flex items-center justify-between mb-10">
           <div className="w-14 h-14 rounded-2xl bg-zinc-800/40 border border-zinc-700/40 flex items-center justify-center group-hover:scale-110 group-hover:border-emerald-500/30 transition-all duration-500">
             <Icon size={26} className="text-emerald-400" />
@@ -64,7 +68,7 @@ const ServiceCard: React.FC<{ svc: typeof services[number]; i: number }> = ({ sv
         </div>
 
         <div className="mt-8 pt-6 border-t border-zinc-800/50">
-          <a href="#contact" className="inline-flex items-center gap-2 text-sm font-medium text-zinc-500 hover:text-emerald-400 transition-colors group/link">
+          <a ref={linkRef} href="#contact" className="inline-flex items-center gap-2 text-sm font-medium text-zinc-500 hover:text-emerald-400 transition-colors group/link">
             Saber más
             <ArrowRight size={14} className="transition-transform duration-300 group-hover/link:translate-x-1" />
           </a>
