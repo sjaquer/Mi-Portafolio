@@ -4,7 +4,6 @@ import { Github, ExternalLink, RotateCcw, ShieldAlert } from 'lucide-react';
 import { projects } from '../data/portfolio';
 import { Project } from '../types';
 import ErrorBoundary from './ErrorBoundary';
-import { Project3DShowcase } from './Project3DShowcase';
 
 const BigJackSim = React.lazy(() => import('./simulators/BigJackSim').then(m => ({ default: m.BigJackSim })));
 const TaskMeSim = React.lazy(() => import('./simulators/TaskMeSim').then(m => ({ default: m.TaskMeSim })));
@@ -182,65 +181,67 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
               </div>
             </div>
           )}
-          <div className="pt-2 text-[10px] text-zinc-500 leading-relaxed font-mono">
-            * Ejecución optimizada en tiempo real mediante arquitectura nativa y persistencia distribuida.
-          </div>
         </div>
       )}
     </div>
   );
 };
 
+const ProjectGlyph: React.FC<{ accent: string }> = ({ accent }) => (
+  <div className="relative w-7 h-7 shrink-0" aria-hidden>
+    <motion.span
+      className="absolute inset-0 rounded-full border"
+      style={{ borderColor: `${accent}40` }}
+      animate={{ rotate: 360 }}
+      transition={{ duration: 9, repeat: Infinity, ease: 'linear' }}
+    />
+    <motion.span
+      className="absolute inset-1.5 rounded-full"
+      style={{ backgroundColor: `${accent}18`, border: `1px solid ${accent}55` }}
+      animate={{ scale: [1, 1.18, 1] }}
+      transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }}
+    />
+    <span
+      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full"
+      style={{ backgroundColor: accent, boxShadow: `0 0 8px ${accent}` }}
+    />
+  </div>
+);
+
 const ProjectPreview: React.FC<{ project: Project }> = ({ project }) => {
-  const [activeTab, setActiveTab] = useState<'3d' | 'sim'>('3d');
+  const currentTheme = projectThemes[project.id] || projectThemes['1'];
 
   return (
     <div className="w-full h-full flex flex-col justify-between p-4 bg-zinc-950/20 border border-zinc-900/40 rounded-3xl backdrop-blur-md relative overflow-hidden transition-all duration-500 hover:border-zinc-800/40">
-      {/* Background glow overlay */}
-      <div className="absolute inset-0 bg-radial-gradient from-zinc-900/10 to-transparent pointer-events-none" />
+      {/* Ambient glow */}
+      <div
+        className="absolute -top-20 -right-20 w-44 h-44 rounded-full blur-3xl opacity-20 pointer-events-none"
+        style={{ background: currentTheme.accent }}
+      />
 
-      {/* Header Selector */}
+      {/* Header */}
       <div className="flex items-center justify-between border-b border-zinc-900/80 pb-3 mb-2 z-10 shrink-0">
-        <span className="text-[9px] font-mono font-bold text-zinc-500 uppercase tracking-widest">
-          {activeTab === '3d' ? 'VISTA TRIDIMENSIONAL' : 'SIMULADOR INTERACTIVO'}
+        <span className="flex items-center gap-2">
+          <ProjectGlyph accent={currentTheme.accent} />
+          <span className="text-[9px] font-mono font-bold text-zinc-500 uppercase tracking-widest">
+            Simulador interactivo
+          </span>
         </span>
-        
-        {project.simulatorId && (
-          <div className="flex gap-1 bg-zinc-950/80 p-0.5 rounded-lg border border-zinc-900">
-            <button
-              onClick={() => setActiveTab('3d')}
-              className={`px-2.5 py-1 text-[9px] font-bold rounded-md transition-all cursor-pointer ${
-                activeTab === '3d' 
-                  ? 'bg-zinc-900 text-zinc-100 border border-zinc-800' 
-                  : 'text-zinc-500 hover:text-zinc-300'
-              }`}
-            >
-              Visual 3D
-            </button>
-            <button
-              onClick={() => setActiveTab('sim')}
-              className={`px-2.5 py-1 text-[9px] font-bold rounded-md transition-all cursor-pointer ${
-                activeTab === 'sim' 
-                  ? 'bg-zinc-900 text-zinc-100 border border-zinc-800' 
-                  : 'text-zinc-500 hover:text-zinc-300'
-              }`}
-            >
-              Simulador
-            </button>
-          </div>
-        )}
+        <span className="flex items-center gap-1.5 text-[8px] font-mono" style={{ color: currentTheme.accent }}>
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ backgroundColor: currentTheme.accent }} />
+            <span className="relative inline-flex rounded-full h-1.5 w-1.5" style={{ backgroundColor: currentTheme.accent }} />
+          </span>
+          En vivo
+        </span>
       </div>
 
-      {/* Main Content Area */}
-      <div className="flex-grow flex items-center justify-center relative overflow-hidden h-[340px]">
-        {activeTab === '3d' ? (
-          project.simulatorId ? (
-            <Project3DShowcase simulatorId={project.simulatorId} />
-          ) : (
-            <div className="w-full h-full bg-transparent" />
-          )
+      {/* Main Content: interactive test buttons */}
+      <div className="flex-grow flex items-center justify-center relative overflow-hidden">
+        {project.simulatorId ? (
+          <SimulatorSelector simulatorId={project.simulatorId} />
         ) : (
-          project.simulatorId && <SimulatorSelector simulatorId={project.simulatorId} />
+          <span className="text-xs font-mono text-zinc-600">Vista no disponible</span>
         )}
       </div>
     </div>
