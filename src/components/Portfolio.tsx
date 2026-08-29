@@ -283,21 +283,15 @@ const Portfolio = () => {
               <span className="text-xs font-mono font-bold tracking-[0.3em] text-emerald-400 uppercase block mb-6">
                 Quién soy
               </span>
-              <h2 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-zinc-50 tracking-tight leading-none mb-8">
-                Soy Sebastián, estudiante de Administración y Negocios Internacionales en la Universidad Norbert Wiener (9.º ciclo).
-              </h2>
-              <p className="max-w-2xl mx-auto text-zinc-400 text-base md:text-lg leading-relaxed font-light mb-4">
-                Desde 2022 construyo soluciones digitales para pequeñas y medianas empresas — sin esperar a graduarme.
-              </p>
-              <p className="max-w-2xl mx-auto text-zinc-400 text-base md:text-lg leading-relaxed font-light mb-4">
-                He trabajado en retail, logística marítima, marketing digital y operaciones de alimentos. En todos los casos el problema era el mismo: procesos manuales que se podían automatizar.
-              </p>
-              <p className="max-w-2xl mx-auto text-zinc-400 text-base md:text-lg leading-relaxed font-light mb-4">
-                Actualmente trabajo como Practicante Pre Profesional en Norbert Wiener, donde diseño la infraestructura de datos interna del área de sistemas.
-              </p>
-              <p className="max-w-2xl mx-auto text-emerald-400 text-base md:text-lg leading-relaxed font-semibold">
-                No soy desarrollador puro ni consultor de negocios. Soy las dos cosas al mismo tiempo.
-              </p>
+               <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-zinc-50 tracking-tight leading-tight mb-6">
+                 Soy <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-emerald-500">Administrador y builder</span> a la vez.
+               </h2>
+               <p className="max-w-2xl mx-auto text-zinc-400 text-base md:text-lg leading-relaxed font-light mb-4">
+                 Desde 2022 construyo sistemas para PYMEs en retail, logística, marketing y alimentos — reemplazando procesos manuales por automatización. Hoy diseño la infraestructura de datos del área de sistemas en la Universidad Norbert Wiener.
+               </p>
+               <p className="max-w-2xl mx-auto text-emerald-400 text-base md:text-lg leading-relaxed font-semibold">
+                 Entiendo el negocio y construyo la tecnología que lo resuelve.
+               </p>
             </motion.div>
         </div>
       </div>

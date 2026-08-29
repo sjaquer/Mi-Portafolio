@@ -20,7 +20,7 @@ const Footer: React.FC = () => (
             ¿Tienes un proyecto en mente?
           </h3>
           <p className="text-zinc-400 text-lg mb-8 max-w-xl mx-auto leading-relaxed">
-            Si tienes un proceso manual, un sistema desconectado o datos que no estás usando bien — hablemos.
+            Procesos manuales, sistemas desconectados o datos sin usar — hablemos.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <motion.a
@@ -51,7 +51,7 @@ const Footer: React.FC = () => (
         <div className="md:col-span-2">
           <h4 className="text-lg font-bold text-zinc-50 mb-3 font-display">Sebastián Jaque</h4>
           <p className="text-zinc-500 text-sm leading-relaxed mb-5 max-w-md">
-            Sebastián Jaque · Automatización, datos y sistemas para operaciones reales.
+            Automatización, datos y sistemas para operaciones reales.
           </p>
           <div className="flex gap-3">
             {[

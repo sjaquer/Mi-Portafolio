@@ -69,7 +69,7 @@ const cards = [
   {
     icon: MessageSquare,
     title: 'Automatización con IA',
-    desc: 'Flujos que usan modelos de lenguaje para clasificar, resumir o responder información operativa sin intervención humana.',
+    desc: 'Modelos de lenguaje que clasifican, resumen y responden información operativa sin intervención humana.',
     color: 'from-emerald-400 to-teal-400',
     border: 'border-emerald-500/20',
     bg: 'bg-emerald-500/[0.03]',
@@ -77,7 +77,7 @@ const cards = [
   {
     icon: BarChart3,
     title: 'Procesamiento de datos',
-    desc: 'Pipelines que limpian, transforman y estructuran datos en bruto para alimentar dashboards y sistemas de decisión.',
+    desc: 'Pipelines que limpian y estructuran datos en bruto para alimentar dashboards y sistemas de decisión.',
     color: 'from-teal-400 to-cyan-400',
     border: 'border-teal-500/20',
     bg: 'bg-teal-500/[0.03]',
@@ -85,7 +85,7 @@ const cards = [
   {
     icon: Languages,
     title: 'Integración de modelos',
-    desc: 'Conexión de APIs de IA (OpenAI, Claude, etc.) con sistemas existentes para agregar inteligencia a procesos ya en producción.',
+    desc: 'Conecto APIs de IA (OpenAI, Claude) con sistemas existentes para darles inteligencia en producción.',
     color: 'from-emerald-400 to-teal-400',
     border: 'border-emerald-500/20',
     bg: 'bg-emerald-500/[0.03]',
@@ -237,7 +237,7 @@ const AIShowcase = () => {
             transition={{ delay: 0.45, duration: 0.5 }}
             className="max-w-xl text-zinc-400 text-sm md:text-base mb-10 leading-relaxed font-light mx-auto"
           >
-            No hace falta un equipo de tecnología ni un presupuesto enorme. Solo necesitas identificar el problema correcto.
+            No hace falta un equipo de tecnología ni un presupuesto enorme: solo identificar el problema correcto.
           </motion.p>
 
           <motion.a
