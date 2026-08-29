@@ -1,9 +1,11 @@
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
+import anime from 'animejs';
 import { Github, ExternalLink, RotateCcw, ShieldAlert } from 'lucide-react';
 import { projects } from '../data/portfolio';
 import { Project } from '../types';
 import ErrorBoundary from './ErrorBoundary';
+import { useInViewOnce } from './Reveal';
 
 const BigJackSim = React.lazy(() => import('./simulators/BigJackSim').then(m => ({ default: m.BigJackSim })));
 const TaskMeSim = React.lazy(() => import('./simulators/TaskMeSim').then(m => ({ default: m.TaskMeSim })));
@@ -249,25 +251,18 @@ const ProjectPreview: React.FC<{ project: Project }> = ({ project }) => {
 };
 
 const Portfolio = () => {
-  const [activeProjectId, setActiveProjectId] = useState<string>('1');
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = entry.target.getAttribute('data-project-section');
-            if (id) setActiveProjectId(id);
-          }
-        });
-      },
-      { rootMargin: '-45% 0px -45% 0px', threshold: 0.05 }
-    );
-
-    const elements = document.querySelectorAll('[data-project-section]');
-    elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
+  const quienSoyRef = useInViewOnce<HTMLDivElement>((el) => {
+    anime({
+      targets: el.querySelectorAll('[data-line]'),
+      opacity: [0, 1],
+      translateY: [22, 0],
+      delay: anime.stagger(130),
+      duration: 700,
+      easing: 'easeOutExpo',
+    });
+    const bar = el.querySelector<HTMLElement>('.accent-bar');
+    if (bar) anime({ targets: bar, scaleX: [0, 1], duration: 900, easing: 'easeOutExpo' });
+  });
 
   return (
     <section id="portfolio" className="relative z-10">
@@ -275,25 +270,21 @@ const Portfolio = () => {
       <div className="relative min-h-screen snap-start flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/[0.02] via-transparent to-transparent pointer-events-none" />
         <div className="text-center px-4 max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <span className="text-xs font-mono font-bold tracking-[0.3em] text-emerald-400 uppercase block mb-6">
+            <div ref={quienSoyRef}>
+              <span data-line className="text-xs font-mono font-bold tracking-[0.3em] text-emerald-400 uppercase block mb-6" style={{ opacity: 0 }}>
                 Quién soy
               </span>
-               <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-zinc-50 tracking-tight leading-tight mb-6">
+               <h2 data-line className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-zinc-50 tracking-tight leading-tight mb-6" style={{ opacity: 0 }}>
                  Soy <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-emerald-500">Administrador y builder</span> a la vez.
                </h2>
-               <p className="max-w-2xl mx-auto text-zinc-400 text-base md:text-lg leading-relaxed font-light mb-4">
+               <div className="accent-bar h-px w-24 mx-auto bg-gradient-to-r from-transparent via-emerald-400 to-transparent mb-6 origin-center" style={{ transform: 'scaleX(0)' }} />
+               <p data-line className="max-w-2xl mx-auto text-zinc-400 text-base md:text-lg leading-relaxed font-light mb-4" style={{ opacity: 0 }}>
                  Desde 2022 construyo sistemas para PYMEs en retail, logística, marketing y alimentos — reemplazando procesos manuales por automatización. Hoy diseño la infraestructura de datos del área de sistemas en la Universidad Norbert Wiener.
                </p>
-               <p className="max-w-2xl mx-auto text-emerald-400 text-base md:text-lg leading-relaxed font-semibold">
+               <p data-line className="max-w-2xl mx-auto text-emerald-400 text-base md:text-lg leading-relaxed font-semibold" style={{ opacity: 0 }}>
                  Entiendo el negocio y construyo la tecnología que lo resuelve.
                </p>
-            </motion.div>
+            </div>
         </div>
       </div>
 

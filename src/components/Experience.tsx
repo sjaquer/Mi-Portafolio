@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import Reveal from './Reveal';
 import { experiences, education } from '../data/portfolio';
 
 function LogoIcon({ src, alt, initials }: { src?: string; alt: string; initials: string }) {
@@ -46,26 +47,29 @@ const Experience = () => {
     <section id="experience" className="relative z-10 py-24 sm:py-32 border-t border-zinc-900/50">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-16 text-center sm:text-left"
-        >
-          <span className="text-xs font-mono font-bold tracking-[0.3em] text-emerald-400 uppercase block mb-4">
+        <Reveal className="mb-16 text-center sm:text-left" y={20} stagger={100} selector="[data-reveal]">
+          <span
+            data-reveal
+            className="text-xs font-mono font-bold tracking-[0.3em] text-emerald-400 uppercase block mb-4"
+          >
             Trayectoria
           </span>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-zinc-50 tracking-tight leading-[1.05] max-w-3xl">
+          <h2
+            data-reveal
+            className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-zinc-50 tracking-tight leading-[1.05] max-w-3xl"
+          >
             Experiencia{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-emerald-500">
               & Formación
             </span>.
           </h2>
-          <p className="text-zinc-500 text-sm md:text-base mt-4 max-w-xl font-light leading-relaxed">
+          <p
+            data-reveal
+            className="text-zinc-500 text-sm md:text-base mt-4 max-w-xl font-light leading-relaxed"
+          >
             He trabajado en retail, logística, food service, marketing y datos. Así se traduce eso en experiencia real.
           </p>
-        </motion.div>
+        </Reveal>
 
         <div className="space-y-6">
           {/* ── Work Experience Row ── */}

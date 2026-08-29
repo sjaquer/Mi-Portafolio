@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
 import { Suspense } from 'react';
+import Reveal from './Reveal';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Dodecahedron, Tetrahedron } from '@react-three/drei';
 import * as THREE from 'three';
+import { Dodecahedron, Tetrahedron } from '@react-three/drei';
 
 const mouse3d = { x: 0, y: 0 };
 
@@ -128,7 +128,6 @@ const skillGroups = [
 
 const Skills = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const inView = useInView(sectionRef, { once: true, margin: '-100px' });
 
   return (
     <section
@@ -158,34 +157,36 @@ const Skills = () => {
       {/* Content */}
       <div className="relative z-10 w-full max-w-5xl mx-auto px-6 py-20">
         {/* Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-16 text-center"
-        >
-          <span className="text-xs font-mono font-bold tracking-[0.3em] text-emerald-400 uppercase block mb-4">
+        <Reveal className="mb-16 text-center" y={30} stagger={100} selector="[data-reveal]">
+          <span
+            data-reveal
+            className="text-xs font-mono font-bold tracking-[0.3em] text-emerald-400 uppercase block mb-4"
+          >
             Stack Tecnológico
           </span>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-zinc-50 tracking-tight leading-[1.05] max-w-3xl mx-auto">
+          <h2
+            data-reveal
+            className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-zinc-50 tracking-tight leading-[1.05] max-w-3xl mx-auto"
+          >
             Lo que{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-emerald-500">
               construyo
             </span>.
           </h2>
-          <p className="text-zinc-500 text-sm md:text-base mt-4 max-w-xl mx-auto font-light leading-relaxed">
+          <p
+            data-reveal
+            className="text-zinc-500 text-sm md:text-base mt-4 max-w-xl mx-auto font-light leading-relaxed"
+          >
             No servicios genéricos. Soluciones para problemas concretos.
           </p>
-        </motion.div>
+        </Reveal>
 
         {/* Vertical skill groups */}
-        <div className="space-y-4">
-          {skillGroups.map((group, gi) => (
-            <motion.div
+        <Reveal className="space-y-4" y={30} stagger={100} selector="[data-reveal]">
+          {skillGroups.map((group) => (
+            <div
               key={group.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.2 + gi * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              data-reveal
             >
               <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5 p-5 sm:p-6 rounded-2xl bg-zinc-900/30 backdrop-blur-2xl border border-zinc-800/40 hover:border-emerald-500/20 transition-all duration-500">
                 <span className={`text-xs font-mono font-bold text-transparent bg-clip-text bg-gradient-to-r ${group.color} shrink-0 sm:min-w-[9rem]`}>
@@ -202,22 +203,17 @@ const Skills = () => {
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </div>
+        </Reveal>
 
         {/* Footer */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.8, duration: 0.6 }}
-          className="mt-12 text-center"
-        >
+        <Reveal className="mt-12 text-center" y={20}>
           <div className="inline-flex items-center gap-2 text-[10px] font-mono text-zinc-600">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/60 animate-pulse" />
             Full-Stack · AI · Data
           </div>
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   );

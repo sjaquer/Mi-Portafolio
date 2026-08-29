@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, ArrowUp, MapPin, Phone, FileText, Bot, ExternalLink } from 'lucide-react';
+import Reveal from './Reveal';
+import { Github, Linkedin, Mail, ArrowUp, MapPin, Phone, ExternalLink } from 'lucide-react';
 import { siteContent } from '../data/siteContent';
 
 const Footer: React.FC = () => (
@@ -10,20 +11,29 @@ const Footer: React.FC = () => (
 
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-10">
       {/* CTA Banner */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+      <Reveal
         className="relative text-center mb-20 p-12 md:p-16 rounded-3xl bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 border border-zinc-800/60 backdrop-blur-sm overflow-hidden"
+        y={20}
+        stagger={100}
+        selector="[data-reveal]"
       >
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_50%_50%,rgba(16,185,129,0.03),transparent)] pointer-events-none" />
         <div className="relative z-10">
-          <h3 className="text-3xl md:text-4xl font-extrabold text-zinc-50 font-display tracking-tight mb-4">
+          <h3
+            data-reveal
+            className="text-3xl md:text-4xl font-extrabold text-zinc-50 font-display tracking-tight mb-4"
+          >
             ¿Tienes un proyecto en mente?
           </h3>
-          <p className="text-zinc-400 text-lg mb-8 max-w-xl mx-auto leading-relaxed">
+          <p
+            data-reveal
+            className="text-zinc-400 text-lg mb-8 max-w-xl mx-auto leading-relaxed"
+          >
             Procesos manuales, sistemas desconectados o datos sin usar — hablemos.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <motion.a
+              data-reveal
               whileHover={{ scale: 1.04, boxShadow: '0 0 30px rgba(16,185,129,0.2)' }}
               whileTap={{ scale: 0.97 }}
               href={`mailto:${siteContent.footer.contactEmail}`}
@@ -32,6 +42,7 @@ const Footer: React.FC = () => (
               <Mail size={16} /> Escribirme
             </motion.a>
             <motion.a
+              data-reveal
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
               href="https://www.linkedin.com/in/sjaquer"
@@ -43,7 +54,7 @@ const Footer: React.FC = () => (
             </motion.a>
           </div>
         </div>
-      </motion.div>
+      </Reveal>
 
       {/* Footer grid */}
       <div className="grid md:grid-cols-3 gap-10 mb-16">

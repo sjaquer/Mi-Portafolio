@@ -1,8 +1,58 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, ChevronDown } from 'lucide-react';
+import anime from 'animejs';
+import { throttle } from '../utils/throttle';
 import HeroCube from './HeroCube';
 import ErrorBoundary from './ErrorBoundary';
+
+const HeroLineArt: React.FC = () => {
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const svgRef = useRef<SVGSVGElement>(null);
+
+  useEffect(() => {
+    const svg = svgRef.current;
+    if (!svg) return;
+
+    const shapes = Array.from(svg.querySelectorAll<SVGGeometryElement>('[data-draw]'));
+    shapes.forEach((shape, i) => {
+      const len = shape.getTotalLength();
+      shape.style.strokeDasharray = `${len}`;
+      shape.style.strokeDashoffset = `${len}`;
+      anime({
+        targets: shape,
+        strokeDashoffset: [len, 0],
+        duration: 1500,
+        delay: 400 + i * 220,
+        easing: 'easeInOutSine',
+      });
+    });
+
+    const onScroll = throttle(() => {
+      if (wrapRef.current) {
+        wrapRef.current.style.transform = `translateY(${window.scrollY * 0.12}px)`;
+      }
+    });
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  return (
+    <div
+      ref={wrapRef}
+      className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center opacity-[0.18]"
+      aria-hidden
+    >
+      {/* Pieza gráfica de reemplazo: aquí puedes montar tu SVG/PNG en capas */}
+      <svg ref={svgRef} width="520" height="520" viewBox="0 0 520 520" fill="none">
+        <circle data-draw cx="260" cy="260" r="200" stroke="#34d399" strokeWidth="1" />
+        <circle data-draw cx="260" cy="260" r="150" stroke="#0d9488" strokeWidth="1" />
+        <path data-draw d="M260 60 L320 200 L260 340 L200 200 Z" stroke="#10b981" strokeWidth="1" />
+        <path data-draw d="M60 260 L200 320 L340 260 L200 200 Z" stroke="#34d399" strokeWidth="1" />
+      </svg>
+    </div>
+  );
+};
 
 const Hero: React.FC = () => {
   return (
@@ -13,6 +63,8 @@ const Hero: React.FC = () => {
           <HeroCube />
         </div>
       </ErrorBoundary>
+
+      <HeroLineArt />
 
       <div className="pointer-events-none absolute inset-0 z-[1]">
         <div className="absolute left-[-8%] top-12 h-72 w-72 rounded-full bg-emerald-500/[0.03] blur-3xl" />

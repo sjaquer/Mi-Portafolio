@@ -10,6 +10,7 @@ import AIShowcase from './components/AIShowcase';
 import MobileNavigation from './components/MobileNavigation';
 import { GradientBackground } from './components/GradientBackground';
 import { SocialProof } from './components/SocialProof';
+import ScrollDivider from './components/ScrollDivider';
 import { throttle } from './utils/throttle';
 
 const Portfolio = React.lazy(() => import('./components/Portfolio'));
@@ -76,14 +77,17 @@ const App: React.FC = () => {
             <Hero />
             <SocialProof />
             <FreelanceServices />
+            <ScrollDivider />
             <Suspense fallback={null}>
               <Portfolio />
             </Suspense>
+            <ScrollDivider />
             <AIShowcase />
             <Suspense fallback={null}>
               <Skills />
               <Experience />
             </Suspense>
+            <ScrollDivider />
           </main>
           <MobileNavigation activeSection={activeSection} setActiveSection={setActiveSection} />
           <Suspense fallback={null}><div className="relative z-10"><Footer /></div></Suspense>

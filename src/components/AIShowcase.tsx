@@ -3,6 +3,7 @@ import { motion, useInView } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Icosahedron, Octahedron } from '@react-three/drei';
 import { ArrowRight, MessageSquare, BarChart3, Languages } from 'lucide-react';
+import Reveal from './Reveal';
 import * as THREE from 'three';
 
 function FloatingShape1() {
@@ -134,49 +135,40 @@ const AIShowcase = () => {
             </motion.div>
 
             {/* Text */}
-            <div className="text-center lg:text-left">
-              <motion.span
-                initial={{ opacity: 0, y: 10 }}
-                animate={topInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.2, duration: 0.5 }}
+            <Reveal className="text-center lg:text-left" y={30} stagger={120} selector="[data-reveal]">
+              <span
+                data-reveal
                 className="text-xs sm:text-sm font-mono font-bold tracking-[0.3em] text-emerald-400 uppercase block mb-6"
               >
                 IA Aplicada
-              </motion.span>
-              <motion.h2
-                initial={{ opacity: 0, y: 30 }}
-                animate={topInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.3, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              </span>
+              <h2
+                data-reveal
                 className="text-5xl sm:text-6xl lg:text-7xl font-display font-extrabold text-zinc-50 tracking-tight leading-[1.05] max-w-3xl"
               >
                 IA aplicada a operaciones,{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-emerald-500">
                   no a experimentos
                 </span>.
-              </motion.h2>
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={topInView ? { opacity: 1 } : {}}
-                transition={{ delay: 0.4, duration: 0.5 }}
+              </h2>
+              <p
+                data-reveal
                 className="max-w-xl text-zinc-400 text-sm md:text-base mt-6 leading-relaxed font-light mx-auto lg:mx-0"
               >
                 No vendo promesas de inteligencia artificial. Construyo aplicaciones concretas donde la IA resuelve un problema real de negocio.
-              </motion.p>
-            </div>
+              </p>
+            </Reveal>
           </div>
         </div>
 
         {/* HORIZONTAL BLOCK 2: Floating Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-40">
+        <Reveal className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-40" y={40} stagger={150} selector="[data-reveal]">
           {cards.map((card, i) => {
             const Icon = card.icon;
             return (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{ delay: i * 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                data-reveal
                 whileHover={{ y: -10, scale: 1.02 }}
                 className={`group relative rounded-3xl border ${card.border} ${card.bg} backdrop-blur-xl bg-zinc-900/30 p-8 sm:p-10 hover:bg-zinc-900/50 transition-all duration-500`}
                 style={{
@@ -200,10 +192,10 @@ const AIShowcase = () => {
               </motion.div>
             );
           })}
-        </div>
+        </Reveal>
 
         {/* VERTICAL BLOCK 3: Outro CTA */}
-        <div className="relative flex flex-col items-center text-center">
+        <Reveal className="relative flex flex-col items-center text-center" y={30} stagger={120} selector="[data-reveal]">
           <motion.div
             initial={{ opacity: 0, scale: 0.8, filter: 'blur(10px)' }}
             whileInView={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
@@ -219,39 +211,32 @@ const AIShowcase = () => {
             </Suspense>
           </motion.div>
 
-          <motion.h3
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          <h3
+            data-reveal
             className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-zinc-50 tracking-tight mb-6 max-w-2xl leading-tight"
           >
             ¿Tienes un proceso
             que se puede mejorar?
-          </motion.h3>
+          </h3>
 
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.45, duration: 0.5 }}
+          <p
+            data-reveal
             className="max-w-xl text-zinc-400 text-sm md:text-base mb-10 leading-relaxed font-light mx-auto"
           >
             No hace falta un equipo de tecnología ni un presupuesto enorme: solo identificar el problema correcto.
-          </motion.p>
+          </p>
 
           <motion.a
+            data-reveal
             href="#contact"
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5, duration: 0.5 }}
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.97 }}
             className="group inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-zinc-50 text-zinc-950 font-bold text-base hover:bg-zinc-200 transition-all active:scale-95 shadow-xl shadow-emerald-500/5"
           >
             Cuéntame tu caso
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </motion.a>
-        </div>
+        </Reveal>
 
       </div>
     </section>
