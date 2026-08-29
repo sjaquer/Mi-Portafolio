@@ -17,6 +17,8 @@ const TaskMeSim = React.lazy(() => import('./simulators/TaskMeSim').then(m => ({
 const OrdevSim = React.lazy(() => import('./simulators/OrdevSim').then(m => ({ default: m.OrdevSim })));
 const TaskZenithSim = React.lazy(() => import('./simulators/TaskZenithSim').then(m => ({ default: m.TaskZenithSim })));
 const WhatsappBotSim = React.lazy(() => import('./simulators/WhatsappBotSim').then(m => ({ default: m.WhatsappBotSim })));
+const DearelSim = React.lazy(() => import('./simulators/DearelSim').then(m => ({ default: m.DearelSim })));
+const WienerEtlSim = React.lazy(() => import('./simulators/WienerEtlSim').then(m => ({ default: m.WienerEtlSim })));
 
 const SimulatorLoader = () => (
   <div className="w-full h-full flex flex-col items-center justify-center">
@@ -44,6 +46,8 @@ const SimulatorSelector: React.FC<{ simulatorId: string }> = ({ simulatorId }) =
           case 'ordev': return <OrdevSim />;
           case 'taskzenith': return <TaskZenithSim />;
           case 'whatsappbot': return <WhatsappBotSim />;
+          case 'dearel': return <DearelSim />;
+          case 'wiener_etl': return <WienerEtlSim />;
           default: return null;
         }
       })()}

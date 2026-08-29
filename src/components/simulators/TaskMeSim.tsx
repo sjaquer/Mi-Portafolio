@@ -1,57 +1,101 @@
 import React, { useState, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Calendar, RotateCcw, CheckSquare, Zap, Terminal } from 'lucide-react';
+import { animate, createTimeline, stagger } from 'animejs';
+import { Sparkles, Calendar, RotateCcw, CheckSquare, Zap, Terminal, Clock, Tag, ArrowRight } from 'lucide-react';
 import { cn } from '../../utils/cn';
 
+const SAMPLE_RAW_PROMPTS = [
+  'reunión urgente con equipo de sistemas mañana 4pm y sincronizar calendar',
+  'desplegar pipeline de datos postgresql para finanzas antes del viernes',
+  'auditar permisos rbac y revisar endpoints de api whatsapp',
+];
+
 export const TaskMeSim = React.memo(() => {
-  const [taskText, setTaskText] = useState('revisar integracion de google calendar y optimizar base de datos');
-  const [isOptimized, setIsOptimized] = useState(false);
-  const [isOptimizing, setIsOptimizing] = useState(false);
-  const [consoleLogs, setConsoleLogs] = useState<string[]>([]);
-  const [activeTab, setActiveTab] = useState<'left' | 'right'>('left');
-  const dragConstraintsRef = useRef<HTMLDivElement>(null);
+  const [selectedPrompt, setSelectedPrompt] = useState(0);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [isStructured, setIsStructured] = useState(false);
+  const [activeTab, setActiveTab] = useState<'input' | 'kanban'>('input');
+  const [column, setColumn] = useState<'urgent' | 'today' | 'done'>('urgent');
 
-  const runAIOptimizer = async () => {
-    if (isOptimizing || isOptimized) return;
-    setIsOptimizing(true);
-    setConsoleLogs(['[Ollama] Analizando entrada...']);
+  const scanBeamRef = useRef<HTMLDivElement>(null);
+  const taskCardRef = useRef<HTMLDivElement>(null);
+  const tokensContainerRef = useRef<HTMLDivElement>(null);
 
-    await new Promise(r => setTimeout(r, 600));
-    setConsoleLogs(prev => [...prev, '[Genkit API] Mapeando intenciones...']);
+  const runAIExtraction = () => {
+    if (isProcessing) return;
+    setIsProcessing(true);
+    setIsStructured(false);
 
-    await new Promise(r => setTimeout(r, 600));
-    setConsoleLogs(prev => [...prev, '[Google Calendar] Verificando conflicto...']);
+    const tl = createTimeline({
+      onComplete: () => {
+        setIsProcessing(false);
+        setIsStructured(true);
+      },
+    });
 
-    await new Promise(r => setTimeout(r, 500));
-    setConsoleLogs(prev => [...prev, '➔ Tarea Estructurada OK.']);
-    
-    setTaskText('Optimizar sincronización Google Calendar API & caché local');
-    setIsOptimized(true);
-    setIsOptimizing(false);
+    // 1. Cybernetic Laser Scan
+    if (scanBeamRef.current) {
+      tl.add({
+        targets: scanBeamRef.current,
+        translateY: [0, 65],
+        opacity: [0, 1, 1, 0],
+        duration: 750,
+        ease: 'inOutQuad',
+      });
+    }
+
+    // 2. Tokens extraction stagger
+    if (tokensContainerRef.current) {
+      const tokens = tokensContainerRef.current.querySelectorAll('.ai-token');
+      tl.add({
+        targets: tokens,
+        scale: [0.5, 1.1, 1],
+        opacity: [0, 1],
+        delay: stagger(100),
+        duration: 400,
+        ease: 'outBack',
+      }, '-=200');
+    }
+
+    // 3. Card morph and spring entrance
+    if (taskCardRef.current) {
+      tl.add({
+        targets: taskCardRef.current,
+        translateY: [25, 0],
+        scale: [0.9, 1.02, 1],
+        opacity: [0, 1],
+        duration: 500,
+        ease: 'outElastic(1, .6)',
+      }, '-=100');
+    }
   };
 
   const resetSimulator = () => {
-    setTaskText('revisar integracion de google calendar y optimizar base de datos');
-    setIsOptimized(false);
-    setIsOptimizing(false);
-    setConsoleLogs([]);
+    setIsProcessing(false);
+    setIsStructured(false);
+    setColumn('urgent');
   };
 
   return (
-    <div className="w-full h-full flex flex-col justify-between p-1 lg:p-4 bg-transparent text-zinc-100 font-sans select-none">
-      {/* Top action controls */}
-      <div className="flex items-center justify-between pb-2 mb-2 border-b border-zinc-900/60">
-        <span className="text-[8px] font-mono font-bold tracking-wider text-emerald-500">SIMULACIÓN GENKIT</span>
-        <div className="flex gap-2">
-          <motion.button
-            whileHover={{ scale: isOptimizing || isOptimized ? 1 : 1.02 }}
-            whileTap={{ scale: isOptimizing || isOptimized ? 1 : 0.98 }}
-            onClick={runAIOptimizer}
-            disabled={isOptimizing || isOptimized}
-            className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-500 hover:bg-emerald-400 disabled:opacity-30 disabled:pointer-events-none text-zinc-950 text-[10px] font-bold transition-all shadow-md cursor-pointer"
+    <div className="w-full h-full flex flex-col justify-between p-2 sm:p-3 bg-zinc-950/40 text-zinc-100 font-sans select-none rounded-2xl">
+      {/* Top Header & Controls */}
+      <div className="flex items-center justify-between pb-2 border-b border-zinc-900/80">
+        <div className="flex items-center gap-2">
+          <span className="text-[8px] font-mono font-bold tracking-widest text-emerald-400 uppercase">
+            TASKME · GENKIT IA SEMÁNTICA
+          </span>
+          <span className="text-[7px] font-mono px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
+            Google Calendar Sync
+          </span>
+        </div>
+
+        <div className="flex gap-1.5">
+          <button
+            onClick={runAIExtraction}
+            disabled={isProcessing}
+            className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-500 hover:bg-emerald-400 disabled:opacity-40 text-zinc-950 text-[9px] font-bold transition-all shadow-md cursor-pointer"
           >
-            <Sparkles size={8} fill="currentColor" /> Optimizar IA
-          </motion.button>
+            <Sparkles size={8} fill="currentColor" /> {isProcessing ? 'Analizando...' : 'Estructurar IA'}
+          </button>
           <button
             onClick={resetSimulator}
             className="p-1 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-zinc-200 transition-all cursor-pointer"
@@ -62,138 +106,195 @@ export const TaskMeSim = React.memo(() => {
         </div>
       </div>
 
-      {/* Mobile Selector */}
-      <div className="flex sm:hidden w-full rounded-lg bg-zinc-900/60 p-0.5 border border-zinc-900 mb-2">
-        <button 
-          onClick={() => setActiveTab('left')} 
+      {/* Mobile Tabs */}
+      <div className="flex sm:hidden w-full rounded-lg bg-zinc-900/60 p-0.5 border border-zinc-900 my-1.5">
+        <button
+          onClick={() => setActiveTab('input')}
           className={cn(
-            "flex-1 py-1 text-[9px] font-bold rounded-md font-mono transition-all", 
-            activeTab === 'left' ? 'bg-emerald-500 text-zinc-950' : 'text-zinc-500 hover:text-zinc-300'
+            'flex-1 py-1 text-[8.5px] font-bold rounded-md font-mono transition-all',
+            activeTab === 'input' ? 'bg-emerald-500 text-zinc-950' : 'text-zinc-500 hover:text-zinc-300'
           )}
         >
-          INPUT IA
+          INPUT LENGUAJE NATURAL
         </button>
-        <button 
-          onClick={() => setActiveTab('right')} 
+        <button
+          onClick={() => setActiveTab('kanban')}
           className={cn(
-            "flex-1 py-1 text-[9px] font-bold rounded-md font-mono transition-all", 
-            activeTab === 'right' ? 'bg-emerald-500 text-zinc-950' : 'text-zinc-500 hover:text-zinc-300'
+            'flex-1 py-1 text-[8.5px] font-bold rounded-md font-mono transition-all',
+            activeTab === 'kanban' ? 'bg-emerald-500 text-zinc-950' : 'text-zinc-500 hover:text-zinc-300'
           )}
         >
-          TABLERO
+          TABLERO CYBER-FOCUS
         </button>
       </div>
 
-      {/* Panels */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 flex-grow overflow-hidden">
-        {/* Left Panel: Raw text input + logs */}
-        <div className={cn(
-          "flex flex-col p-3 rounded-2xl bg-zinc-950/20 border border-zinc-900/30 justify-between",
-          activeTab === 'left' ? 'flex' : 'hidden sm:flex'
-        )}>
+      {/* Main Interactive Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-12 gap-2.5 flex-grow my-1 overflow-hidden">
+        {/* Left Column: Natural Language Raw Input & AI Scan Beam */}
+        <div
+          className={cn(
+            'sm:col-span-6 flex flex-col justify-between p-2.5 rounded-xl bg-zinc-950/60 border border-zinc-900/70 relative overflow-hidden',
+            activeTab === 'input' ? 'flex' : 'hidden sm:flex'
+          )}
+        >
           <div>
-            <div className="flex items-center justify-between text-[8px] font-bold text-zinc-500 font-mono tracking-wider mb-2">
-              <span>ENTRADA DE TEXTO</span>
-              <span className="text-emerald-500 font-mono">RAW</span>
+            <div className="flex items-center justify-between text-[7.5px] font-mono text-zinc-500 uppercase tracking-wider mb-1.5">
+              <span>Entrada en Lenguaje Natural</span>
+              <span className="text-emerald-400 font-bold">Google Genkit</span>
             </div>
-            
-            <div className="p-2.5 bg-zinc-950/50 rounded-xl border border-zinc-900/60 text-[9px] font-mono text-zinc-400 leading-normal min-h-[42px]">
-              {isOptimized ? (
-                <span className="text-zinc-650 line-through">"revisar integracion de google calendar y optimizar base de datos..."</span>
-              ) : (
-                <span>"revisar integracion de google calendar y optimizar base de datos..."</span>
-              )}
+
+            {/* Prompt Container with Laser Beam */}
+            <div className="relative p-2.5 rounded-xl bg-zinc-950 border border-zinc-900 text-[8.5px] font-mono text-zinc-300 min-h-[55px] leading-relaxed">
+              <div
+                ref={scanBeamRef}
+                className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-400 to-transparent shadow-[0_0_12px_#10b981] opacity-0 pointer-events-none"
+              />
+              <span className="text-zinc-500 text-[7px] block mb-0.5">&gt; Entrada del usuario:</span>
+              "{SAMPLE_RAW_PROMPTS[selectedPrompt]}"
             </div>
           </div>
 
-          <div className="mt-2 flex-grow flex flex-col justify-end">
-            <span className="text-[7px] font-bold text-zinc-500 uppercase tracking-wider block mb-1 font-mono">LOG DE PARSEO</span>
-            <div className="bg-zinc-950 p-2 rounded-xl border border-zinc-900/60 font-mono text-[7px] text-zinc-500 leading-relaxed min-h-[50px] flex flex-col gap-0.5 overflow-hidden">
-              <AnimatePresence>
-                {consoleLogs.length === 0 ? (
-                  <span className="text-zinc-700 italic">Esperando interacción...</span>
-                ) : (
-                  consoleLogs.map((log, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, x: -2 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      className={idx === consoleLogs.length - 1 ? "text-emerald-400" : ""}
-                    >
-                      &gt; {log}
-                    </motion.div>
-                  ))
-                )}
-              </AnimatePresence>
+          {/* Tokens extracted by AI */}
+          <div ref={tokensContainerRef} className="my-1">
+            <span className="text-[6.5px] font-mono text-zinc-500 uppercase tracking-wider block mb-1">
+              Entidades Semánticas Detectadas
+            </span>
+            <div className="flex flex-wrap gap-1">
+              <span className="ai-token px-1.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-[7px] font-mono text-emerald-300 flex items-center gap-1">
+                <Tag size={7} /> Prioridad: Alta
+              </span>
+              <span className="ai-token px-1.5 py-0.5 rounded bg-teal-500/10 border border-teal-500/30 text-[7px] font-mono text-teal-300 flex items-center gap-1">
+                <Clock size={7} /> Mañana 16:00
+              </span>
+              <span className="ai-token px-1.5 py-0.5 rounded bg-blue-500/10 border border-blue-500/30 text-[7px] font-mono text-blue-300 flex items-center gap-1">
+                <Calendar size={7} /> G-Calendar Sync
+              </span>
+            </div>
+          </div>
+
+          {/* Prompt Selector */}
+          <div className="pt-1.5 border-t border-zinc-900/60">
+            <span className="block text-[6.5px] font-mono text-zinc-500 mb-1 uppercase tracking-wider">
+              Probar Otros Ejemplos de Texto
+            </span>
+            <div className="flex gap-1">
+              {SAMPLE_RAW_PROMPTS.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => {
+                    setSelectedPrompt(idx);
+                    setIsStructured(false);
+                  }}
+                  className={cn(
+                    'flex-1 py-1 rounded text-[7px] font-mono border transition-all cursor-pointer',
+                    selectedPrompt === idx
+                      ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40'
+                      : 'bg-zinc-900/60 text-zinc-500 border-zinc-900 hover:text-zinc-300'
+                  )}
+                >
+                  Ejemplo #{idx + 1}
+                </button>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Right Panel: Elastic Kanban Board */}
-        <div className={cn(
-          "flex flex-col p-3 rounded-2xl bg-zinc-950/20 border border-zinc-900/30 justify-between",
-          activeTab === 'right' ? 'flex' : 'hidden sm:flex'
-        )}>
-          <div className="flex items-center justify-between text-[8px] font-bold text-zinc-500 font-mono tracking-wider mb-2">
-            <span>TABLERO FOCUS</span>
-            <span className="text-emerald-500 font-mono">ACTIVO</span>
-          </div>
-
-          {/* Draggable Task Box */}
-          <div 
-            ref={dragConstraintsRef}
-            className="flex-grow w-full h-[100px] bg-zinc-950/40 rounded-xl border border-zinc-900/60 p-2 relative overflow-hidden flex flex-col justify-center"
-          >
-            <motion.div
-              drag
-              dragConstraints={dragConstraintsRef}
-              dragElastic={0.3}
-              dragTransition={{ bounceStiffness: 400, bounceDamping: 20 }}
-              whileDrag={{ scale: 1.02, rotate: 0.5, zIndex: 50 }}
-              className={`p-2 rounded-lg border text-[8.5px] leading-snug cursor-grab active:cursor-grabbing font-mono transition-colors ${
-                isOptimized
-                  ? 'bg-zinc-900 border-emerald-500/30 text-zinc-100 shadow-md shadow-emerald-500/5'
-                  : 'bg-zinc-900/40 border-zinc-800/80 text-zinc-500'
-              }`}
-            >
-              <div className="flex items-center justify-between gap-2 mb-1 border-b border-zinc-900/60 pb-1 shrink-0">
-                <div className="flex items-center gap-1">
-                  <CheckSquare size={9} className={isOptimized ? "text-emerald-400" : "text-zinc-650"} />
-                  <span className={`text-[7px] font-bold ${isOptimized ? "text-emerald-400 bg-emerald-500/10 px-1 rounded" : "text-zinc-600"}`}>
-                    {isOptimized ? "IA DETECTADA" : "DRAFT"}
-                  </span>
-                </div>
-                <span className="text-[6.5px] text-zinc-600">Arrastrar</span>
+        {/* Right Column: Cyber-Focus Structured Kanban */}
+        <div
+          className={cn(
+            'sm:col-span-6 flex flex-col justify-between p-2.5 rounded-xl bg-zinc-950/60 border border-zinc-900/70',
+            activeTab === 'kanban' ? 'flex' : 'hidden sm:flex'
+          )}
+        >
+          <div>
+            <div className="flex items-center justify-between text-[7.5px] font-mono text-zinc-500 uppercase tracking-wider mb-1.5">
+              <span>Tablero Kanban Dinámico</span>
+              <div className="flex gap-1 text-[6.5px] font-mono">
+                <button
+                  onClick={() => setColumn('urgent')}
+                  className={cn(
+                    'px-1.5 py-0.5 rounded cursor-pointer transition-all',
+                    column === 'urgent' ? 'bg-red-500/20 text-red-300 border border-red-500/40' : 'text-zinc-600'
+                  )}
+                >
+                  Urgente
+                </button>
+                <button
+                  onClick={() => setColumn('today')}
+                  className={cn(
+                    'px-1.5 py-0.5 rounded cursor-pointer transition-all',
+                    column === 'today' ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : 'text-zinc-600'
+                  )}
+                >
+                  Hoy
+                </button>
+                <button
+                  onClick={() => setColumn('done')}
+                  className={cn(
+                    'px-1.5 py-0.5 rounded cursor-pointer transition-all',
+                    column === 'done' ? 'bg-blue-500/20 text-blue-300 border border-blue-500/40' : 'text-zinc-600'
+                  )}
+                >
+                  Hecho
+                </button>
               </div>
-              
-              {isOptimizing ? (
-                <span className="text-emerald-400/60 animate-pulse block">Procesando...</span>
+            </div>
+
+            {/* Kanban Card Container */}
+            <div className="p-2 rounded-xl bg-zinc-950 border border-zinc-900 min-h-[90px] flex flex-col justify-center">
+              {isStructured ? (
+                <div
+                  ref={taskCardRef}
+                  className="p-2.5 rounded-xl bg-zinc-900/90 border border-emerald-500/40 text-[8px] font-mono shadow-md shadow-emerald-500/5 space-y-1.5"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="flex items-center gap-1 text-emerald-400 font-bold">
+                      <CheckSquare size={10} /> Tarea Estructurada
+                    </span>
+                    <span className="text-[6.5px] px-1.5 py-0.2 rounded bg-red-500/10 text-red-400 font-bold border border-red-500/30">
+                      URGENTE
+                    </span>
+                  </div>
+
+                  <p className="text-zinc-200 leading-snug">
+                    {selectedPrompt === 0
+                      ? 'Reunión de coordinación estratégica con área de sistemas'
+                      : selectedPrompt === 1
+                      ? 'Despliegue de infraestructura ETL PostgreSQL'
+                      : 'Auditoría integral de seguridad y RBAC'}
+                  </p>
+
+                  <div className="pt-1 border-t border-zinc-800/80 flex items-center justify-between text-[6.5px] text-zinc-400">
+                    <span className="flex items-center gap-1 text-emerald-400">
+                      <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" /> Sincronizado en Calendar
+                    </span>
+                    <span>16:00 - 17:00</span>
+                  </div>
+                </div>
               ) : (
-                <span className="block">{taskText}</span>
+                <div className="text-center py-4 text-zinc-600 text-[8px] font-mono italic">
+                  Presiona "Estructurar IA" para transformar la nota desordenada.
+                </div>
               )}
-            </motion.div>
+            </div>
           </div>
 
-          {/* Google Calendar API Synchronizer */}
-          <div className="mt-2.5 pt-2 border-t border-zinc-900/60 flex items-center justify-between text-[7.5px] font-mono text-zinc-500">
-            <span>Sincronización Calendar</span>
-            <span className="font-bold">
-              {isOptimized ? (
-                <span className="text-emerald-400 flex items-center gap-1">
-                  <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" /> SYNCED
-                </span>
-              ) : (
-                "OFFLINE"
-              )}
+          {/* Calendar Status */}
+          <div className="pt-1.5 border-t border-zinc-900/60 flex items-center justify-between text-[7px] font-mono">
+            <span className="text-zinc-400 flex items-center gap-1">
+              <Calendar size={10} className="text-emerald-400" /> Sincronización Bidireccional
             </span>
+            <span className="text-emerald-400 font-bold">100% EN VIVO</span>
           </div>
         </div>
       </div>
 
-      {/* Footer Banner */}
-      <div className="border-t border-zinc-900/60 pt-2 mt-2 flex items-center justify-between text-[7.5px] text-zinc-500 font-mono">
-        <span>Framer Spring Motion</span>
-        <span className="text-zinc-600">Google Genkit API</span>
+      {/* Footer Meta */}
+      <div className="pt-1.5 border-t border-zinc-900/70 flex items-center justify-between text-[7px] font-mono text-zinc-500">
+        <span className="flex items-center gap-1">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> IA Semántica + Autoorganización Kanban
+        </span>
+        <span className="text-zinc-600">Anime.js Springs + Timelines</span>
       </div>
     </div>
   );

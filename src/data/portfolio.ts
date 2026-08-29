@@ -364,6 +364,7 @@ export const projects: Project[] = [
     category: 'ecommerce',
     featured: true,
     year: '2025',
+    simulatorId: 'dearel',
     caseStudy: {
       problem: 'Tareas manuales de conciliación de datos entre Shopify, CRM y hojas de cálculo, generando errores y retrasos.',
       solution: 'Integración vía APIs personalizadas que sincronizan pedidos, inventario y clientes en tiempo real.',
@@ -384,6 +385,7 @@ export const projects: Project[] = [
     category: 'datos',
     featured: true,
     year: '2026',
+    simulatorId: 'wiener_etl',
     caseStudy: {
       problem: 'Datos de estudiantes dispersos, sin estandarización y procesos manuales de comunicación.',
       solution: 'Pipeline ETL integrado con sistema de campañas omnicanal para automatizar la comunicación institucional.',
