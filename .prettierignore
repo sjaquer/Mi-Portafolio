@@ -1,0 +1,7 @@
+docs
+*.md
+package-lock.json
+.next
+public
+components/brand/paths.ts
+src

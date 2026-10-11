@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
-import SEO from '../SEO';
 import { SECURITY_STYLE } from './blogStyles';
 import { PREGUNTA_SECRETA, RESPUESTA_CORRECTA, AUTH_KEY } from './constants';
 
@@ -30,15 +30,9 @@ const SecurityGate: React.FC<SecurityGateProps> = ({ onSuccess }) => {
     }
   };
 
-  const handleGoBack = (e: React.MouseEvent) => {
-    e.preventDefault();
-    window.history.pushState({}, '', '/');
-    window.dispatchEvent(new Event('popstate'));
-  };
 
   return (
     <div className="security-wrapper">
-      <SEO noindex={true} title="Archivo - Verificación" />
       <style>{SECURITY_STYLE}</style>
       <motion.div
         className="security-card"
@@ -71,7 +65,7 @@ const SecurityGate: React.FC<SecurityGateProps> = ({ onSuccess }) => {
           )}
           <button type="submit" className="security-btn">Verificar</button>
         </form>
-        <a href="/" onClick={handleGoBack} className="back-link">← Volver al sitio principal</a>
+        <Link href="/" className="back-link">← Volver al sitio principal</Link>
       </motion.div>
     </div>
   );

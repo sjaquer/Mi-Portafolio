@@ -17,6 +17,8 @@ export function usePoemVisibility(isAuthenticated: boolean) {
   useEffect(() => {
     if (!isAuthenticated) return;
     poemRefs.current = poemas.map(() => null);
+    // Reinicia la visibilidad al desbloquear el archivo.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setVisibility(poemas.map(() => 0));
   }, [isAuthenticated]);
 

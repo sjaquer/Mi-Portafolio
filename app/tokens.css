@@ -1,0 +1,131 @@
+/*
+ * Tokens del sistema de diseño — fuente: docs/03-DESIGN.md §15–§17 y §22.
+ * Se declaran con @theme para que Tailwind genere solo clases de la escala
+ * (bg-surface, text-ink-900, p-5…). Los valores por defecto de Tailwind se
+ * anulan con `initial`: fuera de esta escala no existe ninguna clase.
+ */
+
+@theme {
+  /* ── Color (tema claro por defecto) ───────────────────────────────── */
+  --color-*: initial;
+  --color-bg: #fafaf8;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f3f2ef;
+  --color-border: #e4e2dd;
+  --color-border-strong: #8a9099;
+  --color-ink-900: #14161a;
+  --color-ink-700: #3d424b;
+  --color-ink-500: #666c76;
+  --color-brand: #1f3a5f;
+  --color-accent-600: #2350d9;
+  --color-accent-700: #1b40b3;
+  --color-accent-50: #eef2ff;
+  --color-on-accent: #ffffff;
+  --color-success-700: #0b7350;
+  --color-warning-700: #b54708;
+  --color-danger-700: #b42318;
+  --color-focus: #2350d9;
+
+  /* Gráficos de datos (§9) */
+  --color-chart-1: #2350d9;
+  --color-chart-2: #d0611f;
+  --color-chart-3: #00897b;
+  --color-chart-other: #8a9099;
+
+  /* ── Tipografía (§16) ─────────────────────────────────────────────── */
+  --font-*: initial;
+  --font-sans: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:
+    var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Fluida entre 360 px y 1280 px de viewport */
+  --text-*: initial;
+  --text-display: clamp(2.5rem, 2.0107rem + 2.1739vw, 3.75rem);
+  --text-display--line-height: 1.05;
+  --text-display--letter-spacing: -0.02em;
+  --text-h1: clamp(2rem, 1.7065rem + 1.3043vw, 2.75rem);
+  --text-h1--line-height: 1.1;
+  --text-h1--letter-spacing: -0.02em;
+  --text-h2: clamp(1.625rem, 1.4783rem + 0.6522vw, 2rem);
+  --text-h2--line-height: 1.2;
+  --text-h3: clamp(1.25rem, 1.2011rem + 0.2174vw, 1.375rem);
+  --text-h3--line-height: 1.3;
+  --text-lead: clamp(1.125rem, 1.0761rem + 0.2174vw, 1.25rem);
+  --text-lead--line-height: 1.55;
+  --text-body: clamp(1rem, 0.9755rem + 0.1087vw, 1.0625rem);
+  --text-body--line-height: 1.65;
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.5;
+  --text-label: 0.75rem;
+  --text-label--line-height: 1.4;
+  --text-label--letter-spacing: 0.06em;
+  --text-metric: clamp(2rem, 1.8043rem + 0.8696vw, 2.5rem);
+  --text-metric--line-height: 1;
+
+  /* ── Espaciado (§17.1, base 4 px) ─────────────────────────────────── */
+  --spacing-*: initial;
+  --spacing-0: 0px;
+  --spacing-px: 1px;
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 24px;
+  --spacing-6: 32px;
+  --spacing-7: 48px;
+  --spacing-8: 64px;
+  --spacing-9: 96px;
+  --spacing-10: 128px;
+  /* Alturas de controles (§19.1) y header */
+  --spacing-control-sm: 36px;
+  --spacing-control-md: 44px;
+  --spacing-control-lg: 52px;
+  --spacing-header: 64px;
+
+  /* ── Layout (§17.2) ───────────────────────────────────────────────── */
+  --container-content: 1120px;
+  --container-prose: 68ch;
+
+  /* ── Radios y sombras (§17.3) ─────────────────────────────────────── */
+  --radius-*: initial;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+
+  --shadow-*: initial;
+  --shadow-sm: 0 1px 2px rgb(20 22 26 / 0.06);
+  --shadow-md: 0 4px 16px rgb(20 22 26 / 0.08);
+
+  /* ── Movimiento (§11): duraciones 150 / 200 ms con duration-150 / duration-200 ── */
+  --ease-*: initial;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* ── Tema oscuro (§15.2) ────────────────────────────────────────────── */
+:root[data-theme="dark"] {
+  --color-bg: #0e1013;
+  --color-surface: #171a1f;
+  --color-surface-muted: #1d2026;
+  --color-border: #272b32;
+  --color-border-strong: #6b717b;
+  --color-ink-900: #ecedef;
+  --color-ink-700: #c9cdd4;
+  --color-ink-500: #a7adb7;
+  --color-brand: #d6dfea;
+  --color-accent-600: #7a9bff;
+  --color-accent-700: #a3baff;
+  --color-accent-50: #1a2340;
+  --color-on-accent: #0e1013;
+  --color-success-700: #3fc08a;
+  --color-warning-700: #f5b54a;
+  --color-danger-700: #ff8a80;
+  --color-focus: #7a9bff;
+
+  --color-chart-1: #5b7ff0;
+  --color-chart-2: #d9691f;
+  --color-chart-3: #14a08f;
+  --color-chart-other: #6b717b;
+
+  color-scheme: dark;
+}

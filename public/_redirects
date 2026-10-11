@@ -8,5 +8,3 @@ https://www.sjaquer.is-a.dev/* https://sjaquer.is-a.dev/:splat 301!
 http://sjaquer.is-a.dev/* https://sjaquer.is-a.dev/:splat 301!
 http://www.sjaquer.is-a.dev/* https://sjaquer.is-a.dev/:splat 301!
 
-# SPA: todas las rutas van a index.html
-/*    /index.html   200

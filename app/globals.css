@@ -1,0 +1,68 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  body {
+    @apply bg-bg font-sans text-body text-ink-700 antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-semibold text-balance text-ink-900;
+  }
+
+  /* Foco visible siempre: anillo de 2 px con 2 px de separación (§19.1) */
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    @apply bg-accent-50 text-ink-900;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      transition-duration: 0ms !important;
+      animation-duration: 0ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Etiqueta mono: firma tipográfica de la marca (§5.3) */
+@utility text-label-mono {
+  @apply font-mono text-label font-medium uppercase;
+}
+
+/* Borde del header al hacer scroll, sin JavaScript (animaciones ligadas al scroll).
+   Navegadores sin soporte: el borde se muestra siempre. */
+.header-scroll {
+  border-bottom-color: var(--color-border);
+}
+@supports (animation-timeline: scroll()) {
+  .header-scroll {
+    border-bottom-color: transparent;
+    animation: header-border linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 16px;
+  }
+  @keyframes header-border {
+    to {
+      border-bottom-color: var(--color-border);
+    }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .header-scroll {
+    animation: none;
+    border-bottom-color: var(--color-border);
+  }
+}

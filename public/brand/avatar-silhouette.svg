@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="Ilustración provisional de Sebastián Jaque">
+  <rect width="800" height="1000" fill="#EEF2F7"/>
+  <g fill="none" stroke="#1F3A5F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke">
+    <path vector-effect="non-scaling-stroke" d="M400 250c-74 0-128 58-128 140 0 60 22 112 56 146 20 20 44 32 72 32s52-12 72-32c34-34 56-86 56-146 0-82-54-140-128-140Z"/>
+    <path vector-effect="non-scaling-stroke" d="M344 552v52c0 18-10 32-28 38l-112 38c-66 22-110 82-110 152v168"/>
+    <path vector-effect="non-scaling-stroke" d="M456 552v52c0 18 10 32 28 38l112 38c66 22 110 82 110 152v168"/>
+    <path vector-effect="non-scaling-stroke" d="M330 652c18 38 42 58 70 58s52-20 70-58"/>
+  </g>
+  <g fill="none" stroke="#8FA3BF" stroke-width="1.5" stroke-linecap="round" vector-effect="non-scaling-stroke">
+    <path vector-effect="non-scaling-stroke" d="M140 250V568M128 250h24M128 568h24"/>
+    <path vector-effect="non-scaling-stroke" d="M140 290h8M140 330h8M140 370h14M140 410h8M140 450h8M140 490h14M140 530h8"/>
+  </g>
+</svg>

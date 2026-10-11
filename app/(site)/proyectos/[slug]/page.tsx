@@ -1,0 +1,115 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
+import { CvButton } from "@/components/sections/cv-button";
+import { Button } from "@/components/ui/button";
+import { CaseFacts } from "@/components/ui/case-facts";
+import { Container } from "@/components/ui/container";
+import { caseTypeLabel, cases, getCase } from "@/content/casos";
+import { profile } from "@/content/profile";
+import { jsonLdGraph } from "@/lib/jsonld";
+import { pageMetadata } from "@/lib/seo";
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return cases.map((c) => ({ slug: c.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: PageProps<"/proyectos/[slug]">): Promise<Metadata> {
+  const c = getCase((await params).slug)!;
+  return pageMetadata({ title: c.title, description: c.subtitle, path: `/proyectos/${c.slug}` });
+}
+
+// Plantilla obligatoria de caso (02-PRD.md §8.3).
+export default async function CasePage({ params }: PageProps<"/proyectos/[slug]">) {
+  const { slug } = await params;
+  const c = getCase(slug);
+  if (!c) notFound();
+
+  const { default: Body } = await import(`@/content/casos/${slug}.mdx`);
+  const next = cases[(cases.indexOf(c) + 1) % cases.length];
+  const url = `${profile.siteUrl}/proyectos/${c.slug}`;
+
+  const jsonLd = jsonLdGraph(
+    {
+      "@type": "CreativeWork",
+      name: c.title,
+      description: c.subtitle,
+      url,
+      dateModified: c.updatedAt,
+      inLanguage: "es-PE",
+      author: { "@id": `${profile.siteUrl}/#person` },
+      keywords: c.stack.join(", "),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Inicio", item: profile.siteUrl },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Proyectos",
+          item: `${profile.siteUrl}/proyectos`,
+        },
+        { "@type": "ListItem", position: 3, name: c.title, item: url },
+      ],
+    },
+  );
+
+  return (
+    <article>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
+      />
+      <Container className="pt-6 pb-8 lg:pb-9">
+        <Button
+          href="/proyectos"
+          variant="ghost"
+          size="sm"
+          cta="case_back"
+          className="mb-6 -ml-4"
+          icon={<IconArrowLeft size={16} stroke={1.5} aria-hidden className="-order-1" />}
+        >
+          Proyectos
+        </Button>
+        <p className="mb-3 text-label-mono text-ink-500">
+          Caso · {caseTypeLabel[c.type]} · {c.year}
+        </p>
+        <h1 className="max-w-prose text-h1">{c.title}</h1>
+        <p className="mt-4 max-w-prose text-lead">{c.subtitle}</p>
+        <div className="mt-7">
+          <CaseFacts c={c} />
+        </div>
+
+        <div className="mt-8 text-body">
+          <Body />
+        </div>
+      </Container>
+
+      <nav aria-label="Siguiente paso" className="border-t border-border bg-surface py-8">
+        <Container className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+          <div className="max-w-prose">
+            <p className="mb-2 text-label-mono text-ink-500">Siguiente caso</p>
+            <p className="text-h3 font-semibold text-ink-900">{next.title}</p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Button
+              href={`/proyectos/${next.slug}`}
+              variant="secondary"
+              size="lg"
+              cta="case_next"
+              icon={<IconArrowRight size={20} stroke={1.5} aria-hidden />}
+            >
+              Ver el caso
+            </Button>
+            <CvButton location="case" />
+          </div>
+        </Container>
+      </nav>
+    </article>
+  );
+}

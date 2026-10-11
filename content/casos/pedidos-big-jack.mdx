@@ -1,0 +1,65 @@
+{/* TODO(Sebastián): completar el detalle del sistema interno (terminal y cocina) y agregar capturas con datos simulados. */}
+
+## Contexto
+
+Big Jack Burgers es una hamburguesería en Lima con salón, recojo y delivery. Entré al área de operaciones y marketing, y terminé siendo también el único programador del negocio.
+
+## Problema
+
+- Los pedidos de cada canal llegaban por vías distintas y se transcribían a mano para cocina.
+- El inventario no se actualizaba con cada venta: el desfase se descubría al cerrar el día.
+- Los precios del menú online y los del sistema interno podían no coincidir.
+
+## Enfoque
+
+Ataqué primero el camino del pedido: que entre una sola vez y llegue solo a donde se necesita.
+
+<Callout title="Decisión: el precio lo calcula el sistema interno, no el menú">
+  El menú digital envía solo códigos de producto (SKU), cantidades y notas. El sistema interno
+  calcula el precio. Así un cambio de precio se hace en un solo lugar y el menú no puede mandar
+  montos desactualizados.
+</Callout>
+
+<Callout title="Decisión: cada pedido es idempotente" variant="info">
+  Cada envío lleva un identificador de evento único. Si la red falla y el cliente reintenta, el
+  sistema reconoce el pedido repetido y no lo duplica en cocina.
+</Callout>
+
+## Solución
+
+<FlowDiagram
+  label="Flujo de un pedido"
+  steps={[
+    { tag: "Canal", title: "Menú digital", items: ["Catálogo con variantes", "Delivery o recojo"] },
+    {
+      tag: "Integración",
+      title: "Webhook de pedidos",
+      items: ["SKU + cantidades", "ID de evento único"],
+      highlight: true,
+    },
+    {
+      tag: "Operación",
+      title: "Terminal de pedidos y cocina",
+      items: ["Cola de comandas", "Precio calculado aquí"],
+    },
+    { tag: "Control", title: "Inventario", items: ["Descuento por receta vendida"] },
+  ]}
+/>
+
+El menú digital (Next.js) envía cada pedido a un webhook del sistema interno. La terminal muestra la cola de comandas a cocina y descuenta el inventario según la receta de cada producto. El libro de reclamaciones del sitio se envía por correo con los datos saneados.
+
+## Resultado
+
+<Metric
+  value="−35 %"
+  label="tiempo de procesamiento por pedido"
+  context="Medido durante 4 semanas antes vs. después de la implementación"
+/>
+
+Además del tiempo, el inventario pasó a actualizarse con cada venta, en lugar de reconciliarse al final del día.
+
+## Qué aprendí
+
+- La mejor optimización fue quitar pasos, no acelerar los que ya existían.
+- Decidir _dónde_ vive cada dato (el precio, el stock) evita la mitad de los errores.
+- En un negocio pequeño, la herramienta tiene que funcionar el sábado a las 9 p. m. sin que yo esté presente.

@@ -1,0 +1,78 @@
+{/* TODO(Sebastián): revisar con el área antes de publicar. Sin capturas hasta tener datos simulados. */}
+
+## Contexto
+
+La universidad ofrecía sus servicios de empleabilidad — CV, bolsa de trabajo, postulaciones y feria laboral — a través de varias plataformas de terceros. El área de empleabilidad necesitaba juntarlo todo en un solo lugar propio, con datos sobre cómo lo usan alumnos y egresados.
+
+La fecha fija era la feria virtual de fines de octubre de 2026: la plataforma tenía que estar en producción antes.
+
+## Problema
+
+- Cada servicio vivía en una herramienta distinta, con su propio login y sin datos compartidos.
+- Las empresas no podían registrarse ni publicar ofertas sin intervención manual del área.
+- No había forma de medir qué servicios se usaban ni dónde se abandonaban.
+
+## Enfoque
+
+Diseñé la plataforma para cinco roles — alumno, egresado, empresa, administrador y superadministrador — y decidí desde el inicio dónde vive cada regla.
+
+<Callout title="Decisión: identidad propia, proveedor de login reemplazable">
+  El proveedor de autenticación solo responde *quién es* la persona. *Qué puede hacer* lo decide una
+  tabla propia de usuarios en PostgreSQL. Así, cuando la plataforma pase al servidor de la
+  universidad, el proveedor se puede cambiar sin migrar datos.
+</Callout>
+
+<Callout title="Lo que descarté (por ahora)" variant="warning">
+  Tenía listo un puntaje de compatibilidad entre CV y oferta calculado con IA. Lo pospuse: al
+  evaluar postulantes, el reglamento de la Ley 31814 lo clasifica como un sistema de IA de riesgo
+  alto, y necesita revisión legal antes de encenderse. Quedó construido, pero apagado.
+</Callout>
+
+Otras decisiones:
+
+- **Validación en cada borde** con Zod: formularios, API y respuestas de la IA.
+- **Interruptores de módulos**: el superadministrador puede apagar la feria o la bolsa sin desplegar código.
+- **Revisión automática de ofertas** con reglas puras y probadas; lo dudoso pasa a una cola de moderación.
+
+## Solución
+
+<FlowDiagram
+  label="Arquitectura"
+  steps={[
+    {
+      tag: "Cliente",
+      title: "Alumnos, egresados y empresas",
+      items: ["Bolsa laboral", "Builder de CV", "Feria virtual"],
+    },
+    {
+      tag: "Servidor",
+      title: "Next.js",
+      items: ["Server Actions", "Roles y permisos", "Reglas de ofertas"],
+      highlight: true,
+    },
+    {
+      tag: "Datos",
+      title: "PostgreSQL propio",
+      items: ["Usuarios y roles", "Ofertas y postulaciones"],
+    },
+    {
+      tag: "Terceros",
+      title: "Servicios",
+      items: ["Login (reemplazable)", "Email transaccional", "IA para leer CV en PDF"],
+    },
+  ]}
+/>
+
+La plataforma incluye registro y aprobación de empresas, bolsa laboral pública con filtros, postulación con el CV guardado, importación del CV desde un PDF con IA (con consentimiento explícito), feria virtual, notificaciones y paneles de administración. Se despliega en Docker, listo para el servidor de la universidad.
+
+## Resultado
+
+Al 24 de septiembre de 2026, **11 de los 14 módulos del MVP** estaban terminados. Los tres restantes — textos legales, endurecimiento del despliegue y respaldos — se cierran durante la revisión de QA y seguridad del área de TI. El lanzamiento en producción está previsto para el **22 de octubre de 2026**.
+
+La plataforma está pensada para medir desde el primer día: cuando tenga datos de uso reales, los publicaré aquí con su base y su periodo.
+
+## Qué aprendí
+
+- Separar _quién eres_ de _qué puedes hacer_ simplifica todo lo demás: permisos, auditoría y migración.
+- En un sistema que evalúa personas, la pregunta legal llega antes que la técnica.
+- Ser el único desarrollador obliga a documentar como si hubiera un equipo: es lo que permite que TI revise y opere la plataforma.

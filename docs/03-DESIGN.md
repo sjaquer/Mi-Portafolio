@@ -1027,14 +1027,14 @@ En Tailwind v4 se exponen con `@theme` para usar clases como `bg-surface`, `text
 
 | Ruta | Contenido | Estado |
 |---|---|---|
-| `public/brand/logo/wordmark.svg` · `wordmark-dark.svg` | Wordmark principal | ⬜ Por crear |
-| `public/brand/logo/monograma.svg` · `monograma-negativo.svg` · `monograma-mono.svg` | Monograma | ⬜ Por crear |
-| `public/brand/avatar-silhouette.svg` | Ilustración minimalista vectorial (avatar provisional Hero §10.6) | ⬜ Por crear |
-| `public/favicon.svg` · `favicon.ico` · `apple-touch-icon.png` · `icon-512.png` | Íconos de app | ⬜ Por crear |
+| `public/brand/logo/wordmark.svg` · `wordmark-dark.svg` · `wordmark-marino.svg` · `wordmark-compacto.svg` | Wordmark principal y compacto | ✅ Generado (`scripts/brand/`) |
+| `public/brand/logo/monograma.svg` · `monograma-negativo.svg` · `monograma-mono.svg` · `monograma-simple.svg` | Monograma | ✅ Generado (`scripts/brand/`) |
+| `public/brand/avatar-silhouette.svg` | Ilustración minimalista vectorial (avatar provisional Hero §10.6) | ✅ Generado |
+| `public/favicon.svg` · `app/favicon.ico` · `apple-touch-icon.png` · `icon-192.png` · `icon-512.png` | Íconos de app | ✅ Generado |
 | `public/brand/diagramas/*.svg` | Plantillas de §8.3 | ⬜ Por crear |
 | `brand/plantillas/` (Figma: archivo de componentes y layouts según §12.9) | Post, carrusel, banner LinkedIn, portadas OG, slides | ⬜ Por crear en Figma |
 | `brand/fotos/` (fuera del repo público si contiene originales pesados) | Retratos y fotos de trabajo | ⬜ Por producir |
-| `app/tokens.css` | Tokens de §22 | ⬜ Fase 1 |
+| `app/tokens.css` | Tokens de §22 | ✅ Implementado (Tailwind v4 `@theme`) |
 
 ## 25. Historial de cambios
 

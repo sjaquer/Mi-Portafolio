@@ -20,7 +20,8 @@ Portafolio de Sebastián Jaque (Desarrollo web · Automatización · MarTech & C
 8. **Idioma:** interfaz y contenido en español (es-PE). Nombres de eventos GA4 en inglés, `snake_case`.
 
 ## Comandos
-- `pnpm dev` · `pnpm build` · `pnpm lint` · `pnpm lhci` (Lighthouse CI)
+- `npm run dev` · `npm run build` · `npm run lint` · `npm run typecheck` · `npm run lhci` (Lighthouse CI)
+- `node scripts/brand/build-assets.mjs && scripts/brand/render-png.sh` — regenera logo, monograma, favicon e íconos
 
 ## Antes de dar algo por terminado
 Build sin errores, lint limpio, Lighthouse ≥ 95 en la página tocada, revisión con teclado, y si hay eventos nuevos: verificados en GTM Preview.

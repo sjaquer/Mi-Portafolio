@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
-import SEO from './SEO';
 import { poemas } from '../data/poemas';
 import ParticlesCanvas from './blog/ParticlesCanvas';
 import SecurityGate from './blog/SecurityGate';
@@ -8,7 +8,7 @@ import PoemIndex from './blog/PoemIndex';
 import PoemArticle, { PoemSeparator } from './blog/PoemArticle';
 import { usePoemVisibility } from './blog/usePoemVisibility';
 import { BLOG_STYLE } from './blog/blogStyles';
-import { AUTH_KEY, goToHome } from './blog/constants';
+import { AUTH_KEY } from './blog/constants';
 
 const BlogPersonal: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
@@ -18,13 +18,11 @@ const BlogPersonal: React.FC = () => {
   const activeColor = poemas[activeIndex]?.color.accent ?? '#5a7d9a';
 
   useEffect(() => {
+    // localStorage solo existe en el navegador: se lee al montar.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (localStorage.getItem(AUTH_KEY) === 'true') setIsAuthenticated(true);
   }, []);
 
-  const handleGoBack = useCallback((e: React.MouseEvent) => {
-    e.preventDefault();
-    goToHome();
-  }, []);
 
   if (!isAuthenticated) {
     return <SecurityGate onSuccess={() => setIsAuthenticated(true)} />;
@@ -32,12 +30,11 @@ const BlogPersonal: React.FC = () => {
 
   return (
     <div className="blog-wrapper">
-      <SEO noindex={true} title="Archivo" />
       <ParticlesCanvas activeColor={activeColor} />
       <style>{BLOG_STYLE}</style>
 
       <div className="nav-back-container">
-        <a href="/" onClick={handleGoBack} className="nav-back-btn">← Volver al sitio</a>
+        <Link href="/" className="nav-back-btn">← Volver al sitio</Link>
       </div>
 
       {/* Barra de progreso de lectura horizontal fija arriba */}
@@ -81,7 +78,7 @@ const BlogPersonal: React.FC = () => {
             </React.Fragment>
           );
         })}
-
+        3
         <motion.div
           className="eof"
           initial={{ opacity: 0 }}

@@ -6,7 +6,7 @@ export const lineVariants = {
   hidden: { opacity: 0, y: 6 },
   visible: (i: number) => ({
     opacity: 1, y: 0,
-    transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1], delay: i * 0.025 },
+    transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] as const, delay: i * 0.025 },
   }),
 };
 
