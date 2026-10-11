@@ -54,8 +54,8 @@ const ServiceCard: React.FC<{ svc: typeof services[number]; i: number }> = ({ sv
           <span className="text-4xl font-light text-zinc-800 font-mono select-none">{svc.num}</span>
         </div>
 
-        <h3 className="text-2xl font-bold text-zinc-100 mb-4 tracking-tight">{svc.title}</h3>
-        <p className="text-base text-zinc-500 leading-relaxed mb-10">{svc.desc}</p>
+        <h3 className="text-2xl font-extrabold text-zinc-50 mb-4 tracking-tight">{svc.title}</h3>
+        <p className="text-lg text-zinc-300 leading-relaxed mb-10 text-left">{svc.desc}</p>
 
         <div className="flex flex-wrap gap-2">
           {svc.tags.map((tag) => (
@@ -66,7 +66,7 @@ const ServiceCard: React.FC<{ svc: typeof services[number]; i: number }> = ({ sv
         </div>
 
         <div className="mt-8 pt-6 border-t border-zinc-800/50">
-          <a ref={linkRef} href="#contact" className="inline-flex items-center gap-2 text-sm font-medium text-zinc-500 hover:text-emerald-400 transition-colors group/link">
+          <a ref={linkRef} href="#contact" className="inline-flex items-center gap-2 text-sm font-medium text-zinc-300 hover:text-emerald-400 transition-colors group/link">
             Saber más
             <IconArrowRight size={14} className="transition-transform duration-300 group-hover/link:translate-x-1" />
           </a>

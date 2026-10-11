@@ -90,16 +90,20 @@ const Hero: React.FC = () => {
               operaciones reales.
             </motion.h1>
 
-            <motion.p
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="max-w-xl text-emerald-100/70 text-base md:text-lg mb-8 leading-relaxed font-light mx-auto"
+              className="max-w-xl text-zinc-200 text-base md:text-lg mb-8 leading-relaxed font-light mx-auto text-left"
             >
-              Soy Sebastián Jaque — estudiante de Administración y builder desde 2022.
-              Trabajo en la intersección entre negocio y tecnología: entiendo el problema,
-              luego construyo algo que lo resuelva.
-            </motion.p>
+              <p className="mb-3">
+                Soy Sebastián Jaque — estudiante de Administración y builder desde 2022.
+              </p>
+              <p>
+                Trabajo en la intersección entre negocio y tecnología: entiendo el problema,
+                luego construyo algo que lo resuelva.
+              </p>
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -130,7 +134,7 @@ const Hero: React.FC = () => {
           transition={{ delay: 1.5 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2"
         >
-          <motion.a href="#freelance-services" animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }} className="block p-2 text-emerald-700 hover:text-emerald-400 transition-colors">
+          <motion.a href="#freelance-services" animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }} className="block p-2 text-zinc-400 hover:text-emerald-400 transition-colors">
             <IconChevronDown size={22} stroke={1.5} />
           </motion.a>
         </motion.div>

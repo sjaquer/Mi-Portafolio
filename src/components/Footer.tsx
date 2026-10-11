@@ -27,7 +27,7 @@ const Footer: React.FC = () => (
           </h3>
           <p
             data-reveal
-            className="text-zinc-400 text-lg mb-8 max-w-xl mx-auto leading-relaxed"
+            className="text-zinc-200 text-lg mb-8 max-w-xl mx-auto leading-relaxed text-left"
           >
             Procesos manuales, sistemas desconectados o datos sin usar — hablemos.
           </p>
@@ -61,7 +61,7 @@ const Footer: React.FC = () => (
         {/* Brand */}
         <div className="md:col-span-2">
           <h4 className="text-lg font-bold text-zinc-50 mb-3 font-display">Sebastián Jaque</h4>
-          <p className="text-zinc-500 text-sm leading-relaxed mb-5 max-w-md">
+          <p className="text-zinc-300 text-sm leading-relaxed mb-5 max-w-md text-left">
             Automatización, datos y sistemas para operaciones reales.
           </p>
           <div className="flex gap-3">
@@ -82,16 +82,16 @@ const Footer: React.FC = () => (
         <div>
           <h4 className="text-sm font-bold text-zinc-50 mb-4 uppercase tracking-wider">Contacto</h4>
           <div className="space-y-3 text-sm">
-            <a href={`mailto:${siteContent.footer.contactEmail}`} className="flex items-center gap-2.5 text-zinc-500 hover:text-emerald-400 transition-colors">
+            <a href={`mailto:${siteContent.footer.contactEmail}`} className="flex items-center gap-2.5 text-zinc-300 hover:text-emerald-400 transition-colors">
               <IconMail size={14} className="shrink-0" /> {siteContent.footer.contactEmail}
             </a>
-            <a href={`tel:${siteContent.footer.contactPhone}`} className="flex items-center gap-2.5 text-zinc-500 hover:text-emerald-400 transition-colors">
+            <a href={`tel:${siteContent.footer.contactPhone}`} className="flex items-center gap-2.5 text-zinc-300 hover:text-emerald-400 transition-colors">
               <IconPhone size={14} className="shrink-0" /> {siteContent.footer.contactPhone}
             </a>
-            <div className="flex items-center gap-2.5 text-zinc-600">
+            <div className="flex items-center gap-2.5 text-zinc-400">
               <IconMapPin size={14} className="shrink-0" /> Centro de Lima, Lima - Perú
             </div>
-            <a href="https://sjaquer.is-a.dev" target="_blank" rel="noreferrer" className="flex items-center gap-2.5 text-zinc-500 hover:text-emerald-400 transition-colors">
+            <a href="https://sjaquer.is-a.dev" target="_blank" rel="noreferrer" className="flex items-center gap-2.5 text-zinc-300 hover:text-emerald-400 transition-colors">
               <IconArrowUpRight size={14} className="shrink-0" /> sjaquer.is-a.dev
             </a>
           </div>

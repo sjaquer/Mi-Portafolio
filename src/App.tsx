@@ -16,6 +16,7 @@ import { throttle } from './utils/throttle';
 const Portfolio = React.lazy(() => import('./components/Portfolio'));
 const Skills = React.lazy(() => import('./components/Skills'));
 const Experience = React.lazy(() => import('./components/Experience'));
+const FAQ = React.lazy(() => import('./components/FAQ'));
 const Footer = React.lazy(() => import('./components/Footer'));
 const BlogPersonal = React.lazy(() => import('./components/BlogPersonal'));
 
@@ -86,6 +87,7 @@ const App: React.FC = () => {
             <Suspense fallback={null}>
               <Skills />
               <Experience />
+              <FAQ />
             </Suspense>
             <ScrollDivider />
           </main>

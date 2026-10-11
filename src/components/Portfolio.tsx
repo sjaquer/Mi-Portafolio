@@ -77,7 +77,7 @@ const ProjectInfo: React.FC<{ project: Project; index: number }> = ({ project, i
   const ghRef = useMagnetic<HTMLAnchorElement>();
 
   return (
-    <div className="flex flex-col justify-center space-y-5">
+    <div className="flex flex-col justify-center space-y-6">
       {/* Project Index */}
       <span
         style={{ color: currentTheme.accent }}
@@ -92,7 +92,7 @@ const ProjectInfo: React.FC<{ project: Project; index: number }> = ({ project, i
       </h2>
 
       {/* Description */}
-      <p className="text-zinc-400 text-sm sm:text-base leading-relaxed font-light max-w-lg">
+      <p className="text-zinc-200 text-sm sm:text-base leading-relaxed font-light max-w-lg text-left">
         {project.description}
       </p>
 
@@ -148,7 +148,7 @@ const ProjectInteractiveStage: React.FC<{ project: Project }> = ({ project }) =>
         borderColor: `rgba(${currentTheme.rgb}, 0.22)`,
         boxShadow: `0 30px 70px -20px rgba(0, 0, 0, 0.7), 0 0 60px -25px rgba(${currentTheme.rgb}, 0.3)`
       }}
-      className="forest-glass relative w-full h-[400px] sm:h-[440px] rounded-3xl p-3.5 sm:p-5 transition-all duration-700 hover:border-emerald-400/30 cursor-grab active:cursor-grabbing overflow-hidden flex flex-col justify-between"
+      className="forest-glass relative w-full h-[450px] sm:h-[500px] rounded-3xl p-5 sm:p-8 transition-all duration-700 hover:border-emerald-400/30 cursor-grab active:cursor-grabbing overflow-hidden flex flex-col justify-between"
     >
       <CardGlow color={currentTheme.glow} />
       
@@ -202,7 +202,7 @@ const Portfolio = () => {
               Administrador y builder.
             </h2>
             <div className="accent-bar h-px w-20 mx-auto bg-gradient-to-r from-transparent via-emerald-400 to-transparent mb-6 origin-center" style={{ transform: 'scaleX(0)' }} />
-            <p data-line className="text-zinc-400 text-base md:text-lg leading-relaxed font-light mb-4" style={{ opacity: 0 }}>
+            <p data-line className="text-zinc-200 text-base md:text-lg leading-relaxed font-light mb-4 text-left" style={{ opacity: 0 }}>
               Construyo sistemas y arquitecturas de datos para optimizar operaciones reales: pipelines ETL, sincronización omnicanal y agentes de IA.
             </p>
             <p data-line className="text-emerald-400 text-base md:text-lg leading-relaxed font-medium" style={{ opacity: 0 }}>
@@ -235,7 +235,7 @@ const Portfolio = () => {
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               >
-                <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
                   <div className="lg:col-span-5">
                     <ProjectInfo project={project} index={index} />
                   </div>
