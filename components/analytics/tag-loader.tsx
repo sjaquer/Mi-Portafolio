@@ -15,6 +15,7 @@ export function TagLoader() {
   useEffect(() => {
     function load() {
       EVENTS.forEach((e) => window.removeEventListener(e, load));
+      if (document.querySelector('script[src*="googletagmanager.com/gtm.js"]')) return;
       const w = window as unknown as { dataLayer: unknown[]; gtag: (...a: unknown[]) => void };
       const s = document.createElement("script");
       s.async = true;
