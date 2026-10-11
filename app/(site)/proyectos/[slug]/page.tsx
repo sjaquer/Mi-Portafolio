@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
+import { CaseTracker } from "@/components/analytics/case-tracker";
 import { CvButton } from "@/components/sections/cv-button";
 import { Button } from "@/components/ui/button";
 import { CaseFacts } from "@/components/ui/case-facts";
+import { DraftNotice } from "@/components/ui/draft-notice";
 import { Container } from "@/components/ui/container";
 import { caseTypeLabel, cases, getCase } from "@/content/casos";
 import { profile } from "@/content/profile";
@@ -30,7 +32,8 @@ export default async function CasePage({ params }: PageProps<"/proyectos/[slug]"
   if (!c) notFound();
 
   const { default: Body } = await import(`@/content/casos/${slug}.mdx`);
-  const next = cases[(cases.indexOf(c) + 1) % cases.length];
+  // Siguiente caso solo si hay otro publicado.
+  const next = cases.length > 1 ? cases[(cases.indexOf(c) + 1) % cases.length] : null;
   const url = `${profile.siteUrl}/proyectos/${c.slug}`;
 
   const jsonLd = jsonLdGraph(
@@ -61,6 +64,7 @@ export default async function CasePage({ params }: PageProps<"/proyectos/[slug]"
 
   return (
     <article>
+      <CaseTracker slug={c.slug} type={c.type} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
@@ -76,6 +80,9 @@ export default async function CasePage({ params }: PageProps<"/proyectos/[slug]"
         >
           Proyectos
         </Button>
+        <div className="mb-4 empty:hidden">
+          <DraftNotice item={c} />
+        </div>
         <p className="mb-3 text-label-mono text-ink-500">
           Caso · {caseTypeLabel[c.type]} · {c.year}
         </p>
@@ -93,18 +100,22 @@ export default async function CasePage({ params }: PageProps<"/proyectos/[slug]"
       <nav aria-label="Siguiente paso" className="border-t border-border bg-surface py-8">
         <Container className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
           <div className="max-w-prose">
-            <p className="mb-2 text-label-mono text-ink-500">Siguiente caso</p>
-            <p className="text-h3 font-semibold text-ink-900">{next.title}</p>
+            <p className="mb-2 text-label-mono text-ink-500">
+              {next ? "Siguiente caso" : "¿Te sirve este perfil?"}
+            </p>
+            <p className="text-h3 font-semibold text-ink-900">
+              {next ? next.title : "Descarga el CV o revisa los demás proyectos."}
+            </p>
           </div>
           <div className="flex flex-wrap gap-3">
             <Button
-              href={`/proyectos/${next.slug}`}
+              href={next ? `/proyectos/${next.slug}` : "/proyectos"}
               variant="secondary"
               size="lg"
               cta="case_next"
               icon={<IconArrowRight size={20} stroke={1.5} aria-hidden />}
             >
-              Ver el caso
+              {next ? "Ver el caso" : "Ver proyectos"}
             </Button>
             <CvButton location="case" />
           </div>

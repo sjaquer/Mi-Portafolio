@@ -44,11 +44,23 @@ export default function PrivacidadPage() {
             fines.
           </p>
 
-          <h2 className="mt-4 text-h3">Medición</h2>
+          <h2 className="mt-4 text-h3">Medición y cookies</h2>
           <p>
-            Este sitio usa Google Analytics 4 para saber qué páginas se visitan y desde qué canal se
-            llega, de forma agregada. No envío a Google tu nombre, tu email ni el contenido de tus
-            mensajes. La IP se anonimiza.
+            Con tu permiso, uso Google Analytics 4 (a través de Google Tag Manager) para saber qué
+            páginas se visitan, desde qué canal se llega y qué botones se usan, de forma agregada.
+            Si aceptas, se guardan las cookies <code>_ga</code> y <code>_ga_*</code> durante un
+            máximo de 2 años. Más adelante podría sumar mapas de calor de Microsoft Clarity, también
+            solo con tu permiso.
+          </p>
+          <p>
+            Si rechazas, no se guarda ninguna cookie de medición: Google solo recibe señales sin
+            identificadores (Consent Mode v2). No hay publicidad ni remarketing, y nunca envío tu
+            nombre, tu email ni el contenido de tus mensajes.
+          </p>
+          <p>
+            Tu elección se guarda 6 meses en una cookie propia (<code>sj_consent</code>). Puedes
+            cambiarla cuando quieras desde «Preferencias de medición», al pie de cada página; al
+            rechazar se borran las cookies de Google Analytics.
           </p>
 
           <h2 className="mt-4 text-h3">Tus derechos</h2>

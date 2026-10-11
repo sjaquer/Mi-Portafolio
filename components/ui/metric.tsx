@@ -5,9 +5,9 @@ import type { Metric as MetricData } from "@/content/profile";
  * `context` es obligatorio por tipo: ninguna métrica sin base (CLAUDE.md, regla 2).
  * El verde solo se aplica a cifras; los resultados cualitativos van en tinta.
  */
-export function Metric({ value, label, context }: MetricData) {
+export function Metric({ value, label, context, measured }: MetricData) {
   // Verde solo para resultados medidos (§4.5): variaciones con % o signo, no fechas ni estados.
-  const isNumeric = /[%−+]/.test(value) && /\d/.test(value);
+  const isNumeric = measured ?? (/[%−+]/.test(value) && /\d/.test(value));
   return (
     <div className="flex flex-col gap-1">
       <p

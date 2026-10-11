@@ -1,0 +1,79 @@
+{/* TODO(Sebastián): datos pendientes de 07-PROYECTOS.md §4 (campañas y destinatarios desde que está en uso; rebote antes/después de validar). Capturas solo con datos simulados. */}
+
+## Contexto
+
+La Dirección de Empleabilidad y Alumni se comunica a diario con miles de estudiantes y egresados: ferias, ofertas, encuestas, eventos. Esas comunicaciones dependían de enviar correos a mano y de listas guardadas en varios Excel.
+
+## Problema
+
+- Una campaña a miles de egresados se mandaba desde Outlook en tandas pequeñas: tomaba **más de 4 horas** y podía agotar el límite de envío de las cuentas institucionales.
+- No había una forma sencilla de elegir a quién escribir (carrera, sede, facultad, periodo de egreso) ni de personalizar el saludo.
+- Las personas que pedían no recibir más correos no siempre se respetaban, porque cada lista vivía en un archivo distinto.
+- La base de correos de empresas aliadas tenía más de 1 200 direcciones, muchas antiguas o mal escritas: cada envío generaba rebotes que dañan la reputación de las cuentas.
+
+## Enfoque
+
+Traté la difusión como un embudo con tres controles antes de que salga un solo correo: **a quién**, **a quién no** y **si la dirección existe**.
+
+<Callout title="Decisión: la lista de exclusión se aplica sola, antes de cada envío">
+  Quien pidió darse de baja sale automáticamente de cualquier campaña, sin depender de que alguien
+  lo recuerde. Es lo que exige la Ley 29733 de protección de datos personales, y es también lo que
+  protege la confianza en el canal.
+</Callout>
+
+<Callout title="Decisión: validar la base antes de enviar">
+  Antes de las campañas a empresas verifiqué, una por una, las direcciones de la base: que el
+  dominio reciba correo y que el servidor reconozca la cuenta. Los inválidos quedan marcados para
+  corregirlos, en lugar de rebotar en cada envío.
+</Callout>
+
+<Callout title="Lo que retiré" variant="warning">
+  Una versión anterior también enviaba mensajes por WhatsApp. Ese canal se retiró: hoy el envío
+  masivo es solo por correo.
+</Callout>
+
+{/* TODO(Sebastián): ¿por qué se retiró WhatsApp? Una línea honesta convierte esto en un aprendizaje. */}
+
+## Solución
+
+<FlowDiagram
+  label="Flujo de una campaña"
+  steps={[
+    {
+      tag: "Público",
+      title: "Segmentación",
+      items: ["Carrera, sede, facultad", "Periodo de egreso"],
+    },
+    {
+      tag: "Control",
+      title: "Lista de exclusión",
+      items: ["Bajas aplicadas siempre", "Ley 29733"],
+      highlight: true,
+    },
+    { tag: "Mensaje", title: "Personalización", items: ["Plantilla con {nombre}", "Vista previa"] },
+    {
+      tag: "Envío",
+      title: "Lotes",
+      items: ["Rotación entre cuentas institucionales", "Registro de auditoría"],
+    },
+  ]}
+/>
+
+La plataforma interna reúne la difusión con un tablero de indicadores (satisfacción NPS, empleabilidad, retención), el directorio de empresas aliadas y la sincronización con los datos oficiales de la universidad. Las acciones importantes quedan en un registro de auditoría.
+
+## Resultado
+
+<Metric
+  value="~2 min"
+  label="por campaña de 8 000 destinatarios (antes, más de 4 h)"
+  context="Tiempo de envío de una misma campaña antes y después del sistema"
+  measured
+/>
+
+En la primera pasada de verificación revisé más de **1 200** correos de empresas aliadas y confirmé más de **530** válidos; el resto quedó marcado para corrección antes de volver a escribirles.
+
+## Qué aprendí
+
+- La velocidad era el síntoma visible; el problema de fondo era el control: a quién se escribe y a quién no.
+- Cumplir la ley y cuidar la entregabilidad apuntan a lo mismo: escribir solo a quien corresponde, en una dirección que existe.
+- Un registro de auditoría cuesta poco al construir y responde todas las preguntas después.

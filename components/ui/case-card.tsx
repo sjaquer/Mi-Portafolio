@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { TagList } from "@/components/ui/tag";
+import { DraftNotice } from "@/components/ui/draft-notice";
 import { StatusBadge } from "@/components/ui/status-badge";
 import { caseTypeLabel, type CaseStudy } from "@/content/casos";
 
@@ -12,6 +13,7 @@ export function CaseCard({ c, headingLevel = "h3" }: { c: CaseStudy; headingLeve
   const numeric = /\d/.test(c.result.value) && /[%−+]/.test(c.result.value);
   return (
     <article className="group relative flex h-full flex-col gap-5 rounded-lg border border-border bg-surface p-5 transition-shadow duration-150 ease-standard hover:shadow-md">
+      <DraftNotice item={c} />
       <div className="flex flex-wrap items-center justify-between gap-2">
         <span className="text-label-mono text-ink-500">
           {caseTypeLabel[c.type]} · {c.year}

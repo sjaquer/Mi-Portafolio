@@ -1,9 +1,20 @@
 import type { Metric } from "@/content/profile";
 
 /**
- * Casos de estudio (02-PRD.md §8.3). Los datos de la ficha y las tarjetas viven aquí;
- * el cuerpo de cada caso, en content/casos/<slug>.mdx.
+ * Casos de estudio (02-PRD.md §8.3) y selección de proyectos (07-PROYECTOS.md).
+ * Los datos de la ficha y las tarjetas viven aquí; el cuerpo de cada caso, en content/casos/<slug>.mdx.
  */
+
+/**
+ * Permiso escrito de la jefatura de Empleabilidad para publicar proyectos institucionales
+ * (07-PROYECTOS.md §3.1). Cambiar a `true` solo cuando llegue la respuesta por correo.
+ */
+export const institutionalPermission = false;
+
+/** Fecha del build (YYYY-MM-DD): las fechas de publicación se evalúan al compilar. */
+const buildDate = process.env.BUILD_DATE ?? new Date().toISOString().slice(0, 10);
+/** En `next dev` se ven también los borradores, marcados como tales. */
+export const previewDrafts = process.env.NODE_ENV === "development";
 
 export type CaseType = "web" | "automatizacion" | "datos";
 export type CaseStatus = "produccion" | "qa" | "entregado" | "prototipo";
@@ -21,7 +32,16 @@ export const caseStatusLabel: Record<CaseStatus, string> = {
   prototipo: "Prototipo",
 };
 
-export interface CaseStudy {
+interface Publication {
+  /** Proyecto de la universidad: necesita `institutionalPermission`. */
+  institutional?: boolean;
+  /** No se publica antes de esta fecha (YYYY-MM-DD). */
+  publishFrom?: string;
+  /** Contenido aún no listo o programado para otra fase. */
+  draft?: string;
+}
+
+export interface CaseStudy extends Publication {
   slug: string;
   /** Título = resultado, no nombre del proyecto (06-CONTENIDO.md §4). */
   title: string;
@@ -40,27 +60,62 @@ export interface CaseStudy {
   updatedAt: string;
 }
 
-export const cases: CaseStudy[] = [
+/** Motivo por el que algo no se publica todavía, o `null` si se publica. */
+export function pendingReason(p: Publication): string | null {
+  if (p.draft) return p.draft;
+  if (p.institutional && !institutionalPermission)
+    return "Falta el permiso escrito de la universidad";
+  if (p.publishFrom && buildDate < p.publishFrom) return `Se publica desde el ${p.publishFrom}`;
+  return null;
+}
+
+const visible = (p: Publication) => previewDrafts || pendingReason(p) === null;
+
+const allCases: CaseStudy[] = [
+  {
+    slug: "difusion-correo-wiener",
+    title: "Campañas de 8 000 correos en 2 minutos, con baja automática",
+    subtitle:
+      "Sistema interno de difusión con segmentación, personalización, envío por lotes y lista de exclusión, más la verificación previa de la base de correos.",
+    problem:
+      "Las campañas a egresados se enviaban a mano desde Outlook, en tandas pequeñas: tomaban horas y las bajas no siempre se respetaban.",
+    result: {
+      value: "~2 min",
+      label: "por campaña de 8 000 destinatarios (antes, más de 4 h)",
+      context: "Tiempo de envío de una misma campaña antes y después del sistema",
+      measured: true,
+    },
+    type: "automatizacion",
+    context: "Universidad Norbert Wiener · Dirección de Empleabilidad y Alumni",
+    role: "Diseño y desarrollo completo",
+    duration: "2026", // TODO(Sebastián): fechas de inicio y puesta en uso
+    year: 2026,
+    stack: ["React", "Node.js", "PostgreSQL", "Microsoft 365"],
+    status: "produccion",
+    updatedAt: "2026-10-11",
+    institutional: true,
+  },
   {
     slug: "bolsa-de-trabajo-wiener",
-    title: "Una bolsa de trabajo propia para la universidad, construida por una sola persona",
+    title: "Una plataforma de empleabilidad propia para reemplazar tres de terceros",
     subtitle:
-      "Plataforma de empleabilidad con cinco roles, CV con importación por IA y feria virtual, lista para salir a producción.",
+      "Bolsa laboral, creador de CV con lectura por IA y feria virtual en un solo lugar: cinco roles, acceso con Microsoft y pruebas de punta a punta.",
     problem:
-      "Los servicios de empleabilidad estaban repartidos en plataformas de terceros, sin datos propios sobre su uso.",
+      "La bolsa laboral, el creador de CV y los formularios de feria vivían en plataformas de terceros, cada una con su usuario y sin datos comunes.",
     result: {
-      value: "11 de 14",
-      label: "módulos del MVP terminados antes de la entrega a QA",
-      context: "Estado al 24 sep 2026 · lanzamiento previsto el 22 oct 2026",
+      value: "En producción",
+      label: "plataforma de empleabilidad propia de la universidad",
+      context: "En uso desde oct. 2026 · base de la feria virtual del 22 oct",
     },
     type: "web",
-    context: "Universidad Norbert Wiener · área de empleabilidad",
+    context: "Universidad Norbert Wiener · Dirección de Empleabilidad y Alumni",
     role: "Único desarrollador: producto, arquitectura, backend y frontend",
     duration: "2026", // TODO(Sebastián): confirmar inicio y fin
     year: 2026,
-    stack: ["Next.js", "PostgreSQL", "Docker", "Zod"],
-    status: "qa",
+    stack: ["Next.js", "Supabase/PostgreSQL", "Docker", "Playwright"],
+    status: "produccion",
     updatedAt: "2026-10-11",
+    institutional: true,
   },
   {
     slug: "pedidos-big-jack",
@@ -82,12 +137,68 @@ export const cases: CaseStudy[] = [
     stack: ["Next.js", "React", "Firebase", "Webhooks"],
     status: "entregado", // TODO(Sebastián): ¿sigue en uso? Si es así, "produccion".
     updatedAt: "2026-10-11",
+    draft: "Programado para la Fase 4 (07-PROYECTOS.md §5)",
   },
 ];
+
+/** Casos publicables en este build (en desarrollo, todos). */
+export const cases = allCases.filter(visible);
 
 export function getCase(slug: string) {
   return cases.find((c) => c.slug === slug);
 }
+
+/** Galería (Nivel B, 07-PROYECTOS.md §2): tarjeta corta, sin caso largo. */
+export interface GalleryItem extends Publication {
+  name: string;
+  angle: string;
+  stack: string[];
+  href?: string;
+  hrefLabel?: string;
+}
+
+const allGallery: GalleryItem[] = [
+  {
+    name: "Landings de graduación 2026 · pregrado y posgrado",
+    angle:
+      "Una base reutilizada para dos públicos: cuenta regresiva, preguntas frecuentes para bajar consultas repetidas, registro de asistencia y SEO técnico.",
+    stack: ["HTML", "CSS", "JavaScript", "SEO"],
+    href: "https://ceremoniaegresados.uwiener.edu.pe",
+    hrefLabel: "Ver la landing de pregrado",
+    institutional: true,
+  },
+  {
+    name: "Wiener Career Center & Alumni · Posgrado",
+    angle:
+      "Sección de empleabilidad y alumni integrada sobre el WordPress de Posgrado, conservando los píxeles de Google Ads, Meta, LinkedIn y TikTok.",
+    stack: ["WordPress", "JavaScript", "Píxeles de medición"],
+    institutional: true,
+  },
+  {
+    name: "Página de Empleabilidad y Alumni",
+    angle:
+      "Rediseño de la página del área: arquitectura de información por público, formulario de leads y contacto por WhatsApp.",
+    stack: ["HTML", "CSS", "JavaScript"],
+    institutional: true,
+  },
+  {
+    name: "LogINV",
+    angle:
+      "PWA de inventario para varios almacenes: conteo rápido con escáner de códigos de barras, alertas de vencimiento e interfaz en 4 idiomas.",
+    stack: ["Next.js", "Firebase", "PWA"],
+    href: "https://github.com/sjaquer/LogINV",
+    hrefLabel: "Código de LogINV en GitHub",
+    // TODO(Sebastián): ¿tuvo cliente real? (07-PROYECTOS.md, Nivel B)
+  },
+  {
+    name: "Sistema Obra",
+    angle:
+      "Inventario de materiales, donaciones y turnos para una obra comunitaria, con movimientos en tiempo real y exportación a Excel.",
+    stack: ["React", "Firestore"],
+  },
+];
+
+export const gallery = allGallery.filter(visible);
 
 /** Proyectos de práctica: visualmente secundarios (02-PRD.md §8.2). Sin métricas. */
 export interface LabProject {
@@ -98,6 +209,7 @@ export interface LabProject {
   href: string;
 }
 
+// TaskZenith y ORDEV al fondo: sin relación con el objetivo (07-PROYECTOS.md §2).
 export const lab: LabProject[] = [
   {
     name: "Big Jack Bot",
@@ -116,19 +228,19 @@ export const lab: LabProject[] = [
     href: "https://github.com/sjaquer/taskME",
   },
   {
-    name: "ORDEV",
-    description:
-      "Planificador de rutas aéreas que resuelve restricciones de peso, combustible y pasaje con el solver CP-SAT de OR-Tools.",
-    stack: ["Python", "OR-Tools", "React", "TypeScript"],
-    year: 2025,
-    href: "https://github.com/sjaquer/Optimizador-Vuelos-CP-SAT",
-  },
-  {
     name: "TaskZenith",
     description:
       "Espacio de trabajo modular con widgets arrastrables, persistencia en Firestore y temporizador Pomodoro.",
     stack: ["React", "TypeScript", "Firestore", "dnd-kit"],
     year: 2025,
     href: "https://github.com/sjaquer/TaskZenith",
+  },
+  {
+    name: "ORDEV",
+    description:
+      "Planificador de rutas aéreas que resuelve restricciones de peso, combustible y pasaje con el solver CP-SAT de OR-Tools.",
+    stack: ["Python", "OR-Tools", "React", "TypeScript"],
+    year: 2025,
+    href: "https://github.com/sjaquer/Optimizador-Vuelos-CP-SAT",
   },
 ];

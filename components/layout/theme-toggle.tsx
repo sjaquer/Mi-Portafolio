@@ -2,6 +2,7 @@
 
 import { IconDeviceDesktop, IconMoon, IconSun } from "@tabler/icons-react";
 import { useEffect, useSyncExternalStore } from "react";
+import { track } from "@/lib/analytics";
 import { THEME_STORAGE_KEY, type ThemePreference } from "@/lib/theme";
 
 const ORDER: ThemePreference[] = ["system", "light", "dark"];
@@ -50,6 +51,7 @@ export function ThemeToggle() {
     if (next === "system") localStorage.removeItem(THEME_STORAGE_KEY);
     else localStorage.setItem(THEME_STORAGE_KEY, next);
     apply(next);
+    track({ event: "theme_change", theme: next });
     listeners.forEach((l) => l());
   }
 

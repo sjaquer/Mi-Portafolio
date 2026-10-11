@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ConsentPreferencesButton } from "@/components/analytics/consent-banner";
 import { Container } from "@/components/ui/container";
 import { profile } from "@/content/profile";
 import { formatDate } from "@/lib/format";
@@ -60,10 +61,11 @@ export function Footer() {
           </ul>
         </div>
       </Container>
-      <Container className="mt-6">
+      <Container className="mt-6 flex flex-wrap items-center justify-between gap-3">
         <p className="text-small text-ink-500">
           Actualizado: <time dateTime={buildDate}>{formatDate(buildDate)}</time>
         </p>
+        <ConsentPreferencesButton className="inline-flex min-h-control-md items-center text-small text-ink-500 underline underline-offset-4 hover:text-ink-900" />
       </Container>
     </footer>
   );

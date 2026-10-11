@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
-import { Ga4 } from "@/components/analytics/ga4";
+import { TagLoader } from "@/components/analytics/tag-loader";
+import { consentDefaultScript } from "@/lib/analytics";
 import { jsonLdGraph, personJsonLd, websiteJsonLd } from "@/lib/jsonld";
 import { defaultMetadata } from "@/lib/seo";
 import { themeInitScript } from "@/lib/theme";
@@ -35,6 +36,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        {/* Consent Mode v2: estado por defecto antes de cualquier etiqueta (04 §4.2). */}
+        <script dangerouslySetInnerHTML={{ __html: consentDefaultScript }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd).replace(/</g, "\\u003c") }}
@@ -42,7 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="flex min-h-dvh flex-col">
         {children}
-        <Ga4 />
+        <TagLoader />
       </body>
     </html>
   );

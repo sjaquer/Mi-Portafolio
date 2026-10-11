@@ -3,13 +3,14 @@ import { IconArrowUpRight } from "@tabler/icons-react";
 import { CaseCard } from "@/components/ui/case-card";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { TagList } from "@/components/ui/tag";
-import { caseTypeLabel, cases, lab, type CaseType } from "@/content/casos";
+import { DraftNotice } from "@/components/ui/draft-notice";
+import { caseTypeLabel, cases, gallery, lab, type CaseType } from "@/content/casos";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Proyectos",
   description:
-    "Casos de estudio con resultado medido: una plataforma de empleabilidad para una universidad y un sistema de pedidos para una hamburguesería en Lima.",
+    "Casos de estudio con resultado medido, sitios y herramientas, y proyectos de práctica de Sebastián Jaque: desarrollo web, automatización y medición.",
   path: "/proyectos",
 });
 
@@ -25,27 +26,30 @@ export default function ProyectosPage() {
     <>
       <Section>
         <p className="mb-3 text-label-mono text-ink-500">Proyectos</p>
-        <h1 className="text-h1">Proyectos con resultado</h1>
+        <h1 className="text-h1">{cases.length > 0 ? "Proyectos con resultado" : "Proyectos"}</h1>
         <p className="mt-4 max-w-prose text-lead">
-          Cada caso cuenta el problema, las decisiones que tomé — incluidas las que descarté — y lo
-          que cambió, con su base y su periodo.
+          {cases.length > 0
+            ? "Cada caso cuenta el problema, las decisiones que tomé — incluidas las que descarté — y lo que cambió, con su base y su periodo."
+            : "Los casos de estudio completos se publican a fines de octubre de 2026. Mientras tanto, aquí están los sitios, herramientas y proyectos de práctica."}
         </p>
-        <nav aria-label="Filtrar por tipo" className="mt-6">
-          <ul className="flex flex-wrap gap-2">
-            {groups.map((g) => (
-              <li key={g.type}>
-                <a
-                  href={`#${g.type}`}
-                  data-cta={`projects_filter_${g.type}`}
-                  className="inline-flex min-h-control-md items-center rounded-full border border-border-strong px-4 text-small font-semibold text-ink-900 hover:bg-surface-muted"
-                >
-                  {caseTypeLabel[g.type]}{" "}
-                  <span className="ml-2 font-mono text-ink-500">{g.items.length}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        {groups.length > 1 && (
+          <nav aria-label="Filtrar por tipo" className="mt-6">
+            <ul className="flex flex-wrap gap-2">
+              {groups.map((g) => (
+                <li key={g.type}>
+                  <a
+                    href={`#${g.type}`}
+                    data-cta={`projects_filter_${g.type}`}
+                    className="inline-flex min-h-control-md items-center rounded-full border border-border-strong px-4 text-small font-semibold text-ink-900 hover:bg-surface-muted"
+                  >
+                    {caseTypeLabel[g.type]}{" "}
+                    <span className="ml-2 font-mono text-ink-500">{g.items.length}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
       </Section>
 
       {groups.map((g) => (
@@ -67,6 +71,42 @@ export default function ProyectosPage() {
           </ul>
         </Section>
       ))}
+
+      {gallery.length > 0 && (
+        <Section aria-labelledby="galeria" className="border-t border-border">
+          <SectionHeader
+            id="galeria"
+            label="Galería"
+            title="Sitios y herramientas"
+            lead="Proyectos más pequeños, en una tarjeta: qué son y qué resuelven."
+          />
+          <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {gallery.map((g) => (
+              <li
+                key={g.name}
+                className="flex flex-col gap-3 rounded-lg border border-border bg-surface p-5"
+              >
+                <DraftNotice item={g} />
+                <h3 className="text-h3">{g.name}</h3>
+                <p>{g.angle}</p>
+                <TagList label="Stack" items={g.stack} />
+                {g.href && (
+                  <a
+                    href={g.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-cta={`gallery_${g.name.toLowerCase().replace(/[^a-z0-9]+/g, "_")}`}
+                    className="mt-auto inline-flex min-h-control-md w-fit items-center gap-1 text-small font-semibold text-accent-600 underline-offset-4 hover:underline"
+                  >
+                    {g.hrefLabel ?? `Ver ${g.name}`}
+                    <IconArrowUpRight size={16} stroke={1.5} aria-hidden />
+                  </a>
+                )}
+              </li>
+            ))}
+          </ul>
+        </Section>
+      )}
 
       <Section aria-labelledby="laboratorio" className="border-t border-border bg-surface-muted">
         <SectionHeader

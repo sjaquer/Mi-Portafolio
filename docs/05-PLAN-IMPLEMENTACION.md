@@ -59,7 +59,7 @@
 **Tareas**
 1. [ ] Partir del repo `Mi-Portafolio` (Next.js 16 + TypeScript + Tailwind 4 + MDX): verificar que las páginas se generan estáticas, ESLint, Prettier y previsualizaciones en Netlify. *(1 h)*
 2. [ ] Copiar `/docs` y `CLAUDE.md` al repo. *(5 min)*
-3. [ ] `tokens.css` + `@theme` de Tailwind según `03-DESIGN.md`; fuentes Geist con `next/font`; tema claro/oscuro. *(1 h)*
+3. [ ] `tokens.css` + `@theme` de Tailwind según `03-DESIGN.md`; fuentes Inter + JetBrains Mono con `next/font` (`03-DESIGN.md` §5.1); tema claro/oscuro. *(1 h)*
 4. [ ] `content/profile.ts` como fuente única, con datos idénticos al CV. *(45 min)*
 5. [ ] Rutas generadas: `llms.txt`, `resume.txt`, `sitemap.ts`, `robots.ts` desde `profile.ts`. *(1 h)*
 6. [ ] Componentes base: `Container`, `Section`, `SectionHeader`, `Button` (4 variantes, 3 tamaños, todos los estados), `Tag`, `Metric`, `Header`, `Footer`. *(1,5 h)*
@@ -79,7 +79,7 @@
 **Tareas**
 1. [ ] **Home** completa según PRD §8.1 (hero, prueba rápida, casos, qué hago, experiencia, CTA final). *(3 h)*
 2. [ ] **Caso A:** Sistema de difusión por correo — Norbert Wiener (incluye validación de correos). Capturas con datos simulados + diagrama. *(2,5 h)*
-3. [ ] **Caso B:** Plataforma Empleabilidad Wiener — **solo después del 22 oct** y con el permiso de `07-PROYECTOS.md` §3. Galería de landings (graduación, Empleabilidad, Posgrado) con enlaces en vivo. *(2 h)*
+3. [ ] **Caso B:** Plataforma Empleabilidad Wiener — **ya en producción**; se publica con el permiso de `07-PROYECTOS.md` §3, enlazando al sitio oficial. Galería de landings (graduación, Empleabilidad, Posgrado) con enlaces en vivo. *(2 h)*
 4. [ ] `/proyectos` con los 2 casos + sección "Laboratorio" con los proyectos de práctica. *(45 min)*
 5. [ ] `/cv` (HTML desde `profile.ts` + PDF descargable) y `/sobre-mi`. *(1 h)*
 6. [ ] `/contacto` con formulario (Resend + Zod + honeypot) y WhatsApp. *(1 h)*

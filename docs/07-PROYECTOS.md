@@ -11,7 +11,7 @@ Tu historia real es más fuerte que la que contaba la web: en cuatro meses const
 
 Dos cosas que cambian respecto a lo planeado:
 - **El envío por WhatsApp se retiró.** Ya no debe presentarse como función actual (el CV se corrigió).
-- **Empleabilidad Wiener sale el 22 de octubre.** Cae dentro de la Fase 2: es el caso estrella y el momento ideal para publicarlo.
+- **Empleabilidad Wiener ya está en producción** (`empleabilidad.uwiener.edu.pe`, oct. 2026) y la usan alumnos, egresados y empresas; el 22 de octubre es la plataforma de la Feria Virtual de Empleabilidad. Es el caso estrella de la Fase 2: se publica en cuanto llegue el permiso.
 
 ---
 
@@ -21,7 +21,7 @@ Dos cosas que cambian respecto a lo planeado:
 
 | # | Caso (título orientado a resultado) | Proyectos que lo forman | Por qué para tu perfil | Métrica defendible |
 |---|---|---|---|---|
-| 1 | **Una plataforma de empleabilidad propia para reemplazar tres de terceros** | 9 · Empleabilidad Wiener | Producto web completo: roles, Entra ID, IA con criterio legal, E2E con Playwright, Docker. Lo hiciste solo. | Lanzamiento 22 oct · 5 roles · diseñada para 500–2 000 usuarios recurrentes · MVP 11/14 |
+| 1 | **Una plataforma de empleabilidad propia para reemplazar tres de terceros** | 9 · Empleabilidad Wiener | Producto web completo: roles, Entra ID, IA con criterio legal, E2E con Playwright, Docker. Lo hiciste solo. | En producción (oct. 2026) · 5 roles · diseñada para 500–2 000 usuarios recurrentes · MVP 11/14 |
 | 2 | **Campañas de 8 000 correos en 2 minutos, con baja automática** | 1 · Difusión (+16 · Validación de correos) | El caso MarTech central: segmentación, personalización, envío por lotes, cumplimiento Ley 29733, entregabilidad | >4 h → ~2 min por campaña de 8 000 · 1 200+ correos verificados, 530+ válidos confirmados en la 1.ª pasada |
 | 3 | **Encuestas con identidad validada y datos que se analizan solos** | 2 · Portal de formularios (+13 · Dashboard encuesta) | Captura de datos de calidad (DNI contra padrón, anti-abuso), NPS, encuestas personalizadas por empresa, tablero | ~3 000 respuestas analizadas · encuestas por empresa sin crear formularios a mano |
 | 4 | **Una feria virtual que limpia sus propias inscripciones** | 10 · Feria Virtual | Embudo de evento: página por empresa generada desde datos, CTA de calendario, estado antes/después, normalización de datos | Cualitativo: fin de la limpieza manual de inscripciones (pide el número de inscritos al área) |
@@ -64,7 +64,7 @@ Dos cosas que cambian respecto a lo planeado:
 3. **Sin detalles de seguridad**: nada de nombres de servidores, rutas internas, cuentas de envío, estructura de la base de Synapse ni cómo se cifran contraseñas. Se describe el *qué*, no el *dónde*.
 4. **Sin código institucional**: los repos siguen privados. Los diagramas de arquitectura se dibujan desde cero.
 5. **Métricas propias vs. del área**: solo cifras que tu trabajo produjo, con su contexto.
-6. **Empleabilidad Wiener** se publica **después** del 22 de octubre y enlazando al sitio oficial.
+6. **Empleabilidad Wiener** ya está en producción: se publica con el permiso del punto 1 y enlazando al sitio oficial.
 
 **Plantilla de correo de permiso**
 
@@ -83,7 +83,7 @@ Dos cosas que cambian respecto a lo planeado:
 | 3 · Formularios | Respuestas recogidas por tipo de encuesta | Base de datos (Neon) |
 | 4 · Feria | Inscritos, conferencias, visitas | Google Sheets + analítica del sitio |
 | 5 · Reqlut Bot | Ofertas publicadas por semana; tiempo manual por oferta antes | Base SQLite del bot + estimación del equipo |
-| 1 · Empleabilidad | Usuarios registrados y empresas aprobadas al primer mes | Panel de administración (después del 22 oct) |
+| 1 · Empleabilidad | Usuarios registrados y empresas aprobadas al primer mes | Panel de administración (primer mes en producción) |
 
 Si un dato no existe, el caso usa un resultado cualitativo honesto. Nunca se estima "a ojo" un porcentaje.
 
@@ -91,7 +91,7 @@ Si un dato no existe, el caso usa un resultado cualitativo honesto. Nunca se est
 
 ## 5. Cómo cambia el plan
 
-- **Fase 2 (MVP, 19–31 oct):** los dos casos de lanzamiento pasan a ser **Difusión (caso 2)** y **Empleabilidad Wiener (caso 1, tras el 22 oct)**. Big Jack pasa a la Fase 4. Galería de landings en `/proyectos`.
+- **Fase 2 (MVP, 19–31 oct):** los dos casos de lanzamiento pasan a ser **Difusión (caso 2)** y **Empleabilidad Wiener (caso 1, ya en producción)**. Big Jack pasa a la Fase 4. Galería de landings en `/proyectos`.
 - **Fase 4 (23 nov – 20 dic):** casos 3, 4 y 5 + Big Jack + Dearel. Las 4 notas de la fase salen del Nivel C.
 - **Antes de la Fase 2:** enviar el correo de permiso (esta semana) y pedir los datos de la sección 4.
 

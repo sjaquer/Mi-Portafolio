@@ -13,25 +13,23 @@ import { jsonLdGraph, profilePageJsonLd } from "@/lib/jsonld";
 
 // Home (02-PRD.md §8.1). Textos de 06-CONTENIDO.md §3. "Últimas notas" llega en la Fase 4.
 
-const bigJack = cases.find((c) => c.slug === "pedidos-big-jack")!;
-const wiener = cases.find((c) => c.slug === "bolsa-de-trabajo-wiener")!;
-const dearel = profile.experience.find((e) => e.org.startsWith("Dearel"))!;
-
+// Prueba rápida (06-CONTENIDO.md §3): Big Jack, Dearel y Norbert Wiener, desde la fuente única.
+const metricOf = (org: string) => profile.experience.find((e) => e.org.startsWith(org))!.metric!;
+const bigJack = metricOf("Big Jack");
 const proof = [
-  { ...bigJack.result, context: `Big Jack Burgers · ${bigJack.result.context}` },
-  dearel.metric!,
-  {
-    value: "Oct 2026",
-    label: "lanzamiento de la plataforma de empleabilidad",
-    context: "Universidad Norbert Wiener · único desarrollador",
-  },
+  { ...bigJack, context: `Big Jack Burgers · ${bigJack.context}` },
+  metricOf("Dearel"),
+  metricOf("Universidad Privada Norbert Wiener"),
 ];
+
+// Casos destacados: solo los publicables en este build (07-PROYECTOS.md §3).
+const featured = cases.slice(0, 3);
 
 const services = [
   {
     title: "Sitios y herramientas web",
     body: "Next.js, PostgreSQL y Docker.",
-    example: "Bolsa de trabajo con CMS por roles.",
+    example: "Plataforma de empleabilidad con 5 roles y acceso con Microsoft.",
   },
   {
     title: "Automatización e integraciones",
@@ -103,27 +101,31 @@ export default function Home() {
       </Section>
 
       {/* 3. Casos destacados */}
-      <Section aria-labelledby="casos" className="border-t border-border">
-        <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
-          <SectionHeader id="casos" label="Casos" title="Proyectos con resultado" flush />
-          <Button
-            href="/proyectos"
-            variant="ghost"
-            className="-mx-5"
-            cta="home_all_projects"
-            icon={<IconArrowRight size={20} stroke={1.5} aria-hidden />}
+      {featured.length > 0 && (
+        <Section aria-labelledby="casos" className="border-t border-border">
+          <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
+            <SectionHeader id="casos" label="Casos" title="Proyectos con resultado" flush />
+            <Button
+              href="/proyectos"
+              variant="ghost"
+              className="-mx-5"
+              cta="home_all_projects"
+              icon={<IconArrowRight size={20} stroke={1.5} aria-hidden />}
+            >
+              Ver todos los proyectos
+            </Button>
+          </div>
+          <ul
+            className={`grid gap-5 md:grid-cols-2 ${featured.length > 2 ? "lg:grid-cols-3" : ""}`}
           >
-            Ver todos los proyectos
-          </Button>
-        </div>
-        <ul className="grid gap-5 md:grid-cols-2">
-          {[wiener, bigJack].map((c) => (
-            <li key={c.slug}>
-              <CaseCard c={c} />
-            </li>
-          ))}
-        </ul>
-      </Section>
+            {featured.map((c) => (
+              <li key={c.slug}>
+                <CaseCard c={c} />
+              </li>
+            ))}
+          </ul>
+        </Section>
+      )}
 
       {/* 4. Qué hago */}
       <Section aria-labelledby="que-hago" className="border-t border-border">

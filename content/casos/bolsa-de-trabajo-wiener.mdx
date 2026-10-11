@@ -1,10 +1,10 @@
-{/* TODO(Sebastián): revisar con el área antes de publicar. Sin capturas hasta tener datos simulados. */}
+{/* TODO(Sebastián): se publica con permiso escrito (07-PROYECTOS.md §3). Agregar usuarios y empresas del primer mes en producción (§4). Capturas solo con datos simulados. */}
 
 ## Contexto
 
-La universidad ofrecía sus servicios de empleabilidad — CV, bolsa de trabajo, postulaciones y feria laboral — a través de varias plataformas de terceros. El área de empleabilidad necesitaba juntarlo todo en un solo lugar propio, con datos sobre cómo lo usan alumnos y egresados.
+La universidad ofrecía sus servicios de empleabilidad — bolsa laboral, creador de CV y formularios de feria — a través de tres plataformas de terceros. El área de empleabilidad necesitaba juntarlo todo en un solo lugar propio, con datos sobre cómo lo usan alumnos y egresados.
 
-La fecha fija era la feria virtual de fines de octubre de 2026: la plataforma tenía que estar en producción antes.
+La fecha fija era la Feria Virtual de Empleabilidad del 22 de octubre de 2026: la plataforma tenía que estar en producción antes. Lo está, y ya la usan alumnos, egresados y empresas.
 
 ## Problema
 
@@ -15,6 +15,8 @@ La fecha fija era la feria virtual de fines de octubre de 2026: la plataforma te
 ## Enfoque
 
 Diseñé la plataforma para cinco roles — alumno, egresado, empresa, administrador y superadministrador — y decidí desde el inicio dónde vive cada regla.
+
+Los alumnos entran con su cuenta institucional de Microsoft (Entra ID), los egresados validan su DNI contra el padrón y las empresas se registran con correo y contraseña.
 
 <Callout title="Decisión: identidad propia, proveedor de login reemplazable">
   El proveedor de autenticación solo responde *quién es* la persona. *Qué puede hacer* lo decide una
@@ -33,6 +35,7 @@ Otras decisiones:
 - **Validación en cada borde** con Zod: formularios, API y respuestas de la IA.
 - **Interruptores de módulos**: el superadministrador puede apagar la feria o la bolsa sin desplegar código.
 - **Revisión automática de ofertas** con reglas puras y probadas; lo dudoso pasa a una cola de moderación.
+- **Pruebas de punta a punta** con Playwright, además de pruebas unitarias y contra la base de datos.
 
 ## Solución
 
@@ -63,13 +66,13 @@ Otras decisiones:
   ]}
 />
 
-La plataforma incluye registro y aprobación de empresas, bolsa laboral pública con filtros, postulación con el CV guardado, importación del CV desde un PDF con IA (con consentimiento explícito), feria virtual, notificaciones y paneles de administración. Se despliega en Docker, listo para el servidor de la universidad.
+La plataforma incluye registro y aprobación de empresas, bolsa laboral pública con filtros, postulación con el CV guardado, importación del CV desde un PDF con IA (con consentimiento explícito), feria virtual, notificaciones y paneles de administración. Se despliega en Docker, en los servidores de la universidad.
 
 ## Resultado
 
-Al 24 de septiembre de 2026, **11 de los 14 módulos del MVP** estaban terminados. Los tres restantes — textos legales, endurecimiento del despliegue y respaldos — se cierran durante la revisión de QA y seguridad del área de TI. El lanzamiento en producción está previsto para el **22 de octubre de 2026**.
+La plataforma está **en producción** y en uso desde octubre de 2026, en el sitio oficial de la universidad, y es la base de la Feria Virtual de Empleabilidad del 22 de octubre: [empleabilidad.uwiener.edu.pe](https://empleabilidad.uwiener.edu.pe). Al 24 de septiembre, 11 de los 14 módulos del MVP ya estaban terminados. {/* TODO(Sebastián): ¿cómo se cerraron los 3 módulos restantes y la revisión de TI? */}
 
-La plataforma está pensada para medir desde el primer día: cuando tenga datos de uso reales, los publicaré aquí con su base y su periodo.
+Está pensada para medir desde el primer día: cuando tenga los datos del primer mes (usuarios registrados y empresas aprobadas), los publicaré aquí con su base y su periodo.
 
 ## Qué aprendí
 

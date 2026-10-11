@@ -14,6 +14,8 @@ export interface Metric {
   label: string;
   /** Base, periodo y método (06-CONTENIDO.md §1). Obligatorio: nunca una cifra sin contexto. */
   context: string;
+  /** Resultado medido aunque no sea un porcentaje (p. ej. "~2 min"): se muestra en verde (§4.5). */
+  measured?: boolean;
 }
 
 export interface Experience {
@@ -55,17 +57,23 @@ export const profile = {
   experience: [
     {
       org: "Universidad Privada Norbert Wiener",
-      title: "Practicante Pre Profesional — Área de Empleabilidad",
+      title: "Practicante Pre Profesional — Dirección de Empleabilidad y Alumni",
       from: "2026-06",
       to: null,
       location: "Lima",
       highlights: [
-        "Desarrollé la plataforma web de bolsa de trabajo para ferias laborales (Next.js, PostgreSQL, Docker), con CMS editable de imágenes, textos y estados, y control de acceso por roles.",
-        "Construí un pipeline ETL en Python que valida, deduplica y estandariza datos de estudiantes en la ingesta, reduciendo errores de carga manual.",
-        "Migré la base de datos principal de SQLite a PostgreSQL para soportar concurrencia, dashboards en tiempo real y reportería.",
-        "Implementé un sistema de comunicación masiva omnicanal (SMTP + WhatsApp Business API) con segmentación dinámica por facultad, carrera, ciclo y estado.",
+        "Desarrollé en solitario Empleabilidad Wiener, la plataforma propia de bolsa laboral y CV (Next.js, Supabase/PostgreSQL, Docker): 5 roles, acceso con Microsoft Entra ID, lectura de CV en PDF con IA y pruebas E2E con Playwright. Lanzamiento: oct. 2026.",
+        "Construí un sistema de difusión por correo con segmentación, personalización y lista de exclusión (Ley 29733): una campaña de 8 000 destinatarios pasó de más de 4 h a ~2 min.",
+        "Desarrollé micrositios y landings (feria virtual, ceremonias de graduación, formularios y encuestas NPS) con SEO técnico, validación de identidad contra padrón y normalización automática de inscripciones.",
+        "Automaticé la publicación de ofertas laborales con un bot de IA (Python, Playwright, LLM local con respaldo en Gemini) y verifiqué una base de 1 200+ correos de empresas para reducir rebotes.",
       ],
-      stack: ["Next.js", "PostgreSQL", "Docker", "Python", "WhatsApp Business API"],
+      metric: {
+        value: "~2 min",
+        label: "para enviar una campaña de 8 000 correos (antes, más de 4 h)",
+        context: "Universidad Norbert Wiener · sistema de difusión por correo",
+        measured: true,
+      },
+      stack: ["Next.js", "Supabase/PostgreSQL", "Docker", "Playwright", "Python"],
     },
     {
       org: "Big Jack Burgers",
@@ -176,17 +184,25 @@ export const profile = {
 
   /** Para JSON-LD (knowsAbout) y llms.txt. */
   skills: {
-    web: ["Next.js", "React", "TypeScript", "Tailwind CSS", "HTML5", "Figma (UI/UX)"],
-    data: ["Python", "SQL", "PostgreSQL", "Docker", "APIs REST", "pipelines ETL"],
+    web: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vite", "HTML5", "Figma (UI/UX)"],
+    data: ["Python", "Node.js", "SQL", "PostgreSQL (Supabase, Neon)", "Docker", "APIs REST"],
     martech: ["Google Analytics 4", "Google Tag Manager", "SEO", "CRO", "Power BI"],
-    automation: ["WhatsApp Business API", "SMTP", "Shopify", "CRM", "ERP", "Google Sheets"],
+    automation: [
+      "Playwright (RPA)",
+      "Power Automate",
+      "Google Apps Script",
+      "Resend",
+      "LLMs (Gemini, Ollama)",
+      "Shopify",
+      "CRM",
+    ],
   },
 
   links: {
     linkedin: "https://www.linkedin.com/in/sjaquer",
     github: "https://github.com/sjaquer",
     email: "sjaquer@outlook.es",
-    /** Mismo número publicado en la versión anterior del sitio. */
+    /** Número publicado en el CV. */
     whatsapp: "51946978919",
   },
 

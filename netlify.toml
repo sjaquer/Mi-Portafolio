@@ -3,7 +3,7 @@
 # Última actualización: 2026-10-11
 
 [build]
-  command = "npm run build"
+  command = "pnpm build"
   publish = ".next"
 
 # Redirección 301 de www a non-www (canonical)

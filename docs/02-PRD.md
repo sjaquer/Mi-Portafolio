@@ -130,7 +130,7 @@ CTA: Siguiente caso · Descargar CV
 Selección y justificación completas en `07-PROYECTOS.md`.
 
 1. Sistema de difusión por correo con segmentación y lista de exclusión — Norbert Wiener. *(MVP)*
-2. Plataforma Empleabilidad Wiener — Norbert Wiener, tras su lanzamiento del 22 oct. *(MVP)*
+2. Plataforma Empleabilidad Wiener — Norbert Wiener, en producción y en uso desde oct. 2026 (`empleabilidad.uwiener.edu.pe`); base de la feria virtual del 22 oct. *(MVP)*
 3. Portal de formularios y encuestas NPS — Norbert Wiener.
 4. Feria Virtual de Empleabilidad 2026 — Norbert Wiener.
 5. Reqlut Bot: publicación automática de ofertas con IA — Norbert Wiener.
