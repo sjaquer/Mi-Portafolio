@@ -12,6 +12,7 @@ Plan completo para rehacer **sjaquer.is-a.dev** como portafolio de MarTech / des
 | 4 | `docs/04-TECH-SEO-MEDICION.md` | ¿Con qué se construye, cómo se encuentra y cómo se mide? | Fases 1 y 3 |
 | 5 | `docs/05-PLAN-IMPLEMENTACION.md` | ¿Qué hago, en qué orden y cuándo? | Cada día de trabajo |
 | 6 | `docs/06-CONTENIDO.md` | ¿Cómo escribo? Textos, casos, Notas y LinkedIn | Al escribir |
+| 7 | `docs/07-PROYECTOS.md` | ¿Qué proyectos se publican y cuáles no? | Antes de escribir cada caso |
 | — | `CLAUDE.md` | Reglas para Claude Code / Cursor dentro del repo | Siempre en la raíz del repo |
 
 ## Cómo usarlo con Claude Code o Cursor

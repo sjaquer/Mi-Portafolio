@@ -22,14 +22,18 @@ function educationBlock() {
 }
 
 function certificationsBlock() {
-  return profile.certifications.map((c) => `- ${c.name} — ${c.issuer}, ${c.year}`).join("\n");
+  return [
+    ...profile.certifications.map((c) => `- ${c.name} — ${c.issuer}, ${c.year}`),
+    ...profile.certificationsInProgress.map((c) => `- En curso: ${c.name} — ${c.issuer}`),
+  ].join("\n");
 }
 
 function skillsBlock() {
   return [
     `- Desarrollo web: ${profile.skills.web.join(", ")}`,
+    `- Backend y datos: ${profile.skills.data.join(", ")}`,
+    `- Marketing y analítica: ${profile.skills.martech.join(", ")}`,
     `- Automatización e integraciones: ${profile.skills.automation.join(", ")}`,
-    `- MarTech y CRO: ${profile.skills.martech.join(", ")}`,
   ].join("\n");
 }
 

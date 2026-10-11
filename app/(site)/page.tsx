@@ -15,11 +15,11 @@ import { jsonLdGraph, profilePageJsonLd } from "@/lib/jsonld";
 
 const bigJack = cases.find((c) => c.slug === "pedidos-big-jack")!;
 const wiener = cases.find((c) => c.slug === "bolsa-de-trabajo-wiener")!;
-const dearel = profile.experience.find((e) => e.org === "Dearel")!;
+const dearel = profile.experience.find((e) => e.org.startsWith("Dearel"))!;
 
 const proof = [
   { ...bigJack.result, context: `Big Jack Burgers · ${bigJack.result.context}` },
-  { ...dearel.metric!, context: "Dearel · ago – nov 2025" },
+  dearel.metric!,
   {
     value: "Oct 2026",
     label: "lanzamiento de la plataforma de empleabilidad",
@@ -154,7 +154,7 @@ export default function Home() {
             Ver el CV completo
           </Button>
         </div>
-        <Timeline items={profile.experience} compact />
+        <Timeline items={profile.experience.slice(0, 3)} compact />
       </Section>
 
       {/* 7. CTA final */}

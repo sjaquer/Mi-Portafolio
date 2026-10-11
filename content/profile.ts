@@ -2,7 +2,7 @@
  * FUENTE ÚNICA del perfil (CLAUDE.md, regla 1).
  * llms.txt, resume.txt, metadatos y JSON-LD se generan desde aquí.
  * Cargos, fechas y certificaciones deben ser idénticos al CV vigente.
- * Datos alineados con la Fase 0 (public/llms.txt del 11 oct 2026).
+ * Alineado con content/cv/CV-Sebastian-Jaque.docx (versión del 11 oct 2026).
  */
 
 export type YearMonth = `${number}-${string}`;
@@ -54,92 +54,132 @@ export const profile = {
 
   experience: [
     {
-      org: "Universidad Norbert Wiener",
-      title: "Practicante Pre Profesional",
+      org: "Universidad Privada Norbert Wiener",
+      title: "Practicante Pre Profesional — Área de Empleabilidad",
       from: "2026-06",
       to: null,
-      location: "Lima, Perú",
+      location: "Lima",
       highlights: [
-        "Diseño y desarrollo de herramientas internas para el área de empleabilidad y ferias laborales.",
-        "Plataforma de bolsa de trabajo con CMS por roles (Next.js, PostgreSQL, Docker).",
-        "Flujos de comunicación omnicanal con segmentación por facultad, carrera y ciclo (SMTP y WhatsApp API).",
-        "Automatización de la validación y estandarización de datos de estudiantes.",
+        "Desarrollé la plataforma web de bolsa de trabajo para ferias laborales (Next.js, PostgreSQL, Docker), con CMS editable de imágenes, textos y estados, y control de acceso por roles.",
+        "Construí un pipeline ETL en Python que valida, deduplica y estandariza datos de estudiantes en la ingesta, reduciendo errores de carga manual.",
+        "Migré la base de datos principal de SQLite a PostgreSQL para soportar concurrencia, dashboards en tiempo real y reportería.",
+        "Implementé un sistema de comunicación masiva omnicanal (SMTP + WhatsApp Business API) con segmentación dinámica por facultad, carrera, ciclo y estado.",
       ],
-      stack: ["Next.js", "PostgreSQL", "Docker", "WhatsApp API", "SMTP"],
+      stack: ["Next.js", "PostgreSQL", "Docker", "Python", "WhatsApp Business API"],
     },
     {
       org: "Big Jack Burgers",
       title: "Operaciones y Marketing",
       from: "2025-11",
-      to: null,
-      location: "Lima, Perú",
+      to: "2026-09",
+      location: "Lima",
       highlights: [
-        "Desarrollo del sistema digital de terminal de pedidos y cocina como único programador a cargo.",
-        "Control de inventario en tiempo real vinculado a la cola de comandas.",
-        "Modelado de costos de insumos y estandarización de recetas operativas.",
+        "Implementé un sistema interno de gestión de pedidos que redujo el tiempo de procesamiento en 35 %.",
+        // TODO(Sebastián): el +15 % no tiene base ni periodo en el CV (regla 2 de CLAUDE.md).
+        "Reestructuré la política de precios a partir de costos operativos y datos de venta, elevando el margen mensual en 15 %.",
+        "Gestioné contenido, comunicación de marca y seguimiento de indicadores de satisfacción del cliente.",
       ],
       metric: {
         value: "−35 %",
         label: "tiempo de procesamiento por pedido",
+        // TODO(Sebastián): el CV no menciona el periodo; viene de la Fase 0. Confirmar.
         context: "Medido durante 4 semanas antes vs. después de la implementación",
       },
-      stack: ["React", "Firebase"],
+      stack: ["Next.js", "React", "Firebase"],
     },
     {
-      org: "Dearel",
-      title: "Desarrollador de Soluciones de Negocios",
+      org: "Dearel (Retail)",
+      title: "Desarrollador de Soluciones de Negocio",
       from: "2025-08",
       to: "2025-11",
-      location: "Lima, Perú",
+      location: "Lima",
       highlights: [
-        "Integración de plataformas e-commerce y operativas (Shopify, Google Sheets, CRM) mediante APIs.",
-        "Automatización del flujo de leads y pedidos hacia el sistema logístico central.",
+        "Integré Shopify, CRM y Google Sheets mediante APIs REST, reduciendo las tareas administrativas manuales en 30 %.",
+        "Diseñé dashboards de Business Intelligence para el control de ventas e inventario.",
+        "Estandaricé flujos logísticos conectados al CRM, mejorando la trazabilidad de pedidos.",
       ],
       metric: {
         value: "−30 %",
-        label: "tareas manuales de digitación",
-        // TODO(CV): completar base, periodo y método de medición.
-        context: "Dearel",
+        label: "tareas administrativas manuales",
+        // TODO(Sebastián): completar base y método de medición.
+        context: "Dearel · ago – nov 2025",
       },
-      stack: ["Python", "Shopify API", "Google Sheets API"],
+      stack: ["Shopify", "APIs REST", "Google Sheets", "Power BI"],
+    },
+    {
+      org: "Neon Led Store",
+      title: "Practicante de Marketing Digital",
+      from: "2025-06",
+      to: "2025-08",
+      location: "Lima",
+      highlights: [
+        // TODO(Sebastián): el +40 % no tiene base ni periodo en el CV (regla 2 de CLAUDE.md).
+        "Ejecuté estrategias de SEO técnico y semántico y de contenido que incrementaron los leads orgánicos en 40 %.",
+        "Medí y reporté rendimiento con Google Analytics. Reconocido como Colaborador del Mes tres meses consecutivos.",
+      ],
+      stack: ["SEO", "Google Analytics"],
+    },
+    {
+      org: "Zeus Maritime Ship Supply",
+      title: "Practicante de Logística y Abastecimiento",
+      from: "2025-04",
+      to: "2025-05",
+      location: "Callao",
+      highlights: [
+        "Gestioné órdenes de compra en ERP para suministros marítimos con 95 % de precisión en entregas.",
+      ],
+      stack: ["ERP"],
+    },
+    {
+      org: "Freelance — Soluciones Digitales para PYMES",
+      title: "Desarrollador de Soluciones",
+      from: "2022-06",
+      to: null,
+      location: "Lima · Remoto",
+      highlights: [
+        "Desarrollo sistemas web con backend en Python y SQL, reportería automatizada y configuración de e-commerce para pequeños negocios.",
+      ],
+      stack: ["Python", "SQL"],
     },
   ] satisfies Experience[],
 
   education: [
     {
-      org: "Universidad Norbert Wiener",
+      org: "Universidad Privada Norbert Wiener",
       degree: "Administración y Negocios Internacionales",
       from: "2022-03",
       to: "2026-12",
-      status: "10.º ciclo, en curso; egreso dic. 2026",
+      status:
+        "10.º ciclo (egreso dic. 2026). Tesis en curso: impacto de la IA generativa en la productividad laboral en agencias de marketing digital de Lima (2026).",
+    },
+    {
+      org: "Idat",
+      degree: "Diplomado en Inteligencia Artificial y Aplicaciones Empresariales",
+      from: "2025-03",
+      to: "2025-07",
+      status: "Completado",
     },
   ],
 
   certifications: [
-    { name: "Artificial Intelligence Professional (CAIPC®)", issuer: "CertiProf", year: 2025 },
-    { name: "AWS Generative AI for Executives", issuer: "Amazon Web Services", year: 2025 },
-    { name: "Diplomado en IA para Negocios", issuer: "IDAT", year: 2025 },
-    { name: "Curso de Especialización en Microsoft SQL Server", issuer: "IDAT", year: 2024 },
-    { name: "Curso de Especialización en Power BI", issuer: "Intercorp / IDAT", year: 2025 },
+    { name: "AI Professional Certification (CAIPC)", issuer: "CertiProf", year: 2025 },
+    { name: "SQL Server", issuer: "Idat / Microsoft", year: 2025 },
+    { name: "Power BI", issuer: "Intercorp / Zegel", year: 2025 },
+    { name: "Generative AI for Executives", issuer: "AWS", year: 2025 },
   ] satisfies Certification[],
+
+  /** En curso (CV, sección Certificaciones). */
+  certificationsInProgress: [
+    { name: "Google Analytics 4", issuer: "Google Skillshop" },
+    { name: "Google UX Design", issuer: "Coursera" },
+  ],
 
   /** Para JSON-LD (knowsAbout) y llms.txt. */
   skills: {
-    web: ["Next.js", "React", "TypeScript", "TailwindCSS", "Node.js", "PostgreSQL", "Docker"],
-    automation: [
-      "APIs REST",
-      "WhatsApp Business API",
-      "SMTP",
-      "Resend",
-      "Python",
-      "Google Sheets API",
-    ],
-    martech: [
-      "Google Analytics 4",
-      "Google Tag Manager",
-      "Embudos de conversión",
-      "Consent Mode v2",
-    ],
+    web: ["Next.js", "React", "TypeScript", "Tailwind CSS", "HTML5", "Figma (UI/UX)"],
+    data: ["Python", "SQL", "PostgreSQL", "Docker", "APIs REST", "pipelines ETL"],
+    martech: ["Google Analytics 4", "Google Tag Manager", "SEO", "CRO", "Power BI"],
+    automation: ["WhatsApp Business API", "SMTP", "Shopify", "CRM", "ERP", "Google Sheets"],
   },
 
   links: {

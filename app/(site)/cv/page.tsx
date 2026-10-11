@@ -110,6 +110,12 @@ export default function CvPage() {
               </span>
             </li>
           ))}
+          {profile.certificationsInProgress.map((c) => (
+            <li key={c.name}>
+              <span className="text-ink-900">{c.name}</span>{" "}
+              <span className="text-ink-500">· {c.issuer} · en curso</span>
+            </li>
+          ))}
         </ul>
       </Block>
 
@@ -118,8 +124,9 @@ export default function CvPage() {
           {(
             [
               ["Desarrollo web", profile.skills.web],
-              ["Automatización", profile.skills.automation],
-              ["MarTech y CRO", profile.skills.martech],
+              ["Backend y datos", profile.skills.data],
+              ["Marketing y analítica", profile.skills.martech],
+              ["Automatización e integraciones", profile.skills.automation],
             ] as const
           ).map(([term, items]) => (
             <div key={term}>

@@ -14,7 +14,7 @@
 | Datos del perfil | `content/profile.ts` (fuente única) | Genera web, `llms.txt`, `resume.txt`, JSON-LD y CV HTML |
 | Formulario | Server Action + **Resend** + validación Zod | Ya lo estás evaluando para Norbert Wiener: reutilizas aprendizaje |
 | Medición | **GTM + GA4** con Consent Mode v2; **Search Console**; **Microsoft Clarity** (mapas de calor) | El stack estándar de MarTech |
-| Hosting | **Vercel** (plan gratuito) | Despliegue por rama, previsualizaciones, analítica de Web Vitals |
+| Hosting | **Netlify** (ya en uso en `Mi-Portafolio`) | Despliegue por rama y previsualizaciones por PR; soporte de Next.js mediante su adaptador oficial |
 | Calidad | ESLint, Prettier, Lighthouse CI en cada PR, `@axe-core` | Calidad verificable, no declarada |
 | Dominio | `sjaquer.is-a.dev` (se mantiene). Opcional después: dominio propio | Evita migrar dos veces |
 
@@ -216,7 +216,7 @@ Así sabrás qué canal trae reclutadores que descargan el CV.
 
 ## 5. Calidad y flujo de trabajo
 
-- Rama por fase (`fase-1-fundaciones`, …), previsualización en Vercel por PR.
+- Rama por fase (`fase-1-fundaciones`, …), previsualización en Netlify por PR.
 - Lighthouse CI con los umbrales de la sección 3.1.
 - Revisión de accesibilidad con axe y navegación solo con teclado antes de cada lanzamiento.
 - `CLAUDE.md` en la raíz con las reglas del proyecto, para que Claude Code / Cursor trabajen dentro del sistema (ver archivo incluido).

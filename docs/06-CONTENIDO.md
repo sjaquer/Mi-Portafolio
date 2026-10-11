@@ -43,11 +43,11 @@
 **Prueba rápida — etiqueta:** `RESULTADOS`
 - **−35 %** · tiempo de procesamiento de pedidos · Big Jack Burgers
 - **−30 %** · tareas administrativas manuales · Dearel
-- **En producción** · plataforma de bolsa de trabajo para ferias laborales · Norbert Wiener
+- **~2 min** · para enviar una campaña de 8 000 correos (antes, más de 4 h) · Norbert Wiener
 
 **Casos — H2:** Proyectos con resultado
 **Qué hago — H2:** Tres cosas que hago bien
-1. **Sitios y herramientas web** — Next.js, PostgreSQL y Docker. Ej.: bolsa de trabajo con CMS por roles.
+1. **Sitios y herramientas web** — Next.js, PostgreSQL y Docker. Ej.: plataforma de empleabilidad con 5 roles y acceso con Microsoft.
 2. **Automatización e integraciones** — APIs, WhatsApp, email transaccional. Ej.: campañas segmentadas por facultad y ciclo.
 3. **Medición y conversión** — GA4, GTM, embudos. Ej.: este sitio, instrumentado de punta a punta.
 

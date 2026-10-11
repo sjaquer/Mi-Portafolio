@@ -77,10 +77,10 @@ export const cases: CaseStudy[] = [
     type: "automatizacion",
     context: "Big Jack Burgers · hamburguesería en Lima",
     role: "Operaciones y Marketing · único programador del sistema",
-    duration: "nov 2025 – actualidad",
+    duration: "nov 2025 – sep 2026",
     year: 2025,
     stack: ["Next.js", "React", "Firebase", "Webhooks"],
-    status: "produccion",
+    status: "entregado", // TODO(Sebastián): ¿sigue en uso? Si es así, "produccion".
     updatedAt: "2026-10-11",
   },
 ];

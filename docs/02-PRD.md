@@ -92,7 +92,7 @@ Redirecciones 301 desde los fragmentos antiguos no son necesarias (los `#` no ll
 Orden de secciones y propósito de cada una:
 
 1. **Hero** — En una pantalla de móvil: nombre, rol, frase de posicionamiento, foto, disponibilidad ("Disponible para roles junior desde enero 2027 · Lima / remoto"), CTA primario **Descargar CV**, CTA secundario **Ver proyectos**.
-2. **Prueba rápida** — 3 resultados verificables con su contexto (−35 % tiempo de pedidos en Big Jack; −30 % tareas manuales en Dearel; plataforma de bolsa de trabajo en producción en Norbert Wiener). Sin "+6 proyectos" ni "99 %".
+2. **Prueba rápida** — 3 resultados verificables con su contexto (−35 % tiempo de pedidos en Big Jack; −30 % tareas manuales en Dearel; campaña de 8 000 correos de más de 4 h a ~2 min en Norbert Wiener). Sin "+6 proyectos" ni "99 %".
 3. **Casos destacados** — 3 tarjetas (Wiener, Big Jack, Dearel o Bot WhatsApp), cada una con problema, resultado y stack. Enlace a cada caso.
 4. **Qué hago** — 3 bloques concretos: Desarrollo web (Next.js) · Automatización e integraciones · Medición y CRO. Cada uno con un ejemplo real, no una promesa.
 5. **Experiencia resumida** — línea de tiempo compacta, títulos reales.
@@ -127,11 +127,15 @@ CTA: Siguiente caso · Descargar CV
 **Privacidad:** los repositorios de Norbert Wiener y clientes son privados. Las capturas usan **datos simulados**; nunca nombres, correos ni datos reales de estudiantes o clientes. Si un cliente no autoriza su nombre, se usa una descripción ("marca de hamburguesas en Lima").
 
 **Casos v2 (orden de producción):**
-1. Plataforma de bolsa de trabajo — Norbert Wiener (Next.js, PostgreSQL, Docker, CMS por roles).
-2. Sistema de gestión de pedidos — Big Jack Burgers.
-3. Integración Shopify + CRM + Sheets — Dearel.
-4. Comunicación omnicanal con segmentación (SMTP + WhatsApp API) — Norbert Wiener.
-5. **Este portafolio** (se escribe al cerrar la Fase 3, con antes / después medido): tu primer caso explícito de CRO y medición.
+Selección y justificación completas en `07-PROYECTOS.md`.
+
+1. Sistema de difusión por correo con segmentación y lista de exclusión — Norbert Wiener. *(MVP)*
+2. Plataforma Empleabilidad Wiener — Norbert Wiener, tras su lanzamiento del 22 oct. *(MVP)*
+3. Portal de formularios y encuestas NPS — Norbert Wiener.
+4. Feria Virtual de Empleabilidad 2026 — Norbert Wiener.
+5. Reqlut Bot: publicación automática de ofertas con IA — Norbert Wiener.
+6. Sistema de pedidos — Big Jack Burgers · Integración Shopify + CRM — Dearel.
+7. **Este portafolio** (se escribe al cerrar la Fase 3, con antes / después medido): tu primer caso explícito de CRO y medición.
 
 ### 8.4 Sobre mí
 - Foto real, historia breve en primera persona (de Administración al código), cómo trabajo (3–4 principios), qué estoy aprendiendo ahora (GA4, Google UX), fuera del trabajo (1 línea).
