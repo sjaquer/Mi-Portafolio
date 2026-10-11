@@ -78,7 +78,7 @@ const BlogPersonal: React.FC = () => {
             </React.Fragment>
           );
         })}
-        3
+
         <motion.div
           className="eof"
           initial={{ opacity: 0 }}

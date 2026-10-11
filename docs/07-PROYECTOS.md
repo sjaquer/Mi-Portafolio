@@ -97,4 +97,4 @@ Si un dato no existe, el caso usa un resultado cualitativo honesto. Nunca se est
 
 ## 6. Correcciones al stack documentado
 
-El informe indica que el repo `Mi-Portafolio` ya usa **Next.js 16 + Tailwind 4 + MDX con despliegue en Netlify**. Se mantiene Netlify (`04-TECH-SEO-MEDICION.md` actualizado). Pendiente de verificar: si la versión en vivo de sjaquer.is-a.dev ya es ese repo, el contenido debería salir renderizado en el HTML; la revisión del 10 oct no lo encontró (hallazgo C1 de la auditoría). Revisa que las páginas se generen estáticas y no como componentes de cliente.
+El informe indica que el despliegue se realiza en **Vercel** (`04-TECH-SEO-MEDICION.md` actualizado con Vercel). Pendiente de verificar: si la versión en vivo de sjaquer.is-a.dev ya es ese repo, el contenido debería salir renderizado en el HTML; la revisión del 10 oct no lo encontró (hallazgo C1 de la auditoría). Revisa que las páginas se generen estáticas y no como componentes de cliente.

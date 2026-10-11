@@ -57,7 +57,7 @@
 **Objetivo:** proyecto nuevo con todo lo que no se ve pero sostiene todo lo demás.
 
 **Tareas**
-1. [ ] Partir del repo `Mi-Portafolio` (Next.js 16 + TypeScript + Tailwind 4 + MDX): verificar que las páginas se generan estáticas, ESLint, Prettier y previsualizaciones en Netlify. *(1 h)*
+1. [ ] Partir del repo `Mi-Portafolio` (Next.js 16 + TypeScript + Tailwind 4 + MDX): verificar que las páginas se generan estáticas, ESLint, Prettier y previsualizaciones en Vercel. *(1 h)*
 2. [ ] Copiar `/docs` y `CLAUDE.md` al repo. *(5 min)*
 3. [ ] `tokens.css` + `@theme` de Tailwind según `03-DESIGN.md`; fuentes Inter + JetBrains Mono con `next/font` (`03-DESIGN.md` §5.1); tema claro/oscuro. *(1 h)*
 4. [ ] `content/profile.ts` como fuente única, con datos idénticos al CV. *(45 min)*
