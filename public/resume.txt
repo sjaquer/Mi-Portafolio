@@ -1,118 +1,99 @@
 ================================================================================
-                    SEBASTIÁN EMILIANO JAQUE REATEGUI
-              Business Intelligence & Soluciones Digitales
+                    SEBASTIÁN EMILIANO JAQUE REÁTEGUI
+              Desarrollo web · Automatización · MarTech & CRO
 ================================================================================
 
 PERFIL PROFESIONAL
 ──────────────────────────────────────────────────────────────────────────────────
-Estudiante de 9.º ciclo de Administración y Negocios Internacionales.
-Especializado en el desarrollo de herramientas digitales, estrategias de
-marketing basado en datos, Business Intelligence (BI) y Data Visualization
-para optimizar la toma de decisiones empresariales.
+Estudiante de último ciclo (10.º ciclo) de Administración y Negocios Internacionales.
+Construyo herramientas internas y sitios web con Next.js, integro sistemas y flujos
+de mensajería mediante APIs, y mido el impacto en conversión y retención con GA4.
+Enfoque de trabajo: entender el problema operativo o de negocio antes de programar,
+y demostrar con métricas auditables si la solución funcionó.
 
 DATOS DE CONTACTO
 ──────────────────────────────────────────────────────────────────────────────────
-Ubicación   : Centro de Lima - Lima, Perú
-Teléfono    : +51 946 978 919
+Ubicación   : Lima, Perú
 Email       : sjaquer@outlook.es
 LinkedIn    : linkedin.com/in/sjaquer
 Website     : sjaquer.is-a.dev
+GitHub      : github.com/sjaquer
 
 EXPERIENCIA PROFESIONAL
 ──────────────────────────────────────────────────────────────────────────────────
 
-▸ OPERATIONS COORDINATOR
-  Big Jack-Burgers | Nov 2025 - Actualidad | Lima, Perú
-  - Desarrollé un sistema interno (como único programador) que redujo el
-    tiempo de procesamiento de pedidos en un 35%.
-  - Aumenté el margen de rentabilidad mensual en un 15% aplicando modelos
-    de análisis predictivo sobre costos de insumos y recetas.
-  - Implementé dashboards de control de inventario en tiempo real.
-  Tecnologías: React, Firebase, Python, Análisis Predictivo
+▸ PRACTICANTE PRE PROFESIONAL
+  Universidad Norbert Wiener | Jun 2026 – Actualidad | Lima, Perú
+  - Desarrollo de herramientas web para el área de empleabilidad y ferias laborales.
+  - Implementación de plataforma de bolsa de trabajo con CMS por roles (Next.js,
+    PostgreSQL, Docker).
+  - Flujo de comunicación omnicanal segmentado por facultad, carrera y ciclo
+    utilizando SMTP y WhatsApp Business API.
+  - Automatización de validación y limpieza de bases de datos de estudiantes.
+  Tecnologías: Next.js, PostgreSQL, Docker, Python, APIs, WhatsApp API, SMTP.
+
+▸ OPERACIONES Y MARKETING
+  Big Jack Burgers | Nov 2025 – Actualidad | Lima, Perú
+  - Desarrollé como único programador a cargo el sistema digital de gestión de
+    pedidos y cola de cocina.
+  - Reduje el tiempo de procesamiento de pedidos en un 35% (−35%), medido durante
+    4 semanas antes vs. 4 semanas después de la implementación.
+  - Implementé control de inventario en tiempo real sincronizado con comandas.
+  - Estandarización de recetas y costeo predictivo de insumos.
+  Tecnologías: React, Firebase, Python, Control de Operaciones.
 
 ▸ DESARROLLADOR DE SOLUCIONES DE NEGOCIOS
-  Dearel | Ago 2025 - Nov 2025 | Lima, Perú
-  - Diseñó dashboards interactivos para monitoreo de ventas en tiempo real.
-  - Integró plataformas (Shopify, Google Sheets, CRM) vía APIs, eliminando
-    un 30% de las tareas manuales de digitación.
+  Dearel | Ago 2025 – Nov 2025 | Lima, Perú
+  - Diseñó e implementó dashboards interactivos para monitoreo de ventas en tiempo real.
+  - Integró plataformas (Shopify, Google Sheets, CRM) vía APIs, eliminando el 30%
+    de las tareas manuales de digitación.
   - Automatizó el flujo de leads y pedidos hacia el sistema logístico central.
-  Tecnologías: Python, SQL Server, Shopify API, Google Sheets API, Power BI
+  Tecnologías: Python, SQL Server, Shopify API, Google Sheets API, Power BI.
 
 ▸ PRÁCTICAS MARKETING DIGITAL
-  Neon LED Publicidad | Jun 2025 - Ago 2025 | Lima, Perú
-  - Incrementó los leads orgánicos en un 40% liderando la estrategia del
-    canal de YouTube.
-  - Aplicó optimización SEO técnica y analizó el tráfico con Google Analytics.
-  Tecnologías: Google Analytics, SEO Técnico, YouTube Strategy
+  Neon LED Publicidad | Jun 2025 – Ago 2025 | Lima, Perú
+  - Optimización SEO técnica y medición del tráfico y conversiones en Google Analytics.
+  - Planificación de contenido y analítica de rendimiento en canales digitales.
+  Tecnologías: Google Analytics, SEO Técnico, Planificación de Contenidos.
 
 ▸ DESARROLLADOR INDEPENDIENTE (FREELANCE)
-  Jun 2022 - Actualidad | Remoto
-  - Lideró la creación de más de 6 sistemas web corporativos y e-commerce.
-  - Implementó automatizaciones con Python y SQL, reduciendo errores de
-    digitación en un 25%.
-  - Diseñó arquitecturas escalables integrando servicios de IA y pasarelas
-    de pago.
-  Tecnologías: React, TypeScript, Python, SQL, Node.js, APIs
-
-▸ PRACTICANTE DE LOGÍSTICA
-  Zeus Maritime-Shipchandler | Abr 2025 - May 2025 | Callao, Perú
-  - Gestionó órdenes de compra en el ERP con un 95% de precisión.
-  - Coordinó con proveedores y almacén para la recepción y despacho.
-  Tecnologías: ERP Management, Excel Avanzado
+  Jun 2022 – Actualidad | Remoto
+  - Desarrollo de sistemas web y automatizaciones de procesos para PYMES.
+  - Integraciones de APIs, pasarelas de pago y automatización de reportes.
+  Tecnologías: React, TypeScript, Python, SQL, APIs.
 
 EDUCACIÓN
 ──────────────────────────────────────────────────────────────────────────────────
 
-▸ Bachiller en Administración y Negocios Internacionales
-  Universidad Norbert Wiener | Mar 2022 - Dic 2026 | 10.º Ciclo (en curso)
+▸ Administración y Negocios Internacionales (10.º Ciclo - en curso, egreso dic. 2026)
+  Universidad Norbert Wiener | Mar 2022 – Dic 2026 | Lima, Perú
 
-CERTIFICACIONES
+CERTIFICACIONES Y CURSOS OFICIALES
 ──────────────────────────────────────────────────────────────────────────────────
 
-IA & Datos:
-  ▸ Artificial Intelligence Professional (CAIPC®) — CertiProf, 2025
-  ▸ Diplomado en IA para Negocios — IDAT, 2025
-  ▸ AWS Generative AI for Executives — Amazon Web Services, 2025
-  ▸ Microsoft SQL Server — Microsoft / IDAT, 2024
-
-Desarrollo & BI:
-  ▸ Especialización en Power BI — Intercorp, 2025
-  ▸ Python para Análisis de Datos — Udemy, 2024
-  ▸ Excel Avanzado & Dashboards — 2024
-
-Digital:
-  ▸ Competencias Digitales — Google, 2024
+▸ Artificial Intelligence Professional (CAIPC®) — CertiProf, 2025
+▸ AWS Generative AI for Executives — Amazon Web Services, 2025
+▸ Diplomado en IA para Negocios — IDAT, 2025
+▸ Curso de Especialización en Microsoft SQL Server — IDAT, 2024
+▸ Curso de Especialización en Power BI — Intercorp / IDAT, 2025
 
 HABILIDADES CLAVE
 ──────────────────────────────────────────────────────────────────────────────────
 
-Tecnologías & Datos:
-  Business Intelligence, Data Visualization, SQL Server, Python,
-  Integración de APIs, Git, React, TypeScript, Firebase
+Desarrollo & Herramientas:
+  Next.js, React, TypeScript, TailwindCSS, Node.js, Python, PostgreSQL, SQL Server,
+  Docker, Git, Vercel.
 
-Estrategia:
-  Análisis Predictivo, SEO Técnico, Google Analytics, Prompt Engineering
+MarTech & Analítica:
+  Google Analytics 4 (GA4), Google Tag Manager (GTM), embudos de conversión, CRO,
+  medición de eventos, Power BI.
 
-Operaciones:
-  Automatización de flujos, análisis de costos, métricas KPIs, ETL
+Automatización:
+  APIs REST, WhatsApp API, integración CRM/Sheets, flujos transaccionales.
 
 Idiomas:
-  Inglés C1 (Nivel Avanzado)
-
-PROYECTOS DESTACADOS
-──────────────────────────────────────────────────────────────────────────────────
-
-▸ Big Jack RP — ERP operativo para restaurantes con POS, inventario por
-  recetas y reportes ejecutivos con IA.
-▸ Big Jack Bot — Bot de WhatsApp con IA híbrida (local/cloud) para
-  automatización de pedidos en restaurantes.
-▸ Coralia Delights — E-commerce artesanal con CRM y mensajería IA
-  hiperpersonalizada por WhatsApp (proyecto propio, en pausa).
-▸ Cabine Grid — Sistema para LAN centers con POS, monitoreo de PCs y
-  cierres de caja automatizados.
-▸ Ecos Literarios — Plataforma de análisis literario asistida por IA
-  (Gemini + Genkit).
+  Español (Nativo) · Inglés: Intermedio (acreditación B1 en curso).
 
 ================================================================================
-  Generado desde: sjaquer.is-a.dev | Actualizado: Mayo 2026
+  Generado desde: sjaquer.is-a.dev | Actualizado: Octubre 2026
 ================================================================================

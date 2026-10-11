@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { IconArrowRight, IconChevronDown } from '@tabler/icons-react';
+import { IconArrowRight, IconChevronDown, IconDownload } from '@tabler/icons-react';
 import { animate } from 'animejs';
 import { throttle } from '../utils/throttle';
 import HeroCube from './HeroCube';
@@ -77,31 +77,44 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             className="forest-glass-soft rounded-[2.2rem] px-6 py-10 sm:px-12 sm:py-14 max-w-3xl"
           >
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-400/20 bg-emerald-950/40 text-emerald-300 font-mono text-xs tracking-wider uppercase mb-6"
+            >
+              <span>LIMA, PERÚ · DISPONIBLE DESDE ENE 2027</span>
+            </motion.div>
+
             <motion.h1
               initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               transition={{ delay: 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-extrabold tracking-tighter text-zinc-50 mb-6 leading-[0.98]"
+              className="text-5xl sm:text-6xl md:text-7xl font-display font-extrabold tracking-tight text-zinc-50 mb-3 leading-[1.05]"
             >
-              Construyo sistemas<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-teal-300 to-emerald-400 bg-[length:200%_auto] animate-gradient-x">
-                que automatizan
-              </span><br />
-              operaciones reales.
+              Sebastián Jaque
             </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="text-lg sm:text-xl md:text-2xl font-semibold text-emerald-400 mb-6"
+            >
+              Desarrollo web · Automatización · MarTech & CRO
+            </motion.p>
 
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="max-w-xl text-zinc-200 text-base md:text-lg mb-8 leading-relaxed font-light mx-auto text-left"
+              className="max-w-xl text-zinc-200 text-base md:text-lg mb-8 leading-relaxed font-light mx-auto text-center sm:text-left"
             >
               <p className="mb-3">
-                Soy Sebastián Jaque — estudiante de Administración y builder desde 2022.
+                Construyo sitios y automatizaciones que conectan marketing, operaciones y datos — y mido si funcionan.
               </p>
-              <p>
-                Trabajo en la intersección entre negocio y tecnología: entiendo el problema,
-                luego construyo algo que lo resuelva.
+              <p className="text-zinc-400 text-sm md:text-base">
+                Estudiante de último ciclo de Administración y Negocios Internacionales. Hoy desarrollo herramientas internas y flujos de datos en el área de empleabilidad de la Universidad Norbert Wiener.
               </p>
             </motion.div>
 
@@ -112,17 +125,19 @@ const Hero: React.FC = () => {
               className="flex flex-wrap gap-4 justify-center"
             >
               <a
+                href="/resume.txt"
+                download="CV-Sebastian-Jaque.txt"
+                className="group relative inline-flex h-12 items-center justify-center rounded-xl px-8 text-sm font-bold text-zinc-950 bg-emerald-400 hover:bg-emerald-300 transition-all shadow-lg shadow-emerald-500/20 active:scale-95"
+              >
+                <IconDownload size={16} className="mr-2" />
+                Descargar CV
+              </a>
+              <a
                 href="#portfolio"
                 className="group relative inline-flex h-12 items-center justify-center rounded-xl px-8 text-sm font-bold text-emerald-100 transition-all forest-glass border border-emerald-400/30 hover:border-emerald-300/50 hover:text-white active:scale-95"
               >
                 Ver proyectos
                 <IconArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
-              </a>
-              <a
-                href="#contact"
-                className="group relative inline-flex h-12 items-center justify-center rounded-xl px-8 text-sm font-bold text-emerald-100/80 transition-all forest-glass-soft border border-emerald-400/15 hover:text-white active:scale-95"
-              >
-                Hablemos
               </a>
             </motion.div>
           </motion.div>

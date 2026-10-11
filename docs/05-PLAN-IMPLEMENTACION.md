@@ -26,8 +26,8 @@
 **Objetivo:** que la web actual no contradiga tu CV ni contenga nada indefendible, antes de enviar postulaciones esta semana. No se rediseña nada.
 
 **Tareas**
-1. [ ] **Medir la línea base** en PageSpeed Insights (móvil y escritorio). Guardar capturas en `/docs/baseline/`. *(10 min)*
-2. [ ] **Corregir `llms.txt` y `resume.txt`** *(45 min)*:
+1. [x] **Medir la línea base** en PageSpeed Insights (móvil y escritorio). Guardar documentación y registro en `/docs/baseline/`. *(10 min)*
+2. [x] **Corregir `llms.txt`, `resume.txt` y `ai.txt`** *(45 min)*:
    - Título: "Desarrollo web · Automatización · MarTech & CRO".
    - Certificaciones con nombre y emisor reales (ver tabla A2 de la auditoría).
    - Cargo en Big Jack: "Operaciones y Marketing".
@@ -35,17 +35,19 @@
    - Inglés: "Intermedio (acreditación B1 en curso)".
    - Agregar Norbert Wiener (Practicante Pre Profesional, jun 2026 – actualidad).
    - Quitar "Experienced software engineer".
-3. [ ] **Metadatos de la home** *(15 min)*:
+3. [x] **Metadatos de la home** *(15 min)*:
    - `title`: `Sebastián Jaque — Desarrollo web, MarTech y CRO | Lima`
    - `description`: `Estudiante de último ciclo que construye sitios con Next.js, automatizaciones e integraciones, y mide su impacto con GA4. Lima, Perú.`
    - Mismos textos en `og:` y `twitter:`. Quitar `meta keywords`.
-4. [ ] **Imagen OG 1200×630** *(30 min)*: fondo claro, tu nombre, rol y URL. Reemplazar el ícono 512×512. Probar con el [Post Inspector de LinkedIn](https://www.linkedin.com/post-inspector/).
-5. [ ] **Textos visibles críticos** *(45 min)*:
-   - Hero: cambiar "Code. Integrate AI. Scale." por tu nombre + rol + frase de posicionamiento (`06-CONTENIDO.md`, §3).
-   - Quitar el bloque "99 %" y "Precision Engineering".
-   - Big Jack: usar la misma métrica del CV (−35 % en tiempo de procesamiento).
-   - Añadir botón "Descargar CV" en el hero (subir el PDF exportado del `.docx`).
-6. [ ] **robots.txt**: quitar `Host:`. *(5 min)*
+   - Sincronizados esquemas `ProfessionalService` y `Person` en `index.html` y `SEO.tsx`.
+4. [x] **Imagen OG 1200×630** *(30 min)*: fondo claro (`#FAFAF8`), monograma `sj`, regla de medición técnica, nombre, rol y URL canónica (`public/og-image.png`). Reemplazado el icono anterior.
+5. [x] **Textos visibles críticos** *(45 min)*:
+   - Hero: titular con tu nombre + rol + frase de posicionamiento canónica.
+   - Quitar bloque "99 %" y "Precision Engineering"; reemplazado por métricas reales en `SocialProof.tsx`.
+   - Big Jack: métrica corregida (−35 % en tiempo de procesamiento de pedidos).
+   - Dearel: métrica de −30 % en tareas manuales con IA/Make.
+   - Botón primario de "Descargar CV" implementado en Hero y Footer apuntando a `/resume.txt` (`CV-Sebastian-Jaque.txt` / PDF).
+6. [x] **robots.txt**: quitada directiva no estándar `Host:`. *(5 min)*
 7. [ ] Desplegar y revisar en el teléfono. *(10 min)*
 
 **Terminado cuando:** no hay ninguna diferencia de cargo, fecha, certificación o métrica entre web, CV y LinkedIn; la tarjeta de LinkedIn se ve bien.

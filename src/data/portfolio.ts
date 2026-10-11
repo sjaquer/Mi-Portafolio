@@ -36,10 +36,10 @@ export const experiences: Experience[] = [
   },
   {
     id: '1',
-    title: 'Operations Coordinator',
-    titleEn: 'Operations Coordinator',
-    company: 'Big Jack-Burgers',
-    role: 'Operations & Marketing',
+    title: 'Operaciones y Marketing',
+    titleEn: 'Operations & Marketing',
+    company: 'Big Jack Burgers',
+    role: 'Operaciones y Marketing',
     roleEn: 'Operations & Marketing',
     duration: '2025 - 2026',
     location: 'Lima, Perú',
@@ -196,13 +196,13 @@ export const experiences: Experience[] = [
 export const education: Education[] = [
   {
     id: '1',
-    degree: 'Bachiller en Administración y Negocios Internacionales',
-    degreeEn: "Bachelor's in Business Administration and International Business",
+    degree: 'Administración y Negocios Internacionales (en curso)',
+    degreeEn: "Business Administration and International Business (in progress)",
     institution: 'Universidad Norbert Wiener',
     institutionEn: 'Norbert Wiener University',
     duration: 'Mar 2022 - Dic 2026',
-    status: '10.º Ciclo (en curso)',
-    statusEn: '10th Semester (in progress)',
+    status: '10.º Ciclo (egreso dic. 2026)',
+    statusEn: '10th Semester (graduation Dec. 2026)',
     relevant: ['Arquitectura de Negocio', 'Gestión de Proyectos', 'Estrategia Digital'],
     tier: 'academic',
     description: 'Formación académica enfocada en la optimización de procesos de negocio internacionales y gestión estratégica.',
@@ -256,10 +256,10 @@ export const education: Education[] = [
   },
   {
     id: '5',
-    degree: 'Microsoft SQL Server',
-    degreeEn: 'Microsoft SQL Server',
-    institution: 'Microsoft / IDAT',
-    institutionEn: 'Microsoft / IDAT',
+    degree: 'Especialización en Microsoft SQL Server',
+    degreeEn: 'Microsoft SQL Server Specialization',
+    institution: 'IDAT',
+    institutionEn: 'IDAT',
     duration: '2024',
     status: 'Curso oficial',
     statusEn: 'Official course',
@@ -267,7 +267,7 @@ export const education: Education[] = [
     tier: 'tech',
     description: 'Diseño y gestión de bases de datos relacionales para entornos corporativos y analítica.',
     descriptionEn: 'Design and management of relational databases for corporate environments and analytics.',
-    logoUrl: '/images/microsoft_logo.webp'
+    logoUrl: '/images/idat_logo.webp'
   },
   {
     id: '6',
@@ -435,9 +435,9 @@ export const projects: Project[] = [
       problem: 'Horas de cálculo manual y sobrecosto de combustible del 18% por rutas subóptimas.',
       solution: 'Motor combinatorio avanzado que procesa miles de restricciones por segundo y dibuja la trayectoria óptima.',
       metrics: [
-        { label: 'Tiempo de cálculo', value: '99', prefix: '-', suffix: '%' },
+        { label: 'Tiempo de resolución', value: '2', prefix: '< ', suffix: ' s' },
         { label: 'Ahorro combustible', value: '12', prefix: '-', suffix: '%' },
-        { label: 'Rutas calculadas', value: '250', prefix: '+', suffix: '' }
+        { label: 'Rutas simuladas', value: '250', prefix: '+', suffix: '' }
       ]
     }
   },

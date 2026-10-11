@@ -12,25 +12,25 @@ interface SEOProps {
 
 const SEO: React.FC<SEOProps> = ({ title, description, pageType = 'home', image, article = false, noindex = false }) => {
   const siteUrl = 'https://sjaquer.is-a.dev';
-  const defaultImage = `${siteUrl}/web-app-manifest-512x512.png`;
-  const defaultDescription = 'Full-Stack Developer & AI Integration Specialist. React, Node.js, Python. Soluciones web escalables con IA Generativa. Lima, Perú.';
+  const defaultImage = `${siteUrl}/og-image.png`;
+  const defaultDescription = 'Estudiante de último ciclo que construye sitios con Next.js, automatizaciones e integraciones, y mide su impacto con GA4. Lima, Perú.';
 
   const pageTitles: Record<string, string> = {
-    home: 'Sebastián Jaque | Full-Stack Developer & AI Integration Specialist',
-    portfolio: 'Proyectos en Producción | Full-Stack Developer & AI',
+    home: 'Sebastián Jaque — Desarrollo web, MarTech y CRO | Lima',
+    portfolio: 'Proyectos con resultado | Sebastián Jaque',
     contact: 'Contacto | Sebastián Jaque',
-    about: 'Sobre Mí | Full-Stack Developer & AI',
-    skills: 'Stack Técnico | React, Node.js, Python, OpenAI, AWS',
-    experience: 'Trayectoria Profesional | Full-Stack Developer & AI'
+    about: 'Sobre Mí | Sebastián Jaque',
+    skills: 'Stack Técnico y Herramientas | Sebastián Jaque',
+    experience: 'Trayectoria Profesional | Sebastián Jaque'
   };
 
   const pageDescriptions: Record<string, string> = {
     home: defaultDescription,
-    portfolio: 'Proyectos en producción: plataformas e-commerce con IA, sistemas de gestión con Firebase, y aplicaciones web escalables con React y TypeScript.',
-    contact: 'Contáctame para proyectos freelance, consultoría técnica o conversaciones sobre desarrollo web y AI Integration.',
-    about: 'Full-Stack Developer con certificaciones en IA (CertiProf CAIPC®, AWS GenAI). Especializado en React, Node.js, Python y arquitecturas cloud.',
-    skills: 'Stack técnico: React, TypeScript, Node.js, Python, Firebase, OpenAI API, AWS Bedrock, SQL Server, Docker, Vercel.',
-    experience: 'Trayectoria como Full-Stack Developer: Systems Architect en Big Jack, Data Engineer en Dearel, y 6+ proyectos independientes con IA.'
+    portfolio: 'Proyectos con métricas reales: terminal de pedidos en Big Jack Burgers, integraciones en Dearel y herramientas para ferias laborales.',
+    contact: 'Contacto directo para oportunidades de empleo en MarTech/desarrollo web o automatizaciones para PYMES.',
+    about: 'Estudiante de último ciclo de Administración y Negocios Internacionales enfocado en desarrollo web moderno y analítica con GA4.',
+    skills: 'Next.js, React, TypeScript, TailwindCSS, Node.js, Python, PostgreSQL, GA4, GTM y automatizaciones.',
+    experience: 'Trayectoria: Practicante Pre Profesional en Universidad Norbert Wiener, Operaciones y Marketing en Big Jack Burgers, y Dearel.'
   };
 
   const pageTitle = title || pageTitles[pageType] || pageTitles.home;
@@ -45,15 +45,18 @@ const SEO: React.FC<SEOProps> = ({ title, description, pageType = 'home', image,
           "@type": "Person",
           "name": "Sebastián Jaque",
           "url": siteUrl,
-          "jobTitle": "Full-Stack Developer & AI Integration Specialist",
+          "jobTitle": "Desarrollo web · Automatización · MarTech & CRO",
           "email": "sjaquer@outlook.es",
           "telephone": "+51-946-978-919",
           "image": defaultImage,
           "sameAs": ["https://github.com/sjaquer", "https://linkedin.com/in/sjaquer"],
-          "knowsAbout": ["React", "TypeScript", "Node.js", "Python", "Firebase", "OpenAI API", "AWS Bedrock", "AI Integration", "Full-Stack Development", "Prompt Engineering", "LLM Integration"],
+          "knowsAbout": ["Desarrollo Web", "Next.js", "React", "TypeScript", "Automatización de Procesos", "APIs", "WhatsApp API", "GA4", "GTM", "CRO"],
           "hasCredential": [
             { "@type": "EducationalOccupationalCredential", "name": "Artificial Intelligence Professional (CAIPC®)", "credentialCategory": "Professional Certification", "recognizedBy": { "@type": "Organization", "name": "CertiProf" } },
-            { "@type": "EducationalOccupationalCredential", "name": "Generative AI Specialization", "credentialCategory": "Technical Certification", "recognizedBy": { "@type": "Organization", "name": "Amazon Web Services" } }
+            { "@type": "EducationalOccupationalCredential", "name": "AWS Generative AI for Executives", "credentialCategory": "Technical Certification", "recognizedBy": { "@type": "Organization", "name": "Amazon Web Services" } },
+            { "@type": "EducationalOccupationalCredential", "name": "Diplomado en IA para Negocios", "credentialCategory": "Diploma", "recognizedBy": { "@type": "Organization", "name": "IDAT" } },
+            { "@type": "EducationalOccupationalCredential", "name": "Especialización en Microsoft SQL Server", "credentialCategory": "Course", "recognizedBy": { "@type": "Organization", "name": "IDAT" } },
+            { "@type": "EducationalOccupationalCredential", "name": "Especialización en Power BI", "credentialCategory": "Course", "recognizedBy": { "@type": "Organization", "name": "IDAT / Intercorp" } }
           ]
         };
       default:

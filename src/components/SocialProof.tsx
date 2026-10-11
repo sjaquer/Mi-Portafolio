@@ -11,9 +11,9 @@ interface Stat {
 }
 
 const stats: Stat[] = [
-  { label: 'Reducción en tiempo operativo', value: 35, suffix: '%' },
-  { label: 'Sistemas construidos desde cero', value: 5, suffix: '+' },
-  { label: 'Industrias con impacto real', value: 3 },
+  { label: 'Tiempo por pedido · Big Jack', value: 35, prefix: '−', suffix: ' %' },
+  { label: 'Tareas manuales · Dearel', value: 30, prefix: '−', suffix: ' %' },
+  { label: 'Bolsa laboral · Norbert Wiener', value: 1, prefix: '', suffix: ' en prod.' },
 ];
 
 const StatItem: React.FC<{ stat: Stat; i: number }> = ({ stat, i }) => {

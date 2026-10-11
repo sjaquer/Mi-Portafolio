@@ -1,23 +1,27 @@
-SEBASTIÁN JAQUE — FULL-STACK DEVELOPER & AI INTEGRATION SPECIALIST
+SEBASTIÁN JAQUE — DESARROLLO WEB · AUTOMATIZACIÓN · MARTECH & CRO
 
-CORE EXPERTISE
-- Full-Stack: React, TypeScript, Node.js, Python, TailwindCSS, Framer Motion
-- AI Integration: OpenAI API, Google Genkit, NLP, Embeddings, AWS Bedrock
-- Systems & Operations: OR-Tools Solver, CP-SAT Optimization, PostgreSQL, SQL Server
-- Certifications: CertiProf CAIPC® (AI Professional), AWS Generative AI
+ROL & ESPECIALIDAD
+- Desarrollo Web: Next.js, React, TypeScript, TailwindCSS, Node.js, PostgreSQL, Docker
+- Automatización e Integraciones: APIs REST, WhatsApp Business API, Python, SMTP
+- MarTech & CRO: Google Analytics 4 (GA4), Google Tag Manager (GTM), embudos de conversión, analítica digital
 
-PRODUCTION PROJECTS WITH AI
-1. Big Jack RP & Menu — Real-time kitchen digital ERP & Dispatch system (98.7% speed efficiency)
-2. TaskMe — Kanban dashboard integrated with Genkit AI layout planner (4.2x planning speedup)
-3. ORDEV — CP-SAT remote logistics helicopter flight path solver (31.8% fuel savings)
-4. TaskZenith — Custom Bento Grid productivity layout with Pomodoro focus clock (+45% focus)
-5. IA-ToolBotWhatsapp — Dual-Agent conversational system with automatic structured JSON outputs
+PROYECTOS Y EXPERIENCIA CON RESULTADOS MEDIDOS
+1. Universidad Norbert Wiener — Bolsa de trabajo con CMS por roles y campañas omnicanal segmentadas
+2. Big Jack Burgers — Terminal digital de pedidos y cocina (−35 % tiempo de procesamiento)
+3. Dearel — Integración de Shopify, Google Sheets y CRM vía APIs (−30 % tareas manuales)
 
-AVAILABLE FOR
-- Freelance: Custom React web development, API architectures, Generative AI integrations
-- Employment: Full-Stack Developer, AI Software Engineer, Solutions Architect
+CERTIFICACIONES OFICIALES
+- CertiProf CAIPC® (Artificial Intelligence Professional, 2025)
+- AWS Generative AI for Executives (Amazon Web Services, 2025)
+- Diplomado en IA para Negocios (IDAT, 2025)
+- Especialización en Microsoft SQL Server (IDAT, 2024)
+- Especialización en Power BI (Intercorp / IDAT, 2025)
 
-CONTACT: sjaquer@outlook.es | Lima, Peru
-WEBSITE: https://sjaquer.is-a.dev
-GITHUB: https://github.com/sjaquer
+DISPONIBLE PARA
+- Roles junior en MarTech, desarrollo web y automatización de procesos (desde enero 2027) · Lima / Remoto
+- Proyectos para PYMES con flujos manuales repetitivos
+
+CONTACTO: sjaquer@outlook.es | Lima, Perú
+WEB: https://sjaquer.is-a.dev
 LINKEDIN: https://linkedin.com/in/sjaquer
+GITHUB: https://github.com/sjaquer

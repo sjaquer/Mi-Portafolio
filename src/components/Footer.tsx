@@ -23,21 +23,31 @@ const Footer: React.FC = () => (
             data-reveal
             className="text-3xl md:text-4xl font-extrabold text-zinc-50 font-display tracking-tight mb-4"
           >
-            ¿Tienes un proyecto en mente?
+            ¿Buscas a alguien que construya y mida?
           </h3>
           <p
             data-reveal
-            className="text-zinc-200 text-lg mb-8 max-w-xl mx-auto leading-relaxed text-left"
+            className="text-zinc-200 text-base md:text-lg mb-8 max-w-xl mx-auto leading-relaxed text-center sm:text-left"
           >
-            Procesos manuales, sistemas desconectados o datos sin usar — hablemos.
+            Estoy buscando mi primer rol en MarTech, desarrollo web o automatización. Si tu equipo necesita a alguien que entienda el negocio y lo lleve a código, hablemos.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <motion.a
               data-reveal
-              whileHover={{ scale: 1.04, boxShadow: '0 0 30px rgba(16,185,129,0.2)' }}
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
+              href="/resume.txt"
+              download="CV-Sebastian-Jaque.txt"
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-400 text-zinc-950 font-bold text-sm shadow-lg shadow-emerald-500/20"
+            >
+              Descargar CV
+            </motion.a>
+            <motion.a
+              data-reveal
+              whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
               href={`mailto:${siteContent.footer.contactEmail}`}
-              className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-400 text-zinc-950 font-bold text-sm shadow-lg shadow-emerald-500/20"
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-zinc-800/80 border border-zinc-700/60 text-zinc-200 hover:text-white font-semibold text-sm transition-colors"
             >
               <IconMail size={16} /> Escribirme
             </motion.a>
@@ -48,9 +58,9 @@ const Footer: React.FC = () => (
               href="https://www.linkedin.com/in/sjaquer"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-zinc-800/60 border border-zinc-700/50 text-zinc-300 hover:text-zinc-100 font-semibold text-sm transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-zinc-200 font-medium text-sm transition-colors"
             >
-              <IconBrandLinkedin size={16} /> Conectar en LinkedIn
+              <IconBrandLinkedin size={16} /> LinkedIn
             </motion.a>
           </div>
         </div>
@@ -62,7 +72,7 @@ const Footer: React.FC = () => (
         <div className="md:col-span-2">
           <h4 className="text-lg font-bold text-zinc-50 mb-3 font-display">Sebastián Jaque</h4>
           <p className="text-zinc-300 text-sm leading-relaxed mb-5 max-w-md text-left">
-            Automatización, datos y sistemas para operaciones reales.
+            Construyo sitios y automatizaciones que conectan marketing, operaciones y datos — y mido si funcionan.
           </p>
           <div className="flex gap-3">
             {[

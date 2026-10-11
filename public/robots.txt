@@ -145,6 +145,3 @@ Disallow: /
 # Sitemaps
 # =========================================================
 Sitemap: https://sjaquer.is-a.dev/sitemap.xml
-
-# Host preferido (canonical)
-Host: https://sjaquer.is-a.dev
