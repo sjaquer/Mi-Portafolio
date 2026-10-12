@@ -28,6 +28,9 @@ export const defaultMetadata: Metadata = {
     description: homeDescription,
   },
   robots: { index: true, follow: true, "max-image-preview": "large" },
+  verification: {
+    google: "R7XnE1dbqikLDxkxSKfYOnRIIYWy3WQ96LCdq3G84KY",
+  },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "32x32" },
