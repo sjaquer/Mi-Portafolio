@@ -27,6 +27,8 @@
 | 2026-10-12 | Saludo en DevTools con API `sj.*` (rendimiento, eventos, stack, contacto, CV) | Muestra conocimiento de Performance API y medición a perfiles técnicos | Sin costo de carga (idle) | — |
 | 2026-10-12 | Se elimina el blog personal (`/blog-personal`), sus poemas y `framer-motion`; se borra el `dist/` de Vite | No aporta a la narrativa profesional y era la única dependencia de animación | Repo más pequeño y enfocado | — |
 | 2026-10-12 | Fuentes con `next/font/local` (variables latin de Inter y JetBrains Mono en `app/fonts/`) en lugar de `next/font/google` | El build en Vercel (Node 24, Turbopack) falló al resolver las fuentes de Google ("next/font/google queries have exactly one entry"); en local sí compilaba | Build reproducible sin red externa; mismo peso que antes (≈ 88 KB en total) | — |
+| 2026-10-12 | Imágenes de portada de casos (16:9) y retrato (4:5) generadas e integradas como WebP optimizado en `public/img/` | Espacios reservados con `MediaFrame` completados sin CLS (pesos entre 51 y 138 KB, ≤ 200 KB) | Experiencia visual editorial completa sin saltos de layout | — |
+| 2026-10-12 | Cuentas de Google en producción verificadas | GTM importado, 12 dimensiones y 3 eventos clave en GA4, sitemap.xml en Search Console verificado | Medición analítica en vivo en producción | — |
 
 ## Hipótesis para la Fase 6 (se prueban con datos)
 
