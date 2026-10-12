@@ -13,7 +13,10 @@ export const defaultMetadata: Metadata = {
   applicationName: profile.name,
   authors: [{ name: profile.name, url: profile.siteUrl }],
   creator: profile.name,
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    types: { "application/rss+xml": [{ url: "/rss.xml", title: `Notas · ${profile.name}` }] },
+  },
   openGraph: {
     type: "profile",
     locale: "es_PE",

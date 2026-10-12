@@ -75,8 +75,8 @@ Las metas son hipótesis iniciales: se revisan con datos reales al día 30. Eso 
 /proyectos/[slug]       Caso de estudio (artículo)
 /sobre-mi               Historia, forma de trabajar, foto
 /cv                     CV en HTML + botón de descarga PDF
-/notas                  Blog / espacio LinkedIn          (Fase 4, pendiente)
-/notas/[slug]           Nota                             (Fase 4, pendiente)
+/notas                  Blog / espacio LinkedIn (índice con filtro por pilar)
+/notas/[slug]           Nota
 /contacto               Formulario + WhatsApp + email
 /privacidad             Aviso de privacidad y medición
 /blog-personal          Archivo personal protegido (noindex, fuera del sitemap)
@@ -97,7 +97,7 @@ Orden de secciones y propósito de cada una:
 3. **Casos de estudio en formato de artículo** — los 3 casos con `featured`: uno destacado (imagen grande + texto) y dos en tarjeta, cada uno con imagen 16:9, antetítulo (tipo · año · minutos de lectura), titular, bajada, resultado y "Leer el caso". Botón "Ver los N casos".
 4. **Qué hago** — 3 bloques concretos: Desarrollo web y herramientas internas (Next.js) · Automatización de procesos y bots (Python, Playwright) · Integración de APIs y comunicación (Shopify, CRM, email transaccional). Cada uno con un ejemplo real, no una promesa.
 5. **Experiencia resumida** — línea de tiempo compacta, títulos reales.
-6. **Últimas notas** — 3 entradas del blog con enlace a LinkedIn. *(Fase 4; la sección no se muestra hasta que existan notas.)*
+6. **Últimas notas** — las 3 notas más recientes y botón "Ver todas las notas".
 7. **CTA final** — "¿Buscas a alguien que entienda el negocio y lo lleve a código?" + Descargar CV + Contactar.
 
 **Criterios de aceptación**
@@ -129,7 +129,7 @@ CTA: Siguiente caso · Descargar CV
 
 **Privacidad:** los repositorios de Norbert Wiener y clientes son privados. Las capturas usan **datos simulados**; nunca nombres, correos ni datos reales de estudiantes o clientes. Si un cliente no autoriza su nombre, se usa una descripción ("marca de hamburguesas en Lima").
 
-**Casos publicados (12 oct 2026):** Empleabilidad Wiener, Difusión por correo, Formularios y NPS, Feria Virtual, Reqlut Bot y Big Jack. Permiso institucional confirmado (`07-PROYECTOS.md` §3). Pendientes: Dearel y "Este portafolio". Formato de escritura: `06-CONTENIDO.md` §4.
+**Casos publicados (12 oct 2026):** Empleabilidad Wiener, Difusión por correo, Formularios y NPS, Feria Virtual, Reqlut Bot, Big Jack y Este portafolio. Permiso institucional confirmado (`07-PROYECTOS.md` §3). Dearel queda como borrador hasta tener la base del −30 %. Formato de escritura: `06-CONTENIDO.md` §4.
 
 **Orden de producción original:**
 Selección y justificación completas en `07-PROYECTOS.md`.

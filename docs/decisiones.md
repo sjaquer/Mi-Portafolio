@@ -17,6 +17,19 @@
 | 2026-10-12 | Casos en formato de artículo con imagen 16:9 y minutos de lectura | Preferencia de lectura editorial; reclutadores escanean titular + resultado | Más clics en "Leer el caso" | 2026-11-12 |
 | 2026-10-12 | Animaciones solo con `transform`, sin animar opacidad | Lighthouse marcó contraste insuficiente durante el revelado | Accesibilidad 100 estable | — |
 | 2026-10-12 | Cada evento del `dataLayer` limpia los parámetros que no usa | QA en producción: `theme` y `cta_id` se arrastraban a `cv_download` y otros eventos | Informes de GA4 sin valores cruzados | 2026-11-12 |
+| 2026-10-12 | Ejecutar todas las fases de una vez | Pedido de Sebastián; lo que queda depende de cuentas externas y datos | Web completa en producción; cierre en cuentas en `05` → Abierto | — |
+| 2026-10-12 | CV en Word: encabezado "Integraciones" en lugar de "MarTech & CRO"; sin CRO ni GTM en habilidades | `CLAUDE.md` reglas 1 y 2: CV y web idénticos y sin presentarse como MarTech | Coherencia CV · web · `llms.txt` (verificada en QA) | — |
+| 2026-10-12 | Dominio: se mantiene `sjaquer.is-a.dev` | Evita migrar dos veces mientras se acumulan datos y enlaces | Revisar si un dominio propio mejora la confianza en LinkedIn | 2027-02-01 |
+| 2026-10-12 | Versión en inglés: se pospone hasta la acreditación B1 | Prioridad del plan: inglés → tesis → portafolio | Retomar con el CV en inglés alineado | 2027-01-15 |
+| 2026-10-12 | Dearel queda como borrador | Falta base y método del −30 % (regla 2) | Publicar cuando exista el dato | — |
+
+## Hipótesis para la Fase 6 (se prueban con datos)
+
+| # | Hipótesis | Métrica | Cambio a probar |
+|---|---|---|---|
+| H1 | Mostrar el resultado del caso en el titular aumenta los clics hacia los casos | `case_study_view` desde la home / sesiones | Titulares ya orientados a resultado: comparar con 30 días de datos |
+| H2 | Un CTA de CV al final de cada caso aumenta las descargas de quienes leen un caso | `cv_download` con `cta_location=siguiente-paso` / `case_study_read` | Ya implementado; medir la tasa |
+| H3 | Las visitas desde LinkedIn (UTM) leen más casos que las orgánicas | `case_study_read` por `session_source` | Publicar las 4 notas con UTM y comparar |
 
 ## Revisiones quincenales
 

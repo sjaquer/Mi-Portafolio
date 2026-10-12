@@ -1,0 +1,33 @@
+Mi portafolio anterior tenía un fondo 3D animado, efectos de vidrio y un eslogan en inglés. Se veía trabajado. El problema es que no cumplía su función: que alguien que me busca después de leer mi CV encuentre a la misma persona, rápido.
+
+## Empecé por una auditoría, no por el diseño
+
+Antes de tocar nada revisé la web como lo haría un reclutador y como lo haría un buscador. Encontré cosas que el diseño no mostraba:
+
+- **El contenido no estaba en el HTML.** Era una aplicación que pintaba todo con JavaScript; los buscadores y las vistas previas de LinkedIn solo veían metadatos.
+- **Contaba otra historia que mi CV.** El título de la web, el texto para asistentes de IA y el CV me presentaban de tres formas distintas.
+- **Había afirmaciones que no podía defender** en una entrevista: certificaciones con nombres más grandes que los reales y cifras sin base.
+
+Corregir eso era más urgente que cualquier color.
+
+## Qué cambié, en orden
+
+1. **Honestidad primero.** Cargos, fechas y certificaciones exactamente como en el CV. Cada cifra con su base y su periodo, o fuera.
+2. **Una sola fuente de datos.** Un archivo con mi perfil genera la web, el CV en HTML, los textos para buscadores y asistentes de IA y los datos estructurados. Si cambio un cargo, cambia en todas partes.
+3. **Migración a Next.js.** Ahora cada página sale del servidor con su contenido completo.
+4. **Un sistema de diseño antes que las páginas.** Colores, tipografías y espaciados definidos una vez, con contraste verificado.
+5. **Medición con consentimiento.** Nueve eventos con nombres estables, y nada se guarda si la persona no acepta.
+
+## Lo que salió mal
+
+El diseño pasó por tres versiones en dos días. La segunda tenía demasiadas capas: fichas, portadas generadas, etiquetas repetidas. Al revisarla con capturas en el celular quedó claro que repetía la misma información varias veces. La regla que saqué de ahí ahora está en mi manual: un dato aparece una sola vez por pantalla.
+
+## Resultado
+
+La web nueva entrega el contenido en el HTML, es navegable con teclado y obtiene 100 en accesibilidad, buenas prácticas y SEO en Lighthouse. El JavaScript inicial bajó de unos 344 KB comprimidos (con Three.js) a unos 140 KB, sin contar las etiquetas de medición. El detalle completo está en el caso "Este portafolio".
+
+## Qué aprendí
+
+- Auditar antes de diseñar ahorra rehacer.
+- La consistencia entre CV, LinkedIn y web convence más que cualquier efecto.
+- Lo que quito importa tanto como lo que agrego.

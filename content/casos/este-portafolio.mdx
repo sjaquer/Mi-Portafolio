@@ -1,0 +1,81 @@
+## Contexto
+
+Este sitio es la primera prueba de trabajo que ve un reclutador después de leer mi CV. La versión anterior era una aplicación de una sola página hecha con Vite, con un fondo 3D animado, efectos de vidrio y un eslogan en inglés.
+
+## Problema
+
+Antes de rediseñar hice una auditoría completa. Los hallazgos más graves no eran visuales:
+
+- **El contenido no estaba en el HTML.** Todo se pintaba con JavaScript; los buscadores y las vistas previas de LinkedIn solo veían metadatos.
+- **Tres versiones de mí.** El título de la web, el texto para asistentes de IA y el CV me presentaban de formas distintas.
+- **Afirmaciones que no resistían una entrevista:** certificaciones con nombres más grandes que los reales y cifras sin base.
+- **Peso:** solo la librería 3D sumaba unos 273 KB comprimidos de JavaScript.
+- **Cero medición:** no había forma de saber si alguien descargaba el CV.
+
+## Enfoque
+
+Ordené el trabajo por lo que más dañaba la credibilidad, no por lo más vistoso.
+
+<Callout title="Decisión: una sola fuente de datos">
+  Un archivo TypeScript con mi perfil genera la web, el CV en HTML, `llms.txt`, `resume.txt` y los
+  datos estructurados. Si cambio un cargo, cambia en todas partes. Es la causa raíz de las "tres
+  versiones de mí", resuelta una vez.
+</Callout>
+
+<Callout title="Decisión: migrar en el mismo repositorio">
+  Pasé de Vite a Next.js sin abrir un repositorio nuevo, conservando el historial. Cada página sale
+  ahora del servidor con su contenido completo.
+</Callout>
+
+<Callout title="Lo que descarté" variant="warning">
+  El fondo 3D, las animaciones al cargar la página, una ficha de perfil en el hero y portadas de
+  caso generadas por código. Las dos últimas las construí y las quité al revisar el diseño en el
+  celular: repetían información que ya estaba en pantalla. De ahí salió una regla de mi manual: un
+  dato aparece una sola vez por pantalla.
+</Callout>
+
+## Solución
+
+<FlowDiagram
+  label="Una fuente, muchas salidas"
+  steps={[
+    { tag: "Fuente", title: "profile.ts + MDX", items: ["Perfil y casos", "Notas"] },
+    {
+      tag: "Build",
+      title: "Next.js estático",
+      items: ["Sistema de diseño", "Imágenes OG"],
+      highlight: true,
+    },
+    { tag: "Salida", title: "HTML completo", items: ["CV en HTML y PDF", "llms.txt · resume.txt"] },
+    {
+      tag: "Medición",
+      title: "GTM + GA4",
+      items: ["9 eventos tipados", "Consentimiento denegado por defecto"],
+    },
+  ]}
+/>
+
+- **Sistema de diseño** con tokens: dos tipografías, una paleta con contraste verificado, una sola banda de color por página y animaciones solo con CSS.
+- **Accesibilidad:** navegación completa con teclado, foco visible, un `h1` por página y textos alternativos.
+- **Medición:** nueve eventos con nombres estables (`cv_download`, `case_study_read`, `generate_lead`…), enviados por una función tipada. Si alguien rechaza el consentimiento, no se guarda ninguna cookie de Google Analytics.
+
+## Resultado
+
+<Metric
+  value="−59 %"
+  label="JavaScript inicial: de ~344 KB a ~140 KB comprimidos"
+  context="Build de Vite del 11 oct (gzip) vs. Lighthouse móvil de la home nueva del 12 oct, sin contar GTM/GA4"
+  measured
+/>
+
+- **Lighthouse móvil:** 100 en accesibilidad, buenas prácticas y SEO en todas las páginas; LCP de 1,4–1,6 s y CLS de 0.
+- **Contenido en el HTML:** cada página entrega su `h1`, sus textos y sus datos estructurados desde el servidor.
+- **Lo que no está resuelto:** el rendimiento queda en 86–91 porque la etiqueta de medición se carga al inicio. Cargarla tras la primera interacción lo sube a ~98; es una decisión pendiente entre medir antes o cargar más rápido.
+
+Con un mes de datos revisaré el embudo visita → caso → lectura → CV, y actualizaré este caso con lo que encuentre.
+
+## Qué aprendí
+
+- Auditar antes de diseñar ahorra rehacer.
+- La consistencia entre CV, LinkedIn y web convence más que cualquier efecto.
+- Probar la medición en producción encuentra errores que la vista previa no muestra: así descubrí parámetros que se arrastraban entre eventos.

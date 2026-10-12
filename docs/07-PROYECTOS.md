@@ -12,7 +12,9 @@
 | Permiso escrito de la jefatura (§3.1) | ✅ Confirmado por Sebastián · interruptor `institutionalPermission = true` en `content/casos/index.ts` |
 | Nivel A · casos 1–5 | ✅ Publicados (Empleabilidad, Difusión, Formularios y NPS, Feria Virtual, Reqlut Bot) |
 | Big Jack | ✅ Publicado (adelantado desde la Fase 4) |
-| Dearel | ⬜ Pendiente: falta base y método del −30 % y material del proyecto |
+| Dearel | 🟡 Borrador en `content/casos/integracion-shopify-crm-dearel.mdx` (visible en `pnpm dev`); se publica al tener la base y el método del −30 % |
+| Este portafolio | ✅ Publicado (`/proyectos/este-portafolio`) |
+| Nivel C · notas | ✅ "Validé 1 200 correos…" publicada en `/notas` |
 | Nivel B · galería | ✅ Landings de graduación, WCCA Posgrado, página de Empleabilidad, Portal de Bolsa Laboral, LogINV, Sistema Obra |
 | Imágenes de portada | ✅ `public/img/casos/<slug>.webp` (editoriales, sin rostros) |
 | Datos de §4 | ⬜ Pendientes en todos los casos (marcados con `TODO(Sebastián)` en los MDX) |

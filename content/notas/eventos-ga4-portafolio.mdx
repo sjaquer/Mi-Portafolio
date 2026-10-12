@@ -1,0 +1,52 @@
+Cuando rehíce mi portafolio me puse una regla: si la web dice que sé medir, tiene que estar medida. Esta nota cuenta cómo diseñé esa medición, con qué nombres y qué error encontré cuando la probé en producción. La escribo mientras preparo la certificación de Google Analytics 4: es aprendizaje aplicado, no experiencia de años.
+
+## El problema: medir sin ensuciar los datos
+
+Un portafolio tiene pocas visitas. Con poco volumen, un solo evento mal nombrado o duplicado ya distorsiona cualquier conclusión. Quería tres cosas:
+
+- Saber si un reclutador **descarga el CV**, **lee un caso completo** o **me escribe**.
+- No mandar nunca datos personales a Google.
+- Respetar a quien no quiere ser medido.
+
+## Qué hice
+
+### 1. Pocos eventos, con nombres que se explican solos
+
+Definí nueve eventos, en inglés y en `snake_case`, que es la convención de GA4:
+
+- `cta_click` — cualquier botón, con `cta_id`, `cta_location` y `page_type`.
+- `cv_download` — la descarga del PDF.
+- `generate_lead` — formulario, WhatsApp o email, con `lead_channel`.
+- `outbound_click` — LinkedIn o GitHub.
+- `case_study_view` y `case_study_read` — abrir un caso y llegar al 75 % del texto.
+- `post_read` — lo mismo para estas notas.
+- `form_error` — qué campo falló, sin su contenido.
+- `theme_change` — claro, oscuro o sistema.
+
+Tres de ellos son eventos clave: `cv_download`, `generate_lead` y `case_study_read`. El resto sirve para entender el camino.
+
+### 2. Un solo punto de entrada, tipado
+
+Todos los eventos pasan por una función `track()` en TypeScript. Si escribo `cv_downlod` o me olvido de un parámetro, el proyecto no compila. Es la forma más barata que encontré de evitar el error más común en GA4: nombres que cambian de una página a otra.
+
+Los botones no llaman a `track()` uno por uno: llevan un atributo `data-cta` y un único listener registra los clics. Así sumar un botón nuevo no exige tocar la medición.
+
+### 3. Consentimiento denegado por defecto
+
+La medición empieza con Consent Mode v2 en `denied`. Si la persona rechaza, no se guarda ninguna cookie de Google Analytics; si acepta, recién entonces. Lo comprobé en producción: rechazando, el navegador no tiene cookies `_ga`.
+
+## El error que encontré al probarlo
+
+Probé cada evento en el sitio real con un navegador automatizado y miré lo que llegaba a GA4. Casi todo estaba bien, pero `cv_download` llegaba con un parámetro que no le correspondía: `theme=light`.
+
+La causa: Google Tag Manager guarda en su modelo de datos los valores de eventos anteriores. Si antes alguien cambió el tema, ese `theme` se "pegaba" a los eventos siguientes. La solución fue que cada evento limpie explícitamente los parámetros que no usa. Es una línea de código, pero sin probarlo en producción no lo habría visto.
+
+## Resultado
+
+Hoy el sitio envía nueve eventos con nombres estables, respeta el consentimiento y no envía datos personales. Todavía no tengo suficientes datos para sacar conclusiones: la primera revisión del embudo (visita → caso → lectura → CV) será con un mes de datos.
+
+## Qué aprendí
+
+- Nombrar los eventos es una decisión de producto, no un detalle técnico.
+- Tipar la medición evita errores que después no se pueden corregir en los informes.
+- Probar en producción con datos reales encuentra problemas que la vista previa no muestra.

@@ -25,6 +25,8 @@ pnpm dev          # http://localhost:3000
 |---|---|
 | Datos del perfil (fuente única) | `content/profile.ts` → web, `/cv`, `/llms.txt`, `/resume.txt`, JSON-LD |
 | Casos de estudio | Ficha en `content/casos/index.ts` + artículo en `content/casos/<slug>.mdx` (formato: `docs/06-CONTENIDO.md` §4) |
+| Notas (blog) | Ficha en `content/notas/index.ts` + texto en `content/notas/<slug>.mdx` (formato: `docs/06-CONTENIDO.md` §5) · RSS en `/rss.xml` |
+| GTM | `docs/gtm/eventos-sitio.json` (contenedor importable con los 9 eventos) |
 | Imágenes | `public/img/retrato.webp` (4:5) · `public/img/casos/<slug>.webp` (16:9) |
 | CV | `content/cv/CV-Sebastian-Jaque.docx` → `public/cv/CV-Sebastian-Jaque.pdf` |
 | Diseño | `app/tokens.css` (tokens) · `components/` (ui, layout, sections, brand, analytics) |
@@ -47,4 +49,4 @@ pnpm dev          # http://localhost:3000
 | — | `design/figma/README.md` | Cómo usar el kit de marca en Figma |
 
 ## Estado
-Ver `docs/05-PLAN-IMPLEMENTACION.md` → "Estado al 12 oct 2026".
+Todas las fases ejecutadas en código. Lo abierto (cuentas de Google, Resend, LinkedIn, datos) está en `docs/05-PLAN-IMPLEMENTACION.md` → "Estado al 12 oct 2026".

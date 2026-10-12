@@ -12,7 +12,7 @@ function locationOf(el: Element): string {
   if (el.closest("body > header")) return "header";
   if (el.closest("footer")) return "footer";
   const region = el.closest(
-    "section[aria-labelledby], section[id], nav[aria-label], aside[aria-labelledby], form",
+    "section[aria-labelledby], section[id], nav[aria-label], aside[aria-labelledby], aside[aria-label], form",
   );
   if (!region) return "main";
   if (region.tagName === "FORM") return region.id || "form";

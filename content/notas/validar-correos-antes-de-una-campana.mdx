@@ -1,0 +1,29 @@
+En el área de empleabilidad donde hago mis prácticas, la comunicación con empresas aliadas depende de una base de correos. Antes de enviar campañas a esa base, la verifiqué dirección por dirección. Esta nota cuenta por qué y cómo, sin datos internos.
+
+## El problema: los rebotes no son solo un número
+
+La base tenía más de **1 200 direcciones**, muchas antiguas o mal escritas. Cada correo que rebota le dice al proveedor de correo que quien envía no cuida sus listas. Si los rebotes se acumulan, la cuenta de envío pierde reputación y los correos legítimos empiezan a llegar a spam o a bloquearse.
+
+Enviar primero y limpiar después significa pagar el costo de los rebotes en cada campaña.
+
+## Qué hice
+
+Escribí un conjunto de scripts en Python que revisan cada dirección antes de usarla:
+
+1. **¿El dominio puede recibir correo?** Consulta los registros MX del dominio. Si no existen, la dirección no puede funcionar.
+2. **¿El servidor reconoce la cuenta?** Pregunta al servidor de correo si la dirección existe, sin enviar ningún mensaje.
+3. **Reintentos en varias rondas.** Algunos servidores responden tarde o rechazan la primera consulta; un "no sé" no es un "no existe".
+4. **Avance guardado.** Si el proceso se corta a la mitad, continúa desde donde quedó en lugar de empezar de cero.
+5. **Resultado en el mismo Excel.** Los correos válidos quedan marcados en verde y los inválidos en rojo, con un resumen al final. Nadie del equipo tuvo que aprender una herramienta nueva.
+
+## Resultado
+
+En la primera pasada se confirmaron **más de 530 correos válidos**. El resto quedó marcado para revisar antes de volver a escribirles. La siguiente medición que quiero hacer es la tasa de rebote antes y después de usar la base verificada.
+
+## Qué aprendí
+
+- La verificación es más barata que la reputación perdida: se hace una vez, los rebotes se pagan en cada envío.
+- "Inválido" y "no confirmado" no son lo mismo; separarlos evita borrar contactos que sí funcionan.
+- Entregar el resultado en la herramienta que el equipo ya usa importa tanto como el script.
+
+Si tu negocio envía campañas a una base vieja, empieza por aquí antes de cambiar de herramienta de envío.

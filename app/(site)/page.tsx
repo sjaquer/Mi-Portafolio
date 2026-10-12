@@ -11,11 +11,13 @@ import { CvButton } from "@/components/sections/cv-button";
 import { Button } from "@/components/ui/button";
 import { CaseArticle } from "@/components/ui/case-article";
 import { MediaFrame } from "@/components/ui/media-frame";
+import { PostCard } from "@/components/ui/post-card";
 import { Container } from "@/components/ui/container";
 import { Metric } from "@/components/ui/metric";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { Timeline } from "@/components/ui/timeline";
 import { cases } from "@/content/casos";
+import { notes } from "@/content/notas";
 import { profile } from "@/content/profile";
 import { findImage } from "@/lib/images";
 import { jsonLdGraph, profilePageJsonLd } from "@/lib/jsonld";
@@ -234,6 +236,31 @@ export default function Home() {
         </div>
         <Timeline items={profile.experience.slice(0, 3)} compact />
       </Section>
+
+      {/* 6. Últimas notas (02-PRD.md §8.1). */}
+      {notes.length > 0 && (
+        <Section aria-labelledby="notas" className="border-t border-border">
+          <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
+            <SectionHeader id="notas" label="Notas" title="Lo que estoy aprendiendo" flush />
+            <Button
+              href="/notas"
+              variant="secondary"
+              cta="home_all_notes"
+              className="w-full sm:w-auto"
+              icon={<IconArrowRight size={20} stroke={1.5} aria-hidden />}
+            >
+              Ver todas las notas
+            </Button>
+          </div>
+          <ul className="grid gap-7 md:grid-cols-3">
+            {notes.slice(0, 3).map((n) => (
+              <li key={n.slug} className="reveal border-t border-border pt-5">
+                <PostCard n={n} minutes={readingTime(n.slug, "notas")} />
+              </li>
+            ))}
+          </ul>
+        </Section>
+      )}
 
       {/* 7. CTA final */}
       <section aria-labelledby="cta-final" className="border-t border-border py-8 lg:py-9">

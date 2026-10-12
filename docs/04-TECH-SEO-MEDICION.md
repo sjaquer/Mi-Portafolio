@@ -228,7 +228,9 @@ Así sabrás qué canal trae reclutadores que descargan el CV.
 | `form_error` se registra en el `dataLayer` (4 campos) pero no llegó a GA4 | ⚠️ falta en el activador de GTM |
 | `case_study_view` llega sin `case_type` | ⚠️ falta el parámetro en la etiqueta de GTM |
 | Parámetros arrastrados entre eventos (p. ej. `theme` dentro de `cv_download`) | ✅ corregido en `lib/analytics.ts`: cada evento limpia los parámetros que no usa |
-| `sitemap.xml` con 12 URLs y `robots.txt` lo declara | ✅ |
+| `sitemap.xml` (18 URLs con notas y "Este portafolio") y `robots.txt` lo declara | ✅ |
+| `post_read` (75 % de una nota) y clics de LinkedIn al final de la nota | ✅ verificado en local |
+| RSS en `/rss.xml` anunciado en los metadatos | ✅ |
 | Search Console verificado (meta + archivo `google4fab63528fff526b.html`) | ✅ |
 
 **Pasos en las cuentas (≈ 40 min)**

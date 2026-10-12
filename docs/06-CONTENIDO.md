@@ -185,27 +185,30 @@ Lo que aprendí: [1 línea]
 (Escribí el detalle técnico en mi web, enlace en el primer comentario.)
 ```
 
-### 5.6 Frontmatter de una nota
+### 5.6 Ficha de una nota
 
-```yaml
----
-title: "Mis primeros 6 eventos en GA4 y por qué los nombré así"
-description: "Cómo diseñé el plan de medición de mi portafolio: eventos, conversiones y errores que evité."
-date: 2026-11-24
-pillar: medicion
-readingTime: auto
-linkedinUrl: ""        # se completa después de publicar en LinkedIn
-draft: false
----
+Igual que los casos: la ficha vive en `content/notas/index.ts` y el texto en `content/notas/<slug>.mdx`. Los minutos de lectura, la imagen OG, el RSS, el sitemap y el JSON-LD se generan solos.
+
+```ts
+{
+  slug: "eventos-ga4-portafolio",
+  title: "Mis primeros 9 eventos en GA4 y por qué los nombré así",
+  description: "Cómo diseñé la medición de mi portafolio…",   // 140–160 caracteres
+  date: "2026-10-12",
+  pillar: "medicion",            // construyendo · pymes · medicion · tesis
+  linkedinUrl: "",               // se completa después de publicar en LinkedIn (paso 5 de §5.4)
+  draft: false,
+}
 ```
 
 ### 5.7 Primeras 6 notas (backlog)
 
-1. Cómo y por qué rediseñé mi portafolio (con la auditoría como punto de partida). — *Construyendo*
-2. Mis primeros 6 eventos en GA4 y por qué los nombré así. — *Medición*
+1. ✅ Cómo y por qué rediseñé mi portafolio (con la auditoría como punto de partida). — *Construyendo*
+2. ✅ Mis primeros 9 eventos en GA4 y por qué los nombré así. — *Aprendiendo medición*
 3. Migrar de SQLite a PostgreSQL en un proyecto real: lo que no sale en los tutoriales. — *Construyendo*
 4. Envíos masivos de correo sin caer en spam: SMTP vs. servicios transaccionales. — *Construyendo* (sale del informe de Resend, sin datos internos)
-5. 3 tareas que una tienda pequeña puede automatizar este mes. — *PYMES*
+5. ✅ 3 tareas que una tienda pequeña puede automatizar este mes. — *PYMES*
+5b. ✅ Validé 1 200 correos antes de una campaña (Nivel C de `07-PROYECTOS.md`). — *Construyendo*
 6. 30 días de datos de mi portafolio: qué aprendí sobre cómo llegan los reclutadores. — *Medición* (enero)
 
 ### 5.8 Qué no publicar

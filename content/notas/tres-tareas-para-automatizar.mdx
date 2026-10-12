@@ -1,0 +1,27 @@
+Trabajé en operaciones de una hamburguesería y en una tienda retail antes de dedicarme a construir herramientas. En los dos lugares vi lo mismo: el tiempo no se iba en las ventas, se iba en copiar datos de un lugar a otro. Estas son tres tareas que una tienda pequeña puede automatizar sin un gran proyecto.
+
+## 1. Que el pedido entre una sola vez
+
+**Cómo se ve el problema:** el pedido llega por la web o por WhatsApp y alguien lo vuelve a escribir para cocina o para despacho. Cada transcripción es una oportunidad de error y unos minutos perdidos.
+
+**Qué se puede hacer:** que el canal de venta envíe el pedido directamente al sistema que lo prepara. Una tienda online puede mandar cada pedido a una hoja de cálculo o a un sistema interno mediante un _webhook_ (un aviso automático cada vez que ocurre una venta).
+
+**Un detalle que importa:** el precio debería calcularse en un solo lugar. En el sistema que construí para una hamburguesería, el menú solo enviaba códigos de producto y cantidades; el precio lo calculaba el sistema interno. Así un cambio de precio se hace una vez.
+
+## 2. Que el inventario se descuente solo
+
+**Cómo se ve el problema:** el stock se cuadra al cerrar el día, o al final de la semana, y los faltantes aparecen cuando ya no hay tiempo de comprar.
+
+**Qué se puede hacer:** descontar el inventario con cada venta, a partir de la receta o de los componentes de cada producto. No hace falta un ERP: una hoja con la receta de cada producto y una fórmula que resta lo vendido ya cambia la forma de trabajar.
+
+## 3. Que los datos del cliente vivan en un solo lugar
+
+**Cómo se ve el problema:** el cliente está en la tienda online, en el CRM y en una hoja, con datos distintos en cada uno. Nadie sabe cuál es el correcto.
+
+**Qué se puede hacer:** conectar las herramientas por API para que una sea la fuente y las demás se actualicen solas. En una tienda retail integré Shopify, el CRM y Google Sheets para que los pedidos y los clientes no se digitaran dos veces.
+
+## Por dónde empezar
+
+Elige la tarea que más se repite en tu semana y cuenta cuántas veces se hace. Ese número es tu línea base: sin él no vas a poder decir si la automatización sirvió.
+
+¿Tienes un proceso que se repite cada semana? Escríbeme y lo vemos.

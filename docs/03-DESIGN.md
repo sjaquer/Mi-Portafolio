@@ -1015,7 +1015,7 @@ Cada botón lleva `data-cta="<id>"` para la medición (ver `04-TECH-SEO-MEDICION
 | `Tag` | Etiqueta de stack | Mono, borde, sin color de acento |
 | `StatusBadge` | "En producción", "Prototipo", "Entregado" | Ícono + texto, nunca solo color |
 | `Timeline` | Experiencia | Cargo real, empresa, fechas |
-| `PostCard` (Fase 4) | Nota del blog | Pilar (etiqueta de §12.2), fecha, tiempo de lectura; mismo formato que `CaseArticle` |
+| `PostCard` | Nota del blog | Antetítulo (pilar · fecha · lectura), titular, bajada y "Leer la nota"; sin imagen. `NoteList` añade el filtro por pilar |
 | `Prose` | Estilos de texto largo para MDX | 68ch, enlaces subrayados |
 | `Callout` | Aprendizaje / advertencia en casos | Variantes `info` (neutro) y `warning` (ámbar) |
 | `Figure` (pendiente) | Imagen + leyenda dentro del MDX | `next/image`, AVIF/WebP, marco de §6.5 |

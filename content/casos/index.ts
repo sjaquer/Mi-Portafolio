@@ -125,7 +125,7 @@ const allCases: CaseStudy[] = [
     slug: "formularios-nps-wiener",
     title: "Encuestas con identidad validada y datos que se analizan solos",
     subtitle:
-      "Portal de formularios para estudiantes, egresados y empresas, con DNI validado contra el padrón, encuestas NPS por evento y un tablero de resultados que se recalcula solo.",
+      "Portal de formularios con DNI validado contra el padrón, encuestas NPS por evento y un tablero de resultados de egresados que se recalcula solo.",
     problem:
       "Las encuestas vivían en formularios sueltos, sin verificar quién respondía, y cada reporte obligaba a unir y limpiar respuestas a mano.",
     result: {
@@ -187,6 +187,50 @@ const allCases: CaseStudy[] = [
     status: "produccion",
     updatedAt: "2026-10-11",
     institutional: true,
+  },
+  {
+    slug: "este-portafolio",
+    title: "Un portafolio que carga menos de la mitad de JavaScript y se puede medir",
+    subtitle:
+      "Rehice mi web desde una auditoría: contenido en el HTML, una sola fuente de datos, sistema de diseño accesible y medición con consentimiento.",
+    problem:
+      "La web anterior pintaba todo con JavaScript, contaba otra historia que mi CV y no tenía ninguna forma de saber si servía.",
+    result: {
+      value: "−59 %",
+      label: "JavaScript inicial: de ~344 KB a ~140 KB comprimidos",
+      context:
+        "Build de Vite del 11 oct (gzip) vs. Lighthouse móvil de la home nueva del 12 oct, sin contar GTM/GA4",
+    },
+    type: "web",
+    context: "Proyecto propio · sjaquer.is-a.dev",
+    role: "Auditoría, diseño, desarrollo y medición",
+    duration: "oct 2026",
+    year: 2026,
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "GTM / GA4"],
+    status: "produccion",
+    updatedAt: "2026-10-12",
+  },
+  {
+    slug: "integracion-shopify-crm-dearel",
+    title: "Pedidos y clientes sin digitar dos veces en una tienda retail",
+    subtitle:
+      "Integración de Shopify, el CRM y Google Sheets mediante APIs REST, con tableros de ventas e inventario y flujos logísticos conectados al CRM.",
+    problem:
+      "Los pedidos y los datos de clientes se copiaban a mano entre la tienda online, el CRM y las hojas de cálculo.",
+    result: {
+      value: "−30 %",
+      label: "tareas administrativas manuales",
+      context: "Dearel · ago – nov 2025", // TODO(Sebastián): base, periodo y método de medición
+    },
+    type: "automatizacion",
+    context: "Dearel · tienda retail en Lima",
+    role: "Desarrollador de Soluciones de Negocio",
+    duration: "ago – nov 2025",
+    year: 2025,
+    stack: ["Shopify", "APIs REST", "Google Sheets", "Power BI"],
+    status: "entregado",
+    updatedAt: "2026-10-12",
+    draft: "Falta la base y el método del −30 % (07-PROYECTOS.md §4)",
   },
   {
     slug: "pedidos-big-jack",

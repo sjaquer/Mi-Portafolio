@@ -5,7 +5,16 @@
  */
 
 export type PageType =
-  "home" | "projects" | "case_study" | "about" | "cv" | "contact" | "privacy" | "other";
+  | "home"
+  | "projects"
+  | "case_study"
+  | "notes"
+  | "note"
+  | "about"
+  | "cv"
+  | "contact"
+  | "privacy"
+  | "other";
 
 export type LeadChannel = "form" | "whatsapp" | "email";
 
@@ -55,6 +64,8 @@ export function pageTypeOf(pathname: string): PageType {
   if (pathname === "/") return "home";
   if (pathname === "/proyectos") return "projects";
   if (pathname.startsWith("/proyectos/")) return "case_study";
+  if (pathname === "/notas") return "notes";
+  if (pathname.startsWith("/notas/")) return "note";
   const map: Record<string, PageType> = {
     "/sobre-mi": "about",
     "/cv": "cv",
