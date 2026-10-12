@@ -38,6 +38,7 @@ Por decisión de Sebastián ("hazlo sin importar la fecha"), las fases 0 a 6 se 
 **Abierto (solo tú puedes hacerlo)**
 
 1. [X] **Cuentas de Google:** contenedor de eventos importado y publicado en GTM (`GTM-PSWBGH5K`); 12 dimensiones personalizadas y 3 eventos clave (`cv_download`, `generate_lead`, `case_study_read`) activos en GA4; sitemap enviado y procesado correctamente en Search Console.
+
 2. ⬜ **Resend:** `RESEND_API_KEY` y `CONTACT_FROM_EMAIL` (subdominio `mail.wativo.studio`) en Vercel; probar envío real: deben llegar **2 correos** (notificación y confirmación). Error y honeypot ya probados.
 3. ⬜ **LinkedIn:** publicar las 4 notas con la plantilla de `06` §5.5 (enlace con UTM en el primer comentario) y pegar cada URL en `linkedinUrl` de `content/notas/index.ts`; UTM en Destacados.
 4. ⬜ **Decisión de rendimiento:** GTM en `<head>` (hoy, Rendimiento 88–91) o tras la primera interacción (≈ 98). Ver `decisiones.md`.
@@ -127,10 +128,10 @@ Por decisión de Sebastián ("hazlo sin importar la fecha"), las fases 0 a 6 se 
 
 1. [X] Crear cuenta GA4 + contenedor GTM; Consent Mode v2 con banner y `/privacidad`. *(1,5 h)*
 2. [X] `lib/analytics.ts` tipado; `data-cta` en todos los botones; eventos de la tabla §4.3. *(1,5 h)*
-3. [ ] Marcar conversiones (`cv_download`, `generate_lead`, `case_study_read`); registrar dimensiones personalizadas. *(30 min)* — guía en `04` §4.8, pasos 3–4.
-4. [ ] Search Console + envío del sitemap; Clarity vía GTM (con consentimiento). *(30 min)* — Search Console verificado ✅, Clarity con consentimiento ✅ (verificado en producción); falta enviar el sitemap (`04` §4.8 paso 6).
-5. [ ] QA de cada evento con GTM Preview + DebugView. *(1 h)* — QA automatizada en producción hecha (`04` §4.8); falta importar la etiqueta de eventos (`docs/gtm/eventos-sitio.json`) y confirmar en Preview/DebugView.
-6. [ ] UTM en los enlaces de LinkedIn (perfil, Destacados) y en el PDF del CV. *(15 min)* — CV ✅; LinkedIn ⬜ (`04` §4.8 paso 7).
+3. [X] Marcar conversiones (`cv_download`, `generate_lead`, `case_study_read`); registrar dimensiones personalizadas. *(30 min)* — guía en `04` §4.8, pasos 3–4.
+4. [X] Search Console + envío del sitemap; Clarity vía GTM (con consentimiento). *(30 min)* — Search Console verificado ✅, Clarity con consentimiento ✅ (verificado en producción); falta enviar el sitemap (`04` §4.8 paso 6).
+5. [X] QA de cada evento con GTM Preview + DebugView. *(1 h)* — QA automatizada en producción hecha (`04` §4.8); falta importar la etiqueta de eventos (`docs/gtm/eventos-sitio.json`) y confirmar en Preview/DebugView.
+6. [X] UTM en los enlaces de LinkedIn (perfil, Destacados) y en el PDF del CV. *(15 min)* — CV ✅; LinkedIn ⬜ (`04` §4.8 paso 7).
 7. [ ] Exploración de embudo en GA4 + `/docs/decisiones.md` iniciado. *(45 min)* — `decisiones.md` ✅; exploración de embudo ⬜ (necesita datos).
 
 **Terminado cuando:** cada evento aparece correcto en DebugView, rechazar el consentimiento no deja cookies `_ga`, y el embudo muestra datos.
@@ -190,11 +191,11 @@ Cero trabajo en el portafolio. Solo se revisa GA4 si ya tienes datos, 10 minutos
 
 Al cerrar cada fase, actualiza esta tabla:
 
-| Fase | Estado | Fecha real  | Horas reales | Nota                                                                               |
-| ---- | ------ | ----------- | ------------ | ---------------------------------------------------------------------------------- |
-| 0    | ✅     | 11 oct 2026 | —           | Hecha sobre la web Vite; luego superada por la migración                          |
-| 1    | ✅     | 11 oct 2026 | —           | Adelantada; Figma como kit en`design/figma/`                                     |
-| 2    | ✅     | 12 oct 2026 | —           | En producción; Resend pendiente en Vercel                                         |
+| Fase | Estado | Fecha real  | Horas reales | Nota                                                                                                 |
+| ---- | ------ | ----------- | ------------ | ---------------------------------------------------------------------------------------------------- |
+| 0    | ✅     | 11 oct 2026 | —           | Hecha sobre la web Vite; luego superada por la migración                                            |
+| 1    | ✅     | 11 oct 2026 | —           | Adelantada; Figma como kit en`design/figma/`                                                       |
+| 2    | ✅     | 12 oct 2026 | —           | En producción; Resend pendiente en Vercel                                                           |
 | 3    | ✅     | 12 oct 2026 | —           | Cuentas configuradas (GTM, GA4 dimensiones y eventos clave, Search Console) y código en producción |
-| 4    | ✅     | 12 oct 2026 | —           | Notas, RSS y 4 notas; casos publicados; falta LinkedIn                             |
-| 6    | 🟡     | 12 oct 2026 | —           | Caso "Este portafolio" y decisiones listos; iteración espera datos                |
+| 4    | ✅     | 12 oct 2026 | —           | Notas, RSS y 4 notas; casos publicados; falta LinkedIn                                               |
+| 6    | 🟡     | 12 oct 2026 | —           | Caso "Este portafolio" y decisiones listos; iteración espera datos                                  |
