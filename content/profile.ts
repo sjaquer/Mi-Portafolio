@@ -40,11 +40,11 @@ export const profile = {
   name: "Sebastián Jaque",
   fullName: "Sebastián Emiliano Jaque Reátegui",
   handle: "sjaquer",
-  role: "Desarrollo web · Automatización · MarTech & CRO",
+  role: "Desarrollo web · Automatización de procesos · Integraciones",
   tagline:
-    "Construyo sitios y automatizaciones que conectan marketing, operaciones y datos — y mido si funcionan.",
+    "Construyo herramientas web y automatizaciones que reducen tareas manuales y conectan sistemas con APIs.",
   summary:
-    "Estudiante de último ciclo de Administración y Negocios Internacionales. Construyo con Next.js, conecto sistemas con APIs y mido el impacto con GA4. Hoy desarrollo herramientas internas en el área de empleabilidad de la Universidad Norbert Wiener.",
+    "Estudiante de último ciclo de Administración y Negocios Internacionales. Construyo con Next.js, desarrollo automatizaciones con Python y conecto plataformas mediante APIs para ahorrar tiempo operativo. Actualmente desarrollo herramientas internas en la Universidad Norbert Wiener.",
   location: "Lima, Perú",
   availability: "Disponible para roles junior desde enero 2027",
   siteUrl: "https://sjaquer.is-a.dev",
@@ -121,9 +121,8 @@ export const profile = {
       to: "2025-08",
       location: "Lima",
       highlights: [
-        // TODO(Sebastián): el +40 % no tiene base ni periodo en el CV (regla 2 de CLAUDE.md).
-        "Ejecuté estrategias de SEO técnico y semántico y de contenido que incrementaron los leads orgánicos en 40 %.",
-        "Medí y reporté rendimiento con Google Analytics. Reconocido como Colaborador del Mes tres meses consecutivos.",
+        "Ejecuté estrategias de SEO técnico y semántico y optimización de contenido.",
+        "Monitoreé y reporté rendimiento web con Google Analytics. Reconocido como Colaborador del Mes tres meses consecutivos.",
       ],
       stack: ["SEO", "Google Analytics"],
     },
@@ -182,21 +181,36 @@ export const profile = {
     { name: "Google UX Design", issuer: "Coursera" },
   ],
 
-  /** Para JSON-LD (knowsAbout) y llms.txt. */
+  /** Aptitudes técnicas para JSON-LD (knowsAbout), CV y llms.txt. */
   skills: {
-    web: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vite", "HTML5", "Figma (UI/UX)"],
-    data: ["Python", "Node.js", "SQL", "PostgreSQL (Supabase, Neon)", "Docker", "APIs REST"],
-    martech: ["Google Analytics 4", "Google Tag Manager", "SEO", "CRO", "Power BI"],
+    primary: [
+      "Next.js",
+      "Automatización de procesos",
+      "Integración de APIs",
+      "Python",
+      "PostgreSQL",
+    ],
+    web: ["Next.js", "React", "TypeScript", "Tailwind CSS", "HTML5", "Figma (UI/UX)"],
     automation: [
+      "Python",
+      "APIs REST",
       "Playwright (RPA)",
       "Power Automate",
       "Google Apps Script",
-      "Resend",
-      "LLMs (Gemini, Ollama)",
-      "Shopify",
-      "CRM",
+      "Integración Shopify y CRM",
+      "Email transaccional (Resend)",
     ],
+    data: ["PostgreSQL", "SQL Server", "Docker", "Power BI", "SEO y Google Analytics básico"],
   },
+
+  /** Cargos objetivo respaldados por proyectos reales. */
+  targetRoles: [
+    "Desarrollador web",
+    "Desarrollador full stack junior",
+    "Analista de automatización de procesos",
+    "Desarrollador de soluciones de negocio",
+    "Analista de marketing digital",
+  ],
 
   links: {
     linkedin: "https://www.linkedin.com/in/sjaquer",

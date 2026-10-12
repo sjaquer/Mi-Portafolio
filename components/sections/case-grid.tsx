@@ -1,19 +1,26 @@
 "use client";
 
 import { useState } from "react";
-import { CaseCard } from "@/components/ui/case-card";
+import { CaseArticle } from "@/components/ui/case-article";
 import { caseTypeLabel, type CaseStudy, type CaseType } from "@/content/casos";
 
 /**
- * Listado de casos con filtro por tipo (02-PRD.md §8.2). Una sola grilla: sin
- * secciones por tipo que dejen tarjetas sueltas. El conteo se anuncia con aria-live.
+ * Listado de casos con filtro por tipo (02-PRD.md §8.2), en formato de índice de
+ * artículos. El conteo se anuncia con aria-live.
  */
-export function CaseGrid({ cases }: { cases: CaseStudy[] }) {
+export interface CaseItem {
+  c: CaseStudy;
+  image: string | null;
+  minutes: number;
+}
+
+export function CaseGrid({ items }: { items: CaseItem[] }) {
+  const cases = items.map((i) => i.c);
   const [filter, setFilter] = useState<CaseType | "all">("all");
   const types = (Object.keys(caseTypeLabel) as CaseType[]).filter((t) =>
     cases.some((c) => c.type === t),
   );
-  const shown = filter === "all" ? cases : cases.filter((c) => c.type === filter);
+  const shown = filter === "all" ? items : items.filter((i) => i.c.type === filter);
 
   const chip = (value: CaseType | "all", label: string, count: number) => (
     <li key={value}>
@@ -41,13 +48,20 @@ export function CaseGrid({ cases }: { cases: CaseStudy[] }) {
           {shown.length} {shown.length === 1 ? "caso" : "casos"}
         </p>
       </div>
-      <ul className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {shown.map((c) => (
-          <li key={c.slug}>
-            <CaseCard c={c} />
+      {/* Índice de artículos: el primero destacado, el resto en filas (§19.2). */}
+      <ol className="flex flex-col">
+        {shown.map(({ c, image, minutes }, idx) => (
+          <li key={c.slug} className={`reveal py-7 ${idx > 0 ? "border-t border-border" : "pt-0"}`}>
+            <CaseArticle
+              c={c}
+              image={image}
+              minutes={minutes}
+              variant={idx === 0 ? "featured" : "row"}
+              headingLevel="h3"
+            />
           </li>
         ))}
-      </ul>
+      </ol>
     </>
   );
 }

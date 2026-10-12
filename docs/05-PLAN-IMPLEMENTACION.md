@@ -17,7 +17,7 @@
 | — | Pausa total | 13 – 22 nov | 0 h | Cierre académico + viaje a Panamá |
 | **4** | Notas (blog) + flujo con LinkedIn + 2 casos más | 23 nov – 20 dic | 1 nota/semana + 4 h | Encuestas tesis 30 nov · UX 15 dic · B1 22 dic |
 | **5** | QA y lanzamiento (se ejecuta al cerrar cada fase 2–4) | Continuo | 1 h por lanzamiento | — |
-| **6** | Iteración CRO con datos reales + caso "este portafolio" | Ene 2027 | 4 h/mes | Titulación |
+| **6** | Iteración y optimización con datos reales + caso "este portafolio" | Ene 2027 | 4 h/mes | Titulación |
 
 ---
 
@@ -28,7 +28,7 @@
 **Tareas**
 1. [ ] **Medir la línea base** en PageSpeed Insights (móvil y escritorio). Guardar capturas en `/docs/baseline/`. *(10 min)*
 2. [ ] **Corregir `llms.txt` y `resume.txt`** *(45 min)*:
-   - Título: "Desarrollo web · Automatización · MarTech & CRO".
+   - Título: "Desarrollo web · Automatización de procesos · Integraciones".
    - Certificaciones con nombre y emisor reales (ver tabla A2 de la auditoría).
    - Cargo en Big Jack: "Operaciones y Marketing".
    - Educación: "Administración y Negocios Internacionales — en curso, egreso dic. 2026".
@@ -36,8 +36,8 @@
    - Agregar Norbert Wiener (Practicante Pre Profesional, jun 2026 – actualidad).
    - Quitar "Experienced software engineer".
 3. [ ] **Metadatos de la home** *(15 min)*:
-   - `title`: `Sebastián Jaque — Desarrollo web, MarTech y CRO | Lima`
-   - `description`: `Estudiante de último ciclo que construye sitios con Next.js, automatizaciones e integraciones, y mide su impacto con GA4. Lima, Perú.`
+   - `title`: `Sebastián Jaque — Desarrollo web y automatización de procesos | Lima`
+   - `description`: `Construyo herramientas web y automatizaciones que reducen tareas manuales y conectan sistemas con APIs. Estudiante de Administración y Negocios Internacionales. Lima, Perú.`
    - Mismos textos en `og:` y `twitter:`. Quitar `meta keywords`.
 4. [ ] **Imagen OG 1200×630** *(30 min)*: fondo claro, tu nombre, rol y URL. Reemplazar el ícono 512×512. Probar con el [Post Inspector de LinkedIn](https://www.linkedin.com/post-inspector/).
 5. [ ] **Textos visibles críticos** *(45 min)*:
@@ -142,7 +142,7 @@ Cero trabajo en el portafolio. Solo se revisa GA4 si ya tienes datos, 10 minutos
 
 ---
 
-## Fase 6 · Iteración CRO — enero 2027
+## Fase 6 · Iteración y optimización — enero 2027
 
 **Objetivo:** usar los datos para mejorar y convertir el proceso en tu caso de estudio estrella.
 

@@ -8,6 +8,6 @@ export default function Image() {
   return renderOg({
     label: "Contacto",
     title: "Hablemos",
-    description: "Empleo en MarTech, desarrollo web o automatización, o un proyecto.",
+    description: "Oportunidades en desarrollo web, automatización de procesos o integraciones.",
   });
 }

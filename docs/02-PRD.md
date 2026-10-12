@@ -7,25 +7,25 @@
 
 ## 1. Problema
 
-La web actual presenta a un "Full-Stack Developer & AI Integration Specialist" con estética de laboratorio de IA. El objetivo profesional real es MarTech / desarrollo web y CRO / automatización. La web no ayuda a conseguir esos puestos y contiene afirmaciones que dañan la credibilidad (ver `01-AUDITORIA.md`).
+La web anterior presentaba a un "Full-Stack Developer & AI Integration Specialist" con estética genérica de IA. El objetivo profesional y la experiencia real demostrable hoy corresponden a **desarrollo web, automatización de procesos e integraciones de sistemas** (con proyección y dirección de carrera hacia MarTech). La web debe reflejar con máxima fidelidad lo que Sebastián sabe y puede demostrar hoy.
 
 ## 2. Objetivo del producto
 
-Que la web sea **la prueba de trabajo** de Sebastián: un sitio rápido, claro y medido que demuestre en sí mismo lo que él sabe hacer (construir, medir y optimizar experiencias web), y que convierta visitas en entrevistas y contactos.
+Que la web sea **la prueba de trabajo** de Sebastián: un sitio rápido, claro y técnicamente sólido que demuestre lo que él sabe hacer (construir herramientas funcionales, automatizar procesos manuales y conectar plataformas vía APIs), y que convierta visitas de reclutadores en entrevistas y contactos.
 
 ## 3. Posicionamiento
 
-**Quién:** Sebastián Jaque, estudiante de último ciclo de Administración y Negocios Internacionales que construye herramientas web y automatizaciones para negocio.
+**Quién:** Sebastián Jaque, estudiante de último ciclo de Administración y Negocios Internacionales. Construye herramientas web con Next.js y automatizaciones con Python para reducir fricción operativa en negocios.
 
-**Qué hace:** desarrollo web con Next.js, automatización de procesos e integraciones, y medición de marketing (GA4, GTM, CRO).
+**Qué hace:** desarrollo web (Next.js, TypeScript, PostgreSQL), automatización de procesos y bots (Python, Playwright, RPA), e integración de plataformas (APIs REST, Shopify, CRM, email transaccional).
 
-**Diferencial:** entiende el problema de negocio antes de escribir código, y mide si la solución funcionó.
+**Diferencial:** entiende el problema de negocio antes de escribir código y diseña herramientas que ahorran horas de trabajo manual. Formación en negocios + rigor técnico construyendo.
 
 **Tono:** builder, no gurú. Concreto, en primera persona, sin superlativos. Ver `06-CONTENIDO.md`.
 
 **Frase de posicionamiento (canónica, usar igual en todos los canales):**
 
-> Construyo sitios y automatizaciones que conectan marketing, operaciones y datos — y mido si funcionan.
+> Construyo herramientas web y automatizaciones que reducen tareas manuales y conectan sistemas con APIs.
 
 ## 4. Audiencias
 
@@ -94,10 +94,10 @@ Orden de secciones y propósito de cada una:
 1. **Hero** — En una pantalla de móvil: nombre, rol, frase de posicionamiento, foto, disponibilidad ("Disponible para roles junior desde enero 2027 · Lima / remoto"), CTA primario **Descargar CV**, CTA secundario **Ver proyectos**.
 2. **Prueba rápida** — 3 resultados verificables con su contexto (−35 % tiempo de pedidos en Big Jack; −30 % tareas manuales en Dearel; campaña de 8 000 correos de más de 4 h a ~2 min en Norbert Wiener). Sin "+6 proyectos" ni "99 %".
 3. **Casos destacados** — 3 tarjetas (Wiener, Big Jack, Dearel o Bot WhatsApp), cada una con problema, resultado y stack. Enlace a cada caso.
-4. **Qué hago** — 3 bloques concretos: Desarrollo web (Next.js) · Automatización e integraciones · Medición y CRO. Cada uno con un ejemplo real, no una promesa.
+4. **Qué hago** — 3 bloques concretos: Desarrollo web y herramientas internas (Next.js) · Automatización de procesos y bots (Python, Playwright) · Integración de APIs y comunicación (Shopify, CRM, email transaccional). Cada uno con un ejemplo real, no una promesa.
 5. **Experiencia resumida** — línea de tiempo compacta, títulos reales.
 6. **Últimas notas** — 3 entradas del blog con enlace a LinkedIn.
-7. **CTA final** — "¿Buscas a alguien que construya y mida?" + Descargar CV + Contactar.
+7. **CTA final** — "¿Buscas a alguien que entienda el negocio y lo lleve a código?" + Descargar CV + Contactar.
 
 **Criterios de aceptación**
 - [ ] Nombre, rol y CTA primario visibles sin scroll en 360×740.
@@ -135,7 +135,7 @@ Selección y justificación completas en `07-PROYECTOS.md`.
 4. Feria Virtual de Empleabilidad 2026 — Norbert Wiener.
 5. Reqlut Bot: publicación automática de ofertas con IA — Norbert Wiener.
 6. Sistema de pedidos — Big Jack Burgers · Integración Shopify + CRM — Dearel.
-7. **Este portafolio** (se escribe al cerrar la Fase 3, con antes / después medido): tu primer caso explícito de CRO y medición.
+7. **Este portafolio** (se escribe al cerrar la Fase 3): demostración técnica de Next.js, medición con GTM/GA4 y buenas prácticas de ingeniería web.
 
 ### 8.4 Sobre mí
 - Foto real, historia breve en primera persona (de Administración al código), cómo trabajo (3–4 principios), qué estoy aprendiendo ahora (GA4, Google UX), fuera del trabajo (1 línea).

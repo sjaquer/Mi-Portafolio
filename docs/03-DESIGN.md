@@ -3,7 +3,7 @@
 > **Fuente de verdad visual y verbal** de la marca Sebastián Jaque, para la web, el CV, LinkedIn, GitHub, presentaciones, documentos y cualquier pieza futura.
 > Si una decisión no está aquí, se agrega aquí antes de implementarla o publicarla.
 >
-> **Versión:** 3.1 · **Actualizado:** 12 oct 2026 · **Responsable:** Sebastián Jaque
+> **Versión:** 3.2 · **Actualizado:** 12 oct 2026 · **Responsable:** Sebastián Jaque
 
 ---
 
@@ -31,13 +31,13 @@
 
 | Elemento | Definición |
 |---|---|
-| **Propósito** | Que los equipos de marketing y operaciones dejen de perder tiempo en tareas que una buena herramienta puede hacer, y que sepan con datos si funcionó. |
-| **Qué hago** | Desarrollo web (Next.js), automatización e integraciones (APIs, WhatsApp, email), medición y CRO (GA4, GTM). |
-| **Para quién** | Reclutadores y jefes de equipos MarTech / web (prioridad hasta ene 2027) · PYMES con procesos repetitivos. |
-| **Diferencial** | Entiendo el problema de negocio antes de escribir código, y mido si la solución funcionó. Formación en negocios + práctica real construyendo. |
-| **Rol (canónico)** | Desarrollo web · Automatización · MarTech & CRO |
-| **Frase de posicionamiento (canónica)** | Construyo sitios y automatizaciones que conectan marketing, operaciones y datos — y mido si funcionan. |
-| **Idea de marca (interna)** | **Construir y medir.** Todo lo visual y verbal sale de esta pareja: algo hecho con cuidado + la evidencia de que sirvió. |
+| **Propósito** | Que los equipos y negocios dejen de perder tiempo en tareas manuales que una buena herramienta o automatización puede resolver, conectando sistemas mediante código y APIs. |
+| **Qué hago** | Desarrollo web (Next.js), automatización de procesos y bots (Python, Playwright, APIs), integración de sistemas (APIs REST, CRM, Shopify, email transaccional). |
+| **Para quién** | Reclutadores y líderes de equipo en desarrollo web, automatización de procesos y soluciones de negocio (prioridad hasta ene 2027) · PYMES con procesos repetitivos. |
+| **Diferencial** | Entiendo el problema de negocio antes de escribir código y diseño herramientas y flujos que ahorran horas de trabajo operativo. Formación en negocios + práctica real construyendo y automatizando. |
+| **Rol (canónico)** | Desarrollo web · Automatización de procesos · Integraciones |
+| **Frase de posicionamiento (canónica)** | Construyo herramientas web y automatizaciones que reducen tareas manuales y conectan sistemas con APIs. |
+| **Idea de marca (interna)** | **Construir y conectar.** Todo lo visual y verbal sale de esta pareja: herramientas funcionales hechas con rigor técnico + flujos que eliminan fricción operativa. |
 
 La frase de posicionamiento y el rol se usan **literalmente iguales** en web, CV, LinkedIn, GitHub, `llms.txt` y firma de correo. Viven en `content/profile.ts`.
 
@@ -394,8 +394,18 @@ La marca es sobria, no plana. La profundidad se construye con **capas de un mism
 
 **Elevación.** Borde de 1 px en reposo. En hover, la tarjeta sube 2 px y gana `shadow-md`. `shadow-lg` solo para lo que flota (banner de consentimiento, menús).
 
-### 6.8 Imagen de caso
-Las tarjetas de caso no llevan imagen mientras no existan **capturas reales con datos simulados** (§6.5). Una portada generada (diagrama en miniatura) se probó en la v3.0 y se retiró en la v3.1: añadía ruido sin información nueva.
+### 6.8 Espacios de imagen (v3.2)
+
+El sitio reserva espacio para imágenes desde ya; se llenan **dejando un archivo en la carpeta**, sin tocar código (componente `MediaFrame`).
+
+| Espacio | Archivo | Proporción | Exportación | Contenido |
+|---|---|---|---|---|
+| Retrato del hero y de /sobre-mi | `public/img/retrato.{avif,webp,jpg}` | 4:5 | 1200 × 1500, WebP/AVIF ≤ 200 KB | Retrato principal real (§10.2) |
+| Portada de cada caso | `public/img/casos/<slug>.{avif,webp,jpg}` | 16:9 | 1600 × 900, WebP/AVIF ≤ 200 KB | Captura con **datos simulados** (§6.5) o imagen editorial generada con el prompt base (§10.7) |
+
+**Mientras no hay archivo**, el espacio muestra un **placeholder de marca**: fondo `brand-50` + retícula de puntos + el ícono del tipo de caso (o el monograma en el retrato). Nunca un hueco vacío. La proporción fija evita saltos de layout.
+
+**Orden de preferencia para la portada de un caso:** 1) captura real con datos simulados en el marco de §6.5 → 2) imagen editorial generada (§10.7) → 3) placeholder. Una portada generada por código (diagrama en miniatura) se probó en la v3.0 y se retiró: no aportaba información.
 
 ---
 
@@ -506,9 +516,9 @@ Los gráficos son evidencia: deben ser **honestos antes que bonitos**. Paleta va
 ### 10.5 Prohibido
 Fotos de stock, avatares hiperrealistas de IA con estilos fantásticos/cyberpunk, fotos con terceros sin permiso, pantallas con datos reales, selfies de baja calidad, fotos de eventos con logos de terceros como protagonistas.
 
-### 10.6 Estado transitorio — Ficha de perfil (v3.0) e ilustración
+### 10.6 Estado transitorio — Espacio de retrato (v3.2) e ilustración
 
-**En la web, el hero va sin imagen hasta que exista el retrato real** (§10.2): una columna de texto sobre el fondo tonal (§6.7). Una ficha de perfil se probó en la v3.0 y se retiró en la v3.1 porque repetía nombre, rol y disponibilidad ya visibles. La silueta queda solo para piezas gráficas.
+**En la web, el hero reserva el espacio del retrato** (4:5, columna derecha en escritorio, debajo de los botones en el celular). Hasta que exista `public/img/retrato.*`, muestra el placeholder de marca con el monograma (§6.8). Al subir la foto aparece sola. Una ficha de perfil (v3.0) y una etiqueta tipo "pastilla" (v3.1) se retiraron por repetir datos visibles.
 
 **Ilustración (piezas gráficas):**
 Mientras se realiza la sesión fotográfica del retrato principal (§10.2), la web y piezas de soporte utilizan una **ilustración minimalista vectorial o silueta monocroma sutil**:
@@ -519,14 +529,57 @@ Mientras se realiza la sesión fotográfica del retrato principal (§10.2), la w
 
 ---
 
+### 10.7 Prompt base de imágenes (v3.2)
+
+Para generar imágenes editoriales coherentes con la marca (portadas de caso, cabeceras de notas, fondos de piezas). Se escribe en inglés porque los generadores responden mejor; las variables van entre `{llaves}`.
+
+**Qué se puede generar y qué no**
+- ✅ Escenas de trabajo **sin rostros**, objetos, pantallas con interfaz genérica, composiciones abstractas basadas en diagramas.
+- ❌ Retratos o avatares de Sebastián (§10.5), personas reconocibles, logos o marcas reales (Wiener, Big Jack, Google…), datos legibles que parezcan reales, estética "IA" (robots, cerebros, hologramas, neón).
+- Toda imagen generada se revisa con el checklist de §23 antes de publicarse.
+
+**Prompt base (se antepone siempre)**
+
+```text
+Editorial photograph, quiet and precise. Natural soft daylight from a side window,
+neutral-warm white balance, medium contrast, realistic textures. Muted palette:
+warm off-white paper (#FAFAF8), deep navy (#1F3A5F, #13233A), soft greys (#E4E2DD, #8A9099),
+one small accent of cobalt blue (#2350D9). Generous negative space on the {left|right} third
+for text. Clean, uncluttered composition, shallow depth of field, shot on 35mm, f/2.8.
+Calm, competent, "built and measured" mood. No people's faces.
+```
+
+**Prompt negativo (siempre)**
+
+```text
+faces, portraits, people looking at camera, logos, brand names, readable text, fake
+dashboards with real-looking data, neon, glow, holograms, robots, brains, circuit boards,
+3D render, glassmorphism, lens flare, purple, rainbow gradients, oversaturated colors,
+stock photo smiles, clutter, watermark
+```
+
+**Variantes (se agregan al prompt base)**
+
+| Uso | Proporción | Añadir al prompt |
+|---|---|---|
+| Portada de caso · web | 16:9 | `a laptop on a light oak desk showing an abstract, generic web interface with blank cards and lines, a paper notebook with a hand-drawn flow diagram of three boxes and arrows, a pencil` |
+| Portada de caso · automatización | 16:9 | `top-down view of a desk with a printed flowchart, sticky notes in navy and grey arranged left to right, a ruler aligned under them, a coffee cup at the edge` |
+| Portada de caso · datos / medición | 16:9 | `close-up of a printed bar chart and a measuring ruler on off-white paper, a hand holding a pencil marking one bar, minimal and precise` |
+| Cabecera de nota (Notas) | 16:9 | `abstract still life: a steel ruler, graph paper with a dotted grid, a navy notebook, arranged on an off-white surface, strong geometry` |
+| Fondo de pieza (LinkedIn, OG) | 4:5 o 1200×630 | `abstract macro texture of off-white paper with a faint dotted grid and a thin ruler line, very subtle, lots of empty space` |
+| Detalle de trabajo | 4:5 | `hands typing on a laptop keyboard, seen from the side, out-of-focus monitor with a generic interface, no face visible` |
+
+**Ajustes de salida:** exportar en la proporción del espacio (§6.8), corregir balance hacia neutro-cálido si sale frío, recortar dejando aire para el texto, comprimir a WebP/AVIF ≤ 200 KB y escribir un `alt` que describa la escena, no "imagen generada".
+
 ## 11. Movimiento
 
 Principio: **el movimiento explica, no decora.**
 - Duraciones: 150 ms (hover), 200 ms (menús, apariciones), 300 ms máximo en la web. En video/redes: transiciones de 200–400 ms, cortes secos preferidos.
 - Curva: `cubic-bezier(.2, 0, 0, 1)` (salida suave).
 - Solo `opacity` y `transform` en la web.
-- **Entrada al hacer scroll (v3.0):** permitida solo como *revelado* sutil: `opacity` 0 → 1 y `translateY` 12 px → 0, una vez, al entrar en pantalla. Se implementa **solo con CSS** (`animation-timeline: view()`); sin JavaScript ni librerías. Nunca en el hero ni en el contenido que pinta el LCP. Navegadores sin soporte: el contenido aparece sin animación.
-- **Microinteracciones:** tarjetas que suben 2 px en hover; flechas de botones que avanzan 4 px; subrayado que crece en enlaces. Todas ≤ 200 ms.
+- **Entrada al hacer scroll (v3.0, ajustada en v3.2):** permitida solo como *revelado* sutil: `translateY` 24 px → 0 al entrar en pantalla, **sin animar la opacidad** (un texto semitransparente incumple el contraste AA mientras dura la animación). Se implementa **solo con CSS** (`animation-timeline: view()`); sin JavaScript ni librerías. Nunca en el hero ni en el contenido que pinta el LCP. Navegadores sin soporte: el contenido aparece sin animación.
+- **Microinteracciones:** tarjetas que suben 2 px en hover; flechas de botones y de "Leer el caso" que avanzan 4 px; imagen del artículo que se acerca a escala 1,03 en 400 ms; subrayado del titular al pasar. Botones: color y sombra en hover, 1 px hacia abajo al presionar.
+- **Entrada del hero (v3.2):** los bloques suben 16 px de forma escalonada (60 ms entre bloques, 600 ms). **Solo `transform`, sin opacidad**, para que el contenido sea visible desde el primer pintado y no retrase el LCP.
 - Sin parallax, sin cursores personalizados, sin contadores animados de cifras (una métrica se lee, no se celebra).
 - Respetar `prefers-reduced-motion: reduce` → sin transiciones.
 - **Video corto (si se produce):** pantalla grabada limpia + subtítulos siempre (Inter 600, fondo de placa tinta al 85 %, máximo 2 líneas), música opcional sin letra, duración 30–60 s.
@@ -660,8 +713,8 @@ Para armar, editar y mantener las piezas gráficas en Figma con exactitud profes
 - **Zona segura izquierda:** Margen libre izquierdo de 380 px y margen inferior de 160 px (espacio reservado para foto de perfil de LinkedIn).
 - **Contenido (Auto-Layout Vertical):**
   - Ubicación: x: 420 px, centrado vertical (y: 98 px), ancho: 960 px.
-  - Item 1: Etiqueta Mono `DESARROLLO WEB · AUTOMATIZACIÓN · MARTECH & CRO` en JetBrains Mono 500, 16 px, color `#D6DFEA`.
-  - Item 2: Frase principal `"Construyo sitios y automatizaciones que conectan marketing, operaciones y datos — y mido si funcionan."` en Inter 600, 32 px, color `#FAFAF8`.
+  - Item 1: Etiqueta Mono `DESARROLLO WEB · AUTOMATIZACIÓN DE PROCESOS · INTEGRACIONES` en JetBrains Mono 500, 16 px, color `#D6DFEA`.
+  - Item 2: Frase principal `"Construyo herramientas web y automatizaciones que reducen tareas manuales y conectan sistemas con APIs."` en Inter 600, 32 px, color `#FAFAF8`.
   - Item 3: Separador de regla técnica (§6.1) con trazo 1 px en `#3F5E86`.
 - **Firma inferior derecha:** `sjaquer.is-a.dev` en JetBrains Mono 500, 16 px, color `#8FA3BF`, fijada a 48 px del borde derecho e inferior.
 
@@ -714,7 +767,7 @@ Fondo `marino-900` con retícula de puntos (§6.2), frase de posicionamiento en 
 
 ```
 Sebastián Jaque
-Desarrollo web · Automatización · MarTech & CRO
+Desarrollo web · Automatización de procesos · Integraciones
 sjaquer.is-a.dev · linkedin.com/in/sjaquer
 ```
 Texto plano o HTML mínimo: nombre en 600 tinta, rol en `gris-500`, enlaces en azul acción. Sin imágenes, citas ni banners.
@@ -750,7 +803,9 @@ Portada con wordmark + etiqueta mono del tipo de documento; cuerpo en Geist/Inte
 3. **Evidencia antes que adjetivos.** Las métricas y las capturas tienen más peso visual que los títulos de marketing.
 4. **Rápido es una característica de diseño.** Si un efecto empeora el LCP o el INP, no entra.
 5. **Accesible por defecto.** AA en todo; foco siempre visible.
-6. **Densidad (v3.1).** Menos elementos, más aire. Reglas verificables:
+6. **Densidad (v3.1, ajustada en v3.2).** Equilibrio: ni saturado ni vacío. Reglas verificables:
+   - **Cada sección tiene un ancla visual**: imagen, cifra o ícono. Una sección solo de texto es la excepción, no la regla.
+   - **Sin "pastillas" de información** (chips con datos): los datos van como texto con ícono.
    - **Un dato, una vez por pantalla.** Si una cifra está en Resultados, no se repite en tarjetas ni en la experiencia de esa misma pantalla.
    - **Tarjeta de caso: 3 elementos** — etiqueta (tipo · año), título y resultado. El estado, el problema y el stack van en la página del caso.
    - **Una sola banda invertida por página** y como máximo **dos tonos de fondo** además de ella.
@@ -919,6 +974,9 @@ Herramientas, en este orden de preferencia: **tamaño → peso → color → esp
 
 ### 19.1 Botón
 
+**v3.2 · claridad:** el primario lleva sombra `sm` y pasa a `md` en hover; el secundario oscurece su borde en hover. En el hero y en los CTA principales los botones ocupan **todo el ancho en el celular** (`w-full sm:w-auto`) y se apilan; desde `sm` van en fila. Texto siempre verbo + objeto e ícono de dirección o descarga.
+
+
 | Variante | Fondo | Texto | Borde | Uso |
 |---|---|---|---|---|
 | `primary` | accent-600 | blanco | — | La acción principal. **Máximo uno visible por pantalla.** |
@@ -967,6 +1025,8 @@ Cada botón lleva `data-cta="<id>"` para la medición (ver `04-TECH-SEO-MEDICION
 | `ContactForm` | Formulario de 4 campos | Errores en línea, `aria-live` |
 | `ThemeToggle` | Claro / oscuro / sistema | Respeta `prefers-color-scheme` |
 | `ConsentBanner` | Consentimiento de medición | Discreto, inferior, dos botones del mismo peso |
+| `MediaFrame` (v3.2) | Espacio de imagen con placeholder de marca | §6.8; proporción fija, `next/image` |
+| `CaseArticle` (v3.2) | Caso en formato de artículo | Imagen 16:9, antetítulo (tipo · año · lectura), titular, bajada, resultado, "Leer el caso". Variantes `featured`, `row`, `card` |
 | `Reveal` (v3.0) | Revelado al hacer scroll | Solo CSS; nunca en el hero (§11) |
 
 ### 19.3 Inputs
@@ -1104,3 +1164,4 @@ En Tailwind v4 se exponen con `@theme` para usar clases como `bg-surface`, `text
 | 2.1 | 11 oct 2026 | Sesión de alineación y confirmación (/grill-me): ratificación de jerarquía de color (#1F3A5F identidad, #2350D9 acción, #0B7350 métricas), marca de medición técnica y paleta de gráficos de datos. Cambio oficial de familias tipográficas a Inter + JetBrains Mono. Inclusión de estado transitorio de avatar vectorial en Hero (§10.6). Incorporación de especificaciones técnicas detalladas para diseño en Figma (§12.9). |
 | 3.0 | 12 oct 2026 | Profundidad sin perder sobriedad: degradados tonales (§6.7), superficies por niveles, banda invertida marino con tokens propios (§15.4), portadas de caso generadas (§6.8), ficha de perfil en lugar de silueta (§10.6), revelado al hacer scroll solo con CSS y microinteracciones (§11), nuevos componentes en §19.2. |
 | 3.1 | 12 oct 2026 | Simplificación: principio de densidad (§14.6), una sola banda invertida por página, tarjeta de caso de 3 elementos, se retiran la ficha de perfil del hero, las portadas generadas y la franja de herramientas por repetir información. |
+| 3.2 | 12 oct 2026 | Hero con espacio de retrato y sin pastilla; espacios de imagen con placeholder de marca (§6.8); prompt base de imágenes (§10.7); casos en formato de artículo (`CaseArticle`); entrada del hero solo con transform, zoom de imagen y flechas (§11); botones más claros y a todo el ancho en el celular (§19.1); densidad equilibrada con ancla visual por sección (§14.6). |

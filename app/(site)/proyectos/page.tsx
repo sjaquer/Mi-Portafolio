@@ -5,12 +5,14 @@ import { Section, SectionHeader } from "@/components/ui/section";
 import { TagList } from "@/components/ui/tag";
 import { DraftNotice } from "@/components/ui/draft-notice";
 import { cases, gallery, lab } from "@/content/casos";
+import { findImage } from "@/lib/images";
+import { readingTime } from "@/lib/reading-time";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Proyectos",
   description:
-    "Casos de estudio con resultado medido, sitios y herramientas, y proyectos de práctica de Sebastián Jaque: desarrollo web, automatización y medición.",
+    "Casos de estudio con resultado medido, sitios y herramientas, y proyectos de práctica de Sebastián Jaque: desarrollo web, automatización de procesos e integraciones.",
   path: "/proyectos",
 });
 
@@ -52,7 +54,13 @@ export default function ProyectosPage() {
           <h2 id="casos-title" className="sr-only">
             Casos de estudio
           </h2>
-          <CaseGrid cases={cases} />
+          <CaseGrid
+            items={cases.map((c) => ({
+              c,
+              image: findImage(`casos/${c.slug}`),
+              minutes: readingTime(c.slug),
+            }))}
+          />
         </Section>
       )}
 

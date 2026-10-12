@@ -8,7 +8,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Contacto",
   description:
-    "Escríbeme por formulario, WhatsApp o email para oportunidades en MarTech, desarrollo web o automatización, o para un proyecto.",
+    "Escríbeme por formulario, WhatsApp o email para oportunidades en desarrollo web, automatización de procesos o integraciones, o para un proyecto.",
   path: "/contacto",
 });
 

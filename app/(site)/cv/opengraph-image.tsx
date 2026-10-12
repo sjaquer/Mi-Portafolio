@@ -8,6 +8,6 @@ export default function Image() {
   return renderOg({
     label: "CV",
     title: "Sebastián Jaque",
-    description: "Desarrollo web · Automatización · MarTech & CRO",
+    description: "Desarrollo web · Automatización de procesos · Integraciones",
   });
 }

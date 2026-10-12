@@ -1,6 +1,6 @@
 # 04 · Tecnología, SEO, rendimiento y medición
 
-> Cómo se construye, cómo se encuentra y cómo se mide. Esta parte es la que más demuestra el perfil MarTech: trátala como entregable, no como configuración.
+> Cómo se construye, cómo se encuentra y cómo se mide. Esta instrumentación técnica y de analítica demuestra rigor de ingeniería web y medición de producto: trátala como entregable, no como configuración.
 
 ---
 
@@ -13,7 +13,7 @@
 | Contenido | **MDX** en el repo + **Velite** (o `content-collections`) para tipar y validar | Casos y notas con frontmatter validado por esquema (Zod) |
 | Datos del perfil | `content/profile.ts` (fuente única) | Genera web, `llms.txt`, `resume.txt`, JSON-LD y CV HTML |
 | Formulario | Server Action + **Resend** + validación Zod | Ya lo estás evaluando para Norbert Wiener: reutilizas aprendizaje |
-| Medición | **GTM + GA4** con Consent Mode v2; **Search Console**; **Microsoft Clarity** (mapas de calor) | El stack estándar de MarTech |
+| Medición | **GTM + GA4** con Consent Mode v2; **Search Console**; **Microsoft Clarity** (mapas de calor) | Stack estándar de analítica web y medición de producto |
 | Hosting | **Vercel** (despliegue nativo para Next.js) | Despliegue por rama, preview URLs por PR, Edge Network optimizada para Next.js App Router |
 | Calidad | ESLint, Prettier, Lighthouse CI en cada PR, `@axe-core` | Calidad verificable, no declarada |
 | Dominio | `sjaquer.is-a.dev` (se mantiene). Opcional después: dominio propio | Evita migrar dos veces |
@@ -53,8 +53,8 @@ CLAUDE.md
 export const profile = {
   name: "Sebastián Jaque",
   fullName: "Sebastián Emiliano Jaque Reátegui",
-  role: "Desarrollo web · Automatización · MarTech & CRO",
-  tagline: "Construyo sitios y automatizaciones que conectan marketing, operaciones y datos — y mido si funcionan.",
+  role: "Desarrollo web · Automatización de procesos · Integraciones",
+  tagline: "Construyo herramientas web y automatizaciones que reducen tareas manuales y conectan sistemas con APIs.",
   location: "Lima, Perú",
   availability: "Disponible para roles junior desde enero 2027",
   languages: [{ name: "Español", level: "Nativo" }, { name: "Inglés", level: "Intermedio (acreditación B1 en curso)" }],
@@ -81,7 +81,7 @@ Regla: **ningún texto sobre tu experiencia se escribe fuera de este archivo o d
 
 ### 2.1 Por página
 - `metadata` de Next.js con `title`, `description`, `alternates.canonical`, `openGraph`, `twitter`.
-- Plantilla de título: `%s — Sebastián Jaque`. Home: `Sebastián Jaque — Desarrollo web, MarTech y CRO | Lima`.
+- Plantilla de título: `%s — Sebastián Jaque`. Home: `Sebastián Jaque — Desarrollo web y automatización de procesos | Lima`.
 - Descripciones de 140–160 caracteres, únicas, con la intención de búsqueda de esa página.
 - **Imagen OG por página** generada con `next/og` (1200×630): título de la página + nombre + paleta del sistema. Resuelve C2 y hace que cada nota se vea bien al compartirla en LinkedIn.
 - Un `h1` por página; encabezados en orden.

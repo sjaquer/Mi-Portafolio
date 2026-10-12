@@ -75,13 +75,12 @@
       animation-timeline: view();
       animation-range: entry 0% entry 35%;
     }
+    /* Solo transform: el texto nunca pasa por estados semitransparentes (contraste AA). */
     @keyframes reveal {
       from {
-        opacity: 0;
-        transform: translateY(12px);
+        transform: translateY(24px);
       }
       to {
-        opacity: 1;
         transform: none;
       }
     }
@@ -94,4 +93,52 @@
   background-size: 24px 24px;
   mask-image: radial-gradient(70% 80% at 100% 0%, black, transparent 75%);
   opacity: 0.35;
+}
+
+/* ── v3.2: microinteracciones y entrada del hero (§11) ──────────────── */
+.dot-grid-full {
+  background-image: radial-gradient(var(--color-border-strong) 1px, transparent 1px);
+  background-size: 16px 16px;
+  opacity: 0.45;
+}
+
+/* Zoom suave de la imagen al pasar sobre su tarjeta. */
+.media-zoom {
+  transition: transform 400ms var(--ease-standard);
+}
+.group:hover .media-zoom {
+  transform: scale(1.03);
+}
+
+/* Entrada del hero: solo transform (sin opacidad) para no retrasar el LCP. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-in > * {
+    animation: hero-in 600ms var(--ease-standard) both;
+  }
+  .hero-in > :nth-child(2) {
+    animation-delay: 60ms;
+  }
+  .hero-in > :nth-child(3) {
+    animation-delay: 120ms;
+  }
+  .hero-in > :nth-child(4) {
+    animation-delay: 180ms;
+  }
+  .hero-in > :nth-child(5) {
+    animation-delay: 240ms;
+  }
+  @keyframes hero-in {
+    from {
+      transform: translateY(16px);
+    }
+    to {
+      transform: none;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .group:hover .media-zoom {
+    transform: none;
+  }
 }

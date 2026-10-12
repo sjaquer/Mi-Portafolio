@@ -1,15 +1,26 @@
-import { IconArrowRight, IconBrowser, IconChartLine, IconRoute } from "@tabler/icons-react";
+import {
+  IconArrowRight,
+  IconBrowser,
+  IconCalendarEvent,
+  IconMapPin,
+  IconPlugConnected,
+  IconRoute,
+} from "@tabler/icons-react";
 import Link from "next/link";
+import { MeasureRule } from "@/components/brand/measure-rule";
 import { CvButton } from "@/components/sections/cv-button";
 import { Button } from "@/components/ui/button";
-import { CaseCard } from "@/components/ui/case-card";
+import { CaseArticle } from "@/components/ui/case-article";
+import { MediaFrame } from "@/components/ui/media-frame";
 import { Container } from "@/components/ui/container";
 import { Metric } from "@/components/ui/metric";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { Timeline } from "@/components/ui/timeline";
 import { cases } from "@/content/casos";
 import { profile } from "@/content/profile";
+import { findImage } from "@/lib/images";
 import { jsonLdGraph, profilePageJsonLd } from "@/lib/jsonld";
+import { readingTime } from "@/lib/reading-time";
 
 // Home (02-PRD.md §8.1). Textos de 06-CONTENIDO.md §3. "Últimas notas" llega en la Fase 4.
 
@@ -24,28 +35,30 @@ const proof = [
 
 // Casos destacados: solo los publicables en este build (07-PROYECTOS.md §3).
 const featured = cases.filter((c) => c.featured).slice(0, 3);
+// Retrato (§10.2): public/img/retrato.{avif,webp,jpg}. Sin archivo, placeholder de marca.
+const portrait = findImage("retrato");
 
 const services = [
   {
     Icon: IconBrowser,
-    title: "Sitios y herramientas web",
-    body: "Next.js, PostgreSQL y Docker.",
+    title: "Desarrollo web y herramientas internas",
+    body: "Next.js, TypeScript, PostgreSQL y Docker.",
     example: "Plataforma de empleabilidad con 5 roles y acceso con Microsoft.",
     href: "/proyectos/bolsa-de-trabajo-wiener",
   },
   {
     Icon: IconRoute,
-    title: "Automatización e integraciones",
-    body: "APIs, WhatsApp, email transaccional.",
-    example: "Campañas segmentadas por facultad y ciclo.",
-    href: "/proyectos/difusion-correo-wiener",
+    title: "Automatización de procesos y bots",
+    body: "Python, Playwright (RPA), bots y Power Automate.",
+    example: "Robot de consultas SUNAT y bots de filtrado de candidatos.",
+    href: undefined,
   },
   {
-    Icon: IconChartLine,
-    title: "Medición y conversión",
-    body: "GA4, GTM, embudos.",
-    example: "Este sitio, instrumentado de punta a punta.",
-    href: undefined,
+    Icon: IconPlugConnected,
+    title: "Integración de APIs y comunicación",
+    body: "APIs REST, webhooks, Shopify, CRM y email transaccional.",
+    example: "Campañas segmentadas por facultad y ciclo ahorrando horas de trabajo.",
+    href: "/proyectos/difusion-correo-wiener",
   },
 ];
 
@@ -59,38 +72,65 @@ export default function Home() {
         }}
       />
 
-      {/* 1. Hero: fondo tonal + retícula que se desvanece (§6.7). Sin animación: pinta el LCP. */}
+      {/* 1. Hero: fondo tonal (§6.7), texto + espacio de retrato (§10.6). La entrada solo
+          mueve (no aparece desde transparente) para no retrasar el LCP. */}
       <section
         aria-labelledby="hero-title"
-        className="relative isolate overflow-hidden bg-(image:--gradient-hero) pt-7 pb-8 lg:pt-10 lg:pb-9"
+        className="relative isolate overflow-hidden bg-(image:--gradient-hero) pt-7 pb-8 lg:pt-9 lg:pb-9"
       >
         <div aria-hidden className="dot-grid absolute inset-0 -z-10" />
-        <Container>
-          <div className="max-w-prose">
-            <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-label-mono text-ink-700">
-              <span aria-hidden className="size-2 rounded-full bg-ink-900" />
-              Lima, Perú · Disponible desde ene 2027
-            </p>
-            <h1 id="hero-title" className="text-display">
+        <Container className="grid items-center gap-7 lg:grid-cols-12 lg:gap-8">
+          <div className="hero-in lg:col-span-7">
+            <p className="text-label-mono text-ink-500">{profile.role}</p>
+            <h1 id="hero-title" className="mt-4 text-display">
               {profile.name}
             </h1>
-            <p className="mt-4 max-w-prose text-lead text-ink-900">
-              Desarrollo web, automatización y medición para equipos de marketing y operaciones.
+            <p className="mt-5 max-w-prose text-lead text-ink-900">
+              Desarrollo web y automatización de procesos | Next.js · Python · APIs
             </p>
             <p className="mt-4 max-w-prose">{profile.summary}</p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <CvButton location="hero" />
-              <Button
-                href="/proyectos"
-                variant="secondary"
-                size="lg"
-                cta="hero_projects"
-                icon={<IconArrowRight size={20} stroke={1.5} aria-hidden />}
-              >
-                Ver proyectos
-              </Button>
+            <div>
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                <CvButton location="hero" className="w-full sm:w-auto" />
+                <Button
+                  href="/proyectos"
+                  variant="secondary"
+                  size="lg"
+                  cta="hero_projects"
+                  className="w-full sm:w-auto"
+                  icon={<IconArrowRight size={20} stroke={1.5} aria-hidden />}
+                >
+                  Ver proyectos
+                </Button>
+              </div>
+              <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-small text-ink-700">
+                <li className="flex items-center gap-2">
+                  <IconCalendarEvent size={20} stroke={1.5} aria-hidden className="text-ink-500" />
+                  Disponible desde ene 2027
+                </li>
+                <li className="flex items-center gap-2">
+                  <IconMapPin size={20} stroke={1.5} aria-hidden className="text-ink-500" />
+                  {profile.location} · remoto
+                </li>
+              </ul>
             </div>
           </div>
+          <figure className="lg:col-span-5">
+            <MediaFrame
+              src={portrait}
+              alt={`Retrato de ${profile.name}`}
+              ratio="portrait"
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              priority
+              className="mx-auto w-3/4 shadow-md sm:w-2/3 lg:w-full"
+            />
+            <figcaption className="mx-auto mt-3 flex w-3/4 items-center justify-between gap-4 text-label-mono text-ink-500 sm:w-2/3 lg:w-full">
+              <span>{profile.location}</span>
+              <span className="w-1/2">
+                <MeasureRule />
+              </span>
+            </figcaption>
+          </figure>
         </Container>
       </section>
 
@@ -110,30 +150,49 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* 3. Casos destacados */}
+      {/* 3. Casos en formato de artículo: uno destacado + lista (§19.2). */}
       {featured.length > 0 && (
         <Section aria-labelledby="casos">
           <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
-            <SectionHeader id="casos" label="Casos" title="Proyectos con resultado" flush />
+            <SectionHeader
+              id="casos"
+              label="Casos de estudio"
+              title="Proyectos con resultado"
+              lead="El problema, las decisiones y lo que cambió, contado como un artículo corto."
+              flush
+            />
             <Button
               href="/proyectos"
-              variant="ghost"
-              className="-mx-5"
+              variant="secondary"
               cta="home_all_projects"
+              className="w-full sm:w-auto"
               icon={<IconArrowRight size={20} stroke={1.5} aria-hidden />}
             >
               Ver los {cases.length} casos
             </Button>
           </div>
-          <ul
-            className={`grid gap-5 md:grid-cols-2 ${featured.length > 2 ? "lg:grid-cols-3" : ""}`}
-          >
-            {featured.map((c) => (
-              <li key={c.slug} className="reveal">
-                <CaseCard c={c} />
-              </li>
-            ))}
-          </ul>
+          <div className="flex flex-col gap-8">
+            <div className="reveal">
+              <CaseArticle
+                c={featured[0]}
+                image={findImage(`casos/${featured[0].slug}`)}
+                minutes={readingTime(featured[0].slug)}
+                variant="featured"
+              />
+            </div>
+            <ul className="grid gap-7 border-t border-border pt-8 md:grid-cols-2">
+              {featured.slice(1).map((c) => (
+                <li key={c.slug} className="reveal">
+                  <CaseArticle
+                    c={c}
+                    image={findImage(`casos/${c.slug}`)}
+                    minutes={readingTime(c.slug)}
+                    variant="card"
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
         </Section>
       )}
 
@@ -192,16 +251,23 @@ export default function Home() {
         <Container className="grid items-end gap-7 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <h2 id="cta-final" className="text-h2">
-              ¿Buscas a alguien que construya y mida?
+              ¿Buscas a alguien que entienda el negocio y lo lleve a código?
             </h2>
             <p className="mt-4 max-w-prose text-lead">
-              Estoy buscando mi primer rol en MarTech, desarrollo web o automatización. Si tu equipo
-              necesita a alguien que entienda el negocio y lo lleve a código, hablemos.
+              Disponible para roles junior desde enero 2027 como desarrollador web, analista de
+              automatización o desarrollador de soluciones. Si tu equipo necesita conectar sistemas y
+              ahorrar tiempo operativo, conversemos.
             </p>
           </div>
           <div className="flex flex-wrap gap-3 lg:col-span-5 lg:justify-end">
-            <CvButton location="final" />
-            <Button href="/contacto" variant="secondary" size="lg" cta="final_contact">
+            <CvButton location="final" className="w-full sm:w-auto" />
+            <Button
+              href="/contacto"
+              variant="secondary"
+              size="lg"
+              cta="final_contact"
+              className="w-full sm:w-auto"
+            >
               Escribirme
             </Button>
           </div>

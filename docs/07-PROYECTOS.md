@@ -1,13 +1,13 @@
 # 07 · Inventario y selección de proyectos
 
 > Fuente: `PROYECTOS_UWIENER.md` (oct. 2026), 16 proyectos UWiener + 4 externos.
-> Criterio: ¿este proyecto prueba que sabes **construir, medir y optimizar** experiencias web y procesos de marketing / operaciones? (MarTech · Web & CRO · Automatización)
+> Criterio: ¿este proyecto prueba que sabes **construir herramientas web, automatizar procesos manuales y conectar sistemas**? (Desarrollo web · Automatización de procesos · Integraciones)
 
 ---
 
 ## 1. Lectura general
 
-Tu historia real es más fuerte que la que contaba la web: en cuatro meses construiste la **infraestructura de captación, comunicación y medición** de un área de la universidad. Formularios que capturan datos → base central → segmentación → campañas de correo con lista de exclusión → encuestas NPS → tableros. Eso es, literalmente, un stack MarTech hecho a mano. Ese es el hilo del portafolio.
+Tu historia real es más fuerte que la que contaba la web: en cuatro meses construiste la **infraestructura de desarrollo web, automatización y comunicación** de un área de la universidad. Formularios que capturan datos → base central → segmentación → campañas de correo con lista de exclusión → encuestas NPS → tableros. Todo desarrollado con Next.js, Python, PostgreSQL y APIs para ahorrar tiempo operativo. Ese es el hilo del portafolio.
 
 Dos cosas que cambian respecto a lo planeado:
 - **El envío por WhatsApp se retiró.** Ya no debe presentarse como función actual (el CV se corrigió).
@@ -22,7 +22,7 @@ Dos cosas que cambian respecto a lo planeado:
 | # | Caso (título orientado a resultado) | Proyectos que lo forman | Por qué para tu perfil | Métrica defendible |
 |---|---|---|---|---|
 | 1 | **Una plataforma de empleabilidad propia para reemplazar tres de terceros** | 9 · Empleabilidad Wiener | Producto web completo: roles, Entra ID, IA con criterio legal, E2E con Playwright, Docker. Lo hiciste solo. | En producción (oct. 2026) · 5 roles · diseñada para 500–2 000 usuarios recurrentes · MVP 11/14 |
-| 2 | **Campañas de 8 000 correos en 2 minutos, con baja automática** | 1 · Difusión (+16 · Validación de correos) | El caso MarTech central: segmentación, personalización, envío por lotes, cumplimiento Ley 29733, entregabilidad | >4 h → ~2 min por campaña de 8 000 · 1 200+ correos verificados, 530+ válidos confirmados en la 1.ª pasada |
+| 2 | **Campañas de 8 000 correos en 2 minutos, con baja automática** | 1 · Difusión (+16 · Validación de correos) | Automatización y comunicación: segmentación, personalización, envío por lotes, cumplimiento Ley 29733, entregabilidad | >4 h → ~2 min por campaña de 8 000 · 1 200+ correos verificados, 530+ válidos confirmados en la 1.ª pasada |
 | 3 | **Encuestas con identidad validada y datos que se analizan solos** | 2 · Portal de formularios (+13 · Dashboard encuesta) | Captura de datos de calidad (DNI contra padrón, anti-abuso), NPS, encuestas personalizadas por empresa, tablero | ~3 000 respuestas analizadas · encuestas por empresa sin crear formularios a mano |
 | 4 | **Una feria virtual que limpia sus propias inscripciones** | 10 · Feria Virtual | Embudo de evento: página por empresa generada desde datos, CTA de calendario, estado antes/después, normalización de datos | Cualitativo: fin de la limpieza manual de inscripciones (pide el número de inscritos al área) |
 | 5 | **Un bot que publica ofertas laborales 24/7 con IA local** | 11 · Reqlut Bot | Automatización con IA bien diseñada: LLM local + respaldo, segunda revisión, OCR, trazabilidad | Pide el dato: ofertas/semana y horas manuales evitadas |

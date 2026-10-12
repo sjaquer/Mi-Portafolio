@@ -9,9 +9,9 @@ const base =
   "active:translate-y-px aria-disabled:pointer-events-none aria-disabled:opacity-50";
 
 const variants: Record<Variant, string> = {
-  primary: "rounded-md bg-accent-600 text-on-accent hover:bg-accent-700",
+  primary: "rounded-md bg-accent-600 text-on-accent shadow-sm hover:bg-accent-700 hover:shadow-md",
   secondary:
-    "rounded-md border border-border-strong bg-surface text-ink-900 hover:bg-surface-muted",
+    "rounded-md border border-border-strong bg-surface text-ink-900 hover:border-ink-900 hover:bg-surface-muted",
   ghost: "rounded-md text-accent-600 hover:bg-accent-50",
   link: "text-accent-600 underline underline-offset-4 hover:text-accent-700",
 };

@@ -1,13 +1,13 @@
 import { ogContentType, ogSize, renderOg } from "@/lib/og";
 
-export const alt = "Sebastián Jaque — Desarrollo web, automatización y MarTech";
+export const alt = "Sebastián Jaque — Desarrollo web y automatización de procesos";
 export const size = ogSize;
 export const contentType = ogContentType;
 
 export default function Image() {
   return renderOg({
-    label: "Desarrollo web · Automatización · MarTech & CRO",
+    label: "Desarrollo web · Automatización de procesos · Integraciones",
     title:
-      "Construyo sitios y automatizaciones que conectan marketing, operaciones y datos — y mido si funcionan.",
+      "Construyo herramientas web y automatizaciones que reducen tareas manuales y conectan sistemas con APIs.",
   });
 }

@@ -123,10 +123,10 @@ export default function CvPage() {
         <dl className="flex flex-col gap-3">
           {(
             [
+              ["Aptitudes principales", profile.skills.primary],
               ["Desarrollo web", profile.skills.web],
-              ["Backend y datos", profile.skills.data],
-              ["Marketing y analítica", profile.skills.martech],
               ["Automatización e integraciones", profile.skills.automation],
+              ["Bases de datos y herramientas", profile.skills.data],
             ] as const
           ).map(([term, items]) => (
             <div key={term}>

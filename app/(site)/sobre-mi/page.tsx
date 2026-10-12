@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { AvatarIllustration } from "@/components/brand/avatar-illustration";
+import { MediaFrame } from "@/components/ui/media-frame";
+import { findImage } from "@/lib/images";
 import { CvButton } from "@/components/sections/cv-button";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeader } from "@/components/ui/section";
@@ -76,7 +77,13 @@ export default function SobreMiPage() {
             </div>
           </div>
           <div className="md:col-span-4">
-            <AvatarIllustration className="w-full max-w-prose rounded-lg border border-border" />
+            <MediaFrame
+              src={findImage("retrato")}
+              alt={`Retrato de ${profile.name}`}
+              ratio="portrait"
+              sizes="(min-width: 768px) 33vw, 100vw"
+              className="mx-auto w-3/4 md:w-full"
+            />
           </div>
         </div>
       </Section>

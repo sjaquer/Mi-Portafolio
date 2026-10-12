@@ -1,6 +1,6 @@
 # CLAUDE.md — sjaquer-web
 
-Portafolio de Sebastián Jaque (Desarrollo web · Automatización · MarTech & CRO). Next.js App Router + TypeScript + Tailwind v4 + MDX. Despliegue en Netlify.
+Portafolio de Sebastián Jaque (Desarrollo web · Automatización de procesos · Integraciones). Next.js App Router + TypeScript + Tailwind v4 + MDX. Despliegue en Vercel.
 
 ## Lee antes de trabajar
 - `docs/02-PRD.md` — qué se construye y criterios de aceptación.
@@ -12,7 +12,8 @@ Portafolio de Sebastián Jaque (Desarrollo web · Automatización · MarTech & C
 
 ## Reglas
 1. **Fuente única:** todo dato del perfil (cargos, fechas, certificaciones, métricas) vive en `content/profile.ts` o en los MDX de `content/`. Nunca escribirlo a mano en componentes.
-2. **Honestidad:** cargos tal como en el CV; certificaciones con nombre y emisor reales; ninguna métrica sin contexto (qué, cuánto, base, periodo). No inventar cifras.
+2. **Honestidad estricta y alcance actual:** cargos tal como en el CV; certificaciones con nombre y emisor reales; ninguna métrica sin contexto (qué, cuánto, base, periodo). Las métricas reales son de ahorro de tiempo operativo y eficiencia, nunca de conversión publicitaria.
+   - **Regla MarTech / CRO:** No presentarse hoy como "Especialista MarTech" ni con experiencia en CRO o GTM avanzado. MarTech queda exclusivamente como dirección de carrera e interés de aprendizaje a futuro; el perfil se presenta 100 % como Desarrollo Web + Automatización de Procesos + Integraciones.
 3. **Diseño:** solo tokens de `tokens.css` / `@theme`. Nada de colores, tamaños o espacios fuera de la escala. Un solo botón `primary` visible por pantalla. Sin neón, glassmorphism ni WebGL; los únicos degradados permitidos son los tonales de `03-DESIGN.md` §6.7.
 4. **Rendimiento:** Server Components por defecto; `"use client"` solo para interacción. Respetar el presupuesto (LCP < 2 s, JS home < 100 KB, CLS < 0,05).
 5. **Accesibilidad:** WCAG 2.2 AA; un `h1` por página; foco visible; área táctil ≥ 44 px; `alt` en imágenes.

@@ -23,8 +23,8 @@
 
 | Término | Uso |
 |---|---|
-| Rol | "Desarrollo web · Automatización · MarTech & CRO" |
-| Frase de posicionamiento | "Construyo sitios y automatizaciones que conectan marketing, operaciones y datos — y mido si funcionan." |
+| Rol | "Desarrollo web · Automatización de procesos · Integraciones" |
+| Frase de posicionamiento | "Construyo herramientas web y automatizaciones que reducen tareas manuales y conectan sistemas con APIs." |
 | Cargos | Exactamente como en el CV (títulos contractuales) |
 | Sección del blog | "Notas" |
 | Proyectos de práctica | "Laboratorio" |
@@ -36,8 +36,8 @@
 **Etiqueta sobre el hero** (mono): `LIMA, PERÚ · DISPONIBLE DESDE ENE 2027`
 
 **H1:** Sebastián Jaque
-**Rol (debajo, tamaño lead):** Desarrollo web, automatización y medición para equipos de marketing y operaciones.
-**Párrafo:** Estudiante de último ciclo de Administración y Negocios Internacionales. Construyo con Next.js, conecto sistemas con APIs y mido el impacto con GA4. Hoy desarrollo herramientas internas en el área de empleabilidad de la Universidad Norbert Wiener.
+**Rol (debajo, tamaño lead):** Desarrollo web y automatización de procesos | Next.js · Python · APIs
+**Párrafo:** Estudiante de último ciclo de Administración y Negocios Internacionales. Construyo con Next.js, desarrollo automatizaciones con Python y conecto plataformas mediante APIs para ahorrar tiempo operativo. Actualmente desarrollo herramientas internas en la Universidad Norbert Wiener.
 **CTA primario:** Descargar CV · **CTA secundario:** Ver proyectos
 
 **Prueba rápida — etiqueta:** `RESULTADOS`
@@ -47,26 +47,91 @@
 
 **Casos — H2:** Proyectos con resultado
 **Qué hago — H2:** Tres cosas que hago bien
-1. **Sitios y herramientas web** — Next.js, PostgreSQL y Docker. Ej.: plataforma de empleabilidad con 5 roles y acceso con Microsoft.
-2. **Automatización e integraciones** — APIs, WhatsApp, email transaccional. Ej.: campañas segmentadas por facultad y ciclo.
-3. **Medición y conversión** — GA4, GTM, embudos. Ej.: este sitio, instrumentado de punta a punta.
+1. **Desarrollo web y herramientas internas** — Next.js, TypeScript, PostgreSQL y Docker. Ej.: plataforma de empleabilidad con 5 roles y acceso con Microsoft.
+2. **Automatización de procesos y bots** — Python, Playwright (RPA), bots y Power Automate. Ej.: robot de consultas SUNAT y bots de filtrado de candidatos.
+3. **Integración de APIs y comunicación** — APIs REST, webhooks, Shopify, CRM y email transaccional. Ej.: campañas segmentadas por facultad y ciclo ahorrando horas de trabajo.
 
 **Experiencia — H2:** Dónde he trabajado
 **Notas — H2:** Lo que estoy aprendiendo
-**CTA final — H2:** ¿Buscas a alguien que construya y mida?
-Texto: Estoy buscando mi primer rol en MarTech, desarrollo web o automatización. Si tu equipo necesita a alguien que entienda el negocio y lo lleve a código, hablemos.
+**CTA final — H2:** ¿Buscas a alguien que entienda el negocio y lo lleve a código?
+Texto: Disponible para roles junior desde enero 2027 como desarrollador web, analista de automatización o desarrollador de soluciones. Si tu equipo necesita conectar sistemas y ahorrar tiempo operativo, conversemos.
 Botones: Descargar CV · Escribirme
 
 ---
 
-## 4. Cómo escribir un caso
+## 4. Cómo escribir un caso (formato de artículo)
 
-- **Título = resultado**, no nombre del proyecto. "Pedidos 35 % más rápidos en una hamburguesería" > "Big Jack RP".
-- Párrafos de 2–4 líneas. Una idea por párrafo.
+Cada caso se publica como un **artículo corto** (600–1 000 palabras, 3–5 min de lectura). Así se muestra en la home y en `/proyectos`: imagen, antetítulo (tipo · año · minutos de lectura), titular, bajada, resultado y "Leer el caso".
+
+### 4.1 Las tres piezas de un caso
+
+| Pieza | Dónde | Qué contiene |
+|---|---|---|
+| **Ficha** | `content/casos/index.ts` | Los datos que se ven en la tarjeta y en la cabecera |
+| **Cuerpo** | `content/casos/<slug>.mdx` | El artículo |
+| **Imagen** | `public/img/casos/<slug>.webp` | Portada 16:9 (opcional; sin ella se ve el placeholder de marca) |
+
+Los minutos de lectura se calculan solos a partir del MDX. La página, la imagen OG, el sitemap y el JSON-LD se generan solos al agregar la ficha.
+
+### 4.2 La ficha (`index.ts`)
+
+| Campo | Regla | Ejemplo |
+|---|---|---|
+| `slug` | URL corta, en español, sin fecha | `difusion-correo-wiener` |
+| `title` | **Titular = resultado**, no el nombre del proyecto; ≤ 70 caracteres | "Campañas de 8 000 correos en 2 minutos, con baja automática" |
+| `subtitle` | **Bajada**: qué es y cómo funciona, en una frase de ≤ 200 caracteres | "Sistema interno de difusión con segmentación…" |
+| `problem` | Una línea: qué dolía | "Las campañas se enviaban a mano…" |
+| `result` | `value` + `label` + `context` (base, periodo, método). `measured: true` si es una medición aunque no sea % | `~2 min` · "por campaña de 8 000 destinatarios (antes, más de 4 h)" |
+| `type` | `web` · `automatizacion` · `datos` | — |
+| `context`, `role`, `duration`, `year`, `stack` (≤ 4), `status` | Ficha del caso | — |
+| `featured` | `true` en los 3 casos de la home | — |
+| `institutional` | `true` si es de la universidad (requiere el permiso de `07-PROYECTOS.md` §3) | — |
+
+### 4.3 El cuerpo (`<slug>.mdx`)
+
+Secciones fijas con `##` (alimentan el índice "En esta página"):
+
+```mdx
+## Contexto
+Qué negocio, qué área, qué situación. 1–2 párrafos.
+
+## Problema
+3–4 viñetas: qué dolía y cómo se notaba.
+
+## Enfoque
+Cómo lo pensé. Incluye al menos una decisión y una cosa descartada:
+
+<Callout title="Decisión: …">Qué decidí y por qué.</Callout>
+<Callout title="Lo que descarté" variant="warning">Qué no hice y por qué.</Callout>
+
+## Solución
+<FlowDiagram label="Arquitectura" steps={[
+  { tag: "Entrada", title: "…", items: ["…"] },
+  { tag: "Lo que construí", title: "…", items: ["…"], highlight: true },
+  { tag: "Salida", title: "…", items: ["…"] },
+]} />
+Un párrafo con lo que hace la solución.
+
+## Resultado
+<Metric value="−35 %" label="qué cambió" context="base, periodo y método" />
+Lo que cambió, con su base. Si no hay cifra, resultado cualitativo honesto.
+
+## Qué aprendí
+2–3 viñetas, incluida una cosa que harías distinto.
+```
+
+**Componentes disponibles:** `<Callout>` (decisión o advertencia), `<FlowDiagram>` (3–5 pasos, uno destacado), `<Metric>` (cifra con contexto). Los comentarios `{/* TODO(Sebastián): … */}` no se publican.
+
+### 4.4 Reglas de escritura
+- **Titular = resultado.** "Pedidos 35 % más rápidos en una hamburguesería" > "Big Jack RP".
+- Párrafos de 2–4 líneas. Una idea por párrafo. Primera persona.
 - Muestra **una decisión que descartaste** y por qué: es lo que más convence a un jefe técnico.
 - Diagrama antes que descripción de arquitectura.
-- Termina con "Qué aprendí" honesto, incluyendo lo que harías distinto.
-- Revisa privacidad: ningún dato real de personas en capturas.
+- Toda cifra con base, periodo y método (§1). Sin dato, resultado cualitativo.
+- Privacidad: ningún dato real de personas en capturas; nada de nombres de servidores, cuentas ni estructura interna (`07-PROYECTOS.md` §3).
+
+### 4.5 La imagen
+Captura con datos simulados o imagen editorial generada con el prompt base (`03-DESIGN.md` §10.7). 16:9, 1600 × 900, WebP/AVIF ≤ 200 KB, en `public/img/casos/<slug>.webp`. Aparece sola en la tarjeta y en la cabecera del caso.
 
 ---
 

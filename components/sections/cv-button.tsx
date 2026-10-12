@@ -6,13 +6,14 @@ interface Props {
   location: string;
   variant?: "primary" | "secondary";
   size?: "md" | "lg";
+  className?: string;
 }
 
 /**
  * CTA del CV: descarga el PDF si existe; si todavía no se subió, lleva a la versión HTML.
  * Así nunca hay un botón que termine en un 404.
  */
-export function CvButton({ location, variant = "primary", size = "lg" }: Props) {
+export function CvButton({ location, variant = "primary", size = "lg", className }: Props) {
   const icon = (Icon: typeof IconDownload) => <Icon size={20} stroke={1.5} aria-hidden />;
   return hasCvPdf ? (
     <Button
@@ -20,6 +21,7 @@ export function CvButton({ location, variant = "primary", size = "lg" }: Props) 
       download
       variant={variant}
       size={size}
+      className={className}
       cta={`${location}_cv_download`}
       icon={icon(IconDownload)}
     >
@@ -30,6 +32,7 @@ export function CvButton({ location, variant = "primary", size = "lg" }: Props) 
       href="/cv"
       variant={variant}
       size={size}
+      className={className}
       cta={`${location}_cv`}
       icon={icon(IconArrowRight)}
     >
