@@ -9,7 +9,7 @@ import type { Metric } from "@/content/profile";
  * Permiso escrito de la jefatura de Empleabilidad para publicar proyectos institucionales
  * (07-PROYECTOS.md §3.1). Cambiar a `true` solo cuando llegue la respuesta por correo.
  */
-export const institutionalPermission = false;
+export const institutionalPermission = true; // Permiso confirmado por Sebastián el 2026-10-11.
 
 /** Fecha del build (YYYY-MM-DD): las fechas de publicación se evalúan al compilar. */
 const buildDate = process.env.BUILD_DATE ?? new Date().toISOString().slice(0, 10);
@@ -58,6 +58,8 @@ export interface CaseStudy extends Publication {
   status: CaseStatus;
   /** Última revisión del contenido (sitemap). */
   updatedAt: string;
+  /** Aparece en la home (máximo 3). */
+  featured?: boolean;
 }
 
 /** Motivo por el que algo no se publica todavía, o `null` si se publica. */
@@ -72,6 +74,29 @@ export function pendingReason(p: Publication): string | null {
 const visible = (p: Publication) => previewDrafts || pendingReason(p) === null;
 
 const allCases: CaseStudy[] = [
+  {
+    slug: "bolsa-de-trabajo-wiener",
+    title: "Una plataforma de empleabilidad propia para reemplazar tres de terceros",
+    subtitle:
+      "Bolsa laboral, creador de CV con lectura por IA y feria virtual en un solo lugar: cinco roles, acceso con Microsoft y pruebas de punta a punta.",
+    problem:
+      "La bolsa laboral, el creador de CV y los formularios de feria vivían en plataformas de terceros, cada una con su usuario y sin datos comunes.",
+    result: {
+      value: "En producción",
+      label: "plataforma de empleabilidad propia de la universidad",
+      context: "En uso desde oct. 2026 · base de la feria virtual del 22 oct",
+    },
+    type: "web",
+    context: "Universidad Norbert Wiener · Dirección de Empleabilidad y Alumni",
+    role: "Único desarrollador: producto, arquitectura, backend y frontend",
+    duration: "2026", // TODO(Sebastián): confirmar inicio y fin
+    year: 2026,
+    stack: ["Next.js", "Supabase/PostgreSQL", "Docker", "Playwright"],
+    status: "produccion",
+    updatedAt: "2026-10-11",
+    featured: true,
+    institutional: true,
+  },
   {
     slug: "difusion-correo-wiener",
     title: "Campañas de 8 000 correos en 2 minutos, con baja automática",
@@ -93,26 +118,72 @@ const allCases: CaseStudy[] = [
     stack: ["React", "Node.js", "PostgreSQL", "Microsoft 365"],
     status: "produccion",
     updatedAt: "2026-10-11",
+    featured: true,
     institutional: true,
   },
   {
-    slug: "bolsa-de-trabajo-wiener",
-    title: "Una plataforma de empleabilidad propia para reemplazar tres de terceros",
+    slug: "formularios-nps-wiener",
+    title: "Encuestas con identidad validada y datos que se analizan solos",
     subtitle:
-      "Bolsa laboral, creador de CV con lectura por IA y feria virtual en un solo lugar: cinco roles, acceso con Microsoft y pruebas de punta a punta.",
+      "Portal de formularios para estudiantes, egresados y empresas, con DNI validado contra el padrón, encuestas NPS por evento y un tablero de resultados que se recalcula solo.",
     problem:
-      "La bolsa laboral, el creador de CV y los formularios de feria vivían en plataformas de terceros, cada una con su usuario y sin datos comunes.",
+      "Las encuestas vivían en formularios sueltos, sin verificar quién respondía, y cada reporte obligaba a unir y limpiar respuestas a mano.",
     result: {
-      value: "En producción",
-      label: "plataforma de empleabilidad propia de la universidad",
-      context: "En uso desde oct. 2026 · base de la feria virtual del 22 oct",
+      value: "~3 000",
+      label: "respuestas de egresados analizadas en un tablero que se actualiza solo",
+      context: "Encuesta de empleabilidad de egresados 2025–2026",
+    },
+    type: "datos",
+    context: "Universidad Norbert Wiener · Dirección de Empleabilidad y Alumni",
+    role: "Diseño y desarrollo del portal y del tablero",
+    duration: "2026", // TODO(Sebastián): fechas
+    year: 2026,
+    stack: ["React", "TypeScript", "PostgreSQL (Neon)", "Chart.js"],
+    status: "produccion",
+    updatedAt: "2026-10-11",
+    featured: true,
+    institutional: true,
+  },
+  {
+    slug: "feria-virtual-wiener",
+    title: "Una feria virtual que limpia sus propias inscripciones",
+    subtitle:
+      "Sitio de la Feria Virtual de Empleabilidad 2026: una página por empresa generada desde datos, conferencias con antes y después, e inscripciones normalizadas al guardarse.",
+    problem:
+      "La información de cada empresa llegaba en piezas sueltas y las inscripciones traían códigos, correos y nombres mal escritos que había que limpiar a mano.",
+    result: {
+      value: "Automática",
+      label: "limpieza de las inscripciones, que antes se hacía a mano",
+      context: "Feria Virtual de Empleabilidad 2026", // TODO(Sebastián): inscritos y conferencias (07 §4)
     },
     type: "web",
     context: "Universidad Norbert Wiener · Dirección de Empleabilidad y Alumni",
-    role: "Único desarrollador: producto, arquitectura, backend y frontend",
-    duration: "2026", // TODO(Sebastián): confirmar inicio y fin
+    role: "Diseño y desarrollo completo",
+    duration: "2026", // TODO(Sebastián): fechas
     year: 2026,
-    stack: ["Next.js", "Supabase/PostgreSQL", "Docker", "Playwright"],
+    stack: ["React", "TypeScript", "Tailwind CSS", "Apps Script"],
+    status: "produccion",
+    updatedAt: "2026-10-11",
+    institutional: true,
+  },
+  {
+    slug: "reqlut-bot",
+    title: "Un bot que publica ofertas laborales 24/7 con IA local",
+    subtitle:
+      "Lee el correo de ofertas, extrae cada aviso, lo estructura con un modelo local, lo revisa con una segunda pasada de IA y lo publica en la bolsa laboral.",
+    problem:
+      "Cada oferta que llegaba por correo se copiaba campo por campo al formulario de la bolsa laboral: decenas por semana, con errores y retrasos.",
+    result: {
+      value: "24/7",
+      label: "publicación de ofertas sin copiar campos a mano",
+      context: "Bolsa laboral de la universidad", // TODO(Sebastián): ofertas/semana y horas evitadas (07 §4)
+    },
+    type: "automatizacion",
+    context: "Universidad Norbert Wiener · Dirección de Empleabilidad y Alumni",
+    role: "Diseño y desarrollo completo",
+    duration: "2026", // TODO(Sebastián): fechas
+    year: 2026,
+    stack: ["Python", "Playwright", "Ollama", "Gemini"],
     status: "produccion",
     updatedAt: "2026-10-11",
     institutional: true,
@@ -137,7 +208,6 @@ const allCases: CaseStudy[] = [
     stack: ["Next.js", "React", "Firebase", "Webhooks"],
     status: "entregado", // TODO(Sebastián): ¿sigue en uso? Si es así, "produccion".
     updatedAt: "2026-10-11",
-    draft: "Programado para la Fase 4 (07-PROYECTOS.md §5)",
   },
 ];
 
@@ -180,6 +250,14 @@ const allGallery: GalleryItem[] = [
       "Rediseño de la página del área: arquitectura de información por público, formulario de leads y contacto por WhatsApp.",
     stack: ["HTML", "CSS", "JavaScript"],
     institutional: true,
+  },
+  {
+    name: "Portal de Bolsa Laboral",
+    angle:
+      "Propuesta de página de inicio para la bolsa laboral: por qué registrarse, una sección para empresas y la agenda de eventos y talleres.",
+    stack: ["HTML", "Tailwind CSS"],
+    institutional: true,
+    // TODO(Sebastián): ¿se publicó o quedó como prototipo? (07-PROYECTOS.md, Nivel B)
   },
   {
     name: "LogINV",

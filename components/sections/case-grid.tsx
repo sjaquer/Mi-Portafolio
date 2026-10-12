@@ -1,0 +1,53 @@
+"use client";
+
+import { useState } from "react";
+import { CaseCard } from "@/components/ui/case-card";
+import { caseTypeLabel, type CaseStudy, type CaseType } from "@/content/casos";
+
+/**
+ * Listado de casos con filtro por tipo (02-PRD.md §8.2). Una sola grilla: sin
+ * secciones por tipo que dejen tarjetas sueltas. El conteo se anuncia con aria-live.
+ */
+export function CaseGrid({ cases }: { cases: CaseStudy[] }) {
+  const [filter, setFilter] = useState<CaseType | "all">("all");
+  const types = (Object.keys(caseTypeLabel) as CaseType[]).filter((t) =>
+    cases.some((c) => c.type === t),
+  );
+  const shown = filter === "all" ? cases : cases.filter((c) => c.type === filter);
+
+  const chip = (value: CaseType | "all", label: string, count: number) => (
+    <li key={value}>
+      <button
+        type="button"
+        aria-pressed={filter === value}
+        data-cta={`projects_filter_${value}`}
+        onClick={() => setFilter(value)}
+        className="inline-flex min-h-control-md items-center gap-2 rounded-full border border-border-strong px-4 text-small font-semibold text-ink-900 transition-colors duration-150 ease-standard hover:bg-surface-muted aria-pressed:border-ink-900 aria-pressed:bg-ink-900 aria-pressed:text-bg"
+      >
+        {label}
+        <span className="font-mono font-medium opacity-70">{count}</span>
+      </button>
+    </li>
+  );
+
+  return (
+    <>
+      <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
+        <ul aria-label="Filtrar casos por tipo" className="flex flex-wrap gap-2">
+          {chip("all", "Todos", cases.length)}
+          {types.map((t) => chip(t, caseTypeLabel[t], cases.filter((c) => c.type === t).length))}
+        </ul>
+        <p aria-live="polite" className="text-small text-ink-500">
+          {shown.length} {shown.length === 1 ? "caso" : "casos"}
+        </p>
+      </div>
+      <ul className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {shown.map((c) => (
+          <li key={c.slug}>
+            <CaseCard c={c} />
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+}

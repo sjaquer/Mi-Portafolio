@@ -16,11 +16,8 @@ interface Step {
  */
 export function FlowDiagram({ label, steps }: { label: string; steps: Step[] }) {
   return (
-    <figure className="my-7">
-      <ol
-        aria-label={label}
-        className="flex flex-col items-stretch gap-2 lg:flex-row lg:items-stretch"
-      >
+    <figure className="@container my-7">
+      <ol aria-label={label} className="flex flex-col items-stretch gap-2 @4xl:flex-row">
         {steps.map((step, i) => (
           <Fragment key={step.title}>
             <li
@@ -40,8 +37,8 @@ export function FlowDiagram({ label, steps }: { label: string; steps: Step[] }) 
             </li>
             {i < steps.length - 1 && (
               <li aria-hidden className="flex items-center justify-center text-ink-500">
-                <IconArrowDown size={20} stroke={1.5} className="lg:hidden" />
-                <IconArrowRight size={20} stroke={1.5} className="hidden lg:block" />
+                <IconArrowDown size={20} stroke={1.5} className="@4xl:hidden" />
+                <IconArrowRight size={20} stroke={1.5} className="hidden @4xl:block" />
               </li>
             )}
           </Fragment>

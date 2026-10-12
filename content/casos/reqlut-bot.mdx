@@ -1,0 +1,61 @@
+{/* TODO(Sebastián): ofertas publicadas por semana y tiempo manual por oferta antes (07-PROYECTOS.md §4). */}
+
+## Contexto
+
+Las empresas envían sus ofertas laborales a una bandeja de correo institucional. El equipo de Empleabilidad las publica en la bolsa laboral de la universidad, que funciona sobre la plataforma Reqlut.
+
+## Problema
+
+Cada oferta había que abrirla, copiar a mano el puesto, la empresa, los requisitos y el enlace, y llenar uno por uno los campos del formulario (facultad, carrera, modalidad…). Con decenas de ofertas por semana, eso consumía horas y generaba errores y retrasos en la publicación.
+
+## Enfoque
+
+Automaticé el flujo completo, pero con controles en cada paso: el bot no publica nada que no haya pasado una revisión.
+
+<Callout title="Decisión: IA local primero, la nube solo como respaldo">
+  Un modelo local (Ollama) convierte el texto de la oferta en un registro estructurado con los
+  catálogos oficiales de la bolsa. Si falla, el bot recurre a Google Gemini. El flujo normal no
+  depende de un servicio externo.
+</Callout>
+
+<Callout title="Decisión: una segunda revisión antes de publicar">
+  Una segunda pasada de IA valida la empresa, el título y los enlaces. Una oferta mal publicada
+  cuesta más que una oferta publicada un poco más tarde.
+</Callout>
+
+## Solución
+
+<FlowDiagram
+  label="Del correo a la bolsa laboral"
+  steps={[
+    { tag: "Entrada", title: "Bandeja de ofertas", items: ["Sin procesar dos veces un correo"] },
+    {
+      tag: "Extracción",
+      title: "Navegador automático",
+      items: ["Enlaces y redirecciones", "OCR para ofertas en imagen"],
+    },
+    {
+      tag: "IA",
+      title: "Estructura + revisión",
+      items: ["Modelo local, respaldo en Gemini", "Control de calidad"],
+      highlight: true,
+    },
+    {
+      tag: "Salida",
+      title: "Publicación",
+      items: ["Sesión mantenida", "Registro y capturas si falla"],
+    },
+  ]}
+/>
+
+El servicio funciona solo las 24 horas. Registra cada paso en una base de datos y en archivos de log, y toma capturas de pantalla automáticas cuando algo falla, para que cualquier error se pueda reproducir.
+
+## Resultado
+
+Las ofertas que llegan por correo se publican en la bolsa laboral sin que nadie copie un campo a mano, a cualquier hora. Falta medir cuántas ofertas publica por semana y cuánto tiempo manual reemplaza; cuando tenga esos datos, los publicaré aquí con su base.
+
+## Qué aprendí
+
+- Automatizar no es quitar el control: es moverlo a reglas y revisiones que se cumplen siempre.
+- La trazabilidad (logs, capturas) es lo que permite confiar en un proceso que corre sin supervisión.
+- Un respaldo bien elegido evita que un fallo puntual detenga todo el flujo.

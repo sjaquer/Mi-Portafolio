@@ -1,5 +1,7 @@
 import { IconArrowRight } from "@tabler/icons-react";
+import Link from "next/link";
 import { AvatarIllustration } from "@/components/brand/avatar-illustration";
+import { MeasureRule } from "@/components/brand/measure-rule";
 import { CvButton } from "@/components/sections/cv-button";
 import { Button } from "@/components/ui/button";
 import { CaseCard } from "@/components/ui/case-card";
@@ -23,23 +25,26 @@ const proof = [
 ];
 
 // Casos destacados: solo los publicables en este build (07-PROYECTOS.md §3).
-const featured = cases.slice(0, 3);
+const featured = cases.filter((c) => c.featured).slice(0, 3);
 
 const services = [
   {
     title: "Sitios y herramientas web",
     body: "Next.js, PostgreSQL y Docker.",
     example: "Plataforma de empleabilidad con 5 roles y acceso con Microsoft.",
+    href: "/proyectos/bolsa-de-trabajo-wiener",
   },
   {
     title: "Automatización e integraciones",
     body: "APIs, WhatsApp, email transaccional.",
     example: "Campañas segmentadas por facultad y ciclo.",
+    href: "/proyectos/difusion-correo-wiener",
   },
   {
     title: "Medición y conversión",
     body: "GA4, GTM, embudos.",
     example: "Este sitio, instrumentado de punta a punta.",
+    href: undefined,
   },
 ];
 
@@ -57,7 +62,8 @@ export default function Home() {
       <section aria-labelledby="hero-title" className="pt-7 pb-8 lg:pt-10 lg:pb-9">
         <Container className="grid items-center gap-7 md:grid-cols-12">
           <div className="md:col-span-8">
-            <p className="mb-4 text-label-mono text-ink-500">
+            <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-label-mono text-ink-700">
+              <span aria-hidden className="size-2 rounded-full bg-ink-900" />
               Lima, Perú · Disponible desde ene 2027
             </p>
             <h1 id="hero-title" className="text-display">
@@ -86,8 +92,11 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* 2. Prueba rápida */}
-      <Section aria-labelledby="resultados" className="border-t border-border">
+      {/* 2. Prueba rápida: la regla de medición (§6.1) separa "quién soy" de "qué he medido". */}
+      <Container>
+        <MeasureRule />
+      </Container>
+      <Section aria-labelledby="resultados">
         <h2 id="resultados" className="mb-6 text-label-mono text-ink-500">
           Resultados
         </h2>
@@ -112,7 +121,7 @@ export default function Home() {
               cta="home_all_projects"
               icon={<IconArrowRight size={20} stroke={1.5} aria-hidden />}
             >
-              Ver todos los proyectos
+              Ver los {cases.length} casos
             </Button>
           </div>
           <ul
@@ -136,7 +145,20 @@ export default function Home() {
               <span className="font-mono text-small text-ink-500">0{i + 1}</span>
               <h3 className="text-h3">{s.title}</h3>
               <p>{s.body}</p>
-              <p className="text-small text-ink-500">Ej.: {s.example}</p>
+              <p className="text-small text-ink-500">
+                Ej.:{" "}
+                {s.href ? (
+                  <Link
+                    href={s.href}
+                    data-cta={`home_service_${i + 1}`}
+                    className="text-ink-700 underline underline-offset-4 hover:text-ink-900"
+                  >
+                    {s.example}
+                  </Link>
+                ) : (
+                  s.example
+                )}
+              </p>
             </li>
           ))}
         </ol>

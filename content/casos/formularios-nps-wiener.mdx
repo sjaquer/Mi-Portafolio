@@ -1,0 +1,76 @@
+{/* TODO(Sebastián): respuestas por tipo de encuesta (07-PROYECTOS.md §4). Capturas solo con datos simulados. */}
+
+## Contexto
+
+El área de Empleabilidad y Alumni necesita escuchar a tres públicos: estudiantes, egresados y empresas empleadoras. De esas respuestas salen decisiones del área y evidencia para los procesos de acreditación.
+
+## Problema
+
+- Cada encuesta era un formulario suelto, con un formato distinto y sin la imagen de la universidad.
+- Cualquiera podía responder con datos falsos o mal escritos: no se verificaba que fuera estudiante o egresado.
+- Medir la satisfacción de cada empresa aliada obligaba a crear y enviar un formulario distinto, a mano.
+- Los resultados de la encuesta de egresados se analizaban en Excel: cada corte nuevo (carrera, facultad, año) significaba rehacer tablas y gráficos.
+
+## Enfoque
+
+Separé tres cosas que antes iban juntas: **quién responde**, **qué se pregunta** y **cómo se lee el resultado**.
+
+<Callout title="Decisión: validar la identidad en la entrada">
+  En la actualización de datos de egresados, el DNI se valida contra el padrón oficial de la
+  universidad. Un dato que entra limpio no hay que limpiarlo después.
+</Callout>
+
+<Callout title="Decisión: personalizar la forma, no las preguntas">
+  Cada empresa recibe su propio enlace con su logo, sus colores y su saludo, pero el cuestionario es
+  el mismo para todas. Así la experiencia se siente hecha a medida y los resultados se pueden
+  comparar.
+</Callout>
+
+Las encuestas NPS de eventos se activan solo mientras el evento está vigente y adaptan sus preguntas según si quien responde es estudiante o egresado. El portal limita los envíos por minuto, limpia los datos ingresados y cumple la Ley 29733.
+
+## Solución
+
+<FlowDiagram
+  label="De la respuesta al indicador"
+  steps={[
+    {
+      tag: "Captura",
+      title: "Portal de formularios",
+      items: ["Datos Alumni con DNI validado", "NPS por evento", "Encuesta por empresa"],
+    },
+    {
+      tag: "Datos",
+      title: "Base central",
+      items: ["Respuestas en PostgreSQL", "Copia opcional en Google Sheets"],
+      highlight: true,
+    },
+    {
+      tag: "Uso",
+      title: "Sistema de difusión",
+      items: ["Segmentación", "Bajas de comunicaciones"],
+    },
+    {
+      tag: "Lectura",
+      title: "Tablero de resultados",
+      items: ["Filtros por facultad, carrera y año", "Exportación"],
+    },
+  ]}
+/>
+
+Para la encuesta de empleabilidad de egresados construí un tablero que compara la muestra con el universo total de egresados: representatividad, margen de error, ocupación, salario, emprendimiento y evolución entre años. Para actualizarlo basta reemplazar los archivos de datos; el tablero recalcula todo.
+
+## Resultado
+
+<Metric
+  value="~3 000"
+  label="respuestas de egresados analizadas en un tablero que se actualiza solo"
+  context="Encuesta de empleabilidad de egresados 2025–2026"
+/>
+
+Las encuestas a empleadores ya no requieren crear un formulario por empresa, y cada corte del análisis que antes había que rehacer en Excel se obtiene con un filtro.
+
+## Qué aprendí
+
+- La calidad de un dato se decide al capturarlo, no al limpiarlo.
+- Comparar la muestra con el universo es lo que convierte una encuesta en un dato defendible.
+- Dejé preparado un plan para migrar el tablero a Power BI: una herramienta que el área pueda editar sin mí dura más que una que solo yo entiendo.

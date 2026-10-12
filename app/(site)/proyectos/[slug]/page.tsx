@@ -4,7 +4,10 @@ import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { CaseTracker } from "@/components/analytics/case-tracker";
 import { CvButton } from "@/components/sections/cv-button";
 import { Button } from "@/components/ui/button";
+import { MeasureRule } from "@/components/brand/measure-rule";
 import { CaseFacts } from "@/components/ui/case-facts";
+import { Metric } from "@/components/ui/metric";
+import { slugify } from "@/mdx-components";
 import { DraftNotice } from "@/components/ui/draft-notice";
 import { Container } from "@/components/ui/container";
 import { caseTypeLabel, cases, getCase } from "@/content/casos";
@@ -13,6 +16,9 @@ import { jsonLdGraph } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
 
 export const dynamicParams = false;
+
+// Plantilla obligatoria de todos los casos (02-PRD.md §8.3): base del índice "En esta página".
+const caseSections = ["Contexto", "Problema", "Enfoque", "Solución", "Resultado", "Qué aprendí"];
 
 export function generateStaticParams() {
   return cases.map((c) => ({ slug: c.slug }));
@@ -83,17 +89,46 @@ export default async function CasePage({ params }: PageProps<"/proyectos/[slug]"
         <div className="mb-4 empty:hidden">
           <DraftNotice item={c} />
         </div>
-        <p className="mb-3 text-label-mono text-ink-500">
-          Caso · {caseTypeLabel[c.type]} · {c.year}
-        </p>
-        <h1 className="max-w-prose text-h1">{c.title}</h1>
-        <p className="mt-4 max-w-prose text-lead">{c.subtitle}</p>
+        {/* Lo primero que ve un reclutador: qué es y qué resultado tuvo (02-PRD.md §8.3). */}
+        <header className="grid gap-7 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-8">
+            <p className="mb-3 text-label-mono text-ink-500">
+              Caso · {caseTypeLabel[c.type]} · {c.year}
+            </p>
+            <h1 className="max-w-prose text-h1">{c.title}</h1>
+            <p className="mt-4 max-w-prose text-lead">{c.subtitle}</p>
+          </div>
+          <div className="border-l-2 border-border pl-5 lg:col-span-4">
+            <p className="mb-2 text-label-mono text-ink-500">Resultado</p>
+            <Metric {...c.result} />
+          </div>
+        </header>
+        <MeasureRule className="mt-7" />
         <div className="mt-7">
           <CaseFacts c={c} />
         </div>
 
-        <div className="mt-8 text-body">
-          <Body />
+        <div className="mt-8 grid gap-8 lg:grid-cols-12">
+          <div className="text-body lg:col-span-8">
+            <Body />
+          </div>
+          <aside className="hidden lg:col-span-3 lg:col-start-10 lg:block">
+            <nav aria-label="En esta página" className="sticky top-9">
+              <p className="mb-3 text-label-mono text-ink-500">En esta página</p>
+              <ul className="flex flex-col border-l border-border">
+                {caseSections.map((s) => (
+                  <li key={s}>
+                    <a
+                      href={`#${slugify(s)}`}
+                      className="-ml-px flex min-h-control-sm items-center border-l-2 border-transparent pl-4 text-small text-ink-700 hover:border-ink-900 hover:text-ink-900"
+                    >
+                      {s}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </aside>
         </div>
       </Container>
 

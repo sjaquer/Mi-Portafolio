@@ -1,0 +1,58 @@
+{/* TODO(Sebastián): inscritos, conferencias y visitas de la feria (07-PROYECTOS.md §4). Capturas solo con datos simulados. */}
+
+## Contexto
+
+La Feria Virtual de Empleabilidad 2026 reúne a empresas, vacantes y conferencias para alumnos de pregrado, posgrado, EPE y egresados. Es un evento con fecha fija: el 22 de octubre de 2026.
+
+## Problema
+
+- La información de cada empresa circulaba en piezas gráficas y correos sueltos: no había un lugar donde ver todas las vacantes y charlas juntas.
+- Las inscripciones llegaban con códigos de alumno en distintos formatos, correos con errores y nombres escritos de cualquier forma. Antes de usar la base había que limpiarla a mano.
+
+## Enfoque
+
+Traté la feria como un embudo de evento: descubrir empresas, decidir a qué charla ir, inscribirse y volver después. Cada paso con la menor fricción posible.
+
+<Callout title="Decisión: una página por empresa, generada desde datos">
+  Cada empresa tiene su página con logo, colores, sector, cultura y vacantes, armada a partir de un
+  registro de datos. Sumar una empresa es agregar un registro, no diseñar una página.
+</Callout>
+
+<Callout title="Decisión: limpiar la inscripción al guardarla">
+  El código de alumno se normaliza, el correo institucional se genera a partir del código, los
+  nombres se guardan en mayúsculas y el celular sin caracteres extraños. La base llega lista para
+  usarse.
+</Callout>
+
+## Solución
+
+<FlowDiagram
+  label="Embudo de la feria"
+  steps={[
+    { tag: "Descubrir", title: "Directorio de empresas", items: ["Buscador y filtro por sector"] },
+    { tag: "Decidir", title: "Página de empresa", items: ["Cultura y vacantes", "Conferencias"] },
+    {
+      tag: "Convertir",
+      title: "Inscripción",
+      items: ["Normalización automática", "Agregar al calendario"],
+      highlight: true,
+    },
+    {
+      tag: "Volver",
+      title: "Después del evento",
+      items: ["Grabación", "Empresas del mismo sector"],
+    },
+  ]}
+/>
+
+Cada conferencia tiene dos estados: antes del evento muestra cuenta regresiva, inscripción y un botón para agregarla a Google Calendar, Outlook o iCal; después, la grabación y recomendaciones de empresas del mismo sector. Las inscripciones se guardan en Google Sheets a través de un servidor que oculta la dirección real de la base, con un límite de 3 inscripciones por minuto por persona.
+
+## Resultado
+
+La limpieza manual de inscripciones dejó de ser necesaria: los datos llegan normalizados desde el formulario. Cuando cierre la feria publicaré aquí los inscritos y la asistencia, con su base.
+
+## Qué aprendí
+
+- En un evento, el momento de mayor intención es justo antes de inscribirse: ahí va el botón de calendario.
+- Un sitio de evento tiene una segunda vida después de la fecha, si se diseña para ella.
+- Generar el correo institucional a partir del código elimina una fuente entera de errores.

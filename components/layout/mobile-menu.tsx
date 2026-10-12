@@ -1,8 +1,8 @@
 "use client";
 
 import { IconMenu2, IconX } from "@tabler/icons-react";
-import Link from "next/link";
 import { useRef } from "react";
+import { NavLink } from "@/components/layout/nav-link";
 import { mainNav } from "@/lib/nav";
 
 const iconButton =
@@ -50,14 +50,14 @@ export function MobileMenu() {
           <ul className="flex flex-col gap-1">
             {mainNav.map((item) => (
               <li key={item.href}>
-                <Link
+                <NavLink
                   href={item.href}
-                  data-cta={`nav_${item.href.slice(1)}`}
-                  className="flex min-h-control-md items-center rounded-md px-3 text-h3 font-semibold hover:bg-surface-muted"
+                  cta={`nav_${item.href.slice(1)}`}
+                  className="flex min-h-control-md items-center rounded-md px-3 text-h3 font-semibold hover:bg-surface-muted aria-[current=page]:bg-surface-muted"
                   onClick={() => dialog.current?.close()}
                 >
                   {item.label}
-                </Link>
+                </NavLink>
               </li>
             ))}
           </ul>

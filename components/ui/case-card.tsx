@@ -2,7 +2,7 @@ import Link from "next/link";
 import { TagList } from "@/components/ui/tag";
 import { DraftNotice } from "@/components/ui/draft-notice";
 import { StatusBadge } from "@/components/ui/status-badge";
-import { caseTypeLabel, type CaseStudy } from "@/content/casos";
+import { caseStatusLabel, caseTypeLabel, type CaseStudy } from "@/content/casos";
 
 /**
  * Tarjeta de caso (§19.2): toda la tarjeta es clicable con un solo enlace
@@ -14,11 +14,11 @@ export function CaseCard({ c, headingLevel = "h3" }: { c: CaseStudy; headingLeve
   return (
     <article className="group relative flex h-full flex-col gap-5 rounded-lg border border-border bg-surface p-5 transition-shadow duration-150 ease-standard hover:shadow-md">
       <DraftNotice item={c} />
-      <div className="flex flex-wrap items-center justify-between gap-2">
+      <div className="flex flex-col items-start gap-2">
         <span className="text-label-mono text-ink-500">
           {caseTypeLabel[c.type]} · {c.year}
         </span>
-        <StatusBadge status={c.status} />
+        {c.result.value !== caseStatusLabel[c.status] && <StatusBadge status={c.status} />}
       </div>
 
       <div className="flex flex-col gap-3">

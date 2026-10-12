@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { IconArrowUpRight } from "@tabler/icons-react";
-import { CaseCard } from "@/components/ui/case-card";
+import { CaseGrid } from "@/components/sections/case-grid";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { TagList } from "@/components/ui/tag";
 import { DraftNotice } from "@/components/ui/draft-notice";
-import { caseTypeLabel, cases, gallery, lab, type CaseType } from "@/content/casos";
+import { cases, gallery, lab } from "@/content/casos";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -14,14 +14,8 @@ export const metadata: Metadata = pageMetadata({
   path: "/proyectos",
 });
 
-const types = Object.keys(caseTypeLabel) as CaseType[];
-
-// Listado (02-PRD.md §8.2). El filtro por tipo es un índice de anclas: cero JavaScript.
+// Listado (02-PRD.md §8.2): casos con filtro, galería (Nivel B) y laboratorio.
 export default function ProyectosPage() {
-  const groups = types
-    .map((t) => ({ type: t, items: cases.filter((c) => c.type === t) }))
-    .filter((g) => g.items.length > 0);
-
   return (
     <>
       <Section>
@@ -32,45 +26,35 @@ export default function ProyectosPage() {
             ? "Cada caso cuenta el problema, las decisiones que tomé — incluidas las que descarté — y lo que cambió, con su base y su periodo."
             : "Los casos de estudio completos se publican a fines de octubre de 2026. Mientras tanto, aquí están los sitios, herramientas y proyectos de práctica."}
         </p>
-        {groups.length > 1 && (
-          <nav aria-label="Filtrar por tipo" className="mt-6">
-            <ul className="flex flex-wrap gap-2">
-              {groups.map((g) => (
-                <li key={g.type}>
-                  <a
-                    href={`#${g.type}`}
-                    data-cta={`projects_filter_${g.type}`}
-                    className="inline-flex min-h-control-md items-center rounded-full border border-border-strong px-4 text-small font-semibold text-ink-900 hover:bg-surface-muted"
-                  >
-                    {caseTypeLabel[g.type]}{" "}
-                    <span className="ml-2 font-mono text-ink-500">{g.items.length}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        )}
+        <dl className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-small">
+          {(
+            [
+              [cases.length, "casos con resultado"],
+              [gallery.length, "sitios y herramientas"],
+              [lab.length, "proyectos de práctica"],
+            ] as const
+          )
+            .filter(([n]) => n > 0)
+            .map(([n, label]) => (
+              <div key={label} className="flex items-baseline gap-2">
+                <dt className="sr-only">{label}</dt>
+                <dd className="font-mono text-h3 font-semibold text-ink-900">{n}</dd>
+                <span aria-hidden className="text-ink-500">
+                  {label}
+                </span>
+              </div>
+            ))}
+        </dl>
       </Section>
 
-      {groups.map((g) => (
-        <Section
-          key={g.type}
-          id={g.type}
-          aria-labelledby={`${g.type}-title`}
-          className="scroll-mt-8 border-t border-border"
-        >
-          <h2 id={`${g.type}-title`} className="mb-6 text-label-mono text-ink-500">
-            {caseTypeLabel[g.type]}
+      {cases.length > 0 && (
+        <Section aria-labelledby="casos-title" className="border-t border-border">
+          <h2 id="casos-title" className="sr-only">
+            Casos de estudio
           </h2>
-          <ul className="grid gap-5 md:grid-cols-2">
-            {g.items.map((c) => (
-              <li key={c.slug}>
-                <CaseCard c={c} />
-              </li>
-            ))}
-          </ul>
+          <CaseGrid cases={cases} />
         </Section>
-      ))}
+      )}
 
       {gallery.length > 0 && (
         <Section aria-labelledby="galeria" className="border-t border-border">
