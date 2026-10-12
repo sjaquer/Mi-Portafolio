@@ -26,6 +26,7 @@
 | 2026-10-12 | Cabeceras de seguridad en `next.config.ts` (nosniff, DENY, Referrer-Policy, Permissions-Policy, HSTS) y sin `X-Powered-By` | Se habían perdido al quitar `netlify.toml` | Puntaje de cabeceras A en securityheaders.com (CSP pendiente por GTM/Clarity) | 2026-11-12 |
 | 2026-10-12 | Saludo en DevTools con API `sj.*` (rendimiento, eventos, stack, contacto, CV) | Muestra conocimiento de Performance API y medición a perfiles técnicos | Sin costo de carga (idle) | — |
 | 2026-10-12 | Se elimina el blog personal (`/blog-personal`), sus poemas y `framer-motion`; se borra el `dist/` de Vite | No aporta a la narrativa profesional y era la única dependencia de animación | Repo más pequeño y enfocado | — |
+| 2026-10-12 | Fuentes con `next/font/local` (variables latin de Inter y JetBrains Mono en `app/fonts/`) en lugar de `next/font/google` | El build en Vercel (Node 24, Turbopack) falló al resolver las fuentes de Google ("next/font/google queries have exactly one entry"); en local sí compilaba | Build reproducible sin red externa; mismo peso que antes (≈ 88 KB en total) | — |
 
 ## Hipótesis para la Fase 6 (se prueban con datos)
 

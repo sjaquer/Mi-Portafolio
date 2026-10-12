@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { TagLoader } from "@/components/analytics/tag-loader";
 import { consentDefaultScript } from "@/lib/analytics";
 import { jsonLdGraph, personJsonLd, websiteJsonLd } from "@/lib/jsonld";
@@ -7,12 +7,19 @@ import { defaultMetadata } from "@/lib/seo";
 import { themeInitScript } from "@/lib/theme";
 import "./globals.css";
 
-// Tipografías de marca (03-DESIGN.md §5.1), autoalojadas con next/font.
-const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
-const jetbrainsMono = JetBrains_Mono({
+// Tipografías de marca (03-DESIGN.md §5.1), autoalojadas en app/fonts: las variables
+// latin de Google Fonts (OFL). Archivos locales para no depender de Google en el build.
+const inter = localFont({
+  src: "./fonts/inter-latin-var.woff2",
+  variable: "--font-inter",
+  weight: "100 900",
+  display: "swap",
+});
+const jetbrainsMono = localFont({
+  src: "./fonts/jetbrains-mono-latin-var.woff2",
   variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-  weight: ["500", "600"],
+  weight: "100 800",
+  display: "swap",
 });
 
 export const metadata: Metadata = defaultMetadata;
