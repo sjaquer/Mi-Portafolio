@@ -2,7 +2,7 @@
 // (Inter / JetBrains Mono), capas con nombre (id → nombre de capa en Figma) y fondos e
 // imágenes en capas separadas. Arrastra los SVG a Figma: todo queda editable.
 // Uso: node scripts/brand/figma-kit.mjs  →  design/figma/*.svg
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 
 const OUT = "design/figma";
 mkdirSync(OUT, { recursive: true });
@@ -25,6 +25,33 @@ const pick = (key) => paths.match(new RegExp(`${key}: "([^"]+)"`))[1];
 const WORDMARK = { viewBox: pick("viewBox"), d: pick("  d") };
 const MONO_LETTERS = pick("letters");
 const MONO_RULE = pick("rule");
+
+// Rol y frase desde la fuente única (content/profile.ts), como el sitio.
+const profileSrc = readFileSync("content/profile.ts", "utf8");
+const ROLE = profileSrc.match(/role: "([^"]+)"/)[1];
+const TAGLINE = profileSrc.match(/tagline:\s*"([^"]+)"/)[1];
+const SITE = "sjaquer.is-a.dev";
+
+/** Parte un texto en líneas de hasta `max` caracteres (SVG no ajusta texto). */
+function wrap(str, max) {
+  const lines = [];
+  let line = "";
+  for (const w of str.split(" ")) {
+    if ((line + " " + w).trim().length > max) {
+      lines.push(line.trim());
+      line = w;
+    } else line += " " + w;
+  }
+  if (line.trim()) lines.push(line.trim());
+  return lines;
+}
+
+/** Incrusta una imagen del sitio (base64) para que viaje dentro del SVG a Figma. */
+function embed(path) {
+  const ext = path.split(".").pop();
+  const mime = ext === "jpg" ? "image/jpeg" : `image/${ext}`;
+  return `data:${mime};base64,${readFileSync(path).toString("base64")}`;
+}
 const wmH = Number(WORDMARK.viewBox.split(" ")[3]);
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -184,8 +211,8 @@ ${rect("Fondo", 0, 0, 1584, 396, C.marino900)}
 ${dotGrid("Retícula", 1584, 396, { opacity: 0.25 })}
 <g id="Zona segura · foto de perfil (ocultar al exportar)" opacity="0.35">${rect("Zona", 0, 236, 380, 160, "none", `stroke="${C.marino300}" stroke-dasharray="6 6"`)}</g>
 <g id="Contenido">
-  ${text("Rol", 420, 128, "Desarrollo web · Automatización · MarTech & CRO", { size: 16, weight: 500, family: MONO, fill: C.marino100, upper: true, tracking: 0.06 })}
-  ${text("Frase", 420, 180, ["Construyo sitios y automatizaciones que conectan", "marketing, operaciones y datos — y mido si funcionan."], { size: 32, weight: 600, fill: C.papel, lh: 1.3 })}
+  ${text("Rol", 420, 128, ROLE, { size: 16, weight: 500, family: MONO, fill: C.marino100, upper: true, tracking: 0.06 })}
+  ${text("Frase", 420, 180, wrap(TAGLINE, 60), { size: 30, weight: 600, fill: C.papel, lh: 1.3 })}
   ${ruler("Regla", 420, 262, 960, { color: C.marino500, stroke: 1 })}
 </g>
 ${text("URL", 1536, 348, "sjaquer.is-a.dev", { size: 16, weight: 500, family: MONO, fill: C.marino300, anchor: "end" })}
@@ -196,7 +223,7 @@ function post(file, dark) {
   const bg = dark ? C.marino700 : C.papel, fg = dark ? C.papel : C.tinta, sub = dark ? C.marino100 : C.gris500;
   board(file, 1080, 1350, `Post 4:5 · ${dark ? "marino" : "papel"}`, `
 ${rect("Fondo", 0, 0, 1080, 1350, bg)}
-<g id="Header">${text("Pilar", 80, 120, "Construyendo", { size: 22, weight: 500, family: MONO, fill: sub, upper: true, tracking: 0.06 })}${monogram("Monograma", 960, 88, 40, dark ? { bg: C.papel, fg: C.marino700 } : {})}</g>
+<g id="Header">${text("Pilar", 80, 120, "Automatización", { size: 22, weight: 500, family: MONO, fill: sub, upper: true, tracking: 0.06 })}${monogram("Monograma", 960, 88, 40, dark ? { bg: C.papel, fg: C.marino700 } : {})}</g>
 ${text("Titular", 80, 300, ["Pedidos 35 % más", "rápidos en una", "hamburguesería"], { size: 72, weight: 600, fill: fg, lh: 1.05, tracking: -0.02 })}
 <g id="Bloque de evidencia">
   ${text("Métrica", 80, 760, "−35 %", { size: 130, weight: 600, family: MONO, fill: dark ? C.verdeOsc : C.verde })}
@@ -210,11 +237,11 @@ post("07-post-marino.svg", true);
 
 // ── 08 · Carrusel 5 láminas (§12.9.5) ───────────────────────────────────────
 const slides = [
-  ["Portada", "Construyendo", ["Campañas de 8 000", "correos en 2 minutos"], "Cómo lo hice, en 5 láminas →"],
+  ["Portada", "Automatización", ["Campañas de 8 000", "correos en 2 minutos"], "Cómo lo construí, en 5 láminas →"],
   ["Paso 1", "1 · El problema", ["Envíos a mano", "y bajas que se perdían"], "Más de 4 h por campaña."],
   ["Paso 2", "2 · El control", ["Lista de exclusión", "antes de cada envío"], "Ley 29733, siempre."],
   ["Resultado", "Resultado", ["~2 min"], "por campaña de 8 000 destinatarios (antes, más de 4 h)"],
-  ["Cierre", "Lo que aprendí", ["La velocidad era el", "síntoma; el problema", "era el control."], "Detalle en sjaquer.is-a.dev"],
+  ["Cierre", "Lo que aprendí", ["La velocidad era el", "síntoma; el problema", "era el control."], `Detalle en ${SITE}`],
 ];
 let car = "";
 slides.forEach(([name, label, title, foot], i) => {
@@ -243,10 +270,14 @@ ${text("Descripción", 64, 410, "~2 min · por campaña de 8 000 destinatarios",
 
 // ── 10 · Imágenes: avatar provisional y favicon (editables) ─────────────────
 const avatar = readFileSync("public/brand/avatar-silhouette.svg", "utf8").replace(/<svg[^>]*>|<\/svg>/g, "");
+const PORTRAIT = "public/img/retrato.webp";
+const hasPortrait = existsSync(PORTRAIT);
 board("10-imagenes.svg", 1600, 1100, "10 · Imágenes y fondos", `
 ${rect("Fondo", 0, 0, 1600, 1100, C.papel)}
 ${text("Título", 80, 110, "Imágenes y fondos", { size: 48, weight: 600, tracking: -0.02 })}
-<g id="Avatar provisional (§10.6) · reemplazar por foto" transform="translate(80 160) scale(0.85)">${avatar}</g>
+${hasPortrait
+  ? `<g id="Retrato (§10.2) · public/img/retrato"><rect id="Marco" x="80" y="160" width="640" height="800" rx="16" fill="${C.marino50}"/><image id="Foto" x="80" y="160" width="640" height="800" preserveAspectRatio="xMidYMid slice" href="${embed(PORTRAIT)}"/></g>`
+  : `<g id="Avatar provisional (§10.6) · reemplazar por foto" transform="translate(80 160) scale(0.85)">${avatar}</g>`}
 <g id="Marco de captura (§6.5)" transform="translate(860 160)">
   ${rect("Marco", 0, 0, 660, 420, C.gris50, `rx="16" stroke="${C.gris100}"`)}
   ${rect("Barra navegador", 24, 24, 612, 32, C.blanco, 'rx="8"')}
@@ -255,4 +286,22 @@ ${text("Título", 80, 110, "Imágenes y fondos", { size: 48, weight: 600, tracki
   ${text("Instrucción", 330, 238, "Captura con datos simulados", { size: 18, fill: C.gris500, anchor: "middle" })}
 </g>
 <g id="Fondo banner · marino + retícula" transform="translate(860 640)">${rect("Fondo", 0, 0, 660, 300, C.marino900, 'rx="12"')}${dotGrid("Retícula", 660, 300, { opacity: 0.25 })}</g>
+`);
+
+// ── 11 · Artículo de caso para compartir 1200 × 630 (formato CaseArticle) ───
+const COVER = "public/img/casos/difusion-correo-wiener.webp";
+board("11-articulo-caso.svg", 1200, 630, "Artículo de caso · 1200×630", `
+${rect("Fondo", 0, 0, 1200, 630, C.papel)}
+<g id="Imagen del caso (16:9) · reemplazar">
+  ${rect("Marco", 48, 48, 560, 534, C.marino50, 'rx="16"')}
+  ${existsSync(COVER) ? `<image id="Foto" x="48" y="48" width="560" height="534" preserveAspectRatio="xMidYMid slice" href="${embed(COVER)}"/>` : ""}
+</g>
+<g id="Texto">
+  ${text("Antetítulo", 648, 110, "Automatización · 2026 · 2 min de lectura", { size: 16, weight: 500, family: MONO, fill: C.gris500, upper: true, tracking: 0.06 })}
+  ${text("Titular", 648, 176, ["Campañas de 8 000", "correos en 2 minutos,", "con baja automática"], { size: 44, weight: 600, lh: 1.12, tracking: -0.02 })}
+  ${text("Métrica", 648, 380, "~2 min", { size: 40, weight: 600, family: MONO, fill: C.verde })}
+  ${text("Contexto", 648, 416, ["por campaña de 8 000 destinatarios", "(antes, más de 4 h)"], { size: 20, fill: C.gris500, lh: 1.4 })}
+  ${text("Leer", 648, 500, "Leer el caso →", { size: 20, weight: 600, fill: C.azul600 })}
+</g>
+<g id="Pie">${monogram("Monograma", 648, 530, 40)}${text("URL", 1152, 558, SITE, { size: 18, weight: 500, family: MONO, fill: C.marino700, anchor: "end" })}</g>
 `);

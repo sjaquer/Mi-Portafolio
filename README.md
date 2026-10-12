@@ -1,24 +1,50 @@
-# sjaquer-web · Documentación del rediseño
+# sjaquer-web
 
-Plan completo para rehacer **sjaquer.is-a.dev** como portafolio de MarTech / desarrollo web y CRO / automatización.
+Portafolio de **Sebastián Jaque** — Desarrollo web · Automatización de procesos · Integraciones.
+Sitio en `sjaquer.is-a.dev`. Next.js 16 (App Router) + React 19 + TypeScript + Tailwind CSS 4 + MDX, desplegado en Vercel.
 
-## Orden de lectura
+## Empezar
 
-| # | Archivo | Responde a | Cuándo se usa |
-|---|---|---|---|
-| 1 | `docs/01-AUDITORIA.md` | ¿Qué está mal hoy y qué tan grave es? | Una vez, como punto de partida |
-| 2 | `docs/02-PRD.md` | ¿Qué construimos, para quién y cómo sabremos si funciona? | Antes de cada fase |
-| 3 | `docs/03-DESIGN.md` | ¿Cómo se ve? Paleta, tipografía, espacios, componentes | Al construir cualquier interfaz |
-| 4 | `docs/04-TECH-SEO-MEDICION.md` | ¿Con qué se construye, cómo se encuentra y cómo se mide? | Fases 1 y 3 |
-| 5 | `docs/05-PLAN-IMPLEMENTACION.md` | ¿Qué hago, en qué orden y cuándo? | Cada día de trabajo |
-| 6 | `docs/06-CONTENIDO.md` | ¿Cómo escribo? Textos, casos, Notas y LinkedIn | Al escribir |
-| 7 | `docs/07-PROYECTOS.md` | ¿Qué proyectos se publican y cuáles no? | Antes de escribir cada caso |
-| — | `CLAUDE.md` | Reglas para Claude Code / Cursor dentro del repo | Siempre en la raíz del repo |
+```bash
+pnpm install
+pnpm dev          # http://localhost:3000
+```
 
-## Cómo usarlo con Claude Code o Cursor
-1. Copia `CLAUDE.md` a la raíz del repo y la carpeta `docs/` completa.
-2. Pide tareas por fase y número: *"Haz la tarea 3 de la Fase 1 de `docs/05-PLAN-IMPLEMENTACION.md`"*.
-3. Al cerrar una fase, actualiza la tabla de seguimiento al final del plan.
+| Comando | Qué hace |
+|---|---|
+| `pnpm build` · `pnpm start` | Build de producción (todo estático) y servidor |
+| `pnpm lint` · `pnpm typecheck` | ESLint y TypeScript |
+| `pnpm lhci` | Lighthouse CI con los umbrales de `docs/04-TECH-SEO-MEDICION.md` §3.1 |
+| `pnpm cv:pdf` | Exporta el CV de Word a `public/cv/CV-Sebastian-Jaque.pdf` (LibreOffice + fuente Carlito) |
+| `node scripts/brand/build-assets.mjs && scripts/brand/render-png.sh` | Logo, monograma, favicon e íconos |
+| `node scripts/brand/figma-kit.mjs` | Kit de marca para Figma en `design/figma/` |
 
-## Próximo paso
-**Fase 0, domingo 11 oct (máx. 3 h):** correcciones urgentes en la web actual antes de postular.
+## Dónde está cada cosa
+
+| Qué | Dónde |
+|---|---|
+| Datos del perfil (fuente única) | `content/profile.ts` → web, `/cv`, `/llms.txt`, `/resume.txt`, JSON-LD |
+| Casos de estudio | Ficha en `content/casos/index.ts` + artículo en `content/casos/<slug>.mdx` (formato: `docs/06-CONTENIDO.md` §4) |
+| Imágenes | `public/img/retrato.webp` (4:5) · `public/img/casos/<slug>.webp` (16:9) |
+| CV | `content/cv/CV-Sebastian-Jaque.docx` → `public/cv/CV-Sebastian-Jaque.pdf` |
+| Diseño | `app/tokens.css` (tokens) · `components/` (ui, layout, sections, brand, analytics) |
+| Medición | `lib/analytics.ts` (`track()` tipado) · `components/analytics/` (consentimiento, clics, casos) |
+| Variables de entorno | `.env.example` (GTM, GA4, Resend) |
+
+## Documentación
+
+| # | Archivo | Responde a |
+|---|---|---|
+| — | `CLAUDE.md` | Reglas del repo para personas y agentes |
+| 1 | `docs/01-AUDITORIA.md` | Punto de partida (10 oct 2026) |
+| 2 | `docs/02-PRD.md` | Qué se construye, para quién y cómo se mide el éxito |
+| 3 | `docs/03-DESIGN.md` | Manual de marca y sistema de diseño (fuente de verdad visual) |
+| 4 | `docs/04-TECH-SEO-MEDICION.md` | Stack, SEO, rendimiento y plan de medición |
+| 5 | `docs/05-PLAN-IMPLEMENTACION.md` | Fases, estado y pendientes |
+| 6 | `docs/06-CONTENIDO.md` | Voz, textos, formato de casos y Notas |
+| 7 | `docs/07-PROYECTOS.md` | Qué proyectos se publican y con qué reglas |
+| — | `docs/decisiones.md` | Registro de decisiones con dato y fecha de revisión |
+| — | `design/figma/README.md` | Cómo usar el kit de marca en Figma |
+
+## Estado
+Ver `docs/05-PLAN-IMPLEMENTACION.md` → "Estado al 12 oct 2026".

@@ -5,6 +5,18 @@
 
 ---
 
+## 0. Estado (12 oct 2026)
+
+| Pieza | Estado |
+|---|---|
+| Permiso escrito de la jefatura (§3.1) | ✅ Confirmado por Sebastián · interruptor `institutionalPermission = true` en `content/casos/index.ts` |
+| Nivel A · casos 1–5 | ✅ Publicados (Empleabilidad, Difusión, Formularios y NPS, Feria Virtual, Reqlut Bot) |
+| Big Jack | ✅ Publicado (adelantado desde la Fase 4) |
+| Dearel | ⬜ Pendiente: falta base y método del −30 % y material del proyecto |
+| Nivel B · galería | ✅ Landings de graduación, WCCA Posgrado, página de Empleabilidad, Portal de Bolsa Laboral, LogINV, Sistema Obra |
+| Imágenes de portada | ✅ `public/img/casos/<slug>.webp` (editoriales, sin rostros) |
+| Datos de §4 | ⬜ Pendientes en todos los casos (marcados con `TODO(Sebastián)` en los MDX) |
+
 ## 1. Lectura general
 
 Tu historia real es más fuerte que la que contaba la web: en cuatro meses construiste la **infraestructura de desarrollo web, automatización y comunicación** de un área de la universidad. Formularios que capturan datos → base central → segmentación → campañas de correo con lista de exclusión → encuestas NPS → tableros. Todo desarrollado con Next.js, Python, PostgreSQL y APIs para ahorrar tiempo operativo. Ese es el hilo del portafolio.
@@ -91,8 +103,8 @@ Si un dato no existe, el caso usa un resultado cualitativo honesto. Nunca se est
 
 ## 5. Cómo cambia el plan
 
-- **Fase 2 (MVP, 19–31 oct):** los dos casos de lanzamiento pasan a ser **Difusión (caso 2)** y **Empleabilidad Wiener (caso 1, ya en producción)**. Big Jack pasa a la Fase 4. Galería de landings en `/proyectos`.
-- **Fase 4 (23 nov – 20 dic):** casos 3, 4 y 5 + Big Jack + Dearel. Las 4 notas de la fase salen del Nivel C.
+- **Fase 2 (MVP, 19–31 oct):** los dos casos de lanzamiento pasan a ser **Difusión (caso 2)** y **Empleabilidad Wiener (caso 1, ya en producción)**. Galería de landings en `/proyectos`. *(Hecho y ampliado el 12 oct: se publicaron los 5 casos del Nivel A + Big Jack.)*
+- **Fase 4 (23 nov – 20 dic):** Dearel + completar los datos de §4 en los casos publicados. Las 4 notas de la fase salen del Nivel C.
 - **Antes de la Fase 2:** enviar el correo de permiso (esta semana) y pedir los datos de la sección 4.
 
 ## 6. Correcciones al stack documentado

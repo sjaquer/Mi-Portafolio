@@ -8,6 +8,6 @@ export default function Image() {
   return renderOg({
     label: "Sobre mí",
     title: "De Administración al código",
-    description: "Herramientas web y automatizaciones para negocio, medidas con datos.",
+    description: "Herramientas web y automatizaciones que ahorran tiempo operativo.",
   });
 }

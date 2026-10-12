@@ -106,6 +106,7 @@ export default async function CasePage({ params }: PageProps<"/proyectos/[slug]"
           alt={`Vista del proyecto: ${c.title}`}
           ratio="video"
           sizes="(min-width: 1120px) 1120px, 100vw"
+          priority
           className="mt-7"
         />
         <div className="mt-7">

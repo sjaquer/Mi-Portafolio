@@ -1,6 +1,6 @@
 # Kit de marca para Figma
 
-Generado con `node scripts/brand/figma-kit.mjs` desde `03-DESIGN.md` (§3–§12.9). No editar los SVG a mano: cambia el script o edita en Figma.
+Generado con `node scripts/brand/figma-kit.mjs` desde `03-DESIGN.md` (§3–§12.9). El rol y la frase se leen de `content/profile.ts` y las fotos de `public/img/`, así que al regenerar el kit queda al día con el sitio. No editar los SVG a mano: cambia el script o edita en Figma.
 
 ## Importar
 1. En Figma, crea un archivo "Marca · Sebastián Jaque".
@@ -23,7 +23,8 @@ Generado con `node scripts/brand/figma-kit.mjs` desde `03-DESIGN.md` (§3–§12
 | 06 / 07-post | Post 4:5 en papel y en marino |
 | 08-carrusel | 5 láminas 1080 × 1350 |
 | 09-open-graph | 1200 × 630 |
-| 10-imagenes | Avatar, marco de captura, fondo con retícula |
+| 10-imagenes | Retrato real (si existe `public/img/retrato.webp`; si no, avatar), marco de captura, fondo con retícula |
+| 11-articulo-caso | Tarjeta 1200 × 630 para compartir un caso: imagen del caso + antetítulo, titular, resultado y "Leer el caso" (mismo formato que la web) |
 
 ## Volver al sitio
 Si cambias el logo en Figma, exporta el monograma y el wordmark como SVG (texto en contornos) y pásamelos: hay que actualizar `public/brand/logo/`, `public/favicon.svg` y los trazados de `components/brand/paths.ts` (el header dibuja el logo en línea), y regenerar los íconos con `scripts/brand/render-png.sh`. Ojo: `build-assets.mjs` vuelve a crear el logo actual desde las fuentes, así que no hay que correrlo después de reemplazarlo.

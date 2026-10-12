@@ -33,19 +33,20 @@
 
 ## 3. Textos de la Home (listos para usar)
 
-**Etiqueta sobre el hero** (mono): `LIMA, PERÚ · DISPONIBLE DESDE ENE 2027`
+**Antetítulo del hero** (mono): el rol, `DESARROLLO WEB · AUTOMATIZACIÓN DE PROCESOS · INTEGRACIONES`
 
 **H1:** Sebastián Jaque
-**Rol (debajo, tamaño lead):** Desarrollo web y automatización de procesos | Next.js · Python · APIs
+**Bajada (tamaño lead):** la frase canónica — "Construyo herramientas web y automatizaciones que reducen tareas manuales y conectan sistemas con APIs."
 **Párrafo:** Estudiante de último ciclo de Administración y Negocios Internacionales. Construyo con Next.js, desarrollo automatizaciones con Python y conecto plataformas mediante APIs para ahorrar tiempo operativo. Actualmente desarrollo herramientas internas en la Universidad Norbert Wiener.
 **CTA primario:** Descargar CV · **CTA secundario:** Ver proyectos
+**Debajo de los botones (texto con ícono, no pastillas):** Disponible desde ene 2027 · Lima, Perú · remoto
 
-**Prueba rápida — etiqueta:** `RESULTADOS`
+**Prueba rápida — etiqueta:** `RESULTADOS MEDIDOS`
 - **−35 %** · tiempo de procesamiento de pedidos · Big Jack Burgers
 - **−30 %** · tareas administrativas manuales · Dearel
 - **~2 min** · para enviar una campaña de 8 000 correos (antes, más de 4 h) · Norbert Wiener
 
-**Casos — H2:** Proyectos con resultado
+**Casos — etiqueta:** `CASOS DE ESTUDIO` · **H2:** Proyectos con resultado · **Lead:** "El problema, las decisiones y lo que cambió, contado como un artículo corto." · **Botón:** Ver los N casos
 **Qué hago — H2:** Tres cosas que hago bien
 1. **Desarrollo web y herramientas internas** — Next.js, TypeScript, PostgreSQL y Docker. Ej.: plataforma de empleabilidad con 5 roles y acceso con Microsoft.
 2. **Automatización de procesos y bots** — Python, Playwright (RPA), bots y Power Automate. Ej.: robot de consultas SUNAT y bots de filtrado de candidatos.
@@ -145,11 +146,11 @@ Mostrar cómo piensas y que estás aprendiendo en público, construir red en Lin
 | Pilar | Qué cuenta | Ejemplo de título |
 |---|---|---|
 | **Construyendo** | Notas de proyectos reales (sin datos privados) | "Migré una base de datos de SQLite a PostgreSQL sin detener el sistema: lo que salió mal" |
-| **Medición y CRO** | Lo que aprendes en GA4 / GTM aplicado a tu web | "Mis primeros 6 eventos en GA4 y por qué los nombré así" |
+| **Aprendiendo medición** | Lo que aprendes de GA4 / GTM aplicado a tu web (como aprendizaje, no como especialidad: `CLAUDE.md` regla 2) | "Mis primeros 6 eventos en GA4 y por qué los nombré así" |
 | **Automatización para PYMES** | Problemas cotidianos de negocios y cómo se resuelven | "3 tareas que una tienda pequeña puede automatizar este mes" |
 | **IA en agencias** (tesis) | Hallazgos de tu investigación, cuando sean públicos | "Cómo usan la IA generativa las agencias de marketing en Lima: primeros datos" |
 
-Proporción sugerida: 40 % Construyendo · 30 % Medición · 20 % PYMES · 10 % Tesis.
+Proporción sugerida: 40 % Construyendo · 30 % Automatización para PYMES · 20 % Aprendiendo medición · 10 % Tesis.
 
 ### 5.3 Cadencia
 - **1 nota por semana** desde la Fase 4 (no antes: el inglés y la tesis van primero).

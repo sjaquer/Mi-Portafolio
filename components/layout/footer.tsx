@@ -26,7 +26,7 @@ export function Footer() {
           <p className="max-w-prose text-small text-ink-500">{profile.role}</p>
         </div>
 
-        <div className="flex flex-col gap-6 sm:flex-row sm:gap-8">
+        <div className="grid grid-cols-2 gap-6 sm:flex sm:gap-8">
           <nav aria-label="Pie de página">
             <ul className="flex flex-col">
               {mainNav.map((item) => (

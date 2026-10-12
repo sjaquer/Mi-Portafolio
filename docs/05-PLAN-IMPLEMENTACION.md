@@ -19,6 +19,29 @@
 | **5** | QA y lanzamiento (se ejecuta al cerrar cada fase 2–4) | Continuo | 1 h por lanzamiento | — |
 | **6** | Iteración y optimización con datos reales + caso "este portafolio" | Ene 2027 | 4 h/mes | Titulación |
 
+## Estado al 12 oct 2026
+
+Las fases 0 a 3 avanzaron antes de su ventana: la web nueva (Next.js 16) ya existe en `Mi-Portafolio` y reemplaza a la SPA de Vite. Lo que falta depende sobre todo de cuentas externas, datos y la publicación.
+
+**Hecho**
+- Migración a Next.js 16 + React 19 + Tailwind 4 + MDX; todas las páginas estáticas; lint y tipos limpios.
+- Sistema de diseño v3.3 (`03-DESIGN.md`): tokens, Inter + JetBrains Mono, modo claro/oscuro, banda invertida, movimiento solo CSS.
+- Marca: logo, monograma, favicon e íconos (`scripts/brand/`), kit para Figma (`design/figma/`), imágenes OG por página.
+- Fuente única `content/profile.ts` → web, `/cv`, `llms.txt`, `resume.txt`, JSON-LD.
+- Páginas: home, `/proyectos` (índice de artículos + galería + laboratorio), 6 casos, `/sobre-mi`, `/cv` + PDF, `/contacto`, `/privacidad`, 404.
+- Medición: Consent Mode v2 + banner, `track()` tipado con los 9 eventos, GTM `GTM-PSWBGH5K`, verificación de Search Console, UTM en el CV.
+
+**Pendiente (en orden)**
+1. ⬜ **CV en Word:** el encabezado aún dice "MarTech & CRO" y "medición de marketing"; alinearlo al rol de `profile.ts` y regenerar el PDF (`pnpm cv:pdf`). *(Regla 1 y 2 de `CLAUDE.md`.)*
+2. ⬜ **Lanzamiento** (Fase 2, tarea 8): desplegar en Vercel, apuntar `sjaquer.is-a.dev` y pasar el checklist de la Fase 5.
+3. ⬜ **Formulario:** `RESEND_API_KEY` y `CONTACT_FROM_EMAIL` (dominio verificado) en Vercel; probar envío, error y spam.
+4. ⬜ **Rendimiento ≥ 95:** decidir si GTM se carga en `<head>` o tras la interacción (`04` §3.1).
+5. ⬜ **GA4/GTM** (Fase 3, tareas 3–6): conversiones y dimensiones, sitemap en Search Console, Clarity con consentimiento, QA en Preview/DebugView, UTM en LinkedIn.
+6. ⬜ **Datos de los casos** (`07-PROYECTOS.md` §4) y caso **Dearel**; línea "fuera del trabajo" en `/sobre-mi`.
+7. ⬜ **Fase 4:** `/notas`, RSS, `PostCard`, "Últimas notas" en la home y 4 notas.
+8. ⬜ **Fase 6 (ene 2027):** caso "Este portafolio" con antes/después y decisiones con datos.
+
+
 ---
 
 ## Fase 0 · Correcciones urgentes — domingo 11 oct (máx. 3 h)
@@ -26,8 +49,8 @@
 **Objetivo:** que la web actual no contradiga tu CV ni contenga nada indefendible, antes de enviar postulaciones esta semana. No se rediseña nada.
 
 **Tareas**
-1. [ ] **Medir la línea base** en PageSpeed Insights (móvil y escritorio). Guardar capturas en `/docs/baseline/`. *(10 min)*
-2. [ ] **Corregir `llms.txt` y `resume.txt`** *(45 min)*:
+1. [x] **Medir la línea base** en PageSpeed Insights (móvil y escritorio). Guardar capturas en `/docs/baseline/`. *(10 min)*
+2. [x] **Corregir `llms.txt` y `resume.txt`** *(45 min)*:
    - Título: "Desarrollo web · Automatización de procesos · Integraciones".
    - Certificaciones con nombre y emisor reales (ver tabla A2 de la auditoría).
    - Cargo en Big Jack: "Operaciones y Marketing".
@@ -35,17 +58,17 @@
    - Inglés: "Intermedio (acreditación B1 en curso)".
    - Agregar Norbert Wiener (Practicante Pre Profesional, jun 2026 – actualidad).
    - Quitar "Experienced software engineer".
-3. [ ] **Metadatos de la home** *(15 min)*:
+3. [x] **Metadatos de la home** *(15 min)*:
    - `title`: `Sebastián Jaque — Desarrollo web y automatización de procesos | Lima`
    - `description`: `Construyo herramientas web y automatizaciones que reducen tareas manuales y conectan sistemas con APIs. Estudiante de Administración y Negocios Internacionales. Lima, Perú.`
    - Mismos textos en `og:` y `twitter:`. Quitar `meta keywords`.
-4. [ ] **Imagen OG 1200×630** *(30 min)*: fondo claro, tu nombre, rol y URL. Reemplazar el ícono 512×512. Probar con el [Post Inspector de LinkedIn](https://www.linkedin.com/post-inspector/).
-5. [ ] **Textos visibles críticos** *(45 min)*:
+4. [x] **Imagen OG 1200×630** *(30 min)*: fondo claro, tu nombre, rol y URL. Reemplazar el ícono 512×512. Probar con el [Post Inspector de LinkedIn](https://www.linkedin.com/post-inspector/).
+5. [x] **Textos visibles críticos** *(45 min)*:
    - Hero: cambiar "Code. Integrate AI. Scale." por tu nombre + rol + frase de posicionamiento (`06-CONTENIDO.md`, §3).
    - Quitar el bloque "99 %" y "Precision Engineering".
    - Big Jack: usar la misma métrica del CV (−35 % en tiempo de procesamiento).
    - Añadir botón "Descargar CV" en el hero (subir el PDF exportado del `.docx`).
-6. [ ] **robots.txt**: quitar `Host:`. *(5 min)*
+6. [x] **robots.txt**: quitar `Host:`. *(5 min)*
 7. [ ] Desplegar y revisar en el teléfono. *(10 min)*
 
 **Terminado cuando:** no hay ninguna diferencia de cargo, fecha, certificación o métrica entre web, CV y LinkedIn; la tarjeta de LinkedIn se ve bien.
@@ -57,14 +80,14 @@
 **Objetivo:** proyecto nuevo con todo lo que no se ve pero sostiene todo lo demás.
 
 **Tareas**
-1. [ ] Partir del repo `Mi-Portafolio` (Next.js 16 + TypeScript + Tailwind 4 + MDX): verificar que las páginas se generan estáticas, ESLint, Prettier y previsualizaciones en Vercel. *(1 h)*
-2. [ ] Copiar `/docs` y `CLAUDE.md` al repo. *(5 min)*
-3. [ ] `tokens.css` + `@theme` de Tailwind según `03-DESIGN.md`; fuentes Inter + JetBrains Mono con `next/font` (`03-DESIGN.md` §5.1); tema claro/oscuro. *(1 h)*
-4. [ ] `content/profile.ts` como fuente única, con datos idénticos al CV. *(45 min)*
-5. [ ] Rutas generadas: `llms.txt`, `resume.txt`, `sitemap.ts`, `robots.ts` desde `profile.ts`. *(1 h)*
-6. [ ] Componentes base: `Container`, `Section`, `SectionHeader`, `Button` (4 variantes, 3 tamaños, todos los estados), `Tag`, `Metric`, `Header`, `Footer`. *(1,5 h)*
-7. [ ] Utilidades SEO: `lib/seo.ts` (metadata por defecto) y `lib/jsonld.ts` (`Person`, `WebSite`). *(30 min)*
-8. [ ] Lighthouse CI configurado con los umbrales de `04-TECH-SEO-MEDICION.md` §3.1. *(15 min)*
+1. [x] Partir del repo `Mi-Portafolio` (Next.js 16 + TypeScript + Tailwind 4 + MDX): verificar que las páginas se generan estáticas, ESLint, Prettier y previsualizaciones en Vercel. *(1 h)*
+2. [x] Copiar `/docs` y `CLAUDE.md` al repo. *(5 min)*
+3. [x] `tokens.css` + `@theme` de Tailwind según `03-DESIGN.md`; fuentes Inter + JetBrains Mono con `next/font` (`03-DESIGN.md` §5.1); tema claro/oscuro. *(1 h)*
+4. [x] `content/profile.ts` como fuente única, con datos idénticos al CV. *(45 min)* — ⚠️ el encabezado del `.docx` quedó con "MarTech & CRO"; ver Pendiente 1.
+5. [x] Rutas generadas: `llms.txt`, `resume.txt`, `sitemap.ts`, `robots.ts` desde `profile.ts`. *(1 h)*
+6. [x] Componentes base: `Container`, `Section`, `SectionHeader`, `Button` (4 variantes, 3 tamaños, todos los estados), `Tag`, `Metric`, `Header`, `Footer`. *(1,5 h)*
+7. [x] Utilidades SEO: `lib/seo.ts` (metadata por defecto) y `lib/jsonld.ts` (`Person`, `WebSite`). *(30 min)*
+8. [x] Lighthouse CI configurado con los umbrales de `04-TECH-SEO-MEDICION.md` §3.1. *(15 min)*
 
 **Terminado cuando:** una página de prueba usa solo tokens y componentes; `llms.txt` sale de `profile.ts`; Lighthouse ≥ 95 en la previsualización.
 
@@ -77,13 +100,13 @@
 **Objetivo:** reemplazar la web vieja con una versión más pequeña pero correcta. **Se lanza con 2 casos, no con 5.**
 
 **Tareas**
-1. [ ] **Home** completa según PRD §8.1 (hero, prueba rápida, casos, qué hago, experiencia, CTA final). *(3 h)*
-2. [ ] **Caso A:** Sistema de difusión por correo — Norbert Wiener (incluye validación de correos). Capturas con datos simulados + diagrama. *(2,5 h)*
-3. [ ] **Caso B:** Plataforma Empleabilidad Wiener — **ya en producción**; se publica con el permiso de `07-PROYECTOS.md` §3, enlazando al sitio oficial. Galería de landings (graduación, Empleabilidad, Posgrado) con enlaces en vivo. *(2 h)*
-4. [ ] `/proyectos` con los 2 casos + sección "Laboratorio" con los proyectos de práctica. *(45 min)*
-5. [ ] `/cv` (HTML desde `profile.ts` + PDF descargable) y `/sobre-mi`. *(1 h)*
-6. [ ] `/contacto` con formulario (Resend + Zod + honeypot) y WhatsApp. *(1 h)*
-7. [ ] Imágenes OG por página con `next/og`; JSON-LD de `ProfilePage` y casos. *(30 min)*
+1. [x] **Home** completa según PRD §8.1 (hero, prueba rápida, casos, qué hago, experiencia, CTA final). *(3 h)*
+2. [x] **Caso A:** Sistema de difusión por correo — Norbert Wiener (incluye validación de correos). Capturas con datos simulados + diagrama. *(2,5 h)*
+3. [x] **Caso B:** Plataforma Empleabilidad Wiener — **ya en producción**; se publica con el permiso de `07-PROYECTOS.md` §3, enlazando al sitio oficial. Galería de landings (graduación, Empleabilidad, Posgrado) con enlaces en vivo. *(2 h)*
+4. [x] `/proyectos` con los 2 casos + sección "Laboratorio" con los proyectos de práctica. *(45 min)*
+5. [x] `/cv` (HTML desde `profile.ts` + PDF descargable) y `/sobre-mi`. *(1 h)*
+6. [x] `/contacto` con formulario (Resend + Zod + honeypot) y WhatsApp. *(1 h)*
+7. [x] Imágenes OG por página con `next/og`; JSON-LD de `ProfilePage` y casos. *(30 min)*
 8. [ ] **Lanzamiento** (checklist de Fase 5): apuntar `sjaquer.is-a.dev` al nuevo proyecto. *(30 min)*
 
 **Terminado cuando:** la web nueva está en producción, la vieja apagada, y un reclutador puede en menos de 60 s saber quién eres y descargar tu CV.
@@ -95,13 +118,13 @@
 **Objetivo:** la web pasa a ser un producto medido. **Hazla en paralelo con el estudio de la certificación GA4:** cada concepto del examen lo aplicas aquí el mismo día.
 
 **Tareas**
-1. [ ] Crear cuenta GA4 + contenedor GTM; Consent Mode v2 con banner y `/privacidad`. *(1,5 h)*
-2. [ ] `lib/analytics.ts` tipado; `data-cta` en todos los botones; eventos de la tabla §4.3. *(1,5 h)*
+1. [x] Crear cuenta GA4 + contenedor GTM; Consent Mode v2 con banner y `/privacidad`. *(1,5 h)*
+2. [x] `lib/analytics.ts` tipado; `data-cta` en todos los botones; eventos de la tabla §4.3. *(1,5 h)*
 3. [ ] Marcar conversiones (`cv_download`, `generate_lead`, `case_study_read`); registrar dimensiones personalizadas. *(30 min)*
 4. [ ] Search Console + envío del sitemap; Clarity vía GTM (con consentimiento). *(30 min)*
 5. [ ] QA de cada evento con GTM Preview + DebugView. *(1 h)*
 6. [ ] UTM en los enlaces de LinkedIn (perfil, Destacados) y en el PDF del CV. *(15 min)*
-7. [ ] Exploración de embudo en GA4 + `/docs/decisiones.md` iniciado. *(45 min)*
+7. [ ] Exploración de embudo en GA4 + `/docs/decisiones.md` iniciado. *(45 min)* — `decisiones.md` ✅; exploración de embudo ⬜ (necesita datos).
 
 **Terminado cuando:** cada evento aparece correcto en DebugView, rechazar el consentimiento no deja cookies `_ga`, y el embudo muestra datos.
 
@@ -160,9 +183,9 @@ Al cerrar cada fase, actualiza esta tabla:
 
 | Fase | Estado | Fecha real | Horas reales | Nota |
 |---|---|---|---|---|
-| 0 | ⬜ | | | |
-| 1 | ⬜ | | | |
-| 2 | ⬜ | | | |
-| 3 | ⬜ | | | |
+| 0 | ✅ | 11 oct 2026 | — | Hecha sobre la web Vite; luego superada por la migración |
+| 1 | ✅ | 11 oct 2026 | — | Adelantada; Figma como kit en `design/figma/` |
+| 2 | 🟡 | 12 oct 2026 | — | Páginas y 6 casos listos; falta lanzamiento y Resend |
+| 3 | 🟡 | 12 oct 2026 | — | Código listo; faltan conversiones, QA y Clarity en las cuentas |
 | 4 | ⬜ | | | |
 | 6 | ⬜ | | | |

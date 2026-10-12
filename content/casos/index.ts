@@ -82,9 +82,9 @@ const allCases: CaseStudy[] = [
     problem:
       "La bolsa laboral, el creador de CV y los formularios de feria vivían en plataformas de terceros, cada una con su usuario y sin datos comunes.",
     result: {
-      value: "En producción",
-      label: "plataforma de empleabilidad propia de la universidad",
-      context: "En uso desde oct. 2026 · base de la feria virtual del 22 oct",
+      value: "3 → 1",
+      label: "plataformas de terceros reemplazadas por una propia",
+      context: "En producción y en uso desde oct. 2026 · base de la feria virtual del 22 oct",
     },
     type: "web",
     context: "Universidad Norbert Wiener · Dirección de Empleabilidad y Alumni",

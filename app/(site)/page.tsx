@@ -7,7 +7,6 @@ import {
   IconRoute,
 } from "@tabler/icons-react";
 import Link from "next/link";
-import { MeasureRule } from "@/components/brand/measure-rule";
 import { CvButton } from "@/components/sections/cv-button";
 import { Button } from "@/components/ui/button";
 import { CaseArticle } from "@/components/ui/case-article";
@@ -35,8 +34,6 @@ const proof = [
 
 // Casos destacados: solo los publicables en este build (07-PROYECTOS.md §3).
 const featured = cases.filter((c) => c.featured).slice(0, 3);
-// Retrato (§10.2): public/img/retrato.{avif,webp,jpg}. Sin archivo, placeholder de marca.
-const portrait = findImage("retrato");
 
 const services = [
   {
@@ -85,9 +82,7 @@ export default function Home() {
             <h1 id="hero-title" className="mt-4 text-display">
               {profile.name}
             </h1>
-            <p className="mt-5 max-w-prose text-lead text-ink-900">
-              Desarrollo web y automatización de procesos | Next.js · Python · APIs
-            </p>
+            <p className="mt-5 max-w-prose text-lead text-ink-900">{profile.tagline}</p>
             <p className="mt-4 max-w-prose">{profile.summary}</p>
             <div>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
@@ -115,22 +110,16 @@ export default function Home() {
               </ul>
             </div>
           </div>
-          <figure className="lg:col-span-5">
+          <div className="lg:col-span-4 lg:col-start-9">
             <MediaFrame
-              src={portrait}
+              src={findImage("retrato")}
               alt={`Retrato de ${profile.name}`}
               ratio="portrait"
-              sizes="(min-width: 1024px) 40vw, 100vw"
+              sizes="(min-width: 1024px) 30vw, (min-width: 640px) 66vw, 75vw"
               priority
               className="mx-auto w-3/4 shadow-md sm:w-2/3 lg:w-full"
             />
-            <figcaption className="mx-auto mt-3 flex w-3/4 items-center justify-between gap-4 text-label-mono text-ink-500 sm:w-2/3 lg:w-full">
-              <span>{profile.location}</span>
-              <span className="w-1/2">
-                <MeasureRule />
-              </span>
-            </figcaption>
-          </figure>
+          </div>
         </Container>
       </section>
 
@@ -255,8 +244,8 @@ export default function Home() {
             </h2>
             <p className="mt-4 max-w-prose text-lead">
               Disponible para roles junior desde enero 2027 como desarrollador web, analista de
-              automatización o desarrollador de soluciones. Si tu equipo necesita conectar sistemas y
-              ahorrar tiempo operativo, conversemos.
+              automatización o desarrollador de soluciones. Si tu equipo necesita conectar sistemas
+              y ahorrar tiempo operativo, conversemos.
             </p>
           </div>
           <div className="flex flex-wrap gap-3 lg:col-span-5 lg:justify-end">

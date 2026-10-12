@@ -21,7 +21,7 @@ export const metadata: Metadata = pageMetadata({
 const principles = [
   {
     title: "Problema de negocio antes que código",
-    body: "Entiendo qué fricción operativa o qué conversión está en juego antes de diseñar una tabla o un componente.",
+    body: "Entiendo qué proceso se repite, cuánto tiempo cuesta y quién lo sufre antes de diseñar una tabla o un componente.",
   },
   {
     title: "Ninguna métrica sin contexto",
@@ -81,7 +81,8 @@ export default function SobreMiPage() {
               src={findImage("retrato")}
               alt={`Retrato de ${profile.name}`}
               ratio="portrait"
-              sizes="(min-width: 768px) 33vw, 100vw"
+              sizes="(min-width: 768px) 33vw, 75vw"
+              priority
               className="mx-auto w-3/4 md:w-full"
             />
           </div>

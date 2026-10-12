@@ -23,6 +23,9 @@ Portafolio de Sebastián Jaque (Desarrollo web · Automatización de procesos ·
 
 ## Comandos
 - `pnpm dev` · `pnpm build` · `pnpm lint` · `pnpm lhci` (Lighthouse CI)
+- `pnpm typecheck` · `pnpm cv:pdf` (exporta `content/cv/CV-Sebastian-Jaque.docx` a `public/cv/`)
+- `node scripts/brand/build-assets.mjs && scripts/brand/render-png.sh` (logo, favicon, íconos) · `node scripts/brand/figma-kit.mjs` (kit de Figma en `design/figma/`)
+- Imágenes: `public/img/retrato.webp` (4:5) y `public/img/casos/<slug>.webp` (16:9); aparecen solas en el sitio (`03-DESIGN.md` §6.8)
 
 ## Antes de dar algo por terminado
 Build sin errores, lint limpio, Lighthouse ≥ 95 en la página tocada, revisión con teclado, y si hay eventos nuevos: verificados en GTM Preview.

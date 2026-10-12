@@ -3,7 +3,7 @@
 > **Fuente de verdad visual y verbal** de la marca Sebastián Jaque, para la web, el CV, LinkedIn, GitHub, presentaciones, documentos y cualquier pieza futura.
 > Si una decisión no está aquí, se agrega aquí antes de implementarla o publicarla.
 >
-> **Versión:** 3.2 · **Actualizado:** 12 oct 2026 · **Responsable:** Sebastián Jaque
+> **Versión:** 3.3 · **Actualizado:** 12 oct 2026 · **Responsable:** Sebastián Jaque
 
 ---
 
@@ -77,7 +77,7 @@ Concreta, en primera persona, con números que tienen contexto, curiosa y honest
 | Web (home, casos) | Claro, seguro, sobrio | 3 | "Construí una bolsa de trabajo con CMS por roles para ferias laborales." |
 | CV | Factual, verbos en pasado | 4 | "Implementé un flujo de envío segmentado por facultad, carrera y ciclo." |
 | LinkedIn (posts) | Conversacional, reflexivo | 2 | "Esta semana rompí la medición de mi web. Así lo arreglé." |
-| Mensaje a reclutador | Directo, breve, respetuoso | 4 | "Hola, [nombre]. Vi la vacante de Analista MarTech y creo que encajo por dos razones:" |
+| Mensaje a reclutador | Directo, breve, respetuoso | 4 | "Hola, [nombre]. Vi la vacante de Analista de automatización y creo que encajo por dos razones:" |
 | Comentarios / respuestas | Amable, agrega algo útil | 2 | "Buen punto. En mi caso lo resolví con…" |
 | GitHub (README) | Técnico, instructivo | 3 | "Plataforma de gestión de pedidos. Next.js + PostgreSQL." |
 | Correo a cliente PYME | Cercano, sin tecnicismos | 3 | "Lo que propongo es que los pedidos lleguen solos a una hoja, sin copiarlos." |
@@ -129,7 +129,7 @@ Concreta, en primera persona, con números que tienen contexto, curiosa y honest
 
 ### 2.6 Emojis, hashtags y signos
 - **Emojis:** máximo 1 por post, nunca en títulos de la web ni en el CV. Preferir los símbolos tipográficos de marca: `→`, `·`, `—`, `✓`.
-- **Hashtags (LinkedIn):** 3 como máximo, al final, en tipo camello: `#MarTech #GA4 #DesarrolloWeb`.
+- **Hashtags (LinkedIn):** 3 como máximo, al final, en tipo camello: `#DesarrolloWeb #Automatizacion #NextJS`.
 - **Exclamaciones:** máximo una por pieza. Nunca dobles (!!).
 - **Mayúsculas sostenidas:** solo en etiquetas mono (§5.3), nunca para gritar.
 
@@ -601,12 +601,12 @@ Principio: **el movimiento explica, no decora.**
 | Instagram / TikTok / X | — | Fuera de alcance hasta 2027 | No abrir sin un objetivo medible |
 
 ### 12.2 Pilares de contenido
-Los cuatro pilares (Construyendo · Medición y CRO · Automatización para PYMES · IA en agencias), su proporción y su cadencia están en `06-CONTENIDO.md` §5.2–§5.3. Cada pilar tiene un **indicador visual** fijo en la etiqueta mono de la pieza:
+Los cuatro pilares (Construyendo · Automatización para PYMES · Aprendiendo medición · IA en agencias), su proporción y su cadencia están en `06-CONTENIDO.md` §5.2–§5.3. Cada pilar tiene un **indicador visual** fijo en la etiqueta mono de la pieza:
 
 | Pilar | Etiqueta | Elemento gráfico dominante |
 |---|---|---|
 | Construyendo | `CONSTRUYENDO` | Diagrama de arquitectura o captura enmarcada |
-| Medición y CRO | `MEDICIÓN` | Gráfico de datos o ficha de métrica |
+| Aprendiendo medición | `MEDICIÓN` | Gráfico de datos o ficha de métrica |
 | Automatización para PYMES | `AUTOMATIZACIÓN` | Diagrama de flujo (disparador → resultado) |
 | IA en agencias | `INVESTIGACIÓN` | Dato agregado + fuente |
 
@@ -723,7 +723,7 @@ Para armar, editar y mantener las piezas gráficas en Figma con exactitud profes
 - **Padding Auto-Layout:** 80 px en todos los lados.
 - **Estructura en Auto-Layout Vertical (Separación entre bloques: 48 px):**
   1. **Header (Auto-Layout Horizontal, Space-Between):**
-     - Izquierda: Etiqueta Mono del Pilar (ej. `MEDICIÓN Y CRO` o `AUTOMATIZACIÓN`) en JetBrains Mono 500, 22 px, tracking 0.06 em, color `gris-500` / `marino-100`.
+     - Izquierda: Etiqueta Mono del Pilar (ej. `AUTOMATIZACIÓN` o `CONSTRUYENDO`) en JetBrains Mono 500, 22 px, tracking 0.06 em, color `gris-500` / `marino-100`.
      - Derecha: Monograma `sj` en tamaño 40 × 40 px.
   2. **Titular (Headline):** Inter 600, 64–72 px, line-height: 105 %, color `tinta` (o `papel` si el fondo es marino). Máx. 2–3 líneas.
   3. **Bloque central (Evidencia / Visual):**
@@ -1008,20 +1008,19 @@ Cada botón lleva `data-cta="<id>"` para la medición (ver `04-TECH-SEO-MEDICION
 | `Footer` | Enlaces, redes, "Actualizado: <fecha>" | Fecha generada en el build; wordmark compacto en `--color-brand` |
 | `Container`, `Section` | Ancho y ritmo vertical | `Section` aplica `--space-8/9` |
 | `SectionHeader` | Etiqueta mono + `h2` + lead opcional | |
-| `Hero` | Nombre, rol, frase, foto, disponibilidad, 2 CTA | Foto con `priority`, sin animación de entrada |
-| `ProofStrip` | 3 métricas con contexto | Métrica en `text-metric` verde + una línea de contexto |
-| `CaseCard` | Imagen, título, problema, resultado, stack | Toda la tarjeta clicable (un solo enlace) |
+| `Hero` | Antetítulo (rol), nombre, frase canónica, resumen, 2 CTA, disponibilidad y ubicación con ícono, retrato 4:5 | Retrato con `priority`; entrada solo con `transform` (§11) |
+| `ProofStrip` (en la home) | 3 métricas con contexto | Dentro de la banda invertida (§15.4); métrica en `text-metric` verde |
 | `CaseFacts` | Ficha del caso (rol, duración, stack, estado) | Lista de definiciones `<dl>` |
 | `Metric` | Cifra + etiqueta + base/periodo | Obliga a pasar `context` |
 | `Tag` | Etiqueta de stack | Mono, borde, sin color de acento |
 | `StatusBadge` | "En producción", "Prototipo", "Entregado" | Ícono + texto, nunca solo color |
 | `Timeline` | Experiencia | Cargo real, empresa, fechas |
-| `PostCard` | Nota del blog | Pilar (etiqueta de §12.2), fecha, tiempo de lectura |
+| `PostCard` (Fase 4) | Nota del blog | Pilar (etiqueta de §12.2), fecha, tiempo de lectura; mismo formato que `CaseArticle` |
 | `Prose` | Estilos de texto largo para MDX | 68ch, enlaces subrayados |
 | `Callout` | Aprendizaje / advertencia en casos | Variantes `info` (neutro) y `warning` (ámbar) |
-| `Figure` | Imagen + leyenda | `next/image`, AVIF/WebP, dimensiones obligatorias, marco de §6.5 |
-| `Diagram` | SVG de arquitectura o flujo | Reglas de §8 |
-| `Chart` | Gráfico de datos | Reglas de §9; tabla alternativa accesible |
+| `Figure` (pendiente) | Imagen + leyenda dentro del MDX | `next/image`, AVIF/WebP, marco de §6.5 |
+| `FlowDiagram` | Diagrama de flujo o arquitectura en HTML | Reglas de §8; horizontal solo si su contenedor es ancho (container query) |
+| `Chart` (pendiente) | Gráfico de datos | Reglas de §9; tabla alternativa accesible |
 | `ContactForm` | Formulario de 4 campos | Errores en línea, `aria-live` |
 | `ThemeToggle` | Claro / oscuro / sistema | Respeta `prefers-color-scheme` |
 | `ConsentBanner` | Consentimiento de medición | Discreto, inferior, dos botones del mismo peso |
@@ -1037,9 +1036,12 @@ Cada botón lleva `data-cta="<id>"` para la medición (ver `04-TECH-SEO-MEDICION
 
 ## 20. Imágenes en la web
 
+- **Espacios de imagen:** ver §6.8 (retrato y portadas de caso; se llenan dejando el archivo en `public/img/`).
 - **Capturas de casos:** marco de §6.5. Siempre con datos simulados.
-- **Diagramas:** SVG según §8.
-- **Foto personal:** retrato principal de §10.
+- **Imágenes generadas:** solo editoriales y sin rostros, con el prompt base de §10.7.
+- **Diagramas:** `FlowDiagram` según §8.
+- **Foto personal:** retrato principal de §10 (`public/img/retrato.webp`, 1200 × 1500).
+- **Prioridad de carga:** `priority` solo en la primera imagen visible de cada página (retrato del hero, primer artículo de `/proyectos`, portada del caso).
 - **Prohibido:** renders 3D, ilustraciones genéricas de "IA", fotos de stock.
 - Formatos AVIF/WebP vía `next/image`; ninguna imagen sobre 200 KB.
 
@@ -1148,11 +1150,15 @@ En Tailwind v4 se exponen con `@theme` para usar clases como `bg-surface`, `text
 |---|---|---|
 | `public/brand/logo/wordmark.svg` · `wordmark-dark.svg` · `wordmark-marino.svg` · `wordmark-compacto.svg` | Wordmark principal y compacto | ✅ Generado (`scripts/brand/`) |
 | `public/brand/logo/monograma.svg` · `monograma-negativo.svg` · `monograma-mono.svg` · `monograma-simple.svg` | Monograma | ✅ Generado (`scripts/brand/`) |
-| `public/brand/avatar-silhouette.svg` | Ilustración minimalista vectorial (avatar provisional Hero §10.6) | ✅ Generado |
+| `public/brand/avatar-silhouette.svg` | Ilustración vectorial (solo piezas gráficas, §10.6) | ✅ Generado |
+| `public/img/retrato.webp` | Retrato del hero y de /sobre-mi (4:5) | ✅ Subido |
+| `public/img/casos/<slug>.webp` | Portadas de los 6 casos (16:9) | ✅ Subidas |
 | `public/favicon.svg` · `app/favicon.ico` · `apple-touch-icon.png` · `icon-192.png` · `icon-512.png` | Íconos de app | ✅ Generado |
 | `public/brand/diagramas/*.svg` | Plantillas de §8.3 | ⬜ Por crear |
-| `brand/plantillas/` (Figma: archivo de componentes y layouts según §12.9) | Post, carrusel, banner LinkedIn, portadas OG, slides | ⬜ Por crear en Figma |
-| `brand/fotos/` (fuera del repo público si contiene originales pesados) | Retratos y fotos de trabajo | ⬜ Por producir |
+| `design/figma/*.svg` (kit para importar a Figma, `scripts/brand/figma-kit.mjs`) | Logo, color, tipografía, elementos, banner LinkedIn, post 4:5, carrusel, OG, imágenes, artículo de caso 1200 × 630 | ✅ Generado; rol y frase desde `profile.ts` |
+| Archivo de Figma en la cuenta | Kit importado y editable | ⬜ Importar (o vía MCP de Figma cuando esté activo) |
+| `brand/fotos/` (fuera del repo público si contiene originales pesados) | Originales de retratos y fotos de trabajo | ⬜ Archivar originales |
+| Imágenes OG por página | `app/(site)/**/opengraph-image.tsx` con `lib/og.tsx` | ✅ Generadas en el build (rol y frase desde `profile.ts`) |
 | `app/tokens.css` | Tokens de §22 | ✅ Implementado (Tailwind v4 `@theme`) |
 
 ## 25. Historial de cambios
@@ -1165,3 +1171,4 @@ En Tailwind v4 se exponen con `@theme` para usar clases como `bg-surface`, `text
 | 3.0 | 12 oct 2026 | Profundidad sin perder sobriedad: degradados tonales (§6.7), superficies por niveles, banda invertida marino con tokens propios (§15.4), portadas de caso generadas (§6.8), ficha de perfil en lugar de silueta (§10.6), revelado al hacer scroll solo con CSS y microinteracciones (§11), nuevos componentes en §19.2. |
 | 3.1 | 12 oct 2026 | Simplificación: principio de densidad (§14.6), una sola banda invertida por página, tarjeta de caso de 3 elementos, se retiran la ficha de perfil del hero, las portadas generadas y la franja de herramientas por repetir información. |
 | 3.2 | 12 oct 2026 | Hero con espacio de retrato y sin pastilla; espacios de imagen con placeholder de marca (§6.8); prompt base de imágenes (§10.7); casos en formato de artículo (`CaseArticle`); entrada del hero solo con transform, zoom de imagen y flechas (§11); botones más claros y a todo el ancho en el celular (§19.1); densidad equilibrada con ancla visual por sección (§14.6). |
+| 3.3 | 12 oct 2026 | Revisión de cierre: hero con frase canónica como bajada y retrato real, sin pie decorativo; prioridad de carga por página (§20); inventarios de componentes (§19.2) y archivos (§24) al día; ejemplos de voz y pilares alineados al posicionamiento de desarrollo web + automatización (§2, §12). |

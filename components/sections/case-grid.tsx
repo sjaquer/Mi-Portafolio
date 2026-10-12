@@ -57,6 +57,7 @@ export function CaseGrid({ items }: { items: CaseItem[] }) {
               image={image}
               minutes={minutes}
               variant={idx === 0 ? "featured" : "row"}
+              priority={idx === 0}
               headingLevel="h3"
             />
           </li>

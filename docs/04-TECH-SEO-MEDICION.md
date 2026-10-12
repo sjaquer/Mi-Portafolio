@@ -109,7 +109,7 @@ Validar con la [Prueba de resultados enriquecidos](https://search.google.com/tes
 | Intención | Ejemplos | Página |
 |---|---|---|
 | Marca | "Sebastián Jaque", "sjaquer" | Home |
-| Rol + ciudad | "desarrollador web junior Lima", "MarTech junior Perú" | Home, Sobre mí |
+| Rol + ciudad | "desarrollador web junior Lima", "analista de automatización de procesos Lima", "desarrollador Next.js Perú" | Home, Sobre mí |
 | Problema PYME | "automatizar WhatsApp para negocio", "integrar Shopify con Google Sheets" | Casos, notas |
 | Aprendizaje técnico | "eventos GA4 con GTM Next.js", "migrar SQLite a PostgreSQL" | Notas |
 
@@ -130,11 +130,14 @@ No se persigue volumen: se busca que quien te googlee después de ver tu CV encu
 | Peso total de la home | < 500 KB |
 | Lighthouse (4 categorías) | ≥ 95 |
 
+**Estado medido (12 oct 2026, Lighthouse móvil local):** Accesibilidad, Buenas prácticas y SEO 100 en todas las páginas; LCP 1,4–1,6 s; CLS ≈ 0. **Rendimiento 86–91** y JS de la home ≈ 140 KB (base de React + Next) + ≈ 176 KB de GTM/GA4. Dos desvíos conocidos, registrados en `docs/decisiones.md`: (1) el snippet de GTM se carga en `<head>` por decisión de Sebastián (12 oct), lo que sube el bloqueo del hilo principal; cargarlo tras la primera interacción (`components/analytics/tag-loader.tsx`, ya preparado) devuelve Rendimiento ≈ 98. (2) El JS base de Next 16 + React 19 supera por sí solo los 100 KB: el límite se interpreta como JS propio del sitio.
+
 ### 3.2 Prácticas
 - Todo estático por defecto; Server Components; `"use client"` solo donde hay interacción (menú, tema, formulario, consentimiento).
 - `next/font` con `display: swap` y subconjunto latino.
 - `next/image` con `sizes` correctos; foto del hero con `priority`; el resto diferido.
-- GTM cargado con `@next/third-parties` **después** de la interacción o del consentimiento, nunca bloqueando el render.
+- GTM: recomendado cargarlo **después** de la interacción o del consentimiento (`TagLoader`). Hoy también hay un snippet en `<head>` (`app/layout.tsx`); ver el estado medido en §3.1.
+- Animaciones solo con CSS y solo `transform` (sin animar opacidad del contenido): no retrasan el LCP ni bajan el contraste.
 - Nada de WebGL, ni librerías de animación pesadas (CSS basta).
 
 ### 3.3 Línea base (Fase 0)

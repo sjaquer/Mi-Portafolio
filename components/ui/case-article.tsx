@@ -17,20 +17,29 @@ interface Props {
   /** featured: imagen grande al lado · row: miniatura al lado · card: imagen arriba. */
   variant?: "featured" | "row" | "card";
   headingLevel?: "h2" | "h3";
+  /** Solo para la primera imagen visible de la página (LCP). */
+  priority?: boolean;
 }
 
 /**
  * Caso en formato de artículo (03-DESIGN.md §19.2): imagen, antetítulo (tipo · año ·
  * lectura), titular, bajada y resultado. Toda la pieza es clicable con un solo enlace.
  */
-export function CaseArticle({ c, image, minutes, variant = "row", headingLevel = "h3" }: Props) {
+export function CaseArticle({
+  c,
+  image,
+  minutes,
+  variant = "row",
+  headingLevel = "h3",
+  priority,
+}: Props) {
   const Heading = headingLevel;
   const featured = variant === "featured";
   const layout = {
     featured: {
       root: "md:grid-cols-12 md:items-center md:gap-7",
-      media: "md:col-span-7",
-      body: "md:col-span-5",
+      media: "md:col-span-6",
+      body: "md:col-span-6",
     },
     row: {
       root: "sm:grid-cols-12 sm:gap-6",
@@ -48,7 +57,8 @@ export function CaseArticle({ c, image, minutes, variant = "row", headingLevel =
         alt=""
         ratio="video"
         icon={typeIcon[c.type]}
-        sizes={featured ? "(min-width: 768px) 58vw, 100vw" : "(min-width: 1024px) 50vw, 100vw"}
+        priority={priority}
+        sizes={featured ? "(min-width: 768px) 50vw, 100vw" : "(min-width: 1024px) 50vw, 100vw"}
         className={layout.media}
       />
       <div className={`flex flex-col gap-3 ${layout.body}`}>
