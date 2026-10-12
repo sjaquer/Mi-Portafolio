@@ -37,7 +37,7 @@ export function Timeline({
                   <li key={h}>{h}</li>
                 ))}
               </ul>
-              {e.metric && (
+              {!compact && e.metric && (
                 <p className="text-small text-ink-700">
                   <span
                     className={`font-mono font-semibold ${e.metric.measured || /[%−+]/.test(e.metric.value) ? "text-success-700" : "text-ink-900"}`}

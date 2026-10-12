@@ -1,67 +1,38 @@
 import Link from "next/link";
-import { CaseCover } from "@/components/ui/case-cover";
-import { TagList } from "@/components/ui/tag";
 import { DraftNotice } from "@/components/ui/draft-notice";
-import { StatusBadge } from "@/components/ui/status-badge";
-import { caseStatusLabel, caseTypeLabel, type CaseStudy } from "@/content/casos";
+import { caseTypeLabel, type CaseStudy } from "@/content/casos";
 
 /**
- * Tarjeta de caso (§19.2): toda la tarjeta es clicable con un solo enlace
- * (el del título, extendido con ::after), así el lector de pantalla oye un único destino.
+ * Tarjeta de caso (§19.2, densidad §14.6): etiqueta (tipo · año), título y resultado.
+ * El estado, el problema y el stack viven en la página del caso.
+ * Toda la tarjeta es clicable con un solo enlace (el del título, extendido con ::after).
  */
-export function CaseCard({
-  c,
-  headingLevel = "h3",
-  cover = true,
-}: {
-  c: CaseStudy;
-  headingLevel?: "h2" | "h3";
-  cover?: boolean;
-}) {
+export function CaseCard({ c, headingLevel = "h3" }: { c: CaseStudy; headingLevel?: "h2" | "h3" }) {
   const Heading = headingLevel;
-  const numeric = /\d/.test(c.result.value) && /[%−+]/.test(c.result.value);
+  const measured = c.result.measured ?? (/\d/.test(c.result.value) && /[%−+]/.test(c.result.value));
   return (
-    <article className="group relative flex h-full flex-col gap-5 overflow-hidden rounded-lg border border-border bg-surface p-5 transition duration-200 ease-standard hover:-translate-y-px hover:border-border-strong hover:shadow-md motion-reduce:hover:translate-y-0">
-      {cover && (
-        <div className="-mx-5 -mt-5 border-b border-border">
-          <CaseCover c={c} />
-        </div>
-      )}
+    <article className="group relative flex h-full flex-col gap-4 rounded-lg border border-border bg-surface p-5 transition duration-200 ease-standard hover:-translate-y-px hover:border-border-strong hover:shadow-md motion-reduce:hover:translate-y-0">
       <DraftNotice item={c} />
-      <div className="flex flex-col items-start gap-2">
-        <span className="text-label-mono text-ink-500">
-          {caseTypeLabel[c.type]} · {c.year}
-        </span>
-        {c.result.value !== caseStatusLabel[c.status] && <StatusBadge status={c.status} />}
-      </div>
-
-      <div className="flex flex-col gap-3">
-        <Heading className="text-h3">
-          <Link
-            href={`/proyectos/${c.slug}`}
-            data-cta={`case_card_${c.slug}`}
-            className="group-hover:underline group-hover:underline-offset-4 after:absolute after:inset-0 after:rounded-lg after:content-[''] focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-2 focus-visible:after:outline-focus"
-          >
-            {c.title}
-          </Link>
-        </Heading>
-        <p className="text-ink-700">{c.problem}</p>
-      </div>
-
-      <div className="mt-auto flex flex-col gap-1 border-t border-border pt-4">
-        <p
-          className={
-            numeric
-              ? "font-mono text-h3 font-semibold text-success-700"
-              : "font-mono text-h3 font-semibold text-ink-900"
-          }
+      <p className="text-label-mono text-ink-500">
+        {caseTypeLabel[c.type]} · {c.year}
+      </p>
+      <Heading className="text-h3">
+        <Link
+          href={`/proyectos/${c.slug}`}
+          data-cta={`case_card_${c.slug}`}
+          className="group-hover:underline group-hover:underline-offset-4 after:absolute after:inset-0 after:rounded-lg after:content-[''] focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-2 focus-visible:after:outline-focus"
+        >
+          {c.title}
+        </Link>
+      </Heading>
+      <p className="mt-auto border-t border-border pt-4 text-small text-ink-700">
+        <span
+          className={`mr-2 font-mono text-body font-semibold ${measured ? "text-success-700" : "text-ink-900"}`}
         >
           {c.result.value}
-        </p>
-        <p className="text-small text-ink-700">{c.result.label}</p>
-      </div>
-
-      <TagList label="Stack" items={c.stack} />
+        </span>
+        {c.result.label}
+      </p>
     </article>
   );
 }

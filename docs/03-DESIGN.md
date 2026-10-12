@@ -3,7 +3,7 @@
 > **Fuente de verdad visual y verbal** de la marca Sebastián Jaque, para la web, el CV, LinkedIn, GitHub, presentaciones, documentos y cualquier pieza futura.
 > Si una decisión no está aquí, se agrega aquí antes de implementarla o publicarla.
 >
-> **Versión:** 3.0 · **Actualizado:** 12 oct 2026 · **Responsable:** Sebastián Jaque
+> **Versión:** 3.1 · **Actualizado:** 12 oct 2026 · **Responsable:** Sebastián Jaque
 
 ---
 
@@ -390,12 +390,12 @@ La marca es sobria, no plana. La profundidad se construye con **capas de un mism
 | 2 · Elevada | Tarjeta en hover, menús | blanco + `shadow-md` | `#1D2026` + borde |
 | Invertida | Bandas de identidad | marino-900 `#13233A` | marino-900 `#13233A` |
 
-**Banda invertida (identidad).** Secciones en marino-900 para marcar ritmo: resultados y CTA final. Máximo dos por página y nunca seguidas. Dentro de la banda, los tokens se redefinen (§15.4) para que los componentes funcionen sin cambios. Contrastes sobre `#13233A`: papel 15,1:1 · marino-100 11,7:1 · `#A9B8CC` 7,8:1 · azul `#A3BAFF` 8,3:1 · verde `#3FC08A` 6,9:1 ✅.
+**Banda invertida (identidad).** Una sección en marino-900 para marcar el punto más importante de la página (en la home: los resultados medidos). **Máximo una por página** (§14.6). Dentro de la banda, los tokens se redefinen (§15.4) para que los componentes funcionen sin cambios. Contrastes sobre `#13233A`: papel 15,1:1 · marino-100 11,7:1 · `#A9B8CC` 7,8:1 · azul `#A3BAFF` 8,3:1 · verde `#3FC08A` 6,9:1 ✅.
 
 **Elevación.** Borde de 1 px en reposo. En hover, la tarjeta sube 2 px y gana `shadow-md`. `shadow-lg` solo para lo que flota (banner de consentimiento, menús).
 
-### 6.8 Portadas de caso (v3.0)
-Mientras no haya capturas con datos simulados, cada caso usa una **portada generada**: fondo tonal (§6.7) + retícula de puntos + 3 nodos del diagrama del caso (el nodo que construí, destacado en marino) + la cifra del resultado en mono. Es SVG en línea (< 3 KB), legible en ambos temas y consistente con §8. Cuando exista una captura, reemplaza a la portada dentro del marco de §6.5.
+### 6.8 Imagen de caso
+Las tarjetas de caso no llevan imagen mientras no existan **capturas reales con datos simulados** (§6.5). Una portada generada (diagrama en miniatura) se probó en la v3.0 y se retiró en la v3.1: añadía ruido sin información nueva.
 
 ---
 
@@ -508,7 +508,7 @@ Fotos de stock, avatares hiperrealistas de IA con estilos fantásticos/cyberpunk
 
 ### 10.6 Estado transitorio — Ficha de perfil (v3.0) e ilustración
 
-**En la web, la silueta se reemplaza por una ficha de perfil** hasta que exista el retrato: tarjeta de nivel 1 con monograma, nombre, rol, disponibilidad, ubicación, stack principal (etiquetas mono) y enlaces a LinkedIn y GitHub. Aporta información en lugar de un placeholder. La silueta queda solo para piezas gráficas.
+**En la web, el hero va sin imagen hasta que exista el retrato real** (§10.2): una columna de texto sobre el fondo tonal (§6.7). Una ficha de perfil se probó en la v3.0 y se retiró en la v3.1 porque repetía nombre, rol y disponibilidad ya visibles. La silueta queda solo para piezas gráficas.
 
 **Ilustración (piezas gráficas):**
 Mientras se realiza la sesión fotográfica del retrato principal (§10.2), la web y piezas de soporte utilizan una **ilustración minimalista vectorial o silueta monocroma sutil**:
@@ -750,6 +750,12 @@ Portada con wordmark + etiqueta mono del tipo de documento; cuerpo en Geist/Inte
 3. **Evidencia antes que adjetivos.** Las métricas y las capturas tienen más peso visual que los títulos de marketing.
 4. **Rápido es una característica de diseño.** Si un efecto empeora el LCP o el INP, no entra.
 5. **Accesible por defecto.** AA en todo; foco siempre visible.
+6. **Densidad (v3.1).** Menos elementos, más aire. Reglas verificables:
+   - **Un dato, una vez por pantalla.** Si una cifra está en Resultados, no se repite en tarjetas ni en la experiencia de esa misma pantalla.
+   - **Tarjeta de caso: 3 elementos** — etiqueta (tipo · año), título y resultado. El estado, el problema y el stack van en la página del caso.
+   - **Una sola banda invertida por página** y como máximo **dos tonos de fondo** además de ella.
+   - **Etiquetas de stack solo donde se decide algo** (ficha del caso, CV), nunca como decoración repetida.
+   - Ante la duda, quitar.
 
 ---
 
@@ -961,9 +967,6 @@ Cada botón lleva `data-cta="<id>"` para la medición (ver `04-TECH-SEO-MEDICION
 | `ContactForm` | Formulario de 4 campos | Errores en línea, `aria-live` |
 | `ThemeToggle` | Claro / oscuro / sistema | Respeta `prefers-color-scheme` |
 | `ConsentBanner` | Consentimiento de medición | Discreto, inferior, dos botones del mismo peso |
-| `ProfileCard` (v3.0) | Ficha de perfil del hero | Sustituye a la silueta (§10.6) |
-| `CaseCover` (v3.0) | Portada generada del caso | §6.8; SVG en línea, `aria-hidden` |
-| `StackStrip` (v3.0) | Herramientas con ícono | Íconos Tabler de marca, monocromos `ink-500` (§7) |
 | `Reveal` (v3.0) | Revelado al hacer scroll | Solo CSS; nunca en el hero (§11) |
 
 ### 19.3 Inputs
@@ -1100,3 +1103,4 @@ En Tailwind v4 se exponen con `@theme` para usar clases como `bg-surface`, `text
 | 2.0 | 11 oct 2026 | Ampliado a manual de marca personal: plataforma, personalidad, voz y escritura, logotipo, paleta extendida (marino, ámbar, primitivos), elementos gráficos, iconografía, diagramas, gráficos de datos (paleta validada para daltonismo), fotografía, redes, aplicaciones y checklist. Nuevos tokens `--color-brand`, `--color-warning-700` y `--chart-*`. |
 | 2.1 | 11 oct 2026 | Sesión de alineación y confirmación (/grill-me): ratificación de jerarquía de color (#1F3A5F identidad, #2350D9 acción, #0B7350 métricas), marca de medición técnica y paleta de gráficos de datos. Cambio oficial de familias tipográficas a Inter + JetBrains Mono. Inclusión de estado transitorio de avatar vectorial en Hero (§10.6). Incorporación de especificaciones técnicas detalladas para diseño en Figma (§12.9). |
 | 3.0 | 12 oct 2026 | Profundidad sin perder sobriedad: degradados tonales (§6.7), superficies por niveles, banda invertida marino con tokens propios (§15.4), portadas de caso generadas (§6.8), ficha de perfil en lugar de silueta (§10.6), revelado al hacer scroll solo con CSS y microinteracciones (§11), nuevos componentes en §19.2. |
+| 3.1 | 12 oct 2026 | Simplificación: principio de densidad (§14.6), una sola banda invertida por página, tarjeta de caso de 3 elementos, se retiran la ficha de perfil del hero, las portadas generadas y la franja de herramientas por repetir información. |

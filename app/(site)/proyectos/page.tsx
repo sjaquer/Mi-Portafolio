@@ -64,23 +64,19 @@ export default function ProyectosPage() {
             title="Sitios y herramientas"
             lead="Proyectos más pequeños, en una tarjeta: qué son y qué resuelven."
           />
-          <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="grid gap-x-6 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
             {gallery.map((g) => (
-              <li
-                key={g.name}
-                className="flex flex-col gap-3 rounded-lg border border-border bg-surface p-5"
-              >
+              <li key={g.name} className="flex flex-col gap-2 border-t border-border pt-5">
                 <DraftNotice item={g} />
                 <h3 className="text-h3">{g.name}</h3>
                 <p>{g.angle}</p>
-                <TagList label="Stack" items={g.stack} />
                 {g.href && (
                   <a
                     href={g.href}
                     target="_blank"
                     rel="noopener noreferrer"
                     data-cta={`gallery_${g.name.toLowerCase().replace(/[^a-z0-9]+/g, "_")}`}
-                    className="mt-auto inline-flex min-h-control-md w-fit items-center gap-1 text-small font-semibold text-accent-600 underline-offset-4 hover:underline"
+                    className="inline-flex min-h-control-md w-fit items-center gap-1 text-small font-semibold text-accent-600 underline-offset-4 hover:underline"
                   >
                     {g.hrefLabel ?? `Ver ${g.name}`}
                     <IconArrowUpRight size={16} stroke={1.5} aria-hidden />

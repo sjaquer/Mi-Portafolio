@@ -60,8 +60,6 @@ export interface CaseStudy extends Publication {
   updatedAt: string;
   /** Aparece en la home (máximo 3). */
   featured?: boolean;
-  /** Portada generada (§6.8): entrada → lo que construí → salida. */
-  cover: [string, string, string];
 }
 
 /** Motivo por el que algo no se publica todavía, o `null` si se publica. */
@@ -93,7 +91,6 @@ const allCases: CaseStudy[] = [
     role: "Único desarrollador: producto, arquitectura, backend y frontend",
     duration: "2026", // TODO(Sebastián): confirmar inicio y fin
     year: 2026,
-    cover: ["Usuarios", "Next.js", "PostgreSQL"],
     stack: ["Next.js", "Supabase/PostgreSQL", "Docker", "Playwright"],
     status: "produccion",
     updatedAt: "2026-10-11",
@@ -118,7 +115,6 @@ const allCases: CaseStudy[] = [
     role: "Diseño y desarrollo completo",
     duration: "2026", // TODO(Sebastián): fechas de inicio y puesta en uso
     year: 2026,
-    cover: ["Segmento", "Exclusión", "Envío"],
     stack: ["React", "Node.js", "PostgreSQL", "Microsoft 365"],
     status: "produccion",
     updatedAt: "2026-10-11",
@@ -142,7 +138,6 @@ const allCases: CaseStudy[] = [
     role: "Diseño y desarrollo del portal y del tablero",
     duration: "2026", // TODO(Sebastián): fechas
     year: 2026,
-    cover: ["Formulario", "Validación", "Tablero"],
     stack: ["React", "TypeScript", "PostgreSQL (Neon)", "Chart.js"],
     status: "produccion",
     updatedAt: "2026-10-11",
@@ -166,7 +161,6 @@ const allCases: CaseStudy[] = [
     role: "Diseño y desarrollo completo",
     duration: "2026", // TODO(Sebastián): fechas
     year: 2026,
-    cover: ["Empresa", "Inscripción", "Calendario"],
     stack: ["React", "TypeScript", "Tailwind CSS", "Apps Script"],
     status: "produccion",
     updatedAt: "2026-10-11",
@@ -189,7 +183,6 @@ const allCases: CaseStudy[] = [
     role: "Diseño y desarrollo completo",
     duration: "2026", // TODO(Sebastián): fechas
     year: 2026,
-    cover: ["Correo", "IA local", "Bolsa"],
     stack: ["Python", "Playwright", "Ollama", "Gemini"],
     status: "produccion",
     updatedAt: "2026-10-11",
@@ -212,7 +205,6 @@ const allCases: CaseStudy[] = [
     role: "Operaciones y Marketing · único programador del sistema",
     duration: "nov 2025 – sep 2026",
     year: 2025,
-    cover: ["Menú", "Webhook", "Cocina"],
     stack: ["Next.js", "React", "Firebase", "Webhooks"],
     status: "entregado", // TODO(Sebastián): ¿sigue en uso? Si es así, "produccion".
     updatedAt: "2026-10-11",
