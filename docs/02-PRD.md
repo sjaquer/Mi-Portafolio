@@ -79,7 +79,6 @@ Las metas son hipótesis iniciales: se revisan con datos reales al día 30. Eso 
 /notas/[slug]           Nota
 /contacto               Formulario + WhatsApp + email
 /privacidad             Aviso de privacidad y medición
-/blog-personal          Archivo personal protegido (noindex, fuera del sitemap)
 /404
 /llms.txt  /resume.txt  /sitemap.xml  /robots.txt  /rss.xml   (generados)
 ```

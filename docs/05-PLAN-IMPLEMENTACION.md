@@ -30,12 +30,15 @@ Por decisión de Sebastián ("hazlo sin importar la fecha"), las fases 0 a 6 se 
 - Fuente única `content/profile.ts`; CV en Word alineado al posicionamiento y PDF regenerado.
 - 7 casos publicados (Empleabilidad, Difusión, Formularios y NPS, Feria Virtual, Reqlut Bot, Big Jack, **Este portafolio**) + Dearel como borrador.
 - **Notas**: `/notas`, `/notas/[slug]`, filtro por pilar, RSS, `BlogPosting`, `post_read`, bloque de LinkedIn, "Últimas notas" en la home y **4 notas publicadas**.
+- Legales: `/privacidad` (Ley 29733 y su reglamento, encargados, cookies, derechos ARCO) y `/terminos` (condiciones de uso), en `content/legal/*.mdx`.
+- Formulario con dos correos de marca: notificación y confirmación automática (`lib/email/templates.ts`, vista previa en `/dev/correos`).
+- Limpieza: se eliminó el blog personal (`/blog-personal`) y `framer-motion`.
 - Medición: Consent Mode v2, 9 eventos tipados con parámetros limpios, contenedor importable `docs/gtm/eventos-sitio.json`, QA en producción.
 
 **Abierto (solo tú puedes hacerlo)**
 
 1. ⬜ **Cuentas de Google** (≈ 40 min, `04-TECH-SEO-MEDICION.md` §4.8): importar el contenedor de eventos en GTM, publicar, dimensiones y eventos clave en GA4, sitemap en Search Console.
-2. ⬜ **Resend:** `RESEND_API_KEY` y `CONTACT_FROM_EMAIL` en Vercel; probar envío correcto (error y honeypot ya probados).
+2. ⬜ **Resend:** `RESEND_API_KEY` y `CONTACT_FROM_EMAIL` en Vercel; probar envío correcto: deben llegar **2 correos** (notificación a ti y confirmación a quien escribe). Error y honeypot ya probados.
 3. ⬜ **LinkedIn:** publicar las 4 notas con la plantilla de `06` §5.5 (enlace con UTM en el primer comentario) y pegar cada URL en `linkedinUrl` de `content/notas/index.ts`; UTM en Destacados.
 4. ⬜ **Decisión de rendimiento:** GTM en `<head>` (hoy, Rendimiento 88–91) o tras la primera interacción (≈ 98). Ver `decisiones.md`.
 5. ⬜ **Datos** de `07-PROYECTOS.md` §4 en los casos, base del −30 % para publicar Dearel y la línea "fuera del trabajo" en `/sobre-mi`.

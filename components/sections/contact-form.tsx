@@ -134,7 +134,8 @@ export function ContactForm() {
       </div>
 
       <p className="text-small text-ink-500">
-        Uso tus datos solo para responder este mensaje. Más detalles en el{" "}
+        Uso tus datos solo para responder este mensaje y te llegará una confirmación a tu correo.
+        Más detalles en el{" "}
         <Link href="/privacidad" className="underline underline-offset-4 hover:text-ink-900">
           aviso de privacidad
         </Link>

@@ -8,7 +8,10 @@ export default defineConfig([
   {
     rules: {
       // Permite descartar props con prefijo _ al desestructurar.
-      "@typescript-eslint/no-unused-vars": ["warn", { varsIgnorePattern: "^_", argsIgnorePattern: "^_" }],
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        { varsIgnorePattern: "^_", argsIgnorePattern: "^_" },
+      ],
     },
   },
   globalIgnores([".next/**", "out/**", "dist/**", "next-env.d.ts", ".lighthouseci/**"]),

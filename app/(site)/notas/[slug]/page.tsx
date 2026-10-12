@@ -4,6 +4,7 @@ import { IconArrowLeft, IconBrandLinkedin, IconMessageCircle } from "@tabler/ico
 import { PostTracker } from "@/components/analytics/post-tracker";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
+import { ReadingProgress } from "@/components/ui/reading-progress";
 import { PostCard } from "@/components/ui/post-card";
 import { getNote, notes, pillarLabel } from "@/content/notas";
 import { profile } from "@/content/profile";
@@ -64,6 +65,7 @@ export default async function NotePage({ params }: PageProps<"/notas/[slug]">) {
   return (
     <article>
       <PostTracker slug={n.slug} pillar={n.pillar} />
+      <ReadingProgress />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}

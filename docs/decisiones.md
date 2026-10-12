@@ -22,6 +22,10 @@
 | 2026-10-12 | Dominio: se mantiene `sjaquer.is-a.dev` | Evita migrar dos veces mientras se acumulan datos y enlaces | Revisar si un dominio propio mejora la confianza en LinkedIn | 2027-02-01 |
 | 2026-10-12 | Versión en inglés: se pospone hasta la acreditación B1 | Prioridad del plan: inglés → tesis → portafolio | Retomar con el CV en inglés alineado | 2027-01-15 |
 | 2026-10-12 | Dearel queda como borrador | Falta base y método del −30 % (regla 2) | Publicar cuando exista el dato | — |
+| 2026-10-12 | Revisión de código: `src/` heredado de Vite pasa a `components/blog-personal` y `content/poemas.ts` en kebab-case; se eliminan `AvatarIllustration`, `@mdx-js/react`, `public/ai.txt` (desactualizado) y `public/resume_en.txt` (datos inflados de la web antigua) | Una sola convención de estructura; nada público que contradiga el CV | Repo coherente; `ai.txt` generado desde `profile.ts` | — |
+| 2026-10-12 | Cabeceras de seguridad en `next.config.ts` (nosniff, DENY, Referrer-Policy, Permissions-Policy, HSTS) y sin `X-Powered-By` | Se habían perdido al quitar `netlify.toml` | Puntaje de cabeceras A en securityheaders.com (CSP pendiente por GTM/Clarity) | 2026-11-12 |
+| 2026-10-12 | Saludo en DevTools con API `sj.*` (rendimiento, eventos, stack, contacto, CV) | Muestra conocimiento de Performance API y medición a perfiles técnicos | Sin costo de carga (idle) | — |
+| 2026-10-12 | Se elimina el blog personal (`/blog-personal`), sus poemas y `framer-motion`; se borra el `dist/` de Vite | No aporta a la narrativa profesional y era la única dependencia de animación | Repo más pequeño y enfocado | — |
 
 ## Hipótesis para la Fase 6 (se prueban con datos)
 

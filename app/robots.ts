@@ -3,7 +3,6 @@ import { profile } from "@/content/profile";
 
 // Se conserva la política anterior hacia rastreadores de IA y redes sociales;
 // se quitan Host, Crawl-delay y las reglas de Vite (04-TECH-SEO-MEDICION.md §2.3).
-// /blog-personal es un archivo personal protegido: fuera del índice.
 const aiCrawlers = [
   "GPTBot",
   "OAI-SearchBot",
@@ -14,7 +13,7 @@ const aiCrawlers = [
 ];
 const socialCrawlers = ["LinkedInBot", "Twitterbot", "facebookexternalhit", "WhatsApp", "Slackbot"];
 const seoScrapers = ["AhrefsBot", "SemrushBot", "MJ12bot", "DotBot", "BLEXBot"];
-const disallow = ["/api/", "/blog-personal"];
+const disallow = ["/api/", "/dev/"];
 
 export default function robots(): MetadataRoute.Robots {
   return {

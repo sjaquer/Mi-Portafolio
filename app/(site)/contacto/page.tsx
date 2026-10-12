@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { IconBrandLinkedin, IconBrandWhatsapp, IconMail } from "@tabler/icons-react";
 import { ContactForm } from "@/components/sections/contact-form";
+import { CopyEmail } from "@/components/sections/copy-email";
 import { Section } from "@/components/ui/section";
 import { profile } from "@/content/profile";
 import { pageMetadata } from "@/lib/seo";
@@ -78,6 +79,9 @@ export default function ContactoPage() {
               </li>
             ))}
           </ul>
+          <div className="mt-4">
+            <CopyEmail email={profile.links.email} />
+          </div>
           <p className="mt-5 text-small text-ink-500">{profile.location} · remoto</p>
         </aside>
       </div>

@@ -8,13 +8,30 @@ const OUT = "design/figma";
 mkdirSync(OUT, { recursive: true });
 
 const C = {
-  papel: "#FAFAF8", blanco: "#FFFFFF", gris50: "#F3F2EF", gris100: "#E4E2DD", gris400: "#8A9099",
-  gris500: "#666C76", gris700: "#3D424B", tinta: "#14161A",
-  marino50: "#EEF2F7", marino100: "#D6DFEA", marino300: "#8FA3BF", marino500: "#3F5E86",
-  marino700: "#1F3A5F", marino900: "#13233A",
-  azul50: "#EEF2FF", azul600: "#2350D9", azul700: "#1B40B3",
-  verde: "#0B7350", verdeOsc: "#3FC08A", ambar: "#B54708", rojo: "#B42318",
-  chart1: "#2350D9", chart2: "#D0611F", chart3: "#00897B",
+  papel: "#FAFAF8",
+  blanco: "#FFFFFF",
+  gris50: "#F3F2EF",
+  gris100: "#E4E2DD",
+  gris400: "#8A9099",
+  gris500: "#666C76",
+  gris700: "#3D424B",
+  tinta: "#14161A",
+  marino50: "#EEF2F7",
+  marino100: "#D6DFEA",
+  marino300: "#8FA3BF",
+  marino500: "#3F5E86",
+  marino700: "#1F3A5F",
+  marino900: "#13233A",
+  azul50: "#EEF2FF",
+  azul600: "#2350D9",
+  azul700: "#1B40B3",
+  verde: "#0B7350",
+  verdeOsc: "#3FC08A",
+  ambar: "#B54708",
+  rojo: "#B42318",
+  chart1: "#2350D9",
+  chart2: "#D0611F",
+  chart3: "#00897B",
 };
 const SANS = "Inter";
 const MONO = "JetBrains Mono";
@@ -57,16 +74,35 @@ const wmH = Number(WORDMARK.viewBox.split(" ")[3]);
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
 
 /** Texto vivo; `lines` permite saltos de línea manuales (SVG no ajusta texto). */
-function text(id, x, y, lines, { size = 16, weight = 400, fill = C.tinta, family = SANS, lh = 1.2, tracking = 0, upper = false, anchor = "start" } = {}) {
+function text(
+  id,
+  x,
+  y,
+  lines,
+  {
+    size = 16,
+    weight = 400,
+    fill = C.tinta,
+    family = SANS,
+    lh = 1.2,
+    tracking = 0,
+    upper = false,
+    anchor = "start",
+  } = {},
+) {
   const arr = Array.isArray(lines) ? lines : [lines];
   const ls = tracking ? ` letter-spacing="${(tracking * size).toFixed(2)}"` : "";
   const tspans = arr
-    .map((l, i) => `<tspan x="${x}" ${i === 0 ? `y="${y}"` : `dy="${(size * lh).toFixed(1)}"`}>${esc(upper ? l.toUpperCase() : l)}</tspan>`)
+    .map(
+      (l, i) =>
+        `<tspan x="${x}" ${i === 0 ? `y="${y}"` : `dy="${(size * lh).toFixed(1)}"`}>${esc(upper ? l.toUpperCase() : l)}</tspan>`,
+    )
     .join("");
   return `<text id="${id}" font-family="${family}" font-size="${size}" font-weight="${weight}" fill="${fill}" text-anchor="${anchor}"${ls}>${tspans}</text>`;
 }
 
-const rect = (id, x, y, w, h, fill, extra = "") => `<rect id="${id}" x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}" ${extra}/>`;
+const rect = (id, x, y, w, h, fill, extra = "") =>
+  `<rect id="${id}" x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}" ${extra}/>`;
 
 /** Monograma (§3.2) como grupo editable, con el texto en contornos. */
 function monogram(id, x, y, size, { bg = C.marino700, fg = C.papel } = {}) {
@@ -85,7 +121,13 @@ function wordmark(id, x, y, height, fill) {
 }
 
 /** Regla de medición (§6.1): marcas cada `step`, una larga cada 5. */
-function ruler(id, x, y, width, { step = 8, color = C.gris400, stroke = 1.5, short = 6, long = 12 } = {}) {
+function ruler(
+  id,
+  x,
+  y,
+  width,
+  { step = 8, color = C.gris400, stroke = 1.5, short = 6, long = 12 } = {},
+) {
   let d = "";
   for (let i = 0, px = 0; px <= width; i++, px += step) {
     const h = i % 5 === 0 ? long : short;
@@ -97,7 +139,9 @@ function ruler(id, x, y, width, { step = 8, color = C.gris400, stroke = 1.5, sho
 /** Retícula de puntos (§6.2) como capa independiente. */
 function dotGrid(id, w, h, { gap = 24, color = C.marino500, opacity = 0.3 } = {}) {
   let dots = "";
-  for (let y = gap / 2; y < h; y += gap) for (let x = gap / 2; x < w; x += gap) dots += `<rect x="${x}" y="${y}" width="1.5" height="1.5" />`;
+  for (let y = gap / 2; y < h; y += gap)
+    for (let x = gap / 2; x < w; x += gap)
+      dots += `<rect x="${x}" y="${y}" width="1.5" height="1.5" />`;
   return `<g id="${id}" fill="${color}" opacity="${opacity}">${dots}</g>`;
 }
 
@@ -113,7 +157,12 @@ ${body}
 }
 
 // ── 01 · Logotipo (§3) ──────────────────────────────────────────────────────
-board("01-logotipo.svg", 1600, 1100, "01 · Logotipo", `
+board(
+  "01-logotipo.svg",
+  1600,
+  1100,
+  "01 · Logotipo",
+  `
 ${rect("Fondo", 0, 0, 1600, 1100, C.papel)}
 ${text("Título", 80, 110, "Logotipo", { size: 48, weight: 600, tracking: -0.02 })}
 ${text("Nota", 80, 150, "Wordmark y monograma en contornos (listos para exportar) + versión de texto vivo para editar.", { size: 18, fill: C.gris500 })}
@@ -136,15 +185,63 @@ ${monogram("Monograma · monocromo", 560, 800, 192, { bg: C.tinta, fg: C.blanco 
   ${monogram("Favicon 32", 1100, 830, 32)}${monogram("Favicon 16", 1150, 846, 16)}
   ${text("Nota tamaños", 1100, 900, ["Mínimo: 16 px (favicon).", "Bajo 24 px se quita la regla."], { size: 16, fill: C.gris500, lh: 1.5 })}
 </g>
-`);
+`,
+);
 
 // ── 02 · Color (§4) ─────────────────────────────────────────────────────────
 const swatches = [
-  ["Principales", [["Papel", C.papel], ["Tinta", C.tinta], ["Marino", C.marino700], ["Azul acción", C.azul600], ["Verde resultado", C.verde]]],
-  ["Neutros", [["gris-0", C.blanco], ["gris-50", C.gris50], ["gris-100", C.gris100], ["gris-400", C.gris400], ["gris-500", C.gris500], ["gris-700", C.gris700]]],
-  ["Marino", [["marino-50", C.marino50], ["marino-100", C.marino100], ["marino-300", C.marino300], ["marino-500", C.marino500], ["marino-700", C.marino700], ["marino-900", C.marino900]]],
-  ["Azul y estado", [["azul-50", C.azul50], ["azul-600", C.azul600], ["azul-700", C.azul700], ["ámbar", C.ambar], ["rojo", C.rojo], ["verde (oscuro)", C.verdeOsc]]],
-  ["Gráficos (§9)", [["serie 1", C.chart1], ["serie 2", C.chart2], ["serie 3", C.chart3], ["otros", C.gris400]]],
+  [
+    "Principales",
+    [
+      ["Papel", C.papel],
+      ["Tinta", C.tinta],
+      ["Marino", C.marino700],
+      ["Azul acción", C.azul600],
+      ["Verde resultado", C.verde],
+    ],
+  ],
+  [
+    "Neutros",
+    [
+      ["gris-0", C.blanco],
+      ["gris-50", C.gris50],
+      ["gris-100", C.gris100],
+      ["gris-400", C.gris400],
+      ["gris-500", C.gris500],
+      ["gris-700", C.gris700],
+    ],
+  ],
+  [
+    "Marino",
+    [
+      ["marino-50", C.marino50],
+      ["marino-100", C.marino100],
+      ["marino-300", C.marino300],
+      ["marino-500", C.marino500],
+      ["marino-700", C.marino700],
+      ["marino-900", C.marino900],
+    ],
+  ],
+  [
+    "Azul y estado",
+    [
+      ["azul-50", C.azul50],
+      ["azul-600", C.azul600],
+      ["azul-700", C.azul700],
+      ["ámbar", C.ambar],
+      ["rojo", C.rojo],
+      ["verde (oscuro)", C.verdeOsc],
+    ],
+  ],
+  [
+    "Gráficos (§9)",
+    [
+      ["serie 1", C.chart1],
+      ["serie 2", C.chart2],
+      ["serie 3", C.chart3],
+      ["otros", C.gris400],
+    ],
+  ],
 ];
 let colorBody = `${rect("Fondo", 0, 0, 1600, 1300, C.papel)}${text("Título", 80, 110, "Color", { size: 48, weight: 600, tracking: -0.02 })}`;
 swatches.forEach(([group, items], gi) => {
@@ -163,7 +260,13 @@ const typeRows = [
   ["Display · Inter 600", 72, 600, SANS, "Construyo y mido"],
   ["Título · Inter 600", 56, 600, SANS, "Proyectos con resultado"],
   ["Subtítulo · Inter 400", 36, 400, SANS, "Sitios y automatizaciones medidas"],
-  ["Texto · Inter 400", 28, 400, SANS, "Construyo sitios y automatizaciones que conectan marketing, operaciones y datos."],
+  [
+    "Texto · Inter 400",
+    28,
+    400,
+    SANS,
+    "Construyo sitios y automatizaciones que conectan marketing, operaciones y datos.",
+  ],
   ["Métrica · JetBrains Mono 600", 120, 600, MONO, "−35 %"],
   ["Etiqueta · JetBrains Mono 500", 22, 500, MONO, "CASO · AUTOMATIZACIÓN · 2026"],
 ];
@@ -176,9 +279,16 @@ typeRows.forEach(([label, size, weight, fam, sample]) => {
 board("03-tipografia.svg", 1600, 1250, "03 · Tipografía", typeBody);
 
 // ── 04 · Elementos gráficos (§6, §7, §19) ───────────────────────────────────
-const tag = (id, x, y, label) => `<g id="${id}">${rect("Borde", x, y, label.length * 9 + 28, 30, C.blanco, `rx="6" stroke="${C.gris100}"`)}${text("Texto", x + 14, y + 20, label, { size: 13, family: MONO, fill: C.gris700 })}</g>`;
-const node = (id, x, y, tagLabel, title, items, hl = false) => `<g id="${id}">${rect("Caja", x, y, 260, 150, C.blanco, `rx="8" stroke="${hl ? C.marino700 : C.gris400}" stroke-width="${hl ? 2 : 1.5}"`)}${text("Etiqueta", x + 18, y + 32, tagLabel, { size: 12, family: MONO, fill: C.gris500, upper: true, tracking: 0.06 })}${text("Título", x + 18, y + 60, title, { size: 16, weight: 600 })}${text("Ítems", x + 18, y + 88, items, { size: 14, fill: C.gris700, lh: 1.5 })}</g>`;
-board("04-elementos.svg", 1600, 1500, "04 · Elementos gráficos", `
+const tag = (id, x, y, label) =>
+  `<g id="${id}">${rect("Borde", x, y, label.length * 9 + 28, 30, C.blanco, `rx="6" stroke="${C.gris100}"`)}${text("Texto", x + 14, y + 20, label, { size: 13, family: MONO, fill: C.gris700 })}</g>`;
+const node = (id, x, y, tagLabel, title, items, hl = false) =>
+  `<g id="${id}">${rect("Caja", x, y, 260, 150, C.blanco, `rx="8" stroke="${hl ? C.marino700 : C.gris400}" stroke-width="${hl ? 2 : 1.5}"`)}${text("Etiqueta", x + 18, y + 32, tagLabel, { size: 12, family: MONO, fill: C.gris500, upper: true, tracking: 0.06 })}${text("Título", x + 18, y + 60, title, { size: 16, weight: 600 })}${text("Ítems", x + 18, y + 88, items, { size: 14, fill: C.gris700, lh: 1.5 })}</g>`;
+board(
+  "04-elementos.svg",
+  1600,
+  1500,
+  "04 · Elementos gráficos",
+  `
 ${rect("Fondo", 0, 0, 1600, 1500, C.papel)}
 ${text("Título", 80, 110, "Elementos gráficos", { size: 48, weight: 600, tracking: -0.02 })}
 ${text("E1", 80, 200, "Regla de medición · separador (§6.1)", { size: 14, family: MONO, fill: C.gris500, upper: true, tracking: 0.06 })}
@@ -203,10 +313,16 @@ ${node("Nodo · Envío", 700, 890, "Envío", "Lotes", ["Rotación de cuentas", "
 ${text("E8", 80, 1130, "Retícula de puntos (§6.2)", { size: 14, family: MONO, fill: C.gris500, upper: true, tracking: 0.06 })}
 <g id="Muestra retícula" transform="translate(80 1150)">${rect("Fondo", 0, 0, 600, 260, C.marino900, 'rx="12"')}${dotGrid("Puntos", 600, 260)}</g>
 ${text("Nota íconos", 820, 1150, ["Íconos: Tabler Icons, contorno, trazo 1,5 px (§7).", "Plugin de Figma: «Tabler Icons»."], { size: 16, fill: C.gris500, lh: 1.6 })}
-`);
+`,
+);
 
 // ── 05 · Banner LinkedIn 1584 × 396 (§12.9.3) ───────────────────────────────
-board("05-banner-linkedin.svg", 1584, 396, "Banner LinkedIn · 1584×396", `
+board(
+  "05-banner-linkedin.svg",
+  1584,
+  396,
+  "Banner LinkedIn · 1584×396",
+  `
 ${rect("Fondo", 0, 0, 1584, 396, C.marino900)}
 ${dotGrid("Retícula", 1584, 396, { opacity: 0.25 })}
 <g id="Zona segura · foto de perfil (ocultar al exportar)" opacity="0.35">${rect("Zona", 0, 236, 380, 160, "none", `stroke="${C.marino300}" stroke-dasharray="6 6"`)}</g>
@@ -216,12 +332,20 @@ ${dotGrid("Retícula", 1584, 396, { opacity: 0.25 })}
   ${ruler("Regla", 420, 262, 960, { color: C.marino500, stroke: 1 })}
 </g>
 ${text("URL", 1536, 348, "sjaquer.is-a.dev", { size: 16, weight: 500, family: MONO, fill: C.marino300, anchor: "end" })}
-`);
+`,
+);
 
 // ── 06 · Post LinkedIn 4:5 1080 × 1350 (§12.9.4) ────────────────────────────
 function post(file, dark) {
-  const bg = dark ? C.marino700 : C.papel, fg = dark ? C.papel : C.tinta, sub = dark ? C.marino100 : C.gris500;
-  board(file, 1080, 1350, `Post 4:5 · ${dark ? "marino" : "papel"}`, `
+  const bg = dark ? C.marino700 : C.papel,
+    fg = dark ? C.papel : C.tinta,
+    sub = dark ? C.marino100 : C.gris500;
+  board(
+    file,
+    1080,
+    1350,
+    `Post 4:5 · ${dark ? "marino" : "papel"}`,
+    `
 ${rect("Fondo", 0, 0, 1080, 1350, bg)}
 <g id="Header">${text("Pilar", 80, 120, "Automatización", { size: 22, weight: 500, family: MONO, fill: sub, upper: true, tracking: 0.06 })}${monogram("Monograma", 960, 88, 40, dark ? { bg: C.papel, fg: C.marino700 } : {})}</g>
 ${text("Titular", 80, 300, ["Pedidos 35 % más", "rápidos en una", "hamburguesería"], { size: 72, weight: 600, fill: fg, lh: 1.05, tracking: -0.02 })}
@@ -230,18 +354,39 @@ ${text("Titular", 80, 300, ["Pedidos 35 % más", "rápidos en una", "hamburguese
   ${text("Contexto", 80, 830, ["tiempo por pedido · 4 semanas antes", "vs. después"], { size: 28, fill: sub, lh: 1.4 })}
 </g>
 <g id="Footer">${ruler("Regla", 80, 1170, 920, { color: dark ? C.marino300 : C.gris400, stroke: 2, short: 8, long: 16, step: 10 })}${text("Nombre", 80, 1250, "Sebastián Jaque", { size: 24, weight: 600, fill: fg })}${text("URL", 1000, 1250, "sjaquer.is-a.dev", { size: 22, weight: 500, family: MONO, fill: sub, anchor: "end" })}</g>
-`);
+`,
+  );
 }
 post("06-post-papel.svg", false);
 post("07-post-marino.svg", true);
 
 // ── 08 · Carrusel 5 láminas (§12.9.5) ───────────────────────────────────────
 const slides = [
-  ["Portada", "Automatización", ["Campañas de 8 000", "correos en 2 minutos"], "Cómo lo construí, en 5 láminas →"],
-  ["Paso 1", "1 · El problema", ["Envíos a mano", "y bajas que se perdían"], "Más de 4 h por campaña."],
-  ["Paso 2", "2 · El control", ["Lista de exclusión", "antes de cada envío"], "Ley 29733, siempre."],
+  [
+    "Portada",
+    "Automatización",
+    ["Campañas de 8 000", "correos en 2 minutos"],
+    "Cómo lo construí, en 5 láminas →",
+  ],
+  [
+    "Paso 1",
+    "1 · El problema",
+    ["Envíos a mano", "y bajas que se perdían"],
+    "Más de 4 h por campaña.",
+  ],
+  [
+    "Paso 2",
+    "2 · El control",
+    ["Lista de exclusión", "antes de cada envío"],
+    "Ley 29733, siempre.",
+  ],
   ["Resultado", "Resultado", ["~2 min"], "por campaña de 8 000 destinatarios (antes, más de 4 h)"],
-  ["Cierre", "Lo que aprendí", ["La velocidad era el", "síntoma; el problema", "era el control."], `Detalle en ${SITE}`],
+  [
+    "Cierre",
+    "Lo que aprendí",
+    ["La velocidad era el", "síntoma; el problema", "era el control."],
+    `Detalle en ${SITE}`,
+  ],
 ];
 let car = "";
 slides.forEach(([name, label, title, foot], i) => {
@@ -260,24 +405,40 @@ slides.forEach(([name, label, title, foot], i) => {
 board("08-carrusel.svg", slides.length * 1120 - 40, 1350, "Carrusel 4:5 · 5 láminas", car);
 
 // ── 09 · Open Graph 1200 × 630 (§12.9.6) ────────────────────────────────────
-board("09-open-graph.svg", 1200, 630, "Open Graph · 1200×630", `
+board(
+  "09-open-graph.svg",
+  1200,
+  630,
+  "Open Graph · 1200×630",
+  `
 ${rect("Fondo", 0, 0, 1200, 630, C.papel)}
 <g id="Header">${text("Etiqueta", 64, 100, "Caso · Automatización · 2026", { size: 22, weight: 500, family: MONO, fill: C.gris500, upper: true, tracking: 0.06 })}${monogram("Monograma", 1088, 64, 48)}</g>
 ${text("Titular", 64, 260, ["Campañas de 8 000 correos", "en 2 minutos, con baja automática"], { size: 52, weight: 600, lh: 1.1, tracking: -0.02 })}
 ${text("Descripción", 64, 410, "~2 min · por campaña de 8 000 destinatarios", { size: 26, fill: C.gris500 })}
 <g id="Footer">${ruler("Regla", 64, 500, 1072)}${text("Nombre", 64, 560, "Sebastián Jaque", { size: 24, weight: 600 })}${text("URL", 1136, 560, "sjaquer.is-a.dev", { size: 24, weight: 500, family: MONO, fill: C.marino700, anchor: "end" })}</g>
-`);
+`,
+);
 
 // ── 10 · Imágenes: avatar provisional y favicon (editables) ─────────────────
-const avatar = readFileSync("public/brand/avatar-silhouette.svg", "utf8").replace(/<svg[^>]*>|<\/svg>/g, "");
+const avatar = readFileSync("public/brand/avatar-silhouette.svg", "utf8").replace(
+  /<svg[^>]*>|<\/svg>/g,
+  "",
+);
 const PORTRAIT = "public/img/retrato.webp";
 const hasPortrait = existsSync(PORTRAIT);
-board("10-imagenes.svg", 1600, 1100, "10 · Imágenes y fondos", `
+board(
+  "10-imagenes.svg",
+  1600,
+  1100,
+  "10 · Imágenes y fondos",
+  `
 ${rect("Fondo", 0, 0, 1600, 1100, C.papel)}
 ${text("Título", 80, 110, "Imágenes y fondos", { size: 48, weight: 600, tracking: -0.02 })}
-${hasPortrait
-  ? `<g id="Retrato (§10.2) · public/img/retrato"><rect id="Marco" x="80" y="160" width="640" height="800" rx="16" fill="${C.marino50}"/><image id="Foto" x="80" y="160" width="640" height="800" preserveAspectRatio="xMidYMid slice" href="${embed(PORTRAIT)}"/></g>`
-  : `<g id="Avatar provisional (§10.6) · reemplazar por foto" transform="translate(80 160) scale(0.85)">${avatar}</g>`}
+${
+  hasPortrait
+    ? `<g id="Retrato (§10.2) · public/img/retrato"><rect id="Marco" x="80" y="160" width="640" height="800" rx="16" fill="${C.marino50}"/><image id="Foto" x="80" y="160" width="640" height="800" preserveAspectRatio="xMidYMid slice" href="${embed(PORTRAIT)}"/></g>`
+    : `<g id="Avatar provisional (§10.6) · reemplazar por foto" transform="translate(80 160) scale(0.85)">${avatar}</g>`
+}
 <g id="Marco de captura (§6.5)" transform="translate(860 160)">
   ${rect("Marco", 0, 0, 660, 420, C.gris50, `rx="16" stroke="${C.gris100}"`)}
   ${rect("Barra navegador", 24, 24, 612, 32, C.blanco, 'rx="8"')}
@@ -286,11 +447,17 @@ ${hasPortrait
   ${text("Instrucción", 330, 238, "Captura con datos simulados", { size: 18, fill: C.gris500, anchor: "middle" })}
 </g>
 <g id="Fondo banner · marino + retícula" transform="translate(860 640)">${rect("Fondo", 0, 0, 660, 300, C.marino900, 'rx="12"')}${dotGrid("Retícula", 660, 300, { opacity: 0.25 })}</g>
-`);
+`,
+);
 
 // ── 11 · Artículo de caso para compartir 1200 × 630 (formato CaseArticle) ───
 const COVER = "public/img/casos/difusion-correo-wiener.webp";
-board("11-articulo-caso.svg", 1200, 630, "Artículo de caso · 1200×630", `
+board(
+  "11-articulo-caso.svg",
+  1200,
+  630,
+  "Artículo de caso · 1200×630",
+  `
 ${rect("Fondo", 0, 0, 1200, 630, C.papel)}
 <g id="Imagen del caso (16:9) · reemplazar">
   ${rect("Marco", 48, 48, 560, 534, C.marino50, 'rx="16"')}
@@ -304,4 +471,5 @@ ${rect("Fondo", 0, 0, 1200, 630, C.papel)}
   ${text("Leer", 648, 500, "Leer el caso →", { size: 20, weight: 600, fill: C.azul600 })}
 </g>
 <g id="Pie">${monogram("Monograma", 648, 530, 40)}${text("URL", 1152, 558, SITE, { size: 18, weight: 500, family: MONO, fill: C.marino700, anchor: "end" })}</g>
-`);
+`,
+);

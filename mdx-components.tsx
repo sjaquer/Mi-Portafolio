@@ -39,6 +39,24 @@ const components: MDXComponents = {
       {...props}
     />
   ),
+  // Tablas (remark-gfm): bordes de 1 px, cabecera en etiqueta mono, desplazable en el celular.
+  table: (props) => (
+    <div className="mb-6 overflow-x-auto rounded-lg border border-border">
+      <table className="w-full border-collapse text-left text-small" {...props} />
+    </div>
+  ),
+  th: (props) => (
+    <th
+      className="border-b border-border bg-surface-muted px-4 py-3 align-bottom text-label-mono font-medium whitespace-nowrap text-ink-500"
+      {...props}
+    />
+  ),
+  td: (props) => (
+    <td
+      className="border-b border-border px-4 py-3 align-top text-ink-700 [tr:last-child_&]:border-b-0"
+      {...props}
+    />
+  ),
   Callout,
   FlowDiagram,
   Metric: (props: ComponentProps<typeof Metric>) => (

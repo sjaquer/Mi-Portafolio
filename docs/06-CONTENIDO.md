@@ -31,6 +31,25 @@
 
 ---
 
+## 2b. Textos para buscadores y redes (listos para copiar)
+
+Lo que ve alguien que te busca. Rol y frase salen de `content/profile.ts`; si cambian allí, actualiza también estos perfiles.
+
+| Dónde | Texto |
+|---|---|
+| **Google · título** (≤ 60 car.) | Sebastián Jaque — Desarrollo web y automatización \| Lima |
+| **Google · descripción** (≤ 160 car.) | Construyo herramientas web con Next.js, automatizo procesos con Python e integro sistemas con APIs. Disponible para roles junior desde enero 2027 · Lima. |
+| **Vista previa al compartir** (LinkedIn, WhatsApp, X) | Imagen OG generada por página: rol + frase canónica (home) o titular del caso o nota |
+| **LinkedIn · titular** (≤ 220 car.) | Desarrollo web y automatización de procesos · Next.js, Python, APIs · Construyo herramientas internas que reducen tareas manuales · Practicante en la Universidad Norbert Wiener · Disponible ene 2027 |
+| **LinkedIn · Acerca de** | Construyo herramientas web y automatizaciones que reducen tareas manuales y conectan sistemas con APIs. Estudio el último ciclo de Administración y Negocios Internacionales, y eso me hace empezar por el problema de negocio. En la Universidad Norbert Wiener desarrollé en solitario la plataforma de empleabilidad (Next.js, PostgreSQL, Docker) y un sistema de difusión que bajó una campaña de 8 000 correos de más de 4 h a ~2 min. Antes, en Big Jack Burgers, el sistema de pedidos redujo el tiempo de procesamiento en 35 %. Busco mi primer rol como desarrollador web, analista de automatización o desarrollador de soluciones desde enero 2027. Casos completos: sjaquer.is-a.dev |
+| **LinkedIn · Destacados** | 1) `https://sjaquer.is-a.dev/?utm_source=linkedin&utm_medium=profile&utm_campaign=featured` · 2) el caso de Empleabilidad · 3) el CV en PDF |
+| **GitHub · bio** (≤ 160 car.) | Desarrollo web y automatización de procesos · Next.js, TypeScript, Python, APIs · Lima, Perú · sjaquer.is-a.dev |
+| **GitHub · README de perfil** | Rol + frase canónica + los 3 casos destacados con su resultado + enlaces (`03-DESIGN.md` §13.6) |
+| **Firma de correo** | `03-DESIGN.md` §13.4 |
+| **Asistentes de IA** | `/llms.txt` y `/ai.txt` (generados: perfil, experiencia, casos y notas) |
+
+---
+
 ## 3. Textos de la Home (listos para usar)
 
 **Antetítulo del hero** (mono): el rol, `DESARROLLO WEB · AUTOMATIZACIÓN DE PROCESOS · INTEGRACIONES`

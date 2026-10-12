@@ -12,6 +12,7 @@ const pages = [
   "/cv",
   "/contacto",
   "/privacidad",
+  "/terminos",
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

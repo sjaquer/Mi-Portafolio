@@ -1,4 +1,5 @@
 import { ClickTracker } from "@/components/analytics/click-tracker";
+import { ConsoleGreeting } from "@/components/devtools/console-greeting";
 import { ConsentBanner } from "@/components/analytics/consent-banner";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
@@ -19,6 +20,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
       <Footer />
       <ConsentBanner />
       <ClickTracker />
+      <ConsoleGreeting />
     </>
   );
 }

@@ -11,6 +11,7 @@ import { Metric } from "@/components/ui/metric";
 import { slugify } from "@/mdx-components";
 import { DraftNotice } from "@/components/ui/draft-notice";
 import { Container } from "@/components/ui/container";
+import { ReadingProgress } from "@/components/ui/reading-progress";
 import { caseTypeLabel, cases, getCase } from "@/content/casos";
 import { profile } from "@/content/profile";
 import { findImage } from "@/lib/images";
@@ -73,6 +74,7 @@ export default async function CasePage({ params }: PageProps<"/proyectos/[slug]"
   return (
     <article>
       <CaseTracker slug={c.slug} type={c.type} />
+      <ReadingProgress />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}

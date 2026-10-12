@@ -1,3 +1,5 @@
+import { cases } from "@/content/casos";
+import { notes } from "@/content/notas";
 import { profile } from "@/content/profile";
 import { formatDate, formatRange } from "@/lib/format";
 
@@ -82,6 +84,14 @@ ${certificationsBlock()}
 ## Idiomas
 
 ${languagesBlock()}
+
+## Casos de estudio
+
+${cases.map((c) => `- [${c.title}](${profile.siteUrl}/proyectos/${c.slug}): ${c.result.value} ${c.result.label}.`).join("\n")}
+
+## Notas
+
+${notes.map((n) => `- [${n.title}](${profile.siteUrl}/notas/${n.slug}): ${n.description}`).join("\n")}
 
 ## Enlaces
 

@@ -8,6 +8,9 @@ import { mainNav } from "@/lib/nav";
 const linkClass =
   "inline-flex min-h-control-md items-center text-small text-ink-700 underline-offset-4 hover:text-ink-900 hover:underline";
 
+const legalLink =
+  "inline-flex min-h-control-md items-center text-small text-ink-500 underline underline-offset-4 hover:text-ink-900";
+
 const social = [
   { href: profile.links.linkedin, label: "LinkedIn", cta: "footer_linkedin" },
   { href: profile.links.github, label: "GitHub", cta: "footer_github" },
@@ -65,7 +68,21 @@ export function Footer() {
         <p className="text-small text-ink-500">
           Actualizado: <time dateTime={buildDate}>{formatDate(buildDate)}</time>
         </p>
-        <ConsentPreferencesButton className="inline-flex min-h-control-md items-center text-small text-ink-500 underline underline-offset-4 hover:text-ink-900" />
+        <ul aria-label="Legal" className="flex flex-wrap items-center gap-x-5">
+          <li>
+            <Link href="/privacidad" data-cta="footer_privacy" className={legalLink}>
+              Privacidad
+            </Link>
+          </li>
+          <li>
+            <Link href="/terminos" data-cta="footer_terms" className={legalLink}>
+              Condiciones de uso
+            </Link>
+          </li>
+          <li>
+            <ConsentPreferencesButton className={legalLink} />
+          </li>
+        </ul>
       </Container>
     </footer>
   );

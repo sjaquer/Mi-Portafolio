@@ -142,3 +142,74 @@
     transform: none;
   }
 }
+
+/* ── Detalles de experiencia (v3.3) ─────────────────────────────────── */
+
+/* Las anclas no quedan debajo del header fijo. */
+html {
+  scroll-padding-top: calc(var(--spacing-header) + var(--spacing-5));
+}
+
+/* Mejor reparto de líneas: sin palabras sueltas al final de un párrafo. */
+p,
+li {
+  text-wrap: pretty;
+}
+
+/* Barra de progreso de lectura (casos y notas): solo CSS. */
+.reading-progress {
+  display: none;
+}
+@supports (animation-timeline: scroll()) {
+  .reading-progress {
+    display: block;
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 30;
+    height: 2px;
+    background: var(--color-ink-900);
+    transform-origin: 0 50%;
+    animation: reading-progress linear both;
+    animation-timeline: scroll(root);
+  }
+  @keyframes reading-progress {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+}
+
+/* Impresión (sobre todo /cv): solo el contenido, en tinta sobre blanco. */
+@media print {
+  :root {
+    --color-bg: #ffffff;
+    --color-surface: #ffffff;
+    --color-ink-900: #000000;
+    --color-ink-700: #14161a;
+  }
+  html {
+    font-size: 75%;
+  }
+  body > header,
+  body > footer,
+  a[download],
+  main [data-cta]:is(a, button):not(.prose-link),
+  body > a[href="#contenido"],
+  [aria-labelledby="consent-title"],
+  .reading-progress {
+    display: none !important;
+  }
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #3d424b;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reading-progress {
+    display: none;
+  }
+}

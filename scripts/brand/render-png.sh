@@ -14,4 +14,7 @@ rsvg-convert -w 16 -h 16 public/brand/logo/monograma-simple.svg -o "$tmp/16.png"
 rsvg-convert -w 32 -h 32 public/brand/logo/monograma-simple.svg -o "$tmp/32.png"
 magick "$tmp/16.png" "$tmp/32.png" app/favicon.ico
 rm -rf "$tmp"
+
+# Correos transaccionales (§13.4): monograma a 3× de 32 px.
+rsvg-convert -w 96 -h 96 public/brand/logo/monograma.svg -o public/brand/email/monograma.png
 echo "✓ PNG e ICO generados"

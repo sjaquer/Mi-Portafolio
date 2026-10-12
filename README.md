@@ -13,11 +13,12 @@ pnpm dev          # http://localhost:3000
 | Comando | Qué hace |
 |---|---|
 | `pnpm build` · `pnpm start` | Build de producción (todo estático) y servidor |
-| `pnpm lint` · `pnpm typecheck` | ESLint y TypeScript |
+| `pnpm check` | Lint + TypeScript + formato (antes de cada commit) |
+| `pnpm lint` · `pnpm typecheck` · `pnpm format` | Por separado |
 | `pnpm lhci` | Lighthouse CI con los umbrales de `docs/04-TECH-SEO-MEDICION.md` §3.1 |
 | `pnpm cv:pdf` | Exporta el CV de Word a `public/cv/CV-Sebastian-Jaque.pdf` (LibreOffice + fuente Carlito) |
-| `node scripts/brand/build-assets.mjs && scripts/brand/render-png.sh` | Logo, monograma, favicon e íconos |
-| `node scripts/brand/figma-kit.mjs` | Kit de marca para Figma en `design/figma/` |
+| `pnpm brand` | Logo, monograma, favicon e íconos |
+| `pnpm brand:figma` | Kit de marca para Figma en `design/figma/` |
 
 ## Dónde está cada cosa
 
@@ -29,8 +30,12 @@ pnpm dev          # http://localhost:3000
 | GTM | `docs/gtm/eventos-sitio.json` (contenedor importable con los 9 eventos) |
 | Imágenes | `public/img/retrato.webp` (4:5) · `public/img/casos/<slug>.webp` (16:9) |
 | CV | `content/cv/CV-Sebastian-Jaque.docx` → `public/cv/CV-Sebastian-Jaque.pdf` |
-| Diseño | `app/tokens.css` (tokens) · `components/` (ui, layout, sections, brand, analytics) |
+| Diseño | `app/tokens.css` (tokens) · `components/` (`ui`, `layout`, `sections`, `brand`, `analytics`, `devtools`) |
+| Textos para Google y redes | `lib/seo.ts` (metadatos) · `docs/06-CONTENIDO.md` §2b (LinkedIn, GitHub) · `/llms.txt` y `/ai.txt` generados |
+| Consola del navegador | `components/devtools/console-greeting.tsx` — escribe `sj.ayuda()` en DevTools |
 | Medición | `lib/analytics.ts` (`track()` tipado) · `components/analytics/` (consentimiento, clics, casos) |
+| Páginas legales | `content/legal/privacidad.mdx` · `content/legal/terminos.mdx` (plantilla `components/sections/legal-page.tsx`) |
+| Correos del formulario | `lib/email/templates.ts` · vista previa en `pnpm dev` → `/dev/correos?tipo=notificacion` o `?tipo=confirmacion` · copias en `design/emails/` |
 | Variables de entorno | `.env.example` (GTM, GA4, Resend) |
 
 ## Documentación

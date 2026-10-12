@@ -772,6 +772,22 @@ sjaquer.is-a.dev · linkedin.com/in/sjaquer
 ```
 Texto plano o HTML mínimo: nombre en 600 tinta, rol en `gris-500`, enlaces en azul acción. Sin imágenes, citas ni banners.
 
+#### 13.4.1 Correos del formulario de contacto
+
+Dos correos, generados por `lib/email/templates.ts` (HTML + texto plano):
+
+| Correo | Para | Contenido |
+|---|---|---|
+| **Notificación** | Sebastián (`reply_to` = quien escribe) | Etiqueta mono "Nuevo mensaje · motivo", titular "<Nombre> te escribió", tabla nombre/email/motivo, mensaje en bloque `gris-50`, botón primario "Responder a <nombre>". |
+| **Confirmación** | Quien escribe | "Gracias, <nombre>", plazo de respuesta (1 a 2 días hábiles), botón primario "Ver proyectos" (UTM `email`/`confirmacion`) + secundario "Descargar CV", firma §13.4. **No repite el mensaje recibido** (así el formulario no sirve para mandar texto arbitrario a terceros). |
+
+Reglas de la adaptación a correo:
+- Tablas y estilos en línea; tarjeta blanca de 600 px con borde `gris-100` y radio 16 sobre fondo `papel`; solo modo claro (`color-scheme: light`).
+- Tokens en hex (los clientes no leen variables CSS); Inter y JetBrains Mono con alternativas del sistema.
+- Cabecera: monograma PNG (`public/brand/email/monograma.png`, 96 px mostrado a 32) + nombre. Pie: regla de medición (§6.1) en PNG (`regla.png`) y motivo del envío + enlace al aviso de privacidad.
+- Un solo botón primario por correo (igual que en la web).
+- Vista previa: `pnpm dev` → `/dev/correos?tipo=notificacion` o `?tipo=confirmacion` (datos simulados; 404 en producción). Copias estáticas en `design/emails/*.html`.
+
 ### 13.5 Presentaciones (slides)
 - 16:9 (1920 × 1080), margen 96 px, retícula de 12 columnas.
 - Portada en marino con wordmark en papel; contenido sobre papel.
@@ -1025,6 +1041,10 @@ Cada botón lleva `data-cta="<id>"` para la medición (ver `04-TECH-SEO-MEDICION
 | `ThemeToggle` | Claro / oscuro / sistema | Respeta `prefers-color-scheme` |
 | `ConsentBanner` | Consentimiento de medición | Discreto, inferior, dos botones del mismo peso |
 | `MediaFrame` (v3.2) | Espacio de imagen con placeholder de marca | §6.8; proporción fija, `next/image` |
+| `ReadingProgress` (v3.3) | Barra de lectura en casos y notas | Solo CSS (`animation-timeline: scroll()`); oculta con movimiento reducido |
+| `CopyEmail` (v3.3) | Copiar el email en /contacto | Confirmación con `aria-live` |
+| `NoteList` · `CaseGrid` | Índices con filtro | Botones `aria-pressed`, conteo anunciado |
+| `ConsoleGreeting` (v3.3) | Saludo y API `sj.*` en DevTools | Colores de marca; se ejecuta en `requestIdleCallback` |
 | `CaseArticle` (v3.2) | Caso en formato de artículo | Imagen 16:9, antetítulo (tipo · año · lectura), titular, bajada, resultado, "Leer el caso". Variantes `featured`, `row`, `card` |
 | `Reveal` (v3.0) | Revelado al hacer scroll | Solo CSS; nunca en el hero (§11) |
 
@@ -1154,6 +1174,8 @@ En Tailwind v4 se exponen con `@theme` para usar clases como `bg-surface`, `text
 | `public/img/retrato.webp` | Retrato del hero y de /sobre-mi (4:5) | ✅ Subido |
 | `public/img/casos/<slug>.webp` | Portadas de los 6 casos (16:9) | ✅ Subidas |
 | `public/favicon.svg` · `app/favicon.ico` · `apple-touch-icon.png` · `icon-192.png` · `icon-512.png` | Íconos de app | ✅ Generado |
+| `public/brand/email/monograma.png` · `regla.png` | Imágenes de los correos transaccionales (§13.4.1) | ✅ Generado (`render-png.sh`) |
+| `lib/email/templates.ts` · `design/emails/*.html` | Correos del formulario y su vista previa | ✅ Implementado |
 | `public/brand/diagramas/*.svg` | Plantillas de §8.3 | ⬜ Por crear |
 | `design/figma/*.svg` (kit para importar a Figma, `scripts/brand/figma-kit.mjs`) | Logo, color, tipografía, elementos, banner LinkedIn, post 4:5, carrusel, OG, imágenes, artículo de caso 1200 × 630 | ✅ Generado; rol y frase desde `profile.ts` |
 | Archivo de Figma en la cuenta | Kit importado y editable | ⬜ Importar (o vía MCP de Figma cuando esté activo) |
@@ -1172,3 +1194,4 @@ En Tailwind v4 se exponen con `@theme` para usar clases como `bg-surface`, `text
 | 3.1 | 12 oct 2026 | Simplificación: principio de densidad (§14.6), una sola banda invertida por página, tarjeta de caso de 3 elementos, se retiran la ficha de perfil del hero, las portadas generadas y la franja de herramientas por repetir información. |
 | 3.2 | 12 oct 2026 | Hero con espacio de retrato y sin pastilla; espacios de imagen con placeholder de marca (§6.8); prompt base de imágenes (§10.7); casos en formato de artículo (`CaseArticle`); entrada del hero solo con transform, zoom de imagen y flechas (§11); botones más claros y a todo el ancho en el celular (§19.1); densidad equilibrada con ancla visual por sección (§14.6). |
 | 3.3 | 12 oct 2026 | Revisión de cierre: hero con frase canónica como bajada y retrato real, sin pie decorativo; prioridad de carga por página (§20); inventarios de componentes (§19.2) y archivos (§24) al día; ejemplos de voz y pilares alineados al posicionamiento de desarrollo web + automatización (§2, §12). |
+| 3.4 | 12 oct 2026 | Correos del formulario con la línea gráfica (§13.4.1); se restaura `monograma.svg` con su fondo marino (una exportación lo había dejado solo con las letras blancas) y se regeneran los íconos. |

@@ -3,6 +3,7 @@
 import { headers } from "next/headers";
 import { z } from "zod";
 import { profile } from "@/content/profile";
+import { confirmationEmail, notificationEmail } from "@/lib/email/templates";
 
 export type ContactState =
   | { status: "idle" }
@@ -18,8 +19,6 @@ const schema = z.object({
   message: z.string().trim().min(10, "Cuéntame un poco más (mínimo 10 caracteres).").max(4000),
 });
 
-const reasonLabel = { empleo: "Empleo", proyecto: "Proyecto", otro: "Otro" } as const;
-
 // Límite de envíos en memoria por IP: 3 por hora. Es un freno básico (no compartido entre
 // instancias del servidor); el honeypot detiene a la mayoría de bots.
 const WINDOW_MS = 60 * 60 * 1000;
@@ -33,12 +32,6 @@ function rateLimited(ip: string) {
   hits.set(ip, recent);
   return recent.length > MAX_PER_WINDOW;
 }
-
-const escapeHtml = (s: string) =>
-  s.replace(
-    /[&<>"']/g,
-    (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!,
-  );
 
 export async function sendContact(_prev: ContactState, formData: FormData): Promise<ContactState> {
   // Honeypot: un campo oculto que solo rellenan los bots. Se responde "éxito" para no darles pistas.
@@ -73,25 +66,48 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
     };
   }
 
-  const { name, email, reason, message } = parsed.data;
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-    body: JSON.stringify({
-      from,
-      to: [to],
-      reply_to: email,
-      subject: `[Web] ${reasonLabel[reason]} — ${name}`,
-      text: `${name} <${email}>\nMotivo: ${reasonLabel[reason]}\n\n${message}`,
-      html: `<p><strong>${escapeHtml(name)}</strong> &lt;${escapeHtml(email)}&gt;<br>Motivo: ${reasonLabel[reason]}</p><p>${escapeHtml(message).replace(/\n/g, "<br>")}</p>`,
-    }),
-  });
+  const data = parsed.data;
 
-  if (!res.ok) {
+  /** Envía un correo con Resend; un fallo de red o el tiempo límite (10 s) devuelven false. */
+  async function send(payload: Record<string, unknown>) {
+    try {
+      const res = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        signal: AbortSignal.timeout(10_000),
+        headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ from, ...payload }),
+      });
+      return res.ok;
+    } catch {
+      return false;
+    }
+  }
+
+  // 1) Notificación para mí (responder escribe directo a quien envió el formulario).
+  const notification = notificationEmail(data);
+  const delivered = await send({
+    to: [to],
+    reply_to: data.email,
+    subject: notification.subject,
+    html: notification.html,
+    text: notification.text,
+  });
+  if (!delivered) {
     return {
       status: "error",
       message: `No pude enviar el mensaje. Inténtalo de nuevo o escríbeme a ${profile.links.email}.`,
     };
   }
+
+  // 2) Confirmación para quien escribe. Si falla, el mensaje ya llegó: no se muestra error.
+  const confirmation = confirmationEmail(data);
+  await send({
+    to: [data.email],
+    reply_to: to,
+    subject: confirmation.subject,
+    html: confirmation.html,
+    text: confirmation.text,
+  });
+
   return { status: "success" };
 }

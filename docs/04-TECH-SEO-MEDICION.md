@@ -13,6 +13,7 @@
 | Contenido | **MDX** en el repo + **Velite** (o `content-collections`) para tipar y validar | Casos y notas con frontmatter validado por esquema (Zod) |
 | Datos del perfil | `content/profile.ts` (fuente única) | Genera web, `llms.txt`, `resume.txt`, JSON-LD y CV HTML |
 | Formulario | Server Action + **Resend** + validación Zod | Ya lo estás evaluando para Norbert Wiener: reutilizas aprendizaje |
+| Correos | `lib/email/templates.ts`: notificación (`reply_to` = remitente; si falla, el formulario muestra error) + confirmación al remitente (si falla, no bloquea). Timeout de 10 s por envío | Diseño en `03-DESIGN.md` §13.4.1 |
 | Medición | **GTM + GA4** con Consent Mode v2; **Search Console**; **Microsoft Clarity** (mapas de calor) | Stack estándar de analítica web y medición de producto |
 | Hosting | **Vercel** (despliegue nativo para Next.js) | Despliegue por rama, preview URLs por PR, Edge Network optimizada para Next.js App Router |
 | Calidad | ESLint, Prettier, Lighthouse CI en cada PR, `@axe-core` | Calidad verificable, no declarada |
@@ -100,7 +101,7 @@ Validar con la [Prueba de resultados enriquecidos](https://search.google.com/tes
 
 ### 2.3 Archivos generados
 - `sitemap.ts`: solo URLs reales (nada de `#`), con `lastModified` tomado del frontmatter.
-- `robots.ts`: conservar la política actual hacia rastreadores de IA y redes sociales; **quitar** `Host:` y `crawl-delay`; quitar `/blog-personal` si la ruta no existe.
+- `robots.ts`: conservar la política actual hacia rastreadores de IA y redes sociales; **quitar** `Host:` y `crawl-delay`; quitar `/blog-personal` si la ruta no existe. *(Hecho: la ruta se eliminó; `disallow` queda en `/api/` y `/dev/`.)*
 - `llms.txt` y `resume.txt`: generados desde `profile.ts`, con fecha de actualización.
 - `rss.xml` para las notas.
 

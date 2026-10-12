@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { profile } from "@/content/profile";
 
-export const homeTitle = `${profile.name} — Desarrollo web y automatización de procesos | Lima`;
+export const homeTitle = `${profile.name} — Desarrollo web y automatización | Lima`;
 export const homeDescription =
-  "Estudiante de último ciclo que construye herramientas web con Next.js, automatiza procesos con Python y conecta sistemas con APIs. Lima, Perú.";
+  "Construyo herramientas web con Next.js, automatizo procesos con Python e integro sistemas con APIs. Disponible para roles junior desde enero 2027 · Lima.";
 
 /** Metadata por defecto del layout raíz (04-TECH-SEO-MEDICION.md §2.1). */
 export const defaultMetadata: Metadata = {
@@ -19,6 +19,9 @@ export const defaultMetadata: Metadata = {
   },
   openGraph: {
     type: "profile",
+    firstName: "Sebastián",
+    lastName: "Jaque",
+    username: profile.handle,
     locale: "es_PE",
     siteName: profile.name,
     title: homeTitle,
