@@ -36,7 +36,7 @@ Las fases 0 a 3 avanzaron antes de su ventana: la web nueva (Next.js 16) ya exis
 2. ⬜ **Lanzamiento** (Fase 2, tarea 8): desplegar en Vercel, apuntar `sjaquer.is-a.dev` y pasar el checklist de la Fase 5.
 3. ⬜ **Formulario:** `RESEND_API_KEY` y `CONTACT_FROM_EMAIL` (dominio verificado) en Vercel; probar envío, error y spam.
 4. ⬜ **Rendimiento ≥ 95:** decidir si GTM se carga en `<head>` o tras la interacción (`04` §3.1).
-5. ⬜ **GA4/GTM** (Fase 3, tareas 3–6): conversiones y dimensiones, sitemap en Search Console, Clarity con consentimiento, QA en Preview/DebugView, UTM en LinkedIn.
+5. ⬜ **Cierre de la Fase 3 en las cuentas** (≈ 40 min, guía paso a paso en `04-TECH-SEO-MEDICION.md` §4.8): importar `docs/gtm/eventos-sitio.json` en GTM, publicar, dimensiones y eventos clave en GA4, sitemap en Search Console, UTM en LinkedIn y embudo. El código, el consentimiento, Clarity y la verificación de Search Console ya están hechos y verificados en producción.
 6. ⬜ **Datos de los casos** (`07-PROYECTOS.md` §4) y caso **Dearel**; línea "fuera del trabajo" en `/sobre-mi`.
 7. ⬜ **Fase 4:** `/notas`, RSS, `PostCard`, "Últimas notas" en la home y 4 notas.
 8. ⬜ **Fase 6 (ene 2027):** caso "Este portafolio" con antes/después y decisiones con datos.
@@ -120,10 +120,10 @@ Las fases 0 a 3 avanzaron antes de su ventana: la web nueva (Next.js 16) ya exis
 **Tareas**
 1. [x] Crear cuenta GA4 + contenedor GTM; Consent Mode v2 con banner y `/privacidad`. *(1,5 h)*
 2. [x] `lib/analytics.ts` tipado; `data-cta` en todos los botones; eventos de la tabla §4.3. *(1,5 h)*
-3. [ ] Marcar conversiones (`cv_download`, `generate_lead`, `case_study_read`); registrar dimensiones personalizadas. *(30 min)*
-4. [ ] Search Console + envío del sitemap; Clarity vía GTM (con consentimiento). *(30 min)*
-5. [ ] QA de cada evento con GTM Preview + DebugView. *(1 h)*
-6. [ ] UTM en los enlaces de LinkedIn (perfil, Destacados) y en el PDF del CV. *(15 min)*
+3. [ ] Marcar conversiones (`cv_download`, `generate_lead`, `case_study_read`); registrar dimensiones personalizadas. *(30 min)* — guía en `04` §4.8, pasos 3–4.
+4. [ ] Search Console + envío del sitemap; Clarity vía GTM (con consentimiento). *(30 min)* — Search Console verificado ✅, Clarity con consentimiento ✅ (verificado en producción); falta enviar el sitemap (`04` §4.8 paso 6).
+5. [ ] QA de cada evento con GTM Preview + DebugView. *(1 h)* — QA automatizada en producción hecha (`04` §4.8); falta importar la etiqueta de eventos (`docs/gtm/eventos-sitio.json`) y confirmar en Preview/DebugView.
+6. [ ] UTM en los enlaces de LinkedIn (perfil, Destacados) y en el PDF del CV. *(15 min)* — CV ✅; LinkedIn ⬜ (`04` §4.8 paso 7).
 7. [ ] Exploración de embudo en GA4 + `/docs/decisiones.md` iniciado. *(45 min)* — `decisiones.md` ✅; exploración de embudo ⬜ (necesita datos).
 
 **Terminado cuando:** cada evento aparece correcto en DebugView, rechazar el consentimiento no deja cookies `_ga`, y el embudo muestra datos.
@@ -186,6 +186,6 @@ Al cerrar cada fase, actualiza esta tabla:
 | 0 | ✅ | 11 oct 2026 | — | Hecha sobre la web Vite; luego superada por la migración |
 | 1 | ✅ | 11 oct 2026 | — | Adelantada; Figma como kit en `design/figma/` |
 | 2 | 🟡 | 12 oct 2026 | — | Páginas y 6 casos listos; falta lanzamiento y Resend |
-| 3 | 🟡 | 12 oct 2026 | — | Código listo; faltan conversiones, QA y Clarity en las cuentas |
+| 3 | 🟡 | 12 oct 2026 | — | Código y QA en producción listos; faltan los pasos en las cuentas de `04` §4.8 |
 | 4 | ⬜ | | | |
 | 6 | ⬜ | | | |

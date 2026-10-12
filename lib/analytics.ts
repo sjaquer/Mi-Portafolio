@@ -22,11 +22,33 @@ export type AnalyticsEvent =
 
 type DataLayerWindow = Window & { dataLayer?: unknown[] };
 
+/**
+ * Todos los parámetros que usan los eventos. GTM conserva en su modelo de datos los
+ * valores de pushes anteriores; por eso cada evento limpia (undefined) los que no usa
+ * y ningún parámetro "se arrastra" a otro evento (p. ej. `theme` dentro de `cv_download`).
+ */
+const PARAM_KEYS = [
+  "cta_id",
+  "cta_location",
+  "page_type",
+  "lead_channel",
+  "lead_reason",
+  "link_domain",
+  "case_slug",
+  "case_type",
+  "post_slug",
+  "post_pillar",
+  "field",
+  "theme",
+] as const;
+
+const cleared = Object.fromEntries(PARAM_KEYS.map((k) => [k, undefined]));
+
 export function track(e: AnalyticsEvent) {
   if (typeof window === "undefined") return;
   const w = window as DataLayerWindow;
   w.dataLayer = w.dataLayer || [];
-  w.dataLayer.push(e);
+  w.dataLayer.push({ ...cleared, ...e });
 }
 
 export function pageTypeOf(pathname: string): PageType {

@@ -16,12 +16,18 @@ function locationOf(el: Element): string {
   );
   if (!region) return "main";
   if (region.tagName === "FORM") return region.id || "form";
-  return (
+  const name =
     region.getAttribute("aria-labelledby") ||
     region.id ||
     region.getAttribute("aria-label") ||
-    "main"
-  );
+    "main";
+  // Nombres estables y legibles en GA4: "hero-title" → "hero", "Filtrar casos…" → "filtrar-casos…".
+  return name
+    .replace(/-title$/, "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, "-");
 }
 
 /**

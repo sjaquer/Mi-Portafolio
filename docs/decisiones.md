@@ -16,6 +16,7 @@
 | 2026-10-12 | Diseño v3 → v3.1 → v3.2: se probó una home con más capas y se simplificó por saturación | Revisión visual: datos repetidos y 4 tonos de fondo | Una sola banda invertida, tarjetas de 3 elementos, casos como artículos | 2026-11-12 |
 | 2026-10-12 | Casos en formato de artículo con imagen 16:9 y minutos de lectura | Preferencia de lectura editorial; reclutadores escanean titular + resultado | Más clics en "Leer el caso" | 2026-11-12 |
 | 2026-10-12 | Animaciones solo con `transform`, sin animar opacidad | Lighthouse marcó contraste insuficiente durante el revelado | Accesibilidad 100 estable | — |
+| 2026-10-12 | Cada evento del `dataLayer` limpia los parámetros que no usa | QA en producción: `theme` y `cta_id` se arrastraban a `cv_download` y otros eventos | Informes de GA4 sin valores cruzados | 2026-11-12 |
 
 ## Revisiones quincenales
 

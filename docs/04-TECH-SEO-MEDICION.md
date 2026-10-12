@@ -215,6 +215,37 @@ Así sabrás qué canal trae reclutadores que descargan el CV.
 - Comprobar que, con consentimiento rechazado, no se escriben cookies `_ga`.
 - Checklist por evento: nombre correcto, parámetros presentes, se dispara una sola vez.
 
+### 4.8 Cierre de la Fase 3 — estado verificado y guía en las cuentas
+
+**Verificado en producción (`sjaquer.is-a.dev`, 12 oct 2026, navegador automatizado):**
+
+| Comprobación | Resultado |
+|---|---|
+| GTM `GTM-PSWBGH5K` carga en todas las páginas | ✅ |
+| Consentimiento **rechazado**: sin cookies `_ga`, Clarity no carga, GA4 solo envía señales sin identificadores (`gcs=G100`) | ✅ |
+| Consentimiento **aceptado**: cookies `_ga`/`_ga_GDPBN9G1M5`, Clarity (`ywauop086w`) carga, `gcs=G101` | ✅ |
+| Llegan a GA4: `cta_click`, `theme_change`, `cv_download`, `outbound_click`, `case_study_view`, `case_study_read`, `generate_lead` (email) | ✅ |
+| `form_error` se registra en el `dataLayer` (4 campos) pero no llegó a GA4 | ⚠️ falta en el activador de GTM |
+| `case_study_view` llega sin `case_type` | ⚠️ falta el parámetro en la etiqueta de GTM |
+| Parámetros arrastrados entre eventos (p. ej. `theme` dentro de `cv_download`) | ✅ corregido en `lib/analytics.ts`: cada evento limpia los parámetros que no usa |
+| `sitemap.xml` con 12 URLs y `robots.txt` lo declara | ✅ |
+| Search Console verificado (meta + archivo `google4fab63528fff526b.html`) | ✅ |
+
+**Pasos en las cuentas (≈ 40 min)**
+
+1. **GTM — importar la etiqueta de eventos** (`docs/gtm/eventos-sitio.json`):
+   Admin → *Importar contenedor* → elegir el archivo → espacio de trabajo actual → **Combinar** → *Cambiar el nombre de los objetos en conflicto*. Crea 12 variables `DLV - …`, la constante del ID de GA4, el activador `CE - Eventos del sitio (04 §4.3)` (los 9 eventos) y la etiqueta `GA4 - Eventos del sitio (04 §4.3)` con los 12 parámetros.
+   Después **pausa o borra la etiqueta de eventos GA4 que ya tenías** (para no duplicar eventos). La etiqueta de Google (`page_view`) y la de Clarity se quedan como están.
+2. **GTM — probar y publicar:** *Vista previa* → abrir el sitio → aceptar el consentimiento → hacer clic en Descargar CV, LinkedIn, un caso (bajar hasta el final), el email de contacto, enviar el formulario vacío y cambiar el tema. En Tag Assistant cada evento debe disparar la etiqueta una vez, con sus parámetros. Luego *Enviar* → *Publicar* con el nombre "Fase 3 · eventos 04 §4.3".
+3. **GA4 — dimensiones personalizadas** (Administrar → Definiciones personalizadas → Crear, ámbito **Evento**): `cta_id`, `cta_location`, `page_type`, `lead_channel`, `lead_reason`, `link_domain`, `case_slug`, `case_type`, `post_slug`, `post_pillar`, `field`, `theme`. El nombre de la dimensión puede ser el mismo que el parámetro.
+4. **GA4 — eventos clave** (Administrar → Eventos clave): marcar `cv_download`, `generate_lead` y `case_study_read`. No marcar `file_download` (lo crea la medición mejorada y duplica a `cv_download`).
+5. **GA4 — DebugView:** con la vista previa de GTM abierta, comprobar en Administrar → DebugView que los eventos llegan con sus parámetros.
+6. **Search Console:** Sitemaps → enviar `https://sjaquer.is-a.dev/sitemap.xml`.
+7. **UTM en LinkedIn:** usar los enlaces de §4.5 (Destacados: `?utm_source=linkedin&utm_medium=profile&utm_campaign=featured`; mensajes: `?utm_source=linkedin&utm_medium=dm&utm_campaign=postulacion`). El PDF del CV ya lleva `utm_source=cv`.
+8. **GA4 — exploración de embudo** (Explorar → Exploración de embudo, "embudo abierto"): pasos `session_start` → `case_study_view` → `case_study_read` → `cv_download` o `generate_lead`; desglose por `session_source` . Guardar como "Embudo portafolio". Se lee con datos a partir de 2–4 semanas.
+
+**Terminado cuando:** los 9 eventos aparecen en DebugView con sus parámetros, rechazar el consentimiento no deja cookies `_ga` (✅ ya verificado) y el embudo existe en GA4.
+
 ---
 
 ## 5. Calidad y flujo de trabajo
