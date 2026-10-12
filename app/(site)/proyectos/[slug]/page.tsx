@@ -76,14 +76,8 @@ export default async function CasePage({ params }: PageProps<"/proyectos/[slug]"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
       <Container className="pt-6 pb-8 lg:pb-9">
-        <Button
-          href="/proyectos"
-          variant="ghost"
-          size="sm"
-          cta="case_back"
-          className="mb-6 -ml-4"
-          icon={<IconArrowLeft size={16} stroke={1.5} aria-hidden className="-order-1" />}
-        >
+        <Button href="/proyectos" variant="ghost" size="sm" cta="case_back" className="mb-6 -ml-4">
+          <IconArrowLeft size={16} stroke={1.5} aria-hidden />
           Proyectos
         </Button>
         <div className="mb-4 empty:hidden">

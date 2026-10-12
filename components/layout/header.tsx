@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Wordmark } from "@/components/brand/wordmark";
+import { Monogram, Wordmark } from "@/components/brand/wordmark";
 import { MobileMenu } from "@/components/layout/mobile-menu";
 import { NavLink } from "@/components/layout/nav-link";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
@@ -15,8 +15,9 @@ export function Header() {
         <Link
           href="/"
           data-cta="nav_home"
-          className="-mx-2 flex min-h-control-md items-center rounded-sm px-2 text-ink-900"
+          className="-mx-2 flex min-h-control-md items-center gap-3 rounded-sm px-2 text-ink-900"
         >
+          <Monogram className="hidden size-6 shrink-0 sm:block" labelled={false} />
           <Wordmark className="h-4 w-auto" />
         </Link>
 

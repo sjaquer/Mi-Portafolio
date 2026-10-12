@@ -25,7 +25,7 @@ const pick = (key) => paths.match(new RegExp(`${key}: "([^"]+)"`))[1];
 const WORDMARK = { viewBox: pick("viewBox"), d: pick("  d") };
 const MONO_LETTERS = pick("letters");
 const MONO_RULE = pick("rule");
-const [, , wmW, wmH] = WORDMARK.viewBox.split(" ").map(Number);
+const wmH = Number(WORDMARK.viewBox.split(" ")[3]);
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
 

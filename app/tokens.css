@@ -26,6 +26,10 @@
   --color-danger-700: #b42318;
   --color-focus: #2350d9;
 
+  /* Marca para piezas tonales (§6.7) */
+  --color-brand-50: #eef2f7;
+  --color-brand-900: #13233a;
+
   /* Gráficos de datos (§9) */
   --color-chart-1: #2350d9;
   --color-chart-2: #d0611f;
@@ -96,6 +100,7 @@
   --shadow-*: initial;
   --shadow-sm: 0 1px 2px rgb(20 22 26 / 0.06);
   --shadow-md: 0 4px 16px rgb(20 22 26 / 0.08);
+  --shadow-lg: 0 12px 32px rgb(20 22 26 / 0.12);
 
   /* ── Movimiento (§11): duraciones 150 / 200 ms con duration-150 / duration-200 ── */
   --ease-*: initial;
@@ -127,5 +132,36 @@
   --color-chart-3: #14a08f;
   --color-chart-other: #6b717b;
 
+  color-scheme: dark;
+}
+
+/* ── Degradados tonales (§6.7) ──────────────────────────────────────── */
+:root {
+  --gradient-hero: radial-gradient(120% 90% at 100% 0%, #eef2f7 0%, #fafaf8 60%);
+  --gradient-inverse: linear-gradient(180deg, #13233a 0%, #182b47 100%);
+}
+:root[data-theme="dark"] {
+  --gradient-hero: radial-gradient(120% 90% at 100% 0%, #121a26 0%, #0e1013 60%);
+  --color-brand-50: #121a26;
+}
+
+/* ── Superficie invertida: banda de identidad (§15.4) ──────────────── */
+.surface-inverse {
+  --color-bg: #13233a;
+  --color-surface: #182b47;
+  --color-surface-muted: #1d3352;
+  --color-border: #2a4060;
+  --color-border-strong: #6a82a6;
+  --color-ink-900: #fafaf8;
+  --color-ink-700: #d6dfea;
+  --color-ink-500: #a9b8cc;
+  --color-accent-600: #a3baff;
+  --color-accent-700: #c5d3ff;
+  --color-accent-50: #1f3558;
+  --color-on-accent: #13233a;
+  --color-success-700: #3fc08a;
+  --color-focus: #a3baff;
+  background: var(--gradient-inverse);
+  color: var(--color-ink-700);
   color-scheme: dark;
 }

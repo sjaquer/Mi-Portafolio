@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CaseCover } from "@/components/ui/case-cover";
 import { TagList } from "@/components/ui/tag";
 import { DraftNotice } from "@/components/ui/draft-notice";
 import { StatusBadge } from "@/components/ui/status-badge";
@@ -8,11 +9,24 @@ import { caseStatusLabel, caseTypeLabel, type CaseStudy } from "@/content/casos"
  * Tarjeta de caso (§19.2): toda la tarjeta es clicable con un solo enlace
  * (el del título, extendido con ::after), así el lector de pantalla oye un único destino.
  */
-export function CaseCard({ c, headingLevel = "h3" }: { c: CaseStudy; headingLevel?: "h2" | "h3" }) {
+export function CaseCard({
+  c,
+  headingLevel = "h3",
+  cover = true,
+}: {
+  c: CaseStudy;
+  headingLevel?: "h2" | "h3";
+  cover?: boolean;
+}) {
   const Heading = headingLevel;
   const numeric = /\d/.test(c.result.value) && /[%−+]/.test(c.result.value);
   return (
-    <article className="group relative flex h-full flex-col gap-5 rounded-lg border border-border bg-surface p-5 transition-shadow duration-150 ease-standard hover:shadow-md">
+    <article className="group relative flex h-full flex-col gap-5 overflow-hidden rounded-lg border border-border bg-surface p-5 transition duration-200 ease-standard hover:-translate-y-px hover:border-border-strong hover:shadow-md motion-reduce:hover:translate-y-0">
+      {cover && (
+        <div className="-mx-5 -mt-5 border-b border-border">
+          <CaseCover c={c} />
+        </div>
+      )}
       <DraftNotice item={c} />
       <div className="flex flex-col items-start gap-2">
         <span className="text-label-mono text-ink-500">

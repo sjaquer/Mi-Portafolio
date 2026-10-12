@@ -3,7 +3,7 @@
 > **Fuente de verdad visual y verbal** de la marca Sebastián Jaque, para la web, el CV, LinkedIn, GitHub, presentaciones, documentos y cualquier pieza futura.
 > Si una decisión no está aquí, se agrega aquí antes de implementarla o publicarla.
 >
-> **Versión:** 2.0 · **Actualizado:** 11 oct 2026 · **Responsable:** Sebastián Jaque
+> **Versión:** 3.0 · **Actualizado:** 12 oct 2026 · **Responsable:** Sebastián Jaque
 
 ---
 
@@ -369,7 +369,33 @@ Fondo de puntos de 1 px cada 24 u en `gris-100` (sobre papel) o `marino-500` al 
 Toda captura de pantalla va dentro de un marco: fondo `gris-50`, radio 16 u, padding 24 u, borde 1 px `gris-100`. Sin mockups de dispositivos fotorrealistas; como máximo, una barra de navegador plana de 3 puntos grises.
 
 ### 6.6 Prohibido
-Degradados, sombras largas, brillos, partículas, toroides, mallas 3D, cerebros, circuitos, robots, "hologramas", texturas de ruido, glassmorphism, neón.
+Degradados multicolor o saturados, sombras largas, brillos, partículas, toroides, mallas 3D, cerebros, circuitos, robots, "hologramas", texturas de ruido, glassmorphism, neón. Los únicos degradados permitidos son los **tonales** de §6.7.
+
+### 6.7 Profundidad (v3.0)
+
+La marca es sobria, no plana. La profundidad se construye con **capas de un mismo tono**, nunca con efectos.
+
+**Degradados tonales**
+- Solo entre dos valores **del mismo tono** y con una diferencia de luminancia mínima: papel `#FAFAF8` → marino-50 `#EEF2F7` (claro) o `#0E1013` → `#121A26` (oscuro).
+- Forma: radial suave desde una esquina, o lineal vertical. Nunca detrás de un párrafo largo sin verificar contraste: `gris-500` sobre marino-50 da 4,7:1 ✅ y `azul-600` 5,8:1 ✅.
+- Dónde: fondo del hero y bandas de identidad. Máximo uno por pantalla.
+- Puede combinarse con la retícula de puntos (§6.2) desvanecida con una máscara.
+
+**Superficies (de abajo hacia arriba)**
+
+| Nivel | Uso | Claro | Oscuro |
+|---|---|---|---|
+| 0 · Fondo | Página | papel | `#0E1013` |
+| 1 · Superficie | Tarjetas, fichas | blanco | `#171A1F` |
+| 2 · Elevada | Tarjeta en hover, menús | blanco + `shadow-md` | `#1D2026` + borde |
+| Invertida | Bandas de identidad | marino-900 `#13233A` | marino-900 `#13233A` |
+
+**Banda invertida (identidad).** Secciones en marino-900 para marcar ritmo: resultados y CTA final. Máximo dos por página y nunca seguidas. Dentro de la banda, los tokens se redefinen (§15.4) para que los componentes funcionen sin cambios. Contrastes sobre `#13233A`: papel 15,1:1 · marino-100 11,7:1 · `#A9B8CC` 7,8:1 · azul `#A3BAFF` 8,3:1 · verde `#3FC08A` 6,9:1 ✅.
+
+**Elevación.** Borde de 1 px en reposo. En hover, la tarjeta sube 2 px y gana `shadow-md`. `shadow-lg` solo para lo que flota (banner de consentimiento, menús).
+
+### 6.8 Portadas de caso (v3.0)
+Mientras no haya capturas con datos simulados, cada caso usa una **portada generada**: fondo tonal (§6.7) + retícula de puntos + 3 nodos del diagrama del caso (el nodo que construí, destacado en marino) + la cifra del resultado en mono. Es SVG en línea (< 3 KB), legible en ambos temas y consistente con §8. Cuando exista una captura, reemplaza a la portada dentro del marco de §6.5.
 
 ---
 
@@ -480,7 +506,11 @@ Los gráficos son evidencia: deben ser **honestos antes que bonitos**. Paleta va
 ### 10.5 Prohibido
 Fotos de stock, avatares hiperrealistas de IA con estilos fantásticos/cyberpunk, fotos con terceros sin permiso, pantallas con datos reales, selfies de baja calidad, fotos de eventos con logos de terceros como protagonistas.
 
-### 10.6 Estado transitorio (MVP / Fase 1) — Ilustración vectorial / silueta sobria
+### 10.6 Estado transitorio — Ficha de perfil (v3.0) e ilustración
+
+**En la web, la silueta se reemplaza por una ficha de perfil** hasta que exista el retrato: tarjeta de nivel 1 con monograma, nombre, rol, disponibilidad, ubicación, stack principal (etiquetas mono) y enlaces a LinkedIn y GitHub. Aporta información en lugar de un placeholder. La silueta queda solo para piezas gráficas.
+
+**Ilustración (piezas gráficas):**
 Mientras se realiza la sesión fotográfica del retrato principal (§10.2), la web y piezas de soporte utilizan una **ilustración minimalista vectorial o silueta monocroma sutil**:
 - Trazo limpio de 1,5 px en `marino-700` o `tinta` sobre fondo plano (`papel` o `marino-50`).
 - Estilo lineal técnico y sobrio (sin efectos 3D, sin colores saturados, sin estética fantástica de IA).
@@ -495,7 +525,9 @@ Principio: **el movimiento explica, no decora.**
 - Duraciones: 150 ms (hover), 200 ms (menús, apariciones), 300 ms máximo en la web. En video/redes: transiciones de 200–400 ms, cortes secos preferidos.
 - Curva: `cubic-bezier(.2, 0, 0, 1)` (salida suave).
 - Solo `opacity` y `transform` en la web.
-- Sin animaciones de entrada al hacer scroll en el contenido principal; sin parallax, sin cursores personalizados.
+- **Entrada al hacer scroll (v3.0):** permitida solo como *revelado* sutil: `opacity` 0 → 1 y `translateY` 12 px → 0, una vez, al entrar en pantalla. Se implementa **solo con CSS** (`animation-timeline: view()`); sin JavaScript ni librerías. Nunca en el hero ni en el contenido que pinta el LCP. Navegadores sin soporte: el contenido aparece sin animación.
+- **Microinteracciones:** tarjetas que suben 2 px en hover; flechas de botones que avanzan 4 px; subrayado que crece en enlaces. Todas ≤ 200 ms.
+- Sin parallax, sin cursores personalizados, sin contadores animados de cifras (una métrica se lee, no se celebra).
 - Respetar `prefers-reduced-motion: reduce` → sin transiciones.
 - **Video corto (si se produce):** pantalla grabada limpia + subtítulos siempre (Inter 600, fondo de placa tinta al 85 %, máximo 2 líneas), música opcional sin letra, duración 30–60 s.
 
@@ -773,6 +805,26 @@ Claro por defecto. Un solo color de acción. Cada token apunta a un primitivo de
 - Proporción aproximada por pantalla: 90 % neutros, 8 % acento, 2 % verde.
 - Nada de degradados, neón ni glassmorphism.
 
+### 15.4 Superficie invertida (`.surface-inverse`, v3.0)
+
+Redefine los tokens dentro de una banda de identidad (§6.7). Igual en tema claro y oscuro.
+
+| Token | Valor | Contraste |
+|---|---|---|
+| `--color-bg` | `#13233A` | — |
+| `--color-surface` | `#182B47` | — |
+| `--color-surface-muted` | `#1D3352` | — |
+| `--color-border` | `#2A4060` | Decorativo |
+| `--color-border-strong` | `#6A82A6` | 3,6:1 sobre surface ✅ |
+| `--color-ink-900` | `#FAFAF8` | 15,1:1 ✅ |
+| `--color-ink-700` | `#D6DFEA` | 11,7:1 ✅ |
+| `--color-ink-500` | `#A9B8CC` | 7,8:1 ✅ |
+| `--color-accent-600` | `#A3BAFF` | 8,3:1 ✅ · texto `#13233A` encima 8,3:1 ✅ |
+| `--color-accent-700` | `#C5D3FF` | 10,6:1 ✅ |
+| `--color-success-700` | `#3FC08A` | 6,9:1 ✅ |
+
+**Fondos tonales:** `--gradient-hero` (radial papel → marino-50; en oscuro `#0E1013` → `#121A26`) y `--gradient-inverse` (marino-900 → `#182B47`).
+
 ---
 
 ## 16. Tipografía web
@@ -909,6 +961,10 @@ Cada botón lleva `data-cta="<id>"` para la medición (ver `04-TECH-SEO-MEDICION
 | `ContactForm` | Formulario de 4 campos | Errores en línea, `aria-live` |
 | `ThemeToggle` | Claro / oscuro / sistema | Respeta `prefers-color-scheme` |
 | `ConsentBanner` | Consentimiento de medición | Discreto, inferior, dos botones del mismo peso |
+| `ProfileCard` (v3.0) | Ficha de perfil del hero | Sustituye a la silueta (§10.6) |
+| `CaseCover` (v3.0) | Portada generada del caso | §6.8; SVG en línea, `aria-hidden` |
+| `StackStrip` (v3.0) | Herramientas con ícono | Íconos Tabler de marca, monocromos `ink-500` (§7) |
+| `Reveal` (v3.0) | Revelado al hacer scroll | Solo CSS; nunca en el hero (§11) |
 
 ### 19.3 Inputs
 - Alto 44 px, borde `border-strong`, radio `sm`, label siempre visible encima (nunca solo placeholder).
@@ -1043,3 +1099,4 @@ En Tailwind v4 se exponen con `@theme` para usar clases como `bg-surface`, `text
 | 1.0 | 10 oct 2026 | Sistema de diseño web inicial (color, tipografía, espaciado, componentes). |
 | 2.0 | 11 oct 2026 | Ampliado a manual de marca personal: plataforma, personalidad, voz y escritura, logotipo, paleta extendida (marino, ámbar, primitivos), elementos gráficos, iconografía, diagramas, gráficos de datos (paleta validada para daltonismo), fotografía, redes, aplicaciones y checklist. Nuevos tokens `--color-brand`, `--color-warning-700` y `--chart-*`. |
 | 2.1 | 11 oct 2026 | Sesión de alineación y confirmación (/grill-me): ratificación de jerarquía de color (#1F3A5F identidad, #2350D9 acción, #0B7350 métricas), marca de medición técnica y paleta de gráficos de datos. Cambio oficial de familias tipográficas a Inter + JetBrains Mono. Inclusión de estado transitorio de avatar vectorial en Hero (§10.6). Incorporación de especificaciones técnicas detalladas para diseño en Figma (§12.9). |
+| 3.0 | 12 oct 2026 | Profundidad sin perder sobriedad: degradados tonales (§6.7), superficies por niveles, banda invertida marino con tokens propios (§15.4), portadas de caso generadas (§6.8), ficha de perfil en lugar de silueta (§10.6), revelado al hacer scroll solo con CSS y microinteracciones (§11), nuevos componentes en §19.2. |

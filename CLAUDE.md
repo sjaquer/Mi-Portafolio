@@ -13,7 +13,7 @@ Portafolio de Sebastián Jaque (Desarrollo web · Automatización · MarTech & C
 ## Reglas
 1. **Fuente única:** todo dato del perfil (cargos, fechas, certificaciones, métricas) vive en `content/profile.ts` o en los MDX de `content/`. Nunca escribirlo a mano en componentes.
 2. **Honestidad:** cargos tal como en el CV; certificaciones con nombre y emisor reales; ninguna métrica sin contexto (qué, cuánto, base, periodo). No inventar cifras.
-3. **Diseño:** solo tokens de `tokens.css` / `@theme`. Nada de colores, tamaños o espacios fuera de la escala. Un solo botón `primary` visible por pantalla. Sin degradados, neón, glassmorphism ni WebGL.
+3. **Diseño:** solo tokens de `tokens.css` / `@theme`. Nada de colores, tamaños o espacios fuera de la escala. Un solo botón `primary` visible por pantalla. Sin neón, glassmorphism ni WebGL; los únicos degradados permitidos son los tonales de `03-DESIGN.md` §6.7.
 4. **Rendimiento:** Server Components por defecto; `"use client"` solo para interacción. Respetar el presupuesto (LCP < 2 s, JS home < 100 KB, CLS < 0,05).
 5. **Accesibilidad:** WCAG 2.2 AA; un `h1` por página; foco visible; área táctil ≥ 44 px; `alt` en imágenes.
 6. **Medición:** todo botón lleva `data-cta`; los eventos se envían solo con `track()` de `lib/analytics.ts` (tipado). Nunca datos personales a GA4.

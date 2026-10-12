@@ -5,7 +5,7 @@ type Variant = "primary" | "secondary" | "ghost" | "link";
 type Size = "sm" | "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 font-semibold whitespace-nowrap transition-colors duration-150 ease-standard " +
+  "group/btn inline-flex items-center justify-center gap-2 font-semibold whitespace-nowrap transition-colors duration-150 ease-standard " +
   "active:translate-y-px aria-disabled:pointer-events-none aria-disabled:opacity-50";
 
 const variants: Record<Variant, string> = {
@@ -54,7 +54,11 @@ export function Button(props: ButtonProps) {
   const content = (
     <>
       {children}
-      {icon}
+      {icon && (
+        <span className="inline-flex transition-transform duration-200 ease-standard group-hover/btn:translate-x-1 motion-reduce:transform-none">
+          {icon}
+        </span>
+      )}
     </>
   );
 
