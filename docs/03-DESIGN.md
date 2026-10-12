@@ -786,7 +786,8 @@ Reglas de la adaptación a correo:
 - Tokens en hex (los clientes no leen variables CSS); Inter y JetBrains Mono con alternativas del sistema.
 - Cabecera: monograma PNG (`public/brand/email/monograma.png`, 96 px mostrado a 32) + nombre. Pie: regla de medición (§6.1) en PNG (`regla.png`) y motivo del envío + enlace al aviso de privacidad.
 - Un solo botón primario por correo (igual que en la web).
-- Vista previa: `pnpm dev` → `/dev/correos?tipo=notificacion` o `?tipo=confirmacion` (datos simulados; 404 en producción). Copias estáticas en `design/emails/*.html`.
+- **Remitente:** siempre "Sebastián Jaque <dirección>" (`lib/email/send.ts` antepone el nombre). La dirección sale de un dominio de envío compartido con otros proyectos, así que todo lo visible —nombre, asunto, contenido, firma y enlaces— es de la marca personal y nunca menciona ese dominio.
+- Vista previa: `pnpm dev` → `/dev/correos?tipo=notificacion` o `?tipo=confirmacion` (datos simulados; 404 en producción). Para recibirlos de verdad: `/dev/correos?enviar=1` (o `&a=otro@correo.com`) con las claves de Resend en `.env.local`. Copias estáticas en `design/emails/*.html`.
 
 ### 13.5 Presentaciones (slides)
 - 16:9 (1920 × 1080), margen 96 px, retícula de 12 columnas.

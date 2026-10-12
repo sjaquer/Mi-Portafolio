@@ -13,7 +13,7 @@
 | Contenido | **MDX** en el repo + **Velite** (o `content-collections`) para tipar y validar | Casos y notas con frontmatter validado por esquema (Zod) |
 | Datos del perfil | `content/profile.ts` (fuente única) | Genera web, `llms.txt`, `resume.txt`, JSON-LD y CV HTML |
 | Formulario | Server Action + **Resend** + validación Zod | Ya lo estás evaluando para Norbert Wiener: reutilizas aprendizaje |
-| Correos | `lib/email/templates.ts`: notificación (`reply_to` = remitente; si falla, el formulario muestra error) + confirmación al remitente (si falla, no bloquea). Timeout de 10 s por envío | Diseño en `03-DESIGN.md` §13.4.1 |
+| Correos | `lib/email/templates.ts`: notificación (`reply_to` = remitente; si falla, el formulario muestra error) + confirmación al remitente (si falla, no bloquea). Timeout de 10 s por envío. Remitente "Sebastián Jaque <`CONTACT_FROM_EMAIL`>" (`lib/email/send.ts`); prueba real en dev: `/dev/correos?enviar=1` | Diseño en `03-DESIGN.md` §13.4.1 |
 | Medición | **GTM + GA4** con Consent Mode v2; **Search Console**; **Microsoft Clarity** (mapas de calor) | Stack estándar de analítica web y medición de producto |
 | Hosting | **Vercel** (despliegue nativo para Next.js) | Despliegue por rama, preview URLs por PR, Edge Network optimizada para Next.js App Router |
 | Calidad | ESLint, Prettier, Lighthouse CI en cada PR, `@axe-core` | Calidad verificable, no declarada |

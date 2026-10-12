@@ -3,6 +3,7 @@
 import { headers } from "next/headers";
 import { z } from "zod";
 import { profile } from "@/content/profile";
+import { fromAddress, sendEmail as send } from "@/lib/email/send";
 import { confirmationEmail, notificationEmail } from "@/lib/email/templates";
 
 export type ContactState =
@@ -56,10 +57,8 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
     };
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.CONTACT_FROM_EMAIL;
   const to = process.env.CONTACT_TO_EMAIL ?? profile.links.email;
-  if (!apiKey || !from) {
+  if (!process.env.RESEND_API_KEY || !fromAddress()) {
     return {
       status: "error",
       message: `El formulario no está disponible en este momento. Escríbeme a ${profile.links.email}.`,
@@ -67,21 +66,6 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
   }
 
   const data = parsed.data;
-
-  /** Envía un correo con Resend; un fallo de red o el tiempo límite (10 s) devuelven false. */
-  async function send(payload: Record<string, unknown>) {
-    try {
-      const res = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        signal: AbortSignal.timeout(10_000),
-        headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-        body: JSON.stringify({ from, ...payload }),
-      });
-      return res.ok;
-    } catch {
-      return false;
-    }
-  }
 
   // 1) Notificación para mí (responder escribe directo a quien envió el formulario).
   const notification = notificationEmail(data);
