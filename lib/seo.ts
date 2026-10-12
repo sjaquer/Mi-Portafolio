@@ -29,7 +29,7 @@ export const defaultMetadata: Metadata = {
   },
   robots: { index: true, follow: true, "max-image-preview": "large" },
   verification: {
-    google: "R7XnE1dbqikLDxkxSKfYOnRIIYWy3WQ96LCdq3G84KY",
+    google: "n-nxcJgV-8Tv7w3WN4ScGFuxE18Iq_QgsqHQncg6b6U",
   },
   icons: {
     icon: [
