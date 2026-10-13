@@ -5,7 +5,6 @@ import { Section, SectionHeader } from "@/components/ui/section";
 import { TagList } from "@/components/ui/tag";
 import { DraftNotice } from "@/components/ui/draft-notice";
 import { cases, gallery, lab } from "@/content/casos";
-import { findImage } from "@/lib/images";
 import { readingTime } from "@/lib/reading-time";
 import { pageMetadata } from "@/lib/seo";
 
@@ -57,7 +56,6 @@ export default function ProyectosPage() {
           <CaseGrid
             items={cases.map((c) => ({
               c,
-              image: findImage(`casos/${c.slug}`),
               minutes: readingTime(c.slug),
             }))}
           />

@@ -1,12 +1,7 @@
-import {
-  IconArrowRight,
-  IconBrowser,
-  IconCalendarEvent,
-  IconMapPin,
-  IconPlugConnected,
-  IconRoute,
-} from "@tabler/icons-react";
+import { IconArrowRight, IconCalendarEvent, IconMapPin } from "@tabler/icons-react";
 import Link from "next/link";
+import { MeasureRule } from "@/components/brand/measure-rule";
+import { MiniFlow } from "@/components/brand/mini-flow";
 import { CvButton } from "@/components/sections/cv-button";
 import { Button } from "@/components/ui/button";
 import { CaseArticle } from "@/components/ui/case-article";
@@ -37,23 +32,24 @@ const proof = [
 // Casos destacados: solo los publicables en este build (07-PROYECTOS.md §3).
 const featured = cases.filter((c) => c.featured).slice(0, 3);
 
+// Cada servicio con su flujo mínimo (§8.1): el paso central es el que construyo.
 const services = [
   {
-    Icon: IconBrowser,
+    flow: ["Interfaz", "API", "Datos"] as const,
     title: "Desarrollo web y herramientas internas",
     body: "Next.js, TypeScript, PostgreSQL y Docker.",
     example: "Plataforma de empleabilidad con 5 roles y acceso con Microsoft.",
     href: "/proyectos/bolsa-de-trabajo-wiener",
   },
   {
-    Icon: IconRoute,
+    flow: ["Disparador", "Bot", "Resultado"] as const,
     title: "Automatización de procesos y bots",
     body: "Python, Playwright (RPA), bots y Power Automate.",
     example: "Robot de consultas SUNAT y bots de filtrado de candidatos.",
     href: undefined,
   },
   {
-    Icon: IconPlugConnected,
+    flow: ["Tienda", "API", "CRM"] as const,
     title: "Integración de APIs y comunicación",
     body: "APIs REST, webhooks, Shopify, CRM y email transaccional.",
     example: "Campañas segmentadas por facultad y ciclo ahorrando horas de trabajo.",
@@ -81,9 +77,13 @@ export default function Home() {
         <Container className="grid items-center gap-7 lg:grid-cols-12 lg:gap-8">
           <div className="hero-in lg:col-span-7">
             <p className="text-label-mono text-ink-500">{profile.role}</p>
-            <h1 id="hero-title" className="mt-4 text-display">
-              {profile.name}
-            </h1>
+            {/* Firma: la regla de medición se traza bajo el nombre (§11.2). */}
+            <div className="mt-4 w-fit">
+              <h1 id="hero-title" className="text-display">
+                {profile.name}
+              </h1>
+              <MeasureRule draw className="mt-3" />
+            </div>
             <p className="mt-5 max-w-prose text-lead text-ink-900">{profile.tagline}</p>
             <p className="mt-4 max-w-prose">{profile.summary}</p>
             <div>
@@ -128,9 +128,10 @@ export default function Home() {
       {/* 2. Prueba rápida: banda de identidad (§6.7, §15.4). */}
       <section aria-labelledby="resultados" className="surface-inverse py-8 lg:py-9">
         <Container>
-          <h2 id="resultados" className="mb-6 text-label-mono text-ink-500">
-            Resultados medidos
+          <h2 id="resultados" className="text-label-mono text-ink-500">
+            Resultados
           </h2>
+          <MeasureRule className="mt-4 mb-6" />
           <ul className="grid gap-6 md:grid-cols-3">
             {proof.map((m) => (
               <li key={m.label} className="reveal border-l-2 border-border pl-5">
@@ -166,7 +167,6 @@ export default function Home() {
             <div className="reveal">
               <CaseArticle
                 c={featured[0]}
-                image={findImage(`casos/${featured[0].slug}`)}
                 minutes={readingTime(featured[0].slug)}
                 variant="featured"
               />
@@ -174,12 +174,7 @@ export default function Home() {
             <ul className="grid gap-7 border-t border-border pt-8 md:grid-cols-2">
               {featured.slice(1).map((c) => (
                 <li key={c.slug} className="reveal">
-                  <CaseArticle
-                    c={c}
-                    image={findImage(`casos/${c.slug}`)}
-                    minutes={readingTime(c.slug)}
-                    variant="card"
-                  />
+                  <CaseArticle c={c} minutes={readingTime(c.slug)} variant="card" />
                 </li>
               ))}
             </ul>
@@ -191,14 +186,9 @@ export default function Home() {
       <Section aria-labelledby="que-hago" className="border-t border-border">
         <SectionHeader id="que-hago" label="Qué hago" title="Tres cosas que hago bien" />
         <ol className="grid gap-6 md:grid-cols-3">
-          {services.map(({ Icon, ...s }, i) => (
+          {services.map(({ flow, ...s }, i) => (
             <li key={s.title} className="reveal flex flex-col gap-3">
-              <span
-                aria-hidden
-                className="inline-flex size-7 items-center justify-center rounded-md border border-border bg-bg text-ink-900"
-              >
-                <Icon size={24} stroke={1.5} />
-              </span>
+              <MiniFlow steps={flow} />
               <h3 className="text-h3">{s.title}</h3>
               <p>{s.body}</p>
               <p className="text-small text-ink-500">
@@ -254,7 +244,7 @@ export default function Home() {
           </div>
           <ul className="grid gap-7 md:grid-cols-3">
             {notes.slice(0, 3).map((n) => (
-              <li key={n.slug} className="reveal border-t border-border pt-5">
+              <li key={n.slug} className="reveal">
                 <PostCard n={n} minutes={readingTime(n.slug, "notas")} />
               </li>
             ))}

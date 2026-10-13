@@ -114,7 +114,7 @@ Orden de secciones y propósito de cada una:
 ### 8.3 Caso de estudio — plantilla obligatoria
 
 ```
-Título (= resultado) + bajada · Resultado junto al título · Imagen 16:9 (public/img/casos/<slug>.webp)
+Título (= resultado) + bajada · Resultado junto al título · Portada 16:9: plano SVG del flujo (`CaseCover`)
 Ficha:   Cliente/contexto · Mi rol · Duración · Stack · Estado (en producción / en QA / entregado / prototipo)
 Índice "En esta página" fijo en escritorio (anclas en cada sección)
 1. Contexto        ¿Qué negocio y qué situación?

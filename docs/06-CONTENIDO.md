@@ -63,7 +63,7 @@ Lo que ve alguien que te busca. Rol y frase salen de `content/profile.ts`; si ca
 **Prueba rápida — etiqueta:** `RESULTADOS MEDIDOS`
 - **−35 %** · tiempo de procesamiento de pedidos · Big Jack Burgers
 - **−30 %** · tareas administrativas manuales · Dearel
-- **Minutos** · para enviar campañas de 8 000 correos (de horas a tan solo minutos) · Norbert Wiener
+- **1–2 h → 5–10 min** · por campaña de 8 000 correos (estimado) · Norbert Wiener
 
 **Casos — etiqueta:** `CASOS DE ESTUDIO` · **H2:** Proyectos con resultado · **Lead:** "El problema, las decisiones y lo que cambió, contado como un artículo corto." · **Botón:** Ver los N casos
 **Qué hago — H2:** Tres cosas que hago bien
@@ -89,7 +89,7 @@ Cada caso se publica como un **artículo corto** (600–1 000 palabras, 3–5 mi
 |---|---|---|
 | **Ficha** | `content/casos/index.ts` | Los datos que se ven en la tarjeta y en la cabecera |
 | **Cuerpo** | `content/casos/<slug>.mdx` | El artículo |
-| **Imagen** | `public/img/casos/<slug>.webp` | Portada 16:9 (opcional; sin ella se ve el placeholder de marca) |
+| **Portada** | `cover` en `content/casos/index.ts` | Plano SVG 16:9: etiqueta del flujo, 3–4 nodos (`tag` + `title` de ≤ 12 caracteres) y el índice del nodo que construiste |
 
 Los minutos de lectura se calculan solos a partir del MDX. La página, la imagen OG, el sitemap y el JSON-LD se generan solos al agregar la ficha.
 
@@ -101,7 +101,7 @@ Los minutos de lectura se calculan solos a partir del MDX. La página, la imagen
 | `title` | **Titular = resultado**, no el nombre del proyecto; ≤ 70 caracteres | "Campañas de 8 000 correos de horas a tan solo minutos, con baja automática" |
 | `subtitle` | **Bajada**: qué es y cómo funciona, en una frase de ≤ 200 caracteres | "Sistema interno de difusión con segmentación…" |
 | `problem` | Una línea: qué dolía | "Las campañas se enviaban a mano…" |
-| `result` | `value` + `label` + `context` (base, periodo, método). `measured: true` si es una medición aunque no sea % | `Minutos` · "por campaña de 8 000 destinatarios (de horas a tan solo minutos)" |
+| `result` | `value` + `label` + `context` (base, periodo, método). `measured: true` si es una medición aunque no sea % | `5–10 min` con `before: "1–2 h"` · "por campaña de 8 000 destinatarios" (se muestra como cota antes → después) |
 | `type` | `web` · `automatizacion` · `datos` | — |
 | `context`, `role`, `duration`, `year`, `stack` (≤ 4), `status` | Ficha del caso | — |
 | `featured` | `true` en los 3 casos de la home | — |
@@ -151,7 +151,7 @@ Lo que cambió, con su base. Si no hay cifra, resultado cualitativo honesto.
 - Privacidad: ningún dato real de personas en capturas; nada de nombres de servidores, cuentas ni estructura interna (`07-PROYECTOS.md` §3).
 
 ### 4.5 La imagen
-Captura con datos simulados o imagen editorial generada con el prompt base (`03-DESIGN.md` §10.7). 16:9, 1600 × 900, WebP/AVIF ≤ 200 KB, en `public/img/casos/<slug>.webp`. Aparece sola en la tarjeta y en la cabecera del caso.
+La portada es el **plano del flujo** del caso (`cover`), no una imagen: se escribe en datos y se dibuja sola en la tarjeta y en la cabecera (`03-DESIGN.md` §6.8). Elige 3–4 pasos que cuenten el recorrido de punta a punta y destaca el que construiste. Dentro del artículo, una captura con datos simulados solo si muestra algo que el plano no cuenta.
 
 ---
 
@@ -167,9 +167,9 @@ Mostrar cómo piensas y que estás aprendiendo en público, construir red en Lin
 | **Construyendo** | Notas de proyectos reales (sin datos privados) | "Migré una base de datos de SQLite a PostgreSQL sin detener el sistema: lo que salió mal" |
 | **Aprendiendo medición** | Lo que aprendes de GA4 / GTM aplicado a tu web (como aprendizaje, no como especialidad: `CLAUDE.md` regla 2) | "Mis primeros 6 eventos en GA4 y por qué los nombré así" |
 | **Automatización para PYMES** | Problemas cotidianos de negocios y cómo se resuelven | "3 tareas que una tienda pequeña puede automatizar este mes" |
-| **IA en agencias** (tesis) | Hallazgos de tu investigación, cuando sean públicos | "Cómo usan la IA generativa las agencias de marketing en Lima: primeros datos" |
+| **Herramientas e IA** | Uso práctico de IA y LLMs dentro de automatizaciones reales: qué hace, qué cuesta, dónde falla | "Leí 300 CV en PDF con un LLM local: lo que funcionó y lo que no" |
 
-Proporción sugerida: 40 % Construyendo · 30 % Automatización para PYMES · 20 % Aprendiendo medición · 10 % Tesis.
+Proporción sugerida: 40 % Construyendo · 30 % Automatización para PYMES · 20 % Aprendiendo medición · 10 % Herramientas e IA. Cada pilar tiene su motivo gráfico fijo (`03-DESIGN.md` §12.2). La tesis (IA en agencias) deja de ser pilar: si se publica un hallazgo, va como nota de Herramientas e IA.
 
 ### 5.3 Cadencia
 - **1 nota por semana** desde la Fase 4 (no antes: el inglés y la tesis van primero).

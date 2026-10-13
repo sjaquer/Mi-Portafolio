@@ -16,7 +16,7 @@
 | Este portafolio | ✅ Publicado (`/proyectos/este-portafolio`) |
 | Nivel C · notas | ✅ "Validé 1 200 correos…" publicada en `/notas` |
 | Nivel B · galería | ✅ Landings de graduación, WCCA Posgrado, página de Empleabilidad, Portal de Bolsa Laboral, LogINV, Sistema Obra |
-| Imágenes de portada | ✅ `public/img/casos/<slug>.webp` (editoriales, sin rostros) |
+| Imágenes de portada | ✅ Planos SVG del flujo de cada caso (`cover` en `content/casos/index.ts`, `03-DESIGN.md` §6.8) |
 | Datos de §4 | ⬜ Pendientes en todos los casos (marcados con `TODO(Sebastián)` en los MDX) |
 
 ## 1. Lectura general

@@ -131,13 +131,15 @@ No se persigue volumen: se busca que quien te googlee después de ver tu CV encu
 | Peso total de la home | < 500 KB |
 | Lighthouse (4 categorías) | ≥ 95 |
 
-**Estado medido (12 oct 2026, Lighthouse móvil local):** Accesibilidad, Buenas prácticas y SEO 100 en todas las páginas; LCP 1,4–1,6 s; CLS ≈ 0. **Rendimiento 86–91** y JS de la home ≈ 140 KB (base de React + Next) + ≈ 176 KB de GTM/GA4. Dos desvíos conocidos, registrados en `docs/decisiones.md`: (1) el snippet de GTM se carga en `<head>` por decisión de Sebastián (12 oct), lo que sube el bloqueo del hilo principal; cargarlo tras la primera interacción (`components/analytics/tag-loader.tsx`, ya preparado) devuelve Rendimiento ≈ 98. (2) El JS base de Next 16 + React 19 supera por sí solo los 100 KB: el límite se interpreta como JS propio del sitio.
+**Estado medido (13 oct 2026, Lighthouse móvil, build local):** Rendimiento **95–98**, Accesibilidad, Buenas prácticas y SEO **100** en home, caso, índice de notas y nota; TBT 40–65 ms; CLS 0. LCP local 2,2 s (en producción, con CDN, 1,7 s); el LCP es texto y depende de que llegue Inter, por eso JetBrains Mono ya no se precarga. JS de la home ≈ 185 KB gzip, de los que ≈ 8 KB son propios: el resto es la base de Next 16 + React 19, así que **el límite de 100 KB se aplica al JS propio del sitio**. GTM ya no se carga en `<head>`: lo inyecta `TagLoader` tras la primera interacción o 5 s después de `load` (antes: Rendimiento 86–91). Las animaciones de la v4.0 del diseño son CSS + SVG y no añaden JS.
 
 ### 3.2 Prácticas
 - Todo estático por defecto; Server Components; `"use client"` solo donde hay interacción (menú, tema, formulario, consentimiento).
 - `next/font` con `display: swap` y subconjunto latino.
 - `next/image` con `sizes` correctos; foto del hero con `priority`; el resto diferido.
-- GTM: recomendado cargarlo **después** de la interacción o del consentimiento (`TagLoader`). Hoy también hay un snippet en `<head>` (`app/layout.tsx`); ver el estado medido en §3.1.
+- GTM: se carga **después** de la primera interacción o, sin ella, 5 s después de `load` (`TagLoader`, `app/layout.tsx` le pasa el ID). Nunca en `<head>`.
+- `next/font`: solo se precarga Inter (texto del LCP); JetBrains Mono carga sin precarga.
+- Animaciones: solo CSS (`animation-timeline: view()`, `@keyframes`) sobre `opacity`, `transform`, `stroke-dashoffset` y `clip-path`; nunca sobre el elemento LCP; ninguna librería de animación (`03-DESIGN.md` §11).
 - Animaciones solo con CSS y solo `transform` (sin animar opacidad del contenido): no retrasan el LCP ni bajan el contraste.
 - Nada de WebGL, ni librerías de animación pesadas (CSS basta).
 

@@ -10,7 +10,6 @@ import { caseTypeLabel, type CaseStudy, type CaseType } from "@/content/casos";
  */
 export interface CaseItem {
   c: CaseStudy;
-  image: string | null;
   minutes: number;
 }
 
@@ -50,14 +49,12 @@ export function CaseGrid({ items }: { items: CaseItem[] }) {
       </div>
       {/* Índice de artículos: el primero destacado, el resto en filas (§19.2). */}
       <ol className="flex flex-col">
-        {shown.map(({ c, image, minutes }, idx) => (
+        {shown.map(({ c, minutes }, idx) => (
           <li key={c.slug} className={`reveal py-7 ${idx > 0 ? "border-t border-border" : "pt-0"}`}>
             <CaseArticle
               c={c}
-              image={image}
               minutes={minutes}
               variant={idx === 0 ? "featured" : "row"}
-              priority={idx === 0}
               headingLevel="h3"
             />
           </li>

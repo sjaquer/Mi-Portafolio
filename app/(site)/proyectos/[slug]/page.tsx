@@ -6,7 +6,7 @@ import { CvButton } from "@/components/sections/cv-button";
 import { Button } from "@/components/ui/button";
 import { MeasureRule } from "@/components/brand/measure-rule";
 import { CaseFacts } from "@/components/ui/case-facts";
-import { MediaFrame } from "@/components/ui/media-frame";
+import { CaseCover } from "@/components/ui/case-cover";
 import { Metric } from "@/components/ui/metric";
 import { slugify } from "@/mdx-components";
 import { DraftNotice } from "@/components/ui/draft-notice";
@@ -14,7 +14,6 @@ import { Container } from "@/components/ui/container";
 import { ReadingProgress } from "@/components/ui/reading-progress";
 import { caseTypeLabel, cases, getCase } from "@/content/casos";
 import { profile } from "@/content/profile";
-import { findImage } from "@/lib/images";
 import { jsonLdGraph, toIsoDateTime } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
 
@@ -102,15 +101,8 @@ export default async function CasePage({ params }: PageProps<"/proyectos/[slug]"
           </div>
         </header>
         <MeasureRule className="mt-7" />
-        {/* Imagen del caso: public/img/casos/<slug>.{avif,webp,jpg} (§6.8). */}
-        <MediaFrame
-          src={findImage(`casos/${c.slug}`)}
-          alt={`Vista del proyecto: ${c.title}`}
-          ratio="video"
-          sizes="(min-width: 1120px) 1120px, 100vw"
-          priority
-          className="mt-7"
-        />
+        {/* Portada: plano del flujo del caso (§6.8), se traza al entrar en pantalla (§11.2). */}
+        <CaseCover c={c} labelled className="mt-7" />
         <div className="mt-7">
           <CaseFacts c={c} />
         </div>

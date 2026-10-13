@@ -4,3 +4,4 @@ package-lock.json
 .next
 public
 components/brand/paths.ts
+pnpm-lock.yaml

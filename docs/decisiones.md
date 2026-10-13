@@ -29,6 +29,13 @@
 | 2026-10-12 | Fuentes con `next/font/local` (variables latin de Inter y JetBrains Mono en `app/fonts/`) en lugar de `next/font/google` | El build en Vercel (Node 24, Turbopack) falló al resolver las fuentes de Google ("next/font/google queries have exactly one entry"); en local sí compilaba | Build reproducible sin red externa; mismo peso que antes (≈ 88 KB en total) | — |
 | 2026-10-12 | Imágenes de portada de casos (16:9) y retrato (4:5) generadas e integradas como WebP optimizado en `public/img/` | Espacios reservados con `MediaFrame` completados sin CLS (pesos entre 51 y 138 KB, ≤ 200 KB) | Experiencia visual editorial completa sin saltos de layout | — |
 | 2026-10-12 | Cuentas de Google en producción verificadas | GTM importado, 12 dimensiones y 3 eventos clave en GA4, sitemap.xml en Search Console verificado | Medición analítica en vivo en producción | — |
+| 2026-10-13 | GTM sale de `<head>`: lo carga `TagLoader` tras la primera interacción o 5 s después de `load` | Auditoría de diseño y rendimiento: el snippet en `<head>` dejaba Rendimiento en 86–91 | Rendimiento ≥ 95 (medido: 95–98) sin perder las visitas que leen sin interactuar | 2026-11-13 |
+| 2026-10-13 | Portadas de casos: planos SVG del flujo real en lugar de imágenes generadas | Las imágenes eran renders 3D con neón, brillos y vidrio: justo lo que prohíbe 03-DESIGN §6.6 y el prompt negativo de §10.7; además pesaban 76–158 KB | Coherencia de marca, 0 KB de imagen por portada y portadas que explican el proyecto | — |
+| 2026-10-13 | Retrato con fondo marino-700 en lugar de verde lima | El lima no está en la paleta; §10.3 pide fondo neutro o marino. Se separó por color (`scripts/brand/retrato-fondo.py`), sin recorte manual | Mismo retrato en web, LinkedIn y CV; 59 → 38 KB | — |
+| 2026-10-13 | Movimiento v4.0: trazado SVG, pulso por conector y aparición con opacidad **solo en gráficos** (el texto sigue sin desvanecerse) | Pedido de animaciones más vivas sin perder AA ni rendimiento | Accesibilidad 100 estable; 0 KB de JS añadido | — |
+| 2026-10-13 | Pilar "IA en agencias" → "Herramientas e IA" | La tesis no encaja con el posicionamiento de desarrollo + automatización | Pilares coherentes con el rol | 2027-01-15 |
+| 2026-10-13 | Métricas: "Minutos" → "1–2 h → 5–10 min" (estimado); −35 % y −30 % marcados como estimados | Regla 2: una métrica sin método se declara estimada | Ninguna cifra que no se pueda defender en una entrevista | — |
+| 2026-10-13 | Redes: el marino es el fondo protagonista | Reconocimiento en el feed de LinkedIn | Identificar las piezas sin leer el nombre | 2026-12-01 |
 
 ## Hipótesis para la Fase 6 (se prueban con datos)
 

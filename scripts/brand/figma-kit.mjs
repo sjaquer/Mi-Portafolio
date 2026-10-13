@@ -368,19 +368,14 @@ const slides = [
     ["Campañas de 8 000", "correos en minutos"],
     "Cómo lo construí, en 5 láminas →",
   ],
-  [
-    "Paso 1",
-    "1 · El problema",
-    ["Envíos a mano", "y bajas que se perdían"],
-    "Horas por campaña.",
-  ],
+  ["Paso 1", "1 · El problema", ["Envíos a mano", "y bajas que se perdían"], "Horas por campaña."],
   [
     "Paso 2",
     "2 · El control",
     ["Lista de exclusión", "antes de cada envío"],
     "Ley 29733, siempre.",
   ],
-  ["Resultado", "Resultado", ["Minutos"], "por campaña de 8 000 destinatarios (de horas a tan solo minutos)"],
+  ["Resultado", "Resultado", ["1–2 h → 5–10 min"], "por campaña de 8 000 destinatarios (estimado)"],
   [
     "Cierre",
     "Lo que aprendí",
@@ -414,7 +409,7 @@ board(
 ${rect("Fondo", 0, 0, 1200, 630, C.papel)}
 <g id="Header">${text("Etiqueta", 64, 100, "Caso · Automatización · 2026", { size: 22, weight: 500, family: MONO, fill: C.gris500, upper: true, tracking: 0.06 })}${monogram("Monograma", 1088, 64, 48)}</g>
 ${text("Titular", 64, 260, ["Campañas de 8 000 correos", "de horas a minutos, con baja automática"], { size: 52, weight: 600, lh: 1.1, tracking: -0.02 })}
-${text("Descripción", 64, 410, "Minutos · por campaña de 8 000 destinatarios (de horas a tan solo minutos)", { size: 26, fill: C.gris500 })}
+${text("Descripción", 64, 410, "1–2 h → 5–10 min · por campaña de 8 000 destinatarios (estimado)", { size: 26, fill: C.gris500 })}
 <g id="Footer">${ruler("Regla", 64, 500, 1072)}${text("Nombre", 64, 560, "Sebastián Jaque", { size: 24, weight: 600 })}${text("URL", 1136, 560, "sjaquer.is-a.dev", { size: 24, weight: 500, family: MONO, fill: C.marino700, anchor: "end" })}</g>
 `,
 );
@@ -466,8 +461,8 @@ ${rect("Fondo", 0, 0, 1200, 630, C.papel)}
 <g id="Texto">
   ${text("Antetítulo", 648, 110, "Automatización · 2026 · 2 min de lectura", { size: 16, weight: 500, family: MONO, fill: C.gris500, upper: true, tracking: 0.06 })}
   ${text("Titular", 648, 176, ["Campañas de 8 000", "correos en minutos,", "con baja automática"], { size: 44, weight: 600, lh: 1.12, tracking: -0.02 })}
-  ${text("Métrica", 648, 380, "Minutos", { size: 40, weight: 600, family: MONO, fill: C.verde })}
-  ${text("Contexto", 648, 416, ["por campaña de 8 000 destinatarios", "(de horas a tan solo minutos)"], { size: 20, fill: C.gris500, lh: 1.4 })}
+  ${text("Métrica", 648, 380, "5–10 min", { size: 40, weight: 600, family: MONO, fill: C.verde })}
+  ${text("Contexto", 648, 416, ["por campaña de 8 000 destinatarios", "(antes 1–2 h · estimado)"], { size: 20, fill: C.gris500, lh: 1.4 })}
   ${text("Leer", 648, 500, "Leer el caso →", { size: 20, weight: 600, fill: C.azul600 })}
 </g>
 <g id="Pie">${monogram("Monograma", 648, 530, 40)}${text("URL", 1152, 558, SITE, { size: 18, weight: 500, family: MONO, fill: C.marino700, anchor: "end" })}</g>

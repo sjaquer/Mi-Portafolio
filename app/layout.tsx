@@ -20,6 +20,8 @@ const jetbrainsMono = localFont({
   variable: "--font-jetbrains-mono",
   weight: "100 800",
   display: "swap",
+  // Solo etiquetas y cifras: sin precarga, para no competir con Inter (texto del LCP).
+  preload: false,
 });
 
 export const metadata: Metadata = defaultMetadata;
@@ -44,21 +46,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
-        {/* Consent Mode v2: estado por defecto antes de cualquier etiqueta (04 §4.2). */}
+        {/* Consent Mode v2: estado por defecto antes de cualquier etiqueta (04 §4.2).
+            GTM no se carga aquí: lo inyecta TagLoader tras la primera interacción. */}
         <script dangerouslySetInnerHTML={{ __html: consentDefaultScript }} />
-        {/* Google Tag Manager */}
-        {gtmId && (
-          /* eslint-disable-next-line @next/next/next-script-for-ga */
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','${gtmId}');`,
-            }}
-          />
-        )}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd).replace(/</g, "\\u003c") }}
@@ -77,7 +67,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </noscript>
         )}
         {children}
-        <TagLoader />
+        <TagLoader gtmId={gtmId} />
       </body>
     </html>
   );

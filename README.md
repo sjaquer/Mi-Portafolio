@@ -28,7 +28,7 @@ pnpm dev          # http://localhost:3000
 | Casos de estudio | Ficha en `content/casos/index.ts` + artículo en `content/casos/<slug>.mdx` (formato: `docs/06-CONTENIDO.md` §4) |
 | Notas (blog) | Ficha en `content/notas/index.ts` + texto en `content/notas/<slug>.mdx` (formato: `docs/06-CONTENIDO.md` §5) · RSS en `/rss.xml` |
 | GTM | `docs/gtm/eventos-sitio.json` (contenedor importable con los 9 eventos) |
-| Imágenes | `public/img/retrato.webp` (4:5) · `public/img/casos/<slug>.webp` (16:9) |
+| Imágenes | `public/img/retrato.webp` (4:5) · portadas de casos como planos SVG (`cover` en `content/casos/index.ts`) |
 | CV | `content/cv/CV-Sebastian-Jaque.docx` → `public/cv/CV-Sebastian-Jaque.pdf` |
 | Diseño | `app/tokens.css` (tokens) · `components/` (`ui`, `layout`, `sections`, `brand`, `analytics`, `devtools`) |
 | Textos para Google y redes | `lib/seo.ts` (metadatos) · `docs/06-CONTENIDO.md` §2b (LinkedIn, GitHub) · `/llms.txt` y `/ai.txt` generados |

@@ -3,7 +3,7 @@
 > **Fuente de verdad visual y verbal** de la marca Sebastián Jaque, para la web, el CV, LinkedIn, GitHub, presentaciones, documentos y cualquier pieza futura.
 > Si una decisión no está aquí, se agrega aquí antes de implementarla o publicarla.
 >
-> **Versión:** 3.3 · **Actualizado:** 12 oct 2026 · **Responsable:** Sebastián Jaque
+> **Versión:** 4.0 · **Actualizado:** 13 oct 2026 · **Responsable:** Sebastián Jaque
 
 ---
 
@@ -12,7 +12,7 @@
 | Parte | Qué contiene | Para quién / cuándo |
 |---|---|---|
 | **I. Marca** (§1–§2) | Esencia, personalidad, voz y escritura | Antes de escribir cualquier cosa: web, post, CV, mensaje a un reclutador |
-| **II. Identidad visual** (§3–§11) | Logotipo, color, tipografía, elementos gráficos, iconos, diagramas, gráficos de datos, fotografía, movimiento | Antes de diseñar cualquier pieza, digital o impresa |
+| **II. Identidad visual** (§3–§11) | Logotipo, color, tipografía, elementos gráficos y kit de firma, iconos, diagramas, gráficos de datos, fotografía, movimiento | Antes de diseñar cualquier pieza, digital o impresa |
 | **III. Aplicaciones** (§12–§13) | Redes sociales, formatos y plantillas; CV, OG, firma, slides, GitHub | Cuando produces una pieza concreta |
 | **IV. Sistema de diseño web** (§14–§22) | Tokens, componentes y reglas de implementación del sitio | Al programar la web |
 | **Anexos** (§23–§25) | Checklist antes de publicar, inventario de archivos, historial de cambios | Siempre, antes de publicar |
@@ -38,6 +38,7 @@
 | **Rol (canónico)** | Desarrollo web · Automatización de procesos · Integraciones |
 | **Frase de posicionamiento (canónica)** | Construyo herramientas web y automatizaciones que reducen tareas manuales y conectan sistemas con APIs. |
 | **Idea de marca (interna)** | **Construir y conectar.** Todo lo visual y verbal sale de esta pareja: herramientas funcionales hechas con rigor técnico + flujos que eliminan fricción operativa. |
+| **Metáfora visual** | **El plano.** Cada pieza se ve como un plano de ingeniería que se está dibujando: reglas, cotas, nodos y conectores. Lo que construí va marcado con el sello; lo que cambió, con una cota. |
 
 La frase de posicionamiento y el rol se usan **literalmente iguales** en web, CV, LinkedIn, GitHub, `llms.txt` y firma de correo. Viven en `content/profile.ts`.
 
@@ -273,7 +274,7 @@ Los colores de estado **siempre** van con ícono + texto, nunca solo color.
 | Medio | Neutros | Marino | Azul acción | Verde | Otros |
 |---|---|---|---|---|---|
 | Web | 90 % | ≈ 0–2 % (logo/OG) | ≈ 6 % | ≈ 2 % | — |
-| Redes (piezas gráficas) | 60–70 % | 20–30 % | ≤ 5 % (solo CTA) | ≤ 5 % | — |
+| Redes (piezas gráficas) | 30–40 % | **55–65 % (fondo marino-900)** | ≤ 5 % (solo CTA) | ≤ 5 % | — |
 | CV y documentos | 85 % | 10 % (nombre, títulos) | ≤ 3 % (enlaces) | ≤ 2 % | — |
 | Slides | 70 % | 20 % | ≤ 5 % | ≤ 5 % | gráficos según §9 |
 
@@ -296,8 +297,8 @@ Los colores de estado **siempre** van con ícono + texto, nunca solo color.
 ### 4.5 Reglas
 - El azul de acción es **solo** para elementos clicables (o, en una pieza estática, el CTA). Nunca para decorar.
 - El verde es **solo** para resultados medidos.
-- El marino es la identidad; en la web aparece con moderación (logo, OG, pie). En redes y documentos es protagonista.
-- Nada de degradados, neón, brillos ni glassmorphism. Fondos siempre planos.
+- El marino es la identidad; en la web aparece con moderación (logo, banda de resultados, retrato). **En redes es el fondo protagonista** (§12.4); en documentos, el color de títulos.
+- Nada de degradados multicolor, neón, brillos ni glassmorphism. Los únicos degradados son los **tonales** de §6.7; todo lo demás, plano.
 - Máximo 3 colores de la paleta (sin contar neutros) en una misma pieza.
 
 ---
@@ -351,7 +352,8 @@ El sistema gráfico se inspira en **planos y cuadernos de medición**: líneas f
 Tres a cinco trazos verticales cortos alineados en una base, como una regla. Variantes:
 - **Separador:** una regla horizontal de 1 px con marcas cada 8 u y una marca larga cada 40 u. Sustituye a las líneas divisorias decorativas en piezas de redes, portadas y OG.
 - **Sello:** las 3 marcas del monograma (§3.2), junto a una métrica destacada.
-- **Cota:** una línea con topes en los extremos y un número en mono encima (como una cota de plano) para señalar "de X a Y" en antes/después.
+- **Cota:** una línea con topes en los extremos y un número en mono encima (como una cota de plano) para señalar "de X a Y" en antes/después. En la web, toda métrica con valor de partida (`before` en `profile.ts`) se muestra así: `1–2 h ├────┤ 5–10 min`.
+- **Regla trazada (v4.0):** la regla se dibuja de izquierda a derecha. Es la firma animada de la marca: bajo el nombre en el hero, al abrir un video o un carrusel animado.
 
 Trazo: 1,5 px en pantalla (2 px en lienzos de 1080 px), color `gris-400` sobre papel o `marino-300` sobre marino. Nunca en azul de acción ni en verde.
 
@@ -369,7 +371,7 @@ Fondo de puntos de 1 px cada 24 u en `gris-100` (sobre papel) o `marino-500` al 
 Toda captura de pantalla va dentro de un marco: fondo `gris-50`, radio 16 u, padding 24 u, borde 1 px `gris-100`. Sin mockups de dispositivos fotorrealistas; como máximo, una barra de navegador plana de 3 puntos grises.
 
 ### 6.6 Prohibido
-Degradados multicolor o saturados, sombras largas, brillos, partículas, toroides, mallas 3D, cerebros, circuitos, robots, "hologramas", texturas de ruido, glassmorphism, neón. Los únicos degradados permitidos son los **tonales** de §6.7.
+Degradados multicolor o saturados, sombras largas, brillos, partículas, toroides, mallas 3D, renders isométricos con interfaces flotantes, cables o fibras luminosas, cerebros, circuitos, robots, "hologramas", texturas de ruido, glassmorphism, neón. Los únicos degradados permitidos son los **tonales** de §6.7.
 
 ### 6.7 Profundidad (v3.0)
 
@@ -394,18 +396,31 @@ La marca es sobria, no plana. La profundidad se construye con **capas de un mism
 
 **Elevación.** Borde de 1 px en reposo. En hover, la tarjeta sube 2 px y gana `shadow-md`. `shadow-lg` solo para lo que flota (banner de consentimiento, menús).
 
-### 6.8 Espacios de imagen (v3.2)
+### 6.8 Portadas e imágenes (v4.0)
 
-El sitio reserva espacio para imágenes desde ya; se llenan **dejando un archivo en la carpeta**, sin tocar código (componente `MediaFrame`).
+| Espacio | Qué lleva | Cómo se produce |
+|---|---|---|
+| Retrato del hero y de /sobre-mi | Retrato principal real, fondo marino-700 (§10.2) | `public/img/retrato.webp`, 4:5, 1200 × 1500, ≤ 200 KB; aparece solo (`MediaFrame`) |
+| Portada de cada caso | **Plano SVG del flujo real del caso** (`CaseCover`): etiqueta del flujo, 3–4 nodos en escalera, el que construí con sello, y una cota con el resultado | Datos en `content/casos/index.ts` → `cover` (títulos de nodo de ≤ 12 caracteres) |
+| Cabecera y tarjeta de nota | **Motivo del pilar** (`PillarMotif`, §12.2) | Automático según el pilar de la nota |
+| Capturas dentro de un caso | Captura con **datos simulados** en el marco de §6.5 | Manual, cuando aporte algo que el plano no cuenta |
 
-| Espacio | Archivo | Proporción | Exportación | Contenido |
-|---|---|---|---|---|
-| Retrato del hero y de /sobre-mi | `public/img/retrato.{avif,webp,jpg}` | 4:5 | 1200 × 1500, WebP/AVIF ≤ 200 KB | Retrato principal real (§10.2) |
-| Portada de cada caso | `public/img/casos/<slug>.{avif,webp,jpg}` | 16:9 | 1600 × 900, WebP/AVIF ≤ 200 KB | Captura con **datos simulados** (§6.5) o imagen editorial generada con el prompt base (§10.7) |
+**Por qué planos y no imágenes.** En la v3.2 las portadas eran imágenes generadas; terminaron siendo renders 3D con neón, brillos y vidrio, exactamente lo prohibido en §6.6. Un plano en SVG pesa < 10 KB, funciona en claro y oscuro, explica el proyecto en 3 segundos y no puede salirse de la paleta. **Regla:** ninguna portada de caso o nota es una imagen generada.
 
-**Mientras no hay archivo**, el espacio muestra un **placeholder de marca**: fondo `brand-50` + retícula de puntos + el ícono del tipo de caso (o el monograma en el retrato). Nunca un hueco vacío. La proporción fija evita saltos de layout.
+Mientras no hay retrato, `MediaFrame` muestra el placeholder de marca (fondo `brand-50` + retícula + monograma). La proporción fija evita saltos de layout.
 
-**Orden de preferencia para la portada de un caso:** 1) captura real con datos simulados en el marco de §6.5 → 2) imagen editorial generada (§10.7) → 3) placeholder. Una portada generada por código (diagrama en miniatura) se probó en la v3.0 y se retiró: no aportaba información.
+### 6.9 Kit de firma (v4.0)
+
+Seis piezas que, juntas o por separado, hacen reconocible cualquier pieza de la marca sin leer el nombre. Toda pieza (web, post, carrusel, slide, OG) usa **al menos dos**.
+
+| Pieza | Qué es | Dónde aparece |
+|---|---|---|
+| **Etiqueta mono** | JetBrains Mono, mayúsculas, tracking 0,06 em (§5.3) | Antetítulos, pilar, numeración `n/N` |
+| **Regla** | Marcas cada 8 u y una larga cada 40 u (§6.1) | Bajo el nombre, separadores, pies de pieza |
+| **Sello** | Las 3 marcas del monograma | Sobre el nodo o la cifra protagonista |
+| **Cota** | Línea con topes: "de X a Y" | Antes/después de una métrica |
+| **Plano** | Nodos + conectores ortogonales (§8.1) | Portadas de casos, servicios, explicaciones |
+| **Motivo de pilar** | Figura abstracta fija por pilar (§12.2) | Notas, OG, piezas de LinkedIn |
 
 ---
 
@@ -442,11 +457,23 @@ La marca **no usa ilustración narrativa** (personajes, escenas). Usa **diagrama
 - Incluir `<title>` y `role="img"`, o un texto alternativo equivalente en la página.
 - Herramientas sugeridas: Figma o Excalidraw para bocetar → redibujar limpio en Figma → exportar SVG.
 
-### 8.3 Plantillas base (a crear en `/public/brand/diagramas/`)
-1. Arquitectura de 3 capas (cliente → servidor → datos/terceros).
-2. Flujo de automatización (disparador → pasos → resultado).
-3. Embudo de medición (sesión → vista de caso → lectura → conversión).
-4. Antes / después con cota (§6.1).
+### 8.3 Plantillas base (en código, v4.0)
+
+Las plantillas viven como componentes; para una pieza fuera de la web se captura la figura o se redibuja en Figma con las mismas medidas.
+
+| Plantilla | Componente | Medidas |
+|---|---|---|
+| Plano de flujo (3–4 nodos en escalera + cota de resultado) | `components/ui/case-cover.tsx` | Lienzo 640 × 360; nodo 124 × 64, separación 28; filas en y = 104 y 168 |
+| Flujo mínimo de 3 pasos | `components/brand/mini-flow.tsx` | Nodo 84 × 36, separación 24; el central destacado |
+| Arquitectura de 3 capas · flujo disparador → resultado · barras + regla · texto → datos | `components/brand/pillar-motif.tsx` | Lienzo 640 × 240 (8:3) |
+| Antes / después con cota | `Metric` con `before` (`components/ui/metric.tsx`) | Cota a todo el ancho disponible |
+| Primitivas (marco, nodo, sello, conector con pulso, cota) | `components/brand/figure.tsx` | Trazo 1,5; destacado 2; radio 8 |
+
+### 8.4 Reglas de las figuras en la web
+- Solo clases de tokens (`fill-surface`, `stroke-border-strong`, `stroke-brand`…): así cambian solas en modo oscuro y dentro de la banda invertida.
+- Una figura es **decorativa** (`aria-hidden`) cuando el texto de al lado ya dice lo mismo; en la página del caso se anuncia como imagen con su recorrido ("Diagrama: Flujo de un pedido. Menú digital → Webhook → Cocina → Inventario").
+- Máximo un nodo destacado por figura (dos solo en arquitectura).
+- Texto dentro de figuras: etiqueta mono 11–13 u y título Inter 600 de 15 u. Si no cabe en 12 caracteres, se acorta el título, no la letra.
 
 ---
 
@@ -494,7 +521,7 @@ Los gráficos son evidencia: deben ser **honestos antes que bonitos**. Paleta va
 
 | Tipo | Descripción | Uso |
 |---|---|---|
-| **Retrato principal** | Busto, mirada a cámara, expresión tranquila con sonrisa leve, fondo neutro claro o marino liso | Web (hero), LinkedIn, GitHub, CV si aplica. **La misma foto en todos los canales.** |
+| **Retrato principal** | Busto, expresión tranquila, **sujeto en blanco y negro sobre fondo marino-700 liso** (v4.0) | Web (hero), LinkedIn, GitHub, CV si aplica. **La misma foto en todos los canales.** |
 | **Retrato de trabajo** | Plano medio, en escritorio o pizarra, mirando la pantalla o explicando | Sobre mí, portadas de notas, posts de LinkedIn |
 | **Detalle de proceso** | Manos en teclado, cuaderno con un diagrama, post-its de un embudo | Notas, carruseles |
 | **Pantalla** | Captura limpia (no foto de monitor) con **datos simulados** | Casos de estudio |
@@ -502,7 +529,8 @@ Los gráficos son evidencia: deben ser **honestos antes que bonitos**. Paleta va
 ### 10.3 Dirección técnica
 - **Luz:** natural, lateral suave (ventana); evitar flash directo y luces de colores (RGB, neón).
 - **Color:** balance neutro-cálido, saturación natural, contraste medio. Sin filtros de Instagram, sin teal & orange, sin blanco y negro salvo excepción justificada.
-- **Fondo:** liso o poco cargado (pared clara, estantería ordenada). Si está desenfocado, que se reconozca un espacio de trabajo real.
+- **Fondo:** liso o poco cargado (pared clara, estantería ordenada). Si está desenfocado, que se reconozca un espacio de trabajo real. En el retrato principal, marino-700 liso.
+- **Cambiar el fondo de un retrato:** si el sujeto está en blanco y negro sobre un fondo de color saturado, `python3 -I scripts/brand/retrato-fondo.py <entrada> <salida.png> 1F3A5F` separa el sujeto por color (conserva pelo y gafas) y lo compone sobre marino. Luego se exporta con `magick salida.png -quality 82 -define webp:method=6 public/img/retrato.webp`. Revisar siempre los bordes al 100 %.
 - **Ropa:** lisa, sin logos ni estampados; tonos neutros o azul marino (armoniza con la paleta).
 - **Encuadre del retrato:** cabeza y hombros, ojos en el tercio superior, aire a los lados para recortes 1:1, 4:5 y 16:9.
 - **Retoque:** solo corrección de exposición, color y limpieza mínima de piel. Nada de cambiar facciones ni fondos generados con IA.
@@ -516,27 +544,22 @@ Los gráficos son evidencia: deben ser **honestos antes que bonitos**. Paleta va
 ### 10.5 Prohibido
 Fotos de stock, avatares hiperrealistas de IA con estilos fantásticos/cyberpunk, fotos con terceros sin permiso, pantallas con datos reales, selfies de baja calidad, fotos de eventos con logos de terceros como protagonistas.
 
-### 10.6 Estado transitorio — Espacio de retrato (v3.2) e ilustración
+### 10.6 Retrato en la web e ilustración
 
-**En la web, el hero reserva el espacio del retrato** (4:5, columna derecha en escritorio, debajo de los botones en el celular). Hasta que exista `public/img/retrato.*`, muestra el placeholder de marca con el monograma (§6.8). Al subir la foto aparece sola. Una ficha de perfil (v3.0) y una etiqueta tipo "pastilla" (v3.1) se retiraron por repetir datos visibles.
+**El hero muestra el retrato principal** (4:5, columna derecha en escritorio, debajo de los botones en el celular), con fondo marino-700 (v4.0). La versión anterior tenía fondo verde lima: fuera de paleta, retirada. Si falta `public/img/retrato.*`, el espacio muestra el placeholder de marca con el monograma (§6.8).
 
-**Ilustración (piezas gráficas):**
-Mientras se realiza la sesión fotográfica del retrato principal (§10.2), la web y piezas de soporte utilizan una **ilustración minimalista vectorial o silueta monocroma sutil**:
-- Trazo limpio de 1,5 px en `marino-700` o `tinta` sobre fondo plano (`papel` o `marino-50`).
-- Estilo lineal técnico y sobrio (sin efectos 3D, sin colores saturados, sin estética fantástica de IA).
-- Dimensiones: 800 × 1000 px (SVG optimizado con SVGO en `/public/brand/avatar-silhouette.svg`).
-- Se reemplazará por el retrato fotográfico en busto tan pronto esté disponible, manteniendo intactos los contenedores y ratios de aspecto.
+**Ilustración:** `public/brand/avatar-silhouette.svg` (trazo 1,5 px en `marino-700` o `tinta`, sin efectos) queda solo como recurso de piezas gráficas donde no convenga una foto. Nunca reemplaza al retrato en la web.
 
 ---
 
 ### 10.7 Prompt base de imágenes (v3.2)
 
-Para generar imágenes editoriales coherentes con la marca (portadas de caso, cabeceras de notas, fondos de piezas). Se escribe en inglés porque los generadores responden mejor; las variables van entre `{llaves}`.
+Para generar imágenes editoriales coherentes con la marca: **fondos de piezas de redes, fotos de detalle de trabajo y apoyos de slides**. Desde la v4.0, las portadas de casos y notas **no** se generan (§6.8). Se escribe en inglés porque los generadores responden mejor; las variables van entre `{llaves}`.
 
 **Qué se puede generar y qué no**
 - ✅ Escenas de trabajo **sin rostros**, objetos, pantallas con interfaz genérica, composiciones abstractas basadas en diagramas.
 - ❌ Retratos o avatares de Sebastián (§10.5), personas reconocibles, logos o marcas reales (Wiener, Big Jack, Google…), datos legibles que parezcan reales, estética "IA" (robots, cerebros, hologramas, neón).
-- Toda imagen generada se revisa con el checklist de §23 antes de publicarse.
+- Toda imagen generada se revisa con el checklist de §23 antes de publicarse. **Lección de la v3.2:** el prompt negativo no basta; si la imagen tiene brillo, neón, vidrio o 3D, se descarta aunque "se vea bien".
 
 **Prompt base (se antepone siempre)**
 
@@ -562,10 +585,8 @@ stock photo smiles, clutter, watermark
 
 | Uso | Proporción | Añadir al prompt |
 |---|---|---|
-| Portada de caso · web | 16:9 | `a laptop on a light oak desk showing an abstract, generic web interface with blank cards and lines, a paper notebook with a hand-drawn flow diagram of three boxes and arrows, a pencil` |
-| Portada de caso · automatización | 16:9 | `top-down view of a desk with a printed flowchart, sticky notes in navy and grey arranged left to right, a ruler aligned under them, a coffee cup at the edge` |
-| Portada de caso · datos / medición | 16:9 | `close-up of a printed bar chart and a measuring ruler on off-white paper, a hand holding a pencil marking one bar, minimal and precise` |
-| Cabecera de nota (Notas) | 16:9 | `abstract still life: a steel ruler, graph paper with a dotted grid, a navy notebook, arranged on an off-white surface, strong geometry` |
+| Apoyo de slide · trabajo | 16:9 | `top-down view of a desk with a printed flowchart, sticky notes in navy and grey arranged left to right, a ruler aligned under them, a coffee cup at the edge` |
+| Apoyo de slide · medición | 16:9 | `close-up of a printed bar chart and a measuring ruler on off-white paper, a hand holding a pencil marking one bar, minimal and precise` |
 | Fondo de pieza (LinkedIn, OG) | 4:5 o 1200×630 | `abstract macro texture of off-white paper with a faint dotted grid and a thin ruler line, very subtle, lots of empty space` |
 | Detalle de trabajo | 4:5 | `hands typing on a laptop keyboard, seen from the side, out-of-focus monitor with a generic interface, no face visible` |
 
@@ -573,16 +594,35 @@ stock photo smiles, clutter, watermark
 
 ## 11. Movimiento
 
-Principio: **el movimiento explica, no decora.**
-- Duraciones: 150 ms (hover), 200 ms (menús, apariciones), 300 ms máximo en la web. En video/redes: transiciones de 200–400 ms, cortes secos preferidos.
-- Curva: `cubic-bezier(.2, 0, 0, 1)` (salida suave).
-- Solo `opacity` y `transform` en la web.
-- **Entrada al hacer scroll (v3.0, ajustada en v3.2):** permitida solo como *revelado* sutil: `translateY` 24 px → 0 al entrar en pantalla, **sin animar la opacidad** (un texto semitransparente incumple el contraste AA mientras dura la animación). Se implementa **solo con CSS** (`animation-timeline: view()`); sin JavaScript ni librerías. Nunca en el hero ni en el contenido que pinta el LCP. Navegadores sin soporte: el contenido aparece sin animación.
-- **Microinteracciones:** tarjetas que suben 2 px en hover; flechas de botones y de "Leer el caso" que avanzan 4 px; imagen del artículo que se acerca a escala 1,03 en 400 ms; subrayado del titular al pasar. Botones: color y sombra en hover, 1 px hacia abajo al presionar.
-- **Entrada del hero (v3.2):** los bloques suben 16 px de forma escalonada (60 ms entre bloques, 600 ms). **Solo `transform`, sin opacidad**, para que el contenido sea visible desde el primer pintado y no retrase el LCP.
-- Sin parallax, sin cursores personalizados, sin contadores animados de cifras (una métrica se lee, no se celebra).
-- Respetar `prefers-reduced-motion: reduce` → sin transiciones.
-- **Video corto (si se produce):** pantalla grabada limpia + subtítulos siempre (Inter 600, fondo de placa tinta al 85 %, máximo 2 líneas), música opcional sin letra, duración 30–60 s.
+Principio: **el movimiento explica, no decora.** La marca se mueve como un plano que se dibuja: las líneas se trazan, los nodos aparecen y un pulso recorre el flujo una vez. Nada gira, rebota ni brilla.
+
+### 11.1 Reglas base
+- **Duraciones:** 150 ms (hover), 200 ms (menús), 600 ms (entrada del hero), 900 ms (regla del hero). En video y redes: transiciones de 200–400 ms; se prefieren cortes secos.
+- **Curva:** `cubic-bezier(.2, 0, 0, 1)` (`--ease-standard`, salida suave). Las animaciones ligadas al scroll son lineales: la curva la pone el scroll.
+- **Propiedades permitidas:** `transform`, `opacity` (solo en gráficos), `stroke-dashoffset` y `clip-path`. Nunca `width`, `top`, `filter` ni sombras animadas.
+- **Rendimiento:** solo CSS (`@keyframes` y `animation-timeline: view()`/`scroll()`); **0 KB de JavaScript y ninguna librería**. Nunca sobre el elemento que pinta el LCP.
+- **Accesibilidad:** con `prefers-reduced-motion: reduce` no hay ninguna animación; sin soporte de `animation-timeline`, todo aparece dibujado y estático. El estado final siempre es el de reposo: si la animación no corre, no falta nada.
+- Sin parallax, sin cursores personalizados, sin contadores animados de cifras (una métrica se lee, no se celebra), sin bucles infinitos.
+
+### 11.2 Catálogo (v4.0)
+
+| Movimiento | Qué hace | Dónde | Implementación |
+|---|---|---|---|
+| **Trazado** | Una línea se dibuja de inicio a fin al entrar en pantalla | Conectores, cotas, regla de una figura | `.fig-draw` + `pathLength="1"` |
+| **Aparición** | Fundido + subida de 8 px, escalonado con `--i` | **Solo gráficos**: nodos, motivos, topes de cota. El texto nunca se desvanece (contraste AA) | `.fig-fade` |
+| **Pulso** | Un trazo corto de marino recorre cada conector, uno tras otro, una sola vez | Planos y flujos | `.fig-pulse` (trazo 4, `stroke-dasharray: .06 2`) |
+| **Regla trazada** | La regla de medición se dibuja bajo el nombre al cargar (250 ms de espera, 900 ms) | Hero | `.rule-draw` (`clip-path`) |
+| **Entrada del hero** | Los bloques suben 16 px escalonados (60 ms entre bloques, 600 ms), sin opacidad | Hero | `.hero-in` |
+| **Revelado** | Sube 24 px al entrar en pantalla, sin opacidad | Tarjetas y listas bajo el pliegue | `.reveal` |
+| **Microinteracciones** | Flechas que avanzan 4 px; portada que se acerca a 1,03 en 400 ms; subrayado del titular; botones 1 px abajo al presionar | Tarjetas y botones | Tailwind + `.media-zoom` |
+
+Una figura (`.fig`) define su línea de tiempo de vista (`view-timeline-name: --fig`) y sus piezas la comparten, así todas avanzan juntas aunque sean elementos SVG. Los rangos: aparición `entry 10 % → 45 %`, trazado `entry 25 % → 55 %` y pulso `cover 28 % → 40 %`, cada uno desplazado por `--i` (12 % o 6 % por paso).
+
+**Comportamiento conocido:** como el pulso va ligado al scroll, si la página se detiene justo en su rango, el trazo corto queda quieto a mitad del conector. Se acepta: se lee como "señal en tránsito".
+
+### 11.3 Movimiento fuera de la web
+- **Carrusel o post animado (GIF/MP4 de LinkedIn):** el mismo lenguaje. Abre con la regla trazada (≈ 0,9 s), los nodos aparecen escalonados, un pulso recorre el flujo y cierra en la cota con el resultado. Duración 4–8 s, sin bucle brusco (último cuadro = pieza estática completa).
+- **Video corto (si se produce):** pantalla grabada limpia + subtítulos siempre (Inter 600, placa tinta al 85 %, máximo 2 líneas), música opcional sin letra, 30–60 s. Primer cuadro: la regla trazándose sobre marino.
 
 ---
 
@@ -601,14 +641,16 @@ Principio: **el movimiento explica, no decora.**
 | Instagram / TikTok / X | — | Fuera de alcance hasta 2027 | No abrir sin un objetivo medible |
 
 ### 12.2 Pilares de contenido
-Los cuatro pilares (Construyendo · Automatización para PYMES · Aprendiendo medición · IA en agencias), su proporción y su cadencia están en `06-CONTENIDO.md` §5.2–§5.3. Cada pilar tiene un **indicador visual** fijo en la etiqueta mono de la pieza:
+Los cuatro pilares, su proporción y su cadencia están en `06-CONTENIDO.md` §5.2–§5.3. Cada pilar tiene una **etiqueta** y un **motivo gráfico** fijos (`PillarMotif`): el mismo en la tarjeta de la web, la cabecera de la nota, la imagen OG y la pieza de LinkedIn.
 
-| Pilar | Etiqueta | Elemento gráfico dominante |
-|---|---|---|
-| Construyendo | `CONSTRUYENDO` | Diagrama de arquitectura o captura enmarcada |
-| Aprendiendo medición | `MEDICIÓN` | Gráfico de datos o ficha de métrica |
-| Automatización para PYMES | `AUTOMATIZACIÓN` | Diagrama de flujo (disparador → resultado) |
-| IA en agencias | `INVESTIGACIÓN` | Dato agregado + fuente |
+| Pilar | Etiqueta | Motivo (figura abstracta, sin texto) | Elemento dominante en piezas |
+|---|---|---|---|
+| Construyendo | `CONSTRUYENDO` | Arquitectura de 3 capas apiladas; la del medio (lo que construí) con sello; cota vertical a la derecha | Diagrama de arquitectura o captura enmarcada |
+| Automatización para PYMES | `AUTOMATIZACIÓN PARA PYMES` | Disparador (círculo con ›) → 2 pasos → resultado (círculo con ✓ en marino), con pulso | Diagrama de flujo (disparador → resultado) |
+| Aprendiendo medición | `APRENDIENDO MEDICIÓN` | 7 barras grises, una en marino con sello, sobre una regla | Gráfico de datos o ficha de métrica |
+| Herramientas e IA | `HERRAMIENTAS E IA` | Documento con líneas desordenadas → nodo del modelo → tabla de datos en filas | Antes/después: texto suelto → datos estructurados |
+
+El motivo de "Herramientas e IA" muestra **qué hace** la IA (extraer y estructurar), nunca cerebros, robots ni destellos (§1.3).
 
 ### 12.3 Formatos y medidas (LinkedIn y otros)
 
@@ -640,7 +682,7 @@ Los cuatro pilares (Construyendo · Automatización para PYMES · Aprendiendo me
 └──────────────────────────────────────────┘
 ```
 
-- **Fondo:** papel (versión clara, por defecto) o marino (versión de identidad). Alternar entre posts para ritmo visual, sin pasar de 1 marino cada 2 posts.
+- **Fondo (v4.0): marino-900 `#13233A` por defecto**, con retícula de puntos `marino-500` al 25 %. Texto en papel, secundario en `marino-100`, métricas en verde `#3FC08A`, CTA en `azul-300` (§4.4). **Papel** solo para piezas con mucho texto (> 20 palabras en la imagen), capturas de interfaz o gráficos de datos densos, y como lámina de contenido dentro de un carrusel de portada marino.
 - Un solo mensaje por pieza. Si necesitas dos, es un carrusel.
 - Texto en la imagen ≤ 20 palabras (sin contar el pie).
 
@@ -719,7 +761,7 @@ Para armar, editar y mantener las piezas gráficas en Figma con exactitud profes
 - **Firma inferior derecha:** `sjaquer.is-a.dev` en JetBrains Mono 500, 16 px, color `#8FA3BF`, fijada a 48 px del borde derecho e inferior.
 
 #### 12.9.4 Plantilla de Post LinkedIn 4:5 (1080 × 1350 px)
-- **Frame:** 1080 × 1350 px. Fill `#FAFAF8` (`papel`) o `#1F3A5F` (`marino`).
+- **Frame:** 1080 × 1350 px. Fill `#13233A` (`marino-900`, por defecto) o `#FAFAF8` (`papel`, ver §12.4).
 - **Padding Auto-Layout:** 80 px en todos los lados.
 - **Estructura en Auto-Layout Vertical (Separación entre bloques: 48 px):**
   1. **Header (Auto-Layout Horizontal, Space-Between):**
@@ -727,7 +769,8 @@ Para armar, editar y mantener las piezas gráficas en Figma con exactitud profes
      - Derecha: Monograma `sj` en tamaño 40 × 40 px.
   2. **Titular (Headline):** Inter 600, 64–72 px, line-height: 105 %, color `tinta` (o `papel` si el fondo es marino). Máx. 2–3 líneas.
   3. **Bloque central (Evidencia / Visual):**
-     - Variante Métrica: Métrica destacada en JetBrains Mono 600, 130 px, color `#0B7350` (`verde resultado`) + Línea de contexto debajo en Inter 400, 28 px, color `gris-500`.
+     - Variante Métrica: Métrica destacada en JetBrains Mono 600, 130 px, color `#3FC08A` sobre marino (`#0B7350` sobre papel) + línea de contexto en Inter 400, 28 px, `marino-100` (`gris-500` sobre papel). Si hay valor de partida, cota antes → después (§6.1) sobre la cifra.
+     - Variante Motivo: el motivo del pilar (§12.2) a todo el ancho útil, trazo 2 px en `marino-300`, destacado en papel.
      - Variante Diagrama: Contenedor con borde 1.5 px en `gris-100`, con arquitectura o flujo de automatización limpio.
   4. **Footer:**
      - Separador de regla técnica (§6.1) a todo el ancho útil (920 px).
@@ -735,7 +778,7 @@ Para armar, editar y mantener las piezas gráficas en Figma con exactitud profes
 
 #### 12.9.5 Plantilla de Carrusel LinkedIn (1080 × 1350 px, 5–9 láminas)
 - Mismo contenedor base que el post 4:5 con indicador de página `1/N` en la esquina superior derecha (JetBrains Mono 500, 20 px).
-- **Lámina 1 (Portada):** Titular grande, gancho claro, etiqueta del pilar, indicador `1/7`.
+- **Lámina 1 (Portada):** fondo marino-900, titular grande, gancho claro, etiqueta del pilar, motivo del pilar en el tercio inferior, indicador `1/7`.
 - **Láminas 2 a 5 (Desarrollo):** Titular de paso (Inter 600, 48 px) + diagrama explicativo o ficha de proceso enmarcada.
 - **Lámina 6 (Resultado):** Métrica en grande con contexto y método de medición.
 - **Lámina 7 (Cierre):** Aprendizaje clave + invitación a ver el código o caso completo en la web.
@@ -745,6 +788,16 @@ Para armar, editar y mantener las piezas gráficas en Figma con exactitud profes
 - **Header:** Etiqueta de sección + Monograma `sj` 36 px.
 - **Cuerpo:** Titular en Inter 600, 52 px (máx. 2 líneas) + descripción en Inter 400, 24 px.
 - **Footer:** Separador de regla + `Sebastián Jaque · sjaquer.is-a.dev`.
+
+### 12.10 De la idea a la pieza (flujo de producción)
+
+1. **Pilar:** elegir uno (§12.2). Si la idea no cabe en ninguno, no se publica.
+2. **Evidencia:** ¿qué se puede mostrar? Métrica con contexto (regla de §2.3), plano del flujo, captura con datos simulados o aprendizaje. Sin evidencia, la pieza es una reflexión corta de texto, sin imagen.
+3. **Nota canónica en la web** (`content/notas/`): toma automáticamente la etiqueta y el motivo del pilar.
+4. **Pieza de LinkedIn:** plantilla §12.9.4 (imagen única) o §12.9.5 (carrusel) sobre marino, con al menos dos piezas del kit de firma (§6.9). El texto del post sigue `06-CONTENIDO.md` §5.4.
+5. **Checklist §23** antes de publicar.
+
+**Series reconocibles:** la portada de un carrusel siempre tiene la misma estructura (etiqueta arriba a la izquierda, monograma arriba a la derecha, titular, motivo abajo, regla y pie). Quien vio un carrusel debe reconocer el siguiente antes de leerlo.
 
 ---
 
@@ -758,7 +811,7 @@ Para armar, editar y mantener las piezas gráficas en Figma con exactitud profes
 - Contenido generado desde `content/profile.ts`; nombre de archivo `CV-Sebastian-Jaque.pdf`.
 
 ### 13.2 Imagen OG por página
-Plantilla de §12.4 / §12.9.6 con fondo papel: etiqueta (tipo de página) · título de la página · pie con nombre y URL. Notas y casos usan su propio título; la home, la frase de posicionamiento.
+Plantilla de §12.4 / §12.9.6 con fondo papel: etiqueta (tipo de página) · título de la página · pie con nombre y URL. Notas y casos usan su propio título; la home, la frase de posicionamiento. **Pendiente (v4.0):** añadir el motivo del pilar a la OG de cada nota y pasar la OG a marino para alinearla con las piezas de redes.
 
 ### 13.3 Banner de LinkedIn
 Fondo `marino-900` con retícula de puntos (§6.2), frase de posicionamiento en papel (Inter 600), rol en etiqueta mono `marino-100` (JetBrains Mono), URL `sjaquer.is-a.dev` abajo a la derecha según especificación §12.9.3. Nada en el área que cubre la foto de perfil.
@@ -821,7 +874,7 @@ Portada con wordmark + etiqueta mono del tipo de documento; cuerpo en Geist/Inte
 4. **Rápido es una característica de diseño.** Si un efecto empeora el LCP o el INP, no entra.
 5. **Accesible por defecto.** AA en todo; foco siempre visible.
 6. **Densidad (v3.1, ajustada en v3.2).** Equilibrio: ni saturado ni vacío. Reglas verificables:
-   - **Cada sección tiene un ancla visual**: imagen, cifra o ícono. Una sección solo de texto es la excepción, no la regla.
+   - **Cada sección tiene un ancla visual**: retrato, cifra, plano o motivo (v4.0: casos → plano del flujo; servicios → flujo mínimo; notas → motivo del pilar). Una sección solo de texto es la excepción, no la regla.
    - **Sin "pastillas" de información** (chips con datos): los datos van como texto con ícono.
    - **Un dato, una vez por pantalla.** Si una cifra está en Resultados, no se repite en tarjetas ni en la experiencia de esa misma pantalla.
    - **Tarjeta de caso: 3 elementos** — etiqueta (tipo · año), título y resultado. El estado, el problema y el stack van en la página del caso.
@@ -881,7 +934,7 @@ Claro por defecto. Un solo color de acción. Cada token apunta a un primitivo de
 - El verde (`success-700`) es **solo** para resultados medidos.
 - `--color-brand` (marino) solo en logo, OG y pie; nunca en botones ni enlaces.
 - Proporción aproximada por pantalla: 90 % neutros, 8 % acento, 2 % verde.
-- Nada de degradados, neón ni glassmorphism.
+- Solo degradados tonales (§6.7): `--gradient-hero` y `--gradient-inverse`. Nada de neón ni glassmorphism.
 
 ### 15.4 Superficie invertida (`.surface-inverse`, v3.0)
 
@@ -1025,14 +1078,14 @@ Cada botón lleva `data-cta="<id>"` para la medición (ver `04-TECH-SEO-MEDICION
 | `Footer` | Enlaces, redes, "Actualizado: <fecha>" | Fecha generada en el build; wordmark compacto en `--color-brand` |
 | `Container`, `Section` | Ancho y ritmo vertical | `Section` aplica `--space-8/9` |
 | `SectionHeader` | Etiqueta mono + `h2` + lead opcional | |
-| `Hero` | Antetítulo (rol), nombre, frase canónica, resumen, 2 CTA, disponibilidad y ubicación con ícono, retrato 4:5 | Retrato con `priority`; entrada solo con `transform` (§11) |
-| `ProofStrip` (en la home) | 3 métricas con contexto | Dentro de la banda invertida (§15.4); métrica en `text-metric` verde |
+| `Hero` | Antetítulo (rol), nombre con regla trazada, frase canónica, resumen, 2 CTA, disponibilidad y ubicación con ícono, retrato 4:5 | Retrato con `priority`; entrada solo con `transform`; regla `.rule-draw` (§11.2) |
+| `ProofStrip` (en la home) | Etiqueta "Resultados", regla y 3 métricas con contexto | Dentro de la banda invertida (§15.4); métrica en `text-metric` verde; cota si hay `before` |
 | `CaseFacts` | Ficha del caso (rol, duración, stack, estado) | Lista de definiciones `<dl>` |
-| `Metric` | Cifra + etiqueta + base/periodo | Obliga a pasar `context` |
+| `Metric` | Cifra + etiqueta + base/periodo; con `before`, cota antes → después | Obliga a pasar `context`; verde según `isMeasured()` de `profile.ts` |
 | `Tag` | Etiqueta de stack | Mono, borde, sin color de acento |
 | `StatusBadge` | "En producción", "Prototipo", "Entregado" | Ícono + texto, nunca solo color |
 | `Timeline` | Experiencia | Cargo real, empresa, fechas |
-| `PostCard` | Nota del blog | Antetítulo (pilar · fecha · lectura), titular, bajada y "Leer la nota"; sin imagen. `NoteList` añade el filtro por pilar |
+| `PostCard` | Nota del blog | Motivo del pilar, antetítulo (pilar · fecha · lectura), titular, bajada y "Leer la nota". Variantes `card` (motivo arriba) y `row` (al lado, en /notas). `NoteList` añade el filtro por pilar |
 | `Prose` | Estilos de texto largo para MDX | 68ch, enlaces subrayados |
 | `Callout` | Aprendizaje / advertencia en casos | Variantes `info` (neutro) y `warning` (ámbar) |
 | `Figure` (pendiente) | Imagen + leyenda dentro del MDX | `next/image`, AVIF/WebP, marco de §6.5 |
@@ -1041,13 +1094,18 @@ Cada botón lleva `data-cta="<id>"` para la medición (ver `04-TECH-SEO-MEDICION
 | `ContactForm` | Formulario de 4 campos | Errores en línea, `aria-live` |
 | `ThemeToggle` | Claro / oscuro / sistema | Respeta `prefers-color-scheme` |
 | `ConsentBanner` | Consentimiento de medición | Discreto, inferior, dos botones del mismo peso |
-| `MediaFrame` (v3.2) | Espacio de imagen con placeholder de marca | §6.8; proporción fija, `next/image` |
+| `MediaFrame` (v3.2) | Espacio de imagen con placeholder de marca | Desde la v4.0 solo para el retrato; proporción fija, `next/image` |
 | `ReadingProgress` (v3.3) | Barra de lectura en casos y notas | Solo CSS (`animation-timeline: scroll()`); oculta con movimiento reducido |
 | `CopyEmail` (v3.3) | Copiar el email en /contacto | Confirmación con `aria-live` |
 | `NoteList` · `CaseGrid` | Índices con filtro | Botones `aria-pressed`, conteo anunciado |
 | `ConsoleGreeting` (v3.3) | Saludo y API `sj.*` en DevTools | Colores de marca; se ejecuta en `requestIdleCallback` |
-| `CaseArticle` (v3.2) | Caso en formato de artículo | Imagen 16:9, antetítulo (tipo · año · lectura), titular, bajada, resultado, "Leer el caso". Variantes `featured`, `row`, `card` |
-| `Reveal` (v3.0) | Revelado al hacer scroll | Solo CSS; nunca en el hero (§11) |
+| `CaseArticle` (v3.2) | Caso en formato de artículo | Portada `CaseCover` 16:9, antetítulo (tipo · año · lectura), titular, bajada, resultado, "Leer el caso". Variantes `featured`, `row`, `card` |
+| `Reveal` (v3.0) | Revelado al hacer scroll | Clase `.reveal`; solo CSS y solo `transform`; nunca en el hero (§11) |
+| `CaseCover` (v4.0) | Portada del caso: plano del flujo + cota del resultado | §6.8, §8.3; datos en `cover` de cada caso |
+| `MiniFlow` (v4.0) | Flujo de 3 pasos de cada servicio en la home | §8.3; decorativo |
+| `PillarMotif` (v4.0) | Motivo gráfico del pilar | §12.2; 8:3 |
+| `FigureFrame` · `FigNode` · `FigConnector` · `Dimension` · `Seal` (v4.0) | Primitivas de las figuras | `components/brand/figure.tsx`; animación §11.2 |
+| `MeasureRule` | Regla de medición | `draw` la traza al cargar (solo en el hero) |
 
 ### 19.3 Inputs
 - Alto 44 px, borde `border-strong`, radio `sm`, label siempre visible encima (nunca solo placeholder).
@@ -1057,12 +1115,12 @@ Cada botón lleva `data-cta="<id>"` para la medición (ver `04-TECH-SEO-MEDICION
 
 ## 20. Imágenes en la web
 
-- **Espacios de imagen:** ver §6.8 (retrato y portadas de caso; se llenan dejando el archivo en `public/img/`).
+- **Espacios de imagen:** ver §6.8. Solo el retrato es un archivo (`public/img/retrato.webp`); portadas de casos y notas son SVG.
 - **Capturas de casos:** marco de §6.5. Siempre con datos simulados.
-- **Imágenes generadas:** solo editoriales y sin rostros, con el prompt base de §10.7.
+- **Imágenes generadas:** nunca como portada; solo fondos de piezas y apoyos, con el prompt base de §10.7.
 - **Diagramas:** `FlowDiagram` según §8.
 - **Foto personal:** retrato principal de §10 (`public/img/retrato.webp`, 1200 × 1500).
-- **Prioridad de carga:** `priority` solo en la primera imagen visible de cada página (retrato del hero, primer artículo de `/proyectos`, portada del caso).
+- **Prioridad de carga:** `priority` solo en el retrato (hero y /sobre-mi). Las portadas SVG van en el HTML y no necesitan carga.
 - **Prohibido:** renders 3D, ilustraciones genéricas de "IA", fotos de stock.
 - Formatos AVIF/WebP vía `next/image`; ninguna imagen sobre 200 KB.
 
@@ -1080,65 +1138,19 @@ Cada botón lleva `data-cta="<id>"` para la medición (ver `04-TECH-SEO-MEDICION
 
 ## 22. Tokens en código
 
-```css
-/* app/tokens.css */
-:root {
-  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+**Fuente única: `app/tokens.css`.** Este documento describe los valores (§15–§17); el archivo es el que manda. No se copia aquí para que no se desincronice (la v3 tenía una copia que ya no coincidía).
 
-  --color-bg: #FAFAF8;
-  --color-surface: #FFFFFF;
-  --color-surface-muted: #F3F2EF;
-  --color-border: #E4E2DD;
-  --color-border-strong: #8A9099;
-  --color-ink-900: #14161A;
-  --color-ink-700: #3D424B;
-  --color-ink-500: #666C76;
-  --color-brand: #1F3A5F;
-  --color-accent-600: #2350D9;
-  --color-accent-700: #1B40B3;
-  --color-accent-50: #EEF2FF;
-  --color-success-700: #0B7350;
-  --color-warning-700: #B54708;
-  --color-danger-700: #B42318;
-  --color-focus: var(--color-accent-600);
+| Grupo en `tokens.css` | Contenido |
+|---|---|
+| `@theme` → `--color-*` | Tema claro (§15.1), `brand-50/900`, `chart-*` (§9) |
+| `:root[data-theme="dark"]` | Tema oscuro (§15.2) |
+| `--gradient-hero` · `--gradient-inverse` | Degradados tonales (§6.7) |
+| `.surface-inverse` | Banda de identidad (§15.4) |
+| `--font-*` · `--text-*` | Familias y escala fluida (§16) |
+| `--spacing-*` · `--container-*` | Espaciado base 4 px, alturas de control, header (§17) |
+| `--radius-*` · `--shadow-*` · `--ease-standard` | Radios, sombras y curva de movimiento (§17.3, §11) |
 
-  /* Gráficos de datos (§9) */
-  --chart-1: #2350D9;
-  --chart-2: #D0611F;
-  --chart-3: #00897B;
-  --chart-other: #8A9099;
-
-  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 16px; --radius-full: 999px;
-  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 24px;
-  --space-6: 32px; --space-7: 48px; --space-8: 64px; --space-9: 96px; --space-10: 128px;
-}
-
-:root[data-theme="dark"] {
-  --color-bg: #0E1013;
-  --color-surface: #171A1F;
-  --color-surface-muted: #1D2026;
-  --color-border: #272B32;
-  --color-border-strong: #6B717B;
-  --color-ink-900: #ECEDEF;
-  --color-ink-700: #C9CDD4;
-  --color-ink-500: #A7ADB7;
-  --color-brand: #D6DFEA;
-  --color-accent-600: #7A9BFF;
-  --color-accent-700: #A3BAFF;
-  --color-accent-50: #1A2340;
-  --color-success-700: #3FC08A;
-  --color-warning-700: #F5B54A;
-  --color-danger-700: #FF8A80;
-
-  --chart-1: #5B7FF0;
-  --chart-2: #D9691F;
-  --chart-3: #14A08F;
-  --chart-other: #6B717B;
-}
-```
-
-En Tailwind v4 se exponen con `@theme` para usar clases como `bg-surface`, `text-ink-900` o `p-5`.
+En Tailwind v4, `@theme` con `initial` anula la escala por defecto: **fuera de los tokens no existe ninguna clase** (por ejemplo, `max-w-80` no compila a nada). Las clases de movimiento (`.fig*`, `.rule-draw`, `.reveal`, `.hero-in`) viven en `app/globals.css`.
 
 ---
 
@@ -1157,7 +1169,9 @@ En Tailwind v4 se exponen con `@theme` para usar clases como `bg-surface`, `text
 - [ ] Solo colores de §4; máximo 3 sin contar neutros; azul solo en lo accionable, verde solo en resultados.
 - [ ] Inter / JetBrains Mono (o sustitutos de §5.1); máximo 2 pesos.
 - [ ] Contraste ≥ 4,5:1 en texto; tamaño mínimo respetado.
-- [ ] Sin degradados, neón, 3D, stock ni ilustraciones de "IA".
+- [ ] Sin degradados (salvo tonales), neón, brillos, vidrio, 3D, stock ni ilustraciones de "IA". **Si la imagen es generada, mirarla al 100 % buscando esto**.
+- [ ] Al menos dos piezas del kit de firma (§6.9).
+- [ ] Si tiene movimiento: solo trazado, aparición de gráficos o pulso (§11.2); el último cuadro funciona como pieza estática.
 - [ ] Logo con área de protección y en combinación permitida.
 
 **Privacidad y accesibilidad**
@@ -1172,12 +1186,15 @@ En Tailwind v4 se exponen con `@theme` para usar clases como `bg-surface`, `text
 | `public/brand/logo/wordmark.svg` · `wordmark-dark.svg` · `wordmark-marino.svg` · `wordmark-compacto.svg` | Wordmark principal y compacto | ✅ Generado (`scripts/brand/`) |
 | `public/brand/logo/monograma.svg` · `monograma-negativo.svg` · `monograma-mono.svg` · `monograma-simple.svg` | Monograma | ✅ Generado (`scripts/brand/`) |
 | `public/brand/avatar-silhouette.svg` | Ilustración vectorial (solo piezas gráficas, §10.6) | ✅ Generado |
-| `public/img/retrato.webp` | Retrato del hero y de /sobre-mi (4:5) | ✅ Subido |
-| `public/img/casos/<slug>.webp` | Portadas de los 6 casos (16:9) | ✅ Subidas |
+| `public/img/retrato.webp` | Retrato del hero y de /sobre-mi (4:5), fondo marino-700 | ✅ v4.0 (38 KB) |
+| `scripts/brand/retrato-fondo.py` | Cambia el fondo de color de un retrato por marino (§10.3) | ✅ v4.0 |
+| Portadas de los 8 casos | Planos SVG (`CaseCover`); las WebP generadas se retiraron | ✅ v4.0 |
+| Motivos de pilar | `components/brand/pillar-motif.tsx` | ✅ v4.0 |
 | `public/favicon.svg` · `app/favicon.ico` · `apple-touch-icon.png` · `icon-192.png` · `icon-512.png` | Íconos de app | ✅ Generado |
 | `public/brand/email/monograma.png` · `regla.png` | Imágenes de los correos transaccionales (§13.4.1) | ✅ Generado (`render-png.sh`) |
 | `lib/email/templates.ts` · `design/emails/*.html` | Correos del formulario y su vista previa | ✅ Implementado |
-| `public/brand/diagramas/*.svg` | Plantillas de §8.3 | ⬜ Por crear |
+| Plantillas de diagrama (§8.3) | Componentes en `components/brand/` y `components/ui/case-cover.tsx` | ✅ v4.0 (exportar a SVG para Figma cuando haga falta) |
+| OG de notas con motivo del pilar y fondo marino | `lib/og.tsx` | ⬜ Pendiente (§13.2) |
 | `design/figma/*.svg` (kit para importar a Figma, `scripts/brand/figma-kit.mjs`) | Logo, color, tipografía, elementos, banner LinkedIn, post 4:5, carrusel, OG, imágenes, artículo de caso 1200 × 630 | ✅ Generado; rol y frase desde `profile.ts` |
 | Archivo de Figma en la cuenta | Kit importado y editable | ⬜ Importar (o vía MCP de Figma cuando esté activo) |
 | `brand/fotos/` (fuera del repo público si contiene originales pesados) | Originales de retratos y fotos de trabajo | ⬜ Archivar originales |
@@ -1196,3 +1213,4 @@ En Tailwind v4 se exponen con `@theme` para usar clases como `bg-surface`, `text
 | 3.2 | 12 oct 2026 | Hero con espacio de retrato y sin pastilla; espacios de imagen con placeholder de marca (§6.8); prompt base de imágenes (§10.7); casos en formato de artículo (`CaseArticle`); entrada del hero solo con transform, zoom de imagen y flechas (§11); botones más claros y a todo el ancho en el celular (§19.1); densidad equilibrada con ancla visual por sección (§14.6). |
 | 3.3 | 12 oct 2026 | Revisión de cierre: hero con frase canónica como bajada y retrato real, sin pie decorativo; prioridad de carga por página (§20); inventarios de componentes (§19.2) y archivos (§24) al día; ejemplos de voz y pilares alineados al posicionamiento de desarrollo web + automatización (§2, §12). |
 | 3.4 | 12 oct 2026 | Correos del formulario con la línea gráfica (§13.4.1); se restaura `monograma.svg` con su fondo marino (una exportación lo había dejado solo con las letras blancas) y se regeneran los íconos. |
+| 4.0 | 13 oct 2026 | Auditoría de diseño y UX sobre producción. **Identidad:** metáfora del plano (§1.1) y kit de firma de 6 piezas (§6.9); regla trazada y cota de métricas (§6.1). **Imágenes:** portadas de casos como planos SVG del flujo real en lugar de renders generados con neón (§6.8); retrato con fondo marino-700 y script para rehacerlo (§10.3, §10.6); el prompt base queda para fondos y apoyos (§10.7). **Movimiento:** catálogo con trazado, aparición solo de gráficos, pulso y regla del hero, 100 % CSS (§11). **Contenido:** pilar "IA en agencias" → "Herramientas e IA"; motivo gráfico por pilar (§12.2); el marino pasa a fondo protagonista en redes (§4.3, §12.4, §12.9); flujo de la idea a la pieza (§12.10). **Coherencia:** reglas de degradados unificadas (§4.5, §15.3), §22 apunta a `tokens.css` en lugar de copiarlo, inventarios al día (§19.2, §24). |

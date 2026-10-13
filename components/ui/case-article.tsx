@@ -1,38 +1,23 @@
-import { IconArrowRight, IconChartDots3, IconRoute, IconBrowser } from "@tabler/icons-react";
+import { IconArrowRight } from "@tabler/icons-react";
 import Link from "next/link";
+import { CaseCover } from "@/components/ui/case-cover";
 import { DraftNotice } from "@/components/ui/draft-notice";
-import { MediaFrame } from "@/components/ui/media-frame";
-import { caseTypeLabel, type CaseStudy, type CaseType } from "@/content/casos";
-
-const typeIcon: Record<CaseType, typeof IconBrowser> = {
-  web: IconBrowser,
-  automatizacion: IconRoute,
-  datos: IconChartDots3,
-};
+import { caseTypeLabel, type CaseStudy } from "@/content/casos";
+import { isMeasured } from "@/content/profile";
 
 interface Props {
   c: CaseStudy;
-  image: string | null;
   minutes: number;
-  /** featured: imagen grande al lado · row: miniatura al lado · card: imagen arriba. */
+  /** featured: portada grande al lado · row: miniatura al lado · card: portada arriba. */
   variant?: "featured" | "row" | "card";
   headingLevel?: "h2" | "h3";
-  /** Solo para la primera imagen visible de la página (LCP). */
-  priority?: boolean;
 }
 
 /**
- * Caso en formato de artículo (03-DESIGN.md §19.2): imagen, antetítulo (tipo · año ·
- * lectura), titular, bajada y resultado. Toda la pieza es clicable con un solo enlace.
+ * Caso en formato de artículo (03-DESIGN.md §19.2): portada (plano del flujo), antetítulo
+ * (tipo · año · lectura), titular, bajada y resultado. Toda la pieza es clicable con un solo enlace.
  */
-export function CaseArticle({
-  c,
-  image,
-  minutes,
-  variant = "row",
-  headingLevel = "h3",
-  priority,
-}: Props) {
+export function CaseArticle({ c, minutes, variant = "row", headingLevel = "h3" }: Props) {
   const Heading = headingLevel;
   const featured = variant === "featured";
   const layout = {
@@ -48,19 +33,11 @@ export function CaseArticle({
     },
     card: { root: "", media: "", body: "" },
   }[variant];
-  const measured = c.result.measured ?? (/\d/.test(c.result.value) && /[%−+]/.test(c.result.value));
+  const measured = isMeasured(c.result);
 
   return (
     <article className={`group relative grid gap-5 ${layout.root}`}>
-      <MediaFrame
-        src={image}
-        alt=""
-        ratio="video"
-        icon={typeIcon[c.type]}
-        priority={priority}
-        sizes={featured ? "(min-width: 768px) 50vw, 100vw" : "(min-width: 1024px) 50vw, 100vw"}
-        className={layout.media}
-      />
+      <CaseCover c={c} className={layout.media} />
       <div className={`flex flex-col gap-3 ${layout.body}`}>
         <DraftNotice item={c} />
         <p className="text-label-mono text-ink-500">
@@ -80,6 +57,9 @@ export function CaseArticle({
           <span
             className={`mr-2 font-mono text-body font-semibold ${measured ? "text-success-700" : "text-ink-900"}`}
           >
+            {c.result.before && (
+              <span className="font-medium text-ink-500">{c.result.before} → </span>
+            )}
             {c.result.value}
           </span>
           {c.result.label}

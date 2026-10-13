@@ -182,6 +182,76 @@ li {
   }
 }
 
+/* ── v4.0: figuras SVG animadas (§11.2) ─────────────────────────────── */
+/* Una figura (`.fig`) define su línea de tiempo de vista; sus piezas la usan:
+   `.fig-fade` aparece (solo gráficos: el texto de la página nunca se desvanece),
+   `.fig-draw` traza la línea y `.fig-pulse` recorre un conector una sola vez.
+   `--i` escalona las piezas. Sin soporte o con movimiento reducido: figura estática. */
+.fig {
+  view-timeline-name: --fig;
+}
+.fig-pulse {
+  stroke-dasharray: 0.06 2;
+  stroke-dashoffset: 0.06;
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .fig-fade {
+      animation: fig-fade linear both;
+      animation-timeline: --fig;
+      animation-range: entry calc(10% + var(--i, 0) * 12%) entry calc(45% + var(--i, 0) * 12%);
+    }
+    .fig-draw {
+      stroke-dasharray: 1 1;
+      animation: fig-draw linear both;
+      animation-timeline: --fig;
+      animation-range: entry calc(25% + var(--i, 0) * 12%) entry calc(55% + var(--i, 0) * 12%);
+    }
+    .fig-pulse {
+      animation: fig-pulse linear both;
+      animation-timeline: --fig;
+      animation-range: cover calc(28% + var(--i, 0) * 6%) cover calc(40% + var(--i, 0) * 6%);
+    }
+    @keyframes fig-fade {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+    }
+    @keyframes fig-draw {
+      from {
+        stroke-dashoffset: 1;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+    @keyframes fig-pulse {
+      from {
+        stroke-dashoffset: 0.06;
+      }
+      to {
+        stroke-dashoffset: -1;
+      }
+    }
+  }
+}
+
+/* Regla del hero: se traza una vez al cargar. Es decorativa, no participa del LCP. */
+@media (prefers-reduced-motion: no-preference) {
+  .rule-draw {
+    animation: rule-draw 900ms var(--ease-standard) 250ms both;
+  }
+  @keyframes rule-draw {
+    from {
+      clip-path: inset(0 100% 0 0);
+    }
+    to {
+      clip-path: inset(0);
+    }
+  }
+}
+
 /* Impresión (sobre todo /cv): solo el contenido, en tinta sobre blanco. */
 @media print {
   :root {

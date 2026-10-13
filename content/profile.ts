@@ -16,7 +16,13 @@ export interface Metric {
   context: string;
   /** Resultado medido aunque no sea un porcentaje (p. ej. "~2 min"): se muestra en verde (§4.5). */
   measured?: boolean;
+  /** Valor de partida: con él la cifra se muestra como cota "antes → después" (03-DESIGN.md §6.1). */
+  before?: string;
 }
+
+/** Verde solo para resultados medidos (§4.5): variaciones con % o signo, no fechas ni estados. */
+export const isMeasured = (m: Metric) =>
+  m.measured ?? (/\d/.test(m.value) && /[%−+]/.test(m.value));
 
 export interface Experience {
   org: string;
@@ -68,9 +74,10 @@ export const profile = {
         "Automaticé la publicación de ofertas laborales con un bot de IA (Python, Playwright, LLM local con respaldo en Gemini) y verifiqué una base de 1 200+ correos de empresas para reducir rebotes.",
       ],
       metric: {
-        value: "Minutos",
-        label: "para enviar campañas de correo (de horas a tan solo minutos)",
-        context: "Universidad Norbert Wiener · sistema de difusión por correo",
+        value: "5–10 min",
+        before: "1–2 h",
+        label: "por campaña de correo, antes enviada a mano en tandas",
+        context: "Universidad Norbert Wiener · estimado por campaña, antes vs. después del sistema",
         measured: true,
       },
       stack: ["Next.js", "Supabase/PostgreSQL", "Docker", "Playwright", "Python"],
@@ -90,8 +97,7 @@ export const profile = {
       metric: {
         value: "−35 %",
         label: "tiempo de procesamiento por pedido",
-        // TODO(Sebastián): el CV no menciona el periodo; viene de la Fase 0. Confirmar.
-        context: "Medido durante 4 semanas antes vs. después de la implementación",
+        context: "Estimado · 4 semanas antes vs. después de la implementación",
       },
       stack: ["Next.js", "React", "Firebase"],
     },
@@ -109,8 +115,7 @@ export const profile = {
       metric: {
         value: "−30 %",
         label: "tareas administrativas manuales",
-        // TODO(Sebastián): completar base y método de medición.
-        context: "Dearel · ago – nov 2025",
+        context: "Estimado · Dearel, ago – nov 2025",
       },
       stack: ["Shopify", "APIs REST", "Google Sheets", "Power BI"],
     },

@@ -41,6 +41,14 @@ interface Publication {
   draft?: string;
 }
 
+/** Portada del caso: plano de su flujo real (03-DESIGN.md §6.8). Títulos de ≤ 12 caracteres. */
+export interface CaseCover {
+  label: string;
+  nodes: { tag: string; title: string }[];
+  /** Índice del nodo que construí o que cambió. */
+  highlight: number;
+}
+
 export interface CaseStudy extends Publication {
   slug: string;
   /** Título = resultado, no nombre del proyecto (06-CONTENIDO.md §4). */
@@ -60,6 +68,7 @@ export interface CaseStudy extends Publication {
   updatedAt: string;
   /** Aparece en la home (máximo 3). */
   featured?: boolean;
+  cover: CaseCover;
 }
 
 /** Motivo por el que algo no se publica todavía, o `null` si se publica. */
@@ -96,6 +105,16 @@ const allCases: CaseStudy[] = [
     updatedAt: "2026-10-11",
     featured: true,
     institutional: true,
+    cover: {
+      label: "Arquitectura",
+      nodes: [
+        { tag: "Cliente", title: "Usuarios" },
+        { tag: "Servidor", title: "Next.js" },
+        { tag: "Datos", title: "PostgreSQL" },
+        { tag: "Terceros", title: "Microsoft" },
+      ],
+      highlight: 1,
+    },
   },
   {
     slug: "difusion-correo-wiener",
@@ -105,9 +124,10 @@ const allCases: CaseStudy[] = [
     problem:
       "Las campañas a egresados se enviaban a mano desde Outlook, en tandas pequeñas: tomaban horas y las bajas no siempre se respetaban.",
     result: {
-      value: "Minutos",
-      label: "por campaña de 8 000 destinatarios (de horas a tan solo minutos)",
-      context: "Tiempo de envío de una misma campaña antes y después del sistema",
+      value: "5–10 min",
+      before: "1–2 h",
+      label: "por campaña de 8 000 destinatarios",
+      context: "Estimado: tiempo de envío de una misma campaña antes y después del sistema",
       measured: true,
     },
     type: "automatizacion",
@@ -120,6 +140,16 @@ const allCases: CaseStudy[] = [
     updatedAt: "2026-10-11",
     featured: true,
     institutional: true,
+    cover: {
+      label: "Flujo de una campaña",
+      nodes: [
+        { tag: "Público", title: "Segmento" },
+        { tag: "Control", title: "Exclusión" },
+        { tag: "Mensaje", title: "Plantilla" },
+        { tag: "Envío", title: "Lotes" },
+      ],
+      highlight: 1,
+    },
   },
   {
     slug: "formularios-nps-wiener",
@@ -143,6 +173,16 @@ const allCases: CaseStudy[] = [
     updatedAt: "2026-10-11",
     featured: true,
     institutional: true,
+    cover: {
+      label: "De la respuesta al indicador",
+      nodes: [
+        { tag: "Captura", title: "Formulario" },
+        { tag: "Datos", title: "Base central" },
+        { tag: "Uso", title: "Difusión" },
+        { tag: "Lectura", title: "Tablero" },
+      ],
+      highlight: 1,
+    },
   },
   {
     slug: "feria-virtual-wiener",
@@ -165,6 +205,16 @@ const allCases: CaseStudy[] = [
     status: "produccion",
     updatedAt: "2026-10-11",
     institutional: true,
+    cover: {
+      label: "Embudo de la feria",
+      nodes: [
+        { tag: "Descubrir", title: "Directorio" },
+        { tag: "Decidir", title: "Empresa" },
+        { tag: "Convertir", title: "Inscripción" },
+        { tag: "Volver", title: "Post-evento" },
+      ],
+      highlight: 2,
+    },
   },
   {
     slug: "reqlut-bot",
@@ -187,6 +237,16 @@ const allCases: CaseStudy[] = [
     status: "produccion",
     updatedAt: "2026-10-11",
     institutional: true,
+    cover: {
+      label: "Del correo a la bolsa laboral",
+      nodes: [
+        { tag: "Entrada", title: "Correo" },
+        { tag: "Extracción", title: "Playwright" },
+        { tag: "IA", title: "Estructura" },
+        { tag: "Salida", title: "Publicación" },
+      ],
+      highlight: 2,
+    },
   },
   {
     slug: "este-portafolio",
@@ -209,6 +269,16 @@ const allCases: CaseStudy[] = [
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "GTM / GA4"],
     status: "produccion",
     updatedAt: "2026-10-12",
+    cover: {
+      label: "Una fuente, muchas salidas",
+      nodes: [
+        { tag: "Fuente", title: "profile.ts" },
+        { tag: "Build", title: "Next.js" },
+        { tag: "Salida", title: "HTML" },
+        { tag: "Medición", title: "GA4" },
+      ],
+      highlight: 1,
+    },
   },
   {
     slug: "integracion-shopify-crm-dearel",
@@ -220,7 +290,7 @@ const allCases: CaseStudy[] = [
     result: {
       value: "−30 %",
       label: "tareas administrativas manuales",
-      context: "Dearel · ago – nov 2025", // TODO(Sebastián): base, periodo y método de medición
+      context: "Estimado · Dearel, ago – nov 2025",
     },
     type: "automatizacion",
     context: "Dearel · tienda retail en Lima",
@@ -231,6 +301,16 @@ const allCases: CaseStudy[] = [
     status: "entregado",
     updatedAt: "2026-10-12",
     draft: "Falta la base y el método del −30 % (07-PROYECTOS.md §4)",
+    cover: {
+      label: "Pedidos sin digitar dos veces",
+      nodes: [
+        { tag: "Tienda", title: "Shopify" },
+        { tag: "Integración", title: "API REST" },
+        { tag: "Gestión", title: "CRM" },
+        { tag: "Lectura", title: "Sheets + BI" },
+      ],
+      highlight: 1,
+    },
   },
   {
     slug: "pedidos-big-jack",
@@ -242,7 +322,7 @@ const allCases: CaseStudy[] = [
     result: {
       value: "−35 %",
       label: "tiempo de procesamiento por pedido",
-      context: "Medido durante 4 semanas antes vs. después de la implementación",
+      context: "Estimado · 4 semanas antes vs. después de la implementación",
     },
     type: "automatizacion",
     context: "Big Jack Burgers · hamburguesería en Lima",
@@ -252,6 +332,16 @@ const allCases: CaseStudy[] = [
     stack: ["Next.js", "React", "Firebase", "Webhooks"],
     status: "entregado", // TODO(Sebastián): ¿sigue en uso? Si es así, "produccion".
     updatedAt: "2026-10-11",
+    cover: {
+      label: "Flujo de un pedido",
+      nodes: [
+        { tag: "Canal", title: "Menú digital" },
+        { tag: "Integración", title: "Webhook" },
+        { tag: "Operación", title: "Cocina" },
+        { tag: "Control", title: "Inventario" },
+      ],
+      highlight: 1,
+    },
   },
 ];
 

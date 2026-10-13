@@ -1,4 +1,4 @@
-import type { Experience } from "@/content/profile";
+import { isMeasured, type Experience } from "@/content/profile";
 import { formatRange } from "@/lib/format";
 
 /**
@@ -40,8 +40,9 @@ export function Timeline({
               {!compact && e.metric && (
                 <p className="text-small text-ink-700">
                   <span
-                    className={`font-mono font-semibold ${e.metric.measured || /[%−+]/.test(e.metric.value) ? "text-success-700" : "text-ink-900"}`}
+                    className={`font-mono font-semibold ${isMeasured(e.metric) ? "text-success-700" : "text-ink-900"}`}
                   >
+                    {e.metric.before && `${e.metric.before} → `}
                     {e.metric.value}
                   </span>{" "}
                   {e.metric.label}

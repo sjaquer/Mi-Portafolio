@@ -48,7 +48,7 @@ export function NoteList({ items }: { items: NoteItem[] }) {
       <ol className="flex flex-col">
         {shown.map(({ n, minutes }, idx) => (
           <li key={n.slug} className={`reveal py-6 ${idx > 0 ? "border-t border-border" : "pt-0"}`}>
-            <PostCard n={n} minutes={minutes} />
+            <PostCard n={n} minutes={minutes} variant="row" />
           </li>
         ))}
       </ol>

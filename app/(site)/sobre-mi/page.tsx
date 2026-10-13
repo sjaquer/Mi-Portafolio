@@ -66,9 +66,9 @@ export default function SobreMiPage() {
               <p>
                 En Dearel conecté Shopify, el CRM y Google Sheets para reducir la digitación manual
                 de pedidos. En Big Jack Burgers construí, como único programador, el sistema de
-                pedidos y cocina de la hamburguesería. Hoy, en la Dirección de Desarrollo Profesional y Alumni de la
-                universidad, desarrollo la plataforma de bolsa de trabajo y los flujos de
-                comunicación con estudiantes.
+                pedidos y cocina de la hamburguesería. Hoy, en la Dirección de Desarrollo
+                Profesional y Alumni de la universidad, desarrollo la plataforma de bolsa de trabajo
+                y los flujos de comunicación con estudiantes.
               </p>
               <p>
                 Mi formación en negocios es la razón por la que empiezo preguntando qué tiene que

@@ -3,13 +3,13 @@
  * content/notas/<slug>.mdx. La web es la versión canónica; LinkedIn, la distribución.
  */
 
-export type Pillar = "construyendo" | "pymes" | "medicion" | "tesis";
+export type Pillar = "construyendo" | "pymes" | "medicion" | "herramientas";
 
 export const pillarLabel: Record<Pillar, string> = {
   construyendo: "Construyendo",
   pymes: "Automatización para PYMES",
   medicion: "Aprendiendo medición",
-  tesis: "IA en agencias",
+  herramientas: "Herramientas e IA",
 };
 
 export interface Note {
