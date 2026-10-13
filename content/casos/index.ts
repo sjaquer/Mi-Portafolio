@@ -6,7 +6,7 @@ import type { Metric } from "@/content/profile";
  */
 
 /**
- * Permiso escrito de la jefatura de Empleabilidad para publicar proyectos institucionales
+ * Permiso escrito de la jefatura de Desarrollo Profesional y Alumni para publicar proyectos institucionales
  * (07-PROYECTOS.md §3.1). Cambiar a `true` solo cuando llegue la respuesta por correo.
  */
 export const institutionalPermission = true; // Permiso confirmado por Sebastián el 2026-10-11.
@@ -87,7 +87,7 @@ const allCases: CaseStudy[] = [
       context: "En producción y en uso desde oct. 2026 · base de la feria virtual del 22 oct",
     },
     type: "web",
-    context: "Universidad Norbert Wiener · Dirección de Empleabilidad y Alumni",
+    context: "Universidad Norbert Wiener · Dirección de Desarrollo Profesional y Alumni",
     role: "Único desarrollador: producto, arquitectura, backend y frontend",
     duration: "2026", // TODO(Sebastián): confirmar inicio y fin
     year: 2026,
@@ -111,7 +111,7 @@ const allCases: CaseStudy[] = [
       measured: true,
     },
     type: "automatizacion",
-    context: "Universidad Norbert Wiener · Dirección de Empleabilidad y Alumni",
+    context: "Universidad Norbert Wiener · Dirección de Desarrollo Profesional y Alumni",
     role: "Diseño y desarrollo completo",
     duration: "2026", // TODO(Sebastián): fechas de inicio y puesta en uso
     year: 2026,
@@ -134,7 +134,7 @@ const allCases: CaseStudy[] = [
       context: "Encuesta de empleabilidad de egresados 2025–2026",
     },
     type: "datos",
-    context: "Universidad Norbert Wiener · Dirección de Empleabilidad y Alumni",
+    context: "Universidad Norbert Wiener · Dirección de Desarrollo Profesional y Alumni",
     role: "Diseño y desarrollo del portal y del tablero",
     duration: "2026", // TODO(Sebastián): fechas
     year: 2026,
@@ -157,7 +157,7 @@ const allCases: CaseStudy[] = [
       context: "Feria Virtual de Empleabilidad 2026", // TODO(Sebastián): inscritos y conferencias (07 §4)
     },
     type: "web",
-    context: "Universidad Norbert Wiener · Dirección de Empleabilidad y Alumni",
+    context: "Universidad Norbert Wiener · Dirección de Desarrollo Profesional y Alumni",
     role: "Diseño y desarrollo completo",
     duration: "2026", // TODO(Sebastián): fechas
     year: 2026,
@@ -179,7 +179,7 @@ const allCases: CaseStudy[] = [
       context: "Bolsa laboral de la universidad", // TODO(Sebastián): ofertas/semana y horas evitadas (07 §4)
     },
     type: "automatizacion",
-    context: "Universidad Norbert Wiener · Dirección de Empleabilidad y Alumni",
+    context: "Universidad Norbert Wiener · Dirección de Desarrollo Profesional y Alumni",
     role: "Diseño y desarrollo completo",
     duration: "2026", // TODO(Sebastián): fechas
     year: 2026,
@@ -284,12 +284,12 @@ const allGallery: GalleryItem[] = [
   {
     name: "Wiener Career Center & Alumni · Posgrado",
     angle:
-      "Sección de empleabilidad y alumni integrada sobre el WordPress de Posgrado, conservando los píxeles de Google Ads, Meta, LinkedIn y TikTok.",
+      "Sección de desarrollo profesional y alumni integrada sobre el WordPress de Posgrado, conservando los píxeles de Google Ads, Meta, LinkedIn y TikTok.",
     stack: ["WordPress", "JavaScript", "Píxeles de medición"],
     institutional: true,
   },
   {
-    name: "Página de Empleabilidad y Alumni",
+    name: "Página de Desarrollo Profesional y Alumni",
     angle:
       "Rediseño de la página del área: arquitectura de información por público, formulario de leads y contacto por WhatsApp.",
     stack: ["HTML", "CSS", "JavaScript"],

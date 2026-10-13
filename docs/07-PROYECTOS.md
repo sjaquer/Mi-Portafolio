@@ -46,7 +46,7 @@ Dos cosas que cambian respecto a lo planeado:
 | Proyecto | Ángulo | Nota |
 |---|---|---|
 | 3 + 4 · Landings de graduación (pregrado y posgrado) | Una base reutilizada para dos públicos; FAQ para bajar consultas repetidas; SEO técnico | **Públicas:** enlázalas en vivo |
-| 5 · Página de Empleabilidad y Alumni | Arquitectura de información + formulario de leads + WhatsApp | Las cifras (85 %, 15 000, 500) son **del área**, no tuyas: no las uses como resultado propio |
+| 5 · Página de Desarrollo Profesional y Alumni | Arquitectura de información + formulario de leads + WhatsApp | Las cifras (85 %, 15 000, 500) son **del área**, no tuyas: no las uses como resultado propio |
 | 6 · Portal de Bolsa Laboral | Propuesta de valor para registrarse (dos audiencias) | Indica si fue prototipo o se publicó |
 | 7 · WCCA Posgrado | Integración sobre WordPress conservando los píxeles de Google Ads, Meta, LinkedIn y TikTok | Muy MarTech: menciónalo explícitamente |
 | B · LogINV | PWA de inventario con escáner de códigos y 4 idiomas | Producto propio; aclara si tuvo cliente real |
@@ -73,7 +73,7 @@ Dos cosas que cambian respecto a lo planeado:
 
 ## 3. Reglas antes de publicar cualquier caso institucional
 
-1. **Permiso por escrito** de tu jefatura en Empleabilidad para mencionar los sistemas y mostrar maquetas. Un correo corto basta (plantilla abajo).
+1. **Permiso por escrito** de tu jefatura en Desarrollo Profesional y Alumni para mencionar los sistemas y mostrar maquetas. Un correo corto basta (plantilla abajo).
 2. **Datos simulados** en todas las capturas: nombres, DNI, correos, empresas aliadas y respuestas de encuestas inventados.
 3. **Sin detalles de seguridad**: nada de nombres de servidores, rutas internas, cuentas de envío, estructura de la base de Synapse ni cómo se cifran contraseñas. Se describe el *qué*, no el *dónde*.
 4. **Sin código institucional**: los repos siguen privados. Los diagramas de arquitectura se dibujan desde cero.

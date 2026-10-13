@@ -57,7 +57,7 @@ export const profile = {
   experience: [
     {
       org: "Universidad Privada Norbert Wiener",
-      title: "Practicante Pre Profesional — Dirección de Empleabilidad y Alumni",
+      title: "Practicante Pre Profesional — Dirección de Desarrollo Profesional y Alumni",
       from: "2026-06",
       to: null,
       location: "Lima",
