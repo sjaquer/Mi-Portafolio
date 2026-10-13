@@ -9,7 +9,7 @@ import { PostCard } from "@/components/ui/post-card";
 import { getNote, notes, pillarLabel } from "@/content/notas";
 import { profile } from "@/content/profile";
 import { formatDate } from "@/lib/format";
-import { jsonLdGraph } from "@/lib/jsonld";
+import { jsonLdGraph, toIsoDateTime } from "@/lib/jsonld";
 import { readingTime } from "@/lib/reading-time";
 import { pageMetadata } from "@/lib/seo";
 
@@ -42,8 +42,8 @@ export default async function NotePage({ params }: PageProps<"/notas/[slug]">) {
       "@type": "BlogPosting",
       headline: n.title,
       description: n.description,
-      datePublished: n.date,
-      dateModified: n.date,
+      datePublished: toIsoDateTime(n.date),
+      dateModified: toIsoDateTime(n.date),
       inLanguage: "es-PE",
       url,
       mainEntityOfPage: url,

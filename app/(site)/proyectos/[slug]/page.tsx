@@ -15,7 +15,7 @@ import { ReadingProgress } from "@/components/ui/reading-progress";
 import { caseTypeLabel, cases, getCase } from "@/content/casos";
 import { profile } from "@/content/profile";
 import { findImage } from "@/lib/images";
-import { jsonLdGraph } from "@/lib/jsonld";
+import { jsonLdGraph, toIsoDateTime } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
 
 export const dynamicParams = false;
@@ -51,7 +51,7 @@ export default async function CasePage({ params }: PageProps<"/proyectos/[slug]"
       name: c.title,
       description: c.subtitle,
       url,
-      dateModified: c.updatedAt,
+      dateModified: toIsoDateTime(c.updatedAt),
       inLanguage: "es-PE",
       author: { "@id": `${profile.siteUrl}/#person` },
       keywords: c.stack.join(", "),

@@ -220,7 +220,7 @@ export const profile = {
     whatsapp: "51946978919",
   },
 
-  updatedAt: "2026-10-11",
+  updatedAt: "2026-10-13",
 } as const;
 
 export type Profile = typeof profile;

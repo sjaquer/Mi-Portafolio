@@ -42,11 +42,22 @@ export function websiteJsonLd() {
   };
 }
 
+/**
+ * Convierte "YYYY-MM-DD" a formato ISO 8601 DateTime con zona horaria (Lima UTC-5).
+ * Requerido por Google Search Console para dateModified y datePublished.
+ */
+export function toIsoDateTime(dateStr: string): string {
+  if (dateStr.includes("T")) {
+    return dateStr;
+  }
+  return `${dateStr}T00:00:00-05:00`;
+}
+
 /** ProfilePage para home y /sobre-mi. */
 export function profilePageJsonLd() {
   return {
     "@type": "ProfilePage",
-    dateModified: profile.updatedAt,
+    dateModified: toIsoDateTime(profile.updatedAt),
     mainEntity: personJsonLd(),
   };
 }
