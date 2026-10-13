@@ -92,7 +92,7 @@ Redirecciones 301 desde los fragmentos antiguos no son necesarias (los `#` no ll
 Orden de secciones y propósito de cada una:
 
 1. **Hero** — Antetítulo con el rol, `h1` con el nombre, **frase de posicionamiento** como bajada, resumen, CTA primario **Descargar CV** y secundario **Ver proyectos** (a todo el ancho en el celular), disponibilidad y ubicación con ícono, y **retrato real** (4:5) a la derecha en escritorio y debajo en el celular.
-2. **Resultados medidos** — banda marino (la única de la página) con 3 resultados verificables y su contexto: −35 % tiempo de pedidos (Big Jack), −30 % tareas manuales (Dearel), campaña de 8 000 correos de más de 4 h a ~2 min (Norbert Wiener). Sin "+6 proyectos" ni "99 %".
+2. **Resultados medidos** — banda marino (la única de la página) con 3 resultados verificables y su contexto: −35 % tiempo de pedidos (Big Jack), −30 % tareas manuales (Dearel), campaña de 8 000 correos de horas a tan solo minutos (Norbert Wiener). Sin "+6 proyectos" ni "99 %".
 3. **Casos de estudio en formato de artículo** — los 3 casos con `featured`: uno destacado (imagen grande + texto) y dos en tarjeta, cada uno con imagen 16:9, antetítulo (tipo · año · minutos de lectura), titular, bajada, resultado y "Leer el caso". Botón "Ver los N casos".
 4. **Qué hago** — 3 bloques concretos: Desarrollo web y herramientas internas (Next.js) · Automatización de procesos y bots (Python, Playwright) · Integración de APIs y comunicación (Shopify, CRM, email transaccional). Cada uno con un ejemplo real, no una promesa.
 5. **Experiencia resumida** — línea de tiempo compacta, títulos reales.

@@ -99,14 +99,14 @@ const allCases: CaseStudy[] = [
   },
   {
     slug: "difusion-correo-wiener",
-    title: "Campañas de 8 000 correos en 2 minutos, con baja automática",
+    title: "Campañas de 8 000 correos de horas a tan solo minutos, con baja automática",
     subtitle:
       "Sistema interno de difusión con segmentación, personalización, envío por lotes y lista de exclusión, más la verificación previa de la base de correos.",
     problem:
       "Las campañas a egresados se enviaban a mano desde Outlook, en tandas pequeñas: tomaban horas y las bajas no siempre se respetaban.",
     result: {
-      value: "~2 min",
-      label: "por campaña de 8 000 destinatarios (antes, más de 4 h)",
+      value: "Minutos",
+      label: "por campaña de 8 000 destinatarios (de horas a tan solo minutos)",
       context: "Tiempo de envío de una misma campaña antes y después del sistema",
       measured: true,
     },

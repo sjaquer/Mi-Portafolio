@@ -63,13 +63,13 @@ export const profile = {
       location: "Lima",
       highlights: [
         "Desarrollé en solitario Empleabilidad Wiener, la plataforma propia de bolsa laboral y CV (Next.js, Supabase/PostgreSQL, Docker): 5 roles, acceso con Microsoft Entra ID, lectura de CV en PDF con IA y pruebas E2E con Playwright. Lanzamiento: oct. 2026.",
-        "Construí un sistema de difusión por correo con segmentación, personalización y lista de exclusión (Ley 29733): una campaña de 8 000 destinatarios pasó de más de 4 h a ~2 min.",
+        "Construí un sistema de difusión por correo con segmentación, personalización y lista de exclusión (Ley 29733): el envío de campañas pasó de horas a tan solo minutos.",
         "Desarrollé micrositios y landings (feria virtual, ceremonias de graduación, formularios y encuestas NPS) con SEO técnico, validación de identidad contra padrón y normalización automática de inscripciones.",
         "Automaticé la publicación de ofertas laborales con un bot de IA (Python, Playwright, LLM local con respaldo en Gemini) y verifiqué una base de 1 200+ correos de empresas para reducir rebotes.",
       ],
       metric: {
-        value: "~2 min",
-        label: "para enviar una campaña de 8 000 correos (antes, más de 4 h)",
+        value: "Minutos",
+        label: "para enviar campañas de correo (de horas a tan solo minutos)",
         context: "Universidad Norbert Wiener · sistema de difusión por correo",
         measured: true,
       },
