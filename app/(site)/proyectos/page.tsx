@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { IconArrowUpRight } from "@tabler/icons-react";
+import { MiniFlow } from "@/components/brand/mini-flow";
 import { CaseGrid } from "@/components/sections/case-grid";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { TagList } from "@/components/ui/tag";
@@ -68,12 +69,13 @@ export default function ProyectosPage() {
             id="galeria"
             label="Galería"
             title="Sitios y herramientas"
-            lead="Proyectos más pequeños, en una tarjeta: qué son y qué resuelven."
+            lead="Proyectos más pequeños, en una tarjeta: qué son, qué resuelven y dónde encaja lo que construí."
           />
           <ul className="grid gap-x-6 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
             {gallery.map((g) => (
-              <li key={g.name} className="flex flex-col gap-2 border-t border-border pt-5">
+              <li key={g.name} className="reveal flex flex-col gap-3 border-t border-border pt-5">
                 <DraftNotice item={g} />
+                <MiniFlow steps={g.flow} />
                 <h3 className="text-h3">{g.name}</h3>
                 <p>{g.angle}</p>
                 {g.href && (

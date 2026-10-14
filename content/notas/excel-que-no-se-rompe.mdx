@@ -1,0 +1,89 @@
+En casi todos los equipos que conozco hay un Excel que "manda": el reporte que se presenta, el tablero que mira la jefatura. Y casi siempre se alimenta copiando y pegando desde otros archivos. En la universidad me tocó automatizar uno de esos: el seguimiento de convenios con empresas. Esta nota cuenta cómo lo hice sin pedirle a nadie que deje de usar Excel.
+
+## El problema: dos archivos y un reporte frágil
+
+El estado de cada convenio vivía en dos lugares:
+
+- **Un archivo de operación**, donde el equipo actualiza día a día en qué etapa está cada convenio.
+- **Una matriz maestra**, que mantiene la dirección con su propio orden de columnas.
+
+Para tener un reporte consolidado, alguien copiaba los datos de ambos a un tercer libro con fórmulas y un tablero. Funcionaba hasta que alguien insertaba una columna en uno de los archivos de origen: las fórmulas apuntaban a la columna equivocada y el tablero mostraba datos cruzados sin avisar.
+
+El problema real no era copiar y pegar. Era que **el reporte dependía de la posición de las columnas**, y la posición es lo primero que cambia cuando una persona trabaja en un archivo.
+
+## Qué hice
+
+<FlowDiagram
+  label="Cómo se actualiza el reporte de convenios"
+  steps={[
+    {
+      tag: "Origen",
+      title: "Archivo del equipo y matriz maestra",
+      items: ["Se siguen editando como siempre"],
+    },
+    {
+      tag: "Office Scripts",
+      title: "Exportar e importar por nombre",
+      items: ["Encabezados + datos, no posiciones", "Alias por columna", "Hoja de registro"],
+      highlight: true,
+    },
+    {
+      tag: "Power Automate",
+      title: "Todos los días a las 6:00",
+      items: ["O con un botón, cuando haga falta"],
+    },
+    {
+      tag: "Salida",
+      title: "Libro consolidado",
+      items: ["Fórmulas y tablero intactos", "Nadie lo edita a mano"],
+    },
+  ]}
+/>
+
+### 1. Leer las columnas por su nombre, no por su lugar
+
+Escribí dos scripts en **Office Scripts**, que es TypeScript ejecutándose dentro de Excel en línea:
+
+- Un **exportador**, instalado en cada archivo de origen, que envía los encabezados junto con los datos de las hojas indicadas.
+- Un **importador**, en el libro consolidado, que empareja cada columna por su nombre contra una lista de alias. Así `GESTIONADO POR:` y `Gestionado por` son la misma columna.
+
+Si alguien reordena, inserta o quita una columna del medio, el importador la sigue encontrando.
+
+### 2. Fallar en voz alta, no en silencio
+
+Lo que más me importaba era que el reporte nunca mostrara datos equivocados sin avisar. Por eso el importador:
+
+- Si **falta** una columna esperada, deja ese campo vacío y lo anota en una hoja de **registro de importación**.
+- Si **aparece** una columna nueva, la ignora y también la deja anotada, para decidir después si se agrega.
+- Devuelve un resumen corto que se puede publicar en Teams o enviar por correo.
+
+<Callout title="Decisión: el libro consolidado es de solo lectura">
+  Los datos crudos se reescriben completos en cada ejecución y las fórmulas y el tablero viven en
+  columnas que el script no toca. Si alguien escribiera a mano en ese libro, su cambio se perdería
+  al día siguiente; la regla evita ese conflicto desde el inicio.
+</Callout>
+
+### 3. Programarlo con Power Automate
+
+Un flujo de **Power Automate** ejecuta los dos exportadores y luego el importador todos los días a las 6:00. Un segundo flujo, con disparador manual, permite actualizar fuera de horario. Los tres archivos viven en la misma carpeta de SharePoint, así que no hubo que mover nada de lugar.
+
+<Callout title="Lo que descarté" variant="warning">
+  Migrar todo a una base de datos o a una aplicación nueva. Técnicamente era más limpio, pero
+  obligaba al equipo a cambiar su forma de trabajar por un problema que estaba en el reporte, no en
+  ellos. Para el primer libro usé Python con openpyxl, y la operación diaria quedó dentro de
+  Microsoft 365, que el área ya usa.
+</Callout>
+
+## Resultado
+
+El libro consolidado se actualiza solo cada mañana, nadie copia datos entre archivos y un cambio de columnas ya no rompe el tablero: queda registrado para revisarlo. El mantenimiento previsto es mínimo: si alguien renombra una columna, se agrega una línea con el nuevo alias.
+
+No medí cuánto tiempo tomaba antes la consolidación manual, así que no tengo una cifra de ahorro que pueda defender. Lo que sí cambió es el tipo de error: antes era silencioso; ahora queda escrito.
+
+## Qué aprendí
+
+- Automatizar no siempre significa cambiar de herramienta. A veces es hacer más robusta la que el equipo ya usa.
+- Un sistema que avisa cuando algo no cuadra genera más confianza que uno que "nunca falla".
+- Debí medir el tiempo de la consolidación manual antes de automatizarla. Sin línea base, el resultado se queda en cualitativo.
+
+Si en tu equipo hay un Excel que se rompe cada vez que alguien lo toca, escríbeme: probablemente no haga falta cambiar de herramienta.

@@ -228,6 +228,10 @@ Igual que los casos: la ficha vive en `content/notas/index.ts` y el texto en `co
 4. Envíos masivos de correo sin caer en spam: SMTP vs. servicios transaccionales. — *Construyendo* (sale del informe de Resend, sin datos internos)
 5. ✅ 3 tareas que una tienda pequeña puede automatizar este mes. — *PYMES*
 5b. ✅ Validé 1 200 correos antes de una campaña (Nivel C de `07-PROYECTOS.md`). — *Construyendo*
+6b. ✅ Un Excel que no se rompe cuando alguien mueve una columna. — *PYMES*
+6c. ✅ Medir si un egresado trabaja en lo que estudió: reglas OCDE en Python. — *Construyendo*
+6d. ✅ Un robot para SUNAT con Playwright: lo que automaticé y lo que no. — *PYMES*
+6e. ✅ PostgreSQL o Firestore: qué aprendí construyendo pedidos e inventario. — *Construyendo*
 6. 30 días de datos de mi portafolio: qué aprendí sobre cómo llegan los reclutadores. — *Medición* (enero)
 
 ### 5.8 Qué no publicar

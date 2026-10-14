@@ -1,0 +1,72 @@
+"¿Nuestros egresados trabajan en lo que estudiaron?" es una pregunta que una universidad tiene que responder con evidencia, sobre todo en los procesos de acreditación. En la Dirección de Desarrollo Profesional y Alumni esa respuesta se armaba leyendo, una por una, la empresa y el cargo de cada egresado encuestado. Esta nota cuenta cómo convertí ese criterio en reglas que un programa aplica igual cada vez. Todos los ejemplos son genéricos; no uso datos de egresados.
+
+## El problema: un criterio que dependía de quién leía
+
+Decidir si un empleo es "pertinente" parece sencillo hasta que aparecen los casos reales:
+
+- Una enfermera que trabaja como **coordinadora de salud**: ¿es pertinente? Sí, aunque el cargo no diga "enfermera".
+- Un administrador que trabaja como **vendedor**: probablemente no.
+- Alguien con el cargo de **"analista"** o **"asistente"**: depende de la empresa y del nivel del puesto.
+
+Con cientos de respuestas, el resultado cambiaba según quién revisaba y en qué momento. Y un indicador que no se puede explicar no sirve para una acreditación.
+
+## La metodología: dos preguntas de la OCDE
+
+No inventé el criterio. La OCDE distingue dos tipos de desajuste entre formación y empleo, y los convertí en dos preguntas:
+
+1. **Pertinencia horizontal:** ¿las funciones del puesto corresponden al campo de la carrera?
+2. **Pertinencia vertical:** ¿el puesto requiere normalmente formación de educación superior?
+
+Si la primera es sí, el empleo es pertinente. Si es no, se pasa a la segunda. Escribirlo primero en un documento de metodología, con ejemplos por carrera, fue más importante que el código: el programa solo aplica lo que ya está escrito ahí.
+
+<FlowDiagram
+  label="Cómo se decide si un empleo es pertinente"
+  steps={[
+    { tag: "Entrada", title: "Carrera, cargo y empresa", items: ["Respuesta de la encuesta"] },
+    {
+      tag: "Reglas",
+      title: "Horizontal → vertical",
+      items: ["Exclusiones explícitas", "Cargos por carrera", "Revisión de cargos ambiguos"],
+      highlight: true,
+    },
+    {
+      tag: "Contexto",
+      title: "Rubro de la empresa",
+      items: ["Diccionario de empresas", "Búsqueda web si no la conoce"],
+    },
+    { tag: "Salida", title: "Reporte en Excel", items: ["Indicadores por facultad y carrera"] },
+  ]}
+/>
+
+## Qué hice
+
+Escribí el clasificador en **Python** con **pandas**, separado en piezas que se pueden revisar por separado:
+
+- **Un motor de reglas.** Para cada carrera hay una lista de cargos y funciones relacionados (por ejemplo, para Nutrición: nutricionista, nutrición clínica, dietética). Antes de todo, una lista de exclusiones explícitas descarta los cargos que nunca son pertinentes para esa carrera.
+- **Un tratamiento especial para los cargos ambiguos.** "Asistente", "analista", "coordinador", "supervisor" o "jefe" no deciden nada por sí solos. En esos casos el motor mira dos cosas más: si el rubro de la empresa es compatible con la carrera y si el nivel del puesto es alto (jefatura, gerencia, senior).
+- **Clasificación de empresas por rubro.** Un diccionario reconoce las empresas conocidas. Si una no aparece, el programa busca automáticamente a qué se dedica y guarda la respuesta para no volver a buscarla.
+- **Un reporte en Excel** con indicadores, tablas por facultad y por carrera, y el detalle de cada caso con el motivo de su clasificación.
+
+<Callout title="Decisión: cada resultado lleva su motivo">
+  El reporte no dice solo "pertinente" o "no pertinente": dice por qué regla llegó a esa conclusión.
+  Así quien revisa puede discrepar de un caso concreto y corregir la regla, en lugar de desconfiar
+  del número completo.
+</Callout>
+
+<Callout title="Lo que descarté" variant="warning">
+  Pedirle a un modelo de lenguaje que decidiera caso por caso. Habría resuelto más cargos ambiguos,
+  pero con un criterio difícil de explicar y que podía cambiar entre ejecuciones. Para un indicador
+  de acreditación, la regla explícita gana a la respuesta ingeniosa.
+</Callout>
+
+## Resultado
+
+El área tiene ahora un criterio escrito, basado en una fuente reconocida, y un proceso que lo aplica igual a todas las respuestas de las facultades de Ciencias de la Salud y de Negocios, Ingeniería y Derecho. Rehacer el análisis con una encuesta nueva es volver a ejecutar el programa, no volver a leer cada fila.
+
+No publico los porcentajes de pertinencia: son datos de la universidad y su lectura le corresponde al área.
+
+## Qué aprendí
+
+- La parte difícil de "automatizar un criterio" es acordar el criterio. El código fue lo más rápido.
+- Los casos ambiguos no se esconden: se marcan y se explican.
+- Haría distinto la lista de cargos: la empecé dentro del código y debí tenerla desde el principio en un archivo que el área pudiera editar sin programar.

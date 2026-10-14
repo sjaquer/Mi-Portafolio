@@ -352,11 +352,13 @@ export function getCase(slug: string) {
   return cases.find((c) => c.slug === slug);
 }
 
-/** Galería (Nivel B, 07-PROYECTOS.md §2): tarjeta corta, sin caso largo. */
+/** Galería (Nivel B, 07-PROYECTOS.md §7.2): tarjeta corta, sin caso largo. */
 export interface GalleryItem extends Publication {
   name: string;
   angle: string;
   stack: string[];
+  /** Ancla visual de la tarjeta (`MiniFlow`): 3 pasos de ≤ 10 caracteres; el central es lo que construí. */
+  flow: readonly [string, string, string];
   href?: string;
   hrefLabel?: string;
 }
@@ -367,6 +369,7 @@ const allGallery: GalleryItem[] = [
     angle:
       "Una base reutilizada para dos públicos: cuenta regresiva, preguntas frecuentes para bajar consultas repetidas, registro de asistencia y SEO técnico.",
     stack: ["HTML", "CSS", "JavaScript", "SEO"],
+    flow: ["Egresado", "Landing", "Registro"],
     href: "https://ceremoniaegresados.uwiener.edu.pe",
     hrefLabel: "Ver la landing de pregrado",
     institutional: true,
@@ -376,6 +379,7 @@ const allGallery: GalleryItem[] = [
     angle:
       "Sección de desarrollo profesional y alumni integrada sobre el WordPress de Posgrado, conservando los píxeles de Google Ads, Meta, LinkedIn y TikTok.",
     stack: ["WordPress", "JavaScript", "Píxeles de medición"],
+    flow: ["WordPress", "Sección", "Píxeles"],
     institutional: true,
   },
   {
@@ -383,21 +387,41 @@ const allGallery: GalleryItem[] = [
     angle:
       "Rediseño de la página del área: arquitectura de información por público, formulario de leads y contacto por WhatsApp.",
     stack: ["HTML", "CSS", "JavaScript"],
+    flow: ["Visitante", "Página", "Contacto"],
     institutional: true,
   },
   {
     name: "Portal de Bolsa Laboral",
     angle:
-      "Propuesta de página de inicio para la bolsa laboral: por qué registrarse, una sección para empresas y la agenda de eventos y talleres.",
-    stack: ["HTML", "Tailwind CSS"],
+      "Prototipo de la bolsa laboral para dos públicos —candidatos y empresas— con la agenda de eventos y talleres. Sus flujos pasaron a la plataforma de empleabilidad.",
+    stack: ["React", "Tailwind CSS", "Firebase"],
+    flow: ["Candidato", "Portal", "Empresa"],
     institutional: true,
-    // TODO(Sebastián): ¿se publicó o quedó como prototipo? (07-PROYECTOS.md, Nivel B)
+  },
+  {
+    name: "LogiFlow",
+    angle:
+      "Cola de llamadas, pedidos e inventario para un equipo de ventas por teléfono: los leads entran solos desde Shopify y el CRM por webhook, y el pedido confirmado vuelve al CRM.",
+    stack: ["Next.js", "Firebase", "Kommo API", "Shopify"],
+    flow: ["Shopify", "LogiFlow", "CRM"],
+    href: "https://github.com/sjaquer/logiflow",
+    hrefLabel: "Código de LogiFlow en GitHub",
+  },
+  {
+    name: "DataWeave BI",
+    angle:
+      "Tablero de operación de una tienda online: pedidos por webhook, envíos, devoluciones, inventario y ventas por provincia, con nombres de productos y provincias normalizados por IA.",
+    stack: ["Next.js", "Firebase", "Shopify API", "Genkit"],
+    flow: ["Shopify", "DataWeave", "Tablero"],
+    href: "https://github.com/sjaquer/DataWeave-BI",
+    hrefLabel: "Código de DataWeave BI en GitHub",
   },
   {
     name: "LogINV",
     angle:
       "PWA de inventario para varios almacenes: conteo rápido con escáner de códigos de barras, alertas de vencimiento e interfaz en 4 idiomas.",
     stack: ["Next.js", "Firebase", "PWA"],
+    flow: ["Escáner", "LogINV", "Reposición"],
     href: "https://github.com/sjaquer/LogINV",
     hrefLabel: "Código de LogINV en GitHub",
     // TODO(Sebastián): ¿tuvo cliente real? (07-PROYECTOS.md, Nivel B)
@@ -407,6 +431,25 @@ const allGallery: GalleryItem[] = [
     angle:
       "Inventario de materiales, donaciones y turnos para una obra comunitaria, con movimientos en tiempo real y exportación a Excel.",
     stack: ["React", "Firestore"],
+    flow: ["Donación", "Inventario", "Excel"],
+  },
+  {
+    name: "Optimizador de vuelos (ORDEV)",
+    angle:
+      "Planificador de vuelos de helicóptero para pasajeros y carga: el solver CP-SAT respeta peso, capacidad, reabastecimiento y prioridad, y devuelve el itinerario con su manifiesto por tramo.",
+    stack: ["Next.js", "TypeScript", "OR-Tools"],
+    flow: ["Escenario", "CP-SAT", "Itinerario"],
+    href: "https://github.com/sjaquer/Optimizador-Vuelos-CP-SAT",
+    hrefLabel: "Código del optimizador en GitHub",
+  },
+  {
+    name: "Coralia Delights y Digital Bakery",
+    angle:
+      "Dos tiendas online para repostería: catálogo, checkout con zona de reparto y horario, y un panel con inventario, combos y promociones. Digital Bakery fue la primera versión.",
+    stack: ["Next.js", "Firebase", "Tailwind CSS"],
+    flow: ["Catálogo", "Checkout", "Panel"],
+    href: "https://github.com/sjaquer/Carolia-Delights",
+    hrefLabel: "Código de Coralia Delights en GitHub",
   },
 ];
 
@@ -421,7 +464,7 @@ export interface LabProject {
   href: string;
 }
 
-// TaskZenith y ORDEV al fondo: sin relación con el objetivo (07-PROYECTOS.md §2).
+// Lo personal y de práctica al fondo (07-PROYECTOS.md §7.4).
 export const lab: LabProject[] = [
   {
     name: "Big Jack Bot",
@@ -440,6 +483,30 @@ export const lab: LabProject[] = [
     href: "https://github.com/sjaquer/taskME",
   },
   {
+    name: "Ecos Literarios",
+    description:
+      "Biblioteca de autores en español con un análisis por IA de cada obra: temas, contexto y estilo.",
+    stack: ["Next.js", "Genkit", "Gemini", "Firestore"],
+    year: 2026,
+    href: "https://github.com/sjaquer/ecos",
+  },
+  {
+    name: "HoneyNotes",
+    description:
+      "Cartas digitales para parejas con un asistente de escritura que sugiere cómo decir algo con más claridad, y retos semanales programados con Cloud Functions.",
+    stack: ["Next.js", "Firebase", "Genkit", "Gemini"],
+    year: 2026,
+    href: "https://github.com/sjaquer/honeynotes",
+  },
+  {
+    name: "Juego para la Gamedev.js Jam 2026",
+    description:
+      "Juego de navegador en dos capas: un escritorio retro con terminal y asistente, y un nivel de plataformas con un robot de piezas que se rompen y se reparan.",
+    stack: ["TypeScript", "Phaser", "Vite", "Gemini API"],
+    year: 2026,
+    href: "https://github.com/sjaquer/gamejamdevjs-2026",
+  },
+  {
     name: "TaskZenith",
     description:
       "Espacio de trabajo modular con widgets arrastrables, persistencia en Firestore y temporizador Pomodoro.",
@@ -448,11 +515,11 @@ export const lab: LabProject[] = [
     href: "https://github.com/sjaquer/TaskZenith",
   },
   {
-    name: "ORDEV",
+    name: "Secret Love",
     description:
-      "Planificador de rutas aéreas que resuelve restricciones de peso, combustible y pasaje con el solver CP-SAT de OR-Tools.",
-    stack: ["Python", "OR-Tools", "React", "TypeScript"],
+      "Micrositio de regalo: cuenta regresiva, códigos que desbloquean páginas y una historia generada con IA sobre un fondo de acuario animado.",
+    stack: ["Next.js", "Tailwind CSS", "Genkit"],
     year: 2025,
-    href: "https://github.com/sjaquer/Optimizador-Vuelos-CP-SAT",
+    href: "https://github.com/sjaquer/secretlove",
   },
 ];

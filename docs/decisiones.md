@@ -36,6 +36,7 @@
 | 2026-10-13 | Pilar "IA en agencias" → "Herramientas e IA" | La tesis no encaja con el posicionamiento de desarrollo + automatización | Pilares coherentes con el rol | 2027-01-15 |
 | 2026-10-13 | Métricas: "Minutos" → "1–2 h → 5–10 min" (estimado); −35 % y −30 % marcados como estimados | Regla 2: una métrica sin método se declara estimada | Ninguna cifra que no se pueda defender en una entrevista | — |
 | 2026-10-13 | Redes: el marino es el fondo protagonista | Reconocimiento en el feed de LinkedIn | Identificar las piezas sin leer el nombre | 2026-12-01 |
+| 2026-10-13 | Galería con flujo mínimo por tarjeta y ampliada con 4 proyectos de GitHub; Laboratorio con 7; notas 2–5 publicadas | 07-PROYECTOS §7 verificado contra los repos: se corrigieron descripciones y se dejaron fuera Alerta Multienda y Cabine Grid (sin repo verificable) | Cada sección con ancla visual (§14.6); más `post_read` desde LinkedIn | 2026-11-13 |
 
 ## Hipótesis para la Fase 6 (se prueban con datos)
 

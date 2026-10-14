@@ -1,0 +1,75 @@
+Cada mes tenía la misma rutina en el portal de SUNAT: emitir varias boletas de venta una por una, presentar las declaraciones del periodo y guardar los comprobantes. No era difícil, pero sí largo, y cada paso manual era una oportunidad de equivocarme en un monto o en una fecha. Esta nota cuenta cómo lo automaticé con Playwright y por qué decidí no automatizarlo todo. No incluye credenciales, RUC ni montos.
+
+## El problema: un portal que no está hecho para robots
+
+Automatizar un portal moderno suele ser predecible. El de SUNAT tiene particularidades que rompen cualquier script ingenuo:
+
+- **La aplicación vive dentro de un iframe**, que a veces aparece y a veces no según la ruta de entrada.
+- **Los formularios usan widgets de Dojo**: un "select" no es un `<select>`, sino un conjunto de elementos que hay que abrir, esperar y elegir.
+- **Los tiempos de carga varían mucho**, y un clic antes de tiempo deja el formulario a medias.
+- **Hay un captcha en el ingreso**, que no corresponde saltarse.
+
+## Qué hice
+
+Escribí un robot en **Python** con **Playwright** que lee una plantilla de Excel y recorre el portal como lo haría yo, pero sin olvidarse de ningún paso.
+
+<FlowDiagram
+  label="Rutina mensual en SUNAT"
+  steps={[
+    {
+      tag: "Entrada",
+      title: "Plantilla en Excel",
+      items: ["Boletas del mes", "Periodo calculado solo"],
+    },
+    {
+      tag: "Robot",
+      title: "Playwright en el portal",
+      items: ["Ingreso asistido", "Emisión de boletas", "Declaraciones del periodo"],
+      highlight: true,
+    },
+    { tag: "Control", title: "Validación de totales", items: ["Se detiene si no cuadra"] },
+    { tag: "Salida", title: "Comprobantes por mes", items: ["Carpeta, registro y capturas"] },
+  ]}
+/>
+
+### 1. Que el robot sepa qué mes declarar
+
+El periodo tributario es siempre el mes anterior. Parece obvio, pero enero tiene que declarar diciembre del año pasado. Lo resolví con una función corta que el robot usa en todos los pasos, en lugar de escribir la fecha a mano cada mes.
+
+### 2. Selectores que aguantan cambios
+
+En lugar de depender de un solo selector por botón, cada acción encadena varias formas de encontrar el mismo elemento: por su rol y nombre visible, por su texto y, al final, por su identificador. Si SUNAT cambia una de ellas, las otras siguen funcionando. Además, el robot detecta si la aplicación está dentro del iframe antes de buscar nada en ella.
+
+Para los tiempos, uso esperas explícitas a que cada elemento esté visible, no pausas fijas a ciegas. Cuando algo falla, el robot guarda una captura de pantalla con el nombre del paso y deja el error en un registro.
+
+### 3. Validar antes de avanzar
+
+Antes de presentar las declaraciones, el robot suma los montos y los compara con el total esperado del mes. Si no coinciden, se detiene con un mensaje claro. Prefiero que el robot se detenga a que continúe con un número equivocado en un trámite tributario.
+
+### 4. Una persona donde tiene que haber una persona
+
+<Callout title="Decisión: semiautomático a propósito">
+  El ingreso tiene captcha, y el robot no intenta resolverlo: espera hasta cinco minutos a que yo lo
+  complete y avisa con una alerta sonora. En el detalle de cada boleta hay un modal que respondía de
+  forma inestable; ahí el robot muestra en consola los datos exactos que debo verificar, emite una
+  alerta y espera mi confirmación antes de seguir.
+</Callout>
+
+<Callout title="Lo que descarté" variant="warning">
+  Resolver el captcha con un servicio externo o forzar el modal con trucos de JavaScript. Las dos
+  cosas habrían hecho el robot "100 % automático", pero frágil y, en el caso del captcha, contrario
+  a la intención del portal. En un trámite con consecuencias legales, el control humano en dos
+  puntos vale más que la comodidad.
+</Callout>
+
+## Resultado
+
+La rutina mensual pasó de ser un trabajo de recorrer pantallas a revisar y confirmar. El robot calcula el periodo, emite las boletas a partir del Excel y anota el número de cada una o el error, valida los totales y guarda los comprobantes en una carpeta por mes. Las credenciales viven en variables de entorno, fuera del código.
+
+No cronometré la rutina manual antes de automatizarla, así que no doy una cifra de ahorro. Lo que sí puedo decir es que ya no dependo de recordar el orden de los pasos.
+
+## Qué aprendí
+
+- En portales antiguos, la resiliencia está en los selectores y en las esperas, no en la velocidad.
+- Automatizar el 90 % y dejar el 10 % sensible a una persona es una decisión de diseño, no un fracaso.
+- Debí tomar la línea base antes: medir cuánto tardaba la rutina manual me habría dado un resultado que contar.

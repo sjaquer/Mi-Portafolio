@@ -1,0 +1,71 @@
+En el último año construí sistemas sobre dos tipos de base de datos muy distintos. Los de pedidos e inventario —una hamburguesería, una obra comunitaria, almacenes— los hice sobre **Firestore**. La plataforma de empleabilidad, el sistema de difusión y el portal de formularios de la universidad, sobre **PostgreSQL**. No fue por gusto: cada proyecto empujó hacia uno. Esta nota cuenta qué decidió cada elección y en qué me equivoqué.
+
+## La pregunta que importa
+
+"¿SQL o NoSQL?" es una pregunta demasiado general. La que me sirvió fue más concreta:
+
+> ¿Qué pasa si dos datos que deberían coincidir dejan de coincidir?
+
+Si la respuesta es "se corrige en la próxima actualización", un modelo de documentos en tiempo real suele bastar. Si la respuesta es "alguien recibe un correo que pidió no recibir" o "una empresa ve datos que no debería ver", necesitas que la base de datos haga cumplir las reglas, no solo tu código.
+
+## Dónde Firestore fue la decisión correcta
+
+**Pedidos en cocina.** En el sistema de la hamburguesería, lo crítico era que un pedido apareciera en la pantalla de cocina en el momento en que se confirmaba. Firestore envía los cambios a todos los dispositivos conectados sin que yo programe esa sincronización. Para una pantalla que solo necesita "lo que hay que preparar ahora", es exactamente lo necesario.
+
+**Inventario ligero y en terreno.** En la obra comunitaria y en LogINV, las personas registran entradas y salidas desde el celular, a veces con mala señal. El modelo de documentos y la sincronización de Firebase hicieron que lanzar una primera versión tomara días, no semanas.
+
+**Equipos pequeños, cambios frecuentes.** Cuando el formato de un producto o de una comanda cambia cada semana, no tener que migrar un esquema es una ventaja real.
+
+## Dónde necesité PostgreSQL
+
+**Una lista de exclusión que no puede fallar.** En el sistema de difusión de correos, una persona que se da de baja no debe recibir ninguna campaña más. Con una consulta relacional, la exclusión es parte de la misma consulta que arma el segmento: no depende de que cada pantalla "se acuerde" de filtrar.
+
+**Permisos por rol en datos compartidos.** La plataforma de empleabilidad tiene cinco roles sobre los mismos datos: ofertas, postulaciones, empresas. La decisión de qué puede ver cada uno vive en una tabla propia de usuarios y roles, cerca de los datos, no repartida en la interfaz.
+
+**Datos que se cruzan para responder preguntas.** El portal de formularios valida la identidad contra un padrón y guarda respuestas que después se analizan por facultad, carrera y evento. Esas preguntas son uniones y agregaciones: el terreno natural de SQL.
+
+<FlowDiagram
+  label="Cómo elijo la base de datos"
+  steps={[
+    {
+      tag: "Pregunta",
+      title: "¿Qué pasa si dos datos no coinciden?",
+      items: ["Se corrige solo", "O tiene consecuencias"],
+    },
+    {
+      tag: "Firestore",
+      title: "Tiempo real y documentos",
+      items: ["Comandas en cocina", "Inventario desde el celular", "Esquema que cambia"],
+    },
+    {
+      tag: "PostgreSQL",
+      title: "Relaciones y reglas en la base",
+      items: ["Listas de exclusión", "Permisos por rol", "Análisis por segmento"],
+      highlight: true,
+    },
+  ]}
+/>
+
+## Lo que salió mal (y lo que aprendí de eso)
+
+**Lecturas que se multiplican.** En Firestore se paga y se espera por cada documento leído. En un sistema de ventas por teléfono, cada vez que un agente recargaba la cola se volvían a leer todos los leads. Terminé agregando una caché local con tiempo de expiración que muestra los datos guardados al instante y sincroniza en segundo plano. Funciona, pero es complejidad que una consulta SQL con paginación no habría necesitado.
+
+**Duplicar datos para poder consultarlos.** En un modelo de documentos, para mostrar un pedido con el nombre del cliente sueles copiar ese nombre dentro del pedido. Si el cliente lo corrige, hay que actualizarlo en todos lados. En una herramienta pequeña es manejable; en una con reportes, se vuelve una fuente de diferencias.
+
+<Callout title="Lo que descarté" variant="warning">
+  Usar una sola tecnología para todo "por consistencia". Habría sido más simple de mantener para mí,
+  pero habría forzado tiempo real artificial en la universidad o integridad relacional innecesaria
+  en una cocina. La consistencia que importa es la del criterio, no la de la herramienta.
+</Callout>
+
+## Mi regla actual
+
+1. Si el sistema **muestra el estado actual** a varias personas a la vez y el formato cambia seguido, empiezo con Firestore.
+2. Si el sistema **toma decisiones** con los datos —quién recibe qué, quién ve qué, cuánto suma algo—, empiezo con PostgreSQL.
+3. Si necesito las dos cosas, la fuente de verdad es relacional y el tiempo real se agrega encima, no al revés.
+
+## Qué aprendí
+
+- La base de datos no es una preferencia técnica: es dónde viven las reglas del negocio.
+- Lo rápido de empezar con Firestore se paga después en lecturas y datos duplicados si el proyecto crece en reportes.
+- Haría distinto el sistema de ventas por teléfono: con lo que sé hoy, lo habría empezado sobre PostgreSQL.

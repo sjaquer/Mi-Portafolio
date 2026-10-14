@@ -27,6 +27,38 @@ export interface Note {
 
 const allNotes: Note[] = [
   {
+    slug: "excel-que-no-se-rompe",
+    title: "Un Excel que no se rompe cuando alguien mueve una columna",
+    description:
+      "Cómo automaticé un reporte de convenios con Office Scripts y Power Automate leyendo columnas por su nombre, sin pedirle a nadie que deje de usar Excel.",
+    date: "2026-10-13",
+    pillar: "pymes",
+  },
+  {
+    slug: "empleo-pertinente-reglas-ocde",
+    title: "Medir si un egresado trabaja en lo que estudió: reglas OCDE en Python",
+    description:
+      "Convertí un criterio que dependía de quién leía cada encuesta en reglas explícitas: pertinencia horizontal y vertical, cargos ambiguos y rubro de empresa.",
+    date: "2026-10-13",
+    pillar: "construyendo",
+  },
+  {
+    slug: "robot-sunat-playwright",
+    title: "Un robot para SUNAT con Playwright: lo que automaticé y lo que no",
+    description:
+      "Playwright sobre un portal con iframes y widgets difíciles: selectores que resisten cambios, validación de totales y dos pasos que dejé a una persona.",
+    date: "2026-10-13",
+    pillar: "pymes",
+  },
+  {
+    slug: "postgresql-vs-firestore",
+    title: "PostgreSQL o Firestore: qué aprendí construyendo pedidos e inventario",
+    description:
+      "Por qué usé Firestore para comandas e inventario y PostgreSQL para permisos, exclusiones y análisis, y qué me costó cada elección en la práctica.",
+    date: "2026-10-13",
+    pillar: "construyendo",
+  },
+  {
     slug: "eventos-ga4-portafolio",
     title: "Mis primeros 9 eventos en GA4 y por qué los nombré así",
     description:
