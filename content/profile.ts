@@ -68,7 +68,7 @@ export const profile = {
       to: null,
       location: "Lima",
       highlights: [
-        "Desarrollé en solitario Empleabilidad Wiener, la plataforma propia de bolsa laboral y CV (Next.js, Supabase/PostgreSQL, Docker): 5 roles, acceso con Microsoft Entra ID, lectura de CV en PDF con IA y pruebas E2E con Playwright. Lanzamiento: oct. 2026.",
+        "Desarrollé en solitario Empleabilidad Wiener, la plataforma propia de bolsa laboral y CV (Next.js, Supabase/PostgreSQL, Docker): 5 roles, acceso con Microsoft Entra ID, lectura de CV en PDF con IA y pruebas E2E con Playwright. En producción desde oct. 2026.",
         "Construí un sistema de difusión por correo con segmentación, personalización y lista de exclusión (Ley 29733): el envío de campañas pasó de horas a tan solo minutos.",
         "Desarrollé micrositios y landings (feria virtual, ceremonias de graduación, formularios y encuestas NPS) con SEO técnico, validación de identidad contra padrón y normalización automática de inscripciones.",
         "Automaticé la publicación de ofertas laborales con un bot de IA (Python, Playwright, LLM local con respaldo en Gemini) y verifiqué una base de 1 200+ correos de empresas para reducir rebotes.",
@@ -89,7 +89,7 @@ export const profile = {
       to: "2026-09",
       location: "Lima",
       highlights: [
-        "Implementé un sistema interno de gestión de pedidos que redujo el tiempo de procesamiento en 35 %.",
+        "Construí el sistema de pedidos en tres piezas conectadas en tiempo real: una carta digital y un bot de WhatsApp con IA que convierten cada pedido en una orden estructurada, y un panel interno de caja, cocina y despacho que calcula totales y registra tiempos.",
         // TODO(Sebastián): el +15 % no tiene base ni periodo en el CV (regla 2 de CLAUDE.md).
         "Reestructuré la política de precios a partir de costos operativos y datos de venta, elevando el margen mensual en 15 %.",
         "Gestioné contenido, comunicación de marca y seguimiento de indicadores de satisfacción del cliente.",
@@ -108,7 +108,7 @@ export const profile = {
       to: "2025-11",
       location: "Lima",
       highlights: [
-        "Integré Shopify, CRM y Google Sheets mediante APIs REST, reduciendo las tareas administrativas manuales en 30 %.",
+        "Sincronicé órdenes, clientes e inventario entre Shopify, el CRM (Kommo) y Google Sheets con APIs REST y webhooks, para que ningún dato se digitara dos veces.",
         "Diseñé dashboards de Business Intelligence para el control de ventas e inventario.",
         "Estandaricé flujos logísticos conectados al CRM, mejorando la trazabilidad de pedidos.",
       ],

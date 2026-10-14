@@ -3,7 +3,6 @@ import { IconArrowUpRight } from "@tabler/icons-react";
 import { MiniFlow } from "@/components/brand/mini-flow";
 import { CaseGrid } from "@/components/sections/case-grid";
 import { Section, SectionHeader } from "@/components/ui/section";
-import { TagList } from "@/components/ui/tag";
 import { DraftNotice } from "@/components/ui/draft-notice";
 import { cases, gallery, lab } from "@/content/casos";
 import { readingTime } from "@/lib/reading-time";
@@ -100,31 +99,49 @@ export default function ProyectosPage() {
         <SectionHeader
           id="laboratorio"
           label="Laboratorio"
-          title="Proyectos de práctica"
+          title="Laboratorio y repositorios adicionales"
           lead="Lo que construyo para aprender una herramienta o probar una idea. Sin clientes ni métricas."
         />
-        <ul className="grid gap-5 sm:grid-cols-2">
-          {lab.map((p) => (
-            <li key={p.name} className="flex flex-col gap-3 border-t border-border pt-5">
-              <div className="flex items-baseline justify-between gap-3">
-                <h3 className="text-h3">{p.name}</h3>
-                <span className="font-mono text-small text-ink-500">{p.year}</span>
-              </div>
-              <p>{p.description}</p>
-              <TagList label="Stack" items={p.stack} />
-              <a
-                href={p.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-cta={`lab_${p.name.toLowerCase().replace(/\s+/g, "_")}`}
-                className="inline-flex min-h-control-md w-fit items-center gap-1 text-small font-semibold text-accent-600 underline-offset-4 hover:underline"
-              >
-                Código de {p.name} en GitHub
-                <IconArrowUpRight size={16} stroke={1.5} aria-hidden />
-              </a>
-            </li>
-          ))}
-        </ul>
+        <table className="w-full border-collapse text-left">
+          <caption className="sr-only">Proyectos de práctica con su stack, año y código</caption>
+          <thead>
+            <tr className="border-b border-border-strong text-label-mono text-ink-500">
+              <th scope="col" className="py-3 pr-4 font-medium">
+                Proyecto
+              </th>
+              <th scope="col" className="hidden py-3 pr-4 font-medium md:table-cell">
+                Stack
+              </th>
+              <th scope="col" className="py-3 text-right font-medium">
+                Año
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {lab.map((p) => (
+              <tr key={p.name} className="border-b border-border align-top">
+                <th scope="row" className="py-4 pr-4 font-normal">
+                  <a
+                    href={p.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-cta={`lab_${p.name.toLowerCase().replace(/[^a-z0-9]+/g, "_")}`}
+                    className="inline-flex min-h-control-md items-center gap-1 font-semibold text-ink-900 underline-offset-4 hover:text-accent-600 hover:underline"
+                  >
+                    {p.name}
+                    <IconArrowUpRight size={16} stroke={1.5} aria-hidden />
+                    <span className="sr-only">(código en GitHub)</span>
+                  </a>
+                  <p className="max-w-prose text-small text-ink-700">{p.description}</p>
+                </th>
+                <td className="hidden py-4 pr-4 font-mono text-small text-ink-500 md:table-cell">
+                  {p.stack.join(" · ")}
+                </td>
+                <td className="py-4 text-right font-mono text-small text-ink-500">{p.year}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </Section>
     </>
   );

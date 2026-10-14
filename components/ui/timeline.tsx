@@ -30,6 +30,8 @@ export function Timeline({
               />
               <h3 className="text-h3">
                 {e.title}
+                {/* Separador para lectores de pantalla y buscadores: sin él se lee "AlumniUniversidad". */}
+                <span className="sr-only"> · </span>
                 <span className="block font-normal text-ink-500">{e.org}</span>
               </h3>
               <ul className="flex flex-col gap-1 text-ink-700">

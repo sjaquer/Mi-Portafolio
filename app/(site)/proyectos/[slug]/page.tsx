@@ -93,7 +93,17 @@ export default async function CasePage({ params }: PageProps<"/proyectos/[slug]"
               Caso · {caseTypeLabel[c.type]} · {c.year}
             </p>
             <h1 className="max-w-prose text-h1">{c.title}</h1>
-            <p className="mt-4 max-w-prose text-lead">{c.subtitle}</p>
+            {/* Resumen en 3 piezas (06-CONTENIDO.md §4.2): antes → qué construí → resultado (a la derecha). */}
+            <dl className="mt-5 flex max-w-prose flex-col gap-4">
+              <div className="flex flex-col gap-1">
+                <dt className="text-label-mono text-ink-500">Antes</dt>
+                <dd className="text-ink-700">{c.problem}</dd>
+              </div>
+              <div className="flex flex-col gap-1">
+                <dt className="text-label-mono text-ink-500">Qué construí</dt>
+                <dd className="text-lead">{c.subtitle}</dd>
+              </div>
+            </dl>
           </div>
           <div className="border-l-2 border-border pl-5 lg:col-span-4">
             <p className="mb-2 text-label-mono text-ink-500">Resultado</p>

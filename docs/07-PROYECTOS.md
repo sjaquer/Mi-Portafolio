@@ -17,9 +17,9 @@
 | Nivel A · Caso 7 (Dearel)             | 🟡 Borrador en `content/casos/integracion-shopify-crm-dearel.mdx` (visible en `pnpm dev`); se publica al validar la línea base del −30 %                                                        |
 | Nivel A · Caso 8 (Este portafolio)    | ✅ Publicado (`/proyectos/este-portafolio`)                                                                                                                                                         |
 | Nivel B · Galería actual             | ✅ Publicados: Landings de graduación, WCCA Posgrado, Página de Empleabilidad, Portal de Bolsa Laboral, LogINV, Sistema Obra                                                                        |
-| Nivel B · Ampliación GitHub          | ✅ Publicados (13 oct): `LogiFlow`, `DataWeave BI`, `Optimizador de vuelos (ORDEV)`, `Coralia Delights y Digital Bakery`; cada tarjeta con su flujo mínimo (`flow`). ⬜ `Alerta Multienda` y `Cabine Grid`: sin repositorio público verificable, no se publican hasta confirmarlos |
+| Nivel B · Ampliación GitHub          | ✅ Publicados (13 oct): `LogiFlow`, `DataWeave BI`, `Optimizador de vuelos (ORDEV)`, `Coralia Delights y Digital Bakery`, `PrestaFacilito`; cada tarjeta con su flujo mínimo (`flow`). ⬜ `Alerta Multienda` y `Cabine Grid`: sin repositorio público verificable, no se publican hasta confirmarlos |
 | Nivel C · Notas (`/notas`)          | ✅ Notas 1–5 publicadas (2–5 el 13 oct: Excel + Power Automate, empleo pertinente, robot SUNAT, PostgreSQL vs. Firestore) |
-| Nivel D · Laboratorio GitHub          | ✅ Publicado (13 oct): Big Jack Bot, TaskMe, Ecos Literarios, HoneyNotes, juego de la Gamedev.js Jam 2026, TaskZenith, Secret Love. ORDEV pasó a la galería (es el optimizador de vuelos); `Mi-Portafolio` v1 es este mismo repo |
+| Nivel D · Laboratorio GitHub          | ✅ Publicado (13 oct) como tabla "Laboratorio y repositorios adicionales": TaskMe, Ecos Literarios, HoneyNotes, juego de la Gamedev.js Jam 2026, TaskZenith, Secret Love. ORDEV pasó a la galería (es el optimizador de vuelos); `Mi-Portafolio` v1 es este mismo repo |
 | Imágenes de portada                   | ✅ Planos SVG del flujo de cada caso (`cover` en `content/casos/index.ts`, `03-DESIGN.md` §6.8)                                                                                                |
 | Datos de §4                           | ⬜ Pendientes en casos institucionales (marcados con `TODO(Sebastián)` en los MDX)                                                                                                                 |
 
@@ -34,6 +34,8 @@ Antes de publicar se contrastó §7 con los README y el código de `github.com/s
 - **LogiFlow** integra Shopify y Kommo por webhook (cola de llamadas, pedidos, inventario). Igual que DataWeave, coincide en fechas y stack con Dearel: confirmar si fue la herramienta de ese trabajo.
 - **Coralia Delights** (repo `Carolia-Delights`) y **Digital Bakery** (`eCommerce-Panaderia`).
 - **Juego de la jam:** el repo es `gamejamdevjs-2026` (Phaser + TypeScript); `jack_game_1` es solo un `index.html`.
+- **Big Jack Bot** estuvo en uso (confirmado por Sebastián): pasa del Laboratorio al caso de Big Jack como tercera pieza (canal WhatsApp → mismo webhook).
+- **"Sistema de préstamos y alquileres"** = `prestafacilito`: préstamos y cobranzas (sin módulo de alquileres en el código).
 - **Robot SUNAT:** es semiautomático (captcha y un modal quedan a una persona); la nota lo dice así.
 
 ## 1. Lectura general y narrativa del portafolio

@@ -316,7 +316,7 @@ const allCases: CaseStudy[] = [
     slug: "pedidos-big-jack",
     title: "Pedidos 35 % más rápidos en una hamburguesería",
     subtitle:
-      "Terminal de pedidos y cocina, menú digital conectado por webhook e inventario ligado a las comandas.",
+      "Menú digital y bot de WhatsApp con IA que envían cada pedido por webhook a una terminal de caja y cocina, con el inventario ligado a las comandas.",
     problem:
       "Salón, cocina y canal online trabajaban desconectados: cada pedido se transcribía a mano y el inventario se desfasaba.",
     result: {
@@ -329,13 +329,13 @@ const allCases: CaseStudy[] = [
     role: "Operaciones y Marketing · único programador del sistema",
     duration: "nov 2025 – sep 2026",
     year: 2025,
-    stack: ["Next.js", "React", "Firebase", "Webhooks"],
+    stack: ["Next.js", "Firebase", "Webhooks", "Ollama / Gemini"],
     status: "entregado", // TODO(Sebastián): ¿sigue en uso? Si es así, "produccion".
     updatedAt: "2026-10-11",
     cover: {
       label: "Flujo de un pedido",
       nodes: [
-        { tag: "Canal", title: "Menú digital" },
+        { tag: "Canales", title: "Menú y bot" },
         { tag: "Integración", title: "Webhook" },
         { tag: "Operación", title: "Cocina" },
         { tag: "Control", title: "Inventario" },
@@ -357,7 +357,7 @@ export interface GalleryItem extends Publication {
   name: string;
   angle: string;
   stack: string[];
-  /** Ancla visual de la tarjeta (`MiniFlow`): 3 pasos de ≤ 10 caracteres; el central es lo que construí. */
+  /** Ancla visual de la tarjeta (`MiniFlow`): 3 pasos de ≤ 9 caracteres; el central es lo que construí. */
   flow: readonly [string, string, string];
   href?: string;
   hrefLabel?: string;
@@ -421,7 +421,7 @@ const allGallery: GalleryItem[] = [
     angle:
       "PWA de inventario para varios almacenes: conteo rápido con escáner de códigos de barras, alertas de vencimiento e interfaz en 4 idiomas.",
     stack: ["Next.js", "Firebase", "PWA"],
-    flow: ["Escáner", "LogINV", "Reposición"],
+    flow: ["Escáner", "LogINV", "Reponer"],
     href: "https://github.com/sjaquer/LogINV",
     hrefLabel: "Código de LogINV en GitHub",
     // TODO(Sebastián): ¿tuvo cliente real? (07-PROYECTOS.md, Nivel B)
@@ -431,16 +431,25 @@ const allGallery: GalleryItem[] = [
     angle:
       "Inventario de materiales, donaciones y turnos para una obra comunitaria, con movimientos en tiempo real y exportación a Excel.",
     stack: ["React", "Firestore"],
-    flow: ["Donación", "Inventario", "Excel"],
+    flow: ["Donación", "Stock", "Excel"],
   },
   {
     name: "Optimizador de vuelos (ORDEV)",
     angle:
       "Planificador de vuelos de helicóptero para pasajeros y carga: el solver CP-SAT respeta peso, capacidad, reabastecimiento y prioridad, y devuelve el itinerario con su manifiesto por tramo.",
     stack: ["Next.js", "TypeScript", "OR-Tools"],
-    flow: ["Escenario", "CP-SAT", "Itinerario"],
+    flow: ["Escenario", "CP-SAT", "Ruta"],
     href: "https://github.com/sjaquer/Optimizador-Vuelos-CP-SAT",
     hrefLabel: "Código del optimizador en GitHub",
+  },
+  {
+    name: "PrestaFacilito",
+    angle:
+      "Gestión de préstamos y cobranzas: cronograma con mora calculada sola, lectura por OCR de comprobantes de pago para no digitar montos y un registro de auditoría de cada acción.",
+    stack: ["React", "Express", "Supabase/PostgreSQL", "Tesseract.js"],
+    flow: ["Voucher", "Cuotas", "Cobranza"],
+    href: "https://github.com/sjaquer/prestafacilito",
+    hrefLabel: "Código de PrestaFacilito en GitHub",
   },
   {
     name: "Coralia Delights y Digital Bakery",
@@ -466,14 +475,6 @@ export interface LabProject {
 
 // Lo personal y de práctica al fondo (07-PROYECTOS.md §7.4).
 export const lab: LabProject[] = [
-  {
-    name: "Big Jack Bot",
-    description:
-      "Prototipo que convierte mensajes de WhatsApp en pedidos estructurados: un modelo local detecta la intención y Gemini extrae los productos.",
-    stack: ["Electron", "React", "Ollama", "Gemini API"],
-    year: 2025,
-    href: "https://github.com/sjaquer/bigjack-bot",
-  },
   {
     name: "TaskMe",
     description:

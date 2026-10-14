@@ -261,8 +261,8 @@ export default function Home() {
             </h2>
             <p className="mt-4 max-w-prose text-lead">
               Disponible para roles junior desde enero 2027 como desarrollador web, analista de
-              automatización o desarrollador de soluciones. Si tu equipo necesita conectar sistemas
-              y ahorrar tiempo operativo, conversemos.
+              automatización o desarrollador de soluciones. Si tu equipo necesita a alguien que
+              construya la herramienta, conecte los sistemas y mida el impacto, conversemos.
             </p>
           </div>
           <div className="flex flex-wrap gap-3 lg:col-span-5 lg:justify-end">

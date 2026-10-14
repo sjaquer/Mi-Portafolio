@@ -100,7 +100,7 @@ Los minutos de lectura se calculan solos a partir del MDX. La página, la imagen
 | `slug` | URL corta, en español, sin fecha | `difusion-correo-wiener` |
 | `title` | **Titular = resultado**, no el nombre del proyecto; ≤ 70 caracteres | "Campañas de 8 000 correos de horas a tan solo minutos, con baja automática" |
 | `subtitle` | **Bajada**: qué es y cómo funciona, en una frase de ≤ 200 caracteres | "Sistema interno de difusión con segmentación…" |
-| `problem` | Una línea: qué dolía | "Las campañas se enviaban a mano…" |
+| `problem` | Una línea: qué dolía. Se muestra como **"Antes"** en la cabecera del caso: junto con `subtitle` ("Qué construí") y `result` forma el resumen de 3 piezas que se lee sin bajar | "Las campañas se enviaban a mano…" |
 | `result` | `value` + `label` + `context` (base, periodo, método). `measured: true` si es una medición aunque no sea % | `5–10 min` con `before: "1–2 h"` · "por campaña de 8 000 destinatarios" (se muestra como cota antes → después) |
 | `type` | `web` · `automatizacion` · `datos` | — |
 | `context`, `role`, `duration`, `year`, `stack` (≤ 4), `status` | Ficha del caso | — |

@@ -6,7 +6,7 @@ Big Jack Burgers es una hamburguesería en Lima con salón, recojo y delivery. E
 
 ## Problema
 
-- Los pedidos de cada canal llegaban por vías distintas y se transcribían a mano para cocina.
+- Los pedidos de cada canal llegaban por vías distintas —web, WhatsApp, salón— y se transcribían a mano para cocina.
 - El inventario no se actualizaba con cada venta: el desfase se descubría al cerrar el día.
 - Los precios del menú online y los del sistema interno podían no coincidir.
 
@@ -20,6 +20,12 @@ Ataqué primero el camino del pedido: que entre una sola vez y llegue solo a don
   montos desactualizados.
 </Callout>
 
+<Callout title="Decisión: un solo formato de pedido para todos los canales">
+  El bot de WhatsApp no escribe directo en cocina: produce el mismo JSON que el menú (SKU,
+  cantidades y notas) y lo envía al mismo webhook. Así el precio, el stock y las reglas viven en un
+  solo lugar, sin importar por dónde entró el pedido.
+</Callout>
+
 <Callout title="Decisión: cada pedido es idempotente" variant="info">
   Cada envío lleva un identificador de evento único. Si la red falla y el cliente reintenta, el
   sistema reconoce el pedido repetido y no lo duplica en cocina.
@@ -30,7 +36,11 @@ Ataqué primero el camino del pedido: que entre una sola vez y llegue solo a don
 <FlowDiagram
   label="Flujo de un pedido"
   steps={[
-    { tag: "Canal", title: "Menú digital", items: ["Catálogo con variantes", "Delivery o recojo"] },
+    {
+      tag: "Canales",
+      title: "Menú digital y bot de WhatsApp",
+      items: ["Catálogo con variantes", "Mensajes → pedido con IA"],
+    },
     {
       tag: "Integración",
       title: "Webhook de pedidos",
@@ -46,7 +56,7 @@ Ataqué primero el camino del pedido: que entre una sola vez y llegue solo a don
   ]}
 />
 
-El menú digital (Next.js) envía cada pedido a un webhook del sistema interno. La terminal muestra la cola de comandas a cocina y descuenta el inventario según la receta de cada producto. El libro de reclamaciones del sitio se envía por correo con los datos saneados.
+El menú digital (Next.js) envía cada pedido a un webhook del sistema interno. Por WhatsApp, un bot de escritorio lee los mensajes: un modelo local (Ollama) detecta si hay intención de compra y Gemini extrae productos y cantidades en un JSON que va al mismo webhook. Así los dos canales entran a cocina con el mismo formato. La terminal muestra la cola de comandas a cocina y descuenta el inventario según la receta de cada producto. El libro de reclamaciones del sitio se envía por correo con los datos saneados.
 
 ## Resultado
 
