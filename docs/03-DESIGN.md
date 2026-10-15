@@ -832,7 +832,7 @@ Dos correos, generados por `lib/email/templates.ts` (HTML + texto plano):
 | Correo | Para | Contenido |
 |---|---|---|
 | **Notificación** | Sebastián (`reply_to` = quien escribe) | Etiqueta mono "Nuevo mensaje · motivo", titular "<Nombre> te escribió", tabla nombre/email/motivo, mensaje en bloque `gris-50`, botón primario "Responder a <nombre>". |
-| **Confirmación** | Quien escribe | "Gracias, <nombre>", plazo de respuesta (1 a 2 días hábiles), botón primario "Ver proyectos" (UTM `email`/`confirmacion`) + secundario "Descargar CV", firma §13.4. **No repite el mensaje recibido** (así el formulario no sirve para mandar texto arbitrario a terceros). |
+| **Confirmación** | Quien escribe | "Gracias, <nombre>", plazo de respuesta (1 a 2 días hábiles), copia exacta del mensaje enviado y motivo seleccionado, aviso sobre carpeta de correo no deseado (spam), botones a CV/proyectos según motivo, firma §13.4. |
 
 Reglas de la adaptación a correo:
 - Tablas y estilos en línea; tarjeta blanca de 600 px con borde `gris-100` y radio 16 sobre fondo `papel`; solo modo claro (`color-scheme: light`).

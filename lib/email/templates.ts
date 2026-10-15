@@ -125,7 +125,7 @@ export function notificationEmail(m: ContactMessage, receivedAt = new Date()): E
     dateStyle: "long",
     timeStyle: "short",
   });
-  const replyHref = `mailto:${encodeURIComponent(m.email)}?subject=${encodeURIComponent(`Re: tu mensaje en ${new URL(profile.siteUrl).host}`)}`;
+  const replyHref = `mailto:${encodeURIComponent(m.email)}?subject=${encodeURIComponent(`Re: tu mensaje (${reason}) en ${new URL(profile.siteUrl).host}`)}`;
   const row = (term: string, value: string) =>
     `<tr><td style="padding:10px 0;border-bottom:1px solid ${C.gris100};font-family:${MONO};font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:${C.gris500};width:96px;vertical-align:top;">${term}</td><td style="padding:10px 0;border-bottom:1px solid ${C.gris100};font-family:${SANS};font-size:15px;color:${C.tinta};">${value}</td></tr>`;
 
@@ -153,29 +153,61 @@ export function notificationEmail(m: ContactMessage, receivedAt = new Date()): E
 }
 
 /**
- * Confirmación automática para quien escribe. No repite el mensaje recibido:
- * así el formulario no sirve para enviar contenido arbitrario a terceros.
+ * Confirmación automática para quien escribe.
+ * Incluye el resumen exacto del mensaje enviado (motivo y texto) y aviso de carpeta de correo no deseado.
  */
-export function confirmationEmail(m: Pick<ContactMessage, "name" | "reason">): EmailContent {
+export function confirmationEmail(m: ContactMessage): EmailContent {
   const name = firstName(m.name);
+  const reason = reasonLabel[m.reason];
+  const isJob = m.reason === "empleo";
+  const reasonPhrase =
+    m.reason === "empleo"
+      ? "una oportunidad de empleo"
+      : m.reason === "proyecto"
+        ? "un proyecto"
+        : "tu consulta";
+
+  const row = (term: string, value: string) =>
+    `<tr><td style="padding:10px 0;border-bottom:1px solid ${C.gris100};font-family:${MONO};font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:${C.gris500};width:96px;vertical-align:top;">${term}</td><td style="padding:10px 0;border-bottom:1px solid ${C.gris100};font-family:${SANS};font-size:15px;font-weight:600;color:${C.tinta};">${value}</td></tr>`;
+
   const body = `
     ${label("Mensaje recibido")}
     <h1 style="margin:0 0 16px;font-family:${SANS};font-size:24px;line-height:1.25;font-weight:600;letter-spacing:-0.02em;color:${C.tinta};">Gracias, ${esc(name)}</h1>
-    <p style="margin:0 0 16px;">Recibí tu mensaje sobre <strong style="color:${C.tinta};">${reasonLabel[m.reason].toLowerCase()}</strong> y te respondo en un plazo de <strong style="color:${C.tinta};">1 a 2 días hábiles</strong>.</p>
-    <p style="margin:0 0 24px;">Mientras tanto, puedes ver cómo trabajo: cada caso cuenta el problema, las decisiones y lo que cambió, con su base y su periodo.</p>
+    <p style="margin:0 0 16px;">Recibí tu mensaje sobre <strong style="color:${C.tinta};">${esc(reasonPhrase)}</strong> y te responderé en un plazo de <strong style="color:${C.tinta};">1 a 2 días hábiles</strong>.</p>
+    
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:20px;margin-bottom:12px;">
+      ${row("Motivo", reason)}
+    </table>
+    ${label("Copia de tu mensaje")}
+    <div style="background:${C.gris50};border-radius:10px;padding:16px 18px;font-size:15px;line-height:1.6;color:${C.tinta};white-space:pre-wrap;margin-bottom:20px;">${esc(m.message)}</div>
+
+    <div style="background:${C.gris50};border:1px solid ${C.gris100};border-radius:10px;padding:14px 16px;margin:0 0 24px;font-size:13px;line-height:1.5;color:${C.gris700};">
+      <strong style="color:${C.tinta};">Aviso:</strong> Si en algún momento no recibes mi respuesta en tu bandeja principal, por favor revisa tu carpeta de <strong>correo no deseado (spam)</strong>.
+    </div>
+
+    <p style="margin:0 0 16px;font-size:15px;line-height:1.6;color:${C.gris700};">${
+      isJob
+        ? "Mientras tanto, puedes revisar mi CV actualizado o ver mis proyectos y experiencia:"
+        : "Mientras tanto, puedes ver cómo trabajo: cada caso cuenta el problema, las decisiones y lo que cambió, con su base y su periodo."
+    }</p>
     <table role="presentation" cellpadding="0" cellspacing="0"><tr>
-      <td style="padding:0 12px 12px 0;">${button(`${profile.siteUrl}/proyectos?utm_source=email&utm_medium=confirmacion&utm_campaign=contacto`, "Ver proyectos")}</td>
-      <td style="padding:0 0 12px;">${button(`${profile.siteUrl}${cvPdfPath}`, "Descargar CV", "secondary")}</td>
+      ${
+        isJob
+          ? `<td style="padding:0 12px 12px 0;">${button(`${profile.siteUrl}${cvPdfPath}`, "Descargar CV", "primary")}</td>
+             <td style="padding:0 0 12px;">${button(`${profile.siteUrl}/proyectos?utm_source=email&utm_medium=confirmacion&utm_campaign=contacto`, "Ver proyectos", "secondary")}</td>`
+          : `<td style="padding:0 12px 12px 0;">${button(`${profile.siteUrl}/proyectos?utm_source=email&utm_medium=confirmacion&utm_campaign=contacto`, "Ver proyectos", "primary")}</td>
+             <td style="padding:0 0 12px;">${button(`${profile.siteUrl}${cvPdfPath}`, "Descargar CV", "secondary")}</td>`
+      }
     </tr></table>
     ${signature}`;
 
   return {
-    subject: `Recibí tu mensaje — ${profile.name}`,
+    subject: `Recibí tu mensaje (${reason}) — ${profile.name}`,
     html: layout({
-      preheader: "Te respondo en 1 a 2 días hábiles.",
+      preheader: `Recibí tu mensaje sobre ${reasonPhrase}. Te respondo en 1 a 2 días hábiles.`,
       body,
-      footer: `Recibes este correo porque escribiste en el formulario de contacto de <a href="${profile.siteUrl}" style="color:${C.gris500};">${new URL(profile.siteUrl).host}</a>. No es una lista de envíos: no recibirás más correos automáticos. <a href="${profile.siteUrl}/privacidad" style="color:${C.gris500};">Aviso de privacidad</a>.`,
+      footer: `Recibes este correo porque escribiste en el formulario de contacto de <a href="${profile.siteUrl}" style="color:${C.gris500};">${new URL(profile.siteUrl).host}</a> con el motivo ${esc(reason)}. No es una lista de envíos: no recibirás más correos automáticos. <a href="${profile.siteUrl}/privacidad" style="color:${C.gris500};">Aviso de privacidad</a>.`,
     }),
-    text: `Gracias, ${name}.\n\nRecibí tu mensaje sobre ${reasonLabel[m.reason].toLowerCase()} y te respondo en 1 a 2 días hábiles.\n\nMientras tanto:\n→ Proyectos: ${profile.siteUrl}/proyectos\n→ CV: ${profile.siteUrl}${cvPdfPath}\n\n${profile.name}\n${profile.role}\n${profile.siteUrl}`,
+    text: `Gracias, ${name}.\n\nRecibí tu mensaje sobre ${reasonPhrase} y te responderé en un plazo de 1 a 2 días hábiles.\n\nCopia de tu mensaje:\nMotivo: ${reason}\nMensaje:\n${m.message}\n\nAviso: Si en algún momento no recibes mi respuesta en tu bandeja principal, por favor revisa tu carpeta de correo no deseado (spam).\n\nMientras tanto:\n→ CV: ${profile.siteUrl}${cvPdfPath}\n→ Proyectos: ${profile.siteUrl}/proyectos\n\n${profile.name}\n${profile.role}\n${profile.siteUrl}`,
   };
 }

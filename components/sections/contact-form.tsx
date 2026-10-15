@@ -1,6 +1,6 @@
 "use client";
 
-import { IconLoader2 } from "@tabler/icons-react";
+import { IconCheck, IconLoader2 } from "@tabler/icons-react";
 import Link from "next/link";
 import { useActionState, useEffect, useId, useRef } from "react";
 import { sendContact, type ContactState } from "@/app/(site)/contacto/actions";
@@ -36,9 +36,26 @@ export function ContactForm() {
 
   if (state.status === "success") {
     return (
-      <div role="status" className="rounded-lg border border-border bg-surface p-5">
-        <p className="text-h3 font-semibold text-ink-900">Mensaje enviado.</p>
-        <p className="mt-2">Gracias. Te respondo en un plazo de 1 a 2 días hábiles.</p>
+      <div role="status" className="rounded-lg border border-border bg-surface p-6">
+        <div className="gap-3.5 flex items-start">
+          <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-accent-50 text-accent-600">
+            <IconCheck size={18} stroke={2.5} aria-hidden />
+          </div>
+          <div className="flex-1">
+            <p className="text-h3 font-semibold text-ink-900">Mensaje enviado</p>
+            <p className="mt-1 text-ink-700">
+              Gracias por escribirme. Te responderé en un plazo de 1 a 2 días hábiles.
+            </p>
+            <div className="mt-4 rounded-md border border-border bg-surface-muted p-4 text-small text-ink-700">
+              <p className="font-semibold text-ink-900">Aviso sobre tu correo de confirmación:</p>
+              <p className="mt-1 leading-relaxed">
+                Te envié un correo con la confirmación y el detalle exacto de tu mensaje. En caso de
+                que no te haya llegado a tu bandeja de entrada en unos minutos, por favor{" "}
+                <strong>revisa tu carpeta de correo no deseado (spam)</strong> para encontrarlo.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -134,8 +151,9 @@ export function ContactForm() {
       </div>
 
       <p className="text-small text-ink-500">
-        Uso tus datos solo para responder este mensaje y te llegará una confirmación a tu correo.
-        Más detalles en el{" "}
+        Uso tus datos solo para responder este mensaje. Te llegará un correo de confirmación de
+        envío (si en caso no lo encuentras en tu bandeja principal, revisa tu carpeta de correo no
+        deseado). Más detalles en el{" "}
         <Link href="/privacidad" className="underline underline-offset-4 hover:text-ink-900">
           aviso de privacidad
         </Link>
