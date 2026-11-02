@@ -298,9 +298,9 @@ const allCases: CaseStudy[] = [
       context: "Estimado · Dearel, ago – nov 2025",
     },
     type: "automatizacion",
-    context: "Dearel · tienda retail en Lima",
-    role: "Desarrollador de Soluciones de Negocio",
-    duration: "ago – nov 2025",
+    context: "Proyecto Freelance · retail e e-commerce en Lima",
+    role: "Desarrollador de Soluciones y Analista de Producto",
+    duration: "2025",
     year: 2025,
     stack: ["Shopify", "APIs REST", "Google Sheets", "Power BI"],
     status: "entregado",
@@ -426,14 +426,13 @@ const allGallery: GalleryItem[] = [
     hrefLabel: "Código de DataWeave BI en GitHub",
   },
   {
-    name: "LogINV",
+    name: "LogINV Agroindustrial",
     angle:
-      "PWA de inventario para varios almacenes: conteo rápido con escáner de códigos de barras, alertas de vencimiento e interfaz en 4 idiomas.",
-    stack: ["Next.js", "Firebase", "PWA"],
-    flow: ["Escáner", "LogINV", "Reponer"],
+      "Sistema de inventario y logística para plantas agroindustriales: control de stock en tiempo real, multialmacén, motor de punto de reorden (ROP), conteos diarios y alertas de caducidad.",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "PWA"],
+    flow: ["Stock", "Motor ROP", "Despacho"],
     href: "https://github.com/sjaquer/LogINV",
     hrefLabel: "Código de LogINV en GitHub",
-    // TODO(Sebastián): ¿tuvo cliente real? (07-PROYECTOS.md, Nivel B)
   },
   {
     name: "Sistema Obra",

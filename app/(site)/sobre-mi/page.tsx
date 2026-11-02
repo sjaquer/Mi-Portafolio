@@ -64,11 +64,12 @@ export default function SobreMiPage() {
                 convertir un proceso manual en una herramienta que funcione sola.
               </p>
               <p>
-                En Dearel conecté Shopify, el CRM y Google Sheets para reducir la digitación manual
-                de pedidos. En Big Jack Burgers construí, como único programador, el sistema de
-                pedidos y cocina de la hamburguesería. Hoy, en la Dirección de Desarrollo
-                Profesional y Alumni de la universidad, desarrollo la plataforma de bolsa de trabajo
-                y los flujos de comunicación con estudiantes.
+                Como freelance, desarrollé integraciones para retail conectando Shopify, el CRM y
+                Google Sheets para eliminar la digitación manual de pedidos, además de plataformas
+                de gestión de inventarios (LogINV) y cobranzas (PrestaFacilito). En Big Jack Burgers
+                construí, como único programador, el sistema de pedidos y cocina en tiempo real.
+                Hoy, en la Dirección de Desarrollo Profesional y Alumni de la universidad, lideré la
+                plataforma de empleabilidad y los flujos de comunicación con estudiantes.
               </p>
               <p>
                 Mi formación en negocios es la razón por la que empiezo preguntando qué tiene que

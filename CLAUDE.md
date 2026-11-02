@@ -1,6 +1,6 @@
 # CLAUDE.md — sjaquer-web
 
-Portafolio de Sebastián Jaque (Desarrollo web con foco en el usuario · Automatización de procesos; dirección: Product Engineer). Next.js App Router + TypeScript + Tailwind v4 + MDX. Despliegue en Netlify.
+Portafolio de Sebastián Jaque (Analista de Producto · Desarrollo web centrado en el usuario · Automatización de procesos). Next.js App Router + TypeScript + Tailwind v4 + MDX. Despliegue en Netlify / Vercel.
 
 ## Lee antes de trabajar
 - `docs/02-PRD.md` — qué se construye y criterios de aceptación.
@@ -12,7 +12,7 @@ Portafolio de Sebastián Jaque (Desarrollo web con foco en el usuario · Automat
 
 ## Reglas
 1. **Fuente única:** todo dato del perfil (cargos, fechas, certificaciones, métricas) vive en `content/profile.ts` o en los MDX de `content/`. Nunca escribirlo a mano en componentes.
-2. **Honestidad:** MarTech, CRO, GTM o "medición" no se presentan como experiencia sin un proyecto real que los respalde. Cargos tal como en el CV; certificaciones con nombre y emisor reales; ninguna métrica sin contexto (qué, cuánto, base, periodo). No inventar cifras.
+2. **Honestidad y rol de Producto:** Posicionamiento orientado a **Analista de Producto / Product Engineer (Junior)**. Cargos tal como en el CV; certificaciones con nombre y emisor reales; ninguna métrica sin contexto (qué, cuánto, base, periodo). Cero jerga inflada de marketing.
 3. **Diseño:** solo tokens de `tokens.css` / `@theme`. Nada de colores, tamaños o espacios fuera de la escala. Un solo botón `primary` visible por pantalla. Sin degradados, neón, glassmorphism ni WebGL.
 4. **Rendimiento:** Server Components por defecto; `"use client"` solo para interacción. Respetar el presupuesto (LCP < 2 s, JS home < 100 KB, CLS < 0,05).
 5. **Accesibilidad:** WCAG 2.2 AA; un `h1` por página; foco visible; área táctil ≥ 44 px; `alt` en imágenes.

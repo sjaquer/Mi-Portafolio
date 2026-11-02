@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { profile } from "@/content/profile";
 
-export const homeTitle = `${profile.name} — Desarrollador web y automatización de procesos | Lima`;
+export const homeTitle = `${profile.name} — Analista de Producto, desarrollo web y automatización | Lima`;
 export const homeDescription =
-  "Desarrollador web junior en Lima: Next.js, automatización de procesos con Python e integración de APIs. Plataforma de empleabilidad en producción. Disponible desde enero 2027.";
+  "Analista de Producto y desarrollador orientado a producto en Lima: Next.js, automatización de procesos con Python e integración de APIs. Soluciones en producción y de negocio. Disponible desde enero 2027.";
 
 /** Metadata por defecto del layout raíz (04-TECH-SEO-MEDICION.md §2.1). */
 export const defaultMetadata: Metadata = {

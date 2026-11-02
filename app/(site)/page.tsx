@@ -20,12 +20,12 @@ import { readingTime } from "@/lib/reading-time";
 
 // Home (02-PRD.md §8.1). Textos de 06-CONTENIDO.md §3. "Últimas notas" llega en la Fase 4.
 
-// Prueba rápida (06-CONTENIDO.md §3): Big Jack, Dearel y Norbert Wiener, desde la fuente única.
+// Prueba rápida (06-CONTENIDO.md §3): Big Jack, Freelance y Norbert Wiener, desde la fuente única.
 const metricOf = (org: string) => profile.experience.find((e) => e.org.startsWith(org))!.metric!;
 const bigJack = metricOf("Big Jack");
 const proof = [
   { ...bigJack, context: `Big Jack Burgers · ${bigJack.context}` },
-  metricOf("Dearel"),
+  metricOf("Freelance"),
   metricOf("Universidad Privada Norbert Wiener"),
 ];
 
