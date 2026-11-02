@@ -77,6 +77,12 @@ export default function ProyectosPage() {
                 <MiniFlow steps={g.flow} />
                 <h3 className="text-h3">{g.name}</h3>
                 <p>{g.angle}</p>
+                {g.isPrivate && (
+                  <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-border px-2.5 py-1 text-small text-ink-500">
+                    <span aria-hidden className="size-1.5 rounded-full bg-ink-500" />
+                    Proyecto privado · disponible en entrevista
+                  </span>
+                )}
                 {g.href && (
                   <a
                     href={g.href}

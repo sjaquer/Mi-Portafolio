@@ -87,7 +87,7 @@
   - Módulo de feria laboral con postulación directa y métricas de empleabilidad en tiempo real.
   - Pruebas E2E completas con Playwright para garantizar cero caídas en picos de tráfico.
 - **Stack:** Next.js 16 (App Router), Supabase / PostgreSQL, Docker, Playwright, Tailwind CSS.
-- **Resultado:** En producción desde octubre de 2026 en `empleabilidad.uwiener.edu.pe`, unificando el ecosistema laboral de miles de estudiantes.
+- **Resultado:** En producción desde octubre de 2026 en `portaldelestudiante.uwiener.edu.pe/servicio/empleabilidad/`, unificando el ecosistema laboral de miles de estudiantes.
 
 ### 2.2 LogINV Agroindustrial (`loginv-agroindustrial`)
 - **Problema de negocio:** En plantas procesadoras de alimentos y operaciones agroindustriales, los inventarios de insumos críticos sufrían descuadres por conteos manuales en papel, mermas por vencimientos no alertados a tiempo y compras de pánico por falta de puntos de reorden calculados.

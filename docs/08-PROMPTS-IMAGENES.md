@@ -74,6 +74,22 @@ Para usar **dentro** del `.mdx`, después del diagrama, como refuerzo visual. Mi
 
 ---
 
+## 3.bis · Apps privadas: artículo con capturas reales (v4.2)
+
+Algunos proyectos son **apps de un solo usuario** y se les **ocultó el enlace y el repo** (bolsa/galería, `isPrivate: true`): PrestaFacilito, LogINV, LogiFlow, DataWeave BI, Coralia, Sistema Obra. En vez de enlace, se documentan como **artículo/caso con capturas reales estilizadas**, sin link ni repositorio.
+
+**Flujo de captura (acordado con Sebastián):**
+1. Sebastián **inicia sesión** en la app dentro del navegador de Claude (Claude nunca escribe credenciales).
+2. Claude navega las pantallas pertinentes y **toma capturas** (inicio, flujo principal, estados con datos).
+3. **Manejo de datos:** las capturas se marcan visualmente como **"datos de referencia, no reales"**. Si una pantalla muestra **datos identificables de terceros** (nombre completo + monto + teléfono/DNI de un prestatario real), Claude **ofusca o recomienda reemplazar por datos simulados** antes de publicar (privacidad de terceros y `CLAUDE.md` regla 7). No se publica un link ni el repo.
+4. Claude **estiliza** (recorte, marco de marca, etiqueta) y arma el artículo explicando qué resuelve la app, el flujo y las decisiones — como los casos (06-CONTENIDO §4), sin métricas inventadas.
+
+**Prioridad de captura:** PrestaFacilito (cronograma, OCR de voucher, cobranzas) → LogINV (stock, ROP, caducidad) → DataWeave/LogiFlow (tableros) → Coralia/Sistema Obra.
+
+**Dónde van las imágenes:** `public/img/proyectos/<slug>/<n>.webp`, referenciadas desde el `.mdx` del caso. Alt descriptivo y, en el pie, "Captura con datos de referencia, no reales".
+
+---
+
 ## 4. Control de calidad antes de publicar
 
 - [ ] 16:9, 1600 × 900, WebP < 200 KB, mirada al 100 % buscando neón/3D/stock (si aparece, se descarta).

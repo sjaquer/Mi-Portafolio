@@ -157,7 +157,10 @@ const allCases: CaseStudy[] = [
     featured: true,
     institutional: true,
     links: [
-      { label: "empleabilidad.uwiener.edu.pe", href: "https://empleabilidad.uwiener.edu.pe" },
+      {
+        label: "Servicio de Empleabilidad · UWiener",
+        href: "https://portaldelestudiante.uwiener.edu.pe/servicio/empleabilidad/",
+      },
     ],
     cover: {
       label: "Arquitectura",
@@ -227,6 +230,9 @@ const allCases: CaseStudy[] = [
     updatedAt: "2026-10-11",
     featured: true,
     institutional: true,
+    links: [
+      { label: "Portal de formularios · UWiener", href: "https://formularios-uwiener.vercel.app" },
+    ],
     cover: {
       label: "De la respuesta al indicador",
       nodes: [
@@ -425,6 +431,8 @@ export interface GalleryItem extends Publication {
   /** Demostración en línea (distinta del código). */
   liveHref?: string;
   liveLabel?: string;
+  /** Proyecto privado de un solo usuario (v4.2): se muestra sin enlace ni repo, con una etiqueta. */
+  isPrivate?: boolean;
 }
 
 const allGallery: GalleryItem[] = [
@@ -434,8 +442,10 @@ const allGallery: GalleryItem[] = [
       "Una base reutilizada para dos públicos: cuenta regresiva, preguntas frecuentes para bajar consultas repetidas, registro de asistencia y SEO técnico.",
     stack: ["HTML", "CSS", "JavaScript", "SEO"],
     flow: ["Egresado", "Landing", "Registro"],
-    href: "https://ceremoniaegresados.uwiener.edu.pe",
+    href: "https://ceremoniaegresadosuwiener.vercel.app",
     hrefLabel: "Ver la landing de pregrado",
+    liveHref: "https://ceremonia-egresados-posgrado-segund.vercel.app",
+    liveLabel: "Ver la landing de posgrado",
     institutional: true,
   },
   {
@@ -468,8 +478,7 @@ const allGallery: GalleryItem[] = [
       "Cola de llamadas, pedidos e inventario para un equipo de ventas por teléfono: los leads entran solos desde Shopify y el CRM por webhook, y el pedido confirmado vuelve al CRM.",
     stack: ["Next.js", "Firebase", "Kommo API", "Shopify"],
     flow: ["Shopify", "LogiFlow", "CRM"],
-    href: "https://github.com/sjaquer/logiflow",
-    hrefLabel: "Código de LogiFlow en GitHub",
+    isPrivate: true, // Privado: se documenta con capturas (datos de referencia), sin enlace ni repo.
   },
   {
     name: "DataWeave BI",
@@ -477,8 +486,7 @@ const allGallery: GalleryItem[] = [
       "Tablero de operación de una tienda online: pedidos por webhook, envíos, devoluciones, inventario y ventas por provincia, con nombres de productos y provincias normalizados por IA.",
     stack: ["Next.js", "Firebase", "Shopify API", "Genkit"],
     flow: ["Shopify", "DataWeave", "Tablero"],
-    href: "https://github.com/sjaquer/DataWeave-BI",
-    hrefLabel: "Código de DataWeave BI en GitHub",
+    isPrivate: true, // Privado: se documenta con capturas (datos de referencia), sin enlace ni repo.
   },
   {
     name: "LogINV Agroindustrial",
@@ -486,8 +494,7 @@ const allGallery: GalleryItem[] = [
       "Sistema de inventario y logística para plantas agroindustriales: control de stock en tiempo real, multialmacén, motor de punto de reorden (ROP), conteos diarios y alertas de caducidad.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "PWA"],
     flow: ["Stock", "Motor ROP", "Despacho"],
-    href: "https://github.com/sjaquer/LogINV",
-    hrefLabel: "Código de LogINV en GitHub",
+    isPrivate: true, // Privado: se documenta con capturas (datos de referencia), sin enlace ni repo.
   },
   {
     name: "Sistema Obra",
@@ -495,6 +502,7 @@ const allGallery: GalleryItem[] = [
       "Inventario de materiales, donaciones y turnos para una obra comunitaria, con movimientos en tiempo real y exportación a Excel.",
     stack: ["React", "Firestore"],
     flow: ["Donación", "Stock", "Excel"],
+    isPrivate: true, // Privado: se documenta con capturas, sin enlace ni repo.
   },
   {
     name: "Optimizador de vuelos (ORDEV)",
@@ -511,10 +519,7 @@ const allGallery: GalleryItem[] = [
       "Gestión de préstamos y cobranzas: cronograma con mora calculada sola, lectura por OCR de comprobantes de pago para no digitar montos y un registro de auditoría de cada acción.",
     stack: ["React", "Express", "Supabase/PostgreSQL", "Tesseract.js"],
     flow: ["Voucher", "Cuotas", "Cobranza"],
-    href: "https://github.com/sjaquer/prestafacilito",
-    hrefLabel: "Código de PrestaFacilito en GitHub",
-    liveHref: "https://prestafacilito.vercel.app",
-    liveLabel: "Ver PrestaFacilito en línea",
+    isPrivate: true, // Privado: cobranzas de un solo usuario; se documenta con capturas, sin enlace ni repo.
   },
   {
     name: "Validación de instrumentos por juicio de expertos",
@@ -533,8 +538,7 @@ const allGallery: GalleryItem[] = [
       "Dos tiendas online para repostería: catálogo, checkout con zona de reparto y horario, y un panel con inventario, combos y promociones. Digital Bakery fue la primera versión.",
     stack: ["Next.js", "Firebase", "Tailwind CSS"],
     flow: ["Catálogo", "Checkout", "Panel"],
-    href: "https://github.com/sjaquer/Carolia-Delights",
-    hrefLabel: "Código de Coralia Delights en GitHub",
+    isPrivate: true, // Privado: tienda de un solo usuario; se documenta con capturas, sin enlace ni repo.
   },
 ];
 

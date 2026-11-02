@@ -102,10 +102,9 @@ ${cases.map((c) => `- [${c.title}](${profile.siteUrl}/proyectos/${c.slug}): ${c.
 
 ## Proyectos en línea
 
-- [Plataforma de empleabilidad de la Universidad Norbert Wiener](https://empleabilidad.uwiener.edu.pe): bolsa laboral, creador de CV y feria virtual (en producción).
+- [Servicio de Empleabilidad de la Universidad Norbert Wiener](https://portaldelestudiante.uwiener.edu.pe/servicio/empleabilidad/): bolsa laboral, creador de CV y feria virtual (en producción).
 - [Validación de instrumentos por juicio de expertos](https://sjaquer.github.io/validacion_instrumento_sebastian_jaque/): demo en vivo; [código](https://github.com/sjaquer/validacion_instrumento_sebastian_jaque).
 - [Carta digital de Big Jack Burgers](https://bigjack.vercel.app).
-- [PrestaFacilito](https://prestafacilito.vercel.app): préstamos y cobranzas.
 
 ## Notas
 
