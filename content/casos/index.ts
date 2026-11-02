@@ -32,6 +32,55 @@ export const caseStatusLabel: Record<CaseStatus, string> = {
   prototipo: "Prototipo",
 };
 
+/**
+ * Color de wayfinding por tipo de caso (03-DESIGN §15.3, v4.2): cada caso lleva el color
+ * de su tipo en la portada animada y en su antetítulo. Clases literales (Tailwind no
+ * interpola): web → azul acento, automatización → ámbar, datos → verde azulado.
+ */
+export type CaseTone = "accent" | "amber" | "teal";
+
+export const caseTypeTone: Record<CaseType, CaseTone> = {
+  web: "accent",
+  automatizacion: "amber",
+  datos: "teal",
+};
+
+/** Clase de borde por tono (antetítulos y cajas de resultado). */
+export const toneBorder: Record<CaseTone, string> = {
+  accent: "border-accent-600",
+  amber: "border-chart-2",
+  teal: "border-chart-3",
+};
+
+/** Clase de texto por tono (antetítulos). */
+export const toneText: Record<CaseTone, string> = {
+  accent: "text-accent-600",
+  amber: "text-chart-2",
+  teal: "text-chart-3",
+};
+
+/** Clases SVG/CSS por tono: trazo, relleno y relleno suave (para barras e íconos). */
+export const toneSvg: Record<CaseTone, { stroke: string; fill: string; soft: string; text: string }> = {
+  accent: {
+    stroke: "stroke-accent-600",
+    fill: "fill-accent-600",
+    soft: "fill-accent-600 opacity-30",
+    text: "text-accent-600",
+  },
+  amber: {
+    stroke: "stroke-chart-2",
+    fill: "fill-chart-2",
+    soft: "fill-chart-2 opacity-30",
+    text: "text-chart-2",
+  },
+  teal: {
+    stroke: "stroke-chart-3",
+    fill: "fill-chart-3",
+    soft: "fill-chart-3 opacity-30",
+    text: "text-chart-3",
+  },
+};
+
 interface Publication {
   /** Proyecto de la universidad: necesita `institutionalPermission`. */
   institutional?: boolean;

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { MediaFrame } from "@/components/ui/media-frame";
-import { findImage } from "@/lib/images";
+import { HeroFigure } from "@/components/brand/hero-figure";
 import { CvButton } from "@/components/sections/cv-button";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeader } from "@/components/ui/section";
@@ -77,15 +76,8 @@ export default function SobreMiPage() {
               </p>
             </div>
           </div>
-          <div className="md:col-span-4">
-            <MediaFrame
-              src={findImage("retrato")}
-              alt={`Retrato de ${profile.name}`}
-              ratio="portrait"
-              sizes="(min-width: 768px) 33vw, 75vw"
-              priority
-              className="mx-auto w-3/4 md:w-full"
-            />
+          <div className="hidden md:col-span-4 md:block">
+            <HeroFigure className="mx-auto max-w-xs" />
           </div>
         </div>
       </Section>

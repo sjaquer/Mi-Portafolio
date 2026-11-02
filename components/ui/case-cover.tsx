@@ -1,5 +1,5 @@
 import { Dimension, FigConnector, FigNode, FigureFrame, step } from "@/components/brand/figure";
-import type { CaseStudy } from "@/content/casos";
+import { caseTypeTone, toneSvg, type CaseStudy, type CaseType } from "@/content/casos";
 import { isMeasured } from "@/content/profile";
 
 const W = 640;
@@ -9,10 +9,34 @@ const GAP = 28;
 const ROW = [104, 168];
 const COTA_Y = 300;
 
+/** Ícono simple por tipo de caso (v4.2), en el color del caso. Decorativo. */
+function TypeIcon({ type, className }: { type: CaseType; className: string }) {
+  const g = { fill: "none", strokeWidth: 2, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+  if (type === "web")
+    return (
+      <g className={className} {...g}>
+        <rect x={560} y={28} width={48} height={36} rx={6} />
+        <path d="M560 40h48M568 34h.5M574 34h.5M580 34h.5" />
+      </g>
+    );
+  if (type === "automatizacion")
+    return (
+      <g className={className} {...g}>
+        <path d="M588 26l-16 22h14l-2 16 16-22h-14z" />
+      </g>
+    );
+  // datos: tres barras ascendentes
+  return (
+    <g className={className} {...g}>
+      <path d="M566 62V50M582 62V40M598 62V30" strokeWidth={4} />
+    </g>
+  );
+}
+
 /**
- * Portada de un caso como plano de su flujo real (03-DESIGN.md §6.8 v4.0): 3–4 nodos en
- * escalera, el que construí destacado con el sello, y una cota con el resultado al pie.
- * Se traza al entrar en pantalla (§11.2). Reemplaza a las imágenes generadas.
+ * Portada de un caso como plano de su flujo real (03-DESIGN.md §6.8, v4.2): 3–4 nodos en
+ * escalera con el que construí destacado y sellado, un ícono y una mini barra de resultado,
+ * todo en el color del tipo de caso. Se traza al entrar en pantalla (§11.2).
  */
 export function CaseCover({
   c,
@@ -31,6 +55,8 @@ export function CaseCover({
   const y = (i: number) => ROW[i % 2];
   const xEnd = x(n - 1) + NW;
   const measured = isMeasured(c.result);
+  const sv = toneSvg[caseTypeTone[c.type]];
+  const bars = [26, 40, 32, 52];
 
   return (
     <FigureFrame
@@ -50,6 +76,7 @@ export function CaseCover({
       >
         {label}
       </text>
+      <TypeIcon type={c.type} className={sv.stroke} />
 
       {nodes.slice(0, -1).map((_, i) => {
         const x1 = x(i) + NW;
@@ -63,12 +90,22 @@ export function CaseCover({
             d={`M${x1} ${y1}H${xm}V${y2}H${x2 - 2}`}
             head={{ x: x2 - 2, y: y2 }}
             i={i + 1}
+            pulseClass={sv.stroke}
           />
         );
       })}
 
       {nodes.map((nd, i) => (
-        <FigNode key={nd.title} x={x(i)} y={y(i)} w={NW} h={NH} highlight={i === highlight} i={i}>
+        <FigNode
+          key={nd.title}
+          x={x(i)}
+          y={y(i)}
+          w={NW}
+          h={NH}
+          highlight={i === highlight}
+          accentStroke={sv.stroke}
+          i={i}
+        >
           <text
             x={x(i) + 12}
             y={y(i) + 24}
@@ -90,6 +127,22 @@ export function CaseCover({
           </text>
         </FigNode>
       ))}
+
+      {/* Mini gráfico de barras del resultado (v4.2), en el color del caso. */}
+      <g aria-hidden>
+        {bars.map((h, i) => (
+          <rect
+            key={i}
+            x={x0 + i * 26}
+            y={COTA_Y - 44 - h}
+            width={18}
+            height={h}
+            rx={3}
+            className={`fig-fade ${i === bars.length - 1 ? sv.fill : sv.soft}`}
+            style={step(n + 0.5 + i * 0.5)}
+          />
+        ))}
+      </g>
 
       <Dimension x1={x0} x2={xEnd} y={COTA_Y} i={n} />
       <g className="fig-fade font-mono" style={step(n + 1)}>

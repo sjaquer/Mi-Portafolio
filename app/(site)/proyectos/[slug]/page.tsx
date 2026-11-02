@@ -12,7 +12,7 @@ import { slugify } from "@/mdx-components";
 import { DraftNotice } from "@/components/ui/draft-notice";
 import { Container } from "@/components/ui/container";
 import { ReadingProgress } from "@/components/ui/reading-progress";
-import { caseTypeLabel, cases, getCase } from "@/content/casos";
+import { caseTypeLabel, caseTypeTone, cases, getCase, toneBorder, toneText } from "@/content/casos";
 import { profile } from "@/content/profile";
 import { jsonLdGraph, toIsoDateTime } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
@@ -89,8 +89,13 @@ export default async function CasePage({ params }: PageProps<"/proyectos/[slug]"
         {/* Lo primero que ve un reclutador: qué es y qué resultado tuvo (02-PRD.md §8.3). */}
         <header className="grid gap-7 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
-            <p className="mb-3 text-label-mono text-ink-500">
-              Caso · {caseTypeLabel[c.type]} · {c.year}
+            <p className="mb-3 flex items-center gap-2 text-label-mono text-ink-500">
+              <span
+                aria-hidden
+                className={`size-1.5 shrink-0 rounded-full bg-current ${toneText[caseTypeTone[c.type]]}`}
+              />
+              Caso · <span className={toneText[caseTypeTone[c.type]]}>{caseTypeLabel[c.type]}</span> ·{" "}
+              {c.year}
             </p>
             <h1 className="max-w-prose text-h1">{c.title}</h1>
             {/* Resumen en 3 piezas (06-CONTENIDO.md §4.2): antes → qué construí → resultado (a la derecha). */}
@@ -105,7 +110,7 @@ export default async function CasePage({ params }: PageProps<"/proyectos/[slug]"
               </div>
             </dl>
           </div>
-          <div className="border-l-2 border-border pl-5 lg:col-span-4">
+          <div className={`border-l-2 pl-5 lg:col-span-4 ${toneBorder[caseTypeTone[c.type]]}`}>
             <p className="mb-2 text-label-mono text-ink-500">Resultado</p>
             <Metric {...c.result} />
           </div>

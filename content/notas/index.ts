@@ -20,6 +20,13 @@ export interface Note {
   /** Fecha de publicación (YYYY-MM-DD). */
   date: string;
   pillar: Pillar;
+  /**
+   * Imagen de portada (v4.2): ruta en /public, p. ej. "/img/notas/<slug>.webp".
+   * Si falta, la cabecera usa el motivo gráfico del pilar. Prompts en docs/08-PROMPTS-IMAGENES.md.
+   */
+  cover?: string;
+  /** Texto alternativo de la portada (obligatorio si hay `cover`). */
+  coverAlt?: string;
   /** URL de la publicación en LinkedIn; se completa después de publicarla (06 §5.4, paso 5). */
   linkedinUrl?: string;
   draft?: boolean;

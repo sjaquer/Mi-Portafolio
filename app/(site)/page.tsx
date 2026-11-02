@@ -1,11 +1,11 @@
 import { IconArrowRight, IconCalendarEvent, IconMapPin } from "@tabler/icons-react";
 import Link from "next/link";
 import { MeasureRule } from "@/components/brand/measure-rule";
+import { HeroFigure } from "@/components/brand/hero-figure";
 import { MiniFlow } from "@/components/brand/mini-flow";
 import { CvButton } from "@/components/sections/cv-button";
 import { Button } from "@/components/ui/button";
 import { CaseArticle } from "@/components/ui/case-article";
-import { MediaFrame } from "@/components/ui/media-frame";
 import { PostCard } from "@/components/ui/post-card";
 import { Container } from "@/components/ui/container";
 import { Metric } from "@/components/ui/metric";
@@ -14,7 +14,6 @@ import { Timeline } from "@/components/ui/timeline";
 import { cases } from "@/content/casos";
 import { notes } from "@/content/notas";
 import { profile } from "@/content/profile";
-import { findImage } from "@/lib/images";
 import { jsonLdGraph, profilePageJsonLd } from "@/lib/jsonld";
 import { readingTime } from "@/lib/reading-time";
 
@@ -67,8 +66,8 @@ export default function Home() {
         }}
       />
 
-      {/* 1. Hero: fondo tonal (§6.7), texto + espacio de retrato (§10.6). La entrada solo
-          mueve (no aparece desde transparente) para no retrasar el LCP. */}
+      {/* 1. Hero (v4.2): fondo de página limpio, texto + composición de marca animada
+          (§6.9, §10.6), sin retrato. Entra con fade + ascenso escalonado (§11). */}
       <section
         aria-labelledby="hero-title"
         className="relative isolate overflow-hidden pt-8 pb-8 lg:pt-10 lg:pb-9"
@@ -111,16 +110,8 @@ export default function Home() {
               </ul>
             </div>
           </div>
-          <div className="lg:col-span-4 lg:col-start-9">
-            <MediaFrame
-              src={findImage("retrato")}
-              alt={`Retrato de ${profile.name}`}
-              ratio="portrait"
-              sizes="(min-width: 1024px) 30vw, (min-width: 640px) 66vw, 75vw"
-              priority
-              frameless
-              className="clip-hero mx-auto w-3/4 sm:w-2/3 lg:w-full"
-            />
+          <div className="hidden lg:col-span-4 lg:col-start-9 lg:block">
+            <HeroFigure className="mx-auto max-w-sm" />
           </div>
         </Container>
       </section>

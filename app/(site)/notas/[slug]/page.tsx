@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { ReadingProgress } from "@/components/ui/reading-progress";
 import { PillarMotif } from "@/components/brand/pillar-motif";
+import { MediaFrame } from "@/components/ui/media-frame";
 import { PostCard } from "@/components/ui/post-card";
 import { getNote, notes, pillarLabel } from "@/content/notas";
 import { profile } from "@/content/profile";
@@ -83,7 +84,18 @@ export default async function NotePage({ params }: PageProps<"/notas/[slug]">) {
           </p>
           <h1 className="text-h1">{n.title}</h1>
           <p className="mt-4 text-lead">{n.description}</p>
-          <PillarMotif pillar={n.pillar} className="mt-7" />
+          {n.cover ? (
+            <MediaFrame
+              src={n.cover}
+              alt={n.coverAlt ?? n.title}
+              ratio="video"
+              sizes="(min-width: 1024px) 68ch, 100vw"
+              priority
+              className="mt-7"
+            />
+          ) : (
+            <PillarMotif pillar={n.pillar} className="mt-7" />
+          )}
         </header>
         <div className="mt-8 border-t border-border pt-8 text-body">
           <Body />

@@ -17,13 +17,12 @@ interface FrameProps {
   children: ReactNode;
 }
 
-/** Lienzo de la figura: fondo tonal + retícula de puntos (§6.2, §6.7) y el SVG encima. */
+/** Lienzo de la figura (v4.2): fondo tonal plano, sin retícula (§6.7). El SVG encima. */
 export function FigureFrame({ viewBox, label, className = "", children }: FrameProps) {
   return (
     <div
-      className={`relative overflow-hidden rounded-lg border border-border bg-brand-50 ${className}`}
+      className={`relative overflow-hidden rounded-lg border border-border bg-surface-muted ${className}`}
     >
-      <div aria-hidden className="dot-grid-full absolute inset-0" />
       <svg
         viewBox={viewBox}
         className="fig media-zoom relative block h-full w-full"
@@ -44,11 +43,22 @@ interface NodeProps {
   /** El componente que construí o que cambió (§8.1). */
   highlight?: boolean;
   i?: number;
+  /** Clase de trazo del destacado (color del caso, v4.2). Por defecto marino. */
+  accentStroke?: string;
   children?: ReactNode;
 }
 
 /** Nodo de diagrama: rectángulo de radio 8 con borde de 1,5 (2 si es el destacado). */
-export function FigNode({ x, y, w, h, highlight, i = 0, children }: NodeProps) {
+export function FigNode({
+  x,
+  y,
+  w,
+  h,
+  highlight,
+  i = 0,
+  accentStroke = "stroke-brand",
+  children,
+}: NodeProps) {
   return (
     <g className="fig-fade" style={step(i)}>
       <rect
@@ -57,21 +67,21 @@ export function FigNode({ x, y, w, h, highlight, i = 0, children }: NodeProps) {
         width={w}
         height={h}
         rx={8}
-        className={`fill-surface ${highlight ? "stroke-brand" : "stroke-border-strong"}`}
+        className={`fill-surface ${highlight ? accentStroke : "stroke-border-strong"}`}
         strokeWidth={highlight ? 2 : 1.5}
       />
-      {highlight && <Seal x={x + 12} y={y - 14} />}
+      {highlight && <Seal x={x + 12} y={y - 14} className={accentStroke} />}
       {children}
     </g>
   );
 }
 
 /** Sello: las 3 marcas del monograma (§6.1) sobre el nodo destacado. */
-export function Seal({ x, y }: { x: number; y: number }) {
+export function Seal({ x, y, className = "stroke-brand" }: { x: number; y: number; className?: string }) {
   return (
     <path
       d={`M${x} ${y}v8M${x + 6} ${y + 2}v6M${x + 12} ${y + 2}v6`}
-      className="stroke-brand"
+      className={className}
       strokeWidth={2}
       strokeLinecap="round"
     />
@@ -85,10 +95,12 @@ interface ConnectorProps {
   i?: number;
   /** Un punto recorre el conector una vez (§11.2). */
   pulse?: boolean;
+  /** Clase de trazo del pulso (color del caso, v4.2). Por defecto marino. */
+  pulseClass?: string;
 }
 
 /** Conector de 1,5 px que se traza al entrar en pantalla, con punta simple y pulso opcional. */
-export function FigConnector({ d, head, i = 0, pulse = true }: ConnectorProps) {
+export function FigConnector({ d, head, i = 0, pulse = true, pulseClass = "stroke-brand" }: ConnectorProps) {
   const tip =
     head &&
     (head.dir === "down"
@@ -110,7 +122,7 @@ export function FigConnector({ d, head, i = 0, pulse = true }: ConnectorProps) {
         <path
           d={d}
           pathLength={1}
-          className="fig-pulse stroke-brand"
+          className={`fig-pulse ${pulseClass}`}
           strokeWidth={4}
           style={step(i)}
         />

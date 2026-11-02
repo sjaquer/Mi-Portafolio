@@ -1,11 +1,9 @@
 import { profile } from "@/content/profile";
-import { findImage } from "@/lib/images";
 
 const personId = `${profile.siteUrl}/#person`;
 
 /** Schema.org Person (04-TECH-SEO-MEDICION.md §2.2). */
 export function personJsonLd() {
-  const portrait = findImage("retrato");
   const current = profile.experience.find((e) => e.to === null && !e.org.startsWith("Freelance"));
   return {
     "@type": "Person",
@@ -15,7 +13,8 @@ export function personJsonLd() {
     jobTitle: profile.role,
     description: profile.tagline,
     url: profile.siteUrl,
-    ...(portrait && { image: `${profile.siteUrl}${portrait}` }),
+    // Imagen de marca (v4.2): se retiró el retrato; se usa la OG generada desde la fuente única.
+    image: `${profile.siteUrl}/opengraph-image`,
     email: `mailto:${profile.links.email}`,
     hasOccupation: profile.targetRoles.map((name) => ({
       "@type": "Occupation",

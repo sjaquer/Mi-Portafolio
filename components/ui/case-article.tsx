@@ -2,7 +2,7 @@ import { IconArrowRight } from "@tabler/icons-react";
 import Link from "next/link";
 import { CaseCover } from "@/components/ui/case-cover";
 import { DraftNotice } from "@/components/ui/draft-notice";
-import { caseTypeLabel, type CaseStudy } from "@/content/casos";
+import { caseTypeLabel, caseTypeTone, toneText, type CaseStudy } from "@/content/casos";
 import { isMeasured } from "@/content/profile";
 
 interface Props {
@@ -34,14 +34,17 @@ export function CaseArticle({ c, minutes, variant = "row", headingLevel = "h3" }
     card: { root: "", media: "", body: "" },
   }[variant];
   const measured = isMeasured(c.result);
+  const tone = toneText[caseTypeTone[c.type]];
 
   return (
     <article className={`group relative grid gap-5 ${layout.root}`}>
       <CaseCover c={c} className={layout.media} />
       <div className={`flex flex-col gap-3 ${layout.body}`}>
         <DraftNotice item={c} />
-        <p className="text-label-mono text-ink-500">
-          {caseTypeLabel[c.type]} · {c.year} · {minutes} min de lectura
+        <p className="flex items-center gap-2 text-label-mono text-ink-500">
+          <span aria-hidden className={`size-1.5 shrink-0 rounded-full bg-current ${tone}`} />
+          <span className={tone}>{caseTypeLabel[c.type]}</span> · {c.year} · {minutes} min de
+          lectura
         </p>
         <Heading className={featured ? "text-h2" : "text-h3"}>
           <Link
@@ -66,7 +69,7 @@ export function CaseArticle({ c, minutes, variant = "row", headingLevel = "h3" }
         </p>
         <span
           aria-hidden
-          className="mt-1 inline-flex items-center gap-2 text-small font-semibold text-accent-600"
+          className={`mt-1 inline-flex items-center gap-2 text-small font-semibold ${tone}`}
         >
           Leer el caso
           <IconArrowRight

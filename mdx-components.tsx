@@ -33,6 +33,15 @@ const components: MDXComponents = {
     <a className="text-accent-600 underline underline-offset-4 hover:text-accent-700" {...props} />
   ),
   strong: (props) => <strong className="font-semibold text-ink-900" {...props} />,
+  // Imágenes de contenido (v4.2): dimensiones variables y carga diferida. El `alt` viene del MDX.
+  img: (props) => (
+    // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
+    <img
+      {...props}
+      loading="lazy"
+      className="my-6 w-full rounded-lg border border-border bg-surface-muted"
+    />
+  ),
   code: (props) => (
     <code
       className="rounded-sm bg-surface-muted px-1 font-mono text-small text-ink-900"
