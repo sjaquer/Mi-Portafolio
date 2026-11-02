@@ -27,6 +27,14 @@ export interface Note {
 
 const allNotes: Note[] = [
   {
+    slug: "validacion-juicio-expertos-v-de-aiken",
+    title: "Validación de instrumentos por juicio de expertos: V de Aiken sin transcribir nada",
+    description:
+      "Una web estática que genera el certificado firmado en PDF y un script en Python que lee esos PDF y calcula la V de Aiken. Con demo y código abiertos.",
+    date: "2026-10-26",
+    pillar: "construyendo",
+  },
+  {
     slug: "excel-que-no-se-rompe",
     title: "Un Excel que no se rompe cuando alguien mueve una columna",
     description:

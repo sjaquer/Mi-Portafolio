@@ -1,6 +1,6 @@
 # CLAUDE.md — sjaquer-web
 
-Portafolio de Sebastián Jaque (Desarrollo web · Automatización de procesos · Integraciones). Next.js App Router + TypeScript + Tailwind v4 + MDX. Despliegue en Vercel.
+Portafolio de Sebastián Jaque (Desarrollo web con foco en el usuario · Automatización de procesos; dirección: Product Engineer). Next.js App Router + TypeScript + Tailwind v4 + MDX. Despliegue en Netlify.
 
 ## Lee antes de trabajar
 - `docs/02-PRD.md` — qué se construye y criterios de aceptación.
@@ -12,9 +12,8 @@ Portafolio de Sebastián Jaque (Desarrollo web · Automatización de procesos ·
 
 ## Reglas
 1. **Fuente única:** todo dato del perfil (cargos, fechas, certificaciones, métricas) vive en `content/profile.ts` o en los MDX de `content/`. Nunca escribirlo a mano en componentes.
-2. **Honestidad estricta y alcance actual:** cargos tal como en el CV; certificaciones con nombre y emisor reales; ninguna métrica sin contexto (qué, cuánto, base, periodo). Las métricas reales son de ahorro de tiempo operativo y eficiencia, nunca de conversión publicitaria.
-   - **Regla MarTech / CRO:** No presentarse hoy como "Especialista MarTech" ni con experiencia en CRO o GTM avanzado. MarTech queda exclusivamente como dirección de carrera e interés de aprendizaje a futuro; el perfil se presenta 100 % como Desarrollo Web + Automatización de Procesos + Integraciones.
-3. **Diseño:** solo tokens de `tokens.css` / `@theme`. Nada de colores, tamaños o espacios fuera de la escala. Un solo botón `primary` visible por pantalla. Sin neón, glassmorphism ni WebGL; los únicos degradados permitidos son los tonales de `03-DESIGN.md` §6.7.
+2. **Honestidad:** MarTech, CRO, GTM o "medición" no se presentan como experiencia sin un proyecto real que los respalde. Cargos tal como en el CV; certificaciones con nombre y emisor reales; ninguna métrica sin contexto (qué, cuánto, base, periodo). No inventar cifras.
+3. **Diseño:** solo tokens de `tokens.css` / `@theme`. Nada de colores, tamaños o espacios fuera de la escala. Un solo botón `primary` visible por pantalla. Sin degradados, neón, glassmorphism ni WebGL.
 4. **Rendimiento:** Server Components por defecto; `"use client"` solo para interacción. Respetar el presupuesto (LCP < 2 s, JS home < 100 KB, CLS < 0,05).
 5. **Accesibilidad:** WCAG 2.2 AA; un `h1` por página; foco visible; área táctil ≥ 44 px; `alt` en imágenes.
 6. **Medición:** todo botón lleva `data-cta`; los eventos se envían solo con `track()` de `lib/analytics.ts` (tipado). Nunca datos personales a GA4.
@@ -23,9 +22,6 @@ Portafolio de Sebastián Jaque (Desarrollo web · Automatización de procesos ·
 
 ## Comandos
 - `pnpm dev` · `pnpm build` · `pnpm lint` · `pnpm lhci` (Lighthouse CI)
-- `pnpm check` (lint + tipos + formato) · `pnpm format` · `pnpm cv:pdf` (exporta `content/cv/CV-Sebastian-Jaque.docx` a `public/cv/`)
-- `pnpm brand` (logo, favicon, íconos) · `pnpm brand:figma` (kit de Figma en `design/figma/`)
-- Imágenes: solo `public/img/retrato.webp` (4:5). Portadas de casos y notas son SVG de marca (`cover` en `content/casos/index.ts`, motivo por pilar); nunca imágenes generadas (`03-DESIGN.md` §6.8)
 
 ## Antes de dar algo por terminado
 Build sin errores, lint limpio, Lighthouse ≥ 95 en la página tocada, revisión con teclado, y si hay eventos nuevos: verificados en GTM Preview.

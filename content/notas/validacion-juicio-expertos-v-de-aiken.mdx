@@ -1,0 +1,89 @@
+Para validar el instrumento de mi tesis necesitaba que varios jueces expertos calificaran cada ítem, firmaran su dictamen y que yo pudiera calcular la **V de Aiken** sin transcribir nada a mano. La forma habitual es un Word o un formulario genérico, más una hoja de Excel armada con copiar y pegar. Construí otra cosa: una página web estática que genera el certificado firmado en PDF y una herramienta en Python que lee esos PDF y calcula el coeficiente. Esta nota cuenta cómo funciona y qué decisiones tomé. Puedes probarla en la [demostración en vivo](https://sjaquer.github.io/validacion_instrumento_sebastian_jaque/) y revisar el [código en GitHub](https://github.com/sjaquer/validacion_instrumento_sebastian_jaque).
+
+## El problema: validar con jueces es más trabajo de recolección que de estadística
+
+La V de Aiken es una fórmula corta. Lo lento es todo lo que viene antes:
+
+- Cada juez recibe el instrumento por correo y responde en el formato que le quede cómodo.
+- Si cambio la redacción de un ítem después de enviarlo, nadie sabe qué respuestas siguen siendo válidas.
+- Las firmas llegan escaneadas, y las calificaciones hay que pasarlas a una matriz a mano.
+
+Cada paso manual es una oportunidad de calcular el coeficiente sobre un dato mal copiado.
+
+## Qué construí
+
+<FlowDiagram
+  label="Del instrumento al coeficiente"
+  steps={[
+    {
+      tag: "Entrada",
+      title: "Instrumento en JSON",
+      items: ["Dimensiones e indicadores", "Escala configurable"],
+    },
+    {
+      tag: "Web",
+      title: "Asistente para el juez",
+      items: ["Evalúa cada ítem", "Firma en pantalla", "Certificado en PDF"],
+      highlight: true,
+    },
+    {
+      tag: "Python",
+      title: "Consolidador",
+      items: ["Lee el PDF", "V de Aiken por criterio"],
+    },
+    {
+      tag: "Salida",
+      title: "CSV e informe",
+      items: ["Matriz de respuestas", "Resumen contra V ≥ 0,80"],
+    },
+  ]}
+/>
+
+La parte web corre **100 % en el navegador**: HTML, CSS y módulos de JavaScript sin servidor ni base de datos. Se publica en GitHub Pages, así que no hay nada que mantener. El juez abre un enlace con el proyecto y su clave de evaluador, califica los ítems y al final firma y descarga el certificado.
+
+### 1. El instrumento es un archivo de datos, no código
+
+Cada instrumento se define en un `proyecto.json`: dimensiones, indicadores, ítems, criterios y escala. La interfaz se construye a partir de ese archivo. Para validar otro instrumento no toco el código: agrego una carpeta con su JSON. El tema de color institucional también sale del archivo.
+
+### 2. Si cambias un ítem, se invalidan solo sus respuestas
+
+Cada ítem guarda una huella (un hash FNV-1a de su texto). Si después de enviar el instrumento corrijo la redacción de un ítem, la huella deja de coincidir y la plataforma le pide al juez que califique **solo ese ítem** otra vez. Las demás respuestas se conservan. Antes, cualquier cambio obligaba a reenviar todo o a asumir que nadie notaría la diferencia.
+
+### 3. El avance no se pierde
+
+Las respuestas se guardan en el navegador del juez con escritura diferida de 350 ms, para no escribir en cada tecla. Si cierra la pestaña a la mitad, retoma donde quedó. Las sugerencias se vuelven obligatorias cuando rechaza un criterio o da un puntaje bajo, de modo que no queda un "No" sin explicación.
+
+### 4. El certificado lleva los datos adentro
+
+Al terminar, la página genera un PDF en A4 con la tabla de ítems, la suficiencia por dimensión, el dictamen de aplicabilidad y la firma. Esa firma se dibuja en un lienzo con curvas suavizadas, o se sube escaneada.
+
+<Callout title="Decisión: los datos viajan dentro del PDF">
+  El PDF incluye, en sus metadatos, un JSON con todas las calificaciones. Así el consolidador lo lee
+  directamente, sin OCR ni transcripción. El DNI del juez **no** va en ese JSON: aparece en el
+  documento visible, pero no en los datos que se procesan.
+</Callout>
+
+### 5. El coeficiente sale de los PDF, no de una hoja armada a mano
+
+Un script en Python lee la carpeta de certificados firmados, extrae el JSON de cada uno y aplica la fórmula:
+
+> V = S / (n · (c − 1))
+
+donde S es la suma de las calificaciones menos el mínimo de la escala, n el número de jueces y c el número de categorías. Con la escala Sí/No, V es la proporción de jueces que respondió que sí. Genera una matriz de respuestas, el coeficiente por criterio y un resumen que lo compara con el umbral habitual de 0,80. Otro script revisa el archivo del instrumento antes de publicarlo (ítems repetidos o sin texto, escala con menos de dos valores, claves de experto duplicadas, archivos que faltan) y falla si encuentra errores, así que también corre en el flujo de GitHub Actions.
+
+<Callout title="Lo que descarté" variant="warning">
+  Un servidor con base de datos para guardar las respuestas. Habría dado un panel en vivo, pero
+  también un sistema que mantener, datos de personas que proteger y un costo mensual para algo que
+  se usa unas semanas. Con el PDF como único entregable, el juez conserva su copia y yo no almaceno
+  datos ajenos.
+</Callout>
+
+## Resultado
+
+La herramienta funciona de punta a punta: un enlace por instrumento, un certificado firmado por juez y tres archivos de salida listos para citar en el capítulo de metodología. Se usó para el instrumento de mi tesis sobre IA generativa y productividad en agencias de marketing digital. No cronometré el proceso manual anterior, así que no doy una cifra de ahorro. Lo que puedo afirmar es que quitó la transcripción de respuestas y que el cálculo se puede repetir con los mismos archivos.
+
+## Qué aprendí
+
+- Si el instrumento es un archivo de datos, la misma herramienta sirve para el siguiente.
+- Un entregable que lleva sus datos adentro (el PDF) simplifica la recolección más que una base de datos.
+- Dejar sin servidor lo que no necesita servidor es una decisión de diseño: menos costo, menos datos personales y nada que se caiga.

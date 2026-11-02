@@ -39,6 +39,10 @@ function skillsBlock() {
   ].join("\n");
 }
 
+function faqBlock() {
+  return profile.faq.map((f) => `### ${f.q}\n${f.a}`).join("\n\n");
+}
+
 function languagesBlock() {
   return profile.languages.map((l) => `- ${l.name}: ${l.level}`).join("\n");
 }
@@ -65,9 +69,15 @@ ${profile.summary}
 - Ubicación: ${profile.location}
 - Disponibilidad: ${profile.availability}
 
+## Preguntas frecuentes
+
+${faqBlock()}
+
 ## Rol y especialidad
 
 ${skillsBlock()}
+
+- Búsquedas relacionadas: ${profile.keywords.join(", ")}
 
 ## Experiencia
 
@@ -88,6 +98,13 @@ ${languagesBlock()}
 ## Casos de estudio
 
 ${cases.map((c) => `- [${c.title}](${profile.siteUrl}/proyectos/${c.slug}): ${c.result.value} ${c.result.label}.`).join("\n")}
+
+## Proyectos en línea
+
+- [Plataforma de empleabilidad de la Universidad Norbert Wiener](https://empleabilidad.uwiener.edu.pe): bolsa laboral, creador de CV y feria virtual (en producción).
+- [Validación de instrumentos por juicio de expertos](https://sjaquer.github.io/validacion_instrumento_sebastian_jaque/): demo en vivo; [código](https://github.com/sjaquer/validacion_instrumento_sebastian_jaque).
+- [Carta digital de Big Jack Burgers](https://bigjack.vercel.app).
+- [PrestaFacilito](https://prestafacilito.vercel.app): préstamos y cobranzas.
 
 ## Notas
 

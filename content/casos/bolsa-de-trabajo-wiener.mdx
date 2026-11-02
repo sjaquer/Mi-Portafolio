@@ -70,7 +70,16 @@ Otras decisiones:
   ]}
 />
 
-La plataforma incluye registro y aprobación de empresas, bolsa laboral pública con filtros, postulación con el CV guardado, importación del CV desde un PDF con IA (con consentimiento explícito), feria virtual, notificaciones y paneles de administración. Se despliega en Docker, en los servidores de la universidad.
+Qué puede hacer cada parte, en la práctica:
+
+- **Bolsa laboral pública** (`/empleos`): ofertas con buscador y filtros por carrera, modalidad y tipo de contrato. Quien no tiene sesión puede explorar; para postular, entra y vuelve a la misma oferta.
+- **Creador de CV**: cada persona guarda hasta 10 CV y marca uno como principal. Puede **importar su CV desde un PDF**: una IA extrae los datos, rellena el creador y el PDF original se descarta. Antes de usar la IA acepta el tratamiento de sus datos, y se quitan el DNI, la fecha de nacimiento y los datos de salud antes de enviar nada.
+- **Postulación con copia congelada**: al postular se guarda una copia del CV elegido, de modo que la empresa ve exactamente lo que se envió, aunque la persona lo edite después. No se puede postular dos veces a la misma oferta.
+- **Panel para empresas**: registro con aprobación, publicación de ofertas, gestión de candidatos por estado, descarga del CV en PDF con la plantilla que eligió el alumno y notas privadas que el postulante nunca ve.
+- **Feria virtual**: ficha de cada empresa y envío de **CV espontáneo** sin necesidad de una oferta abierta.
+- **Panel de administración**: aprobación de empresas, cola de moderación de ofertas, métricas, auditoría de cambios, exportación a Excel con datos mínimos y portada editable sin desplegar código.
+
+Se despliega en Docker, en los servidores de la universidad.
 
 ## Resultado
 

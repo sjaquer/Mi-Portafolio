@@ -69,6 +69,8 @@ export interface CaseStudy extends Publication {
   /** Aparece en la home (máximo 3). */
   featured?: boolean;
   cover: CaseCover;
+  /** Enlaces oficiales del proyecto en producción (se abren en pestaña nueva). */
+  links?: { label: string; href: string }[];
 }
 
 /** Motivo por el que algo no se publica todavía, o `null` si se publica. */
@@ -102,9 +104,12 @@ const allCases: CaseStudy[] = [
     year: 2026,
     stack: ["Next.js", "Supabase/PostgreSQL", "Docker", "Playwright"],
     status: "produccion",
-    updatedAt: "2026-10-11",
+    updatedAt: "2026-10-26",
     featured: true,
     institutional: true,
+    links: [
+      { label: "empleabilidad.uwiener.edu.pe", href: "https://empleabilidad.uwiener.edu.pe" },
+    ],
     cover: {
       label: "Arquitectura",
       nodes: [
@@ -331,7 +336,8 @@ const allCases: CaseStudy[] = [
     year: 2025,
     stack: ["Next.js", "Firebase", "Webhooks", "Ollama / Gemini"],
     status: "entregado", // TODO(Sebastián): ¿sigue en uso? Si es así, "produccion".
-    updatedAt: "2026-10-11",
+    updatedAt: "2026-10-26",
+    links: [{ label: "Carta digital de Big Jack", href: "https://bigjack.vercel.app" }],
     cover: {
       label: "Flujo de un pedido",
       nodes: [
@@ -361,6 +367,9 @@ export interface GalleryItem extends Publication {
   flow: readonly [string, string, string];
   href?: string;
   hrefLabel?: string;
+  /** Demostración en línea (distinta del código). */
+  liveHref?: string;
+  liveLabel?: string;
 }
 
 const allGallery: GalleryItem[] = [
@@ -450,6 +459,19 @@ const allGallery: GalleryItem[] = [
     flow: ["Voucher", "Cuotas", "Cobranza"],
     href: "https://github.com/sjaquer/prestafacilito",
     hrefLabel: "Código de PrestaFacilito en GitHub",
+    liveHref: "https://prestafacilito.vercel.app",
+    liveLabel: "Ver PrestaFacilito en línea",
+  },
+  {
+    name: "Validación de instrumentos por juicio de expertos",
+    angle:
+      "Asistente web sin servidor para que los jueces califiquen un instrumento y firmen su certificado en PDF, más un script en Python que calcula la V de Aiken desde esos PDF.",
+    stack: ["JavaScript", "jsPDF", "Python", "GitHub Pages"],
+    flow: ["Juez", "Certificado", "V de Aiken"],
+    href: "https://github.com/sjaquer/validacion_instrumento_sebastian_jaque",
+    hrefLabel: "Código del validador en GitHub",
+    liveHref: "https://sjaquer.github.io/validacion_instrumento_sebastian_jaque/",
+    liveLabel: "Ver la demostración en vivo",
   },
   {
     name: "Coralia Delights y Digital Bakery",

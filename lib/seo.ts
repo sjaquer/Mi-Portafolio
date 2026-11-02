@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { profile } from "@/content/profile";
 
-export const homeTitle = `${profile.name} — Desarrollo web y automatización | Lima`;
+export const homeTitle = `${profile.name} — Desarrollador web y automatización de procesos | Lima`;
 export const homeDescription =
-  "Construyo herramientas web con Next.js, automatizo procesos con Python e integro sistemas con APIs. Disponible para roles junior desde enero 2027 · Lima.";
+  "Desarrollador web junior en Lima: Next.js, automatización de procesos con Python e integración de APIs. Plataforma de empleabilidad en producción. Disponible desde enero 2027.";
 
 /** Metadata por defecto del layout raíz (04-TECH-SEO-MEDICION.md §2.1). */
 export const defaultMetadata: Metadata = {
@@ -11,6 +11,7 @@ export const defaultMetadata: Metadata = {
   title: { default: homeTitle, template: `%s — ${profile.name}` },
   description: homeDescription,
   applicationName: profile.name,
+  keywords: [...profile.keywords],
   authors: [{ name: profile.name, url: profile.siteUrl }],
   creator: profile.name,
   alternates: {

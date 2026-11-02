@@ -89,6 +89,18 @@ export default function ProyectosPage() {
                     <IconArrowUpRight size={16} stroke={1.5} aria-hidden />
                   </a>
                 )}
+                {g.liveHref && (
+                  <a
+                    href={g.liveHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-cta={`gallery_live_${g.name.toLowerCase().replace(/[^a-z0-9]+/g, "_")}`}
+                    className="inline-flex min-h-control-md w-fit items-center gap-1 text-small font-semibold text-accent-600 underline-offset-4 hover:underline"
+                  >
+                    {g.liveLabel ?? `Ver ${g.name} en línea`}
+                    <IconArrowUpRight size={16} stroke={1.5} aria-hidden />
+                  </a>
+                )}
               </li>
             ))}
           </ul>

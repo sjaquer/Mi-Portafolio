@@ -25,7 +25,7 @@ export function personJsonLd() {
     address: { "@type": "PostalAddress", addressLocality: "Lima", addressCountry: "PE" },
     alumniOf: profile.education.map((e) => ({ "@type": "CollegeOrUniversity", name: e.org })),
     ...(current && { worksFor: { "@type": "Organization", name: current.org } }),
-    knowsAbout: Object.values(profile.skills).flat(),
+    knowsAbout: [...new Set([...Object.values(profile.skills).flat(), ...profile.keywords])],
     knowsLanguage: ["es", "en"],
     sameAs: [profile.links.linkedin, profile.links.github],
   };

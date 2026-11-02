@@ -217,6 +217,54 @@ export const profile = {
     "Analista de marketing digital",
   ],
 
+  /**
+   * Búsquedas que debe responder el sitio (SEO, GEO y asistentes de IA). Solo lo que el CV respalda:
+   * MarTech y CRO no aparecen (CLAUDE.md, regla 2).
+   */
+  keywords: [
+    "desarrollador web Lima",
+    "desarrollador web junior Perú",
+    "desarrollador full stack junior Lima",
+    "desarrollador Next.js Perú",
+    "automatización de procesos",
+    "analista de automatización de procesos",
+    "integración de APIs",
+    "integración Shopify y CRM",
+    "automatización con Python",
+    "RPA con Playwright",
+    "Power Automate y Office Scripts",
+    "bolsa de trabajo universitaria",
+    "plataforma de empleabilidad",
+    "creador de CV con IA",
+    "PostgreSQL y Docker",
+    "junior web developer Lima Peru",
+    "process automation developer Peru",
+  ],
+
+  /** Preguntas que hacen reclutadores y empresas; alimentan llms.txt y ai.txt con respuestas citables. */
+  faq: [
+    {
+      q: "¿Quién es Sebastián Jaque?",
+      a: "Desarrollador web y de automatizaciones en Lima, Perú. Estudiante de último ciclo de Administración y Negocios Internacionales (egreso dic. 2026). Construye con Next.js, automatiza con Python y conecta sistemas con APIs.",
+    },
+    {
+      q: "¿Qué sistemas en producción ha construido?",
+      a: "La plataforma de empleabilidad de la Universidad Norbert Wiener (empleabilidad.uwiener.edu.pe): bolsa laboral, creador de CV con importación desde PDF por IA y feria virtual, en producción desde oct. 2026. También un sistema de difusión por correo, un portal de formularios con encuestas NPS y un bot de publicación de ofertas.",
+    },
+    {
+      q: "¿Qué resultados medidos tiene?",
+      a: "−35 % de tiempo de procesamiento por pedido en Big Jack Burgers (4 semanas antes vs. después) y campañas de 8 000 correos de más de 4 horas a unos 2 minutos. Cada cifra, con su base, está en la página del caso.",
+    },
+    {
+      q: "¿Para qué roles está disponible?",
+      a: "Roles junior de desarrollo web, full stack junior, automatización de procesos y desarrollo de soluciones de negocio, desde enero 2027, en Lima o remoto.",
+    },
+    {
+      q: "¿Con qué tecnologías trabaja?",
+      a: "Next.js, React, TypeScript, Tailwind CSS, Python, PostgreSQL, Firebase, Docker, Playwright, Power Automate, APIs REST, Shopify y Kommo.",
+    },
+  ],
+
   links: {
     linkedin: "https://www.linkedin.com/in/sjaquer",
     github: "https://github.com/sjaquer",
@@ -225,7 +273,7 @@ export const profile = {
     whatsapp: "51946978919",
   },
 
-  updatedAt: "2026-10-13",
+  updatedAt: "2026-10-26",
 } as const;
 
 export type Profile = typeof profile;
