@@ -1,0 +1,66 @@
+Un operador de helicópteros tiene que decidir, cada día, qué vuela en cada tramo: pasajeros y carga que compiten por el mismo peso, con combustible que se gasta, paradas de reabastecimiento y prioridades que no se pueden saltar. Lo resolvían a mano, en una pizarra. Construí **ORDEV**, un planificador que entrega el itinerario con su manifiesto por tramo. Lo interesante no es el resultado, sino el camino: empecé programando la solución y terminé declarando el problema.
+
+## El problema: demasiadas combinaciones para una pizarra
+
+Planificar un vuelo no es ordenar una lista. Cada tramo tiene restricciones que se pisan entre sí:
+
+- **Peso y capacidad**: pasajeros más carga no pueden pasar del máximo de la aeronave.
+- **Combustible**: hay autonomía limitada y puntos de reabastecimiento, no se vuela indefinidamente.
+- **Prioridad**: cierta carga o ciertos pasajeros tienen que salir sí o sí.
+
+Con pocos elementos se hace a ojo. Con un día real de operación, las combinaciones explotan y "a ojo" significa dejar fuera algo prioritario o pasarse de peso sin notarlo.
+
+## Lo que intenté primero (y por qué lo dejé)
+
+<Callout title="Lo que descarté" variant="warning">
+  La primera versión era un **algoritmo codicioso con reglas if/else**: ordenar por prioridad e ir
+  llenando cada vuelo hasta la capacidad. Funcionaba en los casos de ejemplo y fallaba en los
+  reales. Al llenar por prioridad, a veces bloqueaba peso que una combinación distinta habría
+  aprovechado mejor, o dejaba sin ruta una carga prioritaria porque el combustible ya no daba. Cada
+  caso raro que aparecía me obligaba a añadir otro `if`, y los `if` empezaban a contradecirse. Estaba
+  programando a mano la solución a un problema que es, en el fondo, de búsqueda.
+</Callout>
+
+El síntoma claro de que iba por mal camino: no podía demostrar que el plan fuera factible, solo que "parecía bien". En logística con peso y combustible, "parece bien" no alcanza.
+
+## Qué hice: declarar las reglas y dejar que el solver busque
+
+Cambié el enfoque por completo. En vez de escribir **cómo** llegar al plan, describí **qué** hace válido a un plan y dejé que un solver de restricciones (**CP-SAT**, de OR-Tools) encontrara uno óptimo:
+
+- **Variables de decisión**: qué pasajero o carga va en qué tramo.
+- **Restricciones duras**: el peso no supera el máximo, el combustible alcanza entre reabastecimientos, la capacidad se respeta.
+- **Objetivo**: maximizar prioridad atendida (y minimizar tramos desperdiciados).
+
+<FlowDiagram
+  label="Del escenario a la ruta"
+  steps={[
+    {
+      tag: "Entrada",
+      title: "Escenario del día",
+      items: ["Pasajeros y carga", "Pesos y prioridades", "Autonomía y paradas"],
+    },
+    {
+      tag: "Solver",
+      title: "CP-SAT (OR-Tools)",
+      items: ["Restricciones duras", "Objetivo de prioridad", "Solución factible"],
+      highlight: true,
+    },
+    {
+      tag: "Salida",
+      title: "Itinerario y manifiesto",
+      items: ["Ruta por tramo", "Manifiesto de carga", "Peso verificado"],
+    },
+  ]}
+/>
+
+La diferencia de fondo: el solver **no puede** devolver un plan que viole el peso o el combustible, porque esas son restricciones del modelo, no comprobaciones que yo recuerde escribir después. Si no existe plan factible, lo dice; no inventa uno malo. Y cuando cambia un dato —una aeronave distinta, una parada menos—, ajusto la restricción, no la lógica entera.
+
+## Resultado
+
+ORDEV toma un escenario y devuelve el itinerario con el manifiesto de cada tramo y el peso verificado. **Es un proyecto propio y el código está abierto**, así que no tengo métricas de operación en producción que reportar; lo que sí puedo mostrar es la diferencia de diseño: pasé de un script frágil que había que parchear caso por caso a un modelo donde las reglas del negocio son explícitas y verificables.
+
+## Qué aprendí
+
+- Cuando un problema tiene muchas restricciones que se pisan, **declararlas** le gana a programar la solución paso a paso.
+- Un buen modelo de optimización tiene una propiedad que un `if/else` no: **no puede** entregarte una respuesta que rompa las reglas.
+- Reconocer temprano que un problema es de búsqueda y no de reglas me habría ahorrado la primera versión entera. La próxima vez empiezo preguntando "¿esto es optimización?" antes de escribir el primer `if`.

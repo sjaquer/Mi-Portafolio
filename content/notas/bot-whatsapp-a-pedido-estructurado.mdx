@@ -1,0 +1,61 @@
+En Big Jack Burgers, los pedidos por WhatsApp llegaban como llega el habla: "una doble sin cebolla y unas papas grandes, porfa". Alguien los leía y los transcribía a mano a la cocina. Ese paso era lento y se prestaba a errores justo en la hora pico. Dentro del ecosistema de pedidos que construí como único programador, una de las piezas fue un bot que convierte ese mensaje libre en una **orden estructurada** que entra directo a la pantalla de cocina. Esta nota cuenta cómo, y qué probé antes que no aguantó.
+
+## El problema: la gente no escribe formularios
+
+Un pedido hablado tiene variaciones infinitas sobre la misma intención. "Sin cebolla", "sin la cebolla", "pero que no tenga cebolla": lo mismo para una persona, tres textos distintos para una máquina. Y encima hay modificadores que cambian el precio y la preparación: tamaños, adicionales, quitar ingredientes, combos. La cocina necesita lo contrario del mensaje: ítems claros, con sus modificadores y su total, sin ambigüedad.
+
+## Lo que intenté primero (y por qué lo dejé)
+
+<Callout title="Lo que descarté" variant="warning">
+  La primera versión fue **palabras clave y menús con botones numerados**: "responde 1 para doble, 2
+  para clásica…". Dos problemas. Con palabras clave, cualquier frase fuera del molde ("la de siempre
+  pero sin tomate") se caía o entendía mal, sobre todo con los modificadores. Y los menús numerados
+  convertían un pedido de tres cosas en una conversación larga de ida y vuelta que la gente
+  abandonaba. Estaba obligando al cliente a escribir como la máquina, cuando el bot debía entender
+  como la persona.
+</Callout>
+
+El keyword-matching parecía controlado porque yo veía las palabras que buscaba, pero en producción la variedad del lenguaje real lo desbordó enseguida.
+
+## Qué hice: un modelo con salida estructurada y validación
+
+Pasé el entendimiento a un **modelo de lenguaje** (probé con un LLM local vía Ollama y con Gemini) pero con una regla firme: el modelo no decide el pedido, lo **propone en una estructura fija**. Le pido que devuelva el pedido como datos —ítems, modificadores, cantidades— contra el esquema de la carta, no como texto libre.
+
+<FlowDiagram
+  label="Del mensaje a la cocina"
+  steps={[
+    {
+      tag: "Mensaje",
+      title: "Lenguaje natural",
+      items: ['"doble sin cebolla"', "Modificadores libres"],
+    },
+    {
+      tag: "Modelo",
+      title: "Salida estructurada",
+      items: ["Ítems y cantidades", "Modificadores", "Contra el esquema de la carta"],
+      highlight: true,
+    },
+    {
+      tag: "Validación",
+      title: "Cuadrar y confirmar",
+      items: ["Existe en la carta", "Total calculado", "Cliente confirma"],
+    },
+    {
+      tag: "Cocina",
+      title: "Orden al KDS",
+      items: ["Webhook a la pantalla", "Sin transcribir a mano"],
+    },
+  ]}
+/>
+
+Lo que hace confiable al bot no es el modelo, es lo que pongo **alrededor**: cada ítem y modificador se valida contra la carta real (si algo no existe, el bot pregunta en vez de inventar), el **total lo calcula el sistema**, no el modelo, y el cliente confirma el pedido antes de que salga. Recién entonces viaja por webhook a la pantalla de cocina, ya estructurado.
+
+## Resultado
+
+El pedido pasa de texto suelto en WhatsApp a una orden que la cocina lee sin que nadie la vuelva a escribir. Esto formó parte del ecosistema que **redujo en 35 % el tiempo de procesamiento por pedido** (medido durante 4 semanas antes vs. después, sobre el sistema completo: carta digital, bot y panel de cocina). Soy claro con el alcance: ese −35 % es del ecosistema entero, no solo del bot; la contribución del bot fue quitar la transcripción manual y los errores de ese paso.
+
+## Qué aprendí
+
+- Para entender lenguaje libre, el modelo ayuda; lo que hace que sirva en producción es **obligarlo a una salida estructurada** y validarla contra datos reales.
+- Operaciones con plata —el total— no se delegan al modelo: ahí el sistema calcula y el modelo solo entiende.
+- Una confirmación antes de enviar a cocina convirtió "casi siempre bien" en "bien o pregunta", que es lo que una operación en hora pico necesita.

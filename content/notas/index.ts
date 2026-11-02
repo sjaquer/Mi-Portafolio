@@ -27,6 +27,38 @@ export interface Note {
 
 const allNotes: Note[] = [
   {
+    slug: "loginv-punto-de-reorden",
+    title: "El inventario no pregunta cuánto queda, pregunta cuándo comprar",
+    description:
+      "Cambié el stock mínimo fijo de LogINV por un punto de reorden que mete el tiempo de entrega y la demanda en la ecuación: avisa antes de faltar, no después.",
+    date: "2026-11-01",
+    pillar: "construyendo",
+  },
+  {
+    slug: "optimizar-vuelos-cp-sat",
+    title: "Planifiqué vuelos con un solver, no con reglas if/else",
+    description:
+      "ORDEV pasó de un algoritmo codicioso que había que parchear caso por caso a un modelo CP-SAT que declara peso, combustible y prioridad y no puede romperlos.",
+    date: "2026-10-31",
+    pillar: "construyendo",
+  },
+  {
+    slug: "leer-vouchers-yape-con-ocr",
+    title: "Leer el monto de un voucher de Yape sin digitarlo (ni subirlo a un tercero)",
+    description:
+      "Por qué descarté la API de OCR en la nube y resolví la lectura de comprobantes con Tesseract.js en el navegador, imagen preparada y confirmación humana.",
+    date: "2026-10-30",
+    pillar: "herramientas",
+  },
+  {
+    slug: "bot-whatsapp-a-pedido-estructurado",
+    title: "De “una doble sin cebolla” a un pedido que entra solo a cocina",
+    description:
+      "Las palabras clave no aguantaron el lenguaje real. Así pasé el bot de Big Jack a un modelo con salida estructurada, validada contra la carta y confirmada.",
+    date: "2026-10-29",
+    pillar: "herramientas",
+  },
+  {
     slug: "validacion-juicio-expertos-v-de-aiken",
     title: "Validación de instrumentos por juicio de expertos: V de Aiken sin transcribir nada",
     description:

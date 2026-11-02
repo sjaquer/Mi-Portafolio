@@ -1,0 +1,60 @@
+En **PrestaFacilito**, un sistema para administrar préstamos y cobranzas, el momento más frágil era también el más repetitivo: alguien recibía la captura de un pago por Yape o Plin y escribía el monto, la fecha y el número de operación a mano en la hoja. Un dígito mal copiado desordenaba una cuota, una mora, una conciliación. Quise que el sistema leyera el voucher en lugar de la persona. Esta nota cuenta cómo lo hice con OCR en el navegador y por qué descarté la opción que parecía más obvia.
+
+## El problema: digitar un comprobante es copiar con riesgo
+
+Un comprobante de Yape o Plin tiene siempre los mismos tres datos que importan para cobranza: **monto, fecha y número de operación**. Copiarlos a mano tiene dos costos. El evidente es el tiempo. El caro es el error: un monto mal digitado hace que una cuota parezca impaga cuando no lo está, o al revés, y eso se descubre tarde, discutiendo con el cliente.
+
+## Lo que intenté primero (y por qué lo dejé)
+
+<Callout title="Lo que descarté" variant="warning">
+  La primera idea fue mandar la imagen a una **API de OCR en la nube** o a un modelo multimodal. Lee
+  bien, casi sin esfuerzo de mi parte. La descarté por tres razones concretas: un comprobante de pago
+  lleva **datos personales y bancarios** que no quería subir a un tercero, cada lectura tenía un
+  **costo** por volumen de cobranzas, y sumaba una **dependencia de red** a un paso que debía ser
+  inmediato. Para un sistema privado de manejo de dinero, enviar cada captura afuera era un precio
+  demasiado alto por comodidad.
+</Callout>
+
+Mi segundo intento fue correr **Tesseract sobre la captura completa**, tal cual llegaba. El resultado era ruido: encabezados, logos, "¡Yapeaste!", emojis y el monto, todo mezclado, y la lectura del número fallaba seguido. El OCR no estaba mal; le estaba dando una imagen mal preparada.
+
+## Qué hice: OCR en el navegador, con la imagen preparada
+
+Me quedé con **Tesseract.js corriendo en el cliente** —la imagen nunca sale del dispositivo— pero cambié lo que le daba de comer. En vez de la captura entera, un preprocesamiento acota el trabajo:
+
+- **Recorto la región** donde vive el monto y el número de operación, no toda la pantalla.
+- Paso la imagen a **escala de grises y aplico umbral** para separar el texto del fondo.
+- Leo, y luego **valido con reglas** el formato del monto y del número de operación antes de aceptarlos.
+
+<FlowDiagram
+  label="Del voucher a la cuota conciliada"
+  steps={[
+    {
+      tag: "Captura",
+      title: "Comprobante Yape/Plin",
+      items: ["Se queda en el dispositivo", "No se sube a un tercero"],
+    },
+    {
+      tag: "OCR",
+      title: "Tesseract.js en el navegador",
+      items: ["Recorte de la región", "Grises y umbral", "Monto, fecha y operación"],
+      highlight: true,
+    },
+    {
+      tag: "Confirmación",
+      title: "La persona valida",
+      items: ["Revisa el monto leído", "Concilia contra el cronograma"],
+    },
+  ]}
+/>
+
+El último paso es a propósito humano: el OCR propone los datos, pero **la persona confirma el monto antes de conciliarlo** contra el cronograma de cuotas y la mora. El sistema quita la digitación, no el criterio. Una vez confirmado, el pago queda trazado en el registro de auditoría, atado a su cuota.
+
+## Resultado
+
+El dato ya no se escribe: se lee, se revisa y se concilia. Eso **elimina la digitación manual** de los comprobantes —que era la fuente principal de errores de monto— y deja cada pago con su rastro contra la cuota correspondiente. Soy honesto con el límite: el OCR no es perfecto con capturas borrosas o recortadas raras, y por eso el diseño mantiene la confirmación humana en lugar de prometer una lectura automática infalible.
+
+## Qué aprendí
+
+- "Lo lee una IA" es tentador, pero en datos sensibles **dónde** se procesan importa tanto como qué tan bien se leen. El navegador fue suficiente y no subió nada.
+- El OCR mejora muchísimo cuando le preparas la imagen: recortar y binarizar valió más que cambiar de motor.
+- Automatizar la captura del dato sin quitar la confirmación humana es lo que hace que el sistema sea rápido **y** confiable al mismo tiempo.

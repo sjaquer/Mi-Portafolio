@@ -1,0 +1,65 @@
+En una planta agroindustrial el inventario no es una lista: es dinero que se puede echar a perder. Construí **LogINV** para un almacén de insumos donde el stock se contaba en papel, los vencimientos sorprendían y las compras se hacían a las apuradas cuando algo ya faltaba. El corazón del sistema no fue la pantalla bonita de stock, sino la pregunta que nadie respondía a tiempo: **¿cuándo hay que volver a comprar?** Esta nota cuenta cómo llegué al punto de reorden y qué probé antes que no funcionó.
+
+## El problema: no es "cuánto queda", es "cuándo pedir"
+
+Un almacén con materia prima, empaque y producto terminado tiene tres dolores a la vez:
+
+- **Descuadres** entre lo que dice el papel y lo que hay en el estante.
+- **Mermas** por insumos que vencen sin que nadie los alerte.
+- **Compras de pánico**: el insumo se acaba, la producción se detiene y se compra caro y rápido.
+
+Mirar el stock actual no resuelve ninguno. Un número que baja no te dice si tienes que actuar hoy o dentro de dos semanas. Eso depende de cuánto se consume por día y de cuánto tarda el proveedor en entregar.
+
+## Lo que intenté primero (y por qué lo dejé)
+
+<Callout title="Lo que descarté" variant="warning">
+  La primera versión usaba un **stock mínimo fijo**: "avisar cuando queden menos de N unidades". Es
+  lo más fácil de programar, pero falla de las dos formas posibles. Si el proveedor se demora, el
+  mínimo fijo avisa tarde y igual te quedas sin insumo; si el consumo baja, mantienes de más un
+  producto que va a vencer. El número fijo no sabía nada del tiempo de entrega ni de la demanda, que
+  son justo las dos variables que deciden.
+</Callout>
+
+También probé alertar **solo por fecha de caducidad**. Servía para las mermas, pero no para el desabastecimiento: un insumo puede estar lejísimos de vencer y a punto de acabarse igual. Eran dos alertas distintas respondiendo a dos preguntas distintas, y las junté en una sola regla.
+
+## Qué hice: un punto de reorden que se calcula solo
+
+Cambié el mínimo fijo por un **punto de reorden (ROP)**, la cantidad a partir de la cual conviene volver a pedir para no quedarse sin stock mientras llega la compra:
+
+> ROP = (consumo promedio diario × días de entrega del proveedor) + stock de seguridad
+
+El consumo promedio sale del histórico de salidas del propio almacén; los días de entrega, de cada proveedor; y el stock de seguridad absorbe la variación de un mes movido. Cuando el stock de un insumo cruza su ROP, LogINV lo marca para reposición sin que nadie tenga que mirar la lista.
+
+<FlowDiagram
+  label="Cómo LogINV decide reponer"
+  steps={[
+    {
+      tag: "Datos",
+      title: "Histórico y proveedor",
+      items: ["Consumo diario", "Días de entrega", "Stock de seguridad"],
+    },
+    {
+      tag: "Motor",
+      title: "Punto de reorden",
+      items: ["ROP por insumo", "Multialmacén", "Semáforo de caducidad"],
+      highlight: true,
+    },
+    {
+      tag: "Acción",
+      title: "Alerta a tiempo",
+      items: ["Reponer antes de faltar", "Sin compra de pánico"],
+    },
+  ]}
+/>
+
+Alrededor de ese motor, lo demás es lo que hace que el dato sea confiable: conteos desde el celular con lectura de código de barras (para que el papel no mienta), soporte multialmacén para no mezclar materia prima con producto terminado, un semáforo de caducidad que ordena por criticidad, y modo offline porque en planta la señal falla. Es una PWA para que el operario la use desde su equipo sin instalar nada.
+
+## Resultado
+
+El cambio operativo es que la reposición dejó de depender de que alguien "se diera cuenta". El sistema avisa cuando corresponde pedir, no cuando ya faltó, y separa esa alerta de la de vencimiento. **No cronometré ni medí en cifras la reducción de mermas**, así que no doy un porcentaje: lo honesto es decir que el objetivo del diseño fue eliminar las dos causas de pérdida —quedarse sin insumo y dejar vencer— y que el ROP ataca la primera por definición.
+
+## Qué aprendí
+
+- Un inventario útil no responde "cuánto queda", responde "cuándo actúo". La fórmula correcta mete el **tiempo** en la ecuación.
+- Un umbral fijo es tentador porque es fácil, pero esconde las dos variables que importan: demanda y plazo de entrega.
+- Debí dejar instrumentada la medición de mermas desde el día uno; sin línea base, tengo un mejor proceso pero no una cifra que contar.
