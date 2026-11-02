@@ -95,6 +95,9 @@ const allNotes: Note[] = [
       "Cómo automaticé un reporte de convenios con Office Scripts y Power Automate leyendo columnas por su nombre, sin pedirle a nadie que deje de usar Excel.",
     date: "2026-10-13",
     pillar: "pymes",
+    cover: "/img/notas/excel-que-no-se-rompe.webp",
+    coverAlt:
+      "Cuadrícula de hoja de cálculo con columnas leídas por nombre mediante etiquetas y reconexión limpia.",
   },
   {
     slug: "empleo-pertinente-reglas-ocde",
@@ -103,6 +106,9 @@ const allNotes: Note[] = [
       "Convertí un criterio que dependía de quién leía cada encuesta en reglas explícitas: pertinencia horizontal y vertical, cargos ambiguos y rubro de empresa.",
     date: "2026-10-13",
     pillar: "construyendo",
+    cover: "/img/notas/empleo-pertinente-reglas-ocde.webp",
+    coverAlt:
+      "Diagrama de clasificación ordenando puntos dispersos en dos carriles de pertinencia horizontal y vertical.",
   },
   {
     slug: "robot-sunat-playwright",
@@ -111,6 +117,9 @@ const allNotes: Note[] = [
       "Playwright sobre un portal con iframes y widgets difíciles: selectores que resisten cambios, validación de totales y dos pasos que dejé a una persona.",
     date: "2026-10-13",
     pillar: "pymes",
+    cover: "/img/notas/robot-sunat-playwright.webp",
+    coverAlt:
+      "Flujo escalonado de automatización con un punto de control y verificación humana.",
   },
   {
     slug: "postgresql-vs-firestore",
@@ -119,6 +128,9 @@ const allNotes: Note[] = [
       "Por qué usé Firestore para comandas e inventario y PostgreSQL para permisos, exclusiones y análisis, y qué me costó cada elección en la práctica.",
     date: "2026-10-13",
     pillar: "construyendo",
+    cover: "/img/notas/postgresql-vs-firestore.webp",
+    coverAlt:
+      "Diagrama comparativo con tablas relacionales enlazadas a la izquierda y documentos distribuidos a la derecha.",
   },
   {
     slug: "eventos-ga4-portafolio",
@@ -127,6 +139,9 @@ const allNotes: Note[] = [
       "Cómo diseñé la medición de mi portafolio: eventos tipados, consentimiento por defecto denegado y el error de parámetros que encontré al probar en producción.",
     date: "2026-10-12",
     pillar: "medicion",
+    cover: "/img/notas/eventos-ga4-portafolio.webp",
+    coverAlt:
+      "Esquema de eventos con chips conectados a un gráfico de barras y control de consentimiento.",
   },
   {
     slug: "validar-correos-antes-de-una-campana",
@@ -135,6 +150,9 @@ const allNotes: Note[] = [
       "Por qué verificar una base de correos antes de enviar protege la reputación de las cuentas, y cómo lo resolví con Python, registros MX y reintentos.",
     date: "2026-10-12",
     pillar: "construyendo",
+    cover: "/img/notas/validar-correos-antes-de-una-campana.webp",
+    coverAlt:
+      "Embudo de verificación de correos filtrando nodos inválidos y validando los correctos.",
   },
   {
     slug: "tres-tareas-para-automatizar",
@@ -143,6 +161,9 @@ const allNotes: Note[] = [
       "Pedidos que se copian a mano, inventario que se cuadra al cierre y datos que viven en tres lugares: tres automatizaciones simples que vi funcionar.",
     date: "2026-10-12",
     pillar: "pymes",
+    cover: "/img/notas/tres-tareas-para-automatizar.webp",
+    coverAlt:
+      "Tres ciclos de tareas repetitivas simplificándose en flujos directos de una sola flecha.",
   },
   {
     slug: "por-que-redisene-mi-portafolio",
@@ -151,6 +172,9 @@ const allNotes: Note[] = [
       "La versión anterior se veía bien, pero no la encontraban los buscadores y contaba otra historia que mi CV. Qué cambié, en qué orden y qué aprendí.",
     date: "2026-10-12",
     pillar: "construyendo",
+    cover: "/img/notas/por-que-redisene-mi-portafolio.webp",
+    coverAlt:
+      "Comparativa antes y después con cuadrícula ordenada y cota de medición técnica.",
   },
 ];
 
