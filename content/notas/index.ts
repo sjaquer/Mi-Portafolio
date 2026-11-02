@@ -40,6 +40,9 @@ const allNotes: Note[] = [
       "Cambié el stock mínimo fijo de LogINV por un punto de reorden que mete el tiempo de entrega y la demanda en la ecuación: avisa antes de faltar, no después.",
     date: "2026-11-01",
     pillar: "construyendo",
+    cover: "/img/notas/loginv-punto-de-reorden.webp",
+    coverAlt:
+      "Esquema abstracto de estantería de almacén con nivel de inventario descendiendo hacia la línea de punto de reorden.",
   },
   {
     slug: "optimizar-vuelos-cp-sat",
@@ -48,6 +51,9 @@ const allNotes: Note[] = [
       "ORDEV pasó de un algoritmo codicioso que había que parchear caso por caso a un modelo CP-SAT que declara peso, combustible y prioridad y no puede romperlos.",
     date: "2026-10-31",
     pillar: "construyendo",
+    cover: "/img/notas/optimizar-vuelos-cp-sat.webp",
+    coverAlt:
+      "Grafo abstracto de nodos ortogonales sobre cuadrícula con la ruta óptima calculada por el solver.",
   },
   {
     slug: "leer-vouchers-yape-con-ocr",
@@ -56,6 +62,9 @@ const allNotes: Note[] = [
       "Por qué descarté la API de OCR en la nube y resolví la lectura de comprobantes con Tesseract.js en el navegador, imagen preparada y confirmación humana.",
     date: "2026-10-30",
     pillar: "herramientas",
+    cover: "/img/notas/leer-vouchers-yape-con-ocr.webp",
+    coverAlt:
+      "Tarjeta de comprobante de pago con marco de escaneo sobre los campos de monto, fecha y número de operación.",
   },
   {
     slug: "bot-whatsapp-a-pedido-estructurado",
@@ -64,6 +73,9 @@ const allNotes: Note[] = [
       "Las palabras clave no aguantaron el lenguaje real. Así pasé el bot de Big Jack a un modelo con salida estructurada, validada contra la carta y confirmada.",
     date: "2026-10-29",
     pillar: "herramientas",
+    cover: "/img/notas/bot-whatsapp-a-pedido-estructurado.webp",
+    coverAlt:
+      "Burbuja de mensaje de chat transformándose en una comanda estructurada y validada contra la carta.",
   },
   {
     slug: "validacion-juicio-expertos-v-de-aiken",
@@ -72,6 +84,9 @@ const allNotes: Note[] = [
       "Una web estática que genera el certificado firmado en PDF y un script en Python que lee esos PDF y calcula la V de Aiken. Con demo y código abiertos.",
     date: "2026-10-26",
     pillar: "construyendo",
+    cover: "/img/notas/validacion-juicio-expertos-v-de-aiken.webp",
+    coverAlt:
+      "Fichas de evaluación con verificación convergiendo en un certificado con línea de firma.",
   },
   {
     slug: "excel-que-no-se-rompe",
