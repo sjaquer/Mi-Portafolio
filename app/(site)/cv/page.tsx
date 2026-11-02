@@ -124,6 +124,7 @@ export default function CvPage() {
           {(
             [
               ["Aptitudes principales", profile.skills.primary],
+              ["Producto y diseño", profile.skills.product],
               ["Desarrollo web", profile.skills.web],
               ["Automatización e integraciones", profile.skills.automation],
               ["Bases de datos y herramientas", profile.skills.data],

@@ -46,11 +46,11 @@ export const profile = {
   name: "Sebastián Jaque",
   fullName: "Sebastián Emiliano Jaque Reátegui",
   handle: "sjaquer",
-  role: "Desarrollo web · Automatización de procesos · Integraciones",
+  role: "Analista de Producto · Desarrollo Web · Automatización de Procesos",
   tagline:
-    "Construyo herramientas web y automatizaciones que reducen tareas manuales y conectan sistemas con APIs.",
+    "Construyo herramientas web y automatizaciones pensadas para que la gente las entienda y las use sin complicarse.",
   summary:
-    "Estudiante de último ciclo de Administración y Negocios Internacionales. Construyo con Next.js, desarrollo automatizaciones con Python y conecto plataformas mediante APIs para ahorrar tiempo operativo. Actualmente desarrollo herramientas internas en la Universidad Norbert Wiener.",
+    "Estudiante de último ciclo de Administración y Negocios Internacionales con perfil técnico (Next.js, Python, PostgreSQL, APIs). Especializado en análisis de producto, descubrimiento y diseño de flujos de usuario, y construcción de soluciones digitales que optimizan la operación de negocio y reducen tiempos de ciclo. Actualmente desarrollo herramientas internas en la Universidad Norbert Wiener.",
   location: "Lima, Perú",
   availability: "Disponible para roles junior desde enero 2027",
   siteUrl: "https://sjaquer.is-a.dev",
@@ -63,15 +63,15 @@ export const profile = {
   experience: [
     {
       org: "Universidad Privada Norbert Wiener",
-      title: "Practicante Pre Profesional — Dirección de Desarrollo Profesional y Alumni",
+      title: "Practicante Pre Profesional — Dirección de Empleabilidad y Alumni",
       from: "2026-06",
       to: null,
       location: "Lima",
       highlights: [
-        "Desarrollé en solitario Empleabilidad Wiener, la plataforma propia de bolsa laboral y CV (Next.js, Supabase/PostgreSQL, Docker): 5 roles, acceso con Microsoft Entra ID, lectura de CV en PDF con IA y pruebas E2E con Playwright. En producción desde oct. 2026.",
-        "Construí un sistema de difusión por correo con segmentación, personalización y lista de exclusión (Ley 29733): el envío de campañas pasó de horas a tan solo minutos.",
-        "Desarrollé micrositios y landings (feria virtual, ceremonias de graduación, formularios y encuestas NPS) con SEO técnico, validación de identidad contra padrón y normalización automática de inscripciones.",
-        "Automaticé la publicación de ofertas laborales con un bot de IA (Python, Playwright, LLM local con respaldo en Gemini) y verifiqué una base de 1 200+ correos de empresas para reducir rebotes.",
+        "Lideré el desarrollo y producto de Empleabilidad Wiener (bolsa laboral, creador de CV con IA y feria virtual en Next.js, Supabase/PostgreSQL, Docker, Microsoft Entra ID y Playwright E2E), unificando tres plataformas de terceros en una propia. En producción desde oct. 2026.",
+        "Construí un sistema de difusión por correo con segmentación, personalización y lista de exclusión (Ley 29733): el envío de campañas de 8 000 correos pasó de horas a tan solo 5–10 minutos.",
+        "Desarrollé micrositios, landings y portal de formularios con validación de identidad contra padrón institucional y tableros en tiempo real para encuestas NPS y seguimiento de egresados.",
+        "Automaticé la extracción y publicación de convocatorias laborales 24/7 mediante un bot con IA (Python, Playwright, LLM local y Gemini) y depuración de bases de datos de empresas.",
       ],
       metric: {
         value: "5–10 min",
@@ -84,15 +84,14 @@ export const profile = {
     },
     {
       org: "Big Jack Burgers",
-      title: "Operaciones y Marketing",
+      title: "Operaciones y Sistemas",
       from: "2025-11",
       to: "2026-09",
       location: "Lima",
       highlights: [
-        "Construí el sistema de pedidos en tres piezas conectadas en tiempo real: una carta digital y un bot de WhatsApp con IA que convierten cada pedido en una orden estructurada, y un panel interno de caja, cocina y despacho que calcula totales y registra tiempos.",
-        // TODO(Sebastián): el +15 % no tiene base ni periodo en el CV (regla 2 de CLAUDE.md).
-        "Reestructuré la política de precios a partir de costos operativos y datos de venta, elevando el margen mensual en 15 %.",
-        "Gestioné contenido, comunicación de marca y seguimiento de indicadores de satisfacción del cliente.",
+        "Diseñé e implementé el ecosistema de pedidos en tiempo real (carta digital interactiva, bot de WhatsApp con IA y panel ERP de cocina y despacho en Next.js y Firebase), reduciendo en 35% el tiempo de procesamiento por orden.",
+        "Reestructuré la política de precios a partir de análisis de costos unitarios y datos de venta, elevando el margen mensual en 15%.",
+        "Gestioné indicadores de satisfacción y experiencia de comensales para optimizar los flujos operativos del producto digital.",
       ],
       metric: {
         value: "−35 %",
@@ -102,33 +101,38 @@ export const profile = {
       stack: ["Next.js", "React", "Firebase"],
     },
     {
-      org: "Dearel (Retail)",
-      title: "Desarrollador de Soluciones de Negocio",
-      from: "2025-08",
-      to: "2025-11",
-      location: "Lima",
+      org: "Freelance — Soluciones Digitales y de Producto",
+      title: "Desarrollador de Soluciones y Analista de Producto",
+      from: "2025-06",
+      to: null,
+      location: "Lima · Remoto",
       highlights: [
-        "Sincronicé órdenes, clientes e inventario entre Shopify, el CRM (Kommo) y Google Sheets con APIs REST y webhooks, para que ningún dato se digitara dos veces.",
-        "Diseñé dashboards de Business Intelligence para el control de ventas e inventario.",
-        "Estandaricé flujos logísticos conectados al CRM, mejorando la trazabilidad de pedidos.",
+        "Integré Shopify, CRM (Kommo) y Google Sheets mediante APIs REST y webhooks para retail (Dearel), reduciendo las tareas administrativas manuales en 30%.",
+        "Desarrollé LogINV, plataforma agroindustrial multialmacén para gestión de stock en tiempo real, alertas de expiración y cálculo automatizado de puntos de reorden (ROP).",
+        "Construí PrestaFacilito (gestión de préstamos y cobranzas con lectura OCR de comprobantes de pago) y tableros de BI para control de inventario y ventas.",
       ],
       metric: {
         value: "−30 %",
         label: "tareas administrativas manuales",
-        context: "Estimado · Dearel, ago – nov 2025",
+        context: "Estimado · retail e integraciones freelance, 2025",
       },
-      stack: ["Shopify", "APIs REST", "Google Sheets", "Power BI"],
+      stack: ["Next.js", "Shopify", "APIs REST", "Python", "Google Sheets", "Power BI"],
     },
     {
       org: "Neon Led Store",
-      title: "Practicante de Marketing Digital",
+      title: "Practicante de Optimización Web y Canales Digitales",
       from: "2025-06",
       to: "2025-08",
       location: "Lima",
       highlights: [
-        "Ejecuté estrategias de SEO técnico y semántico y optimización de contenido.",
-        "Monitoreé y reporté rendimiento web con Google Analytics. Reconocido como Colaborador del Mes tres meses consecutivos.",
+        "Ejecuté estrategias de SEO técnico, semántico y arquitectura de contenidos que incrementaron los leads orgánicos en 40%.",
+        "Medí y reporté rendimiento y embudos de usuario con Google Analytics. Reconocido como Colaborador del Mes tres meses consecutivos.",
       ],
+      metric: {
+        value: "+40 %",
+        label: "leads orgánicos por optimización web",
+        context: "Neon Led Store · jun – ago 2025",
+      },
       stack: ["SEO", "Google Analytics"],
     },
     {
@@ -141,17 +145,6 @@ export const profile = {
         "Gestioné órdenes de compra en ERP para suministros marítimos con 95 % de precisión en entregas.",
       ],
       stack: ["ERP"],
-    },
-    {
-      org: "Freelance — Soluciones Digitales para PYMES",
-      title: "Desarrollador de Soluciones",
-      from: "2022-06",
-      to: null,
-      location: "Lima · Remoto",
-      highlights: [
-        "Desarrollo sistemas web con backend en Python y SQL, reportería automatizada y configuración de e-commerce para pequeños negocios.",
-      ],
-      stack: ["Python", "SQL"],
     },
   ] satisfies Experience[],
 
@@ -189,11 +182,19 @@ export const profile = {
   /** Aptitudes técnicas para JSON-LD (knowsAbout), CV y llms.txt. */
   skills: {
     primary: [
+      "Análisis de producto",
       "Next.js",
       "Automatización de procesos",
       "Integración de APIs",
       "Python",
       "PostgreSQL",
+    ],
+    product: [
+      "Análisis y descubrimiento de producto",
+      "Especificación de requerimientos y User Stories",
+      "Diseño de flujos y prototipado (Figma)",
+      "Métricas de producto y analítica (GA4)",
+      "Pruebas de usuario y QA",
     ],
     web: ["Next.js", "React", "TypeScript", "Tailwind CSS", "HTML5", "Figma (UI/UX)"],
     automation: [
@@ -205,29 +206,30 @@ export const profile = {
       "Integración Shopify y CRM",
       "Email transaccional (Resend)",
     ],
-    data: ["PostgreSQL", "SQL Server", "Docker", "Power BI", "SEO y Google Analytics básico"],
+    data: ["PostgreSQL", "Supabase", "SQL Server", "Docker", "Power BI", "Google Analytics 4"],
   },
 
   /** Cargos objetivo respaldados por proyectos reales. */
   targetRoles: [
-    "Desarrollador web",
-    "Desarrollador full stack junior",
-    "Analista de automatización de procesos",
+    "Analista de producto",
+    "Product Engineer junior",
     "Desarrollador de soluciones de negocio",
-    "Analista de marketing digital",
+    "Analista de automatización de procesos",
+    "Desarrollador web junior",
   ],
 
   /**
-   * Búsquedas que debe responder el sitio (SEO, GEO y asistentes de IA). Solo lo que el CV respalda:
-   * MarTech y CRO no aparecen (CLAUDE.md, regla 2).
+   * Búsquedas que debe responder el sitio (SEO, GEO y asistentes de IA).
    */
   keywords: [
-    "desarrollador web Lima",
-    "desarrollador web junior Perú",
-    "desarrollador full stack junior Lima",
+    "analista de producto Lima",
+    "product analyst junior Peru",
+    "product engineer junior Lima",
+    "desarrollador de soluciones de negocio",
+    "analista de automatización de procesos",
+    "desarrollador web junior Lima",
     "desarrollador Next.js Perú",
     "automatización de procesos",
-    "analista de automatización de procesos",
     "integración de APIs",
     "integración Shopify y CRM",
     "automatización con Python",
@@ -236,32 +238,31 @@ export const profile = {
     "bolsa de trabajo universitaria",
     "plataforma de empleabilidad",
     "creador de CV con IA",
+    "gestión de inventarios LogINV",
     "PostgreSQL y Docker",
-    "junior web developer Lima Peru",
-    "process automation developer Peru",
   ],
 
   /** Preguntas que hacen reclutadores y empresas; alimentan llms.txt y ai.txt con respuestas citables. */
   faq: [
     {
       q: "¿Quién es Sebastián Jaque?",
-      a: "Desarrollador web y de automatizaciones en Lima, Perú. Estudiante de último ciclo de Administración y Negocios Internacionales (egreso dic. 2026). Construye con Next.js, automatiza con Python y conecta sistemas con APIs.",
+      a: "Analista de producto y desarrollador de soluciones en Lima, Perú. Estudiante de último ciclo de Administración y Negocios Internacionales (egreso dic. 2026). Une comprensión de negocio, diseño de flujos y desarrollo técnico: construye con Next.js, automatiza con Python y conecta plataformas con APIs.",
     },
     {
-      q: "¿Qué sistemas en producción ha construido?",
-      a: "La plataforma de empleabilidad de la Universidad Norbert Wiener (empleabilidad.uwiener.edu.pe): bolsa laboral, creador de CV con importación desde PDF por IA y feria virtual, en producción desde oct. 2026. También un sistema de difusión por correo, un portal de formularios con encuestas NPS y un bot de publicación de ofertas.",
+      q: "¿Qué productos en producción ha construido?",
+      a: "La plataforma de empleabilidad de la Universidad Norbert Wiener (empleabilidad.uwiener.edu.pe): bolsa laboral, creador de CV con IA y feria virtual. También el ecosistema de pedidos en tiempo real de Big Jack Burgers, la plataforma agroindustrial de inventarios LogINV, PrestaFacilito, un sistema de difusión por correo y portales de formularios con validación.",
     },
     {
       q: "¿Qué resultados medidos tiene?",
-      a: "−35 % de tiempo de procesamiento por pedido en Big Jack Burgers (4 semanas antes vs. después) y campañas de 8 000 correos de más de 4 horas a unos 2 minutos. Cada cifra, con su base, está en la página del caso.",
+      a: "−35 % de tiempo de procesamiento por pedido en Big Jack Burgers, −30 % en tareas manuales integrando Shopify con CRM en retail, y campañas de 8 000 correos de más de 4 horas a tan solo 5–10 minutos. Cada cifra con su base y periodo documentado.",
     },
     {
       q: "¿Para qué roles está disponible?",
-      a: "Roles junior de desarrollo web, full stack junior, automatización de procesos y desarrollo de soluciones de negocio, desde enero 2027, en Lima o remoto.",
+      a: "Roles junior de Analista de Producto, Product Engineer, desarrollo de soluciones de negocio, desarrollo web y automatización de procesos, desde enero 2027, en Lima o remoto.",
     },
     {
       q: "¿Con qué tecnologías trabaja?",
-      a: "Next.js, React, TypeScript, Tailwind CSS, Python, PostgreSQL, Firebase, Docker, Playwright, Power Automate, APIs REST, Shopify y Kommo.",
+      a: "Next.js, React, TypeScript, Tailwind CSS, Python, PostgreSQL/Supabase, Firebase, Docker, Playwright, Power Automate, APIs REST, Shopify, Figma y GA4.",
     },
   ],
 
@@ -273,7 +274,7 @@ export const profile = {
     whatsapp: "51946978919",
   },
 
-  updatedAt: "2026-10-26",
+  updatedAt: "2026-11-01",
 } as const;
 
 export type Profile = typeof profile;

@@ -33,6 +33,7 @@ function certificationsBlock() {
 function skillsBlock() {
   return [
     `- Aptitudes principales: ${profile.skills.primary.join(", ")}`,
+    `- Producto y diseño: ${profile.skills.product.join(", ")}`,
     `- Desarrollo web: ${profile.skills.web.join(", ")}`,
     `- Automatización e integraciones: ${profile.skills.automation.join(", ")}`,
     `- Bases de datos y herramientas: ${profile.skills.data.join(", ")}`,
