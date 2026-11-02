@@ -1,0 +1,63 @@
+PrestaFacilito es un sistema privado para administrar préstamos y cobranzas: cronograma de pagos con mora que se calcula sola, lectura por OCR de los comprobantes de Yape o Plin para no digitar montos, y un registro de cada acción. Como es una herramienta de **un solo usuario y con datos sensibles**, no comparto el enlace ni el repositorio. Lo explico aquí con capturas de **datos de referencia, no reales** (los nombres y montos que se ven están simulados).
+
+## Contexto de negocio
+
+Prestar dinero de forma personal es, en el fondo, un problema de datos: quién debe, cuánto, desde cuándo, qué pagó y qué falta. Todo eso solía vivir en una hoja de cálculo que crecía sola y que, cada mes, había que cuadrar a mano.
+
+## El problema
+
+La hoja de cálculo fallaba en los tres momentos que más importan:
+
+- **Al registrar un pago**, el monto se escribía a mano desde la captura del Yape. Un dígito mal copiado desordenaba una cuota.
+- **Al revisar la cartera**, no había forma rápida de ver quién estaba al día, quién por vencer y quién en mora.
+- **Al conciliar**, los comprobantes vivían sueltos en el chat, sin quedar atados a la cuota que pagaban.
+
+## Lo que descarté
+
+La lectura de comprobantes la resolví con **OCR en el navegador** (Tesseract.js), después de descartar una API de OCR en la nube por costo y privacidad. El detalle de esa decisión está en la nota [Leer el monto de un voucher de Yape sin digitarlo](/notas/leer-vouchers-yape-con-ocr). Aquí me concentro en el producto completo.
+
+## La solución
+
+Un sistema web que ordena la cobranza alrededor de una pregunta diaria: **¿a quién hay que cobrar hoy y cuánto?**
+
+### Panel de cobranzas del día
+
+La pantalla de inicio responde esa pregunta: lo atrasado, lo que se cobra hoy, y la lista de clientes ordenada por estado (atrasado, por vencer, más adelante), con el monto exacto a cobrar por cada uno.
+
+![Panel de cobranzas de PrestaFacilito con totales del día y la lista de clientes por estado](/img/proyectos/prestafacilito/01-panel-cobranzas.jpg)
+
+_Captura con datos de referencia, no reales._
+
+### Detalle del préstamo: cronograma, mora y liquidación
+
+Cada préstamo tiene su ficha: el mínimo de interés del mes, cuánto costaría liquidarlo hoy, el capital restante y el cronograma mes a mes. La mora y el reparto de cada abono (primero interés atrasado, luego el del mes, y el resto baja el capital) se calculan solos.
+
+![Detalle de un préstamo con cronograma mes a mes, mora y monto para liquidar](/img/proyectos/prestafacilito/02-detalle-prestamo.jpg)
+
+_Captura con datos de referencia, no reales._
+
+### Comprobantes leídos, no digitados
+
+Cada pago queda atado a su comprobante. El monto, la fecha y el número de operación se leen por OCR desde la captura; la persona confirma y el pago se concilia contra la cuota. En esta captura los comprobantes se muestran **difuminados a propósito**.
+
+![Bandeja de comprobantes de pago vinculados a cada cliente, con las imágenes difuminadas](/img/proyectos/prestafacilito/03-vouchers-ocr.jpg)
+
+_Comprobantes difuminados; datos de referencia, no reales._
+
+### Cartera de clientes
+
+Los clientes se gestionan con su historial, su puntaje de comportamiento de pago y un acceso directo para llamar o escribir por WhatsApp.
+
+![Lista de clientes con puntaje de pago y accesos para llamar o escribir por WhatsApp](/img/proyectos/prestafacilito/04-clientes.jpg)
+
+_Datos de referencia, no reales (nombres y teléfonos simulados)._
+
+## Resultado
+
+El dato ya no se escribe: se lee, se confirma y se concilia. Eso **elimina la digitación manual** de los comprobantes —la fuente principal de errores de monto— y deja cada pago con su rastro contra la cuota. La cobranza del día dejó de depender de revisar una hoja: el sistema dice a quién cobrar y cuánto. No cronometré el proceso manual anterior, así que no doy una cifra de ahorro; lo honesto es decir que quitó la transcripción y ordenó la mora.
+
+## Qué aprendí
+
+- Un sistema de cobranzas no administra préstamos: administra **el estado de cada cuota**. Diseñarlo alrededor de "¿a quién cobro hoy?" hizo el resto más simple.
+- Automatizar la captura del dato sin quitar la confirmación humana es lo que lo hace rápido **y** confiable.
+- Documentar un proyecto privado con capturas de datos de referencia permite mostrar el trabajo sin exponer a nadie ni dejar un enlace vulnerable.

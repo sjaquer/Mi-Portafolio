@@ -410,6 +410,37 @@ const allCases: CaseStudy[] = [
       highlight: 1,
     },
   },
+  {
+    slug: "prestafacilito",
+    title: "Cobranzas sin digitar: cronograma, mora y OCR de comprobantes",
+    subtitle:
+      "Sistema privado de préstamos y cobranzas: cronograma con mora automática, lectura por OCR de vouchers de Yape/Plin y conciliación por cuota. Documentado con capturas de datos de referencia, sin enlace ni repositorio.",
+    problem:
+      "Las cobranzas vivían en una hoja de cálculo: montos digitados a mano desde el Yape, cuotas vencidas que se descubrían tarde y comprobantes sin conciliar.",
+    result: {
+      value: "Sin digitar",
+      label: "los montos de los comprobantes se leen por OCR, no se escriben",
+      context: "Proyecto privado de gestión de préstamos y cobranzas · 2025–2026",
+    },
+    type: "automatizacion",
+    context: "Proyecto privado · gestión de préstamos y cobranzas",
+    role: "Diseño de producto y desarrollo completo",
+    duration: "2025 – 2026",
+    year: 2026,
+    stack: ["React", "Express", "Supabase/PostgreSQL", "Tesseract.js"],
+    status: "produccion",
+    updatedAt: "2026-11-01",
+    cover: {
+      label: "Del voucher a la cuota",
+      nodes: [
+        { tag: "Captura", title: "Voucher" },
+        { tag: "Lectura", title: "OCR" },
+        { tag: "Control", title: "Cuota y mora" },
+        { tag: "Registro", title: "Auditoría" },
+      ],
+      highlight: 1,
+    },
+  },
 ];
 
 /** Casos publicables en este build (en desarrollo, todos). */
@@ -512,14 +543,6 @@ const allGallery: GalleryItem[] = [
     flow: ["Escenario", "CP-SAT", "Ruta"],
     href: "https://github.com/sjaquer/Optimizador-Vuelos-CP-SAT",
     hrefLabel: "Código del optimizador en GitHub",
-  },
-  {
-    name: "PrestaFacilito",
-    angle:
-      "Gestión de préstamos y cobranzas: cronograma con mora calculada sola, lectura por OCR de comprobantes de pago para no digitar montos y un registro de auditoría de cada acción.",
-    stack: ["React", "Express", "Supabase/PostgreSQL", "Tesseract.js"],
-    flow: ["Voucher", "Cuotas", "Cobranza"],
-    isPrivate: true, // Privado: cobranzas de un solo usuario; se documenta con capturas, sin enlace ni repo.
   },
   {
     name: "Validación de instrumentos por juicio de expertos",
