@@ -208,8 +208,14 @@ const allCases: CaseStudy[] = [
     year: 2026,
     stack: ["React", "TypeScript", "Tailwind CSS", "Apps Script"],
     status: "produccion",
-    updatedAt: "2026-10-11",
+    updatedAt: "2026-11-01",
     institutional: true,
+    links: [
+      {
+        label: "ferialaboralonline.uwiener.edu.pe",
+        href: "https://ferialaboralonline.uwiener.edu.pe",
+      },
+    ],
     cover: {
       label: "Embudo de la feria",
       nodes: [

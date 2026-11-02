@@ -11,6 +11,8 @@ interface Props {
   priority?: boolean;
   /** Ícono del placeholder; sin ícono se muestra el monograma. */
   icon?: Icon;
+  /** Sin borde, radio ni fondo: para recortes especiales (hero con clip diagonal). */
+  frameless?: boolean;
   className?: string;
 }
 
@@ -28,12 +30,12 @@ export function MediaFrame({
   sizes,
   priority,
   icon: PlaceholderIcon,
+  frameless = false,
   className = "",
 }: Props) {
+  const frame = frameless ? "" : "rounded-lg border border-border bg-brand-50";
   return (
-    <div
-      className={`relative overflow-hidden rounded-lg border border-border bg-brand-50 ${ratios[ratio]} ${className}`}
-    >
+    <div className={`relative overflow-hidden ${frame} ${ratios[ratio]} ${className}`}>
       {src ? (
         <Image
           src={src}

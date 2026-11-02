@@ -71,10 +71,9 @@ export default function Home() {
           mueve (no aparece desde transparente) para no retrasar el LCP. */}
       <section
         aria-labelledby="hero-title"
-        className="relative isolate overflow-hidden bg-(image:--gradient-hero) pt-7 pb-8 lg:pt-9 lg:pb-9"
+        className="relative isolate overflow-hidden pt-8 pb-8 lg:pt-10 lg:pb-9"
       >
-        <div aria-hidden className="dot-grid absolute inset-0 -z-10" />
-        <Container className="grid items-center gap-7 lg:grid-cols-12 lg:gap-8">
+        <Container className="grid items-center gap-8 lg:grid-cols-12 lg:gap-8">
           <div className="hero-in lg:col-span-7">
             <p className="text-label-mono text-ink-500">{profile.role}</p>
             {/* Firma: la regla de medición se traza bajo el nombre (§11.2). */}
@@ -119,7 +118,8 @@ export default function Home() {
               ratio="portrait"
               sizes="(min-width: 1024px) 30vw, (min-width: 640px) 66vw, 75vw"
               priority
-              className="mx-auto w-3/4 shadow-md sm:w-2/3 lg:w-full"
+              frameless
+              className="clip-hero mx-auto w-3/4 sm:w-2/3 lg:w-full"
             />
           </div>
         </Container>
@@ -128,13 +128,14 @@ export default function Home() {
       {/* 2. Prueba rápida: banda de identidad (§6.7, §15.4). */}
       <section aria-labelledby="resultados" className="surface-inverse py-8 lg:py-9">
         <Container>
-          <h2 id="resultados" className="text-label-mono text-ink-500">
-            Resultados
+          <h2 id="resultados" className="flex items-center gap-2 text-label-mono text-accent-600">
+            <span aria-hidden className="size-1.5 shrink-0 rounded-full bg-current" />
+            Resultados medidos
           </h2>
           <MeasureRule className="mt-4 mb-6" />
           <ul className="grid gap-6 md:grid-cols-3">
             {proof.map((m) => (
-              <li key={m.label} className="reveal border-l-2 border-border pl-5">
+              <li key={m.label} className="reveal border-l-2 border-accent-600 pl-5">
                 <Metric {...m} />
               </li>
             ))}
@@ -151,6 +152,7 @@ export default function Home() {
               label="Casos de estudio"
               title="Proyectos con resultado"
               lead="El problema, las decisiones y lo que cambió, contado como un artículo corto."
+              tone="amber"
               flush
             />
             <Button
@@ -231,7 +233,13 @@ export default function Home() {
       {notes.length > 0 && (
         <Section aria-labelledby="notas" className="border-t border-border">
           <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
-            <SectionHeader id="notas" label="Notas" title="Lo que estoy aprendiendo" flush />
+            <SectionHeader
+            id="notas"
+            label="Notas"
+            title="Lo que estoy aprendiendo"
+            tone="teal"
+            flush
+          />
             <Button
               href="/notas"
               variant="secondary"
@@ -257,12 +265,12 @@ export default function Home() {
         <Container className="grid items-end gap-7 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <h2 id="cta-final" className="text-h2">
-              ¿Buscas a alguien que entienda el negocio y lo lleve a código?
+              ¿Buscas a alguien que entienda el problema y construya la solución?
             </h2>
             <p className="mt-4 max-w-prose text-lead">
-              Disponible para roles junior desde enero 2027 como desarrollador web, analista de
-              automatización o desarrollador de soluciones. Si tu equipo necesita a alguien que
-              construya la herramienta, conecte los sistemas y mida el impacto, conversemos.
+              Busco mi primer rol formal en análisis de producto o desarrollo de soluciones, desde
+              enero 2027. Si tu equipo necesita a alguien que baje un requerimiento complejo a un
+              flujo claro, construya la herramienta y mida si funciona, conversemos.
             </p>
           </div>
           <div className="flex flex-wrap gap-3 lg:col-span-5 lg:justify-end">

@@ -135,13 +135,10 @@
   color-scheme: dark;
 }
 
-/* ── Degradados tonales (§6.7) ──────────────────────────────────────── */
-:root {
-  --gradient-hero: radial-gradient(120% 90% at 100% 0%, #eef2f7 0%, #fafaf8 60%);
-  --gradient-inverse: linear-gradient(180deg, #13233a 0%, #182b47 100%);
-}
+/* ── v4.1 · Estética limpia (§6.7) ──────────────────────────────────────
+   Se retiran los degradados tonales: el hero usa el fondo de página y la banda
+   de identidad usa color sólido. Menos ruido, más contraste y foco. */
 :root[data-theme="dark"] {
-  --gradient-hero: radial-gradient(120% 90% at 100% 0%, #121a26 0%, #0e1013 60%);
   --color-brand-50: #121a26;
 }
 
@@ -161,7 +158,7 @@
   --color-on-accent: #13233a;
   --color-success-700: #3fc08a;
   --color-focus: #a3baff;
-  background: var(--gradient-inverse);
+  background: var(--color-bg);
   color: var(--color-ink-700);
   color-scheme: dark;
 }

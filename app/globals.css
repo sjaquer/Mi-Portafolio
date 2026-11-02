@@ -87,15 +87,7 @@
   }
 }
 
-/* Retícula de puntos (§6.2) que se desvanece hacia el contenido */
-.dot-grid {
-  background-image: radial-gradient(var(--color-border-strong) 1px, transparent 1px);
-  background-size: 24px 24px;
-  mask-image: radial-gradient(70% 80% at 100% 0%, black, transparent 75%);
-  opacity: 0.35;
-}
-
-/* ── v3.2: microinteracciones y entrada del hero (§11) ──────────────── */
+/* Retícula de puntos solo como placeholder de imagen ausente (§6.8), nunca de fondo. */
 .dot-grid-full {
   background-image: radial-gradient(var(--color-border-strong) 1px, transparent 1px);
   background-size: 16px 16px;
@@ -110,28 +102,53 @@
   transform: scale(1.03);
 }
 
-/* Entrada del hero: solo transform (sin opacidad) para no retrasar el LCP. */
+/* Entrada del hero (v4.1): fade + ascenso escalonado para guiar la lectura de
+   arriba hacia abajo. Se mantiene breve; respeta prefers-reduced-motion. */
 @media (prefers-reduced-motion: no-preference) {
   .hero-in > * {
-    animation: hero-in 600ms var(--ease-standard) both;
+    animation: hero-in 560ms var(--ease-standard) both;
   }
   .hero-in > :nth-child(2) {
-    animation-delay: 60ms;
+    animation-delay: 80ms;
   }
   .hero-in > :nth-child(3) {
-    animation-delay: 120ms;
+    animation-delay: 160ms;
   }
   .hero-in > :nth-child(4) {
-    animation-delay: 180ms;
+    animation-delay: 240ms;
   }
   .hero-in > :nth-child(5) {
-    animation-delay: 240ms;
+    animation-delay: 320ms;
   }
   @keyframes hero-in {
     from {
-      transform: translateY(16px);
+      opacity: 0;
+      transform: translateY(14px);
     }
     to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/* Foto del hero (v4.1): recorte diagonal que rompe el cuadrado y apunta al texto.
+   El borde izquierdo baja en ángulo; la cara queda en la mitad derecha, intacta. */
+.clip-hero {
+  clip-path: polygon(24% 0, 100% 0, 100% 100%, 0 100%);
+}
+/* La imagen del hero entra con un fade propio, más lento que el texto. */
+@media (prefers-reduced-motion: no-preference) {
+  .clip-hero {
+    animation: hero-media 720ms var(--ease-standard) 160ms both;
+  }
+  @keyframes hero-media {
+    from {
+      opacity: 0;
+      transform: scale(1.02);
+    }
+    to {
+      opacity: 1;
       transform: none;
     }
   }

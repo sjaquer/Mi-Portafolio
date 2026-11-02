@@ -377,11 +377,11 @@ Degradados multicolor o saturados, sombras largas, brillos, partículas, toroide
 
 La marca es sobria, no plana. La profundidad se construye con **capas de un mismo tono**, nunca con efectos.
 
-**Degradados tonales**
-- Solo entre dos valores **del mismo tono** y con una diferencia de luminancia mínima: papel `#FAFAF8` → marino-50 `#EEF2F7` (claro) o `#0E1013` → `#121A26` (oscuro).
-- Forma: radial suave desde una esquina, o lineal vertical. Nunca detrás de un párrafo largo sin verificar contraste: `gris-500` sobre marino-50 da 4,7:1 ✅ y `azul-600` 5,8:1 ✅.
-- Dónde: fondo del hero y bandas de identidad. Máximo uno por pantalla.
-- Puede combinarse con la retícula de puntos (§6.2) desvanecida con una máscara.
+**Degradados tonales — retirados en v4.1**
+- A partir de v4.1 no se usan degradados de fondo: ni en el hero ni en la banda de identidad. La profundidad se construye solo con **superficies planas por nivel** (tabla siguiente) y con contraste tipográfico.
+- El hero va sobre el fondo de página (`--color-bg`), sin retícula ni degradado. La banda de identidad (`.surface-inverse`) usa marino-900 **sólido** (`#13233A`).
+- Motivo: la mezcla de degradado + retícula restaba a la estética limpia; plano da más foco a los nodos de contenido y mejor contraste.
+- La retícula de puntos (§6.2) queda **solo** como placeholder de imagen ausente en `MediaFrame` (§6.8) y en los motivos de tarjeta, nunca como fondo de sección.
 
 **Superficies (de abajo hacia arriba)**
 
@@ -934,7 +934,8 @@ Claro por defecto. Un solo color de acción. Cada token apunta a un primitivo de
 - El verde (`success-700`) es **solo** para resultados medidos.
 - `--color-brand` (marino) solo en logo, OG y pie; nunca en botones ni enlaces.
 - Proporción aproximada por pantalla: 90 % neutros, 8 % acento, 2 % verde.
-- Solo degradados tonales (§6.7): `--gradient-hero` y `--gradient-inverse`. Nada de neón ni glassmorphism.
+- **Sin degradados de fondo (v4.1):** superficies planas por nivel (§6.7). Nada de neón ni glassmorphism.
+- **Nodos de sección (v4.1):** la etiqueta mono de una sección puede llevar un punto + color de *wayfinding* que identifica el tipo de contenido y marca prioridad. Único uso decorativo de color permitido, y solo aquí: métricas/`Resultados` → acento azul; `Casos` (proyectos) → ámbar (`chart-2`); `Notas` (artículos) → verde azulado (`chart-3`). Las secciones de apoyo (Experiencia, Qué hago) quedan en neutro para que las importantes resalten. Se implementa en `SectionHeader tone`.
 
 ### 15.4 Superficie invertida (`.surface-inverse`, v3.0)
 
@@ -954,7 +955,7 @@ Redefine los tokens dentro de una banda de identidad (§6.7). Igual en tema clar
 | `--color-accent-700` | `#C5D3FF` | 10,6:1 ✅ |
 | `--color-success-700` | `#3FC08A` | 6,9:1 ✅ |
 
-**Fondos tonales:** `--gradient-hero` (radial papel → marino-50; en oscuro `#0E1013` → `#121A26`) y `--gradient-inverse` (marino-900 → `#182B47`).
+**Fondo (v4.1):** la banda usa marino-900 **sólido** (`--color-bg` = `#13233A`), sin degradado.
 
 ---
 
@@ -1144,8 +1145,7 @@ Cada botón lleva `data-cta="<id>"` para la medición (ver `04-TECH-SEO-MEDICION
 |---|---|
 | `@theme` → `--color-*` | Tema claro (§15.1), `brand-50/900`, `chart-*` (§9) |
 | `:root[data-theme="dark"]` | Tema oscuro (§15.2) |
-| `--gradient-hero` · `--gradient-inverse` | Degradados tonales (§6.7) |
-| `.surface-inverse` | Banda de identidad (§15.4) |
+| `.surface-inverse` | Banda de identidad, marino-900 sólido (§15.4) |
 | `--font-*` · `--text-*` | Familias y escala fluida (§16) |
 | `--spacing-*` · `--container-*` | Espaciado base 4 px, alturas de control, header (§17) |
 | `--radius-*` · `--shadow-*` · `--ease-standard` | Radios, sombras y curva de movimiento (§17.3, §11) |
@@ -1214,3 +1214,4 @@ En Tailwind v4, `@theme` con `initial` anula la escala por defecto: **fuera de l
 | 3.3 | 12 oct 2026 | Revisión de cierre: hero con frase canónica como bajada y retrato real, sin pie decorativo; prioridad de carga por página (§20); inventarios de componentes (§19.2) y archivos (§24) al día; ejemplos de voz y pilares alineados al posicionamiento de desarrollo web + automatización (§2, §12). |
 | 3.4 | 12 oct 2026 | Correos del formulario con la línea gráfica (§13.4.1); se restaura `monograma.svg` con su fondo marino (una exportación lo había dejado solo con las letras blancas) y se regeneran los íconos. |
 | 4.0 | 13 oct 2026 | Auditoría de diseño y UX sobre producción. **Identidad:** metáfora del plano (§1.1) y kit de firma de 6 piezas (§6.9); regla trazada y cota de métricas (§6.1). **Imágenes:** portadas de casos como planos SVG del flujo real en lugar de renders generados con neón (§6.8); retrato con fondo marino-700 y script para rehacerlo (§10.3, §10.6); el prompt base queda para fondos y apoyos (§10.7). **Movimiento:** catálogo con trazado, aparición solo de gráficos, pulso y regla del hero, 100 % CSS (§11). **Contenido:** pilar "IA en agencias" → "Herramientas e IA"; motivo gráfico por pilar (§12.2); el marino pasa a fondo protagonista en redes (§4.3, §12.4, §12.9); flujo de la idea a la pieza (§12.10). **Coherencia:** reglas de degradados unificadas (§4.5, §15.3), §22 apunta a `tokens.css` en lugar de copiarlo, inventarios al día (§19.2, §24). |
+| 4.1 | 1 nov 2026 | **Estética limpia del home.** Se retiran los degradados de fondo y la retícula del hero (§6.7, §15.3, §15.4): hero sobre fondo de página y banda de identidad en marino-900 sólido. **Hero:** retrato con recorte diagonal (`clip-hero`), sin borde ni sombra, que rompe el cuadrado (`MediaFrame frameless`). **Jerarquía:** nodos de sección con color de *wayfinding* por tipo de contenido (métricas azul, proyectos ámbar, notas verde azulado) y apoyo en neutro; bordes de métrica en acento (§15.3). **Movimiento:** entrada del hero con fade + ascenso escalonado y fade propio de la foto (§11). **Contenido:** CTA final al posicionamiento de Producto; enlace en vivo de la feria virtual. |
