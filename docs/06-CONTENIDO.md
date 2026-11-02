@@ -23,13 +23,13 @@
 
 | Término | Uso |
 |---|---|
-| Rol | "Desarrollo web con foco en el usuario · Automatización de procesos" |
-| Dirección (no es título) | Product Engineer: se demuestra en los casos, no se escribe como cargo |
-| Frase de posicionamiento | "Construyo herramientas web y automatizaciones pensadas para que la gente las entienda y las use sin complicarse." |
-| Regla de evidencia | MarTech, CRO, GTM y "medición" no aparecen como experiencia hasta que exista un proyecto real que los respalde (Fases 3 y 6). |
-| Cargos | Exactamente como en el CV (títulos contractuales) |
-| Sección del blog | "Notas" |
-| Proyectos de práctica | "Laboratorio" |
+| **Rol canónico** | "Analista de Producto · Desarrollo Web · Automatización de Procesos" |
+| **Proyección profesional** | Analista de Producto / Product Engineer (Junior): une visión de negocio y usuario con capacidad de construcción técnica |
+| **Frase de posicionamiento** | "Construyo herramientas web y automatizaciones pensadas para que la gente las entienda y las use sin complicarse." |
+| **Regla de evidencia** | Ninguna métrica o afirmación sin contexto real (qué, base, periodo). Cero jerga inflada de marketing. |
+| **Cargos** | Exactamente como en el CV (títulos reales de prácticas y proyectos freelance) |
+| **Sección de artículos** | "Notas" |
+| **Proyectos de práctica** | "Laboratorio" |
 
 ---
 
@@ -38,40 +38,40 @@
 **Etiqueta sobre el hero** (mono): `LIMA, PERÚ · DISPONIBLE DESDE ENE 2027`
 
 **H1:** Sebastián Jaque
-**Rol (debajo, tamaño lead):** Herramientas web y automatizaciones pensadas para que la gente las use sin complicarse.
-**Párrafo:** Estudiante de último ciclo de Administración y Negocios Internacionales. Construyo con Next.js y conecto sistemas con APIs y Python. Hoy desarrollo herramientas internas en el área de empleabilidad de la Universidad Norbert Wiener.
+**Rol (debajo, tamaño lead):** Analista de Producto · Desarrollo Web · Automatización de Procesos
+**Párrafo:** Estudiante de 10.º ciclo de Administración y Negocios Internacionales. Descubro problemas de operación, diseño flujos en Figma y construyo herramientas web con Next.js y automatizaciones con Python para que las personas trabajen sin fricción. Hoy desarrollo herramientas internas en la Universidad Norbert Wiener.
 **CTA primario:** Descargar CV · **CTA secundario:** Ver proyectos
 
-**Prueba rápida — etiqueta:** `RESULTADOS`
-- **−35 %** · tiempo de procesamiento de pedidos · Big Jack Burgers
-- **−30 %** · tareas administrativas manuales · Dearel
-- **~2 min** · para enviar una campaña de 8 000 correos (antes, más de 4 h) · Norbert Wiener
+**Prueba rápida — etiqueta:** `RESULTADOS MEDIDOS`
+- **−35 %** · tiempo de procesamiento por pedido · Big Jack Burgers
+- **−30 %** · tareas administrativas manuales · retail e integraciones freelance
+- **5–10 min** · envío de campaña de 8 000 correos (antes más de 4 h) · Norbert Wiener
 
 **Casos — H2:** Proyectos con resultado
-**Qué hago — H2:** Tres cosas que hago bien
-1. **Sitios y herramientas web** — Next.js, PostgreSQL y Docker. Ej.: plataforma de empleabilidad con 5 roles y acceso con Microsoft.
-2. **Automatización e integraciones** — APIs, WhatsApp, email transaccional. Ej.: campañas segmentadas por facultad y ciclo.
-3. **Comunicación y formularios** — campañas de correo segmentadas, encuestas con identidad validada y tableros. Ej.: ~3 000 respuestas de egresados analizadas.
-
-*Después de la Fase 3 se puede añadir un 4.º bloque: "Medición — GA4 y GTM. Ej.: este sitio, instrumentado de punta a punta."*
+**Qué hago — H2:** Tres pilares de trabajo
+1. **Análisis y desarrollo web de producto** — Next.js, PostgreSQL y Docker. Ej.: plataforma de empleabilidad propia que unifica 3 servicios de terceros.
+2. **Automatización de procesos e integraciones** — Python, Playwright, APIs REST, e-commerce y CRM. Ej.: sincronización en tiempo real y bot de publicación laboral 24/7.
+3. **Herramientas operativas y tableros** — sistemas de inventario multialmacén (**LogINV**), gestión de cobranzas (**PrestaFacilito**) y portales con validación de padrón institucional.
 
 **Experiencia — H2:** Dónde he trabajado
-**Notas — H2:** Lo que estoy aprendiendo
-**CTA final — H2:** ¿Buscas a alguien que construya pensando en quien lo va a usar?
-Texto: Estoy buscando mi primer rol en desarrollo web o de producto. Si tu equipo necesita a alguien que entienda el problema, lo lleve a código y explique cada decisión, hablemos.
-Botones: Descargar CV · Escribirme
+**Notas — H2:** Lo que estoy aprendiendo y construyendo
+**CTA final — H2:** ¿Buscas a alguien que entienda el problema y construya la solución?
+Texto: Busco mi primer rol formal en análisis de producto o desarrollo de soluciones. Si tu equipo necesita a alguien que baje requerimientos complejos a flujos claros y código mantenible, conversemos.
+Botones: Descargar CV · Contactar
 
 ---
 
-## 4. Cómo escribir un caso
+## 4. Cómo escribir un caso de estudio (Estructura de Producto)
 
-- **Título = resultado**, no nombre del proyecto. "Pedidos 35 % más rápidos en una hamburguesería" > "Big Jack RP".
-- Párrafos de 2–4 líneas. Una idea por párrafo.
-- Muestra **las ideas que probaste, la que descartaste y por qué la versión final es más fácil de usar**: es la parte central del caso y lo que más convence.
-- Incluye al menos un antes/después de la experiencia del usuario (pasos, clics, errores o tiempo).
-- Diagrama antes que descripción de arquitectura.
-- Termina con "Qué aprendí" honesto, incluyendo lo que harías distinto.
-- Revisa privacidad: ningún dato real de personas en capturas.
+- **Título = resultado para el usuario/negocio**, no nombre en clave del proyecto ("Pedidos 35 % más rápidos en una hamburguesería" en vez de "ERP Big Jack").
+- **Estructura en 5 pasos:**
+  1. *Contexto de negocio:* qué operación o servicio estaba en juego.
+  2. *Descubrimiento y dolor:* qué pasos manuales, errores o demoras sufrían los usuarios.
+  3. *Decisiones y descartes:* qué alternativas se probaron, qué se descartó por complejo y qué flujo final se adoptó.
+  4. *Solución técnica:* arquitectura modular explicada con diagrama limpio, nunca código crudo sin explicar.
+  5. *Resultado e impacto:* métrica con periodo y base comparativa (o conclusión cualitativa honesta).
+- Incluye siempre un antes/después del flujo de usuario (reducción de pantallas, clics o minutos).
+- Termina con 1–3 aprendizajes honestos sobre qué funcionó y qué se optimizaría en la siguiente versión.
 
 ---
 

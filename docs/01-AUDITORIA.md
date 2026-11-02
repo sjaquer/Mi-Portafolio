@@ -1,9 +1,7 @@
 # 01 · Auditoría de sjaquer.is-a.dev
 
-> **Rol de la revisión:** MarTech / Growth Engineer con foco en CRO, la posición a la que apuntas.
-> La pregunta que guía todo el documento: *¿esta web convence a un reclutador de MarTech y a un cliente PYME de que sabes construir, medir y optimizar experiencias web?*
->
-> **Fecha:** 10 oct 2026
+> **Contexto de la auditoría inicial:** Documento histórico del 10 oct 2026. Evaluó el desbalance entre la antigua SPA de Vite ("Full-Stack & AI Specialist") y la experiencia demostrable.
+> **Evolución del perfil (nov 2026):** Superada la etapa de saneamiento de afirmaciones y descarte definitivo de la vía de marketing/MarTech, el posicionamiento canónico se consolida hacia **Analista de Producto / Product Engineer (Junior)**: formación en Administración y Negocios Internacionales combinada con desarrollo técnico en Next.js, automatización con Python y resolución de problemas operativos de usuario.
 
 ---
 

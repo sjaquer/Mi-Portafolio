@@ -19,32 +19,29 @@
 | **5** | QA y lanzamiento (se ejecuta al cerrar cada fase 2–4)               | Continuo             | 1 h por lanzamiento | —                                                 |
 | **6** | Iteración y optimización con datos reales + caso "este portafolio" | Ene 2027             | 4 h/mes             | Titulación                                        |
 
-## Estado al 12 oct 2026 — todas las fases ejecutadas
+## Estado al 1 nov 2026 — consolidación a Analista de Producto y expansión de proyectos
 
-Por decisión de Sebastián ("hazlo sin importar la fecha"), las fases 0 a 6 se ejecutaron el 11 y 12 de octubre. **Todo lo que depende del código está terminado.** Lo que queda abierto depende de cuentas externas (Google, Resend, LinkedIn), de datos que solo existen con el tiempo o de una decisión tuya.
+Por decisión estratégica de carrera, el perfil abandonó definitivamente cualquier vestigio de marketing / MarTech para consolidarse 100 % como **Analista de Producto / Product Engineer (Junior)**: unión de rigor de negocio (Administración y Negocios Internacionales) con ejecución técnica en desarrollo web (Next.js), automatización (Python) e integración de APIs.
 
-**Hecho (código y contenido)**
+**Hitos ejecutados en código, CV y documentación (1 nov 2026):**
+- **CV actualizado y sincronizado:** Experiencia de Dearel integrada dentro de **Freelance — Soluciones Digitales y de Producto** (fecha canónica: **Jun 2025 – Actualidad**), eliminando duplicidades y estructurando logros en torno a retail, inventario agroindustrial (**LogINV**) y fintech/cobranzas (**PrestaFacilito**). CV generado en Word (`content/cv/CV-Sebastian-Jaque.docx`) y exportado a PDF de 2 páginas (`public/cv/CV-Sebastian-Jaque.pdf`).
+- **Fuente única (`content/profile.ts`):** Rol, resumen, habilidades de producto (Discovery, User Stories, Figma, Métricas), experiencia y keywords completamente sincronizados con el CV y las rutas `/cv`, `/llms.txt`, `/resume.txt` y JSON-LD.
+- **Proyectos de producto:** Documentación exhaustiva en `docs/07-PROYECTOS.md` integrando los sistemas reales auditados (`LogINV`, `PrestaFacilito`, `Empleakit-Wiener`, `Difusión`, `Reqlut Bot`, `Big Jack RP & Menú`, `Validación V de Aiken`).
+- **Open Graph y SEO:** Metadatos automáticos en `lib/seo.ts` y tarjetas dinámicas generadas con `lib/og.tsx` (1200×630) reflejando el rol de Analista de Producto y frase canónica.
+- **Correos transaccionales:** Plantillas de confirmación y notificación (`lib/email/templates.ts`, `design/emails/confirmacion.html`) con copia del mensaje del usuario, aviso de carpeta spam y enlaces con UTM hacia CV y proyectos.
 
-- Web en Next.js 16 + React 19 + Tailwind 4 + MDX, 45 rutas estáticas, lint y tipos limpios, en producción en `sjaquer.is-a.dev`.
-- Sistema de diseño v3.3, marca completa (logo, favicon, íconos, kit de Figma con retrato y plantillas), OG por página.
-- Fuente única `content/profile.ts`; CV en Word alineado al posicionamiento y PDF regenerado.
-- 7 casos publicados (Empleabilidad, Difusión, Formularios y NPS, Feria Virtual, Reqlut Bot, Big Jack, **Este portafolio**) + Dearel como borrador.
-- **Notas**: `/notas`, `/notas/[slug]`, filtro por pilar, RSS, `BlogPosting`, `post_read`, bloque de LinkedIn, "Últimas notas" en la home y **4 notas publicadas**.
-- Legales: `/privacidad` (Ley 29733 y su reglamento, encargados, cookies, derechos ARCO) y `/terminos` (condiciones de uso), en `content/legal/*.mdx`.
-- Formulario con dos correos de marca: notificación y confirmación automática (`lib/email/templates.ts`, vista previa en `/dev/correos`).
-- Limpieza: se eliminó el blog personal (`/blog-personal`) y `framer-motion`.
-- Medición: Consent Mode v2, 9 eventos tipados con parámetros limpios, contenedor importable `docs/gtm/eventos-sitio.json`, QA en producción.
+**Hecho previo (código y contenido)**
+- Web en Next.js 16 + React 19 + Tailwind 4 + MDX, 45 rutas estáticas, lint y tipos limpios, desplegable en Netlify / Vercel en `sjaquer.is-a.dev`.
+- Sistema de diseño v4.0, marca completa (logo, monograma, favicon, regla de medición, paleta papel y marino).
+- 7 casos publicados (Empleabilidad, Difusión, Formularios y NPS, Feria Virtual, Reqlut Bot, Big Jack, Este portafolio) + galería expandida.
+- Notas del blog publicadas con RSS y JSON-LD.
+- Medición: Consent Mode v2, 9 eventos tipados, GTM (`GTM-PSWBGH5K`) y GA4.
 
-**Abierto (solo tú puedes hacerlo)**
-
-1. [X] **Cuentas de Google:** contenedor de eventos importado y publicado en GTM (`GTM-PSWBGH5K`); 12 dimensiones personalizadas y 3 eventos clave (`cv_download`, `generate_lead`, `case_study_read`) activos en GA4; sitemap enviado y procesado correctamente en Search Console.
-
-2. ⬜ **Resend:** `RESEND_API_KEY` y `CONTACT_FROM_EMAIL` (subdominio `mail.wativo.studio`) en Vercel; probar envío real: deben llegar **2 correos** (notificación y confirmación). Error y honeypot ya probados.
-3. ⬜ **LinkedIn:** publicar las 4 notas con la plantilla de `06` §5.5 (enlace con UTM en el primer comentario) y pegar cada URL en `linkedinUrl` de `content/notas/index.ts`; UTM en Destacados.
-4. ⬜ **Decisión de rendimiento:** GTM en `<head>` (hoy, Rendimiento 88–91) o tras la primera interacción (≈ 98). Ver `decisiones.md`.
-5. ⬜ **Datos** de `07-PROYECTOS.md` §4 en los casos, base del −30 % para publicar Dearel y la línea "fuera del trabajo" en `/sobre-mi`.
-6. ⬜ **Revisión en dispositivos reales** (Chrome Android de gama media y Safari iOS).
-7. ⬜ **Iteración con datos** (Fase 6): con 30–60 días de datos, revisar el embudo y probar las hipótesis H1–H3 de `decisiones.md`.
+**Abierto (acciones externas del usuario)**
+1. [X] **Cuentas de Google:** contenedor de eventos publicado en GTM; dimensiones y eventos clave en GA4; sitemap enviado a Search Console.
+2. ⬜ **LinkedIn:** actualizar el perfil personal con el nuevo titular de **Analista de Producto / Product Engineer**, reflejar la experiencia Freelance desde jun 2025 (retirando la entrada individual de Dearel), y publicar las notas con UTM en comentarios.
+3. ⬜ **Resend:** verificar `RESEND_API_KEY` y `CONTACT_FROM_EMAIL` para producción.
+4. ⬜ **Dispositivos reales:** probar experiencia de lectura en móvil (Android / iOS).
 
 ---
 

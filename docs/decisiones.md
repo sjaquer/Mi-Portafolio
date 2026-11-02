@@ -38,6 +38,7 @@
 | 2026-10-13 | Redes: el marino es el fondo protagonista | Reconocimiento en el feed de LinkedIn | Identificar las piezas sin leer el nombre | 2026-12-01 |
 | 2026-10-13 | Galería con flujo mínimo por tarjeta y ampliada con 4 proyectos de GitHub; Laboratorio con 7; notas 2–5 publicadas | 07-PROYECTOS §7 verificado contra los repos: se corrigieron descripciones y se dejaron fuera Alerta Multienda y Cabine Grid (sin repo verificable) | Cada sección con ancla visual (§14.6); más `post_read` desde LinkedIn | 2026-11-13 |
 | 2026-10-13 | Cabecera del caso con resumen de 3 piezas (Antes · Qué construí · Resultado); experiencia de la home explica el cómo sin repetir cifras; laboratorio en tabla; Big Jack Bot dentro del caso de Big Jack | Pedido de reescritura editorial; se mantienen la regla MarTech y la métrica 1–2 h → 5–10 min | Un dato una vez por pantalla (03 §14.6); TL;DR desde la ficha, sin duplicar texto | 2026-11-13 |
+| 2026-11-01 | Consolidación definitiva a Analista de Producto / Product Engineer (Junior); fusión de Dearel en Freelance (Jun 2025 – Actualidad) e incorporación formal de LogINV y PrestaFacilito | Orientación profesional a Producto y Operaciones; eliminación total de cualquier etiqueta de marketing; unificación de proyectos bajo una sola narrativa | Mayor resonancia en reclutamiento de Producto y Negocio; CV consistente de 2 páginas con proyectos comprobables | 2026-12-01 |
 
 ## Hipótesis para la Fase 6 (se prueban con datos)
 

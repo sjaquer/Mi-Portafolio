@@ -7,23 +7,23 @@
 
 ## 1. Problema
 
-La web actual presenta a un "Full-Stack Developer & AI Integration Specialist" con estética de laboratorio de IA. El objetivo profesional real es MarTech / desarrollo web y CRO / automatización. La web no ayuda a conseguir esos puestos y contiene afirmaciones que dañan la credibilidad (ver `01-AUDITORIA.md`).
+La web anterior presentaba a un "Full-Stack Developer & AI Integration Specialist" con estética genérica de laboratorio de IA. El objetivo profesional real es **Analista de Producto / Product Engineer (Junior)**: desarrollo web centrado en el usuario, automatización de procesos operativos e integraciones de sistemas para negocio. La web debe funcionar como la mejor prueba de que Sebastián sabe descubrir problemas, diseñar flujos limpios, construir soluciones funcionales de punta a punta y medir su impacto.
 
 ## 2. Objetivo del producto
 
-Que la web sea **la prueba de trabajo** de Sebastián: un sitio rápido, claro y medido que demuestre en sí mismo lo que él sabe hacer (construir, medir y optimizar experiencias web), y que convierta visitas en entrevistas y contactos.
+Que la web sea **la prueba de trabajo** de Sebastián: un producto digital rápido, claro y medido que demuestre en sí mismo su capacidad de análisis de producto, diseño de experiencia y desarrollo técnico, y que convierta visitas de reclutadores y líderes técnicos en entrevistas y contactos.
 
 ## 3. Posicionamiento
 
-**Quién:** Sebastián Jaque, estudiante de último ciclo de Administración y Negocios Internacionales que construye herramientas web y automatizaciones para negocio.
+**Quién:** Sebastián Jaque, estudiante de 10.º ciclo de Administración y Negocios Internacionales que construye herramientas web y automatizaciones para resolver problemas reales de negocio.
 
-**Qué hace hoy (demostrable):** desarrollo web con Next.js pensando en quien lo va a usar, automatización de procesos e integraciones, sistemas de comunicación por correo y formularios.
+**Qué hace hoy (demostrable):** análisis de requerimientos y diseño de producto (flujos de usuario, wireframes en Figma), desarrollo web con Next.js y TypeScript, automatización de flujos operativos con Python (Playwright, bots 24/7) e integración de plataformas vía APIs (Shopify, CRM, email transaccional y bases de datos relacionales).
 
-**Hacia dónde va:** Product Engineer, es decir, desarrollo web con foco en el usuario y en el producto (a largo plazo, liderar producto o tener uno propio). No se usa como título hasta tenerlo; se demuestra en los casos. MarTech y CRO dejan de ser la dirección. La medición con GA4 se mantiene como práctica del sitio, no como identidad.
+**Hacia dónde va:** Analista de Producto / Product Engineer. Une formación en administración y negocio con destreza técnica de construcción e instrumentación analítica (GA4). A largo plazo: liderar producto o crear productos digitales propios.
 
-**Diferencial:** entiende el problema antes de escribir código, prueba alternativas pensando en quien lo va a usar, simplifica cada paso y explica por qué tomó cada decisión.
+**Diferencial:** entiende el problema de negocio y las necesidades de los usuarios antes de escribir una línea de código; diseña flujos intuitivos; construye herramientas modulares y explica con total transparencia técnica por qué tomó cada decisión.
 
-**Tono:** builder, no gurú. Concreto, en primera persona, sin superlativos. Ver `06-CONTENIDO.md`.
+**Tono:** builder y analista, no gurú. Concreto, en primera persona, apoyado en datos y sin superlativos. Ver `06-CONTENIDO.md`.
 
 **Frase de posicionamiento (canónica, usar igual en todos los canales):**
 
@@ -33,10 +33,10 @@ Que la web sea **la prueba de trabajo** de Sebastián: un sitio rápido, claro y
 
 | # | Audiencia | Llega desde | Tiempo que da | Qué necesita ver | Acción que buscamos |
 |---|---|---|---|---|---|
-| 1 | **Reclutador / talento** | CV, LinkedIn, portal de empleo | 30–60 s | Quién es, qué rol busca, experiencia, que sea creíble | Descargar CV · ir a LinkedIn |
-| 2 | **Jefe técnico o de marketing** (decide la contratación) | Enlace del reclutador | 3–5 min | Cómo piensa, profundidad técnica, resultados medidos | Leer un caso completo · contactar |
-| 3 | **Cliente PYME** (freelance) | LinkedIn, recomendación, Google | 1–2 min | Qué problemas resuelve, ejemplos parecidos a su negocio | Escribir por WhatsApp o formulario |
-| 4 | **Red de LinkedIn** | Publicaciones de "Notas" | 2–4 min | Una idea útil | Leer, seguir en LinkedIn, volver |
+| 1 | **Reclutador / talento** | CV, LinkedIn, portal de empleo | 30–60 s | Quién es, rol objetivo (Analista de Producto / Product Engineer Jr), experiencia creíble | Descargar CV · ir a LinkedIn |
+| 2 | **Líder de Producto / Tech Lead / Gerente de Operaciones** | Enlace del reclutador | 3–5 min | Cómo piensa el producto, rigor técnico, decisiones y resultados medidos | Leer un caso completo · contactar |
+| 3 | **Cliente PYME / Negocio** (freelance) | LinkedIn, recomendación, Google | 1–2 min | Qué fricciones operativas resuelve, herramientas similares a su necesidad | Escribir por WhatsApp o formulario |
+| 4 | **Comunidad profesional** | Publicaciones de "Notas" en LinkedIn | 2–4 min | Aprendizaje técnico o de producto útil y honesto | Leer, conectar en LinkedIn |
 
 **Prioridad hasta enero 2027:** audiencias 1 y 2 (búsqueda de empleo). La 3 se mantiene con una sección ligera.
 
@@ -93,13 +93,13 @@ Redirecciones 301 desde los fragmentos antiguos no son necesarias (los `#` no ll
 
 Orden de secciones y propósito de cada una:
 
-1. **Hero** — En una pantalla de móvil: nombre, rol, frase de posicionamiento, foto, disponibilidad ("Disponible para roles junior desde enero 2027 · Lima / remoto"), CTA primario **Descargar CV**, CTA secundario **Ver proyectos**.
-2. **Prueba rápida** — 3 resultados verificables con su contexto (−35 % tiempo de pedidos en Big Jack; −30 % tareas manuales en Dearel; campaña de 8 000 correos de más de 4 h a ~2 min en Norbert Wiener). Sin "+6 proyectos" ni "99 %".
-3. **Casos destacados** — 3 tarjetas (Wiener, Big Jack, Dearel o Bot WhatsApp), cada una con problema, resultado y stack. Enlace a cada caso.
-4. **Qué hago** — 3 bloques concretos: Desarrollo web (Next.js) · Automatización e integraciones · Comunicación y formularios. Cada uno con un ejemplo real, no una promesa. El bloque "Medición" se añade solo después de la Fase 3.
-5. **Experiencia resumida** — línea de tiempo compacta, títulos reales.
-6. **Últimas notas** — 3 entradas del blog con enlace a LinkedIn.
-7. **CTA final** — "¿Buscas a alguien que construya y mida?" + Descargar CV + Contactar.
+1. **Hero** — En una pantalla de móvil: nombre, rol ("Analista de Producto · Desarrollo Web · Automatización de Procesos"), frase de posicionamiento, foto, disponibilidad ("Disponible para roles junior desde enero 2027 · Lima / remoto"), CTA primario **Descargar CV**, CTA secundario **Ver proyectos**.
+2. **Prueba rápida** — 3 resultados verificables con su contexto (−35 % tiempo de procesamiento en Big Jack Burgers; −30 % tareas manuales en integración e-commerce/retail; campañas de 8 000 correos de horas a 5–10 min en Norbert Wiener). Sin números inflados ni promesas vacías.
+3. **Casos destacados** — Tarjetas representativas (Empleabilidad Wiener, Big Jack Burgers, Difusión UWiener o LogINV / Integración Retail), cada una con problema de usuario, solución y stack. Enlace a cada caso.
+4. **Qué hago** — 3 bloques concretos: Análisis y desarrollo web de producto (Next.js) · Automatización de procesos e integraciones (Python, APIs) · Herramientas operativas y tableros de datos. Cada uno respaldado con un producto real.
+5. **Experiencia resumida** — línea de tiempo compacta alineada al CV actualizado (Wiener, Big Jack Burgers, Freelance con retail y soluciones de producto, Neon Led Store, Zeus Maritime).
+6. **Últimas notas** — 3 entradas con reflexiones de producto y desarrollo.
+7. **CTA final** — "¿Buscas a alguien que entienda el problema y construya la solución?" + Descargar CV + Contactar.
 
 **Criterios de aceptación**
 - [ ] Nombre, rol y CTA primario visibles sin scroll en 360×740.
@@ -110,7 +110,8 @@ Orden de secciones y propósito de cada una:
 ### 8.2 Proyectos — listado
 - Filtro simple por tipo: Web · Automatización · Datos / Medición.
 - Tarjetas con: título, una línea de problema, resultado principal, stack (máx. 4 etiquetas), año.
-- Sección aparte "Laboratorio" para proyectos de práctica (TaskMe, TaskZenith, ORDEV), visualmente secundaria.
+- Galería de herramientas y soluciones (LogINV, PrestaFacilito, Sistema Obra, etc.).
+- Sección "Laboratorio" para proyectos de práctica (TaskMe, TaskZenith, ORDEV, HoneyNotes), visualmente secundaria.
 
 ### 8.3 Caso de estudio — plantilla obligatoria
 
@@ -118,26 +119,28 @@ Orden de secciones y propósito de cada una:
 Título + subtítulo (resultado en una frase)
 Ficha:   Cliente/contexto · Mi rol · Duración · Stack · Estado (en producción / entregado / prototipo)
 1. Contexto        ¿Qué negocio y qué situación?
-2. Problema        ¿Qué dolía y cómo se notaba?
-3. Enfoque         Decisiones y por qué (incluye lo que se descartó)
+2. Problema        ¿Qué dolía y cómo se notaba en el usuario/operación?
+3. Enfoque         Descubrimiento, flujos y decisiones (incluye lo que se descartó)
 4. Solución        Arquitectura (diagrama) + capturas con datos simulados
 5. Resultado       Métrica con base, periodo y método — o resultado cualitativo honesto
-6. Qué aprendí     1–3 aprendizajes
+6. Qué aprendí     1–3 aprendizajes de producto e ingeniería
 CTA: Siguiente caso · Descargar CV
 ```
 
 **Privacidad:** los repositorios de Norbert Wiener y clientes son privados. Las capturas usan **datos simulados**; nunca nombres, correos ni datos reales de estudiantes o clientes. Si un cliente no autoriza su nombre, se usa una descripción ("marca de hamburguesas en Lima").
 
-**Casos v2 (orden de producción):**
+**Casos v2:**
 Selección y justificación completas en `07-PROYECTOS.md`.
 
-1. Sistema de difusión por correo con segmentación y lista de exclusión — Norbert Wiener. *(MVP)*
-2. Plataforma Empleabilidad Wiener — Norbert Wiener, tras su lanzamiento del 22 oct. *(MVP)*
-3. Portal de formularios y encuestas NPS — Norbert Wiener.
-4. Feria Virtual de Empleabilidad 2026 — Norbert Wiener.
-5. Reqlut Bot: publicación automática de ofertas con IA — Norbert Wiener.
-6. Sistema de pedidos — Big Jack Burgers · Integración Shopify + CRM — Dearel.
-7. **Este portafolio** (se escribe al cerrar la Fase 3, con antes / después medido): tu primer caso explícito de CRO y medición.
+1. Plataforma Empleabilidad Wiener — Norbert Wiener (Bolsa laboral, CV IA, feria virtual). *(MVP)*
+2. Sistema de difusión por correo con segmentación y lista de exclusión — Norbert Wiener. *(MVP)*
+3. Sistema de pedidos en tiempo real — Big Jack Burgers (Menú digital + WhatsApp IA + ERP cocina/despacho).
+4. LogINV Agroindustrial — Sistema avanzado de inventarios multialmacén, alertas de caducidad y motor ROP.
+5. PrestaFacilito — Plataforma de créditos y cobranzas con OCR de comprobantes.
+6. Portal de formularios y encuestas NPS validadas — Norbert Wiener.
+7. Reqlut Bot: servicio 24/7 de ingesta y publicación de ofertas con IA — Norbert Wiener.
+8. Validación de instrumentos por juicio de expertos — Coeficiente V de Aiken con firma digital y PDF.
+9. **Este portafolio**: arquitectura Next.js SSG, sistema de diseño, accesibilidad WCAG 2.2 AA y medición analítica con GA4/GTM.
 
 ### 8.4 Sobre mí
 - Foto real, historia breve en primera persona (de Administración al código), cómo trabajo (3–4 principios), qué estoy aprendiendo ahora (GA4, Google UX), fuera del trabajo (1 línea).

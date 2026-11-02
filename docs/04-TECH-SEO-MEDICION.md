@@ -82,39 +82,54 @@ Regla: **ningún texto sobre tu experiencia se escribe fuera de este archivo o d
 
 ### 2.1 Por página
 - `metadata` de Next.js con `title`, `description`, `alternates.canonical`, `openGraph`, `twitter`.
-- Plantilla de título: `%s — Sebastián Jaque`. Home: `Sebastián Jaque — Desarrollo web y automatización de procesos | Lima`.
-- Descripciones de 140–160 caracteres, únicas, con la intención de búsqueda de esa página.
-- **Imagen OG por página** generada con `next/og` (1200×630): título de la página + nombre + paleta del sistema. Resuelve C2 y hace que cada nota se vea bien al compartirla en LinkedIn.
-- Un `h1` por página; encabezados en orden.
-- URLs en español, cortas y sin fechas: `/proyectos/bolsa-de-trabajo-wiener`, `/notas/eventos-ga4-con-gtm`.
+- Plantilla de título: `%s — Sebastián Jaque`. Home: `Sebastián Jaque — Analista de Producto, desarrollo web y automatización | Lima`.
+- Descripciones de 140–160 caracteres, únicas, orientadas al descubrimiento de producto y resolución operativa.
+- **Imagen Open Graph (OG) por página** generada dinámicamente con `next/og` (`lib/og.tsx`, 1200×630): título de la página + nombre + rol + paleta del sistema (`#FAFAF8` papel, `#1F3A5F` marino, regla de medición visual y monograma SVG). Genera tarjetas profesionales instantáneas al compartir en LinkedIn, Twitter y WhatsApp.
+- Un `h1` por página; encabezados en estricto orden semántico.
+- URLs en español, cortas y descriptivas: `/proyectos/bolsa-de-trabajo-wiener`, `/proyectos/loginv-agroindustrial`, `/notas/validacion-juicio-expertos-v-de-aiken`.
 
 ### 2.2 Datos estructurados (JSON-LD)
 
 | Página | Tipos |
 |---|---|
-| Home / Sobre mí | `ProfilePage` con `mainEntity: Person` (nombre, `jobTitle`, `alumniOf`, `knowsAbout`, `sameAs` → LinkedIn y GitHub) |
+| Home / Sobre mí | `ProfilePage` con `mainEntity: Person` (nombre, `jobTitle`: Analista de Producto / Desarrollador de Soluciones, `alumniOf`, `knowsAbout`, `sameAs` → LinkedIn y GitHub) |
 | Caso de estudio | `CreativeWork` + `BreadcrumbList` |
 | Nota | `BlogPosting` (autor, fechas, imagen) + `BreadcrumbList` |
-| Todas | `WebSite` (una vez, en el layout) |
+| Todas | `WebSite` (en el layout raíz) |
 
 Validar con la [Prueba de resultados enriquecidos](https://search.google.com/test/rich-results).
 
 ### 2.3 Archivos generados
-- `sitemap.ts`: solo URLs reales (nada de `#`), con `lastModified` tomado del frontmatter.
-- `robots.ts`: conservar la política actual hacia rastreadores de IA y redes sociales; **quitar** `Host:` y `crawl-delay`; quitar `/blog-personal` si la ruta no existe. *(Hecho: la ruta se eliminó; `disallow` queda en `/api/` y `/dev/`.)*
-- `llms.txt` y `resume.txt`: generados desde `profile.ts`, con fecha de actualización.
-- `rss.xml` para las notas.
+- `sitemap.ts`: URLs estáticas reales (sin `#`), con `lastModified` automático.
+- `robots.ts`: política amigable con rastreadores legítimos e indexadores; `disallow` en `/api/` y `/dev/`.
+- `llms.txt` y `resume.txt`: texto plano estructurado generado desde `profile.ts` para motores de IA (ChatGPT, Claude, Gemini, Perplexity).
+- `rss.xml` para sindicación de artículos y notas.
 
-### 2.4 Palabras clave objetivo (iniciales)
+### 2.4 Palabras clave objetivo (SEO y Asistentes de IA)
 
 | Intención | Ejemplos | Página |
 |---|---|---|
-| Marca | "Sebastián Jaque", "sjaquer" | Home |
-| Rol + ciudad | "desarrollador web junior Lima", "analista de automatización de procesos Lima", "desarrollador Next.js Perú" | Home, Sobre mí |
-| Problema PYME | "automatizar WhatsApp para negocio", "integrar Shopify con Google Sheets" | Casos, notas |
-| Aprendizaje técnico | "eventos GA4 con GTM Next.js", "migrar SQLite a PostgreSQL" | Notas |
+| Marca | "Sebastián Jaque", "sjaquer", "sjaquer portafolio" | Home |
+| Rol objetivo | "analista de producto Lima", "product analyst junior Peru", "product engineer junior Lima", "desarrollador de soluciones de negocio" | Home, Sobre mí, CV |
+| Soluciones de negocio | "sistema de inventario multialmacén", "integración Shopify CRM Kommo", "plataforma de empleabilidad universitaria", "automatización de procesos Python" | Casos, proyectos |
+| Aprendizaje técnico y producto | "coeficiente V de Aiken con Python", "eventos GA4 con GTM Next.js", "arquitectura de software para logística" | Notas |
 
-No se persigue volumen: se busca que quien te googlee después de ver tu CV encuentre una web coherente, y que las notas atraigan búsquedas de nicho.
+No se persigue volumen vacío: se busca que quien revise el CV encuentre máxima coherencia profesional, y que búsquedas de talento técnico y de producto encuentren la prueba de trabajo real.
+
+### 2.5 Sistema de Correo y Notificaciones (Email)
+
+El formulario de contacto (`/contacto`) implementa comunicación transaccional con **Resend** y Server Actions, asegurando trazabilidad sin intermediarios lentos:
+
+1. **Notificación interna (para Sebastián):**
+   - Remitente configurado: `Sebastián Jaque <contacto@wativo.studio>`.
+   - `reply_to`: correo directo del remitente, permitiendo responder con un clic desde el cliente de correo.
+   - Datos estructurados: motivo (Empleo, Proyecto, Consulta), nombre, email y texto íntegro.
+2. **Confirmación automática (para quien escribe):**
+   - Plantilla HTML responsiva (600 px, tablas, estilos en línea) con la identidad visual del sitio (`03-DESIGN.md`).
+   - Copia exacta del mensaje enviado y el motivo seleccionado para total transparencia.
+   - Plazo de respuesta comprometido: **1 a 2 días hábiles**.
+   - Aviso de entregabilidad: advertencia visible recomendando revisar la carpeta de correo no deseado (spam).
+   - Botones con UTM hacia el CV descargable y la galería de proyectos para retener el interés del reclutador o cliente mientras espera respuesta.
 
 ---
 
