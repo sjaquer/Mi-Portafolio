@@ -15,6 +15,17 @@ const inter = localFont({
   weight: "100 900",
   display: "swap",
 });
+// Corte "Display" de Inter (tamaño óptico 32, SemiBold) solo para titulares grandes:
+// misma familia, dibujo más apretado y fino a gran tamaño (§5.1 v4.3). Latin, 36 KB.
+const interDisplay = localFont({
+  src: "./fonts/inter-display-600-latin.woff2",
+  variable: "--font-inter-display",
+  weight: "600",
+  // `optional` + sin fuente de respaldo propia: si no llega a tiempo se queda Inter de
+  // texto (token --font-display) y el titular no salta al cambiar de fuente (CLS 0).
+  display: "optional",
+  adjustFontFallback: false,
+});
 const jetbrainsMono = localFont({
   src: "./fonts/jetbrains-mono-latin-var.woff2",
   variable: "--font-jetbrains-mono",
@@ -42,7 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="es-PE"
       data-theme="light"
       suppressHydrationWarning
-      className={`${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${inter.variable} ${interDisplay.variable} ${jetbrainsMono.variable}`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />

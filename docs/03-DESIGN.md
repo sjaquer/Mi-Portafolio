@@ -3,7 +3,7 @@
 > **Fuente de verdad visual y verbal** de la marca Sebastián Jaque, para la web, el CV, LinkedIn, GitHub, presentaciones, documentos y cualquier pieza futura.
 > Si una decisión no está aquí, se agrega aquí antes de implementarla o publicarla.
 >
-> **Versión:** 4.0 · **Actualizado:** 13 oct 2026 · **Responsable:** Sebastián Jaque
+> **Versión:** 4.3 · **Actualizado:** 3 nov 2026 · **Responsable:** Sebastián Jaque
 
 ---
 
@@ -310,6 +310,7 @@ Los colores de estado **siempre** van con ícono + texto, nunca solo color.
 | Familia | Rol | Pesos permitidos | Licencia |
 |---|---|---|---|
 | **Inter** | Todo el texto: titulares, párrafos, interfaz | 400 Regular · 600 SemiBold (500 Medium solo en UI pequeña) | SIL OFL, gratuita |
+| **Inter Display** (v4.3) | Corte de tamaño óptico de la misma Inter, solo para titulares grandes (display, h1, h2). No es una tercera familia | 600 SemiBold | SIL OFL, gratuita |
 | **JetBrains Mono** | Métricas, etiquetas, stack, código, handle, fechas en piezas | 500 Medium · 600 SemiBold | SIL OFL, gratuita |
 
 **Alternativas cuando Inter o JetBrains Mono no estén disponibles:**
@@ -600,11 +601,13 @@ Principio: **el movimiento explica, no decora.** La marca se mueve como un plano
 - **Duraciones:** 150 ms (hover), 200 ms (menús), 600 ms (entrada del hero), 900 ms (regla del hero). En video y redes: transiciones de 200–400 ms; se prefieren cortes secos.
 - **Curva:** `cubic-bezier(.2, 0, 0, 1)` (`--ease-standard`, salida suave). Las animaciones ligadas al scroll son lineales: la curva la pone el scroll.
 - **Propiedades permitidas:** `transform`, `opacity` (solo en gráficos), `stroke-dashoffset` y `clip-path`. Nunca `width`, `top`, `filter` ni sombras animadas.
-- **Rendimiento:** solo CSS (`@keyframes` y `animation-timeline: view()`/`scroll()`); **0 KB de JavaScript y ninguna librería**. Nunca sobre el elemento que pinta el LCP.
+- **Rendimiento:** solo CSS (`@keyframes` y `animation-timeline: view()`/`scroll()`); ninguna librería. Única excepción en JavaScript: el conteo de cifras (v4.3, componente `CountUp`, < 1 KB, `IntersectionObserver`). Nunca sobre el elemento que pinta el LCP: el texto nunca anima la opacidad.
 - **Accesibilidad:** con `prefers-reduced-motion: reduce` no hay ninguna animación; sin soporte de `animation-timeline`, todo aparece dibujado y estático. El estado final siempre es el de reposo: si la animación no corre, no falta nada.
-- Sin parallax, sin cursores personalizados, sin contadores animados de cifras (una métrica se lee, no se celebra), sin bucles infinitos.
+- Sin parallax ni cursores personalizados.
+- **Movimiento ambiental (v4.3, permitido con condiciones):** se admiten bucles infinitos solo si son **lentos** (≥ 2,5 s por ciclo), **pequeños** (un punto o un anillo, nunca un bloque de texto o una imagen), **decorativos** (`aria-hidden`) y silenciados por `prefers-reduced-motion`. Un solo tipo de bucle por pantalla (dos anillos de dos puestos vigentes cuentan como uno).
+- **Conteo de cifras (v4.3, permitido con condiciones):** una cifra puede contar desde cero una sola vez al entrar en pantalla, solo en la banda de resultados de la home y solo si es un número simple (`−35 %`; nunca un rango como `5–10 min`). En el HTML va el valor final (sin JS se lee igual, sin CLS) y la línea de contexto nunca se anima.
 
-### 11.2 Catálogo (v4.0)
+### 11.2 Catálogo (v4.0, ampliado en v4.3)
 
 | Movimiento | Qué hace | Dónde | Implementación |
 |---|---|---|---|
@@ -615,6 +618,12 @@ Principio: **el movimiento explica, no decora.** La marca se mueve como un plano
 | **Entrada del hero** | Los bloques suben 16 px escalonados (60 ms entre bloques, 600 ms), sin opacidad | Hero | `.hero-in` |
 | **Revelado** | Sube 24 px al entrar en pantalla, sin opacidad | Tarjetas y listas bajo el pliegue | `.reveal` |
 | **Microinteracciones** | Flechas que avanzan 4 px; portada que se acerca a 1,03 en 400 ms; subrayado del titular; botones 1 px abajo al presionar | Tarjetas y botones | Tailwind + `.media-zoom` |
+| **Entrada de figura** (v4.3) | La figura del hero sube 16 px y aparece al cargar (está sobre el pliegue: el `view()` no la animaría) | Figura del hero | `.fig-load` |
+| **Señal continua** (v4.3) | Un punto acento recorre el conducto del flujo cada 3,4 s; se ve solo entre nodos | Figura del hero (único bucle de la home) | `.fig-signal` (`stroke-dasharray: .05 .95`) |
+| **Barras que crecen** (v4.3) | Las barras de impacto suben desde la base al cerrar la secuencia | Figura del hero | `.bar-grow` (`scaleY`, `transform-box: fill-box`) |
+| **Anillo de puesto actual** (v4.3) | Un aro acento se expande y desvanece cada 2,6 s bajo el marcador de un puesto vigente | Línea de experiencia | `.pulse-ring` |
+| **Conteo** (v4.3) | Una cifra cuenta de 0 a su valor en 1,1 s (`easeOutCubic`), una vez | Banda de resultados de la home | `CountUp` (`components/ui/count-up.tsx`) |
+| **Índice activo** (v4.3) | El chip o enlace de la sección visible se marca en tinta, sin JS | Índice de casos y notas | `scroll-target-group` + `:target-current` (mejora progresiva) |
 
 Una figura (`.fig`) define su línea de tiempo de vista (`view-timeline-name: --fig`) y sus piezas la comparten, así todas avanzan juntas aunque sean elementos SVG. Los rangos: aparición `entry 10 % → 45 %`, trazado `entry 25 % → 55 %` y pulso `cover 28 % → 40 %`, cada uno desplazado por `--i` (12 % o 6 % por paso).
 
@@ -961,28 +970,35 @@ Redefine los tokens dentro de una banda de identidad (§6.7). Igual en tema clar
 
 ## 16. Tipografía web
 
-**Familias:** Inter (texto) y JetBrains Mono (métricas, etiquetas de stack y código), cargadas con `next/font` (sin peticiones externas, sin saltos de diseño). Reglas generales en §5.
+**Familias:** Inter (texto), **Inter Display** (titulares grandes, v4.3) y JetBrains Mono (métricas, etiquetas de stack y código), cargadas con `next/font` (sin peticiones externas, sin saltos de diseño). Reglas generales en §5.
 
-**Escala (base 16 px, ratio ~1,25, fluida con `clamp`):**
+**Inter Display (v4.3):** es la misma familia Inter en su corte de tamaño óptico 32 (SemiBold 600, subconjunto latino, 36 KB, `app/fonts/inter-display-600-latin.woff2`). Dibujo más apretado y fino a gran tamaño. Se aplica solo a `--text-display`, `--text-h1` y `--text-h2` (token `--font-display`); un `h2` pequeño (p. ej. el del banner de medición) sigue en Inter de texto.
 
-| Token | Móvil → Escritorio | Peso | Interlineado | Uso |
-|---|---|---|---|---|
-| `--text-display` | 40 → 60 px | 600 | 1,05 | Solo el `h1` del hero |
-| `--text-h1` | 32 → 44 px | 600 | 1,1 | `h1` de páginas internas |
-| `--text-h2` | 26 → 32 px | 600 | 1,2 | Títulos de sección |
-| `--text-h3` | 20 → 22 px | 600 | 1,3 | Títulos de tarjeta |
-| `--text-lead` | 18 → 20 px | 400 | 1,55 | Párrafo introductorio |
-| `--text-body` | 16 → 17 px | 400 | 1,65 | Texto general |
-| `--text-small` | 14 px | 400 | 1,5 | Metadatos |
-| `--text-label` | 12 px · mono · mayúsculas · tracking 0,06 em | 500 | 1,4 | Etiquetas de sección y stack |
-| `--text-metric` | 32 → 40 px · mono | 600 | 1 | Cifras de resultado |
+**Escala editorial (v4.3, base 16 px, fluida con `clamp` entre 360 y 1280 px):** más contraste entre titular y texto que la v4.2.
+
+| Token | Móvil → Escritorio | Familia · peso | Interlineado | Tracking | Uso |
+|---|---|---|---|---|---|
+| `--text-display` | 44 → 68 px | Inter Display 600 | 1 | −0,03 em | Solo el `h1` del hero (el nombre cabe en una línea) |
+| `--text-h1` | 32 → 52 px | Inter Display 600 | 1,06 | −0,025 em | `h1` de páginas internas, casos y notas |
+| `--text-h2` | 28 → 40 px | Inter Display 600 | 1,12 | −0,02 em | Títulos de sección y del cuerpo de casos/notas |
+| `--text-h3` | 20 → 22 px | Inter 600 | 1,3 | — | Títulos de tarjeta |
+| `--text-lead` | 18 → 20 px | Inter 400 | 1,55 | — | Párrafo introductorio y entradilla de notas |
+| `--text-body` | 16 → 17 px | Inter 400 | 1,65 | — | Texto general |
+| `--text-small` | 14 px | Inter 400 | 1,5 | — | Metadatos |
+| `--text-label` | 12 px · mono · mayúsculas | JetBrains Mono 500 | 1,4 | +0,06 em | Etiquetas, numeración de secciones, stack |
+| `--text-metric` | 40 → 56 px · mono | JetBrains Mono 600 | 1 | −0,04 em | Cifras de resultado |
 
 **Reglas**
 - Ancho máximo de texto: **68 caracteres** (`max-width: 68ch`).
 - Nunca texto de párrafo por debajo de 16 px.
 - Máximo 2 pesos por pantalla (400 y 600).
 - Títulos en tipo oración.
-- `letter-spacing: -0.02em` en `display` y `h1`.
+- **Cero rasgado** en toda la mono (`font-variant-numeric: slashed-zero`): fechas, cifras y numeración.
+- **Cifras que no se parten:** separador de miles y espacio antes de `%` con espacio fino irrompible (U+202F): `8 000`, `35 %`. En el contenido se escribe así, no con espacio normal.
+- **Secciones numeradas** en casos y notas: kicker mono `01`, `02`… sobre cada `h2` del cuerpo (`.article-body`), el mismo número que su chip del índice.
+- **Entradilla:** el primer párrafo de una nota va en `--text-lead` y tinta 900 (`.article-lede`).
+- **Wordmark fantasma del pie:** el handle en JetBrains Mono 600, color `border`, de borde a borde. Es un **SVG** con `textLength` (ocupa exactamente el ancho del contenedor y, al ser gráfico decorativo, no entra en el cálculo de contraste); no es texto ni tiene token de tamaño.
+- Inter Display se carga con `display: optional` y sin fuente de respaldo propia: si no llega a tiempo, el titular se queda en Inter de texto y no salta (CLS 0).
 
 ---
 
@@ -1214,5 +1230,6 @@ En Tailwind v4, `@theme` con `initial` anula la escala por defecto: **fuera de l
 | 3.3 | 12 oct 2026 | Revisión de cierre: hero con frase canónica como bajada y retrato real, sin pie decorativo; prioridad de carga por página (§20); inventarios de componentes (§19.2) y archivos (§24) al día; ejemplos de voz y pilares alineados al posicionamiento de desarrollo web + automatización (§2, §12). |
 | 3.4 | 12 oct 2026 | Correos del formulario con la línea gráfica (§13.4.1); se restaura `monograma.svg` con su fondo marino (una exportación lo había dejado solo con las letras blancas) y se regeneran los íconos. |
 | 4.0 | 13 oct 2026 | Auditoría de diseño y UX sobre producción. **Identidad:** metáfora del plano (§1.1) y kit de firma de 6 piezas (§6.9); regla trazada y cota de métricas (§6.1). **Imágenes:** portadas de casos como planos SVG del flujo real en lugar de renders generados con neón (§6.8); retrato con fondo marino-700 y script para rehacerlo (§10.3, §10.6); el prompt base queda para fondos y apoyos (§10.7). **Movimiento:** catálogo con trazado, aparición solo de gráficos, pulso y regla del hero, 100 % CSS (§11). **Contenido:** pilar "IA en agencias" → "Herramientas e IA"; motivo gráfico por pilar (§12.2); el marino pasa a fondo protagonista en redes (§4.3, §12.4, §12.9); flujo de la idea a la pieza (§12.10). **Coherencia:** reglas de degradados unificadas (§4.5, §15.3), §22 apunta a `tokens.css` en lugar de copiarlo, inventarios al día (§19.2, §24). |
+| 4.3 | 3 nov 2026 | **Tipografía editorial y vista móvil.** **Tipografía:** Inter Display (corte de tamaño óptico de Inter, 600) para display/h1/h2; escala con más contraste (nombre 44→68 px, h1 32→52, h2 28→40, métricas 40→56) y wordmark fantasma del pie en SVG (§5.1, §16); cero rasgado en la mono y cifras con espacio fino irrompible (§16). **Artículos:** secciones numeradas, entradilla en las notas e índice "En esta página" generado desde los títulos reales (arregla enlaces rotos en casos con títulos propios), con chips fijos en el celular y resaltado activo sin JS (§11.2, §16). **Móvil:** portadas de caso con composición propia 360 × 360 en Z (antes las etiquetas quedaban en ~7 px), resumen corto en el hero (`summaryShort`), banda de resultados compacta. Tarjetas de notas con su portada propia. **Movimiento:** se permiten, con condiciones, el movimiento ambiental (señal continua, anillo de puesto actual) y el conteo de cifras (§11.1, §11.2); `hero-in` sin opacidad, como ya decía §11.2. **Medición:** GA se carga solo tras aceptar (opt-in) y el banner se pinta en el primer frame. |
 | 4.2 | 1 nov 2026 | **Páginas internas + sin retrato.** Se retira la foto de perfil del hero y de Sobre mí; en su lugar, **composición de marca animada** (`HeroFigure`): monograma + flujo Descubro → Construyo → Mido con barra de impacto (§6.9, §10.6). La imagen `image` del Person en JSON-LD pasa a la OG de marca. **Portadas de caso (§6.8):** color por tipo de caso (web azul · automatización ámbar · datos verde azulado), con ícono de tipo y mini gráfico de barras; `FigureFrame` queda plano, sin retícula. Antetítulos de caso y tarjetas tonados por tipo. **Notas:** soporte de imagen de portada (`cover`/`coverAlt`) e imágenes inline en MDX, con fallback al motivo del pilar; prompts de generación en `docs/08-PROMPTS-IMAGENES.md`. |
 | 4.1 | 1 nov 2026 | **Estética limpia del home.** Se retiran los degradados de fondo y la retícula del hero (§6.7, §15.3, §15.4): hero sobre fondo de página y banda de identidad en marino-900 sólido. **Hero:** retrato con recorte diagonal (`clip-hero`), sin borde ni sombra, que rompe el cuadrado (`MediaFrame frameless`). **Jerarquía:** nodos de sección con color de *wayfinding* por tipo de contenido (métricas azul, proyectos ámbar, notas verde azulado) y apoyo en neutro; bordes de métrica en acento (§15.3). **Movimiento:** entrada del hero con fade + ascenso escalonado y fade propio de la foto (§11). **Contenido:** CTA final al posicionamiento de Producto; enlace en vivo de la feria virtual. |
