@@ -31,13 +31,13 @@ export function CaseArticle({ c, minutes, variant = "row", headingLevel = "h3" }
       media: "sm:col-span-5 lg:col-span-4",
       body: "sm:col-span-7 lg:col-span-8",
     },
-    card: { root: "", media: "", body: "" },
+    card: { root: "grid-rows-[auto_1fr]", media: "", body: "h-full" },
   }[variant];
   const measured = isMeasured(c.result);
   const tone = toneText[caseTypeTone[c.type]];
 
   return (
-    <article className={`group relative grid gap-5 ${layout.root}`}>
+    <article className={`group relative grid h-full gap-5 ${layout.root}`}>
       <CaseCover c={c} className={layout.media} />
       <div className={`flex flex-col gap-3 ${layout.body}`}>
         <DraftNotice item={c} />
@@ -58,7 +58,7 @@ export function CaseArticle({ c, minutes, variant = "row", headingLevel = "h3" }
         <p className={featured ? "text-lead text-ink-700" : "text-ink-700"}>{c.subtitle}</p>
         <p className="text-small text-ink-700">
           <span
-            className={`mr-2 font-mono text-body font-semibold ${measured ? "text-success-700" : "text-ink-900"}`}
+            className={`mr-2 font-mono text-body font-semibold tabular-nums ${measured ? "text-success-700" : "text-ink-900"}`}
           >
             {c.result.before && (
               <span className="font-medium text-ink-500">{c.result.before} → </span>
@@ -69,7 +69,7 @@ export function CaseArticle({ c, minutes, variant = "row", headingLevel = "h3" }
         </p>
         <span
           aria-hidden
-          className={`mt-1 inline-flex items-center gap-2 text-small font-semibold ${tone}`}
+          className={`${layout.body === "h-full" ? "mt-auto" : "mt-1"} inline-flex items-center gap-2 text-small font-semibold ${tone}`}
         >
           Leer el caso
           <IconArrowRight

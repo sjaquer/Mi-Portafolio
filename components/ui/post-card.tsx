@@ -27,8 +27,8 @@ export function PostCard({
       className={`group relative grid h-full gap-3 ${row ? "sm:grid-cols-12 sm:gap-6" : "grid-rows-[auto_auto_auto_1fr_auto]"}`}
     >
       <PillarMotif pillar={n.pillar} className={row ? "sm:col-span-5 lg:col-span-4" : "mb-2"} />
-      <div className={`flex flex-col gap-3 ${row ? "sm:col-span-7 lg:col-span-8" : "contents"}`}>
-        <p className="text-label-mono text-ink-500">
+      <div className={row ? "flex flex-col gap-3 sm:col-span-7 lg:col-span-8" : "contents"}>
+        <p className="text-label-mono text-ink-500 tabular-nums">
           {pillarLabel[n.pillar]} · <time dateTime={n.date}>{formatDate(n.date)}</time> · {minutes}{" "}
           min
         </p>
