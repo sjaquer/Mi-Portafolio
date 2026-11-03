@@ -145,7 +145,7 @@ const allNotes: Note[] = [
   },
   {
     slug: "validar-correos-antes-de-una-campana",
-    title: "Validé 1 200 correos antes de una campaña: así se evita quemar una cuenta de envío",
+    title: "Validé 1 200 correos antes de una campaña: así se evita quemar una cuenta de envío",
     description:
       "Por qué verificar una base de correos antes de enviar protege la reputación de las cuentas, y cómo lo resolví con Python, registros MX y reintentos.",
     date: "2026-10-12",

@@ -178,7 +178,7 @@ const allCases: CaseStudy[] = [
   },
   {
     slug: "difusion-correo-wiener",
-    title: "Campañas de 8 000 correos de horas a tan solo minutos, con baja automática",
+    title: "Campañas de 8 000 correos de horas a tan solo minutos, con baja automática",
     subtitle:
       "Sistema interno de difusión con segmentación, personalización, envío por lotes y lista de exclusión, más la verificación previa de la base de correos.",
     problem:
@@ -186,7 +186,7 @@ const allCases: CaseStudy[] = [
     result: {
       value: "5–10 min",
       before: "1–2 h",
-      label: "por campaña de 8 000 destinatarios",
+      label: "por campaña de 8 000 destinatarios",
       context: "Estimado: tiempo de envío de una misma campaña antes y después del sistema",
       measured: true,
     },
@@ -219,7 +219,7 @@ const allCases: CaseStudy[] = [
     problem:
       "Las encuestas vivían en formularios sueltos, sin verificar quién respondía, y cada reporte obligaba a unir y limpiar respuestas a mano.",
     result: {
-      value: "~3 000",
+      value: "~3 000",
       label: "respuestas de egresados analizadas en un tablero que se actualiza solo",
       context: "Encuesta de empleabilidad de egresados 2025–2026",
     },
@@ -325,7 +325,7 @@ const allCases: CaseStudy[] = [
     problem:
       "La web anterior pintaba todo con JavaScript, contaba otra historia que mi CV y no tenía ninguna forma de saber si servía.",
     result: {
-      value: "−59 %",
+      value: "−59 %",
       label: "JavaScript inicial: de ~344 KB a ~140 KB comprimidos",
       context:
         "Build de Vite del 11 oct (gzip) vs. Lighthouse móvil de la home nueva del 12 oct, sin contar GTM/GA4",
@@ -357,7 +357,7 @@ const allCases: CaseStudy[] = [
     problem:
       "Los pedidos y los datos de clientes se copiaban a mano entre la tienda online, el CRM y las hojas de cálculo.",
     result: {
-      value: "−30 %",
+      value: "−30 %",
       label: "tareas administrativas manuales",
       context: "Estimado · Dearel, ago – nov 2025",
     },
@@ -369,7 +369,7 @@ const allCases: CaseStudy[] = [
     stack: ["Shopify", "APIs REST", "Google Sheets", "Power BI"],
     status: "entregado",
     updatedAt: "2026-10-12",
-    draft: "Falta la base y el método del −30 % (07-PROYECTOS.md §4)",
+    draft: "Falta la base y el método del −30 % (07-PROYECTOS.md §4)",
     cover: {
       label: "Pedidos sin digitar dos veces",
       nodes: [
@@ -383,13 +383,13 @@ const allCases: CaseStudy[] = [
   },
   {
     slug: "pedidos-big-jack",
-    title: "Pedidos 35 % más rápidos en una hamburguesería",
+    title: "Pedidos 35 % más rápidos en una hamburguesería",
     subtitle:
       "Menú digital y bot de WhatsApp con IA que envían cada pedido por webhook a una terminal de caja y cocina, con el inventario ligado a las comandas.",
     problem:
       "Salón, cocina y canal online trabajaban desconectados: cada pedido se transcribía a mano y el inventario se desfasaba.",
     result: {
-      value: "−35 %",
+      value: "−35 %",
       label: "tiempo de procesamiento por pedido",
       context: "Estimado · 4 semanas antes vs. después de la implementación",
     },

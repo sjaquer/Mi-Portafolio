@@ -8,7 +8,7 @@
 export type YearMonth = `${number}-${string}`;
 
 export interface Metric {
-  /** Cifra tal como se muestra: "−35 %" (signo menos real U+2212) o "En producción". */
+  /** Cifra tal como se muestra: "−35 %" (signo menos real U+2212) o "En producción". */
   value: string;
   /** Qué cambió. */
   label: string;
@@ -51,6 +51,9 @@ export const profile = {
     "Construyo herramientas web y automatizaciones pensadas para que la gente las entienda y las use sin complicarse.",
   summary:
     "Estudiante de último ciclo de Administración y Negocios Internacionales con perfil técnico (Next.js, Python, PostgreSQL, APIs). Especializado en análisis de producto, descubrimiento y diseño de flujos de usuario, y construcción de soluciones digitales que optimizan la operación de negocio y reducen tiempos de ciclo. Actualmente desarrollo herramientas internas en la Universidad Norbert Wiener.",
+  /** Versión de 2–3 líneas del resumen para la primera pantalla en el celular (hero). */
+  summaryShort:
+    "Último ciclo de Administración y Negocios Internacionales. Hoy desarrollo herramientas internas en la Universidad Norbert Wiener.",
   location: "Lima, Perú",
   availability: "Disponible para roles junior desde enero 2027",
   siteUrl: "https://sjaquer.is-a.dev",
@@ -69,7 +72,7 @@ export const profile = {
       location: "Lima",
       highlights: [
         "Lideré el desarrollo y producto de Empleabilidad Wiener (bolsa laboral, creador de CV con IA y feria virtual en Next.js, Supabase/PostgreSQL, Docker, Microsoft Entra ID y Playwright E2E), unificando tres plataformas de terceros en una propia. En producción desde oct. 2026.",
-        "Construí un sistema de difusión por correo con segmentación, personalización y lista de exclusión (Ley 29733): el envío de campañas de 8 000 correos pasó de horas a tan solo 5–10 minutos.",
+        "Construí un sistema de difusión por correo con segmentación, personalización y lista de exclusión (Ley 29733): el envío de campañas de 8 000 correos pasó de horas a tan solo 5–10 minutos.",
         "Desarrollé micrositios, landings y portal de formularios con validación de identidad contra padrón institucional y tableros en tiempo real para encuestas NPS y seguimiento de egresados.",
         "Automaticé la extracción y publicación de convocatorias laborales 24/7 mediante un bot con IA (Python, Playwright, LLM local y Gemini) y depuración de bases de datos de empresas.",
       ],
@@ -94,7 +97,7 @@ export const profile = {
         "Gestioné indicadores de satisfacción y experiencia de comensales para optimizar los flujos operativos del producto digital.",
       ],
       metric: {
-        value: "−35 %",
+        value: "−35 %",
         label: "tiempo de procesamiento por pedido",
         context: "Estimado · 4 semanas antes vs. después de la implementación",
       },
@@ -112,7 +115,7 @@ export const profile = {
         "Construí PrestaFacilito (gestión de préstamos y cobranzas con lectura OCR de comprobantes de pago) y tableros de BI para control de inventario y ventas.",
       ],
       metric: {
-        value: "−30 %",
+        value: "−30 %",
         label: "tareas administrativas manuales",
         context: "Estimado · retail e integraciones freelance, 2025",
       },
@@ -129,7 +132,7 @@ export const profile = {
         "Medí y reporté rendimiento y embudos de usuario con Google Analytics. Reconocido como Colaborador del Mes tres meses consecutivos.",
       ],
       metric: {
-        value: "+40 %",
+        value: "+40 %",
         label: "leads orgánicos por optimización web",
         context: "Neon Led Store · jun – ago 2025",
       },
@@ -142,7 +145,7 @@ export const profile = {
       to: "2025-05",
       location: "Callao",
       highlights: [
-        "Gestioné órdenes de compra en ERP para suministros marítimos con 95 % de precisión en entregas.",
+        "Gestioné órdenes de compra en ERP para suministros marítimos con 95 % de precisión en entregas.",
       ],
       stack: ["ERP"],
     },
@@ -254,7 +257,7 @@ export const profile = {
     },
     {
       q: "¿Qué resultados medidos tiene?",
-      a: "−35 % de tiempo de procesamiento por pedido en Big Jack Burgers, −30 % en tareas manuales integrando Shopify con CRM en retail, y campañas de 8 000 correos de más de 4 horas a tan solo 5–10 minutos. Cada cifra con su base y periodo documentado.",
+      a: "−35 % de tiempo de procesamiento por pedido en Big Jack Burgers, −30 % en tareas manuales integrando Shopify con CRM en retail, y campañas de 8 000 correos de más de 4 horas a tan solo 5–10 minutos. Cada cifra con su base y periodo documentado.",
     },
     {
       q: "¿Para qué roles está disponible?",
