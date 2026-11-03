@@ -100,6 +100,28 @@ export function Footer() {
             © {year} {profile.name}
           </p>
         </div>
+
+        {/* Firma de cierre (v4.3): el handle de borde a borde, en tono fantasma. Es un
+            gráfico (SVG con textLength), no texto: ocupa justo el ancho en cualquier
+            pantalla y no entra en el cálculo de contraste. El nombre ya está en el pie. */}
+        <svg
+          aria-hidden
+          focusable="false"
+          viewBox="0 0 420 100"
+          className="mt-6 block h-auto w-full select-none"
+        >
+          <text
+            x={0}
+            y={76}
+            textLength={420}
+            lengthAdjust="spacingAndGlyphs"
+            className="fill-border font-mono"
+            fontSize={100}
+            fontWeight={600}
+          >
+            {profile.handle}
+          </text>
+        </svg>
       </Container>
     </footer>
   );
