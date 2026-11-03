@@ -18,14 +18,14 @@
 
 ## 1. Qué material reunir por página
 
-| Pieza | Para qué sirve | Formato |
-|---|---|---|
-| **Snapshot HTML** (solo el front) | Conservar cómo era la página ese año y poder volver a capturarla aunque producción cambie o se caiga | `.html` saneado + carpeta de recursos (CSS, imágenes) |
-| **Captura larga de escritorio** | Mostrar la página completa, de arriba a abajo | PNG original → WebP para publicar, ancho 1440 px |
-| **Captura larga de celular** | Mostrar la versión móvil (parte del trabajo de diseño) | PNG → WebP, ancho 390 px |
-| **Capturas de detalle** | Una decisión puntual (menú, formulario, tabla, estado vacío) | WebP, recorte de la zona, ≤ 1440 px |
-| **Comparativa antes/después** | Mismo encuadre, dos años distintos | Par de capturas con el **mismo ancho y la misma sección** |
-| **GIF / video corto** (opcional) | Un flujo en movimiento | Según `09` §7 |
+| Pieza                                   | Para qué sirve                                                                                          | Formato                                                          |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| **Snapshot HTML** (solo el front) | Conservar cómo era la página ese año y poder volver a capturarla aunque producción cambie o se caiga | `.html` saneado + carpeta de recursos (CSS, imágenes)         |
+| **Captura larga de escritorio**   | Mostrar la página completa, de arriba a abajo                                                           | PNG original → WebP para publicar, ancho 1440 px                |
+| **Captura larga de celular**      | Mostrar la versión móvil (parte del trabajo de diseño)                                                | PNG → WebP, ancho 390 px                                        |
+| **Capturas de detalle**           | Una decisión puntual (menú, formulario, tabla, estado vacío)                                          | WebP, recorte de la zona, ≤ 1440 px                             |
+| **Comparativa antes/después**    | Mismo encuadre, dos años distintos                                                                      | Par de capturas con el **mismo ancho y la misma sección** |
+| **GIF / video corto** (opcional)  | Un flujo en movimiento                                                                                   | Según `09` §7                                                |
 
 ---
 
@@ -115,28 +115,51 @@ magick design/capturas/<slug>/2026/full-desktop.png -resize '1440x>' -quality 80
 
 Marca cada casilla al completarla. "Enlace": si el caso mostrará o no el enlace de producción.
 
-### 5.1 Empleabilidad Wiener · portal del estudiante (`bolsa-de-trabajo-wiener`)
-Público: `portaldelestudiante.uwiener.edu.pe/servicio/empleabilidad/` · Enlace: **sí** (ya es público y con permiso).
-- [ ] Captura larga escritorio y celular del portal (2026).
-- [ ] Capturas de detalle: bolsa laboral, creador de CV con IA, feria virtual (vistas públicas o con datos de prueba).
-- [ ] Snapshot HTML saneado del portal.
+### 5.1 Portal y CMS de Empleabilidad Wiener (`bolsa-de-trabajo-wiener`)
+
+Público: `https://empleabilidad.uwiener.edu.pe/` (y subdominio directo a feria: `https://ferialaboralonline.uwiener.edu.pe/`) · Enlace: **sí** (público y con permiso).
+
+> **Arquitectura y distinción clave (no confundir estos 3 proyectos):**
+> 1. **Portal y CMS de Empleabilidad (`https://empleabilidad.uwiener.edu.pe/`):** es la aplicación principal (Next.js + PostgreSQL + Docker) y funciona como un **CMS completo** que controla desde un solo sistema la **bolsa de trabajo**, el **creador de CV con IA**, los talleres/eventos y la **Feria Laboral Virtual**. El subdominio `https://ferialaboralonline.uwiener.edu.pe/` **es este mismo proyecto**, configurado para dirigir directamente a la vista de la feria por comodidad del usuario y para una difusión más concreta en campañas.
+> 2. **Landing informativa de Empleabilidad (`https://portaldelestudiante.uwiener.edu.pe/servicio/empleabilidad/`):** es una **web informativa simple** dentro del Portal del Estudiante que explica qué es el área y qué servicios ofrece (§5.1.bis). Es totalmente independiente del CMS de empleabilidad.
+> 3. **Sistema Administrativo interno de Empleabilidad / Desarrollo Profesional y Alumni (§5.2):** es **otro proyecto distinto**, en progreso y de uso **exclusivamente interno para administrativos del área** (no público, solo capturas), construido junto al sistema de difusión de correos y al buscador rápido de estudiantes.
+
+- [ ] Captura larga escritorio y celular del portal público en `empleabilidad.uwiener.edu.pe` (2026).
+- [ ] Capturas de detalle de los módulos que controla el CMS: bolsa laboral, creador de CV con IA, vista de feria virtual (`ferialaboralonline.uwiener.edu.pe`) e interruptores/gestión del CMS (vistas públicas o con datos de prueba).
+- [ ] Snapshot HTML saneado del portal y de la vista directa de feria.
 - [ ] Revisar que no aparezcan datos de alumnos reales en ninguna vista.
 
-### 5.2 Plataforma administrativa de empleabilidad (`bolsa-de-trabajo-wiener` y `difusion-correo-wiener`)
-Privada, con sesión · Enlace: **no** · **Anonimizador obligatorio** (`09` §3–§4).
-- [ ] Herramienta de **difusión de correos** (segmentación, lista de exclusión, envío por lotes) → va también al caso `difusion-correo-wiener`.
-- [ ] **Acceso rápido a la base de estudiantes** → solo con datos ficticios; si no se puede anonimizar del todo, usar un estado vacío o una fila de ejemplo.
-- [ ] **Planes / hoja de ruta** de la plataforma (qué viene después).
-- [ ] Sebastián envía sus capturas → revisar una por una antes de guardarlas.
-- [ ] Verificación `residual=0` y `longDigits=0` en cada pantalla.
+### 5.1.bis Landing informativa del área en el Portal del Estudiante (galería: `Página de Desarrollo Profesional y Alumni`)
+
+Público: `https://portaldelestudiante.uwiener.edu.pe/servicio/empleabilidad/` · Enlace: **sí**.
+
+- [ ] Captura larga de escritorio y celular de la landing informativa (arquitectura de información por público: qué es el área, qué hace, servicios, talleres y canales de atención).
+- [ ] Snapshot HTML saneado para conservar el diseño web institucional.
+
+### 5.2 Sistema administrativo interno de Empleabilidad / Desarrollo Profesional y Alumni (`difusion-correo-wiener` y §6.5)
+
+Privado, en progreso, **uso netamente para administrativos del área** (no es para público general) · Enlace: **no (solo capturas)** · **Anonimizador obligatorio** (`09` §3–§4).
+
+> **El problema operativo que resuelve (contexto obligatorio para el caso y los pies de foto):**
+> - **De 7–9 pasos a 1 sola búsqueda instantánea:** antes, el equipo administrativo usaba un sistema institucional donde encontrar a un estudiante y consultar sus datos tomaba **entre 7 y 9 pasos**. Construí esta aplicación con un **buscador ultrarrápido de alumnos y egresados** que localiza a cualquier estudiante en un paso ingresando su **DNI, código universitario, nombre o apellido**, mostrando su ficha completa al instante.
+> - **Filtros inteligentes unidos al Sistema de Difusión de Correos:** el sistema administrativo está **construido e integrado directamente junto con el motor de difusión masiva de correos** (`difusion-correo-wiener`), de modo que los mismos filtros inteligentes (carrera, facultad, sede, ciclo, condición de egreso) sirven tanto para consultar padrones como para segmentar audiencias y disparar campañas por lotes con lista de exclusión automática.
+
+- [ ] **Buscador rápido de estudiantes (7–9 pasos → 1 búsqueda por DNI, código o nombre)** → captura de la barra de búsqueda, los filtros instantáneos y la ficha resultante **solo con datos ficticios** (anonimizador activo o fila simulada).
+- [ ] **Filtros inteligentes + Herramienta de difusión de correos** (segmentación combinada, lista de exclusión por Ley 29733, plantillas personalizadas y envío por lotes) → alimenta directamente el caso `difusion-correo-wiener`.
+- [ ] **Tablero e indicadores internos / hoja de ruta** de los módulos en progreso para el equipo administrativo.
+- [ ] Sebastián envía o toma sus capturas → revisar una por una antes de guardarlas.
+- [ ] Verificación estricta `residual=0` y `longDigits=0` en cada pantalla antes de exportar a `public/img/proyectos/`.
 
 ### 5.3 Bot de convocatorias externas (`reqlut-bot`)
+
 - [ ] Capturas del **log del bot** (consola o archivo): extracción → estructura → segunda pasada de IA → publicación.
 - [ ] Ofuscar correos y teléfonos de reclutadores en el log (los nombres de empresa de ofertas públicas pueden quedar; ante la duda, ofuscar).
 - [ ] Una captura de la oferta ya publicada en la bolsa laboral (vista pública).
 
 ### 5.4 Big Jack · menú renovado 2026 vs 2025 (`pedidos-big-jack` + artículo nuevo §6.1)
+
 `bigjack.vercel.app` · Enlace: **decidir**.
+
 - [ ] Captura larga escritorio y celular del **menú 2026**.
 - [ ] Recuperar la versión **2025** (Vercel *Deployments* o Git, §2) y capturarla con el **mismo ancho**.
 - [ ] Pares de detalle con el mismo encuadre: portada, categorías, ficha de producto, carrito/pedido.
@@ -144,7 +167,9 @@ Privada, con sesión · Enlace: **no** · **Anonimizador obligatorio** (`09` §3
 - [ ] Anotar fechas reales de cada versión.
 
 ### 5.5 TaskMe 2024 vs 2026 (artículo nuevo §6.2)
+
 Pasó de herramienta para varias personas a herramienta personal · Enlace: **decidir**.
+
 - [ ] Captura **completa** 2026 (escritorio y celular).
 - [ ] Captura **completa** 2024 (Git o despliegue antiguo, §2).
 - [ ] Pares de detalle: tablero, creación de tarea, notas → tareas con IA, sincronización con Calendar.
@@ -152,20 +177,24 @@ Pasó de herramienta para varias personas a herramienta personal · Enlace: **de
 - [ ] Revisar que las tareas visibles no tengan información personal o de terceros.
 
 ### 5.6 Portafolio 2024 · 2025 · 2026 (`este-portafolio` + artículo nuevo §6.3)
+
 - [ ] Captura larga escritorio y celular de cada versión (2024, 2025, 2026 actual).
 - [ ] Fuentes: Git de cada repo, despliegues antiguos o Wayback Machine (§2).
 - [ ] Mismo ancho y mismo orden de secciones para que la comparación sea justa.
 
 ### 5.7 Plataforma de préstamos 2025 vs 2026 (`prestafacilito` + artículo nuevo §6.4)
+
 Privada · Enlace: **no** · Anonimizador obligatorio.
+
 - [ ] Sebastián envía capturas 2025 y 2026.
 - [ ] Tabla de funciones: qué tenía 2025, qué tiene 2026 (cronograma, mora, OCR, registro de acciones…).
 - [ ] Pares de detalle de las pantallas que más cambiaron.
 - [ ] Verificación de anonimización (montos y nombres de deudores ficticios, comprobantes difuminados).
 
 ### 5.8 Casos publicados que hoy no tienen ninguna imagen
+
 - [ ] `formularios-nps-wiener` — portal de formularios y tablero (datos ficticios).
-- [ ] `feria-virtual-wiener` — `ferialaboralonline.uwiener.edu.pe`, captura larga escritorio y celular.
+- [ ] `feria-virtual-wiener` — `https://ferialaboralonline.uwiener.edu.pe/`, captura larga escritorio y celular (aclarando que este subdominio apunta directamente al módulo de feria dentro del mismo CMS de empleabilidad `empleabilidad.uwiener.edu.pe` para facilitar su difusión en campañas).
 - [ ] `integracion-shopify-crm-dearel` — flujo de la integración (sin datos de clientes). Sigue en borrador hasta tener la base del −30 %.
 - [ ] `este-portafolio` — cubierto en §5.6.
 - [ ] Apps privadas de `09` §0 (LogINV, LogiFlow, DataWeave BI, Coralia Delights, Sistema Obra) — flujo de `09`.
@@ -176,15 +205,16 @@ Privada · Enlace: **no** · Anonimizador obligatorio.
 
 Cada uno puede ser un caso completo o una nota; se decide caso por caso (§8). Estructura para comparativas: **Contexto · Cómo era (año A) · Qué cambié y por qué · Cómo quedó (año B) · Qué aprendí**. Las decisiones van con su par de capturas lado a lado.
 
-| # | Slug propuesto | Tema | Ángulo (lo que demuestra) | Material de §5 |
-|---|---|---|---|---|
-| 6.1 | `big-jack-menu-2025-vs-2026` | Menú digital de Big Jack, antes y después | Cómo evolucionó mi diseño web: jerarquía, legibilidad en el celular, flujo de pedido | §5.4 |
-| 6.2 | `taskme-de-equipo-a-personal` | TaskMe 2024 → 2026 | Madurez de producto: quitar funciones para servir mejor a un solo usuario; UX más simple | §5.5 |
-| 6.3 | `portafolio-2024-2025-2026` | Tres versiones de mi portafolio | De vitrina de proyectos a caso medido; qué aprendí de diseño, rendimiento y contenido | §5.6 |
-| 6.4 | `prestafacilito-2025-vs-2026` | La plataforma de préstamos, versión a versión | Qué funciones agregué, cuáles quité y qué fricción eliminó cada cambio | §5.7 |
-| 6.5 | `plataforma-admin-empleabilidad` | El panel administrativo de Empleabilidad | Herramientas internas: difusión, acceso rápido a la base, planes (puede ser sección del caso `bolsa-de-trabajo-wiener`) | §5.2 |
+| #   | Slug propuesto                     | Tema                                             | Ángulo (lo que demuestra)                                                                                                   | Material de §5 |
+| --- | ---------------------------------- | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| 6.1 | `big-jack-menu-2025-vs-2026`     | Menú digital de Big Jack, antes y después      | Cómo evolucionó mi diseño web: jerarquía, legibilidad en el celular, flujo de pedido                                     | §5.4           |
+| 6.2 | `taskme-de-equipo-a-personal`    | TaskMe 2024 → 2026                              | Madurez de producto: quitar funciones para servir mejor a un solo usuario; UX más simple                                    | §5.5           |
+| 6.3 | `portafolio-2024-2025-2026`      | Tres versiones de mi portafolio                  | De vitrina de proyectos a caso medido; qué aprendí de diseño, rendimiento y contenido                                     | §5.6           |
+| 6.4 | `prestafacilito-2025-vs-2026`    | La plataforma de préstamos, versión a versión | Qué funciones agregué, cuáles quité y qué fricción eliminó cada cambio                                                | §5.7           |
+| 6.5 | `plataforma-admin-empleabilidad` | Sistema administrativo interno de Desarrollo Profesional y Alumni (privado, solo capturas) | Herramienta interna para administrativos: cómo reduje la búsqueda de alumnos de 7–9 pasos a una consulta directa por DNI/código/nombre, unida a filtros inteligentes y al motor de difusión masiva de correos (`difusion-correo-wiener`) | §5.2           |
 
 Para cada artículo nuevo:
+
 - [ ] Confirmar formato (caso o nota) y si muestra enlace.
 - [ ] Reunir el material de §5 completo **antes** de escribir.
 - [ ] Escribir con la voz de `06-CONTENIDO.md` y registrar en `content/casos/index.ts` o `content/notas/index.ts`.
@@ -209,7 +239,7 @@ Antes de construirlas: proponer el diseño y confirmarlo con Sebastián.
 
 - [ ] ¿Las comparativas (§6.1–6.4) van como **casos** en `/proyectos` o como **notas**? (Propuesta: casos si hay resultado medible; notas si el foco es el aprendizaje.)
 - [ ] ¿Se muestra el enlace de `bigjack.vercel.app` y de TaskMe?
-- [ ] ¿La plataforma administrativa (§6.5) es un caso propio o una sección de `bolsa-de-trabajo-wiener`?
+- [ ] ¿El sistema administrativo interno (§6.5) va como artículo/caso independiente (solo con capturas, sin enlace) o integrado dentro del caso `difusion-correo-wiener`, dado que ambos comparten la misma base de filtros inteligentes y el buscador rápido de alumnos (de 7–9 pasos a 1 paso)?
 - [ ] ¿Se versiona en Git el material de `design/capturas/`? (Recomendado: sí para PNG/notas, **no** para HTML sin sanear; añadir `design/capturas/**/raw/` a `.gitignore` si se guarda algo sin sanear.)
 
 ---

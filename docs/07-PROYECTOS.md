@@ -78,16 +78,16 @@
 
 ## 2. Fichas detalladas de los proyectos clave
 
-### 2.1 Empleabilidad Wiener (`bolsa-de-trabajo-wiener`)
+### 2.1 Portal y CMS de Empleabilidad Wiener (`bolsa-de-trabajo-wiener`)
 - **Problema de negocio:** La universidad dependía de tres plataformas desconectadas (bolsa de empleo externa, creador de CV de terceros y formularios independientes para ferias laborales). Los estudiantes tenían que duplicar cuentas y la institución no tenía control central de los datos de colocación laboral.
-- **Solución de producto:** Plataforma web unificada de punta a punta:
-  - 5 roles de acceso granular (Estudiante, Egresado, Empresa, Administrador, Jefatura).
+- **Solución de producto:** Plataforma web y **CMS propio unificado** de punta a punta que controla tanto la bolsa de trabajo como la feria virtual y el creador de CV:
+  - 5 roles de acceso granular (Estudiante, Egresado, Empresa, Administrador, Jefatura) e interruptores de módulos desde el CMS.
   - Autenticación institucional vía Microsoft Entra ID (Single Sign-On).
   - Creador de CV con importación inteligente de PDF mediante IA (extracción estructurada de experiencia, educación y habilidades sin almacenar el archivo temporal).
-  - Módulo de feria laboral con postulación directa y métricas de empleabilidad en tiempo real.
+  - Módulo de feria laboral con postulación directa y métricas de empleabilidad en tiempo real, accesible también mediante su subdominio directo `https://ferialaboralonline.uwiener.edu.pe/` para una difusión más concreta en campañas (siendo el mismo sistema y CMS que `https://empleabilidad.uwiener.edu.pe/`).
   - Pruebas E2E completas con Playwright para garantizar cero caídas en picos de tráfico.
 - **Stack:** Next.js 16 (App Router), Supabase / PostgreSQL, Docker, Playwright, Tailwind CSS.
-- **Resultado:** En producción desde octubre de 2026 en `portaldelestudiante.uwiener.edu.pe/servicio/empleabilidad/`, unificando el ecosistema laboral de miles de estudiantes.
+- **Resultado:** En producción desde octubre de 2026 en `https://empleabilidad.uwiener.edu.pe/` (con acceso directo a feria en `https://ferialaboralonline.uwiener.edu.pe/`), independiente de la landing informativa del área en el Portal del Estudiante (`https://portaldelestudiante.uwiener.edu.pe/servicio/empleabilidad/`).
 
 ### 2.2 LogINV Agroindustrial (`loginv-agroindustrial`)
 - **Problema de negocio:** En plantas procesadoras de alimentos y operaciones agroindustriales, los inventarios de insumos críticos sufrían descuadres por conteos manuales en papel, mermas por vencimientos no alertados a tiempo y compras de pánico por falta de puntos de reorden calculados.
@@ -120,15 +120,16 @@
 - **Stack:** Next.js, React, Firebase Realtime Database / Firestore, Webhooks.
 - **Resultado:** **−35 % de tiempo de procesamiento por pedido** (medido durante 4 semanas antes vs. después de la implementación) y elevación del margen mensual en 15 %.
 
-### 2.5 Difusión Masiva y Validación de Correos (`difusion-correo-wiener`)
-- **Problema de negocio:** La comunicación a egresados y alumnos se hacía manualmente desde Outlook en tandas pequeñas de 50 correos. Una campaña de 8 000 destinatarios tomaba más de 4 horas de trabajo manual, con alto riesgo de bloqueo de cuenta por spam y sin mecanismo formal para respetar las solicitudes de baja (Ley 29733 de Protección de Datos Personales).
-- **Solución de producto:** Sistema de difusión y depuración:
-  - Segmentación dinámica de destinatarios por carrera, ciclo y estado académico.
-  - Motor de personalización de plantilla y despacho controlado por lotes vía API.
-  - Mecanismo automatizado de baja en un clic con lista negra de exclusión sincronizada a la base de datos.
-  - Script previo de validación sintáctica y de dominio sobre más de 1 200 correos corporativos para reducir la tasa de rebote.
+### 2.5 Sistema Administrativo Interno, Buscador Rápido y Difusión Masiva (`difusion-correo-wiener`)
+- **Problema de negocio:** La comunicación a egresados y alumnos se hacía manualmente desde Outlook en tandas pequeñas de 50 correos (una campaña de 8 000 destinatarios tomaba horas, sin control automatizado de bajas según la Ley 29733). Además, para consultar la ficha de un alumno el personal administrativo dependía de un sistema legado que exigía **entre 7 y 9 pasos** hasta encontrar al estudiante y sus datos.
+- **Solución de producto (uso netamente administrativo interno, privado / solo capturas):**
+  - **Buscador ultrarrápido de alumnos y egresados:** reduce de **7–9 pasos a 1 sola búsqueda directa** por **DNI, código de alumno, nombre o apellido**, entregando al instante su ficha académica y de contacto.
+  - **Filtros inteligentes integrados con el motor de difusión:** construido en el mismo sistema que la herramienta de envío masivo, permitiendo segmentar dinámicamente por carrera, facultad, sede, ciclo y condición académica.
+  - Motor de personalización de plantilla y despacho controlado por lotes vía API, con rotación de cuentas institucionales.
+  - Mecanismo automatizado de baja en un clic con lista de exclusión sincronizada a la base de datos.
+  - Script previo de validación sintáctica y de dominio (registros MX) sobre más de 1 200 correos corporativos para reducir la tasa de rebote.
 - **Stack:** React, Node.js, PostgreSQL, Microsoft 365, Resend.
-- **Resultado:** Tiempo de envío por campaña reducido de **+4 horas a tan solo 5–10 minutos**, con cumplimiento estricto de la normativa de privacidad.
+- **Resultado:** Tiempo de envío por campaña reducido de **horas a 5–10 minutos**, consulta de fichas de alumnos en un paso y cumplimiento estricto de la normativa de privacidad.
 
 ---
 
