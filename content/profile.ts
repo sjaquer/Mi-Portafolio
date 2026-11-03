@@ -253,7 +253,7 @@ export const profile = {
     },
     {
       q: "¿Qué productos en producción ha construido?",
-      a: "La plataforma de empleabilidad de la Universidad Norbert Wiener (portaldelestudiante.uwiener.edu.pe/servicio/empleabilidad): bolsa laboral, creador de CV con IA y feria virtual. También el ecosistema de pedidos en tiempo real de Big Jack Burgers, la plataforma agroindustrial de inventarios LogINV, PrestaFacilito, un sistema de difusión por correo y portales de formularios con validación.",
+      a: "El portal y CMS de empleabilidad de la Universidad Norbert Wiener (empleabilidad.uwiener.edu.pe y ferialaboralonline.uwiener.edu.pe): bolsa laboral, creador de CV con IA y feria virtual. También el sistema administrativo interno con buscador rápido de alumnos y difusión masiva de correos, el ecosistema de pedidos en tiempo real de Big Jack Burgers, la plataforma agroindustrial de inventarios LogINV, PrestaFacilito y portales de formularios con validación.",
     },
     {
       q: "¿Qué resultados medidos tiene?",

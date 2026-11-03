@@ -141,7 +141,7 @@ const allCases: CaseStudy[] = [
     slug: "bolsa-de-trabajo-wiener",
     title: "Una plataforma de empleabilidad propia para reemplazar tres de terceros",
     subtitle:
-      "Bolsa laboral, creador de CV con lectura por IA y feria virtual en un solo lugar: cinco roles, acceso con Microsoft y pruebas de punta a punta.",
+      "CMS y plataforma propia que controla bolsa laboral, creador de CV con lectura por IA y feria virtual en un solo lugar: cinco roles, acceso con Microsoft y pruebas de punta a punta.",
     problem:
       "La bolsa laboral, el creador de CV y los formularios de feria vivían en plataformas de terceros, cada una con su usuario y sin datos comunes.",
     result: {
@@ -161,8 +161,12 @@ const allCases: CaseStudy[] = [
     institutional: true,
     links: [
       {
-        label: "Servicio de Empleabilidad · UWiener",
-        href: "https://portaldelestudiante.uwiener.edu.pe/servicio/empleabilidad/",
+        label: "Portal de Empleabilidad · UWiener",
+        href: "https://empleabilidad.uwiener.edu.pe/",
+      },
+      {
+        label: "Feria Laboral · acceso directo",
+        href: "https://ferialaboralonline.uwiener.edu.pe/",
       },
     ],
     cover: {
@@ -180,9 +184,9 @@ const allCases: CaseStudy[] = [
     slug: "difusion-correo-wiener",
     title: "Campañas de 8 000 correos de horas a tan solo minutos, con baja automática",
     subtitle:
-      "Sistema interno de difusión con segmentación, personalización, envío por lotes y lista de exclusión, más la verificación previa de la base de correos.",
+      "Sistema administrativo interno con buscador rápido de alumnos (de 7–9 pasos a una consulta directa por DNI, código o nombre), filtros inteligentes y difusión por lotes con lista de exclusión.",
     problem:
-      "Las campañas a egresados se enviaban a mano desde Outlook, en tandas pequeñas: tomaban horas y las bajas no siempre se respetaban.",
+      "Las campañas a egresados se enviaban a mano desde Outlook en tandas pequeñas, y buscar los datos de un estudiante en el sistema antiguo tomaba entre 7 y 9 pasos.",
     result: {
       value: "5–10 min",
       before: "1–2 h",
@@ -493,9 +497,11 @@ const allGallery: GalleryItem[] = [
   {
     name: "Página de Desarrollo Profesional y Alumni",
     angle:
-      "Rediseño de la página del área: arquitectura de información por público, formulario de leads y contacto por WhatsApp.",
+      "Landing informativa del área de Empleabilidad en el Portal del Estudiante: qué hace el área, arquitectura de información por público, formulario de leads y contacto por WhatsApp.",
     stack: ["HTML", "CSS", "JavaScript"],
     flow: ["Visitante", "Página", "Contacto"],
+    href: "https://portaldelestudiante.uwiener.edu.pe/servicio/empleabilidad/",
+    hrefLabel: "Ver en el Portal del Estudiante",
     institutional: true,
   },
   {
