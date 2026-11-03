@@ -35,6 +35,9 @@
   --color-chart-2: #d0611f;
   --color-chart-3: #00897b;
   --color-chart-other: #8a9099;
+  /* Variantes de texto: los chart-* son para gráficos; en 12 px no alcanzan AA. */
+  --color-chart-2-text: #a34a0a;
+  --color-chart-3-text: #00695c;
 
   /* ── Tipografía (§16) ─────────────────────────────────────────────── */
   --font-*: initial;
@@ -131,6 +134,8 @@
   --color-chart-2: #d9691f;
   --color-chart-3: #14a08f;
   --color-chart-other: #6b717b;
+  --color-chart-2-text: #d9691f;
+  --color-chart-3-text: #14a08f;
 
   color-scheme: dark;
 }

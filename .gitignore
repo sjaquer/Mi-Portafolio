@@ -25,6 +25,7 @@ pnpm-debug.log*
 *.sw?
 
 # herramientas de agentes locales
+.agent-screenshots/
 .roo/
 .roomodes
 .clinespec

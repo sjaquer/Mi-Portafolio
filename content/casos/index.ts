@@ -55,12 +55,15 @@ export const toneBorder: Record<CaseTone, string> = {
 /** Clase de texto por tono (antetítulos). */
 export const toneText: Record<CaseTone, string> = {
   accent: "text-accent-600",
-  amber: "text-chart-2",
-  teal: "text-chart-3",
+  amber: "text-chart-2-text",
+  teal: "text-chart-3-text",
 };
 
 /** Clases SVG/CSS por tono: trazo, relleno y relleno suave (para barras e íconos). */
-export const toneSvg: Record<CaseTone, { stroke: string; fill: string; soft: string; text: string }> = {
+export const toneSvg: Record<
+  CaseTone,
+  { stroke: string; fill: string; soft: string; text: string }
+> = {
   accent: {
     stroke: "stroke-accent-600",
     fill: "fill-accent-600",
@@ -71,13 +74,13 @@ export const toneSvg: Record<CaseTone, { stroke: string; fill: string; soft: str
     stroke: "stroke-chart-2",
     fill: "fill-chart-2",
     soft: "fill-chart-2 opacity-30",
-    text: "text-chart-2",
+    text: "text-chart-2-text",
   },
   teal: {
     stroke: "stroke-chart-3",
     fill: "fill-chart-3",
     soft: "fill-chart-3 opacity-30",
-    text: "text-chart-3",
+    text: "text-chart-3-text",
   },
 };
 
