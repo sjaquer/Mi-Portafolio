@@ -76,6 +76,8 @@ Para usar **dentro** del `.mdx`, después del diagrama, como refuerzo visual. Mi
 
 ## 3.bis · Apps privadas: artículo con capturas reales (v4.2)
 
+> **Plan completo y operativo para el agente de captura:** `docs/09-CAPTURAS-APPS-PRIVADAS.md` (incluye el script de anonimización, rutas de guardado, GIFs y la hoja de entrega). Esta sección es el resumen.
+
 Algunos proyectos son **apps de un solo usuario** y se les **ocultó el enlace y el repo** (bolsa/galería, `isPrivate: true`): PrestaFacilito, LogINV, LogiFlow, DataWeave BI, Coralia, Sistema Obra. En vez de enlace, se documentan como **artículo/caso con capturas reales estilizadas**, sin link ni repositorio.
 
 **Flujo de captura (acordado con Sebastián):**
