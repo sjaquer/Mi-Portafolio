@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { TagLoader } from "@/components/analytics/tag-loader";
-import { consentDefaultScript } from "@/lib/analytics";
+import { consentDefaultScript, consentInitScript } from "@/lib/analytics";
 import { jsonLdGraph, personJsonLd, websiteJsonLd } from "@/lib/jsonld";
 import { defaultMetadata } from "@/lib/seo";
 import { themeInitScript } from "@/lib/theme";
@@ -46,8 +46,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <script dangerouslySetInnerHTML={{ __html: consentInitScript }} />
         {/* Consent Mode v2: estado por defecto antes de cualquier etiqueta (04 §4.2).
-            GTM no se carga aquí: lo inyecta TagLoader tras la primera interacción. */}
+            GTM no se carga aquí: TagLoader lo inyecta solo si el visitante acepta. */}
         <script dangerouslySetInnerHTML={{ __html: consentDefaultScript }} />
         <script
           type="application/ld+json"

@@ -1,37 +1,27 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { CONSENT_OPEN_EVENT, readConsent, saveConsent, type ConsentChoice } from "@/lib/analytics";
+import { saveConsent, type ConsentChoice } from "@/lib/analytics";
 
 const choiceButton =
   "inline-flex min-h-control-md flex-1 items-center justify-center rounded-md border border-border-strong bg-surface px-5 font-semibold text-ink-900 transition-colors duration-150 ease-standard hover:bg-surface-muted active:translate-y-px sm:flex-none";
 
 /**
  * Banner de consentimiento (§19.2, 04 §4.2): discreto, abajo, "Aceptar" y "Rechazar"
- * con el mismo peso visual. Se reabre desde "Preferencias de medición" en el pie.
+ * con el mismo peso visual. El markup va siempre en el HTML; su visibilidad la controla
+ * `data-consent="ask"` en <html>, que fija `consentInitScript` en <head> antes del primer
+ * pintado (así no es el LCP ni espera a la hidratación). Se reabre desde el pie.
  */
 export function ConsentBanner() {
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    // La cookie solo existe en el navegador: se lee al montar.
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    if (readConsent() === null) setOpen(true);
-    const reopen = () => setOpen(true);
-    window.addEventListener(CONSENT_OPEN_EVENT, reopen);
-    return () => window.removeEventListener(CONSENT_OPEN_EVENT, reopen);
-  }, []);
-
-  if (!open) return null;
-
   const choose = (choice: ConsentChoice) => {
     saveConsent(choice);
-    setOpen(false);
+    // Oculta el banner al instante (CSS); el markup permanece en el DOM.
+    document.documentElement.removeAttribute("data-consent");
   };
 
   return (
     <section
+      data-consent-banner
       aria-labelledby="consent-title"
       className="fixed inset-x-0 bottom-0 z-20 border-t border-border bg-surface shadow-md"
     >
@@ -79,7 +69,7 @@ export function ConsentPreferencesButton({ className }: { className?: string }) 
       type="button"
       data-cta="footer_consent_preferences"
       className={className}
-      onClick={() => window.dispatchEvent(new Event(CONSENT_OPEN_EVENT))}
+      onClick={() => document.documentElement.setAttribute("data-consent", "ask")}
     >
       Preferencias de medición
     </button>

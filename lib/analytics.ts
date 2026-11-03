@@ -80,6 +80,8 @@ export function pageTypeOf(pathname: string): PageType {
 export const CONSENT_COOKIE = "sj_consent";
 export type ConsentChoice = "granted" | "denied";
 export const CONSENT_OPEN_EVENT = "sj:open-consent";
+/** Se emite al guardar la elección; `TagLoader` lo escucha para cargar GA al aceptar. */
+export const CONSENT_CHANGE_EVENT = "sj:consent-change";
 
 export function readConsent(): ConsentChoice | null {
   if (typeof document === "undefined") return null;
@@ -92,6 +94,7 @@ export function saveConsent(choice: ConsentChoice) {
   document.cookie = `${CONSENT_COOKIE}=${choice}; Max-Age=${60 * 60 * 24 * 180}; Path=/; SameSite=Lax`;
   const w = window as DataLayerWindow & { gtag?: (...args: unknown[]) => void };
   w.gtag?.("consent", "update", { analytics_storage: choice });
+  window.dispatchEvent(new CustomEvent(CONSENT_CHANGE_EVENT, { detail: choice }));
   if (choice === "denied") {
     // Al revocar, se borran las cookies de GA ya creadas.
     document.cookie.split("; ").forEach((c) => {
@@ -111,3 +114,10 @@ export function saveConsent(choice: ConsentChoice) {
  * La publicidad queda siempre denegada: este sitio no hace remarketing.
  */
 export const consentDefaultScript = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}window.gtag=gtag;var c=(document.cookie.match(/(?:^|; )${CONSENT_COOKIE}=(granted|denied)/)||[])[1];gtag('consent','default',{analytics_storage:c==='granted'?'granted':'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});gtag('set','ads_data_redaction',true);`;
+
+/**
+ * Se ejecuta en <head> antes del primer pintado: si el visitante aún no eligió,
+ * marca el documento para que el banner (ya en el HTML) sea visible de inmediato,
+ * sin esperar a la hidratación. Evita que el banner sea el LCP (aparecía a ~3 s).
+ */
+export const consentInitScript = `(function(){try{var c=(document.cookie.match(/(?:^|; )${CONSENT_COOKIE}=(granted|denied)/)||[])[1];if(!c)document.documentElement.setAttribute("data-consent","ask")}catch(e){}})()`;
