@@ -83,7 +83,9 @@ export default function Home() {
               <MeasureRule draw className="mt-3" />
             </div>
             <p className="mt-5 max-w-prose text-lead text-ink-900">{profile.tagline}</p>
-            <p className="mt-4 max-w-prose">{profile.summary}</p>
+            {/* En el celular, el resumen corto: la primera pantalla no es un muro de texto. */}
+            <p className="mt-4 max-w-prose sm:hidden">{profile.summaryShort}</p>
+            <p className="mt-4 hidden max-w-prose sm:block">{profile.summary}</p>
             <div>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <CvButton location="hero" className="w-full sm:w-auto" />
@@ -128,7 +130,8 @@ export default function Home() {
             Resultados con base y periodo
           </h2>
           <MeasureRule className="mt-4 mb-6" />
-          <ul className="grid gap-6 md:grid-cols-3">
+          {/* En el celular la fila "antes" reservada se oculta: solo alinea las 3 columnas. */}
+          <ul className="grid gap-5 md:grid-cols-3 md:gap-6">
             {proof.map((m, i) => (
               <li key={m.label} className="reveal flex h-full border-l-2 border-accent-600 pl-5">
                 <Metric {...m} reserveBefore countUp={i < 2} />

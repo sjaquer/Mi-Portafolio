@@ -28,7 +28,7 @@ export function Metric({
           Sin la etiqueta visible, la cota se leía como un trazo suelto. */}
       {(before || reserveBefore) && (
         <p
-          className={`flex items-center gap-2 font-mono text-small font-medium text-ink-500 ${
+          className={`${before ? "flex" : "hidden md:flex"} items-center gap-2 font-mono text-small font-medium text-ink-500 ${
             reserveBefore ? "min-h-6" : ""
           }`}
         >

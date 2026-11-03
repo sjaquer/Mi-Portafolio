@@ -11,7 +11,12 @@ const COTA_Y = 300;
 
 /** Ícono simple por tipo de caso (v4.2), en el color del caso. Decorativo. */
 function TypeIcon({ type, className }: { type: CaseType; className: string }) {
-  const g = { fill: "none", strokeWidth: 2, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+  const g = {
+    fill: "none",
+    strokeWidth: 2,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+  };
   if (type === "web")
     return (
       <g className={className} {...g}>
@@ -33,21 +38,140 @@ function TypeIcon({ type, className }: { type: CaseType; className: string }) {
   );
 }
 
-/**
- * Portada de un caso como plano de su flujo real (03-DESIGN.md §6.8, v4.2): 3–4 nodos en
- * escalera con el que construí destacado y sellado, un ícono y una mini barra de resultado,
- * todo en el color del tipo de caso. Se traza al entrar en pantalla (§11.2).
- */
-export function CaseCover({
-  c,
-  labelled = false,
-  className = "",
-}: {
+interface CoverProps {
   c: CaseStudy;
   /** En la página del caso la figura se anuncia; en tarjetas es decorativa. */
   labelled?: boolean;
   className?: string;
-}) {
+}
+
+const ariaLabel = (c: CaseStudy) =>
+  `Diagrama: ${c.cover.label}. ${c.cover.nodes.map((nd) => nd.title).join(" → ")}.`;
+
+/**
+ * Portada de un caso como plano de su flujo real (03-DESIGN.md §6.8, v4.2).
+ * Dos composiciones del mismo plano (v4.3): la horizontal en escalera desde 640 px y una
+ * cuadrada para el celular, con los nodos en Z (2 × 2) a escala casi 1:1. Antes la
+ * horizontal se encogía al 56 % y sus etiquetas quedaban en ~7 px, ilegibles.
+ */
+export function CaseCover({ c, labelled = false, className = "" }: CoverProps) {
+  return (
+    <div className={className}>
+      <MobileCover c={c} labelled={labelled} className="aspect-square sm:hidden" />
+      <WideCover c={c} labelled={labelled} className="hidden aspect-video sm:block" />
+    </div>
+  );
+}
+
+/* ── Celular: 360 × 360, nodos en Z ─────────────────────────────────────── */
+const M = { W: 360, PAD: 20, NW: 150, NH: 60, ROWS: [88, 196], COTA_Y: 322 };
+
+function MobileCover({ c, labelled, className }: CoverProps) {
+  const { label, nodes, highlight } = c.cover;
+  const col = (i: number) => M.PAD + (i % 2) * (M.NW + (M.W - 2 * M.PAD - 2 * M.NW));
+  const row = (i: number) => M.ROWS[Math.floor(i / 2)];
+  const measured = isMeasured(c.result);
+  const sv = toneSvg[caseTypeTone[c.type]];
+  const xEnd = M.W - M.PAD;
+
+  // Conectores en orden de lectura: → en la fila, y de la fila 1 a la 2 un codo hacia abajo.
+  const connectors = nodes.slice(0, -1).map((_, i) => {
+    const sameRow = Math.floor(i / 2) === Math.floor((i + 1) / 2);
+    if (sameRow) {
+      const y = row(i) + M.NH / 2;
+      const x2 = col(i + 1) - 2;
+      return { d: `M${col(i) + M.NW} ${y}H${x2}`, head: { x: x2, y } };
+    }
+    const xa = col(i) + M.NW / 2;
+    const xb = col(i + 1) + M.NW / 2;
+    const ya = row(i) + M.NH;
+    const yb = row(i + 1) - 2;
+    const ym = ya + 22;
+    return { d: `M${xa} ${ya}V${ym}H${xb}V${yb}`, head: { x: xb, y: yb, dir: "down" as const } };
+  });
+
+  return (
+    <FigureFrame
+      viewBox={`0 0 ${M.W} ${M.W}`}
+      label={labelled ? ariaLabel(c) : undefined}
+      className={className}
+    >
+      <text
+        x={M.PAD}
+        y={36}
+        className="fill-ink-500 font-mono uppercase"
+        fontSize={11}
+        fontWeight={500}
+        letterSpacing="0.06em"
+      >
+        {label}
+      </text>
+      <g transform="translate(-264 -6)">
+        <TypeIcon type={c.type} className={sv.stroke} />
+      </g>
+
+      {connectors.map((k, i) => (
+        <FigConnector key={i} d={k.d} head={k.head} i={i + 1} pulseClass={sv.stroke} />
+      ))}
+
+      {nodes.map((nd, i) => (
+        <FigNode
+          key={nd.title}
+          x={col(i)}
+          y={row(i)}
+          w={M.NW}
+          h={M.NH}
+          highlight={i === highlight}
+          accentStroke={sv.stroke}
+          i={i}
+        >
+          <text
+            x={col(i) + 14}
+            y={row(i) + 24}
+            className="fill-ink-500 font-mono uppercase"
+            fontSize={10.5}
+            fontWeight={500}
+            letterSpacing="0.06em"
+          >
+            {nd.tag}
+          </text>
+          <text
+            x={col(i) + 14}
+            y={row(i) + 46}
+            className="fill-ink-900 font-sans"
+            fontSize={15}
+            fontWeight={600}
+          >
+            {nd.title}
+          </text>
+        </FigNode>
+      ))}
+
+      <Dimension x1={M.PAD} x2={xEnd} y={M.COTA_Y} i={nodes.length} />
+      <g className="fig-fade font-mono" style={step(nodes.length + 1)}>
+        {c.result.before && (
+          <text x={M.PAD} y={M.COTA_Y - 18} className="fill-ink-500" fontSize={17} fontWeight={500}>
+            {c.result.before}
+          </text>
+        )}
+        <text
+          x={xEnd}
+          y={M.COTA_Y - 18}
+          textAnchor="end"
+          className={measured ? "fill-success-700" : "fill-ink-900"}
+          fontSize={28}
+          fontWeight={600}
+          letterSpacing="-0.02em"
+        >
+          {c.result.value}
+        </text>
+      </g>
+    </FigureFrame>
+  );
+}
+
+/* ── Desde 640 px: 640 × 360, nodos en escalera ────────────────────────── */
+function WideCover({ c, labelled, className = "" }: CoverProps) {
   const { label, nodes, highlight } = c.cover;
   const n = nodes.length;
   const x0 = (W - (n * NW + (n - 1) * GAP)) / 2;
@@ -61,10 +185,8 @@ export function CaseCover({
   return (
     <FigureFrame
       viewBox={`0 0 ${W} 360`}
-      label={
-        labelled ? `Diagrama: ${label}. ${nodes.map((nd) => nd.title).join(" → ")}.` : undefined
-      }
-      className={`aspect-video ${className}`}
+      label={labelled ? ariaLabel(c) : undefined}
+      className={className}
     >
       <text
         x={x0}
