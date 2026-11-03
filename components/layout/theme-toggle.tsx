@@ -61,7 +61,7 @@ export function ThemeToggle() {
       onClick={cycle}
       data-cta="theme_toggle"
       aria-label={`Tema: ${LABEL[pref]}. Cambiar a ${LABEL[next]}`}
-      className="inline-flex size-control-md items-center justify-center rounded-md text-ink-700 transition-colors duration-150 ease-standard hover:bg-surface-muted hover:text-ink-900"
+      className="relative inline-flex size-control-sm items-center justify-center rounded-md border border-border bg-surface text-ink-700 transition-colors duration-150 ease-standard before:absolute before:-inset-1 before:content-[''] hover:border-border-strong hover:bg-surface-muted hover:text-ink-900"
     >
       <Icon size={20} stroke={1.5} aria-hidden />
     </button>
