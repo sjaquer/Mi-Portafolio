@@ -146,13 +146,15 @@ El formulario de contacto (`/contacto`) implementa comunicación transaccional c
 | Peso total de la home | < 500 KB |
 | Lighthouse (4 categorías) | ≥ 95 |
 
+**Estado medido (3 nov 2026, v4.3, Lighthouse móvil, build local, 3 corridas):** home 99 / 100 / 100 / 100, caso 99–100 / 100 / 100 / 100, nota 99–100 / 100 / 100 / 100; LCP 1,5–1,6 s; CLS 0–0,001. El LCP bajó de 3,2 s porque el banner de medición se pinta en el primer frame (antes aparecía tras hidratar y era el elemento LCP) y `hero-in` ya no anima la opacidad. Los presupuestos de bytes de `lighthouserc.json` pasan a aviso: GA es opt-in y queda fuera del laboratorio, y el resto es la base de Next 16 + React 19.
+
 **Estado medido (13 oct 2026, Lighthouse móvil, build local):** Rendimiento **95–98**, Accesibilidad, Buenas prácticas y SEO **100** en home, caso, índice de notas y nota; TBT 40–65 ms; CLS 0. LCP local 2,2 s (en producción, con CDN, 1,7 s); el LCP es texto y depende de que llegue Inter, por eso JetBrains Mono ya no se precarga. JS de la home ≈ 185 KB gzip, de los que ≈ 8 KB son propios: el resto es la base de Next 16 + React 19, así que **el límite de 100 KB se aplica al JS propio del sitio**. GTM ya no se carga en `<head>`: lo inyecta `TagLoader` tras la primera interacción o 5 s después de `load` (antes: Rendimiento 86–91). Las animaciones de la v4.0 del diseño son CSS + SVG y no añaden JS.
 
 ### 3.2 Prácticas
 - Todo estático por defecto; Server Components; `"use client"` solo donde hay interacción (menú, tema, formulario, consentimiento).
 - `next/font` con `display: swap` y subconjunto latino.
 - `next/image` con `sizes` correctos; foto del hero con `priority`; el resto diferido.
-- GTM: se carga **después** de la primera interacción o, sin ella, 5 s después de `load` (`TagLoader`, `app/layout.tsx` le pasa el ID). Nunca en `<head>`.
+- GTM: se carga **solo si el visitante acepta** la medición (opt-in, v4.3): al pulsar "Aceptar" o, si ya aceptó en una visita anterior, en tiempo ocioso tras cargar (`TagLoader`, `app/layout.tsx` le pasa el ID). Nunca en `<head>`. Antes se cargaba tras la primera interacción o 5 s después de `load`, y Lighthouse lo capturaba (≈ 290 KB de terceros).
 - `next/font`: solo se precarga Inter (texto del LCP); JetBrains Mono carga sin precarga.
 - Animaciones: solo CSS (`animation-timeline: view()`, `@keyframes`) sobre `opacity`, `transform`, `stroke-dashoffset` y `clip-path`; nunca sobre el elemento LCP; ninguna librería de animación (`03-DESIGN.md` §11).
 - Animaciones solo con CSS y solo `transform` (sin animar opacidad del contenido): no retrasan el LCP ni bajan el contraste.
@@ -173,6 +175,8 @@ Antes de tocar nada, medir la web actual en [PageSpeed Insights](https://pagespe
 ### 4.2 Consentimiento
 - **Consent Mode v2**, estado por defecto `denied` para `analytics_storage` y `ad_storage`.
 - Banner con "Aceptar" y "Rechazar" del mismo peso visual. Preferencia guardada en una cookie de primera parte.
+- **Opt-in (v4.3):** sin "Aceptar" no se descarga ningún script de Google. Consent Mode sigue fijando `denied` por defecto, pero ya no hay pings sin cookies de visitantes que no aceptaron: menos datos modelados, más privacidad.
+- **Banner sin esperar a la hidratación (v4.3):** el markup va en el HTML y `consentInitScript` (en `<head>`, como el del tema) marca `<html data-consent="ask">` si no hay cookie; el CSS lo muestra en el primer pintado. Antes aparecía tras hidratar (~3,2 s en móvil) y era el LCP.
 - Aviso de privacidad en `/privacidad` (alineado a la Ley 29733): qué se mide, para qué, cómo revocarlo.
 
 ### 4.3 Eventos
