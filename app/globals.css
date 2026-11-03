@@ -16,6 +16,15 @@
     @apply font-semibold text-balance text-ink-900;
   }
 
+  /* Corte Display solo en los tamaños grandes (v4.3): un h2 pequeño (p. ej. el del
+     banner de medición) sigue en Inter de texto, que es la que lee bien a 14 px. */
+  .text-display,
+  .text-h1,
+  .text-h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+
   /* Foco visible siempre: anillo de 2 px con 2 px de separación (§19.1) */
   :focus-visible {
     outline: 2px solid var(--color-focus);
@@ -355,6 +364,55 @@ li {
     to {
       clip-path: inset(0);
     }
+  }
+}
+
+/* ── v4.3 · Artículos (casos y notas) ──────────────────────────────────
+   Secciones numeradas: un kicker mono "01" sobre cada h2 (en Display), el mismo número
+   que su chip del índice. Recurso editorial que ordena la lectura larga. */
+.article-body {
+  counter-reset: sec;
+}
+.article-body h2::before {
+  counter-increment: sec;
+  content: counter(sec, decimal-leading-zero);
+  /* Texto alternativo vacío: el lector de pantalla lee solo el título. */
+  content: counter(sec, decimal-leading-zero) / "";
+  display: block;
+  margin-bottom: var(--spacing-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  font-weight: 500;
+  font-variant-numeric: slashed-zero tabular-nums;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-500);
+}
+
+/* Entradilla: el primer párrafo de una nota, a tamaño lead y en tinta fuerte. */
+.article-lede > p:first-child {
+  font-size: var(--text-lead);
+  line-height: var(--text-lead--line-height);
+  color: var(--color-ink-900);
+}
+
+/* Índice: la sección visible se resalta sin JavaScript donde hay soporte
+   (scroll-target-group / :target-current). Sin soporte, el índice funciona igual. */
+@supports (scroll-target-group: auto) {
+  .toc-group {
+    scroll-target-group: auto;
+  }
+  .toc-chip:target-current {
+    border-color: var(--color-ink-900);
+    background: var(--color-ink-900);
+    color: var(--color-bg);
+  }
+  .toc-chip:target-current span {
+    color: inherit;
+  }
+  .toc-link:target-current {
+    border-color: var(--color-ink-900);
+    color: var(--color-ink-900);
+    font-weight: 600;
   }
 }
 

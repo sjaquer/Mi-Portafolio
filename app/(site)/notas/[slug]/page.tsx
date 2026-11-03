@@ -7,6 +7,8 @@ import { Container } from "@/components/ui/container";
 import { ReadingProgress } from "@/components/ui/reading-progress";
 import { PillarMotif } from "@/components/brand/pillar-motif";
 import { MediaFrame } from "@/components/ui/media-frame";
+import { ArticleToc } from "@/components/ui/article-toc";
+import { headingsOf } from "@/lib/headings";
 import { PostCard } from "@/components/ui/post-card";
 import { getNote, notes, pillarLabel } from "@/content/notas";
 import { profile } from "@/content/profile";
@@ -34,6 +36,7 @@ export default async function NotePage({ params }: PageProps<"/notas/[slug]">) {
 
   const { default: Body } = await import(`@/content/notas/${slug}.mdx`);
   const minutes = readingTime(slug, "notas");
+  const headings = headingsOf(slug, "notas");
   const related =
     notes.find((o) => o.slug !== slug && o.pillar === n.pillar) ??
     notes.find((o) => o.slug !== slug);
@@ -97,8 +100,16 @@ export default async function NotePage({ params }: PageProps<"/notas/[slug]">) {
             <PillarMotif pillar={n.pillar} className="mt-7" />
           )}
         </header>
-        <div className="mt-8 border-t border-border pt-8 text-body">
-          <Body />
+        {/* Cuerpo con entradilla y secciones numeradas; índice en chips (celular) o
+            columna lateral (lg). Antes las notas no tenían índice. */}
+        <div className="mt-8 border-t border-border pt-8 lg:grid lg:grid-cols-12 lg:gap-8">
+          <ArticleToc headings={headings} variant="mobile" />
+          <div className="article-body article-lede text-body lg:col-span-8">
+            <Body />
+          </div>
+          <aside className="hidden lg:col-span-3 lg:col-start-10 lg:block">
+            <ArticleToc headings={headings} variant="desktop" />
+          </aside>
         </div>
 
         {/* Cierre: la conversación sigue en LinkedIn (06-CONTENIDO.md §5). */}

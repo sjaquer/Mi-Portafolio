@@ -8,19 +8,17 @@ import { MeasureRule } from "@/components/brand/measure-rule";
 import { CaseFacts } from "@/components/ui/case-facts";
 import { CaseCover } from "@/components/ui/case-cover";
 import { Metric } from "@/components/ui/metric";
-import { slugify } from "@/mdx-components";
+import { ArticleToc } from "@/components/ui/article-toc";
 import { DraftNotice } from "@/components/ui/draft-notice";
 import { Container } from "@/components/ui/container";
 import { ReadingProgress } from "@/components/ui/reading-progress";
 import { caseTypeLabel, caseTypeTone, cases, getCase, toneBorder, toneText } from "@/content/casos";
 import { profile } from "@/content/profile";
+import { headingsOf } from "@/lib/headings";
 import { jsonLdGraph, toIsoDateTime } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
 
 export const dynamicParams = false;
-
-// Plantilla obligatoria de todos los casos (02-PRD.md §8.3): base del índice "En esta página".
-const caseSections = ["Contexto", "Problema", "Enfoque", "Solución", "Resultado", "Qué aprendí"];
 
 export function generateStaticParams() {
   return cases.map((c) => ({ slug: c.slug }));
@@ -40,6 +38,9 @@ export default async function CasePage({ params }: PageProps<"/proyectos/[slug]"
   if (!c) notFound();
 
   const { default: Body } = await import(`@/content/casos/${slug}.mdx`);
+  // Índice desde los títulos reales (02-PRD.md §8.3): antes era una lista fija y en los
+  // casos con títulos propios (p. ej. "Contexto de negocio") los enlaces no llevaban a nada.
+  const headings = headingsOf(slug, "casos");
   // Siguiente caso solo si hay otro publicado.
   const next = cases.length > 1 ? cases[(cases.indexOf(c) + 1) % cases.length] : null;
   const url = `${profile.siteUrl}/proyectos/${c.slug}`;
@@ -94,8 +95,8 @@ export default async function CasePage({ params }: PageProps<"/proyectos/[slug]"
                 aria-hidden
                 className={`size-1.5 shrink-0 rounded-full bg-current ${toneText[caseTypeTone[c.type]]}`}
               />
-              Caso · <span className={toneText[caseTypeTone[c.type]]}>{caseTypeLabel[c.type]}</span> ·{" "}
-              {c.year}
+              Caso · <span className={toneText[caseTypeTone[c.type]]}>{caseTypeLabel[c.type]}</span>{" "}
+              · {c.year}
             </p>
             <h1 className="max-w-prose text-h1">{c.title}</h1>
             {/* Resumen en 3 piezas (06-CONTENIDO.md §4.2): antes → qué construí → resultado (a la derecha). */}
@@ -122,26 +123,15 @@ export default async function CasePage({ params }: PageProps<"/proyectos/[slug]"
           <CaseFacts c={c} />
         </div>
 
-        <div className="mt-8 grid gap-8 lg:grid-cols-12">
-          <div className="text-body lg:col-span-8">
+        {/* En el celular el bloque no es grilla: la tira de chips queda fija mientras
+            dura el cuerpo. Desde lg, índice en columna lateral. */}
+        <div className="mt-8 lg:grid lg:grid-cols-12 lg:gap-8">
+          <ArticleToc headings={headings} variant="mobile" />
+          <div className="article-body text-body lg:col-span-8">
             <Body />
           </div>
           <aside className="hidden lg:col-span-3 lg:col-start-10 lg:block">
-            <nav aria-label="En esta página" className="sticky top-9">
-              <p className="mb-3 text-label-mono text-ink-500">En esta página</p>
-              <ul className="flex flex-col border-l border-border">
-                {caseSections.map((s) => (
-                  <li key={s}>
-                    <a
-                      href={`#${slugify(s)}`}
-                      className="-ml-px flex min-h-control-sm items-center border-l-2 border-transparent pl-4 text-small text-ink-700 hover:border-ink-900 hover:text-ink-900"
-                    >
-                      {s}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+            <ArticleToc headings={headings} variant="desktop" />
           </aside>
         </div>
       </Container>
