@@ -14,20 +14,24 @@ export function Timeline({
 }) {
   return (
     <ol className="flex flex-col">
-      {items.map((e, idx) => {
-        const current = e.to === null && idx === 0;
+      {items.map((e) => {
+        const current = e.to === null;
         return (
           <li key={`${e.org}-${e.from}`} className="grid gap-2 md:grid-cols-12 md:gap-5">
-            <p className="pt-px font-mono text-small text-ink-500 md:col-span-3 md:text-right">
+            <p className="pt-px font-mono text-small text-ink-500 tabular-nums md:col-span-3 md:text-right">
               {formatRange(e.from, e.to)}
             </p>
             <div className="relative flex flex-col gap-2 border-l border-border pb-7 pl-6 md:col-span-9">
-              <span
-                aria-hidden
-                className={`absolute top-1 left-0 size-3 -translate-x-1/2 rounded-full border-2 ${
-                  current ? "border-ink-900 bg-ink-900" : "border-border-strong bg-bg"
-                }`}
-              />
+              <span aria-hidden className="absolute top-1 left-0 size-3 -translate-x-1/2">
+                {current && (
+                  <span className="pulse-ring absolute inset-0 rounded-full border-2 border-accent-600" />
+                )}
+                <span
+                  className={`absolute inset-0 rounded-full border-2 ${
+                    current ? "border-ink-900 bg-ink-900" : "border-border-strong bg-bg"
+                  }`}
+                />
+              </span>
               <h3 className="text-h3">
                 {e.title}
                 {/* Separador para lectores de pantalla y buscadores: sin él se lee "AlumniUniversidad". */}

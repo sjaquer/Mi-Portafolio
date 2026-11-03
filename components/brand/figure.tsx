@@ -45,6 +45,8 @@ interface NodeProps {
   i?: number;
   /** Clase de trazo del destacado (color del caso, v4.2). Por defecto marino. */
   accentStroke?: string;
+  /** Sello de medición sobre el nodo. Se oculta en figuras pequeñas para no leerse como ruido. */
+  seal?: boolean;
   children?: ReactNode;
 }
 
@@ -57,6 +59,7 @@ export function FigNode({
   highlight,
   i = 0,
   accentStroke = "stroke-brand",
+  seal = true,
   children,
 }: NodeProps) {
   return (
@@ -70,14 +73,22 @@ export function FigNode({
         className={`fill-surface ${highlight ? accentStroke : "stroke-border-strong"}`}
         strokeWidth={highlight ? 2 : 1.5}
       />
-      {highlight && <Seal x={x + 12} y={y - 14} className={accentStroke} />}
+      {highlight && seal && <Seal x={x + 12} y={y - 14} className={accentStroke} />}
       {children}
     </g>
   );
 }
 
 /** Sello: las 3 marcas del monograma (§6.1) sobre el nodo destacado. */
-export function Seal({ x, y, className = "stroke-brand" }: { x: number; y: number; className?: string }) {
+export function Seal({
+  x,
+  y,
+  className = "stroke-brand",
+}: {
+  x: number;
+  y: number;
+  className?: string;
+}) {
   return (
     <path
       d={`M${x} ${y}v8M${x + 6} ${y + 2}v6M${x + 12} ${y + 2}v6`}
@@ -100,7 +111,13 @@ interface ConnectorProps {
 }
 
 /** Conector de 1,5 px que se traza al entrar en pantalla, con punta simple y pulso opcional. */
-export function FigConnector({ d, head, i = 0, pulse = true, pulseClass = "stroke-brand" }: ConnectorProps) {
+export function FigConnector({
+  d,
+  head,
+  i = 0,
+  pulse = true,
+  pulseClass = "stroke-brand",
+}: ConnectorProps) {
   const tip =
     head &&
     (head.dir === "down"

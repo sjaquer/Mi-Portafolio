@@ -28,7 +28,7 @@ export function MiniFlow({ steps }: { steps: readonly [string, string, string] }
         />
       ))}
       {steps.map((s, i) => (
-        <FigNode key={s} x={x(i)} y={Y} w={NW} h={NH} highlight={i === 1} i={i}>
+        <FigNode key={s} x={x(i)} y={Y} w={NW} h={NH} highlight={i === 1} seal={false} i={i}>
           <text
             x={x(i) + NW / 2}
             y={Y + NH / 2 + 4}

@@ -37,9 +37,25 @@
   }
 }
 
+/* Banner de consentimiento: en el HTML desde el inicio, oculto hasta que
+   `consentInitScript` marque <html data-consent="ask"> (visitante sin elección).
+   Así pinta en el primer frame y no se vuelve el LCP tardío. */
+[data-consent-banner] {
+  display: none;
+}
+:root[data-consent="ask"] [data-consent-banner] {
+  display: block;
+}
+
 /* Etiqueta mono: firma tipográfica de la marca (§5.3) */
 @utility text-label-mono {
   @apply font-mono text-label font-medium uppercase;
+}
+
+/* Cero rasgado en toda la tipografía mono (fechas, cifras, numeración, código):
+   detalle técnico de "plano" y distingue 0 de O (§5.3, §16). */
+.font-mono {
+  font-variant-numeric: slashed-zero;
 }
 
 /* Borde del header al hacer scroll, sin JavaScript (animaciones ligadas al scroll).
@@ -120,13 +136,13 @@
   .hero-in > :nth-child(5) {
     animation-delay: 320ms;
   }
+  /* Solo transform: el texto nunca pasa por opacidad < 1, para no retrasar el LCP
+     ni atravesar estados de bajo contraste (mismo principio que `.reveal`). */
   @keyframes hero-in {
     from {
-      opacity: 0;
       transform: translateY(14px);
     }
     to {
-      opacity: 1;
       transform: none;
     }
   }
@@ -250,6 +266,79 @@ li {
       to {
         stroke-dashoffset: -1;
       }
+    }
+  }
+}
+
+/* ── v4.3 · Movimiento ampliado (§11) ────────────────────────────────────
+   Extiende el lenguaje "plano": señales que recorren el flujo, barras que
+   crecen desde la base y cotas que respiran. Todo decorativo (aria-hidden),
+   nunca sobre texto, y silenciado con prefers-reduced-motion. */
+
+/* La figura del hero no entra por scroll (está arriba del pliegue): se traza
+   al cargar. El contenedor sube y aparece; dentro, cada pieza se escalona. */
+@media (prefers-reduced-motion: no-preference) {
+  .fig-load {
+    animation: fig-load 640ms var(--ease-standard) 240ms both;
+  }
+  @keyframes fig-load {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+  }
+  /* Barras de impacto: crecen desde la base, al final de la secuencia. */
+  .bar-grow {
+    transform-box: fill-box;
+    transform-origin: bottom;
+    animation: bar-grow 560ms var(--ease-standard) both;
+    animation-delay: calc(980ms + var(--i, 0) * 90ms);
+  }
+  @keyframes bar-grow {
+    from {
+      transform: scaleY(0.04);
+    }
+    to {
+      transform: scaleY(1);
+    }
+  }
+}
+
+/* Señal continua: un punto recorre el conducto del flujo una y otra vez, como
+   datos pasando por el proceso. Visible solo en los tramos entre nodos. */
+.fig-signal {
+  stroke-dasharray: 0.05 0.95;
+  opacity: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .fig-signal {
+    opacity: 1;
+    animation: fig-signal 3.4s linear 1.4s infinite;
+  }
+  @keyframes fig-signal {
+    from {
+      stroke-dashoffset: 0.05;
+    }
+    to {
+      stroke-dashoffset: -0.95;
+    }
+  }
+}
+
+/* Anillo que late bajo el marcador del puesto actual (timeline). */
+@media (prefers-reduced-motion: no-preference) {
+  .pulse-ring {
+    animation: pulse-ring 2.6s var(--ease-standard) infinite;
+  }
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(0.7);
+      opacity: 0.7;
+    }
+    70%,
+    100% {
+      transform: scale(2.6);
+      opacity: 0;
     }
   }
 }
