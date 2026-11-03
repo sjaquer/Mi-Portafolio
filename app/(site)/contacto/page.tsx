@@ -45,7 +45,7 @@ const channels = [
 // 02-PRD.md §8.7: formulario corto, WhatsApp con mensaje prellenado y email.
 export default function ContactoPage() {
   return (
-    <Section>
+    <Section tight>
       <div className="grid gap-8 lg:grid-cols-12">
         <div className="lg:col-span-7">
           <p className="mb-3 text-label-mono text-ink-500">Contacto</p>

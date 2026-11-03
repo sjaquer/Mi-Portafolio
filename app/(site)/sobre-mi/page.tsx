@@ -51,7 +51,7 @@ export default function SobreMiPage() {
           __html: JSON.stringify(jsonLdGraph(profilePageJsonLd())).replace(/</g, "\\u003c"),
         }}
       />
-      <Section>
+      <Section tight>
         <div className="grid gap-7 md:grid-cols-12">
           <div className="md:col-span-8">
             <p className="mb-3 text-label-mono text-ink-500">Sobre mí</p>

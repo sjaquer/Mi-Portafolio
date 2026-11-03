@@ -1,10 +1,18 @@
 import type { ComponentProps, ReactNode } from "react";
 import { Container } from "@/components/ui/container";
 
-/** Ritmo vertical entre secciones: 64 px móvil / 96 px escritorio (§17.1). */
-export function Section({ className = "", children, ...props }: ComponentProps<"section">) {
+/** Ritmo vertical entre secciones: 64 px móvil / 96 px escritorio (§17.1).
+ *  `tight` reduce solo el margen superior: para la primera sección (cabecera) de una
+ *  página, que no debe heredar el aire entre secciones bajo el header fijo. */
+export function Section({
+  className = "",
+  tight = false,
+  children,
+  ...props
+}: ComponentProps<"section"> & { tight?: boolean }) {
+  const pt = tight ? "pt-6 lg:pt-8" : "pt-8 lg:pt-9";
   return (
-    <section className={`py-8 lg:py-9 ${className}`} {...props}>
+    <section className={`${pt} pb-8 lg:pb-9 ${className}`} {...props}>
       <Container>{children}</Container>
     </section>
   );
@@ -17,8 +25,8 @@ export type SectionTone = "neutral" | "accent" | "teal" | "amber";
 const toneClass: Record<SectionTone, string> = {
   neutral: "text-ink-500",
   accent: "text-accent-600",
-  teal: "text-chart-3",
-  amber: "text-chart-2",
+  teal: "text-chart-3-text",
+  amber: "text-chart-2-text",
 };
 
 interface SectionHeaderProps {
@@ -34,7 +42,14 @@ interface SectionHeaderProps {
 }
 
 /** Etiqueta mono + h2 + lead opcional (§19.2). */
-export function SectionHeader({ label, title, lead, id, flush, tone = "neutral" }: SectionHeaderProps) {
+export function SectionHeader({
+  label,
+  title,
+  lead,
+  id,
+  flush,
+  tone = "neutral",
+}: SectionHeaderProps) {
   return (
     <header className={`max-w-prose ${flush ? "" : "mb-7"}`}>
       <p className={`mb-3 flex items-center gap-2 text-label-mono ${toneClass[tone]}`}>

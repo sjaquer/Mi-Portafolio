@@ -18,7 +18,7 @@ export const metadata: Metadata = pageMetadata({
 export default function NotasPage() {
   return (
     <>
-      <Section>
+      <Section tight>
         <p className="mb-3 text-label-mono text-ink-500">Notas</p>
         <h1 className="text-h1">Lo que estoy aprendiendo</h1>
         <p className="mt-4 max-w-prose text-lead">
