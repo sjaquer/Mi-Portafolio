@@ -124,7 +124,9 @@ Lo que aprendí: [1 línea]
 (Escribí el detalle técnico en mi web, enlace en el primer comentario.)
 ```
 
-### 5.6 Frontmatter de una nota
+### 5.6 Frontmatter e imágenes de una nota
+
+Las fichas viven en `content/notas/index.ts` (con `cover` y `coverAlt` opcionales apuntando a `public/img/notas/`) y el cuerpo se escribe en `content/notas/<slug>.mdx`, permitiendo imágenes inline vía Markdown `![alt](/img/notas/archivo.webp "leyenda")` o `<Figure src="..." alt="..." caption="..." simulated />`.
 
 ```yaml
 ---
@@ -132,6 +134,8 @@ title: "Mis primeros 6 eventos en GA4 y por qué los nombré así"
 description: "Cómo diseñé el plan de medición de mi portafolio: eventos, conversiones y errores que evité."
 date: 2026-11-24
 pillar: medicion
+cover: "/img/notas/eventos-ga4-portafolio.webp"
+coverAlt: "Esquema de eventos con chips conectados a un gráfico de barras y control de consentimiento."
 readingTime: auto
 linkedinUrl: ""        # se completa después de publicar en LinkedIn
 draft: false

@@ -1,7 +1,7 @@
 # sjaquer-web
 
-Portafolio de **Sebastián Jaque** — Desarrollo web · Automatización de procesos · Integraciones.
-Sitio en `sjaquer.is-a.dev`. Next.js 16 (App Router) + React 19 + TypeScript + Tailwind CSS 4 + MDX, desplegado en Vercel.
+Portafolio de **Sebastián Jaque** — Analista de Producto · Desarrollo Web · Automatización de Procesos.
+Sitio en `sjaquer.is-a.dev`. Next.js 16.4 (App Router) + React 19.3 + TypeScript + Tailwind CSS 4 + MDX, desplegado en Vercel.
 
 ## Empezar
 
@@ -28,9 +28,9 @@ pnpm dev          # http://localhost:3000
 | Casos de estudio | Ficha en `content/casos/index.ts` + artículo en `content/casos/<slug>.mdx` (formato: `docs/06-CONTENIDO.md` §4) |
 | Notas (blog) | Ficha en `content/notas/index.ts` + texto en `content/notas/<slug>.mdx` (formato: `docs/06-CONTENIDO.md` §5) · RSS en `/rss.xml` |
 | GTM | `docs/gtm/eventos-sitio.json` (contenedor importable con los 9 eventos) |
-| Imágenes | `public/img/retrato.webp` (4:5) · portadas de casos como planos SVG (`cover` en `content/casos/index.ts`) |
+| Imágenes | `public/img/notas/*.webp` (portadas e imágenes inline vía Markdown o `<Figure />`) · `public/img/proyectos/` · portadas SVG de casos (`CaseCover`) |
 | CV | `content/cv/CV-Sebastian-Jaque.docx` → `public/cv/CV-Sebastian-Jaque.pdf` |
-| Diseño | `app/tokens.css` (tokens) · `components/` (`ui`, `layout`, `sections`, `brand`, `analytics`, `devtools`) |
+| Diseño | `app/tokens.css` (v7.0 Índigo Eléctrico + Cian, Plus Jakarta Sans + DM Sans + IBM Plex Mono) · `components/` (`ui`, `layout`, `sections`, `brand`, `analytics`, `devtools`) |
 | Textos para Google y redes | `lib/seo.ts` (metadatos) · `docs/06-CONTENIDO.md` §2b (LinkedIn, GitHub) · `/llms.txt` y `/ai.txt` generados |
 | Consola del navegador | `components/devtools/console-greeting.tsx` — escribe `sj.ayuda()` en DevTools |
 | Medición | `lib/analytics.ts` (`track()` tipado) · `components/analytics/` (consentimiento, clics, casos) |

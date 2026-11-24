@@ -389,18 +389,16 @@ La marca es editorial, viva y legible. La profundidad se construye con **superfi
 
 **Elevación.** Borde de 1 px en reposo. En hover, la tarjeta sube 2 px y gana `shadow-md`. `shadow-lg` solo para lo que flota (banner de consentimiento, menús).
 
-### 6.8 Portadas e imágenes (v4.0)
+### 6.8 Portadas e imágenes (v7.0)
 
 | Espacio | Qué lleva | Cómo se produce |
 |---|---|---|
-| Retrato del hero y de /sobre-mi | Retrato principal real, fondo marino-700 (§10.2) | `public/img/retrato.webp`, 4:5, 1200 × 1500, ≤ 200 KB; aparece solo (`MediaFrame`) |
-| Portada de cada caso | **Plano SVG del flujo real del caso** (`CaseCover`): etiqueta del flujo, 3–4 nodos en escalera, el que construí con sello, y una cota con el resultado | Datos en `content/casos/index.ts` → `cover` (títulos de nodo de ≤ 12 caracteres) |
-| Cabecera y tarjeta de nota | **Motivo del pilar** (`PillarMotif`, §12.2) | Automático según el pilar de la nota |
-| Capturas dentro de un caso | Captura con **datos simulados** en el marco de §6.5 | Manual, cuando aporte algo que el plano no cuenta |
+| Retrato en Sobre mí / branding | Composición animada (`HeroFigure`) o retrato principal real | `components/brand/hero-figure.tsx` · opcional `public/img/retrato.webp` |
+| Portada de cada caso | **Plano SVG del flujo real del caso** (`CaseCover`): etiqueta del flujo, 3–4 nodos en escalera, el que construí con sello y una cota con el resultado (`showMetric={false}` en tarjetas) | Datos en `content/casos/index.ts` → `cover` |
+| Cabecera y tarjeta de nota (blog) | **Portada ilustrada editorial (`cover`/`coverAlt`)** con respaldo automático en **Motivo del pilar** (`PillarMotif`, §12.2) | `public/img/notas/<slug>.webp` (16:9, `MediaFrame`) |
+| Dentro de blogs (notas) y casos | **Imágenes inline, diagramas y capturas con datos simulados** | Markdown `![alt](/img/... "leyenda")` o componente `<Figure />` (`mdx-components.tsx`) |
 
-**Por qué planos y no imágenes.** En la v3.2 las portadas eran imágenes generadas; terminaron siendo renders 3D con neón, brillos y vidrio, exactamente lo prohibido en §6.6. Un plano en SVG pesa < 10 KB, funciona en claro y oscuro, explica el proyecto en 3 segundos y no puede salirse de la paleta. **Regla:** ninguna portada de caso o nota es una imagen generada.
-
-Mientras no hay retrato, `MediaFrame` muestra el placeholder de marca (fondo `brand-50` + retícula + monograma). La proporción fija evita saltos de layout.
+**Regla de imágenes en blogs y casos (v7.0):** se permite usar portadas ilustradas e imágenes dentro de los blogs (`notas`) y capturas con datos simulados en casos mediante Markdown estándar o `<Figure simulated />`. Las portadas principales de **casos** siguen siendo planos vectoriales (`CaseCover`).
 
 ### 6.9 Kit de firma (v4.0)
 
@@ -408,7 +406,7 @@ Seis piezas que, juntas o por separado, hacen reconocible cualquier pieza de la 
 
 | Pieza | Qué es | Dónde aparece |
 |---|---|---|
-| **Etiqueta mono** | JetBrains Mono, mayúsculas, tracking 0,06 em (§5.3) | Antetítulos, pilar, numeración `n/N` |
+| **Etiqueta mono** | IBM Plex Mono, mayúsculas, tracking 0,06 em (§5.3) | Antetítulos, pilar, numeración `n/N` |
 | **Regla** | Marcas cada 8 u y una larga cada 40 u (§6.1) | Bajo el nombre, separadores, pies de pieza |
 | **Sello** | Las 3 marcas del monograma | Sobre el nodo o la cifra protagonista |
 | **Cota** | Línea con topes: "de X a Y" | Antes/después de una métrica |
@@ -719,30 +717,31 @@ Misma retícula en todas las láminas: margen 80 px, 4 columnas, titular siempre
 Para armar, editar y mantener las piezas gráficas en Figma con exactitud profesional, utiliza esta guía de tokens, dimensiones y auto-layout:
 
 #### 12.9.1 Configuración global de Figma (Estilos Locales)
-- **Color Styles:**
-  - `Papel / Bg Light`: `#FAFAF8`
+- **Color Styles (v7.0):**
+  - `Papel / Bg Light`: `#F8F9FC`
   - `Blanco / Surface`: `#FFFFFF`
-  - `Tinta / Text Primary`: `#14161A`
-  - `Gris 500 / Text Secondary`: `#666C76`
-  - `Gris 100 / Border`: `#E4E2DD`
-  - `Marino 700 / Brand`: `#1F3A5F`
-  - `Marino 900 / Brand Deep`: `#13233A`
-  - `Azul 600 / Action`: `#2350D9`
-  - `Verde 700 / Metric`: `#0B7350`
+  - `Tinta / Text Primary`: `#0F1424`
+  - `Gris 500 / Text Secondary`: `#5B657E`
+  - `Gris 100 / Border`: `#DCE2EE`
+  - `Índigo 900 / Brand Deep`: `#312E81`
+  - `Noche / OG & Dark Band`: `#0C1124`
+  - `Índigo 600 / Action`: `#4F46E5`
+  - `Cian 400 / Support`: `#22D3EE`
+  - `Esmeralda 700 / Metric`: `#047857`
 - **Text Styles:**
-  - `Display / Headline`: Inter 600 (SemiBold), 72 px, line-height: 105 %, tracking: -0.02 em.
-  - `Title / Slide`: Inter 600, 56 px, line-height: 110 %, tracking: -0.01 em.
-  - `Subhead`: Inter 400 (Regular), 36 px, line-height: 130 %.
-  - `Body`: Inter 400, 28 px, line-height: 140 %.
-  - `Metric Highlight`: JetBrains Mono 600, 120 px, line-height: 100 %.
-  - `Mono Tag`: JetBrains Mono 500, 22 px, line-height: 140 %, tracking: 0.06 em, mayúsculas.
-  - `Mono Small / Footer`: JetBrains Mono 500, 18 px, line-height: 140 %.
+  - `Display / Headline`: Plus Jakarta Sans 600–700, 72 px, line-height: 105 %, tracking: −0.025 em.
+  - `Title / Slide`: Plus Jakarta Sans 600, 56 px, line-height: 110 %, tracking: −0.02 em.
+  - `Subhead`: DM Sans 400 (Regular), 36 px, line-height: 130 %.
+  - `Body`: DM Sans 400, 28 px, line-height: 140 %.
+  - `Metric Highlight`: IBM Plex Mono 600, 120 px, line-height: 100 %.
+  - `Mono Tag`: IBM Plex Mono 500, 22 px, line-height: 140 %, tracking: 0.06 em, mayúsculas.
+  - `Mono Small / Footer`: IBM Plex Mono 500, 18 px, line-height: 140 %.
 
 #### 12.9.2 Monograma y Favicon (Componente Figma)
 - **Lienzo / Frame:** 64 × 64 px.
 - **Corner Radius:** 14 px.
-- **Relleno (Fill):** `#1F3A5F` (positivo) o `#FAFAF8` (negativo).
-- **Texto central:** `sj` en JetBrains Mono 600, tamaño 26 px, fill `#FAFAF8` (x:14 px, baseline y:38 px).
+- **Relleno (Fill):** `#312E81` (positivo) o `#F8F9FC` (negativo).
+- **Texto central:** `sj` en IBM Plex Mono 600, tamaño 26 px, fill `#F8F9FC` (x:14 px, baseline y:38 px).
 - **Regla de medición (sub-vector):**
   - 3 líneas verticales con `stroke: 2 px`, `stroke-linecap: round`, fill `#FAFAF8`.
   - Línea 1: (x: 15, y1: 46 a y2: 52) → alto 6 px.
@@ -784,11 +783,11 @@ Para armar, editar y mantener las piezas gráficas en Figma con exactitud profes
 - **Lámina 6 (Resultado):** Métrica en grande con contexto y método de medición.
 - **Lámina 7 (Cierre):** Aprendizaje clave + invitación a ver el código o caso completo en la web.
 
-#### 12.9.6 Plantilla Open Graph / Portada de Blog (1200 × 630 px)
-- **Frame:** 1200 × 630 px. Fill `#FAFAF8` o `#13233A`. Padding: 64 px.
-- **Header:** Etiqueta de sección + Monograma `sj` 36 px.
-- **Cuerpo:** Titular en Inter 600, 52 px (máx. 2 líneas) + descripción en Inter 400, 24 px.
-- **Footer:** Separador de regla + `Sebastián Jaque · sjaquer.is-a.dev`.
+#### 12.9.6 Plantilla Open Graph / Portada de Blog (1200 × 630 px, v7.0)
+- **Frame:** 1200 × 630 px. Fill `#0C1124` (Índigo Nocturno) con halos radiales suaves Índigo/Cian y barra superior de 5 px (`#4F46E5` → `#818CF8` → `#22D3EE`). Padding: 56 × 64 px.
+- **Header:** Punto + etiqueta de sección en `#22D3EE` (IBM Plex Mono 500) + monograma negativo `sj` 48 px.
+- **Cuerpo:** Titular en Plus Jakarta Sans 600, 58 px (46 px si > 60 caracteres), color `#F8FAFC` + descripción en `#CBD5EC`, 25 px.
+- **Footer:** Separador de regla técnica + `Sebastián Jaque · sjaquer.is-a.dev` (`#818CF8`).
 
 ### 12.10 De la idea a la pieza (flujo de producción)
 
@@ -811,8 +810,8 @@ Para armar, editar y mantener las piezas gráficas en Figma con exactitud profes
 - Sin foto, iconos decorativos, barras de "nivel de habilidad" ni gráficos de dominio de herramientas.
 - Contenido generado desde `content/profile.ts`; nombre de archivo `CV-Sebastian-Jaque.pdf`.
 
-### 13.2 Imagen OG por página
-Plantilla de §12.4 / §12.9.6 con fondo papel: etiqueta (tipo de página) · título de la página · pie con nombre y URL. Notas y casos usan su propio título; la home, la frase de posicionamiento. **Pendiente (v4.0):** añadir el motivo del pilar a la OG de cada nota y pasar la OG a marino para alinearla con las piezas de redes.
+### 13.2 Imagen OG por página (v7.0)
+Plantilla oscura editorial de §12.9.6 (`lib/og.tsx`): fondo Índigo Nocturno `#0C1124` con halos suaves, barra superior Índigo→Cian, etiqueta en cian `#22D3EE`, título Plus Jakarta Sans 600 y monograma claro. Notas y casos usan su propio título; la home, la frase de posicionamiento.
 
 ### 13.3 Banner de LinkedIn
 Fondo `marino-900` con retícula de puntos (§6.2), frase de posicionamiento en papel (Inter 600), rol en etiqueta mono `marino-100` (JetBrains Mono), URL `sjaquer.is-a.dev` abajo a la derecha según especificación §12.9.3. Nada en el área que cubre la foto de perfil.
@@ -1081,32 +1080,33 @@ Cada botón lleva `data-cta="<id>"` para la medición (ver `04-TECH-SEO-MEDICION
 
 | Componente | Descripción breve | Notas |
 |---|---|---|
-| `Header` | Wordmark, 4 enlaces, botón "CV" | Sticky, 64 px, borde inferior al hacer scroll. Menú hamburguesa en móvil con trampa de foco. |
-| `Footer` | Enlaces, redes, "Actualizado: <fecha>" | Fecha generada en el build; wordmark compacto en `--color-brand` |
+| `Header` | Wordmark, 4 enlaces, `ThemeToggle` circular, botón "CV" | Cápsula flotante con `.glass-surface` y `.mobile-sheet` modal top-layer |
+| `Footer` | Wordmark compacto, regla, ubicación y 3 columnas (Sitio, Contacto, Legal) | Compacto minimalista sin wordmark gigante de fondo (v7.0) |
 | `Container`, `Section` | Ancho y ritmo vertical | `Section` aplica `--space-8/9` |
-| `SectionHeader` | Etiqueta mono + `h2` + lead opcional | |
-| `Hero` | Antetítulo (rol), nombre con regla trazada, frase canónica, resumen, 2 CTA, disponibilidad y ubicación con ícono, retrato 4:5 | Retrato con `priority`; entrada solo con `transform`; regla `.rule-draw` (§11.2) |
-| `ProofStrip` (en la home) | Etiqueta "Resultados", regla y 3 métricas con contexto | Dentro de la banda invertida (§15.4); métrica en `text-metric` verde; cota si hay `before` |
+| `SectionHeader` | Etiqueta mono + `h2` + lead opcional | Tonos: `neutral`, `accent`, `cyan` |
+| `Hero` | Titular monumental (`100svh`), 2.ª línea `.hero-gradient-text`, `.hero-ambient`, `MeasureRule` y compresión al scroll | Reto 01/Perfil sin tarjeta ni foto lateral (v5.0/v7.0) |
+| `ImpactTabs` | Banda invertida (`.surface-inverse .band-ambient`) con `tablist` accesible y barras Antes/Después | Métrica en `text-metric` esmeralda y borde `cyan-600` (v5.0/v7.0) |
+| `ChapterRail` | Riel lateral fijo (`01`–`05`) con progreso CSS (`rail-progress`) | Visible en `min-[1380px]:flex` |
 | `CaseFacts` | Ficha del caso (rol, duración, stack, estado) | Lista de definiciones `<dl>` |
-| `Metric` | Cifra + etiqueta + base/periodo; con `before`, cota antes → después | Obliga a pasar `context`; verde según `isMeasured()` de `profile.ts` |
+| `Metric` | Cifra + etiqueta + base/periodo; con `before`, cota antes → después | Obliga a pasar `context`; esmeralda según `isMeasured()` de `profile.ts` |
 | `Tag` | Etiqueta de stack | Mono, borde, sin color de acento |
 | `StatusBadge` | "En producción", "Prototipo", "Entregado" | Ícono + texto, nunca solo color |
-| `Timeline` | Experiencia | Cargo real, empresa, fechas |
-| `PostCard` | Nota del blog | Motivo del pilar, antetítulo (pilar · fecha · lectura), titular, bajada y "Leer la nota". Variantes `card` (motivo arriba) y `row` (al lado, en /notas). `NoteList` añade el filtro por pilar |
-| `Prose` | Estilos de texto largo para MDX | 68ch, enlaces subrayados |
+| `Timeline` | Experiencia con eje dibujado al scroll (`animatedRail`) | Cargo real, empresa, fechas |
+| `PostCard` | Nota del blog | Portada `MediaFrame` (o `PillarMotif`), antetítulo, titular, bajada y "Leer la nota". Variantes `card` y `row`. |
+| `Prose` | Estilos de texto largo para MDX | 68ch, enlaces subrayados, `img` con marco elevado |
 | `Callout` | Aprendizaje / advertencia en casos | Variantes `info` (neutro) y `warning` (ámbar) |
-| `Figure` (pendiente) | Imagen + leyenda dentro del MDX | `next/image`, AVIF/WebP, marco de §6.5 |
+| `Figure` | Imagen + leyenda + indicador opcional `simulated` dentro de blogs y casos MDX | `components/ui/figure.tsx` (v7.0), marco de §6.5 |
 | `FlowDiagram` | Diagrama de flujo o arquitectura en HTML | Reglas de §8; horizontal solo si su contenedor es ancho (container query) |
 | `Chart` (pendiente) | Gráfico de datos | Reglas de §9; tabla alternativa accesible |
 | `ContactForm` | Formulario de 4 campos | Errores en línea, `aria-live` |
-| `ThemeToggle` | Claro / oscuro / sistema | Respeta `prefers-color-scheme` |
-| `ConsentBanner` | Consentimiento de medición | Discreto, inferior, dos botones del mismo peso |
-| `MediaFrame` (v3.2) | Espacio de imagen con placeholder de marca | Desde la v4.0 solo para el retrato; proporción fija, `next/image` |
-| `ReadingProgress` (v3.3) | Barra de lectura en casos y notas | Solo CSS (`animation-timeline: scroll()`); oculta con movimiento reducido |
-| `CopyEmail` (v3.3) | Copiar el email en /contacto | Confirmación con `aria-live` |
-| `NoteList` · `CaseGrid` | Índices con filtro | Botones `aria-pressed`, conteo anunciado |
-| `ConsoleGreeting` (v3.3) | Saludo y API `sj.*` en DevTools | Colores de marca; se ejecuta en `requestIdleCallback` |
-| `CaseArticle` (v3.2) | Caso en formato de artículo | Portada `CaseCover` 16:9, antetítulo (tipo · año · lectura), titular, bajada, resultado, "Leer el caso". Variantes `featured`, `row`, `card` |
+| `ThemeToggle` | Claro / oscuro / sistema | Circular dentro del header flotante |
+| `ConsentBanner` | Consentimiento de medición | Flotante con `.glass-surface`, dos botones del mismo peso |
+| `MediaFrame` | Espacio de imagen con placeholder de marca | Portadas de notas (`cover`) y retrato; proporción fija, `next/image` |
+| `ReadingProgress` | Barra de lectura en casos y notas | Solo CSS (`animation-timeline: scroll()`, degradado Índigo→Cian) |
+| `CopyEmail` | Copiar el email en /contacto | Confirmación con `aria-live` |
+| `NoteList` · `CaseGrid` | Índices con filtro | Botones `aria-pressed` (Índigo activo), conteo anunciado |
+| `ConsoleGreeting` | Saludo y API `sj.*` en DevTools | Colores v7.0 (`#312E81`/`#818CF8`); se ejecuta en `requestIdleCallback` |
+| `CaseArticle` | Caso en formato de artículo | Portada `CaseCover` (`showMetric={false}`), jerarquía en 3 niveles, CTA en `accent-600` |
 | `Reveal` (v3.0) | Revelado al hacer scroll | Clase `.reveal`; solo CSS y solo `transform`; nunca en el hero (§11) |
 | `CaseCover` (v4.0) | Portada del caso: plano del flujo + cota del resultado | §6.8, §8.3; datos en `cover` de cada caso |
 | `MiniFlow` (v4.0) | Flujo de 3 pasos de cada servicio en la home | §8.3; decorativo |
@@ -1122,14 +1122,12 @@ Cada botón lleva `data-cta="<id>"` para la medición (ver `04-TECH-SEO-MEDICION
 
 ## 20. Imágenes en la web
 
-- **Espacios de imagen:** ver §6.8. Solo el retrato es un archivo (`public/img/retrato.webp`); portadas de casos y notas son SVG.
-- **Capturas de casos:** marco de §6.5. Siempre con datos simulados.
-- **Imágenes generadas:** nunca como portada; solo fondos de piezas y apoyos, con el prompt base de §10.7.
+- **Espacios de imagen:** ver §6.8. Portadas de casos como planos SVG (`CaseCover`); las notas del blog permiten portada ilustrada (`public/img/notas/<slug>.webp` en `MediaFrame`, con respaldo en `PillarMotif`) e imágenes inline dentro del MDX.
+- **Imágenes dentro de los blogs (`notas`) y casos:** permitidas vía Markdown estándar `![alt](/img/... "leyenda")` o con el componente `<Figure src="..." alt="..." caption="..." simulated />`. En capturas de sistemas reales, ocultar datos personales y marcar `simulated`.
 - **Diagramas:** `FlowDiagram` según §8.
-- **Foto personal:** retrato principal de §10 (`public/img/retrato.webp`, 1200 × 1500).
-- **Prioridad de carga:** `priority` solo en el retrato (hero y /sobre-mi). Las portadas SVG van en el HTML y no necesitan carga.
-- **Prohibido:** renders 3D, ilustraciones genéricas de "IA", fotos de stock.
-- Formatos AVIF/WebP vía `next/image`; ninguna imagen sobre 200 KB.
+- **Prioridad de carga:** `priority` en la imagen protagonista arriba del pliegue (`cover` de nota o retrato si aplica); las imágenes inline del MDX usan carga diferida (`loading="lazy"`).
+- **Prohibido:** renders 3D, estética neón/cyberpunk, fotos de stock genéricas.
+- Formatos WebP/AVIF recomendados; mantener capturas e ilustraciones por debajo de 200 KB cuando sea posible.
 
 ## 21. Accesibilidad (checklist por componente)
 
@@ -1172,10 +1170,10 @@ En Tailwind v4, `@theme` con `initial` anula la escala por defecto: **fuera de l
 - [ ] Sin palabras de la lista "Evitar" (§2.4); mecánica de §2.3 aplicada.
 
 **Visual**
-- [ ] Solo colores de §4; máximo 3 sin contar neutros; azul solo en lo accionable, verde solo en resultados.
-- [ ] Inter / JetBrains Mono (o sustitutos de §5.1); máximo 2 pesos.
+- [ ] Solo colores de §4; máximo 3 sin contar neutros; Índigo para acción/identidad, Cian para apoyo/notas, Esmeralda solo en resultados.
+- [ ] Plus Jakarta Sans + DM Sans + IBM Plex Mono (o sustitutos de §5.1); máximo 2 pesos por vista.
 - [ ] Contraste ≥ 4,5:1 en texto; tamaño mínimo respetado.
-- [ ] Sin degradados (salvo tonales), neón, brillos, vidrio, 3D, stock ni ilustraciones de "IA". **Si la imagen es generada, mirarla al 100 % buscando esto**.
+- [ ] Sin estética neón, 3D, stock ni vidrio en tarjetas de lectura (`.glass-surface` solo en chrome flotante; halos suaves en `oklab` solo en cabeceras/bandas clave).
 - [ ] Al menos dos piezas del kit de firma (§6.9).
 - [ ] Si tiene movimiento: solo trazado, aparición de gráficos o pulso (§11.2); el último cuadro funciona como pieza estática.
 - [ ] Logo con área de protección y en combinación permitida.
@@ -1199,8 +1197,8 @@ En Tailwind v4, `@theme` con `initial` anula la escala por defecto: **fuera de l
 | `public/favicon.svg` · `app/favicon.ico` · `apple-touch-icon.png` · `icon-192.png` · `icon-512.png` | Íconos de app | ✅ Generado |
 | `public/brand/email/monograma.png` · `regla.png` | Imágenes de los correos transaccionales (§13.4.1) | ✅ Generado (`render-png.sh`) |
 | `lib/email/templates.ts` · `design/emails/*.html` | Correos del formulario y su vista previa | ✅ Implementado |
-| Plantillas de diagrama (§8.3) | Componentes en `components/brand/` y `components/ui/case-cover.tsx` | ✅ v4.0 (exportar a SVG para Figma cuando haga falta) |
-| OG de notas con motivo del pilar y fondo marino | `lib/og.tsx` | ⬜ Pendiente (§13.2) |
+| Plantillas de diagrama (§8.3) | Componentes en `components/brand/` y `components/ui/case-cover.tsx` | ✅ v7.0 |
+| Plantilla OG oscuro editorial (`#0C1124`) + barra Índigo→Cian | `lib/og.tsx` | ✅ v7.0 (§13.2) |
 | `design/figma/*.svg` (kit para importar a Figma, `scripts/brand/figma-kit.mjs`) | Logo, color, tipografía, elementos, banner LinkedIn, post 4:5, carrusel, OG, imágenes, artículo de caso 1200 × 630 | ✅ Generado; rol y frase desde `profile.ts` |
 | Archivo de Figma en la cuenta | Kit importado y editable | ⬜ Importar (o vía MCP de Figma cuando esté activo) |
 | `brand/fotos/` (fuera del repo público si contiene originales pesados) | Originales de retratos y fotos de trabajo | ⬜ Archivar originales |

@@ -1,38 +1,50 @@
-# 08 · Prompts de imágenes para las Notas (v4.2)
+# 08 · Prompts e imágenes para Blogs (Notas) y Casos (v7.0)
 
-> **Para quién:** otro agente/generador de imágenes (Midjourney, DALL·E, Flux, Firefly, etc.).
-> **Objetivo:** una **portada por nota** (y conceptos inline opcionales) que acompañen al diagrama SVG, sin romper la estética de marca.
-> **Regla de marca:** las imágenes son **apoyo**, no decoración genérica. El manual (03-DESIGN §6.8) prioriza los planos SVG; estas imágenes se suman, con la misma sobriedad. **Nada de neón, 3D isométrico, glassmorphism, "hologramas", circuitos brillantes, robots ni rostros.**
+> **Para quién:** persona o generador de imágenes (Flux, DALL·E, Midjourney, Firefly) al producir material visual para el blog (`content/notas/`).
+> **Objetivo:** habilitar **portadas e imágenes dentro de los blogs (notas)** y capturas simuladas en casos, alineadas con la paleta **v7.0 (Índigo Eléctrico + Cian Luminoso)**.
+> **Regla de marca:** las imágenes en el blog son bienvenidas siempre que aporten claridad visual (diagramas conceptuales, esquemas técnicos o capturas con datos de referencia). **Nada de neón, 3D isométrico, "hologramas", robots ni rostros humanos.**
 
 ---
 
-## 0. Cómo se usan una vez generadas
+## 0. Cómo usar imágenes dentro de los blogs (`notas`) y casos
 
-1. Exportar a **WebP**, **1600 × 900 px** (16:9), < 200 KB.
-2. Guardar en `public/img/notas/<slug>.webp`.
-3. En `content/notas/index.ts`, añadir al objeto de la nota:
+1. Exportar a **WebP** optimizado (recomendado **1600 × 900 px** para portadas 16:9, < 200 KB) y guardar en `public/img/notas/<archivo>.webp`.
+2. **Portada de la nota** en `content/notas/index.ts`:
    ```ts
    cover: "/img/notas/<slug>.webp",
    coverAlt: "<descripción concreta de lo que se ve, en español>",
    ```
-   Si no hay `cover`, la nota usa el motivo gráfico del pilar (fallback automático).
-4. Inline (dentro del `.mdx`): markdown normal `![texto alternativo](/img/notas/<slug>-02.webp)`.
+   Si no se define `cover`, la cabecera muestra automáticamente el motivo SVG del pilar (`PillarMotif`).
+3. **Imágenes dentro del cuerpo del blog (`.mdx`)** — dos formas válidas:
+   - **Markdown estándar** (enmarcado automático por `mdx-components.tsx`; texto entre comillas opcional pasa a leyenda):
+     ```md
+     ![Diagrama de flujo del sistema](/img/notas/mi-nota-02.webp "Pie de foto opcional")
+     ```
+   - **Componente `<Figure>`** (con pie de foto e indicador opcional `simulated` para capturas de apps privadas):
+     ```mdx
+     <Figure
+       src="/img/notas/mi-nota-captura.webp"
+       alt="Vista del tablero con métricas simuladas"
+       caption="Vista simplificada de la cola de envío"
+       simulated
+     />
+     ```
 
 ---
 
-## 1. Estilo base (pega esto en TODOS los prompts)
+## 1. Estilo base v7.0 (para generar ilustraciones editoriales)
 
 > **BASE_STYLE:**
-> *Editorial technical illustration, clean and minimal, flat vector with subtle paper grain. Deep navy (#13233A) and off-white paper (#FAFAF8) as the dominant palette, one single accent color per image, generous negative space, calm and precise, "engineering blueprint meets modern product design". Thin 1.5px linework, rounded rectangles as nodes, orthogonal connectors, small tick-mark rulers as a recurring motif. Muted, desaturated, high contrast, soft even lighting, no gradients beyond one tonal step. 16:9, centered composition with breathing room. No text, no logos, no watermark, no UI chrome, no human faces, no hands.*
+> *Editorial technical illustration, clean and minimal, flat vector with subtle matte grain. Deep midnight indigo (#0C1124) and crisp cool paper (#F8F9FC) as the dominant palette, one single accent color per image, generous negative space, calm and precise, "engineering blueprint meets modern product design". Thin 1.5px linework, rounded rectangles as nodes, orthogonal connectors, small tick-mark rulers as a recurring motif. Crisp contrast, soft studio lighting, no chaotic gradients. 16:9, centered composition with breathing room. No text, no logos, no watermark, no UI chrome, no human faces, no hands.*
 
 > **NEGATIVE (lo que NO queremos):**
-> *neon, glow, cyberpunk, 3D render, isometric, glassmorphism, holograms, glowing circuits, wires, brains, robots, lens flare, rainbow/purple gradients, oversaturation, stock-photo businesspeople, cluttered UI screenshots, cartoonish mascots, drop shadows, bevels, text, letters, numbers as focal subject.*
+> *neon glow, cyberpunk, 3D render, isometric, holograms, glowing circuits, wires, brains, robots, lens flare, rainbow gradients, oversaturation, stock-photo businesspeople, readable gibberish text, cartoonish mascots, watermarks.*
 
-**Acento por pilar** (una sola por imagen):
-- **Construyendo** → azul acción `#2350D9`
-- **Automatización para PYMES** → ámbar `#D0611F`
-- **Herramientas e IA** → verde azulado `#00897B`
-- **Aprendiendo medición** → verde medido `#0B7350`
+**Acento por pilar (v7.0)** (uno solo por imagen):
+- **Construyendo** → Índigo Eléctrico `#4F46E5` / `#818CF8`
+- **Automatización para PYMES** → Cian `#0891B2`
+- **Herramientas e IA** → Cian Luminoso `#22D3EE`
+- **Aprendiendo medición** → Esmeralda `#047857` / `#34D399`
 
 ---
 
@@ -94,8 +106,8 @@ Algunos proyectos son **apps de un solo usuario** y se les **ocultó el enlace y
 
 ## 4. Control de calidad antes de publicar
 
-- [ ] 16:9, 1600 × 900, WebP < 200 KB, mirada al 100 % buscando neón/3D/stock (si aparece, se descarta).
-- [ ] Un solo acento, el del pilar; el resto marino + papel.
+- [ ] 16:9, 1600 × 900, WebP < 200 KB (o captura recortada con `<Figure simulated />`), mirada al 100 % buscando neón/3D/stock.
+- [ ] Un solo acento, el del pilar; el resto en Índigo Nocturno + Papel frío.
 - [ ] Sin texto legible dentro de la imagen (evita faltas y se ve genérico).
 - [ ] `coverAlt` escrito: describe lo que se ve, no "imagen de portada".
 - [ ] Se ve bien en claro y oscuro (la imagen es la misma; por eso fondo neutro, no blanco puro ni negro puro).
