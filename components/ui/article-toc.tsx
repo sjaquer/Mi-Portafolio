@@ -30,14 +30,14 @@ export function ArticleToc({
     return (
       <nav
         aria-label="En esta página"
-        className="sticky top-header z-10 -mx-4 mb-6 border-b border-border bg-bg px-4 py-2 md:-mx-5 md:px-5 lg:hidden"
+        className="glass-surface sticky top-[calc(var(--spacing-header)+0.75rem)] z-10 mb-6 max-w-full overflow-hidden rounded-lg px-3 py-2 lg:hidden"
       >
-        <ol className="toc-group flex snap-x [scrollbar-width:none] gap-2 overflow-x-auto">
+        <ol className="toc-group flex w-full min-w-0 snap-x [scrollbar-width:none] gap-2 overflow-x-auto">
           {headings.map((h, i) => (
             <li key={h.id} className="shrink-0 snap-start">
               <a
                 href={`#${h.id}`}
-                className="toc-chip inline-flex min-h-control-md items-center gap-2 rounded-full border border-border bg-surface px-4 text-small whitespace-nowrap text-ink-700 transition-colors duration-150 ease-standard"
+                className="toc-chip inline-flex min-h-control-md items-center gap-2 rounded-full border border-border bg-surface px-4 text-small whitespace-nowrap text-ink-700 transition-colors duration-150 ease-standard hover:border-accent-600 hover:text-ink-900"
               >
                 <span aria-hidden className="font-mono text-label text-ink-500">
                   {num(i)}
@@ -55,14 +55,14 @@ export function ArticleToc({
   }
 
   return (
-    <nav aria-label="En esta página" className="sticky top-9">
+    <nav aria-label="En esta página" className="sticky top-[calc(var(--spacing-header)+2rem)]">
       <p className="mb-3 text-label-mono text-ink-500">En esta página</p>
       <ol className="toc-group flex flex-col border-l border-border">
         {headings.map((h, i) => (
           <li key={h.id}>
             <a
               href={`#${h.id}`}
-              className="toc-link -ml-px flex min-h-control-sm items-baseline gap-3 border-l-2 border-transparent py-2 pl-4 text-small text-ink-700 transition-colors duration-150 ease-standard hover:border-ink-900 hover:text-ink-900"
+              className="toc-link -ml-px flex min-h-control-sm items-baseline gap-3 border-l-2 border-transparent py-2 pl-4 text-small text-ink-700 transition-colors duration-150 ease-standard hover:border-accent-600 hover:text-ink-900"
             >
               <span aria-hidden className="font-mono text-label text-ink-500">
                 {num(i)}

@@ -75,34 +75,42 @@ export default async function NotePage({ params }: PageProps<"/notas/[slug]">) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
-      <Container className="pt-6 pb-8 lg:pb-9">
-        <Button href="/notas" variant="ghost" size="sm" cta="post_back" className="mb-6 -ml-4">
-          <IconArrowLeft size={16} stroke={1.5} aria-hidden />
-          Notas
-        </Button>
-        <header className="max-w-prose">
-          <p className="mb-3 text-label-mono text-ink-500">
-            {pillarLabel[n.pillar]} · <time dateTime={n.date}>{formatDate(n.date)}</time> ·{" "}
-            {minutes} min de lectura
-          </p>
-          <h1 className="text-h1">{n.title}</h1>
-          <p className="mt-4 text-lead">{n.description}</p>
-          {n.cover ? (
-            <MediaFrame
-              src={n.cover}
-              alt={n.coverAlt ?? n.title}
-              ratio="video"
-              sizes="(min-width: 1024px) 68ch, 100vw"
-              priority
-              className="mt-7"
-            />
-          ) : (
-            <PillarMotif pillar={n.pillar} className="mt-7" />
-          )}
-        </header>
-        {/* Cuerpo con entradilla y secciones numeradas; índice en chips (celular) o
-            columna lateral (lg). Antes las notas no tenían índice. */}
-        <div className="mt-8 border-t border-border pt-8 lg:grid lg:grid-cols-12 lg:gap-8">
+      <div className="hero-ambient border-b border-border">
+        <Container className="pt-6 pb-8">
+          <Button href="/notas" variant="ghost" size="sm" cta="post_back" className="mb-6 -ml-4">
+            <IconArrowLeft size={16} stroke={1.5} aria-hidden />
+            Notas
+          </Button>
+          <header className="max-w-prose">
+            <p className="mb-3 flex items-center gap-2 text-label-mono text-ink-500">
+              <span aria-hidden className="size-2 shrink-0 rounded-full bg-current text-cyan-600" />
+              <span>
+                <span className="font-semibold text-cyan-600">{pillarLabel[n.pillar]}</span> ·{" "}
+                <time dateTime={n.date}>{formatDate(n.date)}</time> · {minutes} min de lectura
+              </span>
+            </p>
+            <h1 className="text-h1">{n.title}</h1>
+            <p className="mt-4 text-lead text-ink-700">{n.description}</p>
+            {n.cover ? (
+              <MediaFrame
+                src={n.cover}
+                alt={n.coverAlt ?? n.title}
+                ratio="video"
+                sizes="(min-width: 1024px) 68ch, 100vw"
+                priority
+                className="mt-7"
+              />
+            ) : (
+              <PillarMotif pillar={n.pillar} className="mt-7" />
+            )}
+          </header>
+        </Container>
+      </div>
+
+      <Container className="py-8 lg:py-9">
+        {/* Cuerpo con entradilla, imágenes/diagramas y secciones numeradas; índice en chips
+            (celular) o columna lateral (lg). */}
+        <div className="lg:grid lg:grid-cols-12 lg:gap-8">
           <ArticleToc headings={headings} variant="mobile" />
           <div className="article-body article-lede text-body lg:col-span-8">
             <Body />
@@ -115,7 +123,7 @@ export default async function NotePage({ params }: PageProps<"/notas/[slug]">) {
         {/* Cierre: la conversación sigue en LinkedIn (06-CONTENIDO.md §5). */}
         <aside
           aria-label="Seguir la conversación"
-          className="mt-8 flex max-w-prose flex-col gap-4 rounded-lg border border-border bg-surface p-5"
+          className="case-card-surface mt-8 flex max-w-prose flex-col gap-4 rounded-lg border border-border bg-surface p-5 shadow-sm sm:p-6"
         >
           <p className="font-semibold text-ink-900">
             ¿Te sirvió? La conversación sigue en LinkedIn.

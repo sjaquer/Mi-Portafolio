@@ -1,6 +1,7 @@
 import type { ComponentProps } from "react";
 import type { MDXComponents } from "mdx/types";
 import { Callout } from "@/components/ui/callout";
+import { Figure } from "@/components/ui/figure";
 import { FlowDiagram } from "@/components/ui/flow-diagram";
 import { Metric } from "@/components/ui/metric";
 
@@ -33,14 +34,18 @@ const components: MDXComponents = {
     <a className="text-accent-600 underline underline-offset-4 hover:text-accent-700" {...props} />
   ),
   strong: (props) => <strong className="font-semibold text-ink-900" {...props} />,
-  // Imágenes de contenido (v4.2): dimensiones variables y carga diferida. El `alt` viene del MDX.
-  img: (props) => (
-    // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
-    <img
-      {...props}
-      loading="lazy"
-      className="my-6 w-full rounded-lg border border-border bg-surface-muted"
-    />
+  // Imágenes de contenido dentro de notas y casos (v7.0): marco elevado y leyenda opcional vía title.
+  // Se usa <span> (nunca <figure>) porque Markdown envuelve `![alt](src)` en `<p>`.
+  img: ({ className = "", title, ...props }) => (
+    <span className="case-card-surface my-7 block overflow-hidden rounded-lg border border-border bg-surface p-2 shadow-sm sm:p-3">
+      {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
+      <img
+        {...props}
+        loading="lazy"
+        className={`block h-auto w-full rounded-md border border-border bg-surface-muted ${className}`}
+      />
+      {title && <span className="mt-2 block px-1 text-small text-ink-500">{title}</span>}
+    </span>
   ),
   code: (props) => (
     <code
@@ -67,6 +72,7 @@ const components: MDXComponents = {
     />
   ),
   Callout,
+  Figure,
   FlowDiagram,
   Metric: (props: ComponentProps<typeof Metric>) => (
     <div className="my-6">

@@ -726,15 +726,15 @@ li {
     scroll-target-group: auto;
   }
   .toc-chip:target-current {
-    border-color: var(--color-ink-900);
-    background: var(--color-ink-900);
-    color: var(--color-bg);
+    border-color: var(--color-accent-600);
+    background: var(--color-accent-600);
+    color: var(--color-on-accent);
   }
   .toc-chip:target-current span {
     color: inherit;
   }
   .toc-link:target-current {
-    border-color: var(--color-ink-900);
+    border-color: var(--color-accent-600);
     color: var(--color-ink-900);
     font-weight: 600;
   }

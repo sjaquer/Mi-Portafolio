@@ -79,49 +79,60 @@ export default async function CasePage({ params }: PageProps<"/proyectos/[slug]"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
-      <Container className="pt-6 pb-8 lg:pb-9">
-        <Button href="/proyectos" variant="ghost" size="sm" cta="case_back" className="mb-6 -ml-4">
-          <IconArrowLeft size={16} stroke={1.5} aria-hidden />
-          Proyectos
-        </Button>
-        <div className="mb-4 empty:hidden">
-          <DraftNotice item={c} />
-        </div>
-        {/* Lo primero que ve un reclutador: qué es y qué resultado tuvo (02-PRD.md §8.3). */}
-        <header className="grid gap-7 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-8">
-            <p className="mb-3 flex items-center gap-2 text-label-mono text-ink-500">
-              <span
-                aria-hidden
-                className={`size-2 shrink-0 rounded-full bg-current ${toneText[caseTypeTone[c.type]]}`}
-              />
-              Caso · <span className={toneText[caseTypeTone[c.type]]}>{caseTypeLabel[c.type]}</span>{" "}
-              · {c.year}
-            </p>
-            <h1 className="max-w-prose text-h1">{c.title}</h1>
-            {/* Resumen en 3 piezas (06-CONTENIDO.md §4.2): antes → qué construí → resultado (a la derecha). */}
-            <dl className="mt-5 flex max-w-prose flex-col gap-4">
-              <div className="flex flex-col gap-1">
-                <dt className="text-label-mono text-ink-500">Antes</dt>
-                <dd className="text-ink-700">{c.problem}</dd>
-              </div>
-              <div className="flex flex-col gap-1">
-                <dt className="text-label-mono text-ink-500">Qué construí</dt>
-                <dd className="text-lead">{c.subtitle}</dd>
-              </div>
-            </dl>
+      <div className="hero-ambient border-b border-border">
+        <Container className="pt-6 pb-8">
+          <Button
+            href="/proyectos"
+            variant="ghost"
+            size="sm"
+            cta="case_back"
+            className="mb-6 -ml-4"
+          >
+            <IconArrowLeft size={16} stroke={1.5} aria-hidden />
+            Proyectos
+          </Button>
+          <div className="mb-4 empty:hidden">
+            <DraftNotice item={c} />
           </div>
-          <div className={`border-l-2 pl-5 lg:col-span-4 ${toneBorder[caseTypeTone[c.type]]}`}>
-            <p className="mb-2 text-label-mono text-ink-500">Resultado</p>
-            <Metric {...c.result} />
-          </div>
-        </header>
-        <MeasureRule className="mt-7" />
-        {/* Portada: plano del flujo del caso (§6.8), se traza al entrar en pantalla (§11.2). */}
-        <CaseCover c={c} labelled className="mt-7" />
-        <div className="mt-7">
-          <CaseFacts c={c} />
-        </div>
+          {/* Lo primero que ve un reclutador: qué es y qué resultado tuvo (02-PRD.md §8.3). */}
+          <header className="grid gap-7 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-8">
+              <p className="mb-3 flex items-center gap-2 text-label-mono text-ink-500">
+                <span
+                  aria-hidden
+                  className={`size-2 shrink-0 rounded-full bg-current ${toneText[caseTypeTone[c.type]]}`}
+                />
+                <span>
+                  Caso · <span className={toneText[caseTypeTone[c.type]]}>{caseTypeLabel[c.type]}</span>{" "}
+                  · {c.year}
+                </span>
+              </p>
+              <h1 className="max-w-prose text-h1">{c.title}</h1>
+              {/* Resumen en 3 piezas (06-CONTENIDO.md §4.2): antes → qué construí → resultado (a la derecha). */}
+              <dl className="mt-5 flex max-w-prose flex-col gap-4">
+                <div className="flex flex-col gap-1">
+                  <dt className="text-label-mono text-ink-500">Antes</dt>
+                  <dd className="text-ink-700">{c.problem}</dd>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <dt className="text-label-mono text-ink-500">Qué construí</dt>
+                  <dd className="text-lead text-ink-900">{c.subtitle}</dd>
+                </div>
+              </dl>
+            </div>
+            <div className={`border-l-2 pl-5 lg:col-span-4 ${toneBorder[caseTypeTone[c.type]]}`}>
+              <p className="mb-2 text-label-mono text-ink-500">Resultado</p>
+              <Metric {...c.result} />
+            </div>
+          </header>
+          <MeasureRule className="mt-7" />
+          {/* Portada: plano del flujo del caso (§6.8), se traza al entrar en pantalla (§11.2). */}
+          <CaseCover c={c} labelled className="mt-7" />
+        </Container>
+      </div>
+
+      <Container className="py-8 lg:py-9">
+        <CaseFacts c={c} />
 
         {/* En el celular el bloque no es grilla: la tira de chips queda fija mientras
             dura el cuerpo. Desde lg, índice en columna lateral. */}
