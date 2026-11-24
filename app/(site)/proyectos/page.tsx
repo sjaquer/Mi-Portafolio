@@ -4,6 +4,7 @@ import { MiniFlow } from "@/components/brand/mini-flow";
 import { CaseGrid } from "@/components/sections/case-grid";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { DraftNotice } from "@/components/ui/draft-notice";
+import { MediaFrame } from "@/components/ui/media-frame";
 import { cases, gallery, lab } from "@/content/casos";
 import { readingTime } from "@/lib/reading-time";
 import { pageMetadata } from "@/lib/seo";
@@ -77,6 +78,14 @@ export default function ProyectosPage() {
                 className="reveal case-card-surface flex flex-col gap-3 rounded-lg border border-border bg-surface p-5 shadow-sm"
               >
                 <DraftNotice item={g} />
+                {g.image && (
+                  <MediaFrame
+                    src={g.image.src}
+                    alt={g.image.alt}
+                    ratio="video"
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  />
+                )}
                 <MiniFlow steps={g.flow} />
                 <h3 className="text-h3">{g.name}</h3>
                 <p className="text-small text-ink-700">{g.angle}</p>

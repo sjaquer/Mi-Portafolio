@@ -503,6 +503,11 @@ export interface GalleryItem extends Publication {
   liveLabel?: string;
   /** Proyecto privado de un solo usuario (v4.2): se muestra sin enlace ni repo, con una etiqueta. */
   isPrivate?: boolean;
+  /**
+   * Captura opcional arriba de la tarjeta (v7.1): 16:9, WebP, con datos de prueba.
+   * Ruta en /public, p. ej. "/img/proyectos/<slug>/tarjeta.webp".
+   */
+  image?: { src: string; alt: string };
 }
 
 const allGallery: GalleryItem[] = [
@@ -596,6 +601,19 @@ const allGallery: GalleryItem[] = [
     flow: ["Catálogo", "Checkout", "Panel"],
     isPrivate: true, // Privado: tienda de un solo usuario; se documenta con capturas, sin enlace ni repo.
   },
+  {
+    name: "TaskMe",
+    angle:
+      "App personal de productividad: tablero Kanban con subtareas y tareas recurrentes, horario semanal que avisa choques, tickets desde un formulario público, notas con dictado por voz y un planificador con IA que propone tareas antes de crearlas.",
+    stack: ["Next.js", "Firebase", "Gemini", "dnd-kit"],
+    flow: ["Idea", "TaskMe", "Tablero"],
+    href: "https://github.com/sjaquer/taskME",
+    hrefLabel: "Código de TaskMe en GitHub",
+    image: {
+      src: "/img/proyectos/taskme/tarjeta.webp",
+      alt: "Tres pantallas móviles de TaskMe en modo oscuro: inicio con lo pendiente de hoy, el tablero de tareas y el horario semanal",
+    },
+  },
 ];
 
 export const gallery = allGallery.filter(visible);
@@ -611,14 +629,6 @@ export interface LabProject {
 
 // Lo personal y de práctica al fondo (07-PROYECTOS.md §7.4).
 export const lab: LabProject[] = [
-  {
-    name: "TaskMe",
-    description:
-      "App personal de productividad: tablero Kanban con subtareas y tareas recurrentes, horario semanal que avisa choques, tickets desde un formulario público, notas con dictado por voz y un planificador con IA que propone tareas antes de crearlas. Acceso con PIN y lista para una APK Android.",
-    stack: ["Next.js", "Firebase", "Gemini", "dnd-kit"],
-    year: 2026,
-    href: "https://github.com/sjaquer/taskME",
-  },
   {
     name: "Ecos Literarios",
     description:

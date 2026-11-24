@@ -15,8 +15,8 @@
 | **Permiso institucional** | ✅ Confirmado | Autorización de Desarrollo Profesional y Alumni UWiener (`institutionalPermission = true`). |
 | **CV y fuente única** | ✅ Alineados | Word (`.docx`), PDF (`.pdf`), `content/profile.ts` y `/cv` idénticos. |
 | **Nivel A · Casos de Estudio** | ✅ Estructurados | 10 casos principales con problemas, arquitectura, descartes y métricas. |
-| **Nivel B · Galería** | ✅ Documentados | 7 herramientas con micro-flujos de 3 pasos (`MiniFlow`). |
-| **Nivel C · Laboratorio** | ✅ Catalogados | 6 proyectos de práctica y experimentación técnica. |
+| **Nivel B · Galería** | ✅ Documentados | 8 herramientas con micro-flujos de 3 pasos (`MiniFlow`). |
+| **Nivel C · Laboratorio** | ✅ Catalogados | 5 proyectos de práctica y experimentación técnica. |
 
 ---
 
@@ -50,6 +50,7 @@
 | **WCCA Posgrado Wiener** | Sección de desarrollo profesional y alumni integrada sobre WordPress manteniendo píxeles de medición publicitaria. | `WordPress` → `Sección` → `Píxeles` | WordPress, JavaScript, Google/Meta Pixels | Producción UWiener |
 | **Optimizador de Vuelos (ORDEV)** | Planificación de rutas y despacho de carga/pasajeros para helicópteros mediante solver matemático CP-SAT (peso, combustible, prioridad). | `Escenario` → `CP-SAT` → `Ruta óptima` | Next.js, TypeScript, OR-Tools, Python | GitHub |
 | **Coralia Delights / Digital Bakery** | Tiendas web para repostería artesanal con catálogo, horarios de reparto, cálculo de zonas y panel de pedidos. | `Catálogo` → `Checkout` → `Despacho` | Next.js, Tailwind CSS, Firebase | GitHub |
+| **TaskMe** (con captura en la tarjeta) | App personal de productividad: Kanban con subtareas y recurrencia, horario semanal con aviso de choques, tickets desde formulario público, notas con dictado, planificador IA con vista previa, acceso por PIN y puente para APK Android. **No** sincroniza con Google Calendar. | `Idea` → `TaskMe` → `Tablero` | Next.js 15, Firebase, Gemini (Genkit), dnd-kit | GitHub · captura `public/img/proyectos/taskme/tarjeta.webp` (emuladores con datos de prueba) |
 
 ---
 
@@ -57,7 +58,6 @@
 
 | Proyecto | Categoría | Stack | Qué explora técnicamente |
 |---|---|---|---|
-| **TaskMe** | Productividad | Next.js 15, Firebase, Gemini (Genkit), dnd-kit, Zustand | App personal: Kanban con subtareas y recurrencia, horario semanal con aviso de choques, tickets desde formulario público, notas con dictado, planificador IA con vista previa, acceso por PIN y puente para APK Android. **No** sincroniza con Google Calendar. |
 | **Ecos Literarios** | EdTech / IA | Next.js, Genkit, Gemini, Firestore | Biblioteca de literatura hispana con análisis temático y contextual generado con LLMs. |
 | **HoneyNotes** | Consumer App | Next.js, Firebase, Gemini | Mensajería asertiva y retos para parejas con sugerencias de redacción asistida. |
 | **Juego Gamedev.js Jam 2026** | Game Dev | TypeScript, Phaser, Vite, Gemini API | Juego web en dos capas (escritorio retro interactivo y niveles de plataformas mecánicas). |
