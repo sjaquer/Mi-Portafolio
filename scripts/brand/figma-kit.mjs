@@ -1,6 +1,6 @@
-// Kit de marca para Figma (03-DESIGN.md §3–§12.9): un SVG por tablero, con textos vivos
-// (Inter / JetBrains Mono), capas con nombre (id → nombre de capa en Figma) y fondos e
-// imágenes en capas separadas. Arrastra los SVG a Figma: todo queda editable.
+// Kit de marca para Figma (03-DESIGN.md §3–§12.9, v7.0): un SVG por tablero, con textos vivos
+// (Plus Jakarta Sans / DM Sans / IBM Plex Mono), capas con nombre (id → nombre de capa en Figma)
+// y fondos e imágenes en capas separadas. Arrastra los SVG a Figma: todo queda editable.
 // Uso: node scripts/brand/figma-kit.mjs  →  design/figma/*.svg
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 
@@ -16,6 +16,7 @@ const C = {
   gris500: "#5B657E",
   gris700: "#333C52",
   tinta: "#0F1424",
+  noche: "#0C1124",
   marino50: "#EEF2FF",
   marino100: "#C7D2FE",
   marino300: "#818CF8",
@@ -25,6 +26,8 @@ const C = {
   azul50: "#EEF2FF",
   azul600: "#4F46E5",
   azul700: "#4338CA",
+  cian: "#0E7490",
+  cianOsc: "#22D3EE",
   verde: "#047857",
   verdeOsc: "#34D399",
   ambar: "#B45309",
@@ -33,7 +36,8 @@ const C = {
   chart2: "#0891B2",
   chart3: "#059669",
 };
-const SANS = "Plus Jakarta Sans";
+const DISPLAY = "Plus Jakarta Sans";
+const SANS = "DM Sans";
 const MONO = "IBM Plex Mono";
 
 // Trazados del logo ya generados (texto convertido a contornos).
@@ -166,11 +170,11 @@ board(
 ${rect("Fondo", 0, 0, 1600, 1100, C.papel)}
 ${text("Título", 80, 110, "Logotipo", { size: 48, weight: 600, tracking: -0.02 })}
 ${text("Nota", 80, 150, "Wordmark y monograma en contornos (listos para exportar) + versión de texto vivo para editar.", { size: 18, fill: C.gris500 })}
-${text("Etiqueta wordmark", 80, 240, "Wordmark principal · Inter SemiBold 600 · tracking −0,02 em", { size: 14, family: MONO, fill: C.gris500, upper: true, tracking: 0.06 })}
+${text("Etiqueta wordmark", 80, 240, "Wordmark principal · Plus Jakarta Sans 600 · tracking −0,02 em", { size: 14, family: MONO, fill: C.gris500, upper: true, tracking: 0.06 })}
 ${wordmark("Wordmark · contornos · tinta", 80, 270, 60, C.tinta)}
-${text("Wordmark · texto vivo", 80, 430, "Sebastián Jaque", { size: 78, weight: 600, tracking: -0.02 })}
-<g id="Wordmark · sobre marino">${rect("Fondo marino", 860, 260, 660, 220, C.marino700, 'rx="16"')}${wordmark("Wordmark · papel", 905, 340, 60, C.papel)}</g>
-${text("Etiqueta compacto", 80, 560, "Wordmark compacto · JetBrains Mono 500", { size: 14, family: MONO, fill: C.gris500, upper: true, tracking: 0.06 })}
+${text("Wordmark · texto vivo", 80, 430, "Sebastián Jaque", { size: 78, weight: 600, family: DISPLAY, tracking: -0.02 })}
+<g id="Wordmark · sobre índigo">${rect("Fondo índigo", 860, 260, 660, 220, C.marino700, 'rx="16"')}${wordmark("Wordmark · papel", 905, 340, 60, C.papel)}</g>
+${text("Etiqueta compacto", 80, 560, "Wordmark compacto · IBM Plex Mono 500", { size: 14, family: MONO, fill: C.gris500, upper: true, tracking: 0.06 })}
 ${text("Compacto · texto vivo", 80, 640, "sjaquer", { size: 64, weight: 500, family: MONO, fill: C.marino700 })}
 ${text("Etiqueta monograma", 80, 760, "Monograma 64 × 64 · radio 14 · regla de 3 marcas (§3.2)", { size: 14, family: MONO, fill: C.gris500, upper: true, tracking: 0.06 })}
 ${monogram("Monograma · positivo", 80, 800, 192)}
@@ -191,13 +195,14 @@ ${monogram("Monograma · monocromo", 560, 800, 192, { bg: C.tinta, fg: C.blanco 
 // ── 02 · Color (§4) ─────────────────────────────────────────────────────────
 const swatches = [
   [
-    "Principales",
+    "Principales (v7.0)",
     [
       ["Papel", C.papel],
       ["Tinta", C.tinta],
-      ["Marino", C.marino700],
-      ["Azul acción", C.azul600],
-      ["Verde resultado", C.verde],
+      ["Índigo Profundo", C.marino700],
+      ["Índigo Eléctrico", C.azul600],
+      ["Cian Luminoso", C.cian],
+      ["Esmeralda", C.verde],
     ],
   ],
   [
@@ -212,38 +217,37 @@ const swatches = [
     ],
   ],
   [
-    "Marino",
+    "Índigo y Noche",
     [
-      ["marino-50", C.marino50],
-      ["marino-100", C.marino100],
-      ["marino-300", C.marino300],
-      ["marino-500", C.marino500],
-      ["marino-700", C.marino700],
-      ["marino-900", C.marino900],
+      ["indigo-50", C.marino50],
+      ["indigo-200", C.marino100],
+      ["indigo-400", C.marino300],
+      ["indigo-700", C.marino500],
+      ["indigo-900", C.marino700],
+      ["noche", C.noche],
     ],
   ],
   [
-    "Azul y estado",
+    "Cian y estado",
     [
-      ["azul-50", C.azul50],
-      ["azul-600", C.azul600],
-      ["azul-700", C.azul700],
+      ["cian claro", C.cian],
+      ["cian oscuro", C.cianOsc],
+      ["esmeralda oscuro", C.verdeOsc],
       ["ámbar", C.ambar],
       ["rojo", C.rojo],
-      ["verde (oscuro)", C.verdeOsc],
     ],
   ],
   [
     "Gráficos (§9)",
     [
-      ["serie 1", C.chart1],
-      ["serie 2", C.chart2],
-      ["serie 3", C.chart3],
+      ["serie 1 (índigo)", C.chart1],
+      ["serie 2 (cian)", C.chart2],
+      ["serie 3 (esmeralda)", C.chart3],
       ["otros", C.gris400],
     ],
   ],
 ];
-let colorBody = `${rect("Fondo", 0, 0, 1600, 1300, C.papel)}${text("Título", 80, 110, "Color", { size: 48, weight: 600, tracking: -0.02 })}`;
+let colorBody = `${rect("Fondo", 0, 0, 1600, 1300, C.papel)}${text("Título", 80, 110, "Color · v7.0", { size: 48, weight: 600, family: DISPLAY, tracking: -0.02 })}`;
 swatches.forEach(([group, items], gi) => {
   const y = 190 + gi * 215;
   colorBody += `<g id="${group}">${text("Grupo", 80, y, group, { size: 14, family: MONO, fill: C.gris500, upper: true, tracking: 0.06 })}`;
@@ -255,20 +259,20 @@ swatches.forEach(([group, items], gi) => {
 });
 board("02-color.svg", 1600, 1300, "02 · Color", colorBody);
 
-// ── 03 · Tipografía (§5) ────────────────────────────────────────────────────
+// ── 03 · Tipografía (§5, v6.0/v7.0) ─────────────────────────────────────────
 const typeRows = [
-  ["Display · Inter 600", 72, 600, SANS, "Construyo y mido"],
-  ["Título · Inter 600", 56, 600, SANS, "Proyectos con resultado"],
-  ["Subtítulo · Inter 400", 36, 400, SANS, "Sitios y automatizaciones medidas"],
+  ["Display · Plus Jakarta Sans 700", 72, 700, DISPLAY, "Entiendo el problema."],
+  ["Título · Plus Jakarta Sans 600", 56, 600, DISPLAY, "Proyectos con resultado"],
+  ["Subtítulo · DM Sans 400", 36, 400, SANS, "Herramientas web y automatizaciones medidas"],
   [
-    "Texto · Inter 400",
+    "Texto · DM Sans 400",
     28,
     400,
     SANS,
-    "Construyo sitios y automatizaciones que conectan marketing, operaciones y datos.",
+    "Construyo herramientas web y automatizaciones pensadas para que la gente las use sin complicarse.",
   ],
-  ["Métrica · JetBrains Mono 600", 120, 600, MONO, "−35 %"],
-  ["Etiqueta · JetBrains Mono 500", 22, 500, MONO, "CASO · AUTOMATIZACIÓN · 2026"],
+  ["Métrica · IBM Plex Mono 600", 120, 600, MONO, "−35 %"],
+  ["Etiqueta · IBM Plex Mono 500", 22, 500, MONO, "CASO · AUTOMATIZACIÓN · 2026"],
 ];
 let typeBody = `${rect("Fondo", 0, 0, 1600, 1250, C.papel)}${text("Título", 80, 110, "Tipografía", { size: 48, weight: 600, tracking: -0.02 })}`;
 let ty = 200;
@@ -399,18 +403,30 @@ slides.forEach(([name, label, title, foot], i) => {
 });
 board("08-carrusel.svg", slides.length * 1120 - 40, 1350, "Carrusel 4:5 · 5 láminas", car);
 
-// ── 09 · Open Graph 1200 × 630 (§12.9.6) ────────────────────────────────────
+// ── 09 · Open Graph 1200 × 630 (§12.9.6, v7.0 oscuro editorial) ────────────
 board(
   "09-open-graph.svg",
   1200,
   630,
   "Open Graph · 1200×630",
   `
-${rect("Fondo", 0, 0, 1200, 630, C.papel)}
-<g id="Header">${text("Etiqueta", 64, 100, "Caso · Automatización · 2026", { size: 22, weight: 500, family: MONO, fill: C.gris500, upper: true, tracking: 0.06 })}${monogram("Monograma", 1088, 64, 48)}</g>
-${text("Titular", 64, 260, ["Campañas de 8 000 correos", "de horas a minutos, con baja automática"], { size: 52, weight: 600, lh: 1.1, tracking: -0.02 })}
-${text("Descripción", 64, 410, "1–2 h → 5–10 min · por campaña de 8 000 destinatarios (estimado)", { size: 26, fill: C.gris500 })}
-<g id="Footer">${ruler("Regla", 64, 500, 1072)}${text("Nombre", 64, 560, "Sebastián Jaque", { size: 24, weight: 600 })}${text("URL", 1136, 560, "sjaquer.is-a.dev", { size: 24, weight: 500, family: MONO, fill: C.marino700, anchor: "end" })}</g>
+<defs>
+  <linearGradient id="og-accent-bar" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="${C.azul600}"/>
+    <stop offset="50%" stop-color="${C.marino300}"/>
+    <stop offset="100%" stop-color="${C.cianOsc}"/>
+  </linearGradient>
+</defs>
+${rect("Fondo", 0, 0, 1200, 630, C.noche)}
+${rect("Barra superior", 0, 0, 1200, 5, "url(#og-accent-bar)")}
+<g id="Header">
+  <circle cx="69" cy="92" r="5" fill="${C.cianOsc}"/>
+  ${text("Etiqueta", 86, 99, "Caso · Automatización · 2026", { size: 21, weight: 500, family: MONO, fill: C.cianOsc, upper: true, tracking: 0.06 })}
+  ${monogram("Monograma", 1088, 60, 48, { bg: C.papel, fg: C.marino700 })}
+</g>
+${text("Titular", 64, 255, ["Campañas de 8 000 correos", "de horas a minutos, con baja automática"], { size: 52, weight: 600, family: DISPLAY, fill: C.papel, lh: 1.1, tracking: -0.025 })}
+${text("Descripción", 64, 405, "1–2 h → 5–10 min · por campaña de 8 000 destinatarios (estimado)", { size: 25, fill: C.marino100 })}
+<g id="Footer">${ruler("Regla", 64, 496, 1072, { color: "#3B4A73" })}${text("Nombre", 64, 560, "Sebastián Jaque", { size: 24, weight: 600, fill: C.papel })}${text("URL", 1136, 560, "sjaquer.is-a.dev", { size: 24, weight: 500, family: MONO, fill: C.marino300, anchor: "end" })}</g>
 `,
 );
 

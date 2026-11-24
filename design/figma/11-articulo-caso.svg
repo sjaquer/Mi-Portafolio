@@ -1,23 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
 <g id="Artículo de caso · 1200×630">
 
-<rect id="Fondo" x="0" y="0" width="1200" height="630" fill="#FAFAF8" />
+<rect id="Fondo" x="0" y="0" width="1200" height="630" fill="#F8F9FC" />
 <g id="Imagen del caso (16:9) · reemplazar">
-  <rect id="Marco" x="48" y="48" width="560" height="534" fill="#EEF2F7" rx="16"/>
+  <rect id="Marco" x="48" y="48" width="560" height="534" fill="#EEF2FF" rx="16"/>
   
 </g>
 <g id="Texto">
-  <text id="Antetítulo" font-family="JetBrains Mono" font-size="16" font-weight="500" fill="#666C76" text-anchor="start" letter-spacing="0.96"><tspan x="648" y="110">AUTOMATIZACIÓN · 2026 · 2 MIN DE LECTURA</tspan></text>
-  <text id="Titular" font-family="Inter" font-size="44" font-weight="600" fill="#14161A" text-anchor="start" letter-spacing="-0.88"><tspan x="648" y="176">Campañas de 8 000</tspan><tspan x="648" dy="49.3">correos en minutos,</tspan><tspan x="648" dy="49.3">con baja automática</tspan></text>
-  <text id="Métrica" font-family="JetBrains Mono" font-size="40" font-weight="600" fill="#0B7350" text-anchor="start"><tspan x="648" y="380">5–10 min</tspan></text>
-  <text id="Contexto" font-family="Inter" font-size="20" font-weight="400" fill="#666C76" text-anchor="start"><tspan x="648" y="416">por campaña de 8 000 destinatarios</tspan><tspan x="648" dy="28.0">(antes 1–2 h · estimado)</tspan></text>
-  <text id="Leer" font-family="Inter" font-size="20" font-weight="600" fill="#2350D9" text-anchor="start"><tspan x="648" y="500">Leer el caso →</tspan></text>
+  <text id="Antetítulo" font-family="IBM Plex Mono" font-size="16" font-weight="500" fill="#5B657E" text-anchor="start" letter-spacing="0.96"><tspan x="648" y="110">AUTOMATIZACIÓN · 2026 · 2 MIN DE LECTURA</tspan></text>
+  <text id="Titular" font-family="DM Sans" font-size="44" font-weight="600" fill="#0F1424" text-anchor="start" letter-spacing="-0.88"><tspan x="648" y="176">Campañas de 8 000</tspan><tspan x="648" dy="49.3">correos en minutos,</tspan><tspan x="648" dy="49.3">con baja automática</tspan></text>
+  <text id="Métrica" font-family="IBM Plex Mono" font-size="40" font-weight="600" fill="#047857" text-anchor="start"><tspan x="648" y="380">5–10 min</tspan></text>
+  <text id="Contexto" font-family="DM Sans" font-size="20" font-weight="400" fill="#5B657E" text-anchor="start"><tspan x="648" y="416">por campaña de 8 000 destinatarios</tspan><tspan x="648" dy="28.0">(antes 1–2 h · estimado)</tspan></text>
+  <text id="Leer" font-family="DM Sans" font-size="20" font-weight="600" fill="#4F46E5" text-anchor="start"><tspan x="648" y="500">Leer el caso →</tspan></text>
 </g>
 <g id="Pie"><g id="Monograma" transform="translate(648 530) scale(0.625)">
-    <rect id="Fondo" width="64" height="64" rx="14" fill="#1F3A5F"/>
-    <path id="sj" d="M25.58 38.23L24.46 38.23Q22.87 38.23 21.69 37.73Q20.51 37.22 19.82 36.32Q19.13 35.43 19.05 34.20L22.09 34.20Q22.17 34.91 22.81 35.32Q23.45 35.74 24.46 35.74L25.58 35.74Q26.83 35.74 27.45 35.24Q28.07 34.75 28.07 33.92Q28.07 33.14 27.52 32.68Q26.96 32.23 25.84 32.07L24.02 31.81Q21.65 31.45 20.55 30.50Q19.44 29.55 19.44 27.65Q19.44 25.65 20.75 24.56Q22.07 23.47 24.64 23.47L25.63 23.47Q27.94 23.47 29.32 24.51Q30.70 25.55 30.86 27.31L27.81 27.31Q27.74 26.72 27.16 26.34Q26.59 25.96 25.63 25.96L24.64 25.96Q23.47 25.96 22.94 26.39Q22.41 26.82 22.41 27.65Q22.41 28.41 22.87 28.78Q23.34 29.16 24.36 29.32L26.23 29.58Q28.70 29.94 29.87 30.94Q31.04 31.94 31.04 33.87Q31.04 35.95 29.67 37.09Q28.31 38.23 25.58 38.23M38.76 42.68L34.94 42.68L34.94 39.87L38.66 39.87Q40.01 39.87 40.76 39.13Q41.52 38.39 41.52 37.04L41.52 26.51L35.72 26.51L35.72 23.70L44.56 23.70L44.56 37.09Q44.56 39.66 43 41.17Q41.44 42.68 38.76 42.68M42.89 21.26Q41.93 21.26 41.39 20.77Q40.84 20.29 40.84 19.46Q40.84 18.60 41.39 18.11Q41.93 17.62 42.89 17.62Q43.86 17.62 44.40 18.11Q44.95 18.60 44.95 19.46Q44.95 20.29 44.40 20.77Q43.86 21.26 42.89 21.26" fill="#FAFAF8"/>
-    <path id="Regla" d="M20.05 46V52M26.05 48V52M32.05 48V52" stroke="#FAFAF8" stroke-width="2" stroke-linecap="round" fill="none"/>
-  </g><text id="URL" font-family="JetBrains Mono" font-size="18" font-weight="500" fill="#1F3A5F" text-anchor="end"><tspan x="1152" y="558">sjaquer.is-a.dev</tspan></text></g>
+    <rect id="Fondo" width="64" height="64" rx="14" fill="#312E81"/>
+    <path id="sj" d="M25.33 38.31Q23.12 38.31 21.51 37.62Q19.90 36.93 18.99 35.76L20.94 34Q21.77 34.91 22.85 35.40Q23.93 35.89 25.36 35.89Q26.61 35.89 27.36 35.48Q28.11 35.06 28.11 34.20Q28.11 33.48 27.61 33.22Q27.10 32.96 26.27 32.83L24.11 32.49Q23.28 32.36 22.48 32.11Q21.69 31.86 21.08 31.42Q20.47 30.98 20.11 30.29Q19.74 29.60 19.74 28.61Q19.74 26.51 21.31 25.39Q22.89 24.27 25.64 24.27Q27.59 24.27 28.96 24.82Q30.32 25.36 31.21 26.35L29.47 28.28Q28.89 27.65 27.94 27.17Q27 26.69 25.54 26.69Q22.99 26.69 22.99 28.28Q22.99 29 23.51 29.28Q24.03 29.55 24.86 29.68L27 30.02Q27.85 30.15 28.65 30.39Q29.44 30.64 30.05 31.08Q30.66 31.53 31.03 32.20Q31.39 32.88 31.39 33.87Q31.39 35.95 29.79 37.13Q28.19 38.31 25.33 38.31M35.65 43.20L35.65 40.57L41.19 40.57L41.19 27.21L35.55 27.21L35.55 24.58L44.52 24.58L44.52 39.56Q44.52 41.17 43.61 42.19Q42.70 43.20 40.77 43.20L35.65 43.20M42.88 22.50Q41.71 22.50 41.23 22.01Q40.75 21.52 40.75 20.81L40.75 20.19Q40.75 19.49 41.23 18.99Q41.71 18.50 42.88 18.50Q44.05 18.50 44.53 18.99Q45.01 19.49 45.01 20.19L45.01 20.81Q45.01 21.52 44.53 22.01Q44.05 22.50 42.88 22.50" fill="#F8F9FC"/>
+    <path id="Regla" d="M19.99 46V52M25.99 48V52M31.99 48V52" stroke="#F8F9FC" stroke-width="2" stroke-linecap="round" fill="none"/>
+  </g><text id="URL" font-family="IBM Plex Mono" font-size="18" font-weight="500" fill="#312E81" text-anchor="end"><tspan x="1152" y="558">sjaquer.is-a.dev</tspan></text></g>
 
 </g>
 </svg>

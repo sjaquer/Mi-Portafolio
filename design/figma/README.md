@@ -5,7 +5,7 @@ Generado con `node scripts/brand/figma-kit.mjs` desde `03-DESIGN.md` (§3–§12
 ## Importar
 1. En Figma, crea un archivo "Marca · Sebastián Jaque".
 2. Arrastra todos los `.svg` de esta carpeta al lienzo. Cada uno entra como un frame con capas con nombre.
-3. Fuentes: **Inter** y **JetBrains Mono** (vienen en Figma como Google Fonts).
+3. Fuentes: **Plus Jakarta Sans** (titulares), **DM Sans** (cuerpo) e **IBM Plex Mono** (etiquetas y métricas), todas disponibles en Figma como Google Fonts.
 
 ## Qué es editable
 - **Textos:** todos son texto vivo (titulares, etiquetas, métricas, URL).
