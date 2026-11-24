@@ -19,9 +19,9 @@ function Block({ id, title, children }: { id: string; title: string; children: R
   return (
     <section
       aria-labelledby={id}
-      className="grid gap-4 border-t border-border py-7 md:grid-cols-12 md:gap-5"
+      className="grid gap-4 border-t border-border py-7 first:border-t-0 md:grid-cols-12 md:gap-5"
     >
-      <h2 id={id} className="text-label-mono text-ink-500 md:col-span-3">
+      <h2 id={id} className="text-label-mono text-accent-600 md:col-span-3">
         {title}
       </h2>
       <div className="md:col-span-9">{children}</div>
@@ -31,57 +31,62 @@ function Block({ id, title, children }: { id: string; title: string; children: R
 
 export default function CvPage() {
   return (
-    <Container className="py-8 lg:py-9">
-      <header className="flex flex-col gap-5 pb-7 md:flex-row md:items-end md:justify-between">
-        <div>
-          <h1 className="text-h1">{profile.fullName}</h1>
-          <p className="mt-3 text-lead text-ink-900">{profile.role}</p>
-          <p className="mt-2 text-small text-ink-500">
-            {profile.location} ·{" "}
-            <a
-              href={`mailto:${profile.links.email}`}
-              className="underline underline-offset-4 hover:text-ink-900"
-            >
-              {profile.links.email}
-            </a>{" "}
-            ·{" "}
-            <a
-              href={profile.links.linkedin}
-              className="underline underline-offset-4 hover:text-ink-900"
-            >
-              LinkedIn
-            </a>{" "}
-            ·{" "}
-            <a
-              href={profile.links.github}
-              className="underline underline-offset-4 hover:text-ink-900"
-            >
-              GitHub
-            </a>
-          </p>
-        </div>
-        {hasCvPdf && (
-          <Button
-            href={cvPdfPath}
-            download
-            size="lg"
-            cta="cv_page_download"
-            icon={<IconDownload size={20} stroke={1.5} aria-hidden />}
-          >
-            Descargar PDF
-          </Button>
-        )}
-      </header>
+    <>
+      <div className="hero-ambient border-b border-border">
+        <Container className="py-7 lg:py-8">
+          <header className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+            <div>
+              <h1 className="text-h1">{profile.fullName}</h1>
+              <p className="mt-3 text-lead text-ink-900">{profile.role}</p>
+              <p className="mt-2 text-small text-ink-500">
+                {profile.location} ·{" "}
+                <a
+                  href={`mailto:${profile.links.email}`}
+                  className="underline underline-offset-4 hover:text-accent-600"
+                >
+                  {profile.links.email}
+                </a>{" "}
+                ·{" "}
+                <a
+                  href={profile.links.linkedin}
+                  className="underline underline-offset-4 hover:text-accent-600"
+                >
+                  LinkedIn
+                </a>{" "}
+                ·{" "}
+                <a
+                  href={profile.links.github}
+                  className="underline underline-offset-4 hover:text-accent-600"
+                >
+                  GitHub
+                </a>
+              </p>
+            </div>
+            {hasCvPdf && (
+              <Button
+                href={cvPdfPath}
+                download
+                size="lg"
+                cta="cv_page_download"
+                icon={<IconDownload size={20} stroke={1.5} aria-hidden />}
+              >
+                Descargar PDF
+              </Button>
+            )}
+          </header>
+        </Container>
+      </div>
 
-      <Block id="perfil" title="Perfil">
-        <p className="max-w-prose text-lead text-ink-900">{profile.tagline}</p>
-        <p className="mt-3 max-w-prose">{profile.summary}</p>
-        <p className="mt-3 text-small text-ink-500">{profile.availability}.</p>
-      </Block>
+      <Container className="pt-6 pb-8 lg:pb-9">
+        <Block id="perfil" title="Perfil">
+          <p className="max-w-prose text-lead text-ink-900">{profile.tagline}</p>
+          <p className="mt-3 max-w-prose">{profile.summary}</p>
+          <p className="mt-3 text-small text-ink-500">{profile.availability}.</p>
+        </Block>
 
-      <Block id="experiencia" title="Experiencia">
-        <Timeline items={profile.experience} />
-      </Block>
+        <Block id="experiencia" title="Experiencia">
+          <Timeline items={profile.experience} animatedRail />
+        </Block>
 
       <Block id="educacion" title="Educación">
         <ul className="flex flex-col gap-3">
@@ -148,9 +153,10 @@ export default function CvPage() {
         </ul>
       </Block>
 
-      <p className="border-t border-border pt-5 text-small text-ink-500">
-        Actualizado: <time dateTime={profile.updatedAt}>{formatDate(profile.updatedAt)}</time>
-      </p>
-    </Container>
+        <p className="border-t border-border pt-5 text-small text-ink-500">
+          Actualizado: <time dateTime={profile.updatedAt}>{formatDate(profile.updatedAt)}</time>
+        </p>
+      </Container>
+    </>
   );
 }

@@ -45,10 +45,13 @@ const channels = [
 // 02-PRD.md §8.7: formulario corto, WhatsApp con mensaje prellenado y email.
 export default function ContactoPage() {
   return (
-    <Section tight>
+    <Section tight className="hero-ambient">
       <div className="grid gap-8 lg:grid-cols-12">
         <div className="lg:col-span-7">
-          <p className="mb-3 text-label-mono text-ink-500">Contacto</p>
+          <p className="mb-3 flex items-center gap-2 text-label-mono text-ink-500">
+            <span aria-hidden className="size-2 shrink-0 rounded-full bg-current text-accent-600" />
+            Contacto
+          </p>
           <h1 className="text-h1">Hablemos</h1>
           <p className="mt-4 mb-7 max-w-prose text-lead">
             ¿Tu equipo busca a alguien que construya y mida? ¿Tienes un proceso que se repite cada
@@ -68,9 +71,14 @@ export default function ContactoPage() {
                   href={href}
                   data-cta={cta}
                   {...(external && { target: "_blank", rel: "noopener noreferrer" })}
-                  className="flex min-h-control-lg items-center gap-3 rounded-md border border-border bg-surface px-4 py-3 hover:bg-surface-muted"
+                  className="group case-card-surface flex min-h-control-lg items-center gap-3 rounded-md border border-border bg-surface px-4 py-3 shadow-sm hover:bg-surface-muted"
                 >
-                  <Icon size={24} stroke={1.5} aria-hidden className="shrink-0 text-ink-500" />
+                  <Icon
+                    size={24}
+                    stroke={1.5}
+                    aria-hidden
+                    className="shrink-0 text-ink-500 transition-colors duration-150 group-hover:text-accent-600"
+                  />
                   <span className="flex min-w-0 flex-col">
                     <span className="truncate font-semibold text-ink-900">{label}</span>
                     <span className="text-small text-ink-500">{detail}</span>

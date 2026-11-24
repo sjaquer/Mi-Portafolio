@@ -24,7 +24,7 @@ export function NoteList({ items }: { items: NoteItem[] }) {
         aria-pressed={filter === value}
         data-cta={`notes_filter_${value}`}
         onClick={() => setFilter(value)}
-        className="inline-flex min-h-control-md items-center gap-2 rounded-full border border-border-strong px-4 text-small font-semibold text-ink-900 transition-colors duration-150 ease-standard hover:bg-surface-muted aria-pressed:border-ink-900 aria-pressed:bg-ink-900 aria-pressed:text-bg"
+        className="inline-flex min-h-control-md items-center gap-2 rounded-full border border-border-strong px-4 text-small font-semibold text-ink-900 transition-colors duration-150 ease-standard hover:bg-surface-muted aria-pressed:border-accent-600 aria-pressed:bg-accent-600 aria-pressed:text-on-accent"
       >
         {label}
         <span className="font-mono font-medium opacity-70">{count}</span>

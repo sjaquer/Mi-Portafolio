@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Body from "@/content/legal/privacidad.mdx";
 import { LegalPage } from "@/components/sections/legal-page";
+import { headingsOf } from "@/lib/headings";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -12,7 +13,12 @@ export const metadata: Metadata = pageMetadata({
 
 export default function PrivacidadPage() {
   return (
-    <LegalPage label="Privacidad" title="Aviso de privacidad" updated="2026-10-12">
+    <LegalPage
+      label="Privacidad"
+      title="Aviso de privacidad"
+      updated="2026-11-24"
+      headings={headingsOf("privacidad", "legal")}
+    >
       <Body />
     </LegalPage>
   );

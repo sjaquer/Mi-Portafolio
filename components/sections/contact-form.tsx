@@ -37,7 +37,7 @@ export function ContactForm() {
   if (state.status === "success") {
     return (
       <div role="status" className="rounded-lg border border-border bg-surface p-6">
-        <div className="gap-3.5 flex items-start">
+        <div className="flex items-start gap-3">
           <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-accent-50 text-accent-600">
             <IconCheck size={18} stroke={2.5} aria-hidden />
           </div>

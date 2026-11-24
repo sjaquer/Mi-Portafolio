@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { HeroFigure } from "@/components/brand/hero-figure";
+import { MeasureRule } from "@/components/brand/measure-rule";
 import { CvButton } from "@/components/sections/cv-button";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeader } from "@/components/ui/section";
@@ -51,10 +52,13 @@ export default function SobreMiPage() {
           __html: JSON.stringify(jsonLdGraph(profilePageJsonLd())).replace(/</g, "\\u003c"),
         }}
       />
-      <Section tight>
+      <Section tight className="hero-ambient">
         <div className="grid gap-7 md:grid-cols-12">
           <div className="md:col-span-8">
-            <p className="mb-3 text-label-mono text-ink-500">Sobre mí</p>
+            <p className="mb-3 flex items-center gap-2 text-label-mono text-ink-500">
+              <span aria-hidden className="size-2 shrink-0 rounded-full bg-current text-accent-600" />
+              Sobre mí
+            </p>
             <h1 className="text-h1">De Administración al código</h1>
             <div className="mt-6 flex max-w-prose flex-col gap-4">
               <p className="text-lead text-ink-900">
@@ -83,20 +87,23 @@ export default function SobreMiPage() {
       </Section>
 
       <Section aria-labelledby="como-trabajo" className="border-t border-border">
-        <SectionHeader id="como-trabajo" label="Cómo trabajo" title="Cuatro principios" />
+        <SectionHeader id="como-trabajo" label="Cómo trabajo" title="Cuatro principios" tone="accent" />
         <ol className="grid gap-6 md:grid-cols-2">
           {principles.map((p, i) => (
-            <li key={p.title} className="flex flex-col gap-2 border-t border-border pt-5">
-              <span className="font-mono text-small text-ink-500">0{i + 1}</span>
+            <li
+              key={p.title}
+              className="reveal case-card-surface flex flex-col gap-2 rounded-lg border border-border bg-surface p-5 shadow-sm"
+            >
+              <span className="font-mono text-label text-accent-600 tabular-nums">0{i + 1}</span>
               <h3 className="text-h3">{p.title}</h3>
-              <p>{p.body}</p>
+              <p className="text-ink-700">{p.body}</p>
             </li>
           ))}
         </ol>
       </Section>
 
       <Section aria-labelledby="aprendiendo" className="border-t border-border">
-        <SectionHeader id="aprendiendo" label="Ahora" title="Qué estoy aprendiendo" />
+        <SectionHeader id="aprendiendo" label="Ahora" title="Qué estoy aprendiendo" tone="cyan" />
         <ul className="flex max-w-prose list-disc flex-col gap-2 pl-5">
           {learning.map((l) => (
             <li key={l}>{l}</li>
@@ -104,10 +111,15 @@ export default function SobreMiPage() {
         </ul>
       </Section>
 
-      <section className="border-t border-border bg-surface py-8">
-        <Container className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-          <p className="max-w-prose text-lead text-ink-900">{profile.availability}.</p>
-          <CvButton location="about" />
+      <section className="border-t border-border py-8 lg:py-9">
+        <Container>
+          <div className="reveal case-card-surface rounded-lg border border-border bg-surface p-6 shadow-sm lg:p-8">
+            <MeasureRule className="mb-5" />
+            <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+              <p className="max-w-prose text-lead text-ink-900">{profile.availability}.</p>
+              <CvButton location="about" />
+            </div>
+          </div>
         </Container>
       </section>
     </>

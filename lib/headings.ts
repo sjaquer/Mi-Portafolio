@@ -12,7 +12,7 @@ export interface Heading {
  * Títulos de sección (`## `) de un MDX, leídos en el build. Alimentan el índice
  * "En esta página" de casos y notas desde el texto real, no desde una lista fija.
  */
-export function headingsOf(slug: string, dir: "casos" | "notas"): Heading[] {
+export function headingsOf(slug: string, dir: "casos" | "notas" | "legal"): Heading[] {
   const raw = readFileSync(join(process.cwd(), "content", dir, `${slug}.mdx`), "utf8");
   const out: Heading[] = [];
   let inFence = false;

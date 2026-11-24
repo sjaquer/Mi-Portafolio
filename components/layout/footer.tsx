@@ -7,7 +7,7 @@ import { formatDate } from "@/lib/format";
 import { mainNav } from "@/lib/nav";
 
 const linkClass =
-  "inline-flex min-h-control-md items-center text-small text-ink-700 underline-offset-4 hover:text-ink-900 hover:underline";
+  "inline-flex min-h-control-md items-center text-small text-ink-700 underline-offset-4 hover:text-accent-600 hover:underline";
 
 const legalLink =
   "inline-flex min-h-control-md items-center text-small text-ink-500 underline-offset-4 hover:text-ink-900 hover:underline";
@@ -18,7 +18,7 @@ const social = [
   { href: `mailto:${profile.links.email}`, label: "Email", cta: "footer_email" },
 ];
 
-/** Pie con wordmark compacto, la regla de medición y tres columnas de navegación (§19.2). */
+/** Pie minimalista compacto: wordmark, regla de medición y tres columnas de navegación (v7.0). */
 export function Footer() {
   const buildDate = process.env.BUILD_DATE ?? profile.updatedAt;
   const year = new Date(buildDate).getFullYear();
@@ -100,28 +100,6 @@ export function Footer() {
             © {year} {profile.name}
           </p>
         </div>
-
-        {/* Firma de cierre (v4.3): el handle de borde a borde, en tono fantasma. Es un
-            gráfico (SVG con textLength), no texto: ocupa justo el ancho en cualquier
-            pantalla y no entra en el cálculo de contraste. El nombre ya está en el pie. */}
-        <svg
-          aria-hidden
-          focusable="false"
-          viewBox="0 0 420 100"
-          className="mt-6 block h-auto w-full select-none"
-        >
-          <text
-            x={0}
-            y={76}
-            textLength={420}
-            lengthAdjust="spacingAndGlyphs"
-            className="fill-border font-mono"
-            fontSize={100}
-            fontWeight={600}
-          >
-            {profile.handle}
-          </text>
-        </svg>
       </Container>
     </footer>
   );

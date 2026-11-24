@@ -19,8 +19,11 @@ export const metadata: Metadata = pageMetadata({
 export default function ProyectosPage() {
   return (
     <>
-      <Section tight>
-        <p className="mb-3 text-label-mono text-ink-500">Proyectos</p>
+      <Section tight className="hero-ambient">
+        <p className="mb-3 flex items-center gap-2 text-label-mono text-ink-500">
+          <span aria-hidden className="size-2 shrink-0 rounded-full bg-current text-accent-600" />
+          Proyectos
+        </p>
         <h1 className="text-h1">{cases.length > 0 ? "Proyectos con resultado" : "Proyectos"}</h1>
         <p className="mt-4 max-w-prose text-lead">
           {cases.length > 0
@@ -70,16 +73,19 @@ export default function ProyectosPage() {
             title="Sitios y herramientas"
             lead="Proyectos más pequeños, en una tarjeta: qué son, qué resuelven y dónde encaja lo que construí."
           />
-          <ul className="grid gap-x-6 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {gallery.map((g) => (
-              <li key={g.name} className="reveal flex flex-col gap-3 border-t border-border pt-5">
+              <li
+                key={g.name}
+                className="reveal case-card-surface flex flex-col gap-3 rounded-lg border border-border bg-surface p-5 shadow-sm"
+              >
                 <DraftNotice item={g} />
                 <MiniFlow steps={g.flow} />
                 <h3 className="text-h3">{g.name}</h3>
-                <p>{g.angle}</p>
+                <p className="text-small text-ink-700">{g.angle}</p>
                 {g.isPrivate && (
-                  <span className="gap-1.5 px-2.5 inline-flex w-fit items-center rounded-full border border-border py-1 text-small text-ink-500">
-                    <span aria-hidden className="size-1.5 rounded-full bg-ink-500" />
+                  <span className="inline-flex w-fit items-center gap-2 rounded-full border border-border px-3 py-1 text-small text-ink-500">
+                    <span aria-hidden className="size-2 rounded-full bg-ink-500" />
                     Proyecto privado · disponible en entrevista
                   </span>
                 )}
@@ -113,7 +119,7 @@ export default function ProyectosPage() {
         </Section>
       )}
 
-      <Section aria-labelledby="laboratorio" className="border-t border-border bg-surface-muted">
+      <Section aria-labelledby="laboratorio" className="border-t border-border bg-surface">
         <SectionHeader
           id="laboratorio"
           label="Laboratorio"
