@@ -93,7 +93,7 @@ export default async function CasePage({ params }: PageProps<"/proyectos/[slug]"
             <p className="mb-3 flex items-center gap-2 text-label-mono text-ink-500">
               <span
                 aria-hidden
-                className={`size-1.5 shrink-0 rounded-full bg-current ${toneText[caseTypeTone[c.type]]}`}
+                className={`size-2 shrink-0 rounded-full bg-current ${toneText[caseTypeTone[c.type]]}`}
               />
               Caso · <span className={toneText[caseTypeTone[c.type]]}>{caseTypeLabel[c.type]}</span>{" "}
               · {c.year}

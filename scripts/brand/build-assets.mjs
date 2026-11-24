@@ -11,18 +11,18 @@ const font = (pkg, file) => {
   return opentype.parse(b.buffer.slice(b.byteOffset, b.byteOffset + b.byteLength));
 };
 
-const inter600 = font("@fontsource/inter", "inter-latin-600-normal.woff");
-const mono500 = font("@fontsource/jetbrains-mono", "jetbrains-mono-latin-500-normal.woff");
-const mono600 = font("@fontsource/jetbrains-mono", "jetbrains-mono-latin-600-normal.woff");
+const jakarta600 = font("@fontsource/plus-jakarta-sans", "plus-jakarta-sans-latin-600-normal.woff");
+const mono500 = font("@fontsource/ibm-plex-mono", "ibm-plex-mono-latin-500-normal.woff");
+const mono600 = font("@fontsource/ibm-plex-mono", "ibm-plex-mono-latin-600-normal.woff");
 
 const C = {
-  papel: "#FAFAF8",
-  tinta: "#14161A",
-  marino: "#1F3A5F",
-  marino100: "#D6DFEA",
-  marino900: "#13233A",
-  marino50: "#EEF2F7",
-  marino300: "#8FA3BF",
+  papel: "#F8F9FC",
+  tinta: "#0F1424",
+  marino: "#312E81",
+  marino100: "#C7D2FE",
+  marino900: "#0D1126",
+  marino50: "#EEF2FF",
+  marino300: "#818CF8",
 };
 
 const r = (n) => Math.round(n * 100) / 100;
@@ -107,7 +107,7 @@ function wordmark(f, text, size, tracking) {
   };
 }
 
-const main = wordmark(inter600, "Sebastián Jaque", 48, -0.02);
+const main = wordmark(jakarta600, "Sebastián Jaque", 48, -0.02);
 const compact = wordmark(mono500, "sjaquer", 48, 0);
 
 const wordmarkSvg = (wm, fill, label) => `

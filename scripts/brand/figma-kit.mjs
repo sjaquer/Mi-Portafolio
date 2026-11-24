@@ -8,33 +8,33 @@ const OUT = "design/figma";
 mkdirSync(OUT, { recursive: true });
 
 const C = {
-  papel: "#FAFAF8",
+  papel: "#F8F9FC",
   blanco: "#FFFFFF",
-  gris50: "#F3F2EF",
-  gris100: "#E4E2DD",
-  gris400: "#8A9099",
-  gris500: "#666C76",
-  gris700: "#3D424B",
-  tinta: "#14161A",
-  marino50: "#EEF2F7",
-  marino100: "#D6DFEA",
-  marino300: "#8FA3BF",
-  marino500: "#3F5E86",
-  marino700: "#1F3A5F",
-  marino900: "#13233A",
+  gris50: "#EFF2F8",
+  gris100: "#DCE2EE",
+  gris400: "#7B8499",
+  gris500: "#5B657E",
+  gris700: "#333C52",
+  tinta: "#0F1424",
+  marino50: "#EEF2FF",
+  marino100: "#C7D2FE",
+  marino300: "#818CF8",
+  marino500: "#4338CA",
+  marino700: "#312E81",
+  marino900: "#0D1126",
   azul50: "#EEF2FF",
-  azul600: "#2350D9",
-  azul700: "#1B40B3",
-  verde: "#0B7350",
-  verdeOsc: "#3FC08A",
-  ambar: "#B54708",
-  rojo: "#B42318",
-  chart1: "#2350D9",
-  chart2: "#D0611F",
-  chart3: "#00897B",
+  azul600: "#4F46E5",
+  azul700: "#4338CA",
+  verde: "#047857",
+  verdeOsc: "#34D399",
+  ambar: "#B45309",
+  rojo: "#BE123C",
+  chart1: "#4F46E5",
+  chart2: "#0891B2",
+  chart3: "#059669",
 };
-const SANS = "Inter";
-const MONO = "JetBrains Mono";
+const SANS = "Plus Jakarta Sans";
+const MONO = "IBM Plex Mono";
 
 // Trazados del logo ya generados (texto convertido a contornos).
 const paths = readFileSync("components/brand/paths.ts", "utf8");

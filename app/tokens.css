@@ -6,47 +6,49 @@
  */
 
 @theme {
-  /* ── Color (tema claro por defecto) ───────────────────────────────── */
+  /* ── Color (tema claro por defecto · v7.0 Índigo Eléctrico + Cian) ── */
   --color-*: initial;
-  --color-bg: #fafaf8;
+  --color-bg: #f8f9fc;
   --color-surface: #ffffff;
-  --color-surface-muted: #f3f2ef;
-  --color-border: #e4e2dd;
-  --color-border-strong: #8a9099;
-  --color-ink-900: #14161a;
-  --color-ink-700: #3d424b;
-  --color-ink-500: #666c76;
-  --color-brand: #1f3a5f;
-  --color-accent-600: #2350d9;
-  --color-accent-700: #1b40b3;
+  --color-surface-muted: #eff2f8;
+  --color-border: #dce2ee;
+  --color-border-strong: #7b8499;
+  --color-ink-900: #0f1424;
+  --color-ink-700: #333c52;
+  --color-ink-500: #5b657e;
+  --color-brand: #312e81;
+  --color-accent-600: #4f46e5;
+  --color-accent-700: #4338ca;
   --color-accent-50: #eef2ff;
   --color-on-accent: #ffffff;
-  --color-success-700: #0b7350;
-  --color-warning-700: #b54708;
-  --color-danger-700: #b42318;
-  --color-focus: #2350d9;
+  --color-cyan-600: #0e7490;
+  --color-cyan-400: #06b6d4;
+  --color-success-700: #047857;
+  --color-warning-700: #b45309;
+  --color-danger-700: #be123c;
+  --color-focus: #4f46e5;
 
   /* Marca para piezas tonales (§6.7) */
-  --color-brand-50: #eef2f7;
-  --color-brand-900: #13233a;
+  --color-brand-50: #eef2ff;
+  --color-brand-900: #0d1126;
 
-  /* Gráficos de datos (§9) */
-  --color-chart-1: #2350d9;
-  --color-chart-2: #d0611f;
-  --color-chart-3: #00897b;
-  --color-chart-other: #8a9099;
-  /* Variantes de texto: los chart-* son para gráficos; en 12 px no alcanzan AA. */
-  --color-chart-2-text: #a34a0a;
-  --color-chart-3-text: #00695c;
+  /* Gráficos de datos y wayfinding (§9, v7.0 Índigo / Cian / Esmeralda) */
+  --color-chart-1: #4f46e5;
+  --color-chart-2: #0891b2;
+  --color-chart-3: #059669;
+  --color-chart-other: #7b8499;
+  /* Variantes de texto: los chart-* son para gráficos; en 12 px garantizan AA. */
+  --color-chart-2-text: #0e7490;
+  --color-chart-3-text: #047857;
 
-  /* ── Tipografía (§16) ─────────────────────────────────────────────── */
+  /* ── Tipografía (§16, v6.0) ───────────────────────────────────────── */
   --font-*: initial;
-  --font-sans: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  /* Titulares grandes (display, h1, h2): corte Display de Inter; cae a Inter si no carga. */
+  --font-sans: var(--font-dm-sans), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Titulares grandes (hero, display, h1, h2): Plus Jakarta Sans (curvas más abiertas). */
   --font-display:
-    var(--font-inter-display), var(--font-inter), system-ui, -apple-system, sans-serif;
+    var(--font-plus-jakarta), var(--font-dm-sans), system-ui, -apple-system, sans-serif;
   --font-mono:
-    var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    var(--font-ibm-plex-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   /* Fluida entre 360 px y 1280 px de viewport */
   --text-*: initial;
@@ -114,68 +116,66 @@
   --radius-full: 999px;
 
   --shadow-*: initial;
-  --shadow-sm: 0 1px 2px rgb(20 22 26 / 0.06);
-  --shadow-md: 0 4px 16px rgb(20 22 26 / 0.08);
-  --shadow-lg: 0 12px 32px rgb(20 22 26 / 0.12);
+  --shadow-sm: 0 1px 2px rgb(15 20 36 / 0.05), 0 1px 1px rgb(15 20 36 / 0.03);
+  --shadow-md: 0 2px 6px rgb(15 20 36 / 0.06), 0 10px 24px -4px rgb(15 20 36 / 0.09);
+  --shadow-lg: 0 4px 12px rgb(15 20 36 / 0.07), 0 20px 44px -8px rgb(15 20 36 / 0.15);
 
   /* ── Movimiento (§11): duraciones 150 / 200 ms con duration-150 / duration-200 ── */
   --ease-*: initial;
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);
 }
 
-/* ── Tema oscuro (§15.2) ────────────────────────────────────────────── */
+/* ── Tema oscuro (§15.2, v7.0) ──────────────────────────────────────── */
 :root[data-theme="dark"] {
-  --color-bg: #0e1013;
-  --color-surface: #171a1f;
-  --color-surface-muted: #1d2026;
-  --color-border: #272b32;
-  --color-border-strong: #6b717b;
-  --color-ink-900: #ecedef;
-  --color-ink-700: #c9cdd4;
-  --color-ink-500: #a7adb7;
-  --color-brand: #d6dfea;
-  --color-accent-600: #7a9bff;
-  --color-accent-700: #a3baff;
-  --color-accent-50: #1a2340;
-  --color-on-accent: #0e1013;
-  --color-success-700: #3fc08a;
-  --color-warning-700: #f5b54a;
-  --color-danger-700: #ff8a80;
-  --color-focus: #7a9bff;
+  --color-bg: #080a12;
+  --color-surface: #111625;
+  --color-surface-muted: #0b0f1b;
+  --color-border: #232b42;
+  --color-border-strong: #6e7b9e;
+  --color-ink-900: #f3f5fb;
+  --color-ink-700: #c7cfe2;
+  --color-ink-500: #8e9ab8;
+  --color-brand: #a5b4fc;
+  --color-brand-50: #151b33;
+  --color-accent-600: #818cf8;
+  --color-accent-700: #a5b4fc;
+  --color-accent-50: #1b2145;
+  --color-on-accent: #080a12;
+  --color-cyan-600: #22d3ee;
+  --color-cyan-400: #38bdf8;
+  --color-success-700: #34d399;
+  --color-warning-700: #fbbf24;
+  --color-danger-700: #fb7185;
+  --color-focus: #818cf8;
 
-  --color-chart-1: #5b7ff0;
-  --color-chart-2: #d9691f;
-  --color-chart-3: #14a08f;
-  --color-chart-other: #6b717b;
-  --color-chart-2-text: #d9691f;
-  --color-chart-3-text: #14a08f;
+  --color-chart-1: #818cf8;
+  --color-chart-2: #22d3ee;
+  --color-chart-3: #34d399;
+  --color-chart-other: #6e7b9e;
+  --color-chart-2-text: #22d3ee;
+  --color-chart-3-text: #34d399;
 
   color-scheme: dark;
 }
 
-/* ── v4.1 · Estética limpia (§6.7) ──────────────────────────────────────
-   Se retiran los degradados tonales: el hero usa el fondo de página y la banda
-   de identidad usa color sólido. Menos ruido, más contraste y foco. */
-:root[data-theme="dark"] {
-  --color-brand-50: #121a26;
-}
-
-/* ── Superficie invertida: banda de identidad (§15.4) ──────────────── */
+/* ── Superficie invertida: banda de identidad (§15.4, v7.0) ─────────── */
 .surface-inverse {
-  --color-bg: #13233a;
-  --color-surface: #182b47;
-  --color-surface-muted: #1d3352;
-  --color-border: #2a4060;
-  --color-border-strong: #6a82a6;
-  --color-ink-900: #fafaf8;
-  --color-ink-700: #d6dfea;
-  --color-ink-500: #a9b8cc;
-  --color-accent-600: #a3baff;
-  --color-accent-700: #c5d3ff;
-  --color-accent-50: #1f3558;
-  --color-on-accent: #13233a;
-  --color-success-700: #3fc08a;
-  --color-focus: #a3baff;
+  --color-bg: #0c1124;
+  --color-surface: #141b36;
+  --color-surface-muted: #1c2547;
+  --color-border: #263259;
+  --color-border-strong: #7283b0;
+  --color-ink-900: #f8fafc;
+  --color-ink-700: #cbd5ec;
+  --color-ink-500: #94a3c8;
+  --color-accent-600: #818cf8;
+  --color-accent-700: #a5b4fc;
+  --color-accent-50: #1e2752;
+  --color-on-accent: #0c1124;
+  --color-cyan-600: #22d3ee;
+  --color-cyan-400: #38bdf8;
+  --color-success-700: #34d399;
+  --color-focus: #22d3ee;
   background: var(--color-bg);
   color: var(--color-ink-700);
   color-scheme: dark;

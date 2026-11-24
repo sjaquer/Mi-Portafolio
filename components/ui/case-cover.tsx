@@ -42,6 +42,8 @@ interface CoverProps {
   c: CaseStudy;
   /** En la página del caso la figura se anuncia; en tarjetas es decorativa. */
   labelled?: boolean;
+  /** Muestra la cifra de resultado sobre la cota (se oculta en tarjetas para no duplicar). */
+  showMetric?: boolean;
   className?: string;
 }
 
@@ -54,11 +56,11 @@ const ariaLabel = (c: CaseStudy) =>
  * cuadrada para el celular, con los nodos en Z (2 × 2) a escala casi 1:1. Antes la
  * horizontal se encogía al 56 % y sus etiquetas quedaban en ~7 px, ilegibles.
  */
-export function CaseCover({ c, labelled = false, className = "" }: CoverProps) {
+export function CaseCover({ c, labelled = false, showMetric = true, className = "" }: CoverProps) {
   return (
     <div className={className}>
-      <MobileCover c={c} labelled={labelled} className="aspect-square sm:hidden" />
-      <WideCover c={c} labelled={labelled} className="hidden aspect-video sm:block" />
+      <MobileCover c={c} labelled={labelled} showMetric={showMetric} className="aspect-square sm:hidden" />
+      <WideCover c={c} labelled={labelled} showMetric={showMetric} className="hidden aspect-video sm:block" />
     </div>
   );
 }
@@ -66,7 +68,7 @@ export function CaseCover({ c, labelled = false, className = "" }: CoverProps) {
 /* ── Celular: 360 × 360, nodos en Z ─────────────────────────────────────── */
 const M = { W: 360, PAD: 20, NW: 150, NH: 60, ROWS: [88, 196], COTA_Y: 322 };
 
-function MobileCover({ c, labelled, className }: CoverProps) {
+function MobileCover({ c, labelled, showMetric = true, className }: CoverProps) {
   const { label, nodes, highlight } = c.cover;
   const col = (i: number) => M.PAD + (i % 2) * (M.NW + (M.W - 2 * M.PAD - 2 * M.NW));
   const row = (i: number) => M.ROWS[Math.floor(i / 2)];
@@ -148,30 +150,32 @@ function MobileCover({ c, labelled, className }: CoverProps) {
       ))}
 
       <Dimension x1={M.PAD} x2={xEnd} y={M.COTA_Y} i={nodes.length} />
-      <g className="fig-fade font-mono" style={step(nodes.length + 1)}>
-        {c.result.before && (
-          <text x={M.PAD} y={M.COTA_Y - 18} className="fill-ink-500" fontSize={17} fontWeight={500}>
-            {c.result.before}
+      {showMetric && (
+        <g className="fig-fade font-mono" style={step(nodes.length + 1)}>
+          {c.result.before && (
+            <text x={M.PAD} y={M.COTA_Y - 18} className="fill-ink-500" fontSize={17} fontWeight={500}>
+              {c.result.before}
+            </text>
+          )}
+          <text
+            x={xEnd}
+            y={M.COTA_Y - 18}
+            textAnchor="end"
+            className={measured ? "fill-success-700" : "fill-ink-900"}
+            fontSize={28}
+            fontWeight={600}
+            letterSpacing="-0.02em"
+          >
+            {c.result.value}
           </text>
-        )}
-        <text
-          x={xEnd}
-          y={M.COTA_Y - 18}
-          textAnchor="end"
-          className={measured ? "fill-success-700" : "fill-ink-900"}
-          fontSize={28}
-          fontWeight={600}
-          letterSpacing="-0.02em"
-        >
-          {c.result.value}
-        </text>
-      </g>
+        </g>
+      )}
     </FigureFrame>
   );
 }
 
 /* ── Desde 640 px: 640 × 360, nodos en escalera ────────────────────────── */
-function WideCover({ c, labelled, className = "" }: CoverProps) {
+function WideCover({ c, labelled, showMetric = true, className = "" }: CoverProps) {
   const { label, nodes, highlight } = c.cover;
   const n = nodes.length;
   const x0 = (W - (n * NW + (n - 1) * GAP)) / 2;
@@ -267,23 +271,25 @@ function WideCover({ c, labelled, className = "" }: CoverProps) {
       </g>
 
       <Dimension x1={x0} x2={xEnd} y={COTA_Y} i={n} />
-      <g className="fig-fade font-mono" style={step(n + 1)}>
-        {c.result.before && (
-          <text x={x0} y={COTA_Y - 18} className="fill-ink-500" fontSize={18} fontWeight={500}>
-            {c.result.before}
+      {showMetric && (
+        <g className="fig-fade font-mono" style={step(n + 1)}>
+          {c.result.before && (
+            <text x={x0} y={COTA_Y - 18} className="fill-ink-500" fontSize={18} fontWeight={500}>
+              {c.result.before}
+            </text>
+          )}
+          <text
+            x={xEnd}
+            y={COTA_Y - 18}
+            textAnchor="end"
+            className={measured ? "fill-success-700" : "fill-ink-900"}
+            fontSize={24}
+            fontWeight={600}
+          >
+            {c.result.value}
           </text>
-        )}
-        <text
-          x={xEnd}
-          y={COTA_Y - 18}
-          textAnchor="end"
-          className={measured ? "fill-success-700" : "fill-ink-900"}
-          fontSize={24}
-          fontWeight={600}
-        >
-          {c.result.value}
-        </text>
-      </g>
+        </g>
+      )}
     </FigureFrame>
   );
 }

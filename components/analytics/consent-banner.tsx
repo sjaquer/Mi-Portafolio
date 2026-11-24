@@ -4,13 +4,13 @@ import Link from "next/link";
 import { saveConsent, type ConsentChoice } from "@/lib/analytics";
 
 const choiceButton =
-  "inline-flex min-h-control-md flex-1 items-center justify-center rounded-md border border-border-strong bg-surface px-5 font-semibold text-ink-900 transition-colors duration-150 ease-standard hover:bg-surface-muted active:translate-y-px sm:flex-none";
+  "inline-flex min-h-control-md flex-1 items-center justify-center rounded-full border border-border-strong bg-surface px-5 font-semibold text-ink-900 transition-colors duration-150 ease-standard hover:bg-surface-muted active:scale-[0.98] motion-reduce:active:scale-100 sm:flex-none";
 
 /**
- * Banner de consentimiento (§19.2, 04 §4.2): discreto, abajo, "Aceptar" y "Rechazar"
- * con el mismo peso visual. El markup va siempre en el HTML; su visibilidad la controla
- * `data-consent="ask"` en <html>, que fija `consentInitScript` en <head> antes del primer
- * pintado (así no es el LCP ni espera a la hidratación). Se reabre desde el pie.
+ * Banner de consentimiento (§19.2, 04 §4.2, v6.0): tarjeta flotante en vidrio técnico
+ * controlado, abajo, "Aceptar" y "Rechazar" con el mismo peso visual. El markup va siempre
+ * en el HTML; su visibilidad la controla `data-consent="ask"` en <html>, que fija
+ * `consentInitScript` en <head> antes del primer pintado (sin impactar el LCP).
  */
 export function ConsentBanner() {
   const choose = (choice: ConsentChoice) => {
@@ -23,9 +23,9 @@ export function ConsentBanner() {
     <section
       data-consent-banner
       aria-labelledby="consent-title"
-      className="fixed inset-x-0 bottom-0 z-20 border-t border-border bg-surface shadow-md"
+      className="glass-surface fixed inset-x-3 bottom-3 z-30 mx-auto max-w-content rounded-lg sm:inset-x-5 sm:bottom-4"
     >
-      <div className="mx-auto flex max-w-content flex-col gap-4 px-4 py-4 md:flex-row md:items-center md:justify-between md:px-5 lg:px-6">
+      <div className="flex flex-col gap-4 px-4 py-4 md:flex-row md:items-center md:justify-between md:px-6">
         <div className="max-w-prose">
           <h2 id="consent-title" className="text-small font-semibold text-ink-900">
             Medición del sitio

@@ -6,7 +6,7 @@ type Size = "sm" | "md" | "lg";
 
 const base =
   "group/btn inline-flex items-center justify-center gap-2 font-semibold whitespace-nowrap transition-colors duration-150 ease-standard " +
-  "active:translate-y-px aria-disabled:pointer-events-none aria-disabled:opacity-50";
+  "active:scale-[0.98] motion-reduce:active:scale-100 aria-disabled:pointer-events-none aria-disabled:opacity-50";
 
 const variants: Record<Variant, string> = {
   primary: "rounded-md bg-accent-600 text-on-accent shadow-sm hover:bg-accent-700 hover:shadow-md",

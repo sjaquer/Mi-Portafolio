@@ -3,7 +3,7 @@
 > **Fuente de verdad visual y verbal** de la marca Sebastián Jaque, para la web, el CV, LinkedIn, GitHub, presentaciones, documentos y cualquier pieza futura.
 > Si una decisión no está aquí, se agrega aquí antes de implementarla o publicarla.
 >
-> **Versión:** 5.0 · **Actualizado:** 24 nov 2026 · **Responsable:** Sebastián Jaque
+> **Versión:** 7.0 · **Actualizado:** 24 nov 2026 · **Responsable:** Sebastián Jaque
 
 ---
 
@@ -31,14 +31,14 @@
 
 | Elemento | Definición |
 |---|---|
-| **Propósito** | Que los equipos y negocios dejen de perder tiempo en tareas manuales que una buena herramienta o automatización puede resolver, conectando sistemas mediante código y APIs. |
-| **Qué hago** | Desarrollo web (Next.js), automatización de procesos y bots (Python, Playwright, APIs), integración de sistemas (APIs REST, CRM, Shopify, email transaccional). |
-| **Para quién** | Reclutadores y líderes de equipo en desarrollo web, automatización de procesos y soluciones de negocio (prioridad hasta ene 2027) · PYMES con procesos repetitivos. |
-| **Diferencial** | Entiendo el problema de negocio antes de escribir código y diseño herramientas y flujos que ahorran horas de trabajo operativo. Formación en negocios + práctica real construyendo y automatizando. |
-| **Rol (canónico)** | Desarrollo web · Automatización de procesos · Integraciones |
-| **Frase de posicionamiento (canónica)** | Construyo herramientas web y automatizaciones que reducen tareas manuales y conectan sistemas con APIs. |
-| **Idea de marca (interna)** | **Construir y conectar.** Todo lo visual y verbal sale de esta pareja: herramientas funcionales hechas con rigor técnico + flujos que eliminan fricción operativa. |
-| **Metáfora visual** | **El plano.** Cada pieza se ve como un plano de ingeniería que se está dibujando: reglas, cotas, nodos y conectores. Lo que construí va marcado con el sello; lo que cambió, con una cota. |
+| **Propósito** | Que los equipos y negocios operen mejor reduciendo tareas manuales y fricción operativa mediante productos digitales, flujos claros y automatizaciones conectadas por APIs. |
+| **Qué hago** | Análisis de producto, desarrollo web (Next.js, TypeScript), automatización de procesos y RPA (Python, Playwright), e integración de sistemas (APIs REST, webhooks, PostgreSQL). |
+| **Para quién** | Equipos de producto, tecnología y líderes en **análisis de producto, Product Engineering junior y soluciones de negocio** (prioridad desde ene 2027) · PYMES y áreas operativas con fricción manual. |
+| **Diferencial** | Uno entendimiento de negocio (Administración y Negocios Internacionales) con criterio de producto y ejecución técnica completa: descubro el problema, diseño el flujo, construyo la solución y mido su impacto real. |
+| **Rol (canónico)** | Analista de Producto · Desarrollo Web · Automatización de Procesos |
+| **Frase de posicionamiento (canónica)** | Construyo herramientas web y automatizaciones pensadas para que la gente las entienda y las use sin complicarse. |
+| **Idea de marca (interna)** | **Entender y construir producto.** Todo lo visual y verbal nace de esta pareja: claridad de flujo para personas reales + rigor técnico en la solución y su medición. |
+| **Metáfora visual** | **El plano editorial.** Cada pieza combina la precisión de un plano técnico (reglas, cotas, nodos, conectores) con tipografía orgánica y superficies flotantes de vidrio técnico controlado. |
 
 La frase de posicionamiento y el rol se usan **literalmente iguales** en web, CV, LinkedIn, GitHub, `llms.txt` y firma de correo. Viven en `content/profile.ts`.
 
@@ -146,23 +146,23 @@ La marca es una **marca personal tipográfica**: el nombre es el logo. No hay is
 
 | Versión | Construcción | Uso |
 |---|---|---|
-| **Wordmark principal** | "Sebastián Jaque" en Inter SemiBold (600), `letter-spacing: -0.02em` | Header de la web, CV, portada de slides, banner de LinkedIn |
-| **Wordmark compacto** | `sjaquer` en JetBrains Mono Medium (500), minúsculas | Pies de pieza, marcas de agua, URL, GitHub |
-| **Monograma** | `sj` en JetBrains Mono SemiBold (600) dentro de un cuadrado de esquinas redondeadas, con la **marca de medición** (§6.1) bajo las letras | Favicon, avatar de redes secundarias, sello en carruseles, app icon |
+| **Wordmark principal** | "Sebastián Jaque" en **Plus Jakarta Sans** SemiBold (600), `letter-spacing: -0.02em` | Header flotante de la web, CV, portada de slides, banner de LinkedIn |
+| **Wordmark compacto** | `sjaquer` en **IBM Plex Mono** Medium (500), minúsculas | Pies de pieza, marcas de agua, URL, GitHub |
+| **Monograma** | `sj` en **IBM Plex Mono** SemiBold (600) dentro de un cuadrado de esquinas redondeadas, con la **marca de medición** (§6.1) bajo las letras | Favicon, avatar de redes secundarias, sello en carruseles, app icon |
 
 ### 3.2 Construcción del monograma
 - Lienzo cuadrado de **64 × 64 u**; radio de esquina **14 u** (≈ 22 %).
 - Letras `sj` centradas ópticamente, altura de x = 24 u.
 - Bajo las letras, una regla de 3 marcas verticales (alto 6 u, 4 u, 4 u; separación 6 u; trazo 2 u), alineada a la izquierda con la `s`. Es la firma gráfica "construir y medir".
-- Versión positiva: fondo `marino-700` + letras `papel`. Versión negativa: fondo `papel` + letras `marino-700`. Versión monocroma: `tinta` o blanco.
+- Versión positiva: fondo `indigo-900` (`#312E81`) + letras `papel` (`#F8F9FC`). Versión negativa: fondo `papel` + letras `indigo-900`. Versión monocroma: `tinta` (`#0F1424`) o blanco.
 
-Borrador vectorial de referencia (convertir texto a contornos antes de exportar el final):
+Borrador vectorial de referencia (convertir texto a contornos antes de exportar el final con `scripts/brand/build-assets.mjs`):
 
 ```svg
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Sebastián Jaque">
-  <rect width="64" height="64" rx="14" fill="#1F3A5F"/>
-  <text x="14" y="38" font-family="JetBrains Mono" font-weight="600" font-size="26" fill="#FAFAF8">sj</text>
-  <g stroke="#FAFAF8" stroke-width="2" stroke-linecap="round">
+  <rect width="64" height="64" rx="14" fill="#312E81"/>
+  <text x="14" y="38" font-family="IBM Plex Mono" font-weight="600" font-size="26" fill="#F8F9FC">sj</text>
+  <g stroke="#F8F9FC" stroke-width="2" stroke-linecap="round">
     <line x1="15" y1="46" x2="15" y2="52"/>
     <line x1="21" y1="48" x2="21" y2="52"/>
     <line x1="27" y1="48" x2="27" y2="52"/>
@@ -178,16 +178,16 @@ Borrador vectorial de referencia (convertir texto a contornos antes de exportar 
 
 | Fondo | Logo | Contraste |
 |---|---|---|
-| Papel `#FAFAF8` | Tinta `#14161A` | 17,3:1 ✅ |
-| Papel `#FAFAF8` | Marino `#1F3A5F` | 11,0:1 ✅ |
-| Marino `#1F3A5F` | Papel / blanco | 11,5:1 ✅ |
-| Tinta `#14161A` | Papel `#FAFAF8` | 17,3:1 ✅ |
+| Papel `#F8F9FC` | Tinta `#0F1424` | 17,4:1 ✅ |
+| Papel `#F8F9FC` | Índigo Profundo `#312E81` | 10,8:1 ✅ |
+| Índigo Profundo `#312E81` | Papel `#F8F9FC` | 11,4:1 ✅ |
+| Tinta `#0F1424` | Papel `#F8F9FC` | 17,4:1 ✅ |
 | Fotografía | Solo sobre zona plana y oscura/clara con contraste ≥ 4,5:1; si no, usar placa de color sólido | — |
 
 ### 3.5 Usos incorrectos
 - ✗ Cambiar la tipografía, estirar, inclinar o rotar.
-- ✗ Aplicar degradados, sombras, brillos, contornos o efectos de vidrio.
-- ✗ Usar el azul de acción (`accent-600`) en el logo: el azul de acción es solo para cosas clicables.
+- ✗ Aplicar degradados, sombras, brillos, contornos o efectos de vidrio en el logotipo.
+- ✗ Usar el índigo de acción (`accent-600`) en el logo: `accent-600` es para elementos clicables y acento de producto.
 - ✗ Colocarlo sobre fotos con fondo cargado.
 - ✗ Escribir el nombre sin tilde o en Tipo Título dentro del handle (`SJaquer`).
 - ✗ Añadir íconos de cerebro, circuitos, robots o "IA".
@@ -196,17 +196,18 @@ Borrador vectorial de referencia (convertir texto a contornos antes de exportar 
 
 ## 4. Color
 
-Marca **sobria y casi monocroma**: 90 % neutros, un azul marino de identidad, un azul de acción y un verde que solo significa "resultado medido". Todos los contrastes están calculados con la fórmula WCAG 2.x.
+Marca **técnica, viva y de alto contraste (v7.0 — Índigo Eléctrico + Cian Luminoso)**: neutros fríos limpios con clara separación tonal entre capas, identidad en **Índigo Profundo**, acción en **Índigo Eléctrico**, apoyo luminoso en **Cian Luminoso** y **Esmeralda** reservado exclusivamente para métricas medidas. Todos los contrastes están verificados con WCAG 2.2 AA.
 
 ### 4.1 Colores principales de marca
 
-| Nombre | Hex | RGB | Rol |
-|---|---|---|---|
-| **Papel** | `#FAFAF8` | 250 250 248 | Fondo principal en todo medio. Blanco cálido, no blanco puro. |
-| **Tinta** | `#14161A` | 20 22 26 | Texto y logotipo. Negro azulado, nunca `#000`. |
-| **Marino** | `#1F3A5F` | 31 58 95 | **Color de identidad.** Viene del CV. Logo, portadas, banners, encabezados de documentos, fondos de piezas de redes. |
-| **Azul acción** | `#2350D9` | 35 80 217 | **Solo lo clicable o accionable**: botones, enlaces, CTA en piezas. |
-| **Verde resultado** | `#0B7350` | 11 115 80 | **Solo métricas medidas.** Si aparece verde, es un número con contexto. |
+| Nombre | Hex (Claro / Oscuro) | Rol |
+|---|---|---|
+| **Papel / Noche** | `#F8F9FC` / `#080A12` | Fondo principal de la página. Claro frío muy limpio; oscuro profundo para separar tarjetas. |
+| **Tinta** | `#0F1424` / `#F3F5FB` | Texto protagonista y logotipo. |
+| **Índigo Profundo** | `#312E81` / `#A5B4FC` | **Color de identidad.** Logo, monograma, OG, encabezados de documentos y piezas de marca. |
+| **Índigo Eléctrico** | `#4F46E5` / `#818CF8` | **Acción primaria y foco**: botones, enlaces, riel lateral y puntos guía clave. |
+| **Cian Luminoso** | `#0E7490` (`#06B6D4` gráfico) / `#22D3EE` | **Acento secundario y notas**: bordes de métricas, barras de lectura, halos radiales suaves y sección de Notas. |
+| **Esmeralda resultado** | `#047857` / `#34D399` | **Solo métricas medidas.** Si aparece esmeralda, es un número con contexto y base real. |
 
 > CMYK y Pantone: no se definen hasta que haya una pieza impresa real. Se calcularán con el perfil de la imprenta y se agregarán aquí (no inventar equivalencias).
 
@@ -214,111 +215,102 @@ Marca **sobria y casi monocroma**: 90 % neutros, un azul marino de identidad, un
 
 Los **primitivos** son la paleta completa. En la web nunca se usan directamente: se usan los **tokens semánticos** de §15, que apuntan a estos valores.
 
-**Neutros (gris cálido-frío)**
+**Neutros (pizarra fría limpia)**
 
 | Paso | Hex | Uso habitual |
 |---|---|---|
-| `gris-0` | `#FFFFFF` | Superficies (tarjetas, inputs) |
-| `gris-25` | `#FAFAF8` | **Papel** · fondo |
-| `gris-50` | `#F3F2EF` | Bloques secundarios, marcos de capturas |
-| `gris-100` | `#E4E2DD` | Bordes decorativos, separadores |
-| `gris-200` | `#C9CDD4` | Texto de párrafo en modo oscuro |
-| `gris-300` | `#A7ADB7` | Texto secundario en modo oscuro |
-| `gris-400` | `#8A9099` | Bordes de inputs (3,2:1 sobre blanco) · serie "Otros" en gráficos |
-| `gris-450` | `#6B717B` | Bordes de inputs en modo oscuro |
-| `gris-500` | `#666C76` | Metadatos, leyendas (5,1:1 sobre papel) |
-| `gris-700` | `#3D424B` | Párrafos largos (9,7:1 sobre papel) |
-| `gris-800` | `#272B32` | Bordes en modo oscuro |
-| `gris-850` | `#1D2026` | Bloques secundarios en modo oscuro |
-| `gris-900` | `#171A1F` | Superficies en modo oscuro |
-| `gris-950` | `#14161A` | **Tinta** |
-| `gris-975` | `#0E1013` | Fondo en modo oscuro ("Noche") |
-| `gris-ink-dark` | `#ECEDEF` | Texto principal en modo oscuro |
+| `gris-0` | `#FFFFFF` | Superficies (tarjetas, inputs) en claro |
+| `gris-25` | `#F8F9FC` | **Papel** · fondo claro |
+| `gris-50` | `#EFF2F8` | Bloques secundarios, marcos de diagramas en claro |
+| `gris-100` | `#DCE2EE` | Bordes decorativos y separadores en claro |
+| `gris-200` | `#C7CFE2` | Texto de párrafo en modo oscuro |
+| `gris-300` | `#8E9AB8` | Texto secundario en modo oscuro |
+| `gris-400` | `#7B8499` | Bordes de inputs en claro (3,75:1 sobre blanco) · serie "Otros" |
+| `gris-450` | `#6E7B9E` | Bordes de inputs en modo oscuro (4,28:1 sobre tarjeta) |
+| `gris-500` | `#5B657E` | Metadatos y leyendas (5,53:1 sobre papel) |
+| `gris-700` | `#333C52` | Párrafos largos (10,45:1 sobre papel) |
+| `gris-800` | `#232B42` | Bordes en modo oscuro |
+| `gris-850` | `#0B0F1B` | Pozo interno de diagramas en modo oscuro |
+| `gris-900` | `#111625` | Superficies (tarjetas) en modo oscuro |
+| `gris-950` | `#0F1424` | **Tinta** |
+| `gris-975` | `#080A12` | Fondo en modo oscuro ("Noche") |
+| `gris-ink-dark` | `#F3F5FB` | Texto principal en modo oscuro |
 
-**Marino (identidad)**
-
-| Paso | Hex | Uso | Contraste clave |
-|---|---|---|---|
-| `marino-50` | `#EEF2F7` | Fondos suaves de documentos y slides | Marino-700 encima 10,2:1 ✅ |
-| `marino-100` | `#D6DFEA` | Texto claro sobre marino, bordes sobre marino | Sobre marino-700 8,5:1 ✅ |
-| `marino-300` | `#8FA3BF` | Elementos gráficos secundarios sobre marino | Decorativo |
-| `marino-500` | `#3F5E86` | Subtítulos en documentos, texto sobre papel | 6,4:1 sobre papel ✅ |
-| `marino-700` | `#1F3A5F` | **Marino** | Blanco encima 11,5:1 ✅ |
-| `marino-900` | `#13233A` | Fondos profundos (banner, portadas oscuras) | Texto `#ECEDEF` 13,5:1 ✅ |
-
-**Azul acción**
+**Índigo & Cian (identidad y acción)**
 
 | Paso | Hex | Uso | Contraste clave |
 |---|---|---|---|
-| `azul-50` | `#EEF2FF` | Fondo de etiquetas activas, resaltados | azul-700 encima 7,7:1 ✅ |
-| `azul-300` | `#A3BAFF` | Hover en modo oscuro · enlace sobre marino | Sobre marino 6,0:1 ✅ |
-| `azul-400` | `#7A9BFF` | Acción en modo oscuro | Sobre `#0E1013` 7,2:1 ✅ |
-| `azul-500` | `#5B7FF0` | Serie 1 de gráficos en modo oscuro | Gráfico (≥ 3:1) |
-| `azul-600` | `#2350D9` | **Azul acción** | 6,2:1 sobre papel ✅ · blanco encima 6,5:1 ✅ |
-| `azul-700` | `#1B40B3` | Hover / activo | Blanco encima 8,6:1 ✅ |
-| `azul-800` | `#17318A` | Texto de acción sobre `azul-50` en piezas | Sobre `azul-50` 10,2:1 ✅ |
-| `azul-900` | `#1A2340` | Fondo de resaltado en modo oscuro | — |
+| `indigo-50` | `#EEF2FF` | Fondo de etiquetas activas y resaltados | `indigo-700` encima ≥ 7,7:1 ✅ |
+| `indigo-200` | `#C7D2FE` | Monograma oscuro / bordes suaves | Decorativo / favicon |
+| `indigo-300` | `#A5B4FC` | Hover oscuro · marca en oscuro | Sobre `#080A12` 9,9:1 ✅ |
+| `indigo-400` | `#818CF8` | **Índigo Eléctrico (oscuro)** | Sobre `#080A12` 6,63:1 · `#080A12` encima 6,63:1 ✅ |
+| `indigo-600` | `#4F46E5` | **Índigo Eléctrico (claro)** | Sobre `#F8F9FC` 5,97:1 · blanco encima 6,29:1 ✅ |
+| `indigo-700` | `#4338CA` | Hover / activo claro | Blanco encima 7,90:1 ✅ |
+| `indigo-900` | `#312E81` | **Índigo Profundo** | Blanco encima 11,42:1 ✅ |
+| `indigo-975` | `#0C1124` | Banda de identidad invertida (`.surface-inverse`) | `#F8FAFC` encima 17,90:1 ✅ |
+| `cian-700` | `#0E7490` | Cian accesible en modo claro | Sobre `#F8F9FC` 5,09:1 ✅ |
+| `cian-400` | `#22D3EE` | Cian luminoso en modo oscuro y banda invertida | Sobre `#111625` 9,97:1 ✅ |
 
 **Semánticos (estado)**
 
-| Familia | Claro (texto/ícono) | Fondo suave | Oscuro | Uso |
-|---|---|---|---|---|
-| **Verde resultado** | `#0B7350` (5,6:1 sobre papel) | `#E8F5EE` (texto encima 5,2:1) | `#3FC08A` | Métricas de resultado. Nada más. |
-| **Rojo error** | `#B42318` (6,5:1 sobre blanco) | `#FEF3F2` (texto encima 6,0:1) | `#FF8A80` | Errores de formulario, advertencias graves |
-| **Ámbar aviso** | `#B54708` (5,4:1 sobre blanco) | `#FFF7E6` (texto encima 5,1:1) | `#F5B54A` | `Callout` de advertencia, "en progreso" |
+| Familia | Claro (texto/ícono) | Oscuro | Uso |
+|---|---|---|---|
+| **Esmeralda resultado** | `#047857` (5,21:1 sobre papel) | `#34D399` (9,37:1 sobre tarjeta) | Métricas de resultado. Nada más. |
+| **Rojo error** | `#BE123C` (6,29:1 sobre blanco) | `#FB7185` (6,70:1 sobre tarjeta) | Errores de formulario, advertencias graves |
+| **Ámbar aviso** | `#B45309` (5,02:1 sobre blanco) | `#FBBF24` (10,80:1 sobre tarjeta) | `Callout` de advertencia, borradores |
 
 Los colores de estado **siempre** van con ícono + texto, nunca solo color.
 
 ### 4.3 Proporciones
 
-| Medio | Neutros | Marino | Azul acción | Verde | Otros |
-|---|---|---|---|---|---|
-| Web | 90 % | ≈ 0–2 % (logo/OG) | ≈ 6 % | ≈ 2 % | — |
-| Redes (piezas gráficas) | 30–40 % | **55–65 % (fondo marino-900)** | ≤ 5 % (solo CTA) | ≤ 5 % | — |
-| CV y documentos | 85 % | 10 % (nombre, títulos) | ≤ 3 % (enlaces) | ≤ 2 % | — |
-| Slides | 70 % | 20 % | ≤ 5 % | ≤ 5 % | gráficos según §9 |
+| Medio | Neutros | Índigo Profundo | Índigo + Cian | Esmeralda |
+|---|---|---|---|---|
+| Web | 88 % | ≈ 0–2 % (logo/OG) | ≈ 8–10 % (acción + halos sutiles) | ≈ 2 % |
+| Redes (piezas gráficas) | 30–40 % | **55–65 % (fondo `#0C1124` / `#0D1126`)** | ≤ 5 % (solo CTA) | ≤ 5 % |
+| CV y documentos | 85 % | 10 % (nombre, títulos) | ≤ 3 % (enlaces) | ≤ 2 % |
+| Slides | 70 % | 20 % | ≤ 5 % | ≤ 5 % |
 
 ### 4.4 Combinaciones aprobadas para texto
 
 | Texto | Fondo | Contraste | Apto para |
 |---|---|---|---|
-| Tinta | Papel | 17,3:1 | Todo |
-| `gris-700` | Papel | 9,7:1 | Párrafos |
-| `gris-500` | Papel | 5,1:1 | Metadatos (≥ 14 px) |
-| `gris-500` | `gris-50` | 4,7:1 | Metadatos en bloques |
-| Papel / blanco | Marino | 11,0–11,5:1 | Todo |
-| `marino-100` | Marino | 8,5:1 | Texto secundario sobre marino |
-| `azul-300` | Marino | 6,0:1 | Enlaces o CTA sobre marino |
-| `verde #3FC08A` | Marino | 5,0:1 | Métrica sobre marino |
-| Blanco | Azul acción | 6,5:1 | Botones |
-| ✗ `azul-400` | Marino | 4,4:1 | **No** para texto normal (solo ≥ 24 px) |
-| ✗ `gris-400` | Papel | 3,1:1 | **No** para texto; solo bordes |
+| `#0F1424` (ink-900 claro) | `#F8F9FC` | 17,41:1 | Todo ✅ |
+| `#333C52` (ink-700 claro) | `#F8F9FC` | 10,45:1 | Párrafos ✅ |
+| `#5B657E` (ink-500 claro) | `#F8F9FC` | 5,53:1 | Metadatos (≥ 14 px) ✅ |
+| `#F3F5FB` (ink-900 oscuro) | `#080A12` | 18,13:1 | Todo ✅ |
+| `#C7CFE2` (ink-700 oscuro) | `#111625` | 11,54:1 | Párrafos oscuro ✅ |
+| `#8E9AB8` (ink-500 oscuro) | `#111625` | 6,41:1 | Metadatos oscuro ✅ |
+| `#818CF8` (accent-600 oscuro) | `#080A12` | 6,63:1 | Enlaces / CTA / `bg-accent-600` ✅ |
+| `#22D3EE` (cian oscuro) | `#111625` | 9,97:1 | Cian en oscuro e invertida ✅ |
+| `#34D399` (esmeralda oscuro) | `#141B36` | 8,81:1 | Métricas sobre banda invertida ✅ |
+| Blanco `#FFFFFF` | `#4F46E5` | 6,29:1 | Botón primario claro ✅ |
 
 ### 4.5 Reglas
-- El azul de acción es **solo** para elementos clicables (o, en una pieza estática, el CTA). Nunca para decorar.
-- El verde es **solo** para resultados medidos.
-- El marino es la identidad; en la web aparece con moderación (logo, banda de resultados, retrato). **En redes es el fondo protagonista** (§12.4); en documentos, el color de títulos.
-- Nada de degradados multicolor, neón, brillos ni glassmorphism. Los únicos degradados son los **tonales** de §6.7; todo lo demás, plano.
+- El azul/índigo de acción es **solo** para elementos clicables o acentos estructurales definidos.
+- El esmeralda es **solo** para resultados medidos.
+- Se permiten **halos radiales suaves de luz ambiental** en espacio `oklab` sobre Hero y bandas clave (baja opacidad sin comprometer ≥ 4,5:1), junto a **flujo cromático lento** en la 2.ª línea del H1 del Hero (`.hero-gradient-text`), siempre con respaldo para `prefers-reduced-motion` y `forced-colors`.
 - Máximo 3 colores de la paleta (sin contar neutros) en una misma pieza.
 
 ---
 
 ## 5. Tipografía
 
-### 5.1 Familias
+### 5.1 Familias (v6.0 — Sistema Sans Orgánico + Mono Editorial)
+
+> **Racional:** Frente a la geometría más cuadrada de Inter, el par **Plus Jakarta Sans** + **DM Sans** ofrece curvas abiertas y proporciones más amables que mejoran la lectura rápida en pantallas móviles y la presencia editorial de los titulares grandes. **IBM Plex Mono** aporta calidez técnica sin perder alineación tabular.
 
 | Familia | Rol | Pesos permitidos | Licencia |
 |---|---|---|---|
-| **Inter** | Todo el texto: titulares, párrafos, interfaz | 400 Regular · 600 SemiBold (500 Medium solo en UI pequeña) | SIL OFL, gratuita |
-| **Inter Display** (v4.3) | Corte de tamaño óptico de la misma Inter, solo para titulares grandes (display, h1, h2). No es una tercera familia | 600 SemiBold | SIL OFL, gratuita |
-| **JetBrains Mono** | Métricas, etiquetas, stack, código, handle, fechas en piezas | 500 Medium · 600 SemiBold | SIL OFL, gratuita |
+| **Plus Jakarta Sans** | Titulares protagonistas y estructura (`hero`, `display`, `h1`, `h2`) + wordmark | 600 SemiBold · 700 Bold (solo `hero`) | SIL OFL, gratuita |
+| **DM Sans** | Todo el cuerpo de lectura, interfaz, tarjetas, botones y navegación | 400 Regular · 600 SemiBold (500 Medium en UI compacta) | SIL OFL, gratuita |
+| **IBM Plex Mono** | Métricas, etiquetas, stack, código, handle y fechas | 500 Medium · 600 SemiBold | SIL OFL, gratuita |
 
-**Alternativas cuando Inter o JetBrains Mono no estén disponibles:**
+**Alternativas cuando Plus Jakarta Sans, DM Sans o IBM Plex Mono no estén disponibles:**
 
 | Entorno | Sustituto |
 |---|---|
-| Word / Google Docs / PowerPoint sin fuentes instaladas | **Geist** (texto) + **Geist Mono**; última opción del sistema: Arial + Consolas |
-| Canva | Inter si está; si no, Roboto + "Roboto Mono" |
+| Word / Google Docs / PowerPoint sin fuentes instaladas | **Inter** o **Calibri/Segoe UI** (texto) + **Consolas** |
+| Canva | **Plus Jakarta Sans** y **DM Sans** (nativas en Canva) + **IBM Plex Mono** |
 | Correo (firma) | Pila del sistema: `-apple-system, Segoe UI, Roboto, Arial, sans-serif` |
 
 Nunca usar: tipografías script, display decorativas, serif de fantasía, "tech" futuristas (Orbitron y similares).
@@ -327,21 +319,21 @@ Nunca usar: tipografías script, display decorativas, serif de fantasía, "tech"
 
 | Rol | Redes (lienzo 1080 px) | Slides (1920 × 1080) | Documento (A4) |
 |---|---|---|---|
-| Titular | 72–96 px · 600 · interlineado 1,05 | 64–80 px · 600 | 20–24 pt · 600 |
-| Subtítulo | 40–48 px · 400 | 36–40 px · 400 | 13–14 pt · 600 |
-| Texto | 32–36 px · 400 · 1,4 | 28–32 px · 400 | 10–11 pt · 400 · 1,4 |
-| Métrica | 120–160 px · JetBrains Mono 600 | 96–120 px · mono | 18–24 pt · mono |
-| Etiqueta | 24–28 px · mono 500 · mayúsculas · tracking 0,06 em | 20–24 px · mono | 8–9 pt · mono |
+| Titular | 72–96 px · Plus Jakarta 600 · interlineado 1,05 | 64–80 px · Plus Jakarta 600 | 20–24 pt · Plus Jakarta 600 |
+| Subtítulo | 40–48 px · DM Sans 400 | 36–40 px · DM Sans 400 | 13–14 pt · DM Sans 600 |
+| Texto | 32–36 px · DM Sans 400 · 1,4 | 28–32 px · DM Sans 400 | 10–11 pt · DM Sans 400 · 1,4 |
+| Métrica | 120–160 px · IBM Plex Mono 600 | 96–120 px · mono | 18–24 pt · mono |
+| Etiqueta | 24–28 px · IBM Plex Mono 500 · mayúsculas · tracking 0,06 em | 20–24 px · mono | 8–9 pt · mono |
 
 La escala web (tokens) está en §16.
 
 ### 5.3 Reglas tipográficas
-- Máximo **2 pesos** por pieza (400 y 600).
-- Titulares en tipo oración; `letter-spacing: -0.02em` en tamaños grandes.
-- **Etiqueta mono** (firma tipográfica de la marca): JetBrains Mono, mayúsculas, tracking +0,06 em, color `gris-500` o `marino-500`. Ej.: `CASO · AUTOMATIZACIÓN · 2026`.
+- Máximo **2 pesos** visibles por pieza (400/500 y 600; 700 reservado solo para `.text-hero` en la home).
+- Titulares en tipo oración; `letter-spacing` de `-0.02em` a `-0.035em` en tamaños grandes.
+- **Etiqueta mono** (firma tipográfica de la marca): IBM Plex Mono, mayúsculas, tracking +0,06 em, color `gris-500` o `marino-500`, con cero rasgado (`slashed-zero`). Ej.: `CASO · AUTOMATIZACIÓN · 2026`.
 - Ancho de línea: 45–75 caracteres (68 en la web).
 - Alineación siempre a la izquierda. Nunca justificado ni centrado en párrafos (centrado solo en titulares de 1–2 líneas en piezas cuadradas).
-- Métricas siempre en JetBrains Mono, con su línea de contexto debajo en Inter.
+- Métricas siempre en IBM Plex Mono (`tabular-nums`), con su línea de contexto debajo en DM Sans.
 
 ---
 
@@ -372,28 +364,28 @@ Fondo de puntos de 1 px cada 24 u en `gris-100` (sobre papel) o `marino-500` al 
 Toda captura de pantalla va dentro de un marco: fondo `gris-50`, radio 16 u, padding 24 u, borde 1 px `gris-100`. Sin mockups de dispositivos fotorrealistas; como máximo, una barra de navegador plana de 3 puntos grises.
 
 ### 6.6 Prohibido
-Degradados multicolor o saturados, sombras largas, brillos, partículas, toroides, mallas 3D, renders isométricos con interfaces flotantes, cables o fibras luminosas, cerebros, circuitos, robots, "hologramas", texturas de ruido, glassmorphism, neón. Los únicos degradados permitidos son los **tonales** de §6.7.
+Estética neón o cyberpunk, partículas, toroides, mallas 3D, renders isométricos con interfaces flotantes, cables o fibras luminosas, cerebros, circuitos, robots, "hologramas", texturas de ruido y efectos de vidrio en tarjetas de lectura. Los únicos efectos translúcidos permitidos son los de **vidrio técnico controlado** y la **luz ambiental radial en `oklab`** descritos en §6.7.
 
-### 6.7 Profundidad (v3.0)
+### 6.7 Profundidad, Luz Ambiental y Vidrio Técnico Controlado (v7.0)
 
-La marca es sobria, no plana. La profundidad se construye con **capas de un mismo tono**, nunca con efectos.
+La marca es editorial, viva y legible. La profundidad se construye con **superficies claramente escalonadas por nivel** (especialmente en oscuro), **halos radiales sutiles en `oklab`**, **sombras multicapa suaves** y, en navegación flotante, **vidrio técnico controlado**.
 
-**Degradados tonales — retirados en v4.1**
-- A partir de v4.1 no se usan degradados de fondo: ni en el hero ni en la banda de identidad. La profundidad se construye solo con **superficies planas por nivel** (tabla siguiente) y con contraste tipográfico.
-- El hero va sobre el fondo de página (`--color-bg`), sin retícula ni degradado. La banda de identidad (`.surface-inverse`) usa marino-900 **sólido** (`#13233A`).
-- Motivo: la mezcla de degradado + retícula restaba a la estética limpia; plano da más foco a los nodos de contenido y mejor contraste.
-- La retícula de puntos (§6.2) queda **solo** como placeholder de imagen ausente en `MediaFrame` (§6.8) y en los motivos de tarjeta, nunca como fondo de sección.
+**Luz ambiental y flujo cromático controlado (v7.0)**
+- `.hero-ambient` y `.band-ambient`: halos radiales suaves con `radial-gradient(... in oklab)` y `color-mix(in oklab, ...)` a baja opacidad (8–16 %) detrás del Hero y la banda de impacto. Mantienen contraste ≥ 4,5:1 en toda la superficie y se retiran en `@media (forced-colors: active)`.
+- `.hero-gradient-text`: degradado en `oklch` entre Índigo Eléctrico y Cian Luminoso aplicado únicamente a la segunda línea del H1 del Hero, con animación lenta (10 s) desactivada bajo `prefers-reduced-motion: reduce` y restituida a `CanvasText` en `forced-colors: active`.
+- **Vidrio técnico controlado (v6.0, `.glass-surface`):** permitido **exclusivamente** en superficies flotantes sobre contenido dinámico (*header* cápsula flotante, hoja del menú móvil y banner flotante de consentimiento). Se construye con `color-mix(in oklab, var(--color-surface) 80%, transparent)` (74 % en oscuro), `backdrop-filter: blur(18px) saturate(165%)`, brillo especular interior superior de 1 px (`inset 0 1px 0`) y respaldo opaco en `prefers-reduced-transparency: reduce`.
 
 **Superficies (de abajo hacia arriba)**
 
 | Nivel | Uso | Claro | Oscuro |
 |---|---|---|---|
-| 0 · Fondo | Página | papel | `#0E1013` |
-| 1 · Superficie | Tarjetas, fichas | blanco | `#171A1F` |
-| 2 · Elevada | Tarjeta en hover, menús | blanco + `shadow-md` | `#1D2026` + borde |
-| Invertida | Bandas de identidad | marino-900 `#13233A` | marino-900 `#13233A` |
+| 0 · Fondo | Página | `#F8F9FC` | `#080A12` |
+| Pozo interno | Marcos de diagramas (`FigureFrame`) | `#EFF2F8` | `#0B0F1B` |
+| 1 · Superficie | Tarjetas, fichas | `#FFFFFF` | `#111625` + borde `#232B42` + brillo interior 7 % |
+| 2 · Elevada | Tarjeta en hover, menús | `#FFFFFF` + `shadow-md` | `#111625` + borde acento + `shadow-md` |
+| Invertida | Banda de impacto (`.surface-inverse`) | `#0C1124` | `#0C1124` |
 
-**Banda invertida (identidad).** Una sección en marino-900 para marcar el punto más importante de la página (en la home: los resultados medidos). **Máximo una por página** (§14.6). Dentro de la banda, los tokens se redefinen (§15.4) para que los componentes funcionen sin cambios. Contrastes sobre `#13233A`: papel 15,1:1 · marino-100 11,7:1 · `#A9B8CC` 7,8:1 · azul `#A3BAFF` 8,3:1 · verde `#3FC08A` 6,9:1 ✅.
+**Banda invertida (identidad).** Una sección en índigo nocturno `#0C1124` con `.band-ambient` para marcar los resultados medidos. **Máximo una por página** (§14.6). Contrastes sobre `#0C1124`: `#F8FAFC` 17,9:1 · `#CBD5EC` 12,7:1 · `#818CF8` 6,3:1 · `#22D3EE` 10,4:1 · `#34D399` 8,8:1 ✅.
 
 **Elevación.** Borde de 1 px en reposo. En hover, la tarjeta sube 2 px y gana `shadow-md`. `shadow-lg` solo para lo que flota (banner de consentimiento, menús).
 
@@ -893,100 +885,98 @@ Portada con wordmark + etiqueta mono del tipo de documento; cuerpo en Geist/Inte
 
 ---
 
-## 15. Color (tokens semánticos)
+## 15. Color (tokens semánticos · v7.0)
 
-Claro por defecto. Un solo color de acción. Cada token apunta a un primitivo de §4.2.
+Claro por defecto (respeta `prefers-color-scheme`). Fuente única en código: `app/tokens.css`.
 
 ### 15.1 Tema claro
 
 | Token | Hex | Primitivo | Uso | Contraste |
 |---|---|---|---|---|
-| `--color-bg` | `#FAFAF8` | `gris-25` | Fondo de página | — |
+| `--color-bg` | `#F8F9FC` | `gris-25` | Fondo de página | — |
 | `--color-surface` | `#FFFFFF` | `gris-0` | Tarjetas, inputs, header | — |
-| `--color-surface-muted` | `#F3F2EF` | `gris-50` | Bloques secundarios, código en línea | — |
-| `--color-border` | `#E4E2DD` | `gris-100` | Bordes decorativos, separadores | Decorativo |
-| `--color-border-strong` | `#8A9099` | `gris-400` | Bordes de inputs (componentes UI) | 3,2:1 sobre surface ✅ (≥ 3:1) |
-| `--color-ink-900` | `#14161A` | `gris-950` | Títulos y texto principal | 17,3:1 ✅ |
-| `--color-ink-700` | `#3D424B` | `gris-700` | Texto de párrafo largo | 9,7:1 ✅ |
-| `--color-ink-500` | `#666C76` | `gris-500` | Metadatos, fechas, leyendas | 5,1:1 ✅ |
-| `--color-brand` | `#1F3A5F` | `marino-700` | Logo, OG, pie de página | 11,0:1 ✅ |
-| `--color-accent-600` | `#2350D9` | `azul-600` | CTA primario, enlaces | 6,2:1 ✅ · texto blanco encima 6,5:1 ✅ |
-| `--color-accent-700` | `#1B40B3` | `azul-700` | Hover / activo del CTA | Texto blanco 8,6:1 ✅ |
-| `--color-accent-50` | `#EEF2FF` | `azul-50` | Fondo de etiquetas activas, resaltados | Texto accent-700 7,7:1 ✅ |
-| `--color-success-700` | `#0B7350` | verde | Métricas de resultado ("−35 %") | 5,6:1 ✅ |
-| `--color-warning-700` | `#B54708` | ámbar | `Callout` de advertencia | 5,4:1 sobre surface ✅ |
-| `--color-danger-700` | `#B42318` | rojo | Errores | 6,5:1 sobre surface ✅ |
-| `--color-focus` | `#2350D9` | `azul-600` | Anillo de foco (2 px + 2 px de separación) | — |
+| `--color-surface-muted` | `#EFF2F8` | `gris-50` | Marcos de diagramas, bloques secundarios | — |
+| `--color-border` | `#DCE2EE` | `gris-100` | Bordes decorativos, separadores | Decorativo |
+| `--color-border-strong` | `#7B8499` | `gris-400` | Bordes de inputs | 3,75:1 sobre surface ✅ |
+| `--color-ink-900` | `#0F1424` | `gris-950` | Títulos y texto principal | 17,41:1 ✅ |
+| `--color-ink-700` | `#333C52` | `gris-700` | Texto de párrafo largo | 10,45:1 ✅ |
+| `--color-ink-500` | `#5B657E` | `gris-500` | Metadatos, fechas, leyendas | 5,53:1 ✅ |
+| `--color-brand` | `#312E81` | `indigo-900` | Logo, OG, pie de página | 10,85:1 ✅ |
+| `--color-accent-600` | `#4F46E5` | `indigo-600` | CTA primario, enlaces | 5,97:1 · blanco encima 6,29:1 ✅ |
+| `--color-accent-700` | `#4338CA` | `indigo-700` | Hover / activo del CTA | Blanco encima 7,90:1 ✅ |
+| `--color-accent-50` | `#EEF2FF` | `indigo-50` | Fondo de resaltados | ✅ |
+| `--color-cyan-600` | `#0E7490` | `cian-700` | Acento cian legible en claro (Notas) | 5,09:1 ✅ |
+| `--color-cyan-400` | `#06B6D4` | `cian-500` | Halos radiales y barra de lectura | Decorativo |
+| `--color-success-700` | `#047857` | esmeralda | Métricas de resultado medidas | 5,21:1 ✅ |
+| `--color-warning-700` | `#B45309` | ámbar | `Callout` de advertencia | 5,02:1 sobre surface ✅ |
+| `--color-danger-700` | `#BE123C` | rojo | Errores | 6,29:1 sobre surface ✅ |
+| `--color-focus` | `#4F46E5` | `indigo-600` | Anillo de foco (2 px + 2 px) | — |
 
 ### 15.2 Tema oscuro
 
-| Token | Hex | Contraste (sobre `#0E1013`) |
+| Token | Hex | Contraste (sobre `#080A12` / `#111625`) |
 |---|---|---|
-| `--color-bg` | `#0E1013` | — |
-| `--color-surface` | `#171A1F` | — |
-| `--color-surface-muted` | `#1D2026` | — |
-| `--color-border` | `#272B32` | Decorativo |
-| `--color-border-strong` | `#6B717B` | 3,5:1 sobre surface ✅ |
-| `--color-ink-900` | `#ECEDEF` | 16,3:1 ✅ |
-| `--color-ink-700` | `#C9CDD4` | ✅ |
-| `--color-ink-500` | `#A7ADB7` | 8,4:1 ✅ |
-| `--color-brand` | `#D6DFEA` | ✅ (en oscuro, el logo pasa a `marino-100`) |
-| `--color-accent-600` | `#7A9BFF` | 7,2:1 ✅ · texto `#0E1013` encima 7,2:1 ✅ |
-| `--color-accent-700` | `#A3BAFF` | ✅ |
-| `--color-accent-50` | `#1A2340` | — |
-| `--color-success-700` | `#3FC08A` | 8,3:1 ✅ |
-| `--color-warning-700` | `#F5B54A` | 10,5:1 ✅ |
-| `--color-danger-700` | `#FF8A80` | 7,6:1 sobre surface ✅ |
+| `--color-bg` | `#080A12` | — |
+| `--color-surface` | `#111625` | Tarjetas elevadas con brillo interior |
+| `--color-surface-muted` | `#0B0F1B` | Pozo interno de diagramas (`FigureFrame`) |
+| `--color-border` | `#232B42` | Separación de tarjetas |
+| `--color-border-strong` | `#6E7B9E` | 4,28:1 sobre surface ✅ |
+| `--color-ink-900` | `#F3F5FB` | 18,13:1 ✅ |
+| `--color-ink-700` | `#C7CFE2` | 11,54:1 ✅ |
+| `--color-ink-500` | `#8E9AB8` | 6,41:1 ✅ |
+| `--color-brand` | `#A5B4FC` | Logo en modo oscuro |
+| `--color-accent-600` | `#818CF8` | 6,63:1 · `#080A12` encima 6,63:1 ✅ |
+| `--color-accent-700` | `#A5B4FC` | 9,91:1 con `#080A12` encima ✅ |
+| `--color-accent-50` | `#1B2145` | — |
+| `--color-cyan-600` | `#22D3EE` | 9,97:1 sobre surface ✅ |
+| `--color-success-700` | `#34D399` | 9,37:1 sobre surface ✅ |
+| `--color-warning-700` | `#FBBF24` | 10,80:1 ✅ |
+| `--color-danger-700` | `#FB7185` | 6,70:1 sobre surface ✅ |
 
-### 15.3 Reglas de uso
-- El azul de acción (`accent-600`) es **solo** para elementos clicables. Nunca para decorar.
-- El verde (`success-700`) es **solo** para resultados medidos.
-- `--color-brand` (marino) solo en logo, OG y pie; nunca en botones ni enlaces.
-- Proporción aproximada por pantalla: 90 % neutros, 8 % acento, 2 % verde.
-- **Sin degradados de fondo (v4.1):** superficies planas por nivel (§6.7). Nada de neón ni glassmorphism.
-- **Nodos de sección (v4.1):** la etiqueta mono de una sección puede llevar un punto + color de *wayfinding* que identifica el tipo de contenido y marca prioridad. Único uso decorativo de color permitido, y solo aquí: métricas/`Resultados` → acento azul; `Casos` (proyectos) → ámbar (`chart-2`); `Notas` (artículos) → verde azulado (`chart-3`). Las secciones de apoyo (Experiencia, Qué hago) quedan en neutro para que las importantes resalten. Se implementa en `SectionHeader tone`.
+### 15.3 Reglas de uso y jerarquía cromática (v7.0)
+- **Jerarquía estricta en 3 niveles:** en secciones con tarjetas (`Casos de estudio`), las capacidades laterales permanecen subordinadas en tinta secundaria (`ink-500`/`ink-700`), los diagramas ocultos de tarjetas evitan duplicar la métrica textual (`showMetric={false}`), y toda acción `Leer el caso →` comparte el acento unificado (`accent-600`).
+- **Wayfinding unificado (Índigo + Cian):** métricas/Impacto (`Resultados`) y `Notas` usan Cian Luminoso (`cyan-600`), `Casos de estudio` usa Índigo Eléctrico (`accent-600`), y las secciones de apoyo (`Experiencia`) quedan en neutro.
+- El esmeralda (`success-700`) es **solo** para resultados medidos.
+- **Halos y degradado controlado:** permitidos `.hero-ambient`, `.band-ambient` y `.hero-gradient-text` bajo `prefers-reduced-motion` y `forced-colors` (§6.7).
 
-### 15.4 Superficie invertida (`.surface-inverse`, v3.0)
+### 15.4 Superficie invertida (`.surface-inverse`, v7.0)
 
-Redefine los tokens dentro de una banda de identidad (§6.7). Igual en tema claro y oscuro.
+Redefine los tokens dentro de la banda de impacto. Igual en tema claro y oscuro, acompañada de `.band-ambient`.
 
 | Token | Valor | Contraste |
 |---|---|---|
-| `--color-bg` | `#13233A` | — |
-| `--color-surface` | `#182B47` | — |
-| `--color-surface-muted` | `#1D3352` | — |
-| `--color-border` | `#2A4060` | Decorativo |
-| `--color-border-strong` | `#6A82A6` | 3,6:1 sobre surface ✅ |
-| `--color-ink-900` | `#FAFAF8` | 15,1:1 ✅ |
-| `--color-ink-700` | `#D6DFEA` | 11,7:1 ✅ |
-| `--color-ink-500` | `#A9B8CC` | 7,8:1 ✅ |
-| `--color-accent-600` | `#A3BAFF` | 8,3:1 ✅ · texto `#13233A` encima 8,3:1 ✅ |
-| `--color-accent-700` | `#C5D3FF` | 10,6:1 ✅ |
-| `--color-success-700` | `#3FC08A` | 6,9:1 ✅ |
-
-**Fondo (v4.1):** la banda usa marino-900 **sólido** (`--color-bg` = `#13233A`), sin degradado.
+| `--color-bg` | `#0C1124` | — |
+| `--color-surface` | `#141B36` | — |
+| `--color-surface-muted` | `#1C2547` | — |
+| `--color-border` | `#263259` | Decorativo |
+| `--color-border-strong` | `#7283B0` | 4,51:1 sobre surface ✅ |
+| `--color-ink-900` | `#F8FAFC` | 17,90:1 ✅ |
+| `--color-ink-700` | `#CBD5EC` | 12,72:1 ✅ |
+| `--color-ink-500` | `#94A3C8` | 6,72:1 sobre surface ✅ |
+| `--color-accent-600` | `#818CF8` | 6,28:1 · `#0C1124` encima 6,28:1 ✅ |
+| `--color-cyan-600` | `#22D3EE` | 10,36:1 ✅ |
+| `--color-success-700` | `#34D399` | 8,81:1 sobre surface ✅ |
 
 ---
 
-## 16. Tipografía web
+## 16. Tipografía web (v6.0 / v7.0)
 
-**Familias:** Inter (texto), **Inter Display** (titulares grandes, v4.3) y JetBrains Mono (métricas, etiquetas de stack y código), cargadas con `next/font` (sin peticiones externas, sin saltos de diseño). Reglas generales en §5.
+**Familias:** **Plus Jakarta Sans** (`--font-display`, pesos 600 y 700 en hero/display/h1/h2), **DM Sans** (`--font-sans`, texto corrido, UI y h3) e **IBM Plex Mono** (`--font-mono`, etiquetas, métricas y stack con `slashed-zero`), autoalojadas en `app/fonts/` con `next/font/local`. Reglas generales en §5.
 
-**Inter Display (v4.3):** es la misma familia Inter en su corte de tamaño óptico 32 (SemiBold 600, subconjunto latino, 36 KB, `app/fonts/inter-display-600-latin.woff2`). Dibujo más apretado y fino a gran tamaño. Se aplica solo a `--text-display`, `--text-h1` y `--text-h2` (token `--font-display`); un `h2` pequeño (p. ej. el del banner de medición) sigue en Inter de texto.
-
-**Escala editorial (v4.3, base 16 px, fluida con `clamp` entre 360 y 1280 px):** más contraste entre titular y texto que la v4.2.
+**Escala editorial fluida (base 16 px, `clamp` entre 360 y 1280 px):**
 
 | Token | Móvil → Escritorio | Familia · peso | Interlineado | Tracking | Uso |
 |---|---|---|---|---|---|
-| `--text-display` | 44 → 68 px | Inter Display 600 | 1 | −0,03 em | Solo el `h1` del hero (el nombre cabe en una línea) |
-| `--text-h1` | 32 → 52 px | Inter Display 600 | 1,06 | −0,025 em | `h1` de páginas internas, casos y notas |
-| `--text-h2` | 28 → 40 px | Inter Display 600 | 1,12 | −0,02 em | Títulos de sección y del cuerpo de casos/notas |
-| `--text-h3` | 20 → 22 px | Inter 600 | 1,3 | — | Títulos de tarjeta |
-| `--text-lead` | 18 → 20 px | Inter 400 | 1,55 | — | Párrafo introductorio y entradilla de notas |
-| `--text-body` | 16 → 17 px | Inter 400 | 1,65 | — | Texto general |
-| `--text-small` | 14 px | Inter 400 | 1,5 | — | Metadatos |
-| `--text-label` | 12 px · mono · mayúsculas | JetBrains Mono 500 | 1,4 | +0,06 em | Etiquetas, numeración de secciones, stack |
-| `--text-metric` | 40 → 56 px · mono | JetBrains Mono 600 | 1 | −0,04 em | Cifras de resultado |
+| `--text-hero` | 46 → 88 px | Plus Jakarta Sans 700 | 0,98 | −0,035 em | Solo el `h1` del hero (`100svh`) |
+| `--text-display` | 44 → 68 px | Plus Jakarta Sans 600 | 1 | −0,03 em | Titulares display |
+| `--text-h1` | 32 → 52 px | Plus Jakarta Sans 600 | 1,06 | −0,025 em | `h1` de páginas internas, casos y notas |
+| `--text-h2` | 28 → 40 px | Plus Jakarta Sans 600 | 1,12 | −0,02 em | Títulos de sección y cuerpo de casos/notas |
+| `--text-h3` | 20 → 22 px | DM Sans 600 | 1,3 | — | Títulos de tarjeta |
+| `--text-lead` | 18 → 20 px | DM Sans 400 | 1,55 | — | Párrafo introductorio y entradilla de notas |
+| `--text-body` | 16 → 17 px | DM Sans 400 | 1,65 | — | Texto general |
+| `--text-small` | 14 px | DM Sans 400 | 1,5 | — | Metadatos |
+| `--text-label` | 12 px · mono · mayúsculas | IBM Plex Mono 500 | 1,4 | +0,06 em | Etiquetas, numeración de secciones, stack |
+| `--text-metric` | 40 → 56 px · mono | IBM Plex Mono 600 | 1 | −0,04 em | Cifras de resultado |
 
 **Reglas**
 - Ancho máximo de texto: **68 caracteres** (`max-width: 68ch`).
@@ -1221,6 +1211,8 @@ En Tailwind v4, `@theme` con `initial` anula la escala por defecto: **fuera de l
 
 | Versión | Fecha | Cambio |
 |---|---|---|
+| 7.0 | 24 nov 2026 | **Paleta Índigo Eléctrico + Cian Luminoso, luz ambiental y jerarquía en 3 niveles.** **Color (§4, §15):** reemplazo de azul/marino opacos por Índigo Profundo (`#312E81`), Índigo Eléctrico (`#4F46E5` / `#818CF8`), Cian Luminoso (`#0E7490` / `#22D3EE`) y Esmeralda resultado (`#047857` / `#34D399`), con clara separación tonal en modo oscuro (`#080A12` → `#111625` → `#0B0F1B`). **Luz y Hero (§6.7):** halos radiales suaves en `oklab` (`.hero-ambient`, `.band-ambient`) y flujo cromático lento solo en la 2.ª línea del H1 (`.hero-gradient-text`), con respaldos para `prefers-reduced-motion` y `forced-colors`. **Jerarquía (§15.3, §18):** capacidades laterales subordinadas, `CaseCover showMetric={false}` en tarjetas para eliminar métricas duplicadas, CTA unificado en `accent-600`, regeneración de SVG/PNG/ICO y actualización de OG, emails y consola DevTools. |
+| 6.0 | 24 nov 2026 | **Tipografía sans orgánica, header flotante glassmorphism y actualización de seguridad.** **Tipografía (§5, §16):** migración de Inter / JetBrains Mono a **Plus Jakarta Sans** (display y titulares grandes), **DM Sans** (lectura larga y UI móvil/escritorio) e **IBM Plex Mono** (métricas y etiquetas con `slashed-zero` y `tabular-nums`), junto con regeneración de wordmark, monograma y plantillas OG. **Vidrio técnico controlado (§6.7, §19.2):** nuevo header cápsula flotante (`.glass-surface`) con `color-mix(in oklab, ...)` y respaldo para `prefers-reduced-transparency`, hoja móvil `<dialog>` con transición top-layer (`@starting-style` + `transition-behavior: allow-discrete`), banner flotante de consentimiento, sombras multicapa y feedback táctil `active:scale-[0.98]`. **Marca (§1.1):** plataforma alineada a Analista de Producto · Desarrollo Web · Automatización de Procesos. |
 | 5.0 | 24 nov 2026 | **Minimalismo concentrado y scroll dinámico en la home.** **Hero monumental (`100svh`):** nueva escala `--text-hero` con titular directo orientando a producto, barra superior de estado, adelanto al caso en producción y compresión sutil ligada al scroll (`.hero-compress`). **Banda de impacto interactiva (`ImpactTabs`):** selector accesible por pestañas con comparador visual proporcional Antes/Después. **5 capítulos concentrados:** se elimina la sección redundante de servicios (integrada en la columna *sticky* de casos), tarjetas de proyectos apilables al scrollear (`.case-stack-card`), eje vertical dibujado al scroll en trayectoria (`.timeline-spine-fill`), composición editorial asimétrica en notas con revelado `clip-path` (`.media-reveal`) y riel lateral de capítulos (`ChapterRail` + `.rail-progress`). |
 | 1.0 | 10 oct 2026 | Sistema de diseño web inicial (color, tipografía, espaciado, componentes). |
 | 2.0 | 11 oct 2026 | Ampliado a manual de marca personal: plataforma, personalidad, voz y escritura, logotipo, paleta extendida (marino, ámbar, primitivos), elementos gráficos, iconografía, diagramas, gráficos de datos (paleta validada para daltonismo), fotografía, redes, aplicaciones y checklist. Nuevos tokens `--color-brand`, `--color-warning-700` y `--chart-*`. |

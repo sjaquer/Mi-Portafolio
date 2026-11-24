@@ -2,3 +2,10 @@ allowBuilds:
   unrs-resolver: true
 minimumReleaseAgeExclude:
   - zod@4.6.6
+overrides:
+  tmp: ">=0.2.6"
+  basic-ftp: ">=6.2.4"
+  qs: ">=6.16.1"
+  body-parser: ">=1.20.9"
+  ip-address: ">=10.7.4"
+  zod: ">=4.6.7"

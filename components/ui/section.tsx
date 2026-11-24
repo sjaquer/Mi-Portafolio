@@ -19,12 +19,13 @@ export function Section({
 }
 
 /** Color del nodo de sección (03-DESIGN §15.3): wayfinding por tipo de contenido
- *  — métricas (azul acento), proyectos (ámbar), notas (verde azulado). */
-export type SectionTone = "neutral" | "accent" | "teal" | "amber";
+ *  — métricas/casos (índigo acento), notas (cian luminoso), apoyo (neutro). */
+export type SectionTone = "neutral" | "accent" | "cyan" | "teal" | "amber";
 
 const toneClass: Record<SectionTone, string> = {
   neutral: "text-ink-500",
   accent: "text-accent-600",
+  cyan: "text-cyan-600",
   teal: "text-chart-3-text",
   amber: "text-chart-2-text",
 };
@@ -54,7 +55,7 @@ export function SectionHeader({
     <header className={`max-w-prose ${flush ? "" : "mb-7"}`}>
       <p className={`mb-3 flex items-center gap-2 text-label-mono ${toneClass[tone]}`}>
         {tone !== "neutral" && (
-          <span aria-hidden className="size-1.5 shrink-0 rounded-full bg-current" />
+          <span aria-hidden className="size-2 shrink-0 rounded-full bg-current" />
         )}
         {label}
       </p>

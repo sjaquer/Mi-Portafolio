@@ -30,18 +30,18 @@ const reasonLabel: Record<ContactReason, string> = {
 
 // Tokens de marca en hex: los clientes de correo no entienden variables CSS.
 const C = {
-  papel: "#FAFAF8",
+  papel: "#F8F9FC",
   blanco: "#FFFFFF",
-  gris50: "#F3F2EF",
-  gris100: "#E4E2DD",
-  gris500: "#666C76",
-  gris700: "#3D424B",
-  tinta: "#14161A",
-  marino: "#1F3A5F",
-  azul: "#2350D9",
+  gris50: "#EFF2F8",
+  gris100: "#DCE2EE",
+  gris500: "#5B657E",
+  gris700: "#333C52",
+  tinta: "#0F1424",
+  marino: "#312E81",
+  azul: "#4F46E5",
 };
-const SANS = "Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
-const MONO = "'JetBrains Mono', Menlo, Consolas, 'Courier New', monospace";
+const SANS = "'DM Sans', -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
+const MONO = "'IBM Plex Mono', Menlo, Consolas, 'Courier New', monospace";
 const ASSET = `${profile.siteUrl}/brand/email`;
 
 const esc = (s: string) =>
@@ -62,7 +62,7 @@ const button = (href: string, text: string, variant: "primary" | "secondary" = "
   return `<a href="${href}" style="display:inline-block;padding:12px 20px;border-radius:10px;font-family:${SANS};font-size:15px;font-weight:600;text-decoration:none;${
     primary
       ? `background:${C.azul};color:${C.blanco};border:1px solid ${C.azul};`
-      : `background:${C.blanco};color:${C.tinta};border:1px solid #8A9099;`
+      : `background:${C.blanco};color:${C.tinta};border:1px solid #7B8499;`
   }">${esc(text)}</a>`;
 };
 

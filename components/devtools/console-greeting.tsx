@@ -10,13 +10,13 @@ import { cvPdfPath } from "@/lib/cv-path";
  */
 
 const C = {
-  marino: "#1F3A5F",
-  papel: "#FAFAF8",
-  azul: "#7A9BFF",
-  verde: "#3FC08A",
-  gris: "#8A9099",
+  marino: "#312E81",
+  papel: "#F8F9FC",
+  azul: "#818CF8",
+  verde: "#34D399",
+  gris: "#8E9AB8",
 };
-const mono = "font-family: 'JetBrains Mono', ui-monospace, monospace";
+const mono = "font-family: 'IBM Plex Mono', ui-monospace, monospace";
 
 type Entry = Record<string, unknown>;
 

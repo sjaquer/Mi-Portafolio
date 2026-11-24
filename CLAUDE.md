@@ -13,7 +13,7 @@ Portafolio de Sebastián Jaque (Analista de Producto · Desarrollo web centrado 
 ## Reglas
 1. **Fuente única:** todo dato del perfil (cargos, fechas, certificaciones, métricas) vive en `content/profile.ts` o en los MDX de `content/`. Nunca escribirlo a mano en componentes.
 2. **Honestidad y rol de Producto:** Posicionamiento orientado a **Analista de Producto / Product Engineer (Junior)**. Cargos tal como en el CV; certificaciones con nombre y emisor reales; ninguna métrica sin contexto (qué, cuánto, base, periodo). Cero jerga inflada de marketing.
-3. **Diseño:** solo tokens de `tokens.css` / `@theme`. Nada de colores, tamaños o espacios fuera de la escala. Un solo botón `primary` visible por pantalla. Sin degradados, neón, glassmorphism ni WebGL.
+3. **Diseño:** solo tokens de `tokens.css` / `@theme`. Nada de colores, tamaños o espacios fuera de la escala. Un solo botón `primary` visible por pantalla. Vidrio técnico controlado (`.glass-surface`) permitido exclusivamente en superficies flotantes de navegación/chrome (header flotante, menú móvil, banner de consentimiento) con contraste AA y respaldo opaco; halos radiales suaves de luz ambiental en `oklab` permitidos en Hero/bandas clave junto a flujo cromático lento en el acento del H1 del Hero (respetando `prefers-reduced-motion` y `forced-colors`); sin neón ni WebGL.
 4. **Rendimiento:** Server Components por defecto; `"use client"` solo para interacción. Respetar el presupuesto (LCP < 2 s, JS home < 100 KB, CLS < 0,05).
 5. **Accesibilidad:** WCAG 2.2 AA; un `h1` por página; foco visible; área táctil ≥ 44 px; `alt` en imágenes.
 6. **Medición:** todo botón lleva `data-cta`; los eventos se envían solo con `track()` de `lib/analytics.ts` (tipado). Nunca datos personales a GA4.

@@ -111,7 +111,7 @@ export default function Home() {
       <section
         id="inicio"
         aria-labelledby="hero-title"
-        className="hero-stage relative flex min-h-[calc(100svh-var(--spacing-header))] flex-col justify-between overflow-x-clip py-6 lg:py-8"
+        className="hero-stage hero-ambient relative flex min-h-[calc(100svh-var(--spacing-header)-0.75rem)] flex-col justify-between overflow-x-clip py-6 lg:py-8"
       >
         <Container className="hero-compress flex flex-1 flex-col justify-between gap-7">
           {/* Barra superior de especificaciones del plano */}
@@ -135,7 +135,7 @@ export default function Home() {
             <h1 id="hero-title" className="hero-in text-hero max-w-[16ch] text-ink-900">
               Entiendo el problema.
               <br />
-              <span className="text-brand">Construyo el producto.</span>
+              <span className="hero-gradient-text">Construyo el producto.</span>
             </h1>
 
             <MeasureRule draw className="mt-6 lg:mt-7" />
@@ -207,10 +207,14 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* 02. Impacto: banda invertida única con selector interactivo y comparador visual (§6.7 / v5.0). */}
-      <section id="resultados" aria-labelledby="resultados-title" className="surface-inverse py-8 lg:py-9">
+      {/* 02. Impacto: banda invertida única con selector interactivo y comparador visual (§6.7 / v7.0). */}
+      <section
+        id="resultados"
+        aria-labelledby="resultados-title"
+        className="surface-inverse band-ambient py-8 lg:py-9"
+      >
         <Container>
-          <p className="mb-3 flex items-center gap-2 text-label-mono text-accent-600">
+          <p className="mb-3 flex items-center gap-2 text-label-mono text-cyan-600">
             <span aria-hidden className="size-2 shrink-0 rounded-full bg-current" />
             02 / Impacto medido
           </p>
@@ -227,28 +231,24 @@ export default function Home() {
       {featured.length > 0 && (
         <Section id="casos" aria-labelledby="casos-title">
           <div className="lg:grid lg:grid-cols-12 lg:items-start lg:gap-8">
-            <div className="lg:sticky lg:top-[calc(var(--spacing-header)+2rem)] lg:col-span-4">
+            <div className="lg:sticky lg:top-[calc(var(--spacing-header)+2.5rem)] lg:col-span-4">
               <SectionHeader
                 id="casos-title"
                 label="03 / Casos de estudio"
                 title="Proyectos con resultado"
                 lead="El problema real, las decisiones que tomé y el impacto que quedó en producción."
-                tone="amber"
+                tone="accent"
                 flush
               />
 
               <ul
                 aria-label="Capacidades principales"
-                className="mt-6 flex flex-col gap-3 border-t border-border pt-5"
+                className="mt-6 flex flex-col gap-2 border-t border-border pt-4"
               >
                 {capabilities.map((cap) => (
-                  <li key={cap.num} className="flex items-baseline justify-between gap-3">
-                    <span className="font-mono text-label text-ink-500">
-                      {cap.num} · <span className="font-sans text-small font-semibold text-ink-900 normal-case">{cap.title}</span>
-                    </span>
-                    <span className="hidden font-mono text-label text-ink-500 sm:inline lg:hidden xl:inline">
-                      {cap.stack}
-                    </span>
+                  <li key={cap.num} className="flex items-baseline gap-3">
+                    <span className="font-mono text-label text-ink-500 tabular-nums">{cap.num}</span>
+                    <span className="text-small font-medium text-ink-700">{cap.title}</span>
                   </li>
                 ))}
               </ul>
@@ -270,8 +270,8 @@ export default function Home() {
               {featured.map((c, i) => (
                 <div
                   key={c.slug}
-                  className="case-stack-card rounded-lg border border-border bg-surface p-5 shadow-sm transition-colors duration-200 hover:border-border-strong lg:sticky lg:p-6"
-                  style={{ top: `calc(var(--spacing-header) + ${2 + i * 1.5}rem)` }}
+                  className="case-stack-card case-card-surface rounded-lg border border-border bg-surface p-5 shadow-sm lg:sticky lg:p-6"
+                  style={{ top: `calc(var(--spacing-header) + ${2.5 + i * 1.5}rem)` }}
                 >
                   <p className="mb-3 font-mono text-label text-ink-500 tabular-nums">
                     0{i + 1} / 0{featured.length}
@@ -314,7 +314,7 @@ export default function Home() {
               id="notas-title"
               label="05 / Notas"
               title="Lo que estoy aprendiendo"
-              tone="teal"
+              tone="cyan"
               flush
             />
             <Button
@@ -425,7 +425,7 @@ export default function Home() {
       {/* Cierre: panel arquitectónico con la regla de medición (kit de firma §6.9). */}
       <section aria-labelledby="cta-final" className="border-t border-border py-8 lg:py-9">
         <Container>
-          <div className="reveal rounded-lg border border-border bg-surface p-6 lg:p-8">
+          <div className="reveal case-card-surface rounded-lg border border-border bg-surface p-6 lg:p-8">
             <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-label-mono text-ink-500">
               <span>Disponible desde enero 2027</span>
               <span aria-hidden className="hidden text-border-strong sm:inline">

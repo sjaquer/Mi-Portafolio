@@ -105,7 +105,7 @@ export function ImpactTabs({ items }: { items: readonly ImpactItem[] }) {
             hidden={!isSelected}
           >
             <div className="impact-panel-enter grid gap-7 pt-6 lg:min-h-[15rem] lg:grid-cols-12 lg:items-center">
-              <div className="border-l-2 border-accent-600 pl-5 lg:col-span-5">
+              <div className="border-l-2 border-cyan-600 pl-5 lg:col-span-5">
                 {item.before && (
                   <p className="mb-2 flex items-center gap-2 font-mono text-small font-medium text-ink-500">
                     <span className="shrink-0">Antes</span>

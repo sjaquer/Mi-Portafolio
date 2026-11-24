@@ -38,13 +38,13 @@ export function CaseArticle({ c, minutes, variant = "row", headingLevel = "h3" }
 
   return (
     <article className={`group relative grid h-full gap-5 ${layout.root}`}>
-      <CaseCover c={c} className={layout.media} />
+      <CaseCover c={c} showMetric={false} className={layout.media} />
       <div className={`flex flex-col gap-3 ${layout.body}`}>
         <DraftNotice item={c} />
         <p className="flex items-center gap-2 text-label-mono text-ink-500">
-          <span aria-hidden className={`size-1.5 shrink-0 rounded-full bg-current ${tone}`} />
-          <span className={tone}>{caseTypeLabel[c.type]}</span> · {c.year} · {minutes} min de
-          lectura
+          <span aria-hidden className={`size-2 shrink-0 rounded-full bg-current ${tone}`} />
+          <span className="font-semibold text-ink-700">{caseTypeLabel[c.type]}</span> · {c.year} ·{" "}
+          {minutes} min de lectura
         </p>
         <Heading className={featured ? "text-h2" : "text-h3"}>
           <Link
@@ -55,10 +55,20 @@ export function CaseArticle({ c, minutes, variant = "row", headingLevel = "h3" }
             {c.title}
           </Link>
         </Heading>
-        <p className={featured ? "text-lead text-ink-700" : "text-ink-700"}>{c.subtitle}</p>
-        <p className="text-small text-ink-700">
+        <p
+          className={
+            featured
+              ? "text-lead text-ink-700"
+              : variant === "card"
+                ? "line-clamp-3 text-small text-ink-700"
+                : "text-small text-ink-700"
+          }
+        >
+          {c.subtitle}
+        </p>
+        <p className="border-t border-border pt-3 text-small text-ink-500">
           <span
-            className={`mr-2 font-mono text-body font-semibold tabular-nums ${measured ? "text-success-700" : "text-ink-900"}`}
+            className={`mr-2 font-mono text-lead font-semibold tabular-nums ${measured ? "text-success-700" : "text-ink-900"}`}
           >
             {c.result.before && (
               <span className="font-medium text-ink-500">{c.result.before} → </span>
@@ -69,7 +79,7 @@ export function CaseArticle({ c, minutes, variant = "row", headingLevel = "h3" }
         </p>
         <span
           aria-hidden
-          className={`${layout.body === "h-full" ? "mt-auto" : "mt-1"} inline-flex items-center gap-2 text-small font-semibold ${tone}`}
+          className={`${layout.body === "h-full" ? "mt-auto" : "mt-1"} inline-flex items-center gap-2 text-small font-semibold text-accent-600`}
         >
           Leer el caso
           <IconArrowRight

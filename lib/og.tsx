@@ -3,8 +3,8 @@ import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { profile } from "@/content/profile";
 
-// Plantilla Open Graph (03-DESIGN.md §12.9.6 y §13.2): 1200 × 630, papel, padding 64,
-// etiqueta mono + monograma, titular Inter 600 y pie con la regla de medición (§6.1).
+// Plantilla Open Graph (03-DESIGN.md §12.9.6 y §13.2 v6.0): 1200 × 630, papel, padding 64,
+// etiqueta mono + monograma, titular Plus Jakarta Sans 600 y pie con la regla de medición (§6.1).
 
 export const ogSize = { width: 1200, height: 630 };
 export const ogContentType = "image/png";
@@ -13,11 +13,12 @@ const font = (pkg: string, file: string) =>
   readFile(join(process.cwd(), "node_modules", pkg, "files", file));
 
 const C = {
-  papel: "#FAFAF8",
-  tinta: "#14161A",
-  gris500: "#666C76",
-  gris400: "#8A9099",
-  marino: "#1F3A5F",
+  papel: "#F8F9FC",
+  tinta: "#0F1424",
+  gris500: "#5B657E",
+  gris400: "#7B8499",
+  marino: "#312E81",
+  acento: "#4F46E5",
 };
 
 interface OgInput {
@@ -27,10 +28,10 @@ interface OgInput {
 }
 
 export async function renderOg({ label, title, description }: OgInput) {
-  const [inter400, inter600, mono500, monogram] = await Promise.all([
-    font("@fontsource/inter", "inter-latin-400-normal.woff"),
-    font("@fontsource/inter", "inter-latin-600-normal.woff"),
-    font("@fontsource/jetbrains-mono", "jetbrains-mono-latin-500-normal.woff"),
+  const [jakarta400, jakarta600, mono500, monogram] = await Promise.all([
+    font("@fontsource/plus-jakarta-sans", "plus-jakarta-sans-latin-400-normal.woff"),
+    font("@fontsource/plus-jakarta-sans", "plus-jakarta-sans-latin-600-normal.woff"),
+    font("@fontsource/ibm-plex-mono", "ibm-plex-mono-latin-500-normal.woff"),
     readFile(join(process.cwd(), "public/brand/logo/monograma.svg")),
   ]);
   const monogramSrc = `data:image/svg+xml;base64,${monogram.toString("base64")}`;
@@ -48,13 +49,13 @@ export async function renderOg({ label, title, description }: OgInput) {
         justifyContent: "space-between",
         background: C.papel,
         padding: 64,
-        fontFamily: "Inter",
+        fontFamily: "Plus Jakarta Sans",
       }}
     >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <span
           style={{
-            fontFamily: "JetBrains Mono",
+            fontFamily: "IBM Plex Mono",
             fontSize: 22,
             letterSpacing: "0.06em",
             textTransform: "uppercase",
@@ -95,7 +96,7 @@ export async function renderOg({ label, title, description }: OgInput) {
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", fontSize: 24 }}>
           <span style={{ fontWeight: 600, color: C.tinta }}>{profile.name}</span>
-          <span style={{ fontFamily: "JetBrains Mono", color: C.marino }}>
+          <span style={{ fontFamily: "IBM Plex Mono", color: C.acento }}>
             {new URL(profile.siteUrl).host}
           </span>
         </div>
@@ -104,9 +105,9 @@ export async function renderOg({ label, title, description }: OgInput) {
     {
       ...ogSize,
       fonts: [
-        { name: "Inter", data: inter400, weight: 400, style: "normal" },
-        { name: "Inter", data: inter600, weight: 600, style: "normal" },
-        { name: "JetBrains Mono", data: mono500, weight: 500, style: "normal" },
+        { name: "Plus Jakarta Sans", data: jakarta400, weight: 400, style: "normal" },
+        { name: "Plus Jakarta Sans", data: jakarta600, weight: 600, style: "normal" },
+        { name: "IBM Plex Mono", data: mono500, weight: 500, style: "normal" },
       ],
     },
   );

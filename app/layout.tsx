@@ -7,31 +7,29 @@ import { defaultMetadata } from "@/lib/seo";
 import { themeInitScript } from "@/lib/theme";
 import "./globals.css";
 
-// Tipografías de marca (03-DESIGN.md §5.1), autoalojadas en app/fonts: las variables
-// latin de Google Fonts (OFL). Archivos locales para no depender de Google en el build.
-const inter = localFont({
-  src: "./fonts/inter-latin-var.woff2",
-  variable: "--font-inter",
+// Tipografías de marca (03-DESIGN.md §5.1 v6.0), autoalojadas en app/fonts: variables y cortes
+// latin de Google Fonts / IBM (OFL). Archivos locales para no depender de Google en el build.
+const dmSans = localFont({
+  src: "./fonts/dm-sans-latin-var.woff2",
+  variable: "--font-dm-sans",
   weight: "100 900",
   display: "swap",
 });
-// Corte "Display" de Inter (tamaño óptico 32, SemiBold) solo para titulares grandes:
-// misma familia, dibujo más apretado y fino a gran tamaño (§5.1 v4.3). Latin, 36 KB.
-const interDisplay = localFont({
-  src: "./fonts/inter-display-600-latin.woff2",
-  variable: "--font-inter-display",
-  weight: "600",
-  // `optional` + sin fuente de respaldo propia: si no llega a tiempo se queda Inter de
-  // texto (token --font-display) y el titular no salta al cambiar de fuente (CLS 0).
-  display: "optional",
-  adjustFontFallback: false,
-});
-const jetbrainsMono = localFont({
-  src: "./fonts/jetbrains-mono-latin-var.woff2",
-  variable: "--font-jetbrains-mono",
-  weight: "100 800",
+// Plus Jakarta Sans para titulares (curvas geométricas abiertas, menos cuadradas que Inter).
+const plusJakarta = localFont({
+  src: "./fonts/plus-jakarta-sans-latin-var.woff2",
+  variable: "--font-plus-jakarta",
+  weight: "200 800",
   display: "swap",
-  // Solo etiquetas y cifras: sin precarga, para no competir con Inter (texto del LCP).
+});
+const ibmPlexMono = localFont({
+  src: [
+    { path: "./fonts/ibm-plex-mono-500-latin.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/ibm-plex-mono-600-latin.woff2", weight: "600", style: "normal" },
+  ],
+  variable: "--font-ibm-plex-mono",
+  display: "swap",
+  // Solo etiquetas y cifras: sin precarga, para no competir con DM Sans (texto del LCP).
   preload: false,
 });
 
@@ -39,8 +37,8 @@ export const metadata: Metadata = defaultMetadata;
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#FAFAF8" },
-    { media: "(prefers-color-scheme: dark)", color: "#0E1013" },
+    { media: "(prefers-color-scheme: light)", color: "#F8F9FC" },
+    { media: "(prefers-color-scheme: dark)", color: "#080A12" },
   ],
 };
 
@@ -53,7 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="es-PE"
       data-theme="light"
       suppressHydrationWarning
-      className={`${inter.variable} ${interDisplay.variable} ${jetbrainsMono.variable}`}
+      className={`${dmSans.variable} ${plusJakarta.variable} ${ibmPlexMono.variable}`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />

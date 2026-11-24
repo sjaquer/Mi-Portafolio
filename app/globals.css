@@ -4,6 +4,15 @@
 @layer base {
   :root {
     color-scheme: light;
+    --in-oklab: ;
+    --in-oklch: ;
+  }
+
+  @supports (background: linear-gradient(in oklab, white, black)) {
+    :root {
+      --in-oklab: in oklab;
+      --in-oklch: in oklch;
+    }
   }
 
   body {
@@ -16,9 +25,12 @@
     @apply font-semibold text-balance text-ink-900;
   }
 
-  /* Corte Display solo en los tamaños grandes (v4.3 / v5.0): un h2 pequeño (p. ej. el del
-     banner de medición) sigue en Inter de texto, que es la que lee bien a 14 px. */
-  .text-hero,
+  /* Corte Display solo en los tamaños grandes (v6.0): Plus Jakarta Sans (700 en hero, 600
+     en display/h1/h2); un h2/h3 pequeño sigue en DM Sans, optimizada para lectura. */
+  .text-hero {
+    font-family: var(--font-display);
+    font-weight: 700;
+  }
   .text-display,
   .text-h1,
   .text-h2 {
@@ -68,29 +80,218 @@
   font-variant-numeric: slashed-zero;
 }
 
-/* Borde del header al hacer scroll, sin JavaScript (animaciones ligadas al scroll).
-   Navegadores sin soporte: el borde se muestra siempre. */
-.header-scroll {
-  border-bottom-color: var(--color-border);
+/* Vidrio técnico controlado (v6.0): superficies flotantes de navegación/chrome sobre
+   contenido dinámico. Usa color-mix(in oklab) para evitar sesgos de tono en neutros,
+   brillo especular interior sutil y respaldo opaco si el usuario prefiere sin transparencia. */
+.glass-surface {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
 }
-@supports ((animation-timeline: scroll()) and (animation-range: 0% 100%)) {
-  .header-scroll {
-    border-bottom-color: transparent;
-    animation: header-border linear both;
-    animation-timeline: scroll(root);
-    animation-range: 0 16px;
+@supports (backdrop-filter: blur(1px)) {
+  .glass-surface {
+    background: color-mix(in oklab, var(--color-surface) 88%, transparent);
+    backdrop-filter: blur(18px) saturate(165%);
+    -webkit-backdrop-filter: blur(18px) saturate(165%);
+    border-color: color-mix(in oklab, var(--color-border-strong) 30%, transparent);
+    box-shadow:
+      inset 0 1px 0 color-mix(in oklab, #ffffff 78%, transparent),
+      var(--shadow-md);
   }
-  @keyframes header-border {
-    to {
-      border-bottom-color: var(--color-border);
+  :root[data-theme="dark"] .glass-surface {
+    background: color-mix(in oklab, var(--color-surface) 86%, transparent);
+    border-color: color-mix(in oklab, var(--color-border-strong) 38%, transparent);
+    box-shadow:
+      inset 0 1px 0 color-mix(in oklab, #ffffff 12%, transparent),
+      var(--shadow-lg);
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .glass-surface {
+    background: var(--color-surface);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-color: var(--color-border-strong);
+  }
+}
+/* El menú móvil modal cubre texto grande del hero: mayor opacidad preserva lectura limpia. */
+@supports (backdrop-filter: blur(1px)) {
+  .mobile-sheet.glass-surface {
+    background: color-mix(in oklab, var(--color-surface) 92%, transparent);
+  }
+  :root[data-theme="dark"] .mobile-sheet.glass-surface {
+    background: color-mix(in oklab, var(--color-surface) 90%, transparent);
+  }
+}
+
+/* Header flotante al hacer scroll: realza levemente borde y elevación sin alterar dimensiones. */
+@supports ((animation-timeline: scroll()) and (animation-range: 0% 100%)) {
+  @media (prefers-reduced-motion: no-preference) {
+    .header-float {
+      animation: header-float linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0px 48px;
+    }
+    @keyframes header-float {
+      to {
+        box-shadow: var(--shadow-lg);
+      }
     }
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  .header-scroll {
-    animation: none;
-    border-bottom-color: var(--color-border);
+
+/* Hoja móvil top-layer (<dialog>) con transición de entrada/salida discreta (v6.0). */
+.mobile-sheet {
+  opacity: 0;
+  transition-property: opacity, transform, display, overlay;
+  transition-duration: 220ms;
+  transition-timing-function: var(--ease-standard);
+  transition-behavior: allow-discrete;
+  @media (prefers-reduced-motion: no-preference) {
+    transform: translateY(-10px) scale(0.98);
   }
+  @media (prefers-reduced-motion: reduce) {
+    transition-duration: 100ms;
+  }
+}
+:is(.mobile-sheet[open]):where(:not([data-closing])) {
+  opacity: 1;
+  @starting-style {
+    opacity: 0;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    transform: none;
+    @starting-style {
+      transform: translateY(-10px) scale(0.98);
+    }
+  }
+}
+.mobile-sheet::backdrop {
+  background-color: transparent;
+  transition-property: background-color, backdrop-filter, display, overlay;
+  transition-duration: 220ms;
+  transition-timing-function: var(--ease-standard);
+  transition-behavior: allow-discrete;
+  @media (prefers-reduced-motion: reduce) {
+    transition-duration: 100ms;
+  }
+}
+:is(.mobile-sheet[open]):where(:not([data-closing]))::backdrop {
+  background-color: rgb(8 10 18 / 0.42);
+  backdrop-filter: blur(6px);
+  @starting-style {
+    background-color: transparent;
+    backdrop-filter: blur(0px);
+  }
+}
+
+/* ── v7.0 · Luz ambiental sutil, flujo cromático en Hero y jerarquía de tarjetas ── */
+.hero-ambient {
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(
+      62% 52% at 88% 12% var(--in-oklab),
+      color-mix(in oklab, var(--color-accent-600) 9%, transparent) 0%,
+      transparent 72%
+    ),
+    radial-gradient(
+      52% 46% at 10% 82% var(--in-oklab),
+      color-mix(in oklab, var(--color-cyan-400) 8%, transparent) 0%,
+      transparent 70%
+    );
+}
+:root[data-theme="dark"] .hero-ambient {
+  background-image:
+    radial-gradient(
+      65% 55% at 85% 10% var(--in-oklab),
+      color-mix(in oklab, var(--color-accent-600) 16%, transparent) 0%,
+      transparent 72%
+    ),
+    radial-gradient(
+      55% 48% at 12% 84% var(--in-oklab),
+      color-mix(in oklab, var(--color-cyan-400) 11%, transparent) 0%,
+      transparent 70%
+    );
+}
+
+.band-ambient {
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(
+      70% 60% at 50% 0% var(--in-oklab),
+      color-mix(in oklab, var(--color-accent-600) 14%, transparent) 0%,
+      transparent 74%
+    ),
+    radial-gradient(
+      45% 45% at 92% 95% var(--in-oklab),
+      color-mix(in oklab, var(--color-cyan-600) 9%, transparent) 0%,
+      transparent 70%
+    );
+}
+
+/* Segunda línea del H1: sólido AA por defecto; degradado en oklab/oklch con flujo lento. */
+.hero-gradient-text {
+  color: var(--color-accent-600);
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .hero-gradient-text {
+    background-image: linear-gradient(
+      105deg var(--in-oklch),
+      #312e81 0%,
+      #4f46e5 32%,
+      #0e7490 58%,
+      #4f46e5 82%,
+      #312e81 100%
+    );
+    background-size: 220% 100%;
+    background-position: 20% 50%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  :root[data-theme="dark"] .hero-gradient-text {
+    background-image: linear-gradient(
+      105deg var(--in-oklch),
+      #a5b4fc 0%,
+      #818cf8 30%,
+      #22d3ee 55%,
+      #67e8f9 75%,
+      #a5b4fc 100%
+    );
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-gradient-text {
+      animation: hero-chroma 10s ease-in-out infinite alternate;
+    }
+    @keyframes hero-chroma {
+      from {
+        background-position: 0% 50%;
+      }
+      to {
+        background-position: 100% 50%;
+      }
+    }
+  }
+}
+
+/* Separación de elevación y borde en tarjetas oscuras/claras (§6.7 v7.0). */
+.case-card-surface {
+  transition:
+    border-color 200ms var(--ease-standard),
+    box-shadow 200ms var(--ease-standard);
+}
+.case-card-surface:hover {
+  border-color: color-mix(in oklab, var(--color-accent-600) 45%, var(--color-border));
+}
+:root[data-theme="dark"] .case-card-surface {
+  box-shadow:
+    inset 0 1px 0 color-mix(in oklab, #ffffff 7%, transparent),
+    var(--shadow-sm);
+}
+:root[data-theme="dark"] .case-card-surface:hover {
+  box-shadow:
+    inset 0 1px 0 color-mix(in oklab, #ffffff 10%, transparent),
+    var(--shadow-md);
 }
 
 /* ── Revelado al hacer scroll (§11 v3.0): solo CSS, nunca en el hero ─── */
@@ -188,9 +389,9 @@
 
 /* ── Detalles de experiencia (v3.3) ─────────────────────────────────── */
 
-/* Las anclas no quedan debajo del header fijo. */
+/* Las anclas no quedan debajo del header flotante (WCAG 2.4.11). */
 html {
-  scroll-padding-top: calc(var(--spacing-header) + var(--spacing-5));
+  scroll-padding-top: calc(var(--spacing-header) + var(--spacing-6));
 }
 
 /* Mejor reparto de líneas: sin palabras sueltas al final de un párrafo. */
@@ -208,9 +409,13 @@ li {
     display: block;
     position: fixed;
     inset: 0 0 auto;
-    z-index: 30;
+    z-index: 40;
     height: 2px;
-    background: var(--color-ink-900);
+    background: linear-gradient(
+      to right var(--in-oklch),
+      var(--color-accent-600),
+      var(--color-cyan-400)
+    );
     transform-origin: 0 50%;
     animation: reading-progress linear both;
     animation-timeline: scroll(root);
@@ -564,5 +769,21 @@ li {
 @media (prefers-reduced-motion: reduce) {
   .reading-progress {
     display: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .hero-ambient,
+  .band-ambient {
+    background-image: none;
+  }
+  .hero-gradient-text {
+    background: none;
+    color: CanvasText;
+    -webkit-text-fill-color: CanvasText;
+    animation: none;
+  }
+  .reading-progress {
+    background: Highlight;
   }
 }

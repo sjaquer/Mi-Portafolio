@@ -69,7 +69,7 @@ export function ChapterRail({ chapters }: { chapters: readonly ChapterItem[] }) 
                   aria-hidden
                   className={`h-px transition-all duration-200 ease-standard ${
                     isActive
-                      ? "w-4 bg-ink-900"
+                      ? "w-4 bg-accent-600"
                       : "w-2 bg-border-strong group-hover:w-3 group-hover:bg-ink-700"
                   }`}
                 />
@@ -79,7 +79,7 @@ export function ChapterRail({ chapters }: { chapters: readonly ChapterItem[] }) 
         })}
       </ol>
       <div aria-hidden className="relative my-2 w-px bg-border">
-        <span className="rail-progress absolute inset-0 bg-ink-900" />
+        <span className="rail-progress absolute inset-0 bg-accent-600" />
       </div>
     </nav>
   );
