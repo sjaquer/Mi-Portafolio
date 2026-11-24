@@ -20,10 +20,7 @@ export default function ProyectosPage() {
   return (
     <>
       <Section tight className="hero-ambient">
-        <p className="mb-3 flex items-center gap-2 text-label-mono text-ink-500">
-          <span aria-hidden className="size-2 shrink-0 rounded-full bg-current text-accent-600" />
-          Proyectos
-        </p>
+        <p className="mb-3 text-label-mono text-accent-600">Proyectos</p>
         <h1 className="text-h1">{cases.length > 0 ? "Proyectos con resultado" : "Proyectos"}</h1>
         <p className="mt-4 max-w-prose text-lead">
           {cases.length > 0
@@ -84,10 +81,9 @@ export default function ProyectosPage() {
                 <h3 className="text-h3">{g.name}</h3>
                 <p className="text-small text-ink-700">{g.angle}</p>
                 {g.isPrivate && (
-                  <span className="inline-flex w-fit items-center gap-2 rounded-full border border-border px-3 py-1 text-small text-ink-500">
-                    <span aria-hidden className="size-2 rounded-full bg-ink-500" />
+                  <p className="font-mono text-label text-ink-500">
                     Proyecto privado · disponible en entrevista
-                  </span>
+                  </p>
                 )}
                 {g.href && (
                   <a

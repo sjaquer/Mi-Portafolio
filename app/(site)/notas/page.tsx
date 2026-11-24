@@ -19,10 +19,7 @@ export default function NotasPage() {
   return (
     <>
       <Section tight className="hero-ambient">
-        <p className="mb-3 flex items-center gap-2 text-label-mono text-cyan-600">
-          <span aria-hidden className="size-2 shrink-0 rounded-full bg-current" />
-          Notas
-        </p>
+        <p className="mb-3 text-label-mono text-cyan-600">Notas</p>
         <h1 className="text-h1">Lo que estoy aprendiendo</h1>
         <p className="mt-4 max-w-prose text-lead">
           Notas cortas sobre proyectos reales: qué problema había, qué hice y qué aprendí. La

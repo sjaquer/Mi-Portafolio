@@ -97,15 +97,9 @@ export default async function CasePage({ params }: PageProps<"/proyectos/[slug]"
           {/* Lo primero que ve un reclutador: qué es y qué resultado tuvo (02-PRD.md §8.3). */}
           <header className="grid gap-7 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
-              <p className="mb-3 flex items-center gap-2 text-label-mono text-ink-500">
-                <span
-                  aria-hidden
-                  className={`size-2 shrink-0 rounded-full bg-current ${toneText[caseTypeTone[c.type]]}`}
-                />
-                <span>
-                  Caso · <span className={toneText[caseTypeTone[c.type]]}>{caseTypeLabel[c.type]}</span>{" "}
-                  · {c.year}
-                </span>
+              <p className="mb-3 text-label-mono text-ink-500">
+                Caso · <span className={toneText[caseTypeTone[c.type]]}>{caseTypeLabel[c.type]}</span>{" "}
+                · {c.year}
               </p>
               <h1 className="max-w-prose text-h1">{c.title}</h1>
               {/* Resumen en 3 piezas (06-CONTENIDO.md §4.2): antes → qué construí → resultado (a la derecha). */}

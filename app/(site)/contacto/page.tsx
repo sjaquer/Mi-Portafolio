@@ -48,10 +48,7 @@ export default function ContactoPage() {
     <Section tight className="hero-ambient">
       <div className="grid gap-8 lg:grid-cols-12">
         <div className="lg:col-span-7">
-          <p className="mb-3 flex items-center gap-2 text-label-mono text-ink-500">
-            <span aria-hidden className="size-2 shrink-0 rounded-full bg-current text-accent-600" />
-            Contacto
-          </p>
+          <p className="mb-3 text-label-mono text-accent-600">Contacto</p>
           <h1 className="text-h1">Hablemos</h1>
           <p className="mt-4 mb-7 max-w-prose text-lead">
             ¿Tu equipo busca a alguien que construya y mida? ¿Tienes un proceso que se repite cada

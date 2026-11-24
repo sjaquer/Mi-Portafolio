@@ -53,12 +53,7 @@ export function SectionHeader({
 }: SectionHeaderProps) {
   return (
     <header className={`max-w-prose ${flush ? "" : "mb-7"}`}>
-      <p className={`mb-3 flex items-center gap-2 text-label-mono ${toneClass[tone]}`}>
-        {tone !== "neutral" && (
-          <span aria-hidden className="size-2 shrink-0 rounded-full bg-current" />
-        )}
-        {label}
-      </p>
+      <p className={`mb-3 text-label-mono ${toneClass[tone]}`}>{label}</p>
       <h2 id={id} className="text-h2">
         {title}
       </h2>

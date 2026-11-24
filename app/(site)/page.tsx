@@ -1,4 +1,4 @@
-import { IconArrowDown, IconArrowRight } from "@tabler/icons-react";
+import { IconArrowRight } from "@tabler/icons-react";
 import Link from "next/link";
 import { MeasureRule } from "@/components/brand/measure-rule";
 import { PillarMotif } from "@/components/brand/pillar-motif";
@@ -111,27 +111,12 @@ export default function Home() {
       <section
         id="inicio"
         aria-labelledby="hero-title"
-        className="hero-stage hero-ambient relative flex min-h-[calc(100svh-var(--spacing-header)-0.75rem)] flex-col justify-between overflow-x-clip py-6 lg:py-8"
+        className="hero-stage hero-ambient relative flex min-h-[calc(100svh-var(--spacing-header)-0.75rem)] flex-col justify-center overflow-x-clip py-8 lg:py-9"
       >
-        <Container className="hero-compress flex flex-1 flex-col justify-between gap-7">
-          {/* Barra superior de especificaciones del plano */}
-          <div className="hero-in flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-b border-border pb-4">
-            <p className="text-label-mono text-ink-500">
-              01 / {profile.role}
-            </p>
-            <p className="flex items-center gap-2 text-label-mono text-ink-700">
-              <span aria-hidden className="relative ml-1 flex size-2 shrink-0 items-center justify-center">
-                <span className="pulse-ring absolute inset-0 rounded-full border border-success-700" />
-                <span className="size-2 rounded-full bg-success-700" />
-              </span>
-              <span>
-                Disponible desde ene 2027 · {profile.location} · remoto
-              </span>
-            </p>
-          </div>
+        <Container className="hero-compress flex flex-col justify-center">
+          <div className="py-4 lg:py-6">
+            <p className="hero-in mb-4 text-label-mono text-ink-500">{profile.role}</p>
 
-          {/* Bloque central protagonista */}
-          <div className="my-auto py-4 lg:py-6">
             <h1 id="hero-title" className="hero-in text-hero max-w-[16ch] text-ink-900">
               Entiendo el problema.
               <br />
@@ -186,24 +171,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-
-          {/* Guía inferior hacia el capítulo 02 */}
-          <div className="flex items-center justify-between border-t border-border pt-4 text-label-mono text-ink-500">
-            <span>02 · Impacto medido</span>
-            <a
-              href="#resultados"
-              data-cta="hero_scroll_cue"
-              className="group inline-flex min-h-control-sm items-center gap-2 text-ink-700 transition-colors duration-150 ease-standard hover:text-ink-900"
-            >
-              Deslizar
-              <IconArrowDown
-                size={16}
-                stroke={1.5}
-                aria-hidden
-                className="transition-transform duration-200 ease-standard group-hover:translate-y-0.5 motion-reduce:transform-none"
-              />
-            </a>
-          </div>
         </Container>
       </section>
 
@@ -214,10 +181,7 @@ export default function Home() {
         className="surface-inverse band-ambient py-8 lg:py-9"
       >
         <Container>
-          <p className="mb-3 flex items-center gap-2 text-label-mono text-cyan-600">
-            <span aria-hidden className="size-2 shrink-0 rounded-full bg-current" />
-            02 / Impacto medido
-          </p>
+          <p className="mb-3 text-label-mono text-cyan-600">02 / Impacto medido</p>
           <h2 id="resultados-title" className="text-h2 text-ink-900">
             Resultados con base y periodo
           </h2>

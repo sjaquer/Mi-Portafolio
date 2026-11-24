@@ -41,9 +41,8 @@ export function CaseArticle({ c, minutes, variant = "row", headingLevel = "h3" }
       <CaseCover c={c} showMetric={false} className={layout.media} />
       <div className={`flex flex-col gap-3 ${layout.body}`}>
         <DraftNotice item={c} />
-        <p className="flex items-center gap-2 text-label-mono text-ink-500">
-          <span aria-hidden className={`size-2 shrink-0 rounded-full bg-current ${tone}`} />
-          <span className="font-semibold text-ink-700">{caseTypeLabel[c.type]}</span> · {c.year} ·{" "}
+        <p className="text-label-mono text-ink-500">
+          <span className={`font-semibold ${tone}`}>{caseTypeLabel[c.type]}</span> · {c.year} ·{" "}
           {minutes} min de lectura
         </p>
         <Heading className={featured ? "text-h2" : "text-h3"}>

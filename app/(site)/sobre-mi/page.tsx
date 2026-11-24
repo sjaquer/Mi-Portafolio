@@ -55,10 +55,7 @@ export default function SobreMiPage() {
       <Section tight className="hero-ambient">
         <div className="grid gap-7 md:grid-cols-12">
           <div className="md:col-span-8">
-            <p className="mb-3 flex items-center gap-2 text-label-mono text-ink-500">
-              <span aria-hidden className="size-2 shrink-0 rounded-full bg-current text-accent-600" />
-              Sobre mí
-            </p>
+            <p className="mb-3 text-label-mono text-accent-600">Sobre mí</p>
             <h1 className="text-h1">De Administración al código</h1>
             <div className="mt-6 flex max-w-prose flex-col gap-4">
               <p className="text-lead text-ink-900">

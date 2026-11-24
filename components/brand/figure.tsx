@@ -13,15 +13,23 @@ interface FrameProps {
   viewBox: string;
   /** Con etiqueta, la figura se anuncia como imagen; sin ella es decorativa. */
   label?: string;
+  /** Borde opcional para diferenciar sutilmente el tipo de caso. */
+  borderClass?: string;
   className?: string;
   children: ReactNode;
 }
 
-/** Lienzo de la figura (v4.2): fondo tonal plano, sin retícula (§6.7). El SVG encima. */
-export function FigureFrame({ viewBox, label, className = "", children }: FrameProps) {
+/** Lienzo de la figura (v4.2/v7.0): fondo tonal plano con borde sutil configurable. */
+export function FigureFrame({
+  viewBox,
+  label,
+  borderClass = "border-border",
+  className = "",
+  children,
+}: FrameProps) {
   return (
     <div
-      className={`relative overflow-hidden rounded-lg border border-border bg-surface-muted ${className}`}
+      className={`relative overflow-hidden rounded-lg border bg-surface-muted transition-colors duration-200 ${borderClass} ${className}`}
     >
       <svg
         viewBox={viewBox}

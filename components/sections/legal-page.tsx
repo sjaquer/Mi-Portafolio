@@ -26,10 +26,7 @@ export function LegalPage({
       <div className="hero-ambient border-b border-border">
         <Container className="pt-6 pb-8 lg:pt-8">
           <div className="max-w-prose">
-            <p className="mb-3 flex items-center gap-2 text-label-mono text-ink-500">
-              <span aria-hidden className="size-2 shrink-0 rounded-full bg-current text-accent-600" />
-              {label}
-            </p>
+            <p className="mb-3 text-label-mono text-accent-600">{label}</p>
             <h1 className="text-h1">{title}</h1>
             <p className="mt-4 font-mono text-small text-ink-500 tabular-nums">
               Última actualización: <time dateTime={updated}>{formatDate(updated)}</time>

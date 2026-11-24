@@ -1,6 +1,12 @@
 import { Dimension, FigConnector, FigNode, FigureFrame, step } from "@/components/brand/figure";
-import { caseTypeTone, toneSvg, type CaseStudy, type CaseType } from "@/content/casos";
+import { caseTypeTone, toneSvg, type CaseStudy, type CaseTone, type CaseType } from "@/content/casos";
 import { isMeasured } from "@/content/profile";
+
+const frameBorder: Record<CaseTone, string> = {
+  accent: "border-accent-600/25 group-hover:border-accent-600/50",
+  amber: "border-cyan-600/25 group-hover:border-cyan-600/50",
+  teal: "border-success-700/25 group-hover:border-success-700/50",
+};
 
 const W = 640;
 const NW = 124;
@@ -96,6 +102,7 @@ function MobileCover({ c, labelled, showMetric = true, className }: CoverProps) 
     <FigureFrame
       viewBox={`0 0 ${M.W} ${M.W}`}
       label={labelled ? ariaLabel(c) : undefined}
+      borderClass={frameBorder[caseTypeTone[c.type]]}
       className={className}
     >
       <text
@@ -190,6 +197,7 @@ function WideCover({ c, labelled, showMetric = true, className = "" }: CoverProp
     <FigureFrame
       viewBox={`0 0 ${W} 360`}
       label={labelled ? ariaLabel(c) : undefined}
+      borderClass={frameBorder[caseTypeTone[c.type]]}
       className={className}
     >
       <text

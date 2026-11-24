@@ -82,12 +82,9 @@ export default async function NotePage({ params }: PageProps<"/notas/[slug]">) {
             Notas
           </Button>
           <header className="max-w-prose">
-            <p className="mb-3 flex items-center gap-2 text-label-mono text-ink-500">
-              <span aria-hidden className="size-2 shrink-0 rounded-full bg-current text-cyan-600" />
-              <span>
-                <span className="font-semibold text-cyan-600">{pillarLabel[n.pillar]}</span> ·{" "}
-                <time dateTime={n.date}>{formatDate(n.date)}</time> · {minutes} min de lectura
-              </span>
+            <p className="mb-3 text-label-mono text-ink-500">
+              <span className="font-semibold text-cyan-600">{pillarLabel[n.pillar]}</span> ·{" "}
+              <time dateTime={n.date}>{formatDate(n.date)}</time> · {minutes} min de lectura
             </p>
             <h1 className="text-h1">{n.title}</h1>
             <p className="mt-4 text-lead text-ink-700">{n.description}</p>
