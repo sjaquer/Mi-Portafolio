@@ -20,6 +20,16 @@ const nextConfig: NextConfig = {
   pageExtensions: ["ts", "tsx", "md", "mdx"],
   // Fecha del build para el pie ("Actualizado: …").
   env: { BUILD_DATE: new Date().toISOString().slice(0, 10) },
+  async redirects() {
+    return [
+      // La nota describía un motor de punto de reorden que LogINV no tiene; se reescribió (nov. 2026).
+      {
+        source: "/notas/loginv-punto-de-reorden",
+        destination: "/notas/loginv-conteo-fisico",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },

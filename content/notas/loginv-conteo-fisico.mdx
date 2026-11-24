@@ -1,65 +1,71 @@
-En una planta agroindustrial el inventario no es una lista: es dinero que se puede echar a perder. Construí **LogINV** para un almacén de insumos donde el stock se contaba en papel, los vencimientos sorprendían y las compras se hacían a las apuradas cuando algo ya faltaba. El corazón del sistema no fue la pantalla bonita de stock, sino la pregunta que nadie respondía a tiempo: **¿cuándo hay que volver a comprar?** Esta nota cuenta cómo llegué al punto de reorden y qué probé antes que no funcionó.
+En una iglesia, el inventario lo cuidan voluntarios. Llegan en horarios distintos, rotan entre ministerios y casi nunca tienen una hora libre para contar todo de una vez. Cuando construí **LogINV**, el sistema de inventario de la Iglesia Alianza CNC, la pregunta que más pesó no fue cómo guardar el stock, sino **cómo contarlo sin que el conteo se rompa a la mitad**. Esta nota cuenta las cuatro decisiones que salieron de ahí.
 
-## El problema: no es "cuánto queda", es "cuándo pedir"
+## El problema: un conteo que nunca se termina
 
-Un almacén con materia prima, empaque y producto terminado tiene tres dolores a la vez:
+Contar con papel tiene tres fallas que se repiten en cualquier almacén pequeño:
 
-- **Descuadres** entre lo que dice el papel y lo que hay en el estante.
-- **Mermas** por insumos que vencen sin que nadie los alerte.
-- **Compras de pánico**: el insumo se acaba, la producción se detiene y se compra caro y rápido.
+- **Nunca se termina.** Un conteo general de templo, salones y almacenes de varios pisos no cabe en una tarde, y lo que quedó a medias se pierde.
+- **Se copia mal.** El número se anota en una hoja y después alguien lo transcribe al Excel; en cada paso puede cambiar un dígito.
+- **No explica nada.** Si el Excel dice 3 guitarras y en el salón hay 2, nadie sabe si fue un préstamo, un error de conteo o una baja.
 
-Mirar el stock actual no resuelve ninguno. Un número que baja no te dice si tienes que actuar hoy o dentro de dos semanas. Eso depende de cuánto se consume por día y de cuánto tarda el proveedor en entregar.
+## Decisión 1: se cuenta por ubicación
 
-## Lo que intenté primero (y por qué lo dejé)
+Cada conteo es de un solo salón o almacén. Así el trabajo tiene un tamaño que un voluntario puede terminar, y el progreso se ve: cuántos artículos van contados, cuántos coinciden y cuántos tienen diferencia.
 
-<Callout title="Lo que descarté" variant="warning">
-  La primera versión usaba un **stock mínimo fijo**: "avisar cuando queden menos de N unidades". Es
-  lo más fácil de programar, pero falla de las dos formas posibles. Si el proveedor se demora, el
-  mínimo fijo avisa tarde y igual te quedas sin insumo; si el consumo baja, mantienes de más un
-  producto que va a vencer. El número fijo no sabía nada del tiempo de entrega ni de la demanda, que
-  son justo las dos variables que deciden.
+El conteo activo no es un estado aparte que haya que mantener sincronizado: se **deriva** de la lista de conteos en curso de la ubicación elegida. Si alguien cambia de ubicación o finaliza el conteo desde otro dispositivo, la pantalla no queda mostrando uno viejo.
+
+## Decisión 2: un toque por unidad, no un número tipeado
+
+Para artículos que se cuentan de a pocos —instrumentos, micrófonos, sillas—, escribir "3" en un campo es justamente donde se cuelan los errores. La pantalla de conteo es un botón grande: **un toque por cada unidad que ves**, con botones para restar uno o volver a cero, y el stock del sistema a la vista para comparar.
+
+<Figure
+  src="/img/proyectos/inventario-loginv/02-conteo-fisico.webp"
+  alt="Tres pantallas móviles de LogINV: conteo en curso con artículos que coinciden en verde, la pantalla Toca para contar y las entradas y salidas rápidas"
+  caption="Conteo por ubicación, el botón de un toque por unidad y los ingresos y salidas rápidas. Modo demo."
+  simulated
+/>
+
+Al confirmar, la fila se pinta de **verde** si coincide con el sistema o de **ámbar** si no. El voluntario sabe al instante dónde mirar dos veces, antes de cerrar.
+
+## Decisión 3: el avance no se pierde
+
+Un conteo se puede **guardar y seguir otro día**. Y si alguien cierra la pestaña sin guardar, la app conserva una copia en el dispositivo y la recupera al volver, siempre que tenga más avance que lo guardado en el servidor.
+
+<Callout title="Por qué un respaldo local y no guardar en cada toque" variant="info">
+  Guardar en el servidor con cada toque multiplica las escrituras y depende de la señal, que dentro de
+  un almacén no siempre es buena. El borrador vive en el dispositivo y se guarda cuando la
+  persona lo decide; el respaldo local cubre el accidente, no el flujo normal.
 </Callout>
 
-También probé alertar **solo por fecha de caducidad**. Servía para las mermas, pero no para el desabastecimiento: un insumo puede estar lejísimos de vencer y a punto de acabarse igual. Eran dos alertas distintas respondiendo a dos preguntas distintas, y las junté en una sola regla.
+## Decisión 4: ninguna diferencia se corrige en silencio
 
-## Qué hice: un punto de reorden que se calcula solo
-
-Cambié el mínimo fijo por un **punto de reorden (ROP)**, la cantidad a partir de la cual conviene volver a pedir para no quedarse sin stock mientras llega la compra:
-
-> ROP = (consumo promedio diario × días de entrega del proveedor) + stock de seguridad
-
-El consumo promedio sale del histórico de salidas del propio almacén; los días de entrega, de cada proveedor; y el stock de seguridad absorbe la variación de un mes movido. Cuando el stock de un insumo cruza su ROP, LogINV lo marca para reposición sin que nadie tenga que mirar la lista.
+Al **finalizar**, el sistema pide confirmación y ajusta solo los artículos con diferencia. Cada ajuste se guarda en la misma transacción que su **movimiento** —tipo, cantidad anterior, nueva y motivo—, y la acción queda en la auditoría con nombre y hora. Si el Excel decía 3 guitarras y había 2, ahora queda escrito quién contó 2 y cuándo.
 
 <FlowDiagram
-  label="Cómo LogINV decide reponer"
+  label="De la ubicación al registro"
   steps={[
+    { tag: "Elegir", title: "Ubicación", items: ["Un salón o almacén", "Conteo en curso único"] },
     {
-      tag: "Datos",
-      title: "Histórico y proveedor",
-      items: ["Consumo diario", "Días de entrega", "Stock de seguridad"],
-    },
-    {
-      tag: "Motor",
-      title: "Punto de reorden",
-      items: ["ROP por insumo", "Multialmacén", "Semáforo de caducidad"],
+      tag: "Contar",
+      title: "Un toque por unidad",
+      items: ["Verde: coincide", "Ámbar: diferencia"],
       highlight: true,
     },
-    {
-      tag: "Acción",
-      title: "Alerta a tiempo",
-      items: ["Reponer antes de faltar", "Sin compra de pánico"],
-    },
+    { tag: "Guardar", title: "Avance", items: ["Seguir otro día", "Respaldo en el dispositivo"] },
+    { tag: "Cerrar", title: "Ajuste con rastro", items: ["Movimiento por artículo", "Auditoría"] },
   ]}
 />
 
-Alrededor de ese motor, lo demás es lo que hace que el dato sea confiable: conteos desde el celular con lectura de código de barras (para que el papel no mienta), soporte multialmacén para no mezclar materia prima con producto terminado, un semáforo de caducidad que ordena por criticidad, y modo offline porque en planta la señal falla. Es una PWA para que el operario la use desde su equipo sin instalar nada.
+Para lo cotidiano —entró una caja de cables, salió un parlante a reparación— no hace falta un conteo completo: hay **ingresos y salidas rápidas** por artículo, con un motivo obligatorio.
 
-## Resultado
+## Lo que no puse
 
-El cambio operativo es que la reposición dejó de depender de que alguien "se diera cuenta". El sistema avisa cuando corresponde pedir, no cuando ya faltó, y separa esa alerta de la de vencimiento. **No cronometré ni medí en cifras la reducción de mermas**, así que no doy un porcentaje: lo honesto es decir que el objetivo del diseño fue eliminar las dos causas de pérdida —quedarse sin insumo y dejar vencer— y que el ROP ataca la primera por definición.
+LogINV no calcula un punto de reorden ni pronostica demanda. Una iglesia no compra insumos por volumen ni depende de un proveedor con plazos de entrega: lo que necesita es saber **qué tiene, dónde está y quién lo movió**. Alcanza con un stock mínimo por artículo, con una regla explícita —está "bajo mínimo" solo si queda **por debajo**; si está justo en el mínimo, está bien— para que nadie discuta qué significa la alerta.
 
 ## Qué aprendí
 
-- Un inventario útil no responde "cuánto queda", responde "cuándo actúo". La fórmula correcta mete el **tiempo** en la ecuación.
-- Un umbral fijo es tentador porque es fácil, pero esconde las dos variables que importan: demanda y plazo de entrega.
-- Debí dejar instrumentada la medición de mermas desde el día uno; sin línea base, tengo un mejor proceso pero no una cifra que contar.
+- La forma de capturar el dato decide su calidad: un botón de un toque evitó más errores que cualquier validación posterior.
+- Un trabajo que no se puede pausar no se termina. Partirlo por ubicación fue lo que hizo posible contar.
+- Un ajuste de stock sin su movimiento es un número que nadie puede defender después.
+
+El caso completo, con préstamos, mantenimiento y auditoría, está en [El inventario de una iglesia, contado desde el celular](/proyectos/inventario-loginv).

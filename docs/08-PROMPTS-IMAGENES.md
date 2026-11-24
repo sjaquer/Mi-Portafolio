@@ -53,7 +53,7 @@
 Cada prompt = `BASE_STYLE` + la escena siguiente + el acento del pilar.
 
 ### Construyendo
-- **`loginv-punto-de-reorden`** — *A single warehouse shelf abstracted into stacked rounded bars whose levels drop toward a marked threshold line; a small clock/lead-time dial and a reorder marker where the line is crossed. Accent blue on the threshold and reorder marker only.*
+- **`loginv-conteo-fisico`** (antes `loginv-punto-de-reorden`; se reutilizó la portada: la línea se lee como stock mínimo) — *A single warehouse shelf abstracted into stacked rounded bars whose levels drop toward a marked threshold line; a small clock/lead-time dial and a reorder marker where the line is crossed. Accent blue on the threshold and reorder marker only.*
 - **`optimizar-vuelos-cp-sat`** — *An abstract route graph of nodes connected by clean orthogonal paths over a calm map grid; one optimal path highlighted, small weight/fuel gauges beside two nodes. Accent blue on the chosen route only.*
 - **`validacion-juicio-expertos-v-de-aiken`** — *Several identical document cards with checkmark rows feeding into one summary card with a small bar gauge; a signature rule-line motif at the base. Accent blue on the summary card only.*
 - **`empleo-pertinente-reglas-ocde`** — *A sorting diagram: scattered dots on the left resolved into two labeled lanes (horizontal/vertical fit) on the right, clean dividers. Accent blue on the resolved lanes only.*
@@ -79,7 +79,7 @@ Cada prompt = `BASE_STYLE` + la escena siguiente + el acento del pilar.
 
 Para usar **dentro** del `.mdx`, después del diagrama, como refuerzo visual. Mismo `BASE_STYLE`.
 
-- **`loginv-punto-de-reorden-02`** — *Close abstract of the reorder-point formula visualized: average daily demand × lead time + safety stock, as three stacked bars summing into a threshold marker. Accent blue.*
+- **`loginv-punto-de-reorden-02`** (obsoleto: LogINV no calcula ROP; no generar) — *Close abstract of the reorder-point formula visualized: average daily demand × lead time + safety stock, as three stacked bars summing into a threshold marker. Accent blue.*
 - **`optimizar-vuelos-cp-sat-02`** — *Constraint model view: hard constraints (weight, fuel, capacity) as locked bars, the solver picking a feasible combination. Accent blue.*
 - **`leer-vouchers-yape-con-ocr-02`** — *The preprocessing pipeline: full capture → cropped region → grayscale+threshold → read fields, four calm panels left to right. Accent teal.*
 - **`bot-whatsapp-a-pedido-estructurado-02`** — *The JSON schema of an order shown as a clean labeled card (items, modifiers, total) with a check mark on "validated against menu". Accent teal.*

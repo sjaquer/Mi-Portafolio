@@ -1,0 +1,114 @@
+{/* TODO(Sebastián): revisar que el contexto y el problema describan bien la situación de la iglesia antes de LogINV. Confirmar desde cuándo lo usa la iglesia, cuántas personas tienen cuenta y cuántos artículos hay registrados (con fecha), para el resultado. Las capturas son del modo demo. */}
+
+LogINV es el sistema de inventario de la Iglesia Alianza CNC: instrumentos, equipos de sonido, mobiliario, herramientas y decoración repartidos entre el templo, salones y almacenes de varios pisos. Como es una herramienta interna con acceso por cuenta, no comparto el enlace. Lo explico con capturas del **modo demo**, que corre con datos de prueba y sin conexión a la base real.
+
+## Contexto
+
+En una iglesia, el inventario lo cuidan voluntarios que rotan, en horarios distintos, y las cosas se mueven mucho: un ministerio se lleva el proyector para un evento, otro presta las escaleras, un equipo de sonido entra a reparación. El inventario vivía en una hoja de Excel, de la que salió la primera carga del sistema.
+
+## Problema
+
+- Nadie sabía con certeza **dónde estaba cada cosa** ni cuántas había: el Excel decía una cantidad y el almacén otra.
+- Los **préstamos** se acordaban de palabra: no quedaba registro de quién se llevó qué ni cuándo debía devolverlo.
+- El **mantenimiento** de los equipos se recordaba cuando algo ya fallaba.
+- Cualquier cambio en la lista era anónimo: si algo no cuadraba, no había forma de saber quién lo movió.
+
+## Enfoque
+
+Diseñé para la persona que está **de pie en el almacén con el celular en la mano**, no para alguien frente a un escritorio: botones grandes, la cámara como lector de códigos y una barra inferior con lo que se usa a diario. Y separé lo que puede hacer cada quien en tres roles: los **voluntarios** consultan, escanean y registran préstamos; los **encargados** además cuentan, mueven stock y gestionan ubicaciones y mantenimiento; los **administradores** crean cuentas y ven la auditoría.
+
+<Callout title="Decisión: se cuenta por ubicación, no todo a la vez">
+  Un conteo general de toda la iglesia nunca se termina. Cada conteo es de un salón o almacén: se
+  puede guardar el avance y seguir otro día, y al finalizar el sistema ajusta solo el stock de los
+  artículos con diferencia, después de pedir confirmación.
+</Callout>
+
+<Callout title="Decisión: ningún cambio de stock sin su movimiento">
+  Cada cambio de cantidad —por conteo, ingreso o salida— se guarda en la misma transacción que su
+  movimiento, con tipo y motivo. No puede existir un stock que cambió sin explicación, aunque dos
+  personas editen a la vez.
+</Callout>
+
+<Callout title="Decisión: la guía se genera desde la propia app" variant="info">
+  La ayuda dentro de la app explica cada pantalla con capturas. Esas capturas no se toman a mano: un
+  script levanta la app en modo demo y las regenera, así la guía nunca queda desactualizada respecto
+  a la interfaz.
+</Callout>
+
+## Solución
+
+<FlowDiagram
+  label="Del estante al registro"
+  steps={[
+    { tag: "Escaneo", title: "Código de barras", items: ["Cámara o lector USB", "Etiquetas impresas"] },
+    {
+      tag: "Conteo",
+      title: "Conteo por ubicación",
+      items: ["Un toque por unidad", "Diferencias a la vista"],
+      highlight: true,
+    },
+    { tag: "Stock", title: "Movimiento", items: ["Transacción", "Tipo y motivo"] },
+    { tag: "Control", title: "Auditoría", items: ["Quién, qué y cuándo", "Exportable a CSV"] },
+  ]}
+/>
+
+### Un panel que dice qué hacer hoy
+
+La pantalla de inicio no es un resumen decorativo: lista los **pendientes** que requieren acción —préstamos vencidos, mantenimientos atrasados, conteos sin terminar y artículos bajo su mínimo— y cada fila lleva a resolverlo. Un selector de ubicación arriba filtra toda la app al salón o almacén donde se está trabajando.
+
+<Figure
+  src="/img/proyectos/inventario-loginv/01-panel.webp"
+  alt="Panel de control de LogINV con accesos rápidos, indicadores de productos, stock bajo mínimo, conteos y diferencias, la lista de pendientes y la actividad reciente"
+  caption="Panel de control: indicadores, pendientes accionables y actividad reciente. Modo demo."
+  simulated
+/>
+
+### Contar sin papel
+
+En un conteo, cada artículo de la ubicación aparece en una lista. Se toca (o se escanea) y se abre una pantalla con un botón grande: **un toque por cada unidad que se ve**. Al confirmar, la fila se pinta de verde si coincide con el sistema o de ámbar si hay diferencia, y el progreso se actualiza. Si alguien cierra la pestaña a mitad del conteo, la app guarda una copia en el dispositivo y la recupera al volver.
+
+Para los movimientos del día a día no hace falta un conteo completo: **ingresos y salidas rápidas** con flechas por artículo y un motivo obligatorio.
+
+<Figure
+  src="/img/proyectos/inventario-loginv/02-conteo-fisico.webp"
+  alt="Tres pantallas móviles: conteo en curso con artículos que coinciden en verde, la pantalla Toca para contar con el número contado y las entradas y salidas rápidas"
+  caption="Conteo por ubicación, el botón de un toque por unidad y los ingresos y salidas rápidas. Modo demo."
+  simulated
+/>
+
+### Escanear, prestar y cuidar
+
+- **Escaneo**: la cámara del celular lee códigos de barras y QR; sin cámara, sirve un lector USB. Si un código no existe, se puede crear el producto o asignar ese código a uno que no tenía etiqueta. Las etiquetas se imprimen en lote desde el catálogo.
+- **Préstamos**: a quién, con qué teléfono y hasta cuándo. Los vencidos aparecen en su propia pestaña y en los pendientes del panel; la devolución se registra con una nota sobre el estado del artículo.
+- **Mantenimiento**: revisiones preventivas, correctivas o de emergencia, con responsable y fecha. Si la fecha pasa sin iniciarse, se marca como atrasada; al completarla se registra el costo.
+- **Catálogo** con foto tomada desde el celular, ubicación exacta (almacén y estante), stock mínimo y estado.
+
+<Figure
+  src="/img/proyectos/inventario-loginv/03-escaneo-y-prestamos.webp"
+  alt="Tres pantallas móviles: código escaneado sin producto con las opciones crear o asignar, la lista de préstamos activos y vencidos, y el detalle de un producto con su stock"
+  caption="Un código sin producto se crea o se asigna en el momento; los préstamos vencidos saltan a la vista. Modo demo."
+  simulated
+/>
+
+### Rastro de cada cambio
+
+La **auditoría** registra cada alta, edición, baja, movimiento de stock, préstamo, conteo, cambio de cuenta e inicio de sesión: quién lo hizo, qué cambió y cuándo. Las reglas de la base solo permiten que cada persona registre sus propias acciones y que solo los administradores las lean; nadie puede editarlas ni borrarlas. Los reportes se exportan a Excel con las fotos de cada producto.
+
+<Figure
+  src="/img/proyectos/inventario-loginv/04-auditoria.webp"
+  alt="Pantalla de auditoría con indicadores de acciones, filtros por periodo, tipo, acción y persona, y la lista de acciones agrupadas por día"
+  caption="La auditoría agrupa por día y filtra por persona, acción y periodo. Modo demo, nombres simulados."
+  simulated
+/>
+
+Por debajo: Next.js con Firebase (autenticación y Firestore), reglas de seguridad que exigen una cuenta con perfil activo para leer cualquier dato, rutas de servidor que verifican la identidad antes de escribir, y modo oscuro. Se instala en el celular como una app (PWA). Cuando un administrador crea una cuenta, el sistema genera una contraseña segura y un mensaje de bienvenida listo para enviar por WhatsApp, con el enlace a la guía.
+
+## Resultado
+
+El inventario dejó de depender de un archivo suelto: hoy cada artículo tiene ubicación, cantidad contada y la historia de quién lo movió. Los préstamos y mantenimientos pasaron de la memoria a una lista de pendientes que la app pone delante. **No medí el tiempo de un conteo antes y después**, así que no doy una cifra de ahorro.
+
+## Qué aprendí
+
+- Diseñar para el celular de un voluntario obliga a quitar todo lo que no sea la siguiente acción.
+- Un dato confiable no sale de pedir cuidado, sale de que el sistema no permita un cambio sin su explicación.
+- La documentación que se genera sola es la única que sigue siendo cierta seis meses después.

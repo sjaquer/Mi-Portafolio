@@ -1,39 +1,41 @@
-{/* TODO(Sebastián): datos pendientes de 07-PROYECTOS.md §4 (campañas y destinatarios desde que está en uso; rebote antes/después de validar). Capturas solo con datos simulados. */}
+{/* TODO(Sebastián): datos pendientes de 07-PROYECTOS.md §4 (campañas y destinatarios desde que está en uso; rebote antes/después de validar). ¿Por qué se retiró WhatsApp? Una línea honesta lo convierte en aprendizaje. */}
 
 ## Contexto
 
-La Dirección de Desarrollo Profesional y Alumni se comunica a diario con miles de estudiantes y egresados: ferias, ofertas, encuestas, eventos. Esas comunicaciones dependían de enviar correos a mano y de listas guardadas en varios Excel.
+La Dirección de Desarrollo Profesional y Alumni se comunica a diario con miles de estudiantes y egresados: ferias, ofertas laborales, encuestas, charlas. Esas comunicaciones dependían de enviar correos a mano y de listas guardadas en varios Excel, y los datos de cada alumno vivían en un sistema antiguo lento de consultar.
+
+Construí una **plataforma administrativa interna**, de uso exclusivo del equipo del área, que une cuatro cosas: la base de alumnos, las campañas de correo, las piezas gráficas para redes y los indicadores del área.
 
 ## Problema
 
 - Una campaña a miles de egresados se mandaba desde Outlook en tandas pequeñas: tomaba **horas de trabajo manual** y podía agotar el límite de envío de las cuentas institucionales.
-- Buscar los datos de un estudiante o egresado en el sistema antiguo tomaba **entre 7 y 9 pasos** de navegación antes de llegar a su ficha.
-- No había una forma sencilla de elegir a quién escribir (carrera, sede, facultad, periodo de egreso) ni de personalizar el saludo.
+- Buscar los datos de un estudiante en el sistema antiguo tomaba **entre 7 y 9 pasos** antes de llegar a su ficha.
+- La base de alumnos venía con duplicados, correos mal escritos y carreras que no eran de la universidad: una misma persona aparecía una vez por cada carrera.
 - Las personas que pedían no recibir más correos no siempre se respetaban, porque cada lista vivía en un archivo distinto.
-- La base de correos de empresas aliadas tenía más de 1 200 direcciones, muchas antiguas o mal escritas: cada envío generaba rebotes que dañan la reputación de las cuentas.
+- Los correos con dominio inexistente o mal escrito rebotaban en cada envío y dañaban la reputación de las cuentas.
 
 ## Enfoque
 
-Traté la difusión como un embudo con tres controles antes de que salga un solo correo: **a quién**, **a quién no** y **si la dirección existe**.
+Traté la difusión como un embudo con tres controles antes de que salga un solo correo: **a quién**, **a quién no** y **si la dirección existe**. Y le di al equipo una regla que se cumple sola: lo que se filtra en Estudiantes es exactamente lo que recibe la campaña, porque las dos pantallas usan el mismo panel de filtros.
 
 <Callout title="Decisión: la lista de exclusión se aplica sola, antes de cada envío">
-  Quien pidió darse de baja sale automáticamente de cualquier campaña, sin depender de que alguien
-  lo recuerde. Es lo que exige la Ley 29733 de protección de datos personales, y es también lo que
-  protege la confianza en el canal.
+  Quien pidió darse de baja sale automáticamente de cualquier campaña, incluso si se dio de baja
+  después de programarla: el plan se vuelve a calcular a la hora del envío. Es lo que exige la Ley
+  29733 de protección de datos personales, y es también lo que protege la confianza en el canal.
 </Callout>
 
-<Callout title="Decisión: validar la base antes de enviar">
-  Antes de las campañas a empresas verifiqué, una por una, las direcciones de la base: que el
-  dominio reciba correo y que el servidor reconozca la cuenta. Los inválidos quedan marcados para
-  corregirlos, en lugar de rebotar en cada envío.
+<Callout title="Decisión: se envía exactamente lo que se revisó">
+  Antes de enviar, el sistema muestra el plan completo: cuántos lotes, desde qué cuenta sale cada
+  uno (verificando antes su conexión) y qué correos se descartan y por qué. Si algo cambió entre la
+  revisión y el clic —una cuenta dejó de funcionar o cambió la audiencia— no se envía nada: aparece
+  el plan nuevo para confirmarlo otra vez.
 </Callout>
 
 <Callout title="Lo que retiré" variant="warning">
-  Una versión anterior también enviaba mensajes por WhatsApp. Ese canal se retiró: hoy el envío
-  masivo es solo por correo.
+  Una versión anterior también enviaba por WhatsApp, automatizando WhatsApp Web con límites de 200
+  mensajes al día para evitar bloqueos. Ese canal se retiró del producto: hoy el envío masivo es
+  solo por correo, y WhatsApp queda como un botón dentro del mensaje.
 </Callout>
-
-{/* TODO(Sebastián): ¿por qué se retiró WhatsApp? Una línea honesta convierte esto en un aprendizaje. */}
 
 ## Solución
 
@@ -43,39 +45,91 @@ Traté la difusión como un embudo con tres controles antes de que salga un solo
     {
       tag: "Público",
       title: "Segmentación",
-      items: ["Carrera, sede, facultad", "Periodo de egreso"],
+      items: ["Mismos filtros que Estudiantes", "Listas de eventos desde Excel"],
     },
     {
       tag: "Control",
-      title: "Lista de exclusión",
-      items: ["Bajas aplicadas siempre", "Ley 29733"],
+      title: "Exclusión y validación",
+      items: ["Bajas aplicadas siempre", "Correos inválidos descartados"],
       highlight: true,
     },
-    { tag: "Mensaje", title: "Personalización", items: ["Plantilla con {nombre}", "Vista previa"] },
+    { tag: "Mensaje", title: "Personalización", items: ["Variables {{nombre}}", "Imágenes dentro del correo"] },
     {
       tag: "Envío",
       title: "Lotes",
-      items: ["Rotación entre cuentas institucionales", "Registro de auditoría"],
+      items: ["Rotación entre cuentas", "Cupo por 24 horas", "Auditoría"],
     },
   ]}
 />
 
-El sistema de difusión está construido dentro de la **plataforma administrativa interna del área** (de uso exclusivo para el equipo administrativo): incorpora un **buscador rápido de alumnos y egresados** que reduce los **7 a 9 pasos** del sistema antiguo a una sola consulta directa por **DNI, código de alumno o nombre**, además de **filtros inteligentes** que sirven tanto para consultar padrones como para segmentar campañas al instante. Reúne también un tablero de indicadores (satisfacción NPS, empleabilidad, retención), el directorio de empresas aliadas y un registro de auditoría de las acciones importantes.
+### Una fila por alumno, con datos que se pueden creer
+
+La base se carga bajo demanda desde el **Data Warehouse de la universidad** (Azure Synapse) en tres pasos: traer los datos a una zona de revisión, ver qué cambiaría sin escribir nada, y aplicar todo junto con un respaldo previo. En la carga se corrigen correos, celulares, documentos y nombres, y solo entran las carreras de la universidad: retiré más de 540 carreras ajenas que se habían colado en el catálogo. Lo que el equipo corrige a mano queda protegido y ninguna carga posterior lo pisa.
+
+El buscador encuentra por nombre, DNI, código, correo o celular mientras se escribe, y reemplaza los **7 a 9 pasos** del sistema antiguo por una sola consulta. Cada alumno ocupa una fila —antes eran una por carrera—, con su situación, sede y si tiene correo y celular válidos. Los filtros activos se ven como etiquetas encima de la lista.
+
+<Figure
+  src="/img/proyectos/difusion-correo-wiener/01-estudiantes.webp"
+  alt="Pantalla Estudiantes con filtros de estado Egresado y sede Virtual, 638 resultados y la lista de alumnos con carrera, situación, sede y contacto"
+  caption="Los filtros de Estudiantes son los mismos que usa cada campaña: lo que ves aquí es lo que recibirá el correo."
+  simulated
+/>
+
+Editar un dato pasa por una revisión "antes → después" con motivo, y eliminar pide escribir el motivo y la palabra ELIMINAR: es un borrado lógico que queda en la auditoría. Esta pantalla está en pleno rediseño (noviembre de 2026): lo siguiente son segmentos guardados, conteos por opción de filtro y una vista propia para el celular.
+
+### Campañas que no se pueden enviar mal
+
+El asistente tiene cuatro pasos: datos de la campaña, diseño del correo, segmentación y lanzamiento. Cada segmento puede tener sus propios filtros y su propio grupo de cuentas, o partir de una lista de asistentes importada desde Excel, donde el sistema propone qué columna es el código, el DNI o el correo mirando su contenido. Las imágenes viajan **dentro del correo** —no como enlace—, así que se ven en Outlook sin pulsar "descargar imágenes", y se comprimen solas al subirlas.
+
+En el último paso se elige enviar ahora o **programar** hasta 90 días adelante. Ninguna cuenta supera su límite en 24 horas móviles; si la cuota no alcanza, se envía lo posible y la campaña queda pausada con el motivo. Si el servidor estaba apagado a la hora programada, la campaña no sale con atraso: queda como no enviada y explica por qué.
+
+<Figure
+  src="/img/proyectos/difusion-correo-wiener/02-monitor-de-campana.webp"
+  alt="Panel de monitoreo de una campaña completada: 3 250 de 3 250 enviados, dos segmentos al 100 %, cero errores y dos cuentas emisoras con sus lotes"
+  caption="Monitoreo de una campaña real: 3 250 correos en 8 lotes desde 2 cuentas, sin errores. Cuentas y empresa reemplazadas."
+  simulated
+/>
+
+El monitoreo se actualiza cada 4 segundos: qué cuenta está enviando, el avance por segmento y los errores **agrupados por causa con la acción a tomar** (correo inválido, buzón rechazado, cuota agotada, límite de Microsoft). Al terminar se descarga un reporte en Excel por destinatario.
+
+### De la oferta laboral a la campaña en un clic
+
+**Wiener Empleo** genera la pieza para redes de una o dos ofertas (1080 × 1350 px) en el navegador, con tres composiciones, seis paletas institucionales, QR opcional y los logos de empresas guardados para reutilizarlos. Un asistente copia un prompt para ordenar el texto de la oferta con cualquier IA de chat y luego importa la respuesta. El botón **"Crear campaña de correo con esta imagen"** abre el asistente con el nombre, el asunto, el enlace y el correo ya armados: solo falta elegir a quién.
+
+<Figure
+  src="/img/proyectos/difusion-correo-wiener/03-wiener-empleo.webp"
+  alt="Editor Wiener Empleo con el formulario de la oferta a la izquierda y la vista previa de la pieza institucional a la derecha"
+  caption="Formulario a la izquierda, pieza lista para publicar a la derecha. Empresa reemplazada."
+  simulated
+/>
+
+### Indicadores del área
+
+Un tablero con nueve pestañas —académico, demografía, empleo, campañas, encuestas NPS de egresados, eventos y empleadores, fichas de contacto y cartas de presentación— con filtros globales por facultad, sede, nivel y periodo. Las encuestas y formularios llegan desde un micrositio público que se sincroniza con la base.
+
+<Figure
+  src="/img/proyectos/difusion-correo-wiener/04-dashboards.webp"
+  alt="Tablero analítico con indicadores académicos, distribución por facultad y tendencia de egresados, con las cifras difuminadas"
+  caption="Pestaña académica del tablero. Cifras y etiquetas difuminadas a propósito."
+/>
+
+Por debajo: React y Vite en el cliente, Node.js con Express y PostgreSQL (54 tablas tipadas con Drizzle) en el servidor, contraseñas de las cuentas de correo cifradas con AES-256, control de acceso por rol, registro de auditoría y datos sintéticos para desarrollo y pruebas. Se despliega con Docker Compose en un servidor del área.
 
 ## Resultado
 
 <Metric
   value="5–10 min"
   before="1–2 h"
-  label="por campaña de 8 000 destinatarios"
+  label="por campaña de 8 000 destinatarios"
   context="Estimado: tiempo de envío de una misma campaña antes y después del sistema"
   measured
 />
 
-En la primera pasada de verificación revisé más de **1 200** correos de empresas aliadas y confirmé más de **530** válidos; el resto quedó marcado para corrección antes de volver a escribirles.
+En la primera pasada de verificación revisé más de **1 200** correos de empresas aliadas y confirmé más de **530** válidos; el resto quedó marcado para corrección antes de volver a escribirles. Hoy esa validación es parte del envío: los correos con formato roto o dominio inexistente se descartan antes de salir y se pueden descargar para corregirlos.
 
 ## Qué aprendí
 
 - La velocidad era el síntoma visible; el problema de fondo era el control: a quién se escribe y a quién no.
+- Mostrar el plan antes de ejecutar —y negarse a ejecutar uno distinto— da más confianza que cualquier botón de "deshacer".
 - Cumplir la ley y cuidar la entregabilidad apuntan a lo mismo: escribir solo a quien corresponde, en una dirección que existe.
-- Un registro de auditoría cuesta poco al construir y responde todas las preguntas después.
+- Un dato corregido a mano tiene que sobrevivir a la siguiente carga automática; si no, el equipo deja de corregir.

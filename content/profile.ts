@@ -111,7 +111,7 @@ export const profile = {
       location: "Lima · Remoto",
       highlights: [
         "Integré Shopify, CRM (Kommo) y Google Sheets mediante APIs REST y webhooks para retail (Dearel), reduciendo las tareas administrativas manuales en 30%.",
-        "Desarrollé LogINV, plataforma agroindustrial multialmacén para gestión de stock en tiempo real, alertas de expiración y cálculo automatizado de puntos de reorden (ROP).",
+        "Desarrollé LogINV, sistema de inventario para una iglesia: escaneo de códigos con el celular, conteos físicos por ubicación, préstamos, mantenimiento, tres roles y auditoría de cada cambio.",
         "Construí PrestaFacilito (gestión de préstamos y cobranzas con lectura OCR de comprobantes de pago) y tableros de BI para control de inventario y ventas.",
       ],
       metric: {
@@ -253,7 +253,7 @@ export const profile = {
     },
     {
       q: "¿Qué productos en producción ha construido?",
-      a: "El portal y CMS de empleabilidad de la Universidad Norbert Wiener (empleabilidad.uwiener.edu.pe y ferialaboralonline.uwiener.edu.pe): bolsa laboral, creador de CV con IA y feria virtual. También el sistema administrativo interno con buscador rápido de alumnos y difusión masiva de correos, el ecosistema de pedidos en tiempo real de Big Jack Burgers, la plataforma agroindustrial de inventarios LogINV, PrestaFacilito y portales de formularios con validación.",
+      a: "El portal y CMS de empleabilidad de la Universidad Norbert Wiener (empleabilidad.uwiener.edu.pe y ferialaboralonline.uwiener.edu.pe): bolsa laboral, creador de CV con IA y feria virtual. También el sistema administrativo interno con buscador rápido de alumnos y difusión masiva de correos, el ecosistema de pedidos en tiempo real de Big Jack Burgers, el sistema de inventario LogINV para una iglesia, PrestaFacilito y portales de formularios con validación.",
     },
     {
       q: "¿Qué resultados medidos tiene?",

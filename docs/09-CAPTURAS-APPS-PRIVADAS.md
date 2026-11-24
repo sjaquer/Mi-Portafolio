@@ -15,7 +15,7 @@
 | Proyecto | slug | Estado | URL (la provee Sebastián al iniciar sesión) |
 |---|---|---|---|
 | PrestaFacilito | `prestafacilito` | ✅ **Hecho** (plantilla de referencia) | `prestafacilito.vercel.app` |
-| LogINV Agroindustrial | `loginv-agroindustrial` | ⬜ Pendiente | *(Sebastián)* |
+| LogINV (iglesia) | `inventario-loginv` | ✅ Hecho (modo demo, 24 nov) | Claude |
 | LogiFlow | `logiflow` | ⬜ Pendiente | *(Sebastián)* |
 | DataWeave BI | `dataweave-bi` | ⬜ Pendiente | *(Sebastián)* |
 | Coralia Delights / Digital Bakery | `coralia-delights` | ⬜ Pendiente | *(Sebastián)* |
@@ -119,7 +119,7 @@ Mínimo **4–6 capturas** por app, en este orden de prioridad. Si una pantalla 
 
 | Proyecto | Pantallas sugeridas (función estrella en **negrita**) |
 |---|---|
-| **LogINV** (`loginv-agroindustrial`) | Stock por almacén · **alerta de punto de reorden (ROP)** · **semáforo de caducidad** · multialmacén · conteo/escáner de código de barras · vista móvil/PWA |
+| **LogINV** (`inventario-loginv`) | Panel con pendientes · conteo por ubicación (un toque por unidad) · escáner de códigos · préstamos · auditoría · vista móvil/PWA (sin ROP ni caducidad: no existen en el código) |
 | **LogiFlow** (`logiflow`) | Cola de llamadas del día · detalle de pedido · **estado de sincronización Shopify↔Kommo** · inventario · formulario de pedido |
 | **DataWeave BI** (`dataweave-bi`) | **Tablero de ventas** · inventario · logística/envíos por provincia · **normalización de productos por IA** · filtros por periodo |
 | **Coralia Delights** (`coralia-delights`) | Catálogo (tienda) · ficha de producto · **checkout con zona de reparto y horario** · panel de pedidos · inventario/combos/promos |

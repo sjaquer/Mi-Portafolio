@@ -141,7 +141,7 @@ const allCases: CaseStudy[] = [
     slug: "bolsa-de-trabajo-wiener",
     title: "Una plataforma de empleabilidad propia para reemplazar tres de terceros",
     subtitle:
-      "CMS y plataforma propia que controla bolsa laboral, creador de CV con lectura por IA y feria virtual en un solo lugar: cinco roles, acceso con Microsoft y pruebas de punta a punta.",
+      "Bolsa laboral, creador de CV con lectura por IA, feria virtual, asesorías 1 a 1 y panel de métricas en una sola plataforma propia: cinco roles, acceso con Microsoft y revisión automática de ofertas.",
     problem:
       "La bolsa laboral, el creador de CV y los formularios de feria vivían en plataformas de terceros, cada una con su usuario y sin datos comunes.",
     result: {
@@ -156,7 +156,7 @@ const allCases: CaseStudy[] = [
     year: 2026,
     stack: ["Next.js", "Supabase/PostgreSQL", "Docker", "Playwright"],
     status: "produccion",
-    updatedAt: "2026-10-26",
+    updatedAt: "2026-11-24",
     featured: true,
     institutional: true,
     links: [
@@ -184,7 +184,7 @@ const allCases: CaseStudy[] = [
     slug: "difusion-correo-wiener",
     title: "Campañas de 8 000 correos de horas a tan solo minutos, con baja automática",
     subtitle:
-      "Sistema administrativo interno con buscador rápido de alumnos (de 7–9 pasos a una consulta directa por DNI, código o nombre), filtros inteligentes y difusión por lotes con lista de exclusión.",
+      "Plataforma interna del área: base de alumnos cargada desde el Data Warehouse, buscador de una sola consulta, campañas por lotes con un plan de envío verificable y lista de exclusión, piezas para redes y tableros de indicadores.",
     problem:
       "Las campañas a egresados se enviaban a mano desde Outlook en tandas pequeñas, y buscar los datos de un estudiante en el sistema antiguo tomaba entre 7 y 9 pasos.",
     result: {
@@ -201,7 +201,7 @@ const allCases: CaseStudy[] = [
     year: 2026,
     stack: ["React", "Node.js", "PostgreSQL", "Microsoft 365"],
     status: "produccion",
-    updatedAt: "2026-10-11",
+    updatedAt: "2026-11-24",
     featured: true,
     institutional: true,
     cover: {
@@ -389,7 +389,7 @@ const allCases: CaseStudy[] = [
     slug: "pedidos-big-jack",
     title: "Pedidos 35 % más rápidos en una hamburguesería",
     subtitle:
-      "Menú digital y bot de WhatsApp con IA que envían cada pedido por webhook a una terminal de caja y cocina, con el inventario ligado a las comandas.",
+      "Carta digital con checkout, ERP propio de caja e inventario y bot de WhatsApp con IA: todos los canales envían el mismo pedido por SKU y el precio lo calcula un solo sistema.",
     problem:
       "Salón, cocina y canal online trabajaban desconectados: cada pedido se transcribía a mano y el inventario se desfasaba.",
     result: {
@@ -403,8 +403,9 @@ const allCases: CaseStudy[] = [
     duration: "nov 2025 – sep 2026",
     year: 2025,
     stack: ["Next.js", "Firebase", "Webhooks", "Ollama / Gemini"],
-    status: "entregado", // TODO(Sebastián): ¿sigue en uso? Si es así, "produccion".
-    updatedAt: "2026-10-26",
+    // La carta sigue en producción (bigjack.vercel.app); el envío al ERP está apagado por flag desde nov. 2026.
+    status: "produccion",
+    updatedAt: "2026-11-24",
     links: [{ label: "Carta digital de Big Jack", href: "https://bigjack.vercel.app" }],
     cover: {
       label: "Flujo de un pedido",
@@ -444,6 +445,37 @@ const allCases: CaseStudy[] = [
         { tag: "Lectura", title: "OCR" },
         { tag: "Control", title: "Cuota y mora" },
         { tag: "Registro", title: "Auditoría" },
+      ],
+      highlight: 1,
+    },
+  },
+  {
+    slug: "inventario-loginv",
+    title: "El inventario de una iglesia, contado desde el celular y con rastro de cada cambio",
+    subtitle:
+      "Sistema de inventario para la Iglesia Alianza CNC: escaneo de códigos con la cámara, conteos físicos por ubicación, préstamos, mantenimiento, tres roles y auditoría de cada cambio. Documentado con el modo demo, sin enlace.",
+    problem:
+      "Lo que tenía la iglesia vivía en un Excel: no se sabía dónde estaba cada cosa, los préstamos se acordaban de palabra y los cambios no tenían autor.",
+    result: {
+      value: "Sin papel",
+      label: "conteos por ubicación que ajustan el stock y dejan rastro de quién movió qué",
+      context: "En uso en la iglesia · versión 2.0 de nov. 2026", // TODO(Sebastián): artículos y cuentas activas, con fecha
+    },
+    type: "web",
+    context: "Proyecto Freelance · Iglesia Alianza CNC, Lima",
+    role: "Diseño de producto y desarrollo completo",
+    duration: "2026",
+    year: 2026,
+    stack: ["Next.js", "Firebase", "PWA", "ExcelJS"],
+    status: "produccion",
+    updatedAt: "2026-11-24",
+    cover: {
+      label: "Del estante al registro",
+      nodes: [
+        { tag: "Escaneo", title: "Código" },
+        { tag: "Conteo", title: "Ubicación" },
+        { tag: "Stock", title: "Movimiento" },
+        { tag: "Control", title: "Auditoría" },
       ],
       highlight: 1,
     },
@@ -529,14 +561,6 @@ const allGallery: GalleryItem[] = [
     isPrivate: true, // Privado: se documenta con capturas (datos de referencia), sin enlace ni repo.
   },
   {
-    name: "LogINV Agroindustrial",
-    angle:
-      "Sistema de inventario y logística para plantas agroindustriales: control de stock en tiempo real, multialmacén, motor de punto de reorden (ROP), conteos diarios y alertas de caducidad.",
-    stack: ["Next.js", "TypeScript", "Tailwind CSS", "PWA"],
-    flow: ["Stock", "Motor ROP", "Despacho"],
-    isPrivate: true, // Privado: se documenta con capturas (datos de referencia), sin enlace ni repo.
-  },
-  {
     name: "Sistema Obra",
     angle:
       "Inventario de materiales, donaciones y turnos para una obra comunitaria, con movimientos en tiempo real y exportación a Excel.",
@@ -590,9 +614,9 @@ export const lab: LabProject[] = [
   {
     name: "TaskMe",
     description:
-      "Tablero Kanban que estructura tareas escritas en lenguaje natural y las sincroniza con Google Calendar.",
-    stack: ["Next.js", "Firebase", "Genkit", "dnd-kit"],
-    year: 2025,
+      "App personal de productividad: tablero Kanban con subtareas y tareas recurrentes, horario semanal que avisa choques, tickets desde un formulario público, notas con dictado por voz y un planificador con IA que propone tareas antes de crearlas. Acceso con PIN y lista para una APK Android.",
+    stack: ["Next.js", "Firebase", "Gemini", "dnd-kit"],
+    year: 2026,
     href: "https://github.com/sjaquer/taskME",
   },
   {

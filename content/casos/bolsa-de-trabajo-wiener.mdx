@@ -1,41 +1,41 @@
-{/* TODO(Sebastián): se publica con permiso escrito (07-PROYECTOS.md §3). Agregar usuarios y empresas del primer mes en producción (§4). Capturas solo con datos simulados. */}
+{/* TODO(Sebastián): agregar usuarios registrados, empresas aprobadas y postulaciones del primer mes, con su base y periodo (07-PROYECTOS.md §4). Capturas del panel solo con datos simulados. */}
 
 ## Contexto
 
-La universidad ofrecía sus servicios de empleabilidad — bolsa laboral, creador de CV y formularios de feria — a través de tres plataformas de terceros. La Dirección de Desarrollo Profesional y Alumni necesitaba juntarlo todo en un solo lugar propio, con datos sobre cómo lo usan alumnos y egresados.
+La universidad ofrecía sus servicios de empleabilidad —bolsa laboral, creador de CV y formularios de feria— a través de tres plataformas de terceros. La Dirección de Desarrollo Profesional y Alumni necesitaba juntarlo todo en un solo lugar propio, con datos sobre cómo lo usan alumnos, egresados y empresas.
 
-La fecha fija era la Feria Virtual de Empleabilidad del 22 de octubre de 2026: la plataforma tenía que estar en producción antes. Lo está, y ya la usan alumnos, egresados y empresas.
+Había una fecha que no se movía: la Feria Virtual de Empleabilidad de octubre de 2026. La plataforma tenía que pasar antes la revisión de QA y seguridad de TI, y operar en los servidores de la universidad. Lo logró: está en producción en [empleabilidad.uwiener.edu.pe](https://empleabilidad.uwiener.edu.pe/).
 
 ## Problema
 
-- Cada servicio vivía en una herramienta distinta, con su propio login y sin datos compartidos.
-- Las empresas no podían registrarse ni publicar ofertas sin intervención manual del área.
-- No había forma de medir qué servicios se usaban ni dónde se abandonaban.
+- Cada servicio vivía en una herramienta distinta, con su propio usuario y sin datos compartidos.
+- Las empresas no podían registrarse ni publicar ofertas sin que el área hiciera trabajo manual.
+- No había forma de saber qué se buscaba, qué no se encontraba ni dónde se abandonaba una postulación.
+- Los alumnos postulaban con CV incompletos, y las empresas recibían perfiles que no podían evaluar.
 
 ## Enfoque
 
-Diseñé la plataforma para cinco roles — alumno, egresado, empresa, administrador y superadministrador — y decidí desde el inicio dónde vive cada regla.
-
-Los alumnos entran con su cuenta institucional de Microsoft (Entra ID), los egresados validan su DNI contra el padrón y las empresas se registran con correo y contraseña.
+Diseñé la plataforma para cinco roles —alumno, egresado, empresa, administrador y superadministrador— y decidí desde el inicio **dónde vive cada regla**: el rol y el estado de cada cuenta se guardan en la base propia y nunca se toman de datos que el usuario pueda modificar.
 
 <Callout title="Decisión: identidad propia, proveedor de login reemplazable">
-  El proveedor de autenticación solo responde *quién es* la persona. *Qué puede hacer* lo decide una
-  tabla propia de usuarios en PostgreSQL. Así el proveedor se puede cambiar sin migrar datos, algo
-  clave para operar en los servidores de la universidad.
+  El proveedor de autenticación solo responde *quién es* la persona. *Qué puede hacer* lo decide
+  una tabla propia de usuarios en PostgreSQL. Así el proveedor se puede cambiar sin migrar datos,
+  algo clave para operar en los servidores de la universidad.
 </Callout>
 
-<Callout title="Lo que descarté (por ahora)" variant="warning">
-  Tenía listo un puntaje de compatibilidad entre CV y oferta calculado con IA. Lo pospuse: al
+<Callout title="Lo que construí y dejé apagado" variant="warning">
+  Tenía listo un puntaje de compatibilidad entre CV y oferta calculado con IA. Lo dejé apagado: al
   evaluar postulantes, el reglamento de la Ley 31814 lo clasifica como un sistema de IA de riesgo
-  alto, y necesita revisión legal antes de encenderse. Quedó construido, pero apagado.
+  alto, y necesita transparencia, supervisión humana y revisión legal antes de encenderse. El
+  código está completo, detrás de una constante que solo se cambia en el código.
 </Callout>
 
-Otras decisiones:
+Otras decisiones que sostienen todo lo demás:
 
 - **Validación en cada borde** con Zod: formularios, API y respuestas de la IA.
-- **Interruptores de módulos**: el superadministrador puede apagar la feria o la bolsa sin desplegar código.
-- **Revisión automática de ofertas** con reglas puras y probadas; lo dudoso pasa a una cola de moderación.
-- **Pruebas de punta a punta** con Playwright, además de pruebas unitarias y contra la base de datos.
+- **Interruptores de módulos**: el superadministrador puede apagar la feria, la bolsa, el creador de CV o las asesorías sin desplegar código. Quien entra por la URL ve una página de estado 503, no un error.
+- **Acciones destructivas con doble firma**: si un administrador quiere eliminar una empresa, una oferta o un usuario, lo aprueba otra persona —nunca quien lo pidió— y queda en la auditoría.
+- **Métricas sin identificar a nadie**: todo se muestra agregado, y los desgloses por carrera necesitan al menos 5 personas.
 
 ## Solución
 
@@ -45,50 +45,92 @@ Otras decisiones:
     {
       tag: "Cliente",
       title: "Alumnos, egresados y empresas",
-      items: ["Bolsa laboral", "Builder de CV", "Feria virtual"],
+      items: ["Bolsa laboral", "Creador de CV", "Feria y asesorías"],
     },
     {
       tag: "Servidor",
       title: "Next.js",
-      items: ["Server Actions", "Roles y permisos", "Reglas de ofertas"],
+      items: ["Roles y permisos", "Reglas de ofertas", "Interruptores de módulos"],
       highlight: true,
     },
     {
       tag: "Datos",
       title: "PostgreSQL propio",
-      items: ["Usuarios y roles", "Ofertas y postulaciones"],
+      items: ["Usuarios y roles", "Ofertas y postulaciones", "Auditoría y métricas"],
     },
     {
       tag: "Terceros",
       title: "Servicios",
-      items: [
-        "Login con Microsoft (reemplazable)",
-        "Email transaccional",
-        "IA para leer CV en PDF",
-      ],
+      items: ["Login con Microsoft (reemplazable)", "Correo transaccional", "IA para leer CV en PDF"],
     },
   ]}
 />
 
-Qué puede hacer cada parte, en la práctica:
+### Tres caminos para entrar, uno para cada caso
 
-- **Bolsa laboral pública** (`/empleos`): ofertas con buscador y filtros por carrera, modalidad y tipo de contrato. Quien no tiene sesión puede explorar; para postular, entra y vuelve a la misma oferta.
-- **Creador de CV**: cada persona guarda hasta 10 CV y marca uno como principal. Puede **importar su CV desde un PDF**: una IA extrae los datos, rellena el creador y el PDF original se descarta. Antes de usar la IA acepta el tratamiento de sus datos, y se quitan el DNI, la fecha de nacimiento y los datos de salud antes de enviar nada.
-- **Postulación con copia congelada**: al postular se guarda una copia del CV elegido, de modo que la empresa ve exactamente lo que se envió, aunque la persona lo edite después. No se puede postular dos veces a la misma oferta.
-- **Panel para empresas**: registro con aprobación, publicación de ofertas, gestión de candidatos por estado, descarga del CV en PDF con la plantilla que eligió el alumno y notas privadas que el postulante nunca ve.
-- **Feria virtual**: ficha de cada empresa y envío de **CV espontáneo** sin necesidad de una oferta abierta. Cuenta además con el subdominio directo [ferialaboralonline.uwiener.edu.pe](https://ferialaboralonline.uwiener.edu.pe/) para campañas de difusión, que dirige directamente a la vista de feria dentro de este mismo portal.
-- **CMS y panel de administración**: controla la bolsa, la feria virtual, la portada editable y los eventos desde un solo lugar, con aprobación de empresas, cola de moderación de ofertas, métricas, auditoría de cambios y exportación a Excel con datos mínimos.
+Los alumnos entran con su cuenta institucional de Microsoft. Los egresados también, y si ya no recuerdan ese correo pueden crear su cuenta con su DNI o carné de extranjería: el servidor lo valida contra la API de la universidad y la cuenta queda pendiente hasta que un superadministrador la aprueba. Un documento solo se puede reclamar una vez, y se guarda como un hash, nunca el número. Las empresas se registran con su RUC y correo, confirman su correo y esperan la aprobación del área.
 
-Se despliega en Docker, en los servidores de la universidad.
+<Figure
+  src="/img/proyectos/bolsa-de-trabajo-wiener/02-acceso-tres-caminos.webp"
+  alt="Pantalla de acceso con las pestañas Alumno o egresado y Empresa o staff, el botón Entrar con Microsoft como opción recomendada y los accesos con correo personal o con DNI"
+  caption="Un solo acceso, con el camino recomendado primero y las alternativas para quien perdió su correo institucional."
+/>
+
+### La bolsa laboral
+
+Es pública: cualquiera puede explorarla y, para postular, inicia sesión y vuelve a la misma oferta. En escritorio la lista y el detalle conviven en una vista dividida; en el celular, el detalle se abre a pantalla completa con el botón de postular fijo abajo. Hay pestañas de Prácticas y Empleo y filtros por carrera, modalidad, contrato, sueldo publicado y "solo de mi carrera". Con más de 300 ofertas cargadas, cambiar de pestaña tarda entre 44 y 63 ms en una red lenta.
+
+<Figure
+  src="/img/proyectos/bolsa-de-trabajo-wiener/01-bolsa-laboral.webp"
+  alt="Bolsa laboral en escritorio con 207 ofertas, pestañas Prácticas y Empleo, lista de ofertas a la izquierda y el detalle de una práctica a la derecha"
+  caption="Vista dividida en escritorio: lista a la izquierda, detalle completo a la derecha. Nombres y logos de empresas difuminados."
+/>
+
+Cada oferta tiene su propia página para compartir, con datos estructurados para Google for Jobs y una imagen propia para redes. Las vacantes que el área encuentra en otras bolsas se publican como **convocatorias externas**, con un botón que lleva al sitio de la empresa.
+
+### Postular con un CV que la empresa pueda evaluar
+
+- **Creador de CV**: cada persona guarda hasta 10 CV y marca uno como principal. Puede **importar su CV desde un PDF**: una IA extrae los datos, rellena el creador y el PDF se descarta sin guardarse. Antes acepta el tratamiento de sus datos, y se quitan el DNI, la fecha de nacimiento y los datos de salud antes de enviar nada. También puede pedir ayuda para redactar un campo y decidir si acepta la sugerencia.
+- **Regla del 70 %**: para postular, el CV tiene que estar completo al 70 % o más. Un anillo muestra el avance en tres pasos —datos, documento y CV— y lleva directo a lo que falta. Un alumno sin experiencia llega al 70 % con contacto, perfil, formación y habilidades.
+- **Copia congelada**: al postular se guarda una copia del CV elegido. La empresa ve exactamente lo que se envió, aunque la persona lo edite después. No se puede postular dos veces a la misma oferta, y el alumno sigue el estado de cada postulación en una línea de tiempo.
+
+### Portal de empresas
+
+La empresa crea borradores mientras espera la aprobación. El formulario de ofertas **revisa las reglas de la bolsa en vivo** —con la misma función que usa el servidor— y ayuda a llenarlo: sugiere carreras por palabras clave (sin IA), ajusta las horas según el tipo de contrato y muestra el sueldo mínimo para pasar la revisión. Si la oferta cumple todas las reglas se publica sola; si no, pasa a una cola de moderación con el motivo.
+
+Con los candidatos, la empresa avanza etapas (en evaluación, entrevista, finalista, contratado), compara hasta tres lado a lado, agenda entrevistas, deja notas privadas que el postulante nunca ve y descarga el CV en la plantilla que eligió el alumno. Cuando los contratados llegan al número de vacantes, la oferta se cierra sola y avisa a los demás.
+
+### Feria virtual y asesorías 1 a 1
+
+La feria cambia sola según la fecha: antes del evento muestra la cuenta regresiva y la inscripción; durante, el directorio de empresas, sus vacantes y la agenda de webinars; después, el cierre. Desde la ficha de cada empresa, el alumno puede enviar un **CV espontáneo** sin que haya una vacante abierta. Cuenta además con el subdominio [ferialaboralonline.uwiener.edu.pe](https://ferialaboralonline.uwiener.edu.pe/) para campañas, que lleva a esta misma vista.
+
+<Figure
+  src="/img/proyectos/bolsa-de-trabajo-wiener/03-modulo-apagado.webp"
+  alt="Página de módulo no disponible con el mensaje Esta sección no está disponible por ahora y un botón para volver al inicio"
+  caption="Con su interruptor apagado, el módulo responde con una página de estado en lugar de un error."
+/>
+
+Las **asesorías personalizadas** permiten reservar una cita con un asesor del área: los horarios libres descuentan lo ocupado en su calendario de Outlook, el horario elegido queda apartado 5 minutos mientras el alumno completa el formulario, la confirmación trae el enlace de Teams y un recordatorio llega 24 horas antes.
+
+### Panel del área
+
+- **Métricas del área** en siete secciones: lo que más se busca y lo que se busca sin encontrar, oferta frente a demanda por carrera, habilidades más pedidas en las ofertas, embudo de postulación, cuándo postulan, qué empresas responden a tiempo y cómo se movió la feria. Cada periodo se compara con el anterior.
+- **Una ficha por oferta** con todo en un solo lugar: estado, postulantes con su CV enviado, empresa e historial de auditoría.
+- **Acciones en grupo** para aprobar, publicar, cerrar o suspender varias cosas a la vez, con los mismos permisos y la misma auditoría que una por una.
+- **Portada editable** sin código, exportaciones a Excel con datos mínimos y **correos automáticos** a empresas (aprobación, vencimiento, inactividad) con textos editables, interruptor por tipo y un tope diario como freno de emergencia.
+- **Boletines** solo para quien dio un consentimiento aparte, con baja en un clic sin iniciar sesión, máximo dos por semana y sin píxeles de seguimiento.
+
+Se despliega en Docker en los servidores de la universidad, con migraciones que se aplican antes del código y un despliegue que se detiene si alguna falla. Antes de cada versión corren más de 650 pruebas unitarias, más de 200 contra la base de datos, más de 100 pruebas HTTP sobre el build y pruebas de punta a punta con Playwright.
 
 ## Resultado
 
-La plataforma está **en producción** y en uso desde octubre de 2026 en el dominio oficial [empleabilidad.uwiener.edu.pe](https://empleabilidad.uwiener.edu.pe/), y es la base de la Feria Virtual de Empleabilidad del 22 de octubre ([ferialaboralonline.uwiener.edu.pe](https://ferialaboralonline.uwiener.edu.pe/)). Al 24 de septiembre, 11 de los 14 módulos del MVP ya estaban terminados. {/* TODO(Sebastián): ¿cómo se cerraron los 3 módulos restantes y la revisión de TI? */}
+La plataforma está **en producción** y en uso desde octubre de 2026 en el dominio oficial [empleabilidad.uwiener.edu.pe](https://empleabilidad.uwiener.edu.pe/), y fue la base de la Feria Virtual de Empleabilidad de ese mes. Reemplazó a tres plataformas de terceros con una propia, con un costo de operación estimado de 35 a 60 USD al mes en servicios externos, frente a un presupuesto de 200 USD.
 
-Está pensada para medir desde el primer día: cuando tenga los datos del primer mes (usuarios registrados y empresas aprobadas), los publicaré aquí con su base y su periodo.
+Está pensada para medir desde el primer día: cuando tenga los datos del primer trimestre (usuarios registrados, empresas aprobadas y postulaciones), los publicaré aquí con su base y su periodo.
 
 ## Qué aprendí
 
 - Separar _quién eres_ de _qué puedes hacer_ simplifica todo lo demás: permisos, auditoría y migración.
 - En un sistema que evalúa personas, la pregunta legal llega antes que la técnica.
+- Una regla que la empresa ve mientras escribe (el sueldo mínimo, las carreras) evita más rechazos que una buena cola de moderación.
 - Ser el único desarrollador obliga a documentar como si hubiera un equipo: es lo que permite que TI revise y opere la plataforma.

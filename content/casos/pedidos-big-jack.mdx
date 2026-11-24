@@ -1,34 +1,38 @@
-{/* TODO(Sebastián): completar el detalle del sistema interno (terminal y cocina) y agregar capturas con datos simulados. */}
+{/* TODO(Sebastián): completar con capturas del ERP (caja y cola de cocina) con datos simulados; la carta ya tiene las suyas. */}
 
 ## Contexto
 
-Big Jack Burgers es una hamburguesería en Lima con salón, recojo y delivery. Entré al área de operaciones y marketing, y terminé siendo también el único programador del negocio.
+Big Jack es una hamburguesería del Centro de Lima que atiende de noche, con recojo en el local y delivery coordinado por inDrive o Rappi. Entré al área de operaciones y marketing y terminé siendo también el único programador del negocio: construí la **carta digital** con su checkout, un **ERP propio** de caja, cola de pedidos e inventario, y un **bot de WhatsApp** que convierte mensajes en pedidos.
+
+Casi todos los clientes llegan desde el celular —Instagram, TikTok, un QR o Google—, así que todo se diseñó primero para una pantalla de 390 px y datos móviles.
 
 ## Problema
 
-- Los pedidos de cada canal llegaban por vías distintas —web, WhatsApp, salón— y se transcribían a mano para cocina.
-- El inventario no se actualizaba con cada venta: el desfase se descubría al cerrar el día.
-- Los precios del menú online y los del sistema interno podían no coincidir.
+- Los pedidos llegaban por canales distintos —salón, WhatsApp y web— y **se transcribían a mano** para cocina.
+- El inventario no se descontaba con cada venta: el desfase se descubría al cerrar el día.
+- El precio de la carta online y el del sistema interno podían no coincidir.
+- Por WhatsApp, cada pedido llegaba incompleto: faltaba la versión de la hamburguesa, el método de pago o la dirección, y había que repreguntar.
 
 ## Enfoque
 
-Ataqué primero el camino del pedido: que entre una sola vez y llegue solo a donde se necesita.
+Ataqué primero el camino del pedido: que entre **una sola vez**, completo, y llegue solo a donde se necesita.
 
-<Callout title="Decisión: el precio lo calcula el sistema interno, no el menú">
-  El menú digital envía solo códigos de producto (SKU), cantidades y notas. El sistema interno
-  calcula el precio. Así un cambio de precio se hace en un solo lugar y el menú no puede mandar
-  montos desactualizados.
+<Callout title="Decisión: el precio lo calcula un solo sistema">
+  La carta envía solo códigos de producto (SKU), cantidades y notas. El precio final lo calcula el
+  ERP con su catálogo. Así un cambio de precio se hace en un lugar y la carta no puede mandar
+  montos desactualizados: si un SKU no existe, el pedido se rechaza.
 </Callout>
 
 <Callout title="Decisión: un solo formato de pedido para todos los canales">
-  El bot de WhatsApp no escribe directo en cocina: produce el mismo JSON que el menú (SKU,
-  cantidades y notas) y lo envía al mismo webhook. Así el precio, el stock y las reglas viven en un
-  solo lugar, sin importar por dónde entró el pedido.
+  El bot de WhatsApp no escribe directo en cocina: produce el mismo JSON que la carta (SKU,
+  cantidades y notas) y lo envía al mismo webhook. Precio, stock y reglas viven en un solo lugar,
+  sin importar por dónde entró el pedido.
 </Callout>
 
-<Callout title="Decisión: cada pedido es idempotente" variant="info">
-  Cada envío lleva un identificador de evento único. Si la red falla y el cliente reintenta, el
-  sistema reconoce el pedido repetido y no lo duplica en cocina.
+<Callout title="Decisión: las reglas de la casa se validan dos veces" variant="info">
+  Máximo 10 unidades por producto y 30 por pedido, bebidas solo junto a una hamburguesa, delivery
+  sin efectivo y pre-órdenes solo para recojo. Las mismas funciones corren en el navegador (para
+  avisar a tiempo) y en el servidor (para que nadie las salte). Están cubiertas por 94 pruebas.
 </Callout>
 
 ## Solución
@@ -38,38 +42,78 @@ Ataqué primero el camino del pedido: que entre una sola vez y llegue solo a don
   steps={[
     {
       tag: "Canales",
-      title: "Menú digital y bot de WhatsApp",
-      items: ["Catálogo con variantes", "Mensajes → pedido con IA"],
+      title: "Carta digital y bot de WhatsApp",
+      items: ["Checkout en dos pasos", "Mensajes → pedido con IA"],
     },
     {
       tag: "Integración",
       title: "Webhook de pedidos",
-      items: ["SKU + cantidades", "ID de evento único"],
+      items: ["SKU + cantidades", "ID de evento único", "Turnstile y límite por IP"],
       highlight: true,
     },
     {
       tag: "Operación",
-      title: "Terminal de pedidos y cocina",
-      items: ["Cola de comandas", "Precio calculado aquí"],
+      title: "ERP: caja y cola de cocina",
+      items: ["Precio calculado aquí", "Pedidos locales y online"],
     },
     { tag: "Control", title: "Inventario", items: ["Descuento por receta vendida"] },
   ]}
 />
 
-El menú digital (Next.js) envía cada pedido a un webhook del sistema interno. Por WhatsApp, un bot de escritorio lee los mensajes: un modelo local (Ollama) detecta si hay intención de compra y Gemini extrae productos y cantidades en un JSON que va al mismo webhook. Así los dos canales entran a cocina con el mismo formato. La terminal muestra la cola de comandas a cocina y descuenta el inventario según la receta de cada producto. El libro de reclamaciones del sitio se envía por correo con los datos saneados.
+### Un pedido completo en tres toques
+
+En la carta, cada hamburguesa abre una hoja para elegir versión (simple o doble) y cantidad. Al agregarla, la carta sugiere una bebida que aún no está en el pedido —una sola vez por visita— y una barra fija muestra el total. El carrito se guarda en el dispositivo y se sincroniza entre pestañas y entre la carta y la ficha de cada producto.
+
+<Figure
+  src="/img/proyectos/pedidos-big-jack/01-pedido-en-tres-toques.webp"
+  alt="Tres pantallas móviles de la carta de Big Jack: elegir la versión de la hamburguesa, la sugerencia de gaseosa y el resumen del pedido con total de S/ 30.90"
+  caption="Elegir versión, sumar una bebida y revisar el pedido: el flujo completo cabe en el pulgar."
+/>
+
+### Entrega y pago sin repreguntar
+
+El segundo paso pide solo lo necesario: recojo o delivery, nombre, teléfono opcional y método de pago. Las reglas se ven en la interfaz antes de que se conviertan en un error: si eliges delivery, **efectivo se desactiva** y aparece el campo de dirección con la opción de usar la ubicación del celular; si pagas con Yape o Plin, la carta te recuerda a qué número.
+
+<Figure
+  src="/img/proyectos/pedidos-big-jack/02-entrega-y-pago.webp"
+  alt="Barra de pedido flotante y el paso Entrega y pago con delivery elegido, campo de dirección y el método Efectivo desactivado"
+  caption="Con delivery, el efectivo se desactiva solo: la regla se ve antes de convertirse en un error. Datos de prueba."
+  simulated
+/>
+
+El horario se calcula en **hora de Lima**, incluido el cierre a medianoche. Fuera de horario la carta se puede ver igual, con una cuenta regresiva, y el pedido se convierte en pre-orden solo para recojo; el servidor rechaza cualquier pedido inmediato que llegue con el local cerrado.
+
+### Seguridad del canal
+
+El navegador nunca habla directo con el ERP ni conoce su secreto. Un proxy propio exige mismo origen y un cuerpo de máximo 16 KB, valida un desafío invisible de Cloudflare Turnstile, limita a 5 pedidos por IP cada 15 minutos (y uno cada 20 segundos), reconstruye el pedido con una lista blanca de campos y recién entonces lo reenvía. Cada envío lleva un identificador de evento único: si la red falla y el cliente reintenta, el ERP no duplica el pedido en cocina.
+
+### Lo que rodea al pedido
+
+La carta también trabaja de vitrina: metadatos y datos estructurados por producto (`Restaurant`, `Product`, `FAQPage`), una imagen para redes por cada hamburguesa generada en cada build, `llms.txt` para asistentes de IA, instalación como app (PWA) y eventos de e-commerce en GA4. Para redes armé una página de enlaces con el estado abierto/cerrado real y un minijuego, **Arma tu burger**, para la espera del pedido.
+
+<Figure
+  src="/img/proyectos/pedidos-big-jack/03-carta-enlaces-y-juego.webp"
+  alt="Portada de la carta con el pedido en curso, la página de enlaces con el estado Abierto y el minijuego Arma tu burger"
+  caption="Portada de la carta, página de enlaces para redes y el minijuego para la espera."
+/>
+
+### Estado actual, sin maquillaje
+
+Desde noviembre de 2026 el envío al ERP está **apagado con un interruptor** mientras se define la API definitiva del ERP: hoy la carta valida y arma el pedido igual, pero lo confirma por WhatsApp con el resumen listo. El código del webhook y Turnstile quedaron intactos; reactivarlo es cambiar una línea y configurar las variables. El libro de reclamaciones también está desactivado hasta completar sus requisitos legales.
 
 ## Resultado
 
 <Metric
-  value="−35 %"
+  value="−35 %"
   label="tiempo de procesamiento por pedido"
   context="Estimado · 4 semanas antes vs. después de la implementación"
 />
 
-Además del tiempo, el inventario pasó a actualizarse con cada venta, en lugar de reconciliarse al final del día.
+Además del tiempo, el inventario pasó a descontarse con cada venta según la receta, en lugar de reconciliarse al final del día, y los pedidos por WhatsApp dejaron de llegar incompletos: la carta los manda con versión, entrega y pago ya resueltos.
 
 ## Qué aprendí
 
 - La mejor optimización fue quitar pasos, no acelerar los que ya existían.
-- Decidir _dónde_ vive cada dato (el precio, el stock) evita la mitad de los errores.
-- En un negocio pequeño, la herramienta tiene que funcionar el sábado a las 9 p. m. sin que yo esté presente.
+- Decidir _dónde_ vive cada dato —el precio, el stock, las reglas— evita la mitad de los errores.
+- Una regla que se ve en la interfaz (el efectivo apagado) ahorra más soporte que un buen mensaje de error.
+- Dejar una integración detrás de un interruptor me permitió apagarla sin borrar nada cuando el ERP cambió de rumbo.

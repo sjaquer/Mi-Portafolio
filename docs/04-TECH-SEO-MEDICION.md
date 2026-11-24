@@ -86,7 +86,7 @@ Regla: **ningún texto sobre tu experiencia se escribe fuera de este archivo o d
 - Descripciones de 140–160 caracteres, únicas, orientadas al descubrimiento de producto y resolución operativa.
 - **Imagen Open Graph (OG) por página** generada dinámicamente con `next/og` (`lib/og.tsx`, 1200×630): título de la página + nombre + rol + paleta del sistema (`#FAFAF8` papel, `#1F3A5F` marino, regla de medición visual y monograma SVG). Genera tarjetas profesionales instantáneas al compartir en LinkedIn, Twitter y WhatsApp.
 - Un `h1` por página; encabezados en estricto orden semántico.
-- URLs en español, cortas y descriptivas: `/proyectos/bolsa-de-trabajo-wiener`, `/proyectos/loginv-agroindustrial`, `/notas/validacion-juicio-expertos-v-de-aiken`.
+- URLs en español, cortas y descriptivas: `/proyectos/bolsa-de-trabajo-wiener`, `/proyectos/inventario-loginv`, `/notas/validacion-juicio-expertos-v-de-aiken`.
 
 ### 2.2 Datos estructurados (JSON-LD)
 

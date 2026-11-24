@@ -34,15 +34,15 @@ export interface Note {
 
 const allNotes: Note[] = [
   {
-    slug: "loginv-punto-de-reorden",
-    title: "El inventario no pregunta cuánto queda, pregunta cuándo comprar",
+    slug: "loginv-conteo-fisico",
+    title: "Contar el inventario de una iglesia sin papel (y sin perder el conteo a medias)",
     description:
-      "Cambié el stock mínimo fijo de LogINV por un punto de reorden que mete el tiempo de entrega y la demanda en la ecuación: avisa antes de faltar, no después.",
-    date: "2026-11-01",
+      "Cuatro decisiones del conteo físico de LogINV: contar por ubicación, un toque por unidad, avance que no se pierde y ningún ajuste de stock sin su movimiento.",
+    date: "2026-11-24",
     pillar: "construyendo",
-    cover: "/img/notas/loginv-punto-de-reorden.webp",
+    cover: "/img/notas/loginv-conteo-fisico.webp",
     coverAlt:
-      "Esquema abstracto de estantería de almacén con nivel de inventario descendiendo hacia la línea de punto de reorden.",
+      "Esquema abstracto de una estantería con niveles de inventario y una línea de stock mínimo.",
   },
   {
     slug: "optimizar-vuelos-cp-sat",

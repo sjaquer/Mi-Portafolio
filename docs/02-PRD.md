@@ -135,7 +135,7 @@ Selección y justificación completas en `07-PROYECTOS.md`.
 1. Plataforma Empleabilidad Wiener — Norbert Wiener (Bolsa laboral, CV IA, feria virtual). *(MVP)*
 2. Sistema de difusión por correo con segmentación y lista de exclusión — Norbert Wiener. *(MVP)*
 3. Sistema de pedidos en tiempo real — Big Jack Burgers (Menú digital + WhatsApp IA + ERP cocina/despacho).
-4. LogINV Agroindustrial — Sistema avanzado de inventarios multialmacén, alertas de caducidad y motor ROP.
+4. LogINV — Inventario de la Iglesia Alianza CNC: escaneo, conteos por ubicación, préstamos, mantenimiento y auditoría.
 5. PrestaFacilito — Plataforma de créditos y cobranzas con OCR de comprobantes.
 6. Portal de formularios y encuestas NPS validadas — Norbert Wiener.
 7. Reqlut Bot: servicio 24/7 de ingesta y publicación de ofertas con IA — Norbert Wiener.
