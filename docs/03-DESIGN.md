@@ -3,7 +3,7 @@
 > **Fuente de verdad visual y verbal** de la marca Sebastián Jaque, para la web, el CV, LinkedIn, GitHub, presentaciones, documentos y cualquier pieza futura.
 > Si una decisión no está aquí, se agrega aquí antes de implementarla o publicarla.
 >
-> **Versión:** 4.3 · **Actualizado:** 3 nov 2026 · **Responsable:** Sebastián Jaque
+> **Versión:** 5.0 · **Actualizado:** 24 nov 2026 · **Responsable:** Sebastián Jaque
 
 ---
 
@@ -1221,6 +1221,7 @@ En Tailwind v4, `@theme` con `initial` anula la escala por defecto: **fuera de l
 
 | Versión | Fecha | Cambio |
 |---|---|---|
+| 5.0 | 24 nov 2026 | **Minimalismo concentrado y scroll dinámico en la home.** **Hero monumental (`100svh`):** nueva escala `--text-hero` con titular directo orientando a producto, barra superior de estado, adelanto al caso en producción y compresión sutil ligada al scroll (`.hero-compress`). **Banda de impacto interactiva (`ImpactTabs`):** selector accesible por pestañas con comparador visual proporcional Antes/Después. **5 capítulos concentrados:** se elimina la sección redundante de servicios (integrada en la columna *sticky* de casos), tarjetas de proyectos apilables al scrollear (`.case-stack-card`), eje vertical dibujado al scroll en trayectoria (`.timeline-spine-fill`), composición editorial asimétrica en notas con revelado `clip-path` (`.media-reveal`) y riel lateral de capítulos (`ChapterRail` + `.rail-progress`). |
 | 1.0 | 10 oct 2026 | Sistema de diseño web inicial (color, tipografía, espaciado, componentes). |
 | 2.0 | 11 oct 2026 | Ampliado a manual de marca personal: plataforma, personalidad, voz y escritura, logotipo, paleta extendida (marino, ámbar, primitivos), elementos gráficos, iconografía, diagramas, gráficos de datos (paleta validada para daltonismo), fotografía, redes, aplicaciones y checklist. Nuevos tokens `--color-brand`, `--color-warning-700` y `--chart-*`. |
 | 2.1 | 11 oct 2026 | Sesión de alineación y confirmación (/grill-me): ratificación de jerarquía de color (#1F3A5F identidad, #2350D9 acción, #0B7350 métricas), marca de medición técnica y paleta de gráficos de datos. Cambio oficial de familias tipográficas a Inter + JetBrains Mono. Inclusión de estado transitorio de avatar vectorial en Hero (§10.6). Incorporación de especificaciones técnicas detalladas para diseño en Figma (§12.9). |

@@ -8,20 +8,32 @@ import { formatRange } from "@/lib/format";
 export function Timeline({
   items,
   compact = false,
+  animatedRail = false,
 }: {
   items: readonly Experience[];
   compact?: boolean;
+  /** Dibuja el eje vertical progresivamente con el scroll en la home (v5.0). */
+  animatedRail?: boolean;
 }) {
   return (
-    <ol className="flex flex-col">
+    <ol className={`flex flex-col ${animatedRail ? "timeline-track relative" : ""}`}>
       {items.map((e) => {
         const current = e.to === null;
         return (
-          <li key={`${e.org}-${e.from}`} className="grid gap-2 md:grid-cols-12 md:gap-5">
+          <li
+            key={`${e.org}-${e.from}`}
+            className={`grid gap-2 md:grid-cols-12 md:gap-5 ${animatedRail ? "reveal" : ""}`}
+          >
             <p className="pt-px font-mono text-small text-ink-500 tabular-nums md:col-span-3 md:text-right">
               {formatRange(e.from, e.to)}
             </p>
             <div className="relative flex flex-col gap-2 border-l border-border pb-7 pl-6 md:col-span-9">
+              {animatedRail && (
+                <span
+                  aria-hidden
+                  className="timeline-spine-fill pointer-events-none absolute top-0 bottom-0 -left-px w-0.5 bg-brand"
+                />
+              )}
               <span aria-hidden className="absolute top-1 left-0 size-3 -translate-x-1/2">
                 {current && (
                   <span className="pulse-ring absolute inset-0 rounded-full border-2 border-accent-600" />

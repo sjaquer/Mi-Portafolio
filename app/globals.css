@@ -16,8 +16,9 @@
     @apply font-semibold text-balance text-ink-900;
   }
 
-  /* Corte Display solo en los tamaños grandes (v4.3): un h2 pequeño (p. ej. el del
+  /* Corte Display solo en los tamaños grandes (v4.3 / v5.0): un h2 pequeño (p. ej. el del
      banner de medición) sigue en Inter de texto, que es la que lee bien a 14 px. */
+  .text-hero,
   .text-display,
   .text-h1,
   .text-h2 {
@@ -72,7 +73,7 @@
 .header-scroll {
   border-bottom-color: var(--color-border);
 }
-@supports (animation-timeline: scroll()) {
+@supports ((animation-timeline: scroll()) and (animation-range: 0% 100%)) {
   .header-scroll {
     border-bottom-color: transparent;
     animation: header-border linear both;
@@ -93,7 +94,7 @@
 }
 
 /* ── Revelado al hacer scroll (§11 v3.0): solo CSS, nunca en el hero ─── */
-@supports (animation-timeline: view()) {
+@supports ((animation-timeline: view()) and (animation-range: entry)) {
   @media (prefers-reduced-motion: no-preference) {
     .reveal {
       animation: reveal linear both;
@@ -236,7 +237,7 @@ li {
   stroke-dasharray: 0.06 2;
   stroke-dashoffset: 0.06;
 }
-@supports (animation-timeline: view()) {
+@supports ((animation-timeline: view()) and (animation-range: entry)) {
   @media (prefers-reduced-motion: no-preference) {
     .fig-fade {
       animation: fig-fade linear both;
@@ -363,6 +364,124 @@ li {
     }
     to {
       clip-path: inset(0);
+    }
+  }
+}
+
+/* ── v5.0 · Scroll dinámico y composición editorial ─────────────────────
+   Coreografía ligada al scroll con CSS nativo: compresión del hero al salir,
+   apilado de casos, revelado geométrico de medios, eje vivo en trayectoria y
+   progreso del riel lateral. Siempre protegido con @supports y reduced-motion. */
+.hero-stage {
+  view-timeline: --hero-stage block;
+}
+
+@supports ((animation-timeline: view()) and (animation-range: entry)) {
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-compress {
+      transform-origin: center top;
+      animation: hero-compress auto linear both;
+      animation-timeline: --hero-stage;
+      animation-range: exit 0% exit 75%;
+    }
+    @keyframes hero-compress {
+      from {
+        transform: none;
+      }
+      to {
+        transform: scale(0.95) translateY(-24px);
+      }
+    }
+
+    .case-stack-card {
+      animation: card-enter auto linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 32%;
+    }
+    @keyframes card-enter {
+      from {
+        transform: translateY(28px) scale(0.985);
+      }
+      to {
+        transform: none;
+      }
+    }
+
+    .media-reveal {
+      animation: media-reveal auto linear both;
+      animation-timeline: view();
+      animation-range: entry 5% entry 40%;
+    }
+    @keyframes media-reveal {
+      from {
+        clip-path: inset(0 0 12% 0 round 16px);
+        transform: scale(1.03);
+      }
+      to {
+        clip-path: inset(0 0 0 0 round 16px);
+        transform: none;
+      }
+    }
+
+    .timeline-spine-fill {
+      transform-origin: top;
+      animation: spine-grow auto linear both;
+      animation-timeline: view();
+      animation-range: entry 20% cover 55%;
+    }
+    @keyframes spine-grow {
+      from {
+        transform: scaleY(0);
+      }
+      to {
+        transform: scaleY(1);
+      }
+    }
+  }
+}
+
+@supports ((animation-timeline: scroll()) and (animation-range: 0% 100%)) {
+  @media (prefers-reduced-motion: no-preference) {
+    .rail-progress {
+      transform-origin: top;
+      animation: rail-grow auto linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0% 100%;
+    }
+    @keyframes rail-grow {
+      from {
+        transform: scaleY(0);
+      }
+      to {
+        transform: scaleY(1);
+      }
+    }
+  }
+}
+
+.impact-tab {
+  position: relative;
+}
+.impact-tab[aria-selected="true"]::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  border-block-end: 2px solid currentColor;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .impact-bar-after {
+    transform-origin: left;
+    transition: transform 520ms var(--ease-standard);
+  }
+  .impact-panel-enter {
+    animation: impact-panel-enter 220ms var(--ease-standard) both;
+  }
+  @keyframes impact-panel-enter {
+    from {
+      transform: translateY(6px);
+    }
+    to {
+      transform: none;
     }
   }
 }

@@ -52,6 +52,10 @@
   --text-*: initial;
   /* v4.3 · Escala editorial: más contraste entre titular y texto (44→68 px el nombre,
      32→52 px los h1). El corte Display permite tamaños grandes sin que se vean pesados. */
+  /* v5.0 · Titular monumental para el Hero (100svh) */
+  --text-hero: clamp(2.875rem, 1.85rem + 4.4vw, 5.5rem);
+  --text-hero--line-height: 0.98;
+  --text-hero--letter-spacing: -0.035em;
   --text-display: clamp(2.75rem, 2.163rem + 2.6087vw, 4.25rem);
   --text-display--line-height: 1;
   --text-display--letter-spacing: -0.03em;
